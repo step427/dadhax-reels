@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The 7 Layers of Why — @nicksdadhax</title>
+
+<style>
+  /* ============================================================
+     @nicksdadhax — dark field-instrument identity.
+     Signal yellow read off Nick's own profile photo (the bright
+     yellow ground behind his face). Two functional signals:
+       SIGNAL YELLOW = your input, your attention, his mark
+       WARN RED      = the honest correction, diagnostics only
+     Deliberately single-world dark; the paper counterpart is the
+     print stylesheet at the bottom, which inverts to ink-on-white.
+     Deconflicted from Perennial (sage) and Azara (navy/teal).
+     ============================================================ */
+  :root {
+    --carbon:   #0F0E0B;
+    --panel:    #17150F;
+    --panel-up: #1E1B14;
+    --hair:     #302B21;
+    --bone:     #F4F0E6;
+    --graphite: #8F887A;
+    --signal:   #FFC629;
+    --signal-d: #C8930F;
+    --warn:     #E8502C;
+
+    --mono: ui-monospace, "SF Mono", SFMono-Regular, "Cascadia Mono",
+            "Roboto Mono", Menlo, Consolas, "Courier New", monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+            "Helvetica Neue", Arial, sans-serif;
+
+    --gutter: clamp(18px, 5vw, 40px);
+    --maxw: 660px;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--carbon);
+    color: var(--bone);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-text-size-adjust: 100%;
+    background-image:
+      repeating-linear-gradient(to right,  rgba(242,237,231,.035) 0 1px, transparent 1px 28px),
+      repeating-linear-gradient(to bottom, rgba(242,237,231,.035) 0 1px, transparent 1px 28px);
+  }
+
+  .sheet { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter) 96px; }
+
+  .top {
+    display: flex; justify-content: space-between; align-items: baseline;
+    gap: 16px; flex-wrap: wrap;
+    padding: 22px 0 18px; border-bottom: 1px solid var(--hair);
+    font-family: var(--mono); font-size: 12px; letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  .top .handle { color: var(--signal); font-weight: 700; }
+  .top .meta { color: var(--graphite); font-variant-numeric: tabular-nums; }
+
+  header { padding: 34px 0 8px; }
+  .protocol {
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: .17em;
+    text-transform: uppercase; color: var(--graphite);
+  }
+  .protocol b { color: var(--signal); font-weight: 700; }
+  h1 {
+    font-family: var(--mono); font-weight: 700;
+    font-size: clamp(30px, 8.6vw, 52px); line-height: 1.02;
+    letter-spacing: -.03em; text-transform: uppercase;
+    margin: 12px 0 0; text-wrap: balance;
+  }
+  h1 .of { color: var(--signal); }
+  .dek {
+    margin: 14px 0 0; max-width: 46ch; color: #CFC9BB; font-size: 17px;
+  }
+  .dek em { color: var(--bone); font-style: normal; border-bottom: 1.5px solid var(--signal-d); }
+
+  .rules {
+    margin: 20px 0 0; padding: 11px 0 0; border-top: 1px solid var(--hair);
+    font-family: var(--mono); font-size: 12.5px; letter-spacing: .04em;
+    color: var(--graphite); text-transform: uppercase;
+  }
+  .rules span { color: var(--bone); }
+
+  .block { margin-top: 26px; }
+  .lbl {
+    display: block; font-family: var(--mono); font-size: 11.5px;
+    letter-spacing: .13em; text-transform: uppercase; color: var(--graphite);
+    margin-bottom: 8px;
+  }
+  .seed {
+    border: 1.5px solid var(--signal); background: var(--panel);
+    padding: 16px 16px 14px;
+  }
+  .seed .lbl { color: var(--signal); }
+
+  textarea, input[type=text] {
+    display: block; width: 100%; resize: none;
+    background: transparent; border: 0; border-bottom: 1.5px solid #453E2C;
+    color: var(--bone); font-family: var(--sans); font-size: 17px;
+    line-height: 1.5; padding: 4px 0 8px; border-radius: 0;
+  }
+  textarea::placeholder { color: #6B6455; }
+  textarea:focus, input:focus { outline: 0; border-bottom-color: var(--signal); }
+  textarea:focus-visible { box-shadow: 0 3px 0 -1px rgba(255,198,41,.35); }
+
+  .ladder { margin-top: 30px; border-top: 1px solid var(--hair); }
+
+  .layer {
+    display: grid; grid-template-columns: 34px 1fr; gap: 0 14px;
+    padding: 20px 0 18px; border-bottom: 1px solid var(--hair);
+    opacity: .32; transition: opacity .45s ease;
+  }
+  .layer.live, .layer.done { opacity: 1; }
+  .layer[hidden] { display: none; }
+
+  .num {
+    font-family: var(--mono); font-size: 20px; font-weight: 700;
+    color: #57503F; line-height: 1.1; font-variant-numeric: tabular-nums;
+  }
+  .layer.live .num { color: var(--signal); }
+  .layer.done .num { color: var(--bone); }
+
+  .q {
+    font-size: clamp(19px, 4.6vw, 23px); line-height: 1.3;
+    letter-spacing: -.015em; margin: 0 0 10px; text-wrap: balance;
+  }
+  .q .echo { color: var(--signal); font-style: italic; }
+  .hint {
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: .05em;
+    text-transform: uppercase; color: var(--graphite); margin: 9px 0 0;
+  }
+
+  .redline-note {
+    grid-column: 2; margin: 11px 0 0; padding: 9px 12px;
+    border-left: 2.5px solid var(--warn);
+    background: rgba(232,80,44,.08);
+    font-size: 14.5px; line-height: 1.45; color: #E7DCD6;
+  }
+  .redline-note b { color: var(--warn); font-family: var(--mono);
+    font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase;
+    display: block; margin-bottom: 3px; }
+
+  .breakline {
+    display: flex; align-items: center; gap: 12px;
+    padding: 22px 0 4px;
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: .15em;
+    text-transform: uppercase; color: var(--signal);
+  }
+  .breakline::before, .breakline::after {
+    content: ""; height: 0; flex: 1;
+    border-top: 2px dashed var(--signal-d);
+  }
+  .breakline::before { flex: 0 0 22px; }
+  .breakline[hidden] { display: none; }
+
+  .floor {
+    margin-top: 30px; border: 2px solid var(--signal);
+    background: var(--panel-up); padding: 18px 16px 16px;
+  }
+  .floor .lbl { color: var(--signal); }
+  .floor p { margin: 0 0 12px; font-size: 15px; color: #CFC9BB; }
+  .floor textarea { border-bottom-width: 2px; }
+
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+  button {
+    font-family: var(--mono); font-size: 12.5px; letter-spacing: .1em;
+    text-transform: uppercase; font-weight: 700;
+    padding: 13px 18px; border-radius: 0; cursor: pointer;
+    background: var(--signal); color: #14100F; border: 1.5px solid var(--signal);
+  }
+  button.ghost { background: transparent; color: var(--bone); border-color: #453E2C; }
+  button:hover { filter: brightness(1.1); }
+  button.ghost:hover { border-color: var(--signal); color: var(--signal); filter: none; }
+  button:focus-visible { outline: 2px solid var(--bone); outline-offset: 2px; }
+
+  .said {
+    margin-top: 14px; font-family: var(--mono); font-size: 12px;
+    letter-spacing: .06em; text-transform: uppercase; color: var(--signal);
+    min-height: 1em;
+  }
+
+  .titleblock {
+    margin-top: 44px; border: 1px solid var(--hair);
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(108px, 1fr));
+  }
+  .tb { padding: 11px 13px; border-right: 1px solid var(--hair); }
+  .tb:last-child { border-right: 0; }
+  .tb dt {
+    font-family: var(--mono); font-size: 10px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--graphite); margin: 0 0 4px;
+  }
+  .tb dd {
+    margin: 0; font-family: var(--mono); font-size: 13px; font-weight: 700;
+    color: var(--bone); font-variant-numeric: tabular-nums;
+  }
+  .tb dd.red { color: var(--signal); }
+
+  .cta {
+    margin-top: 18px; font-size: 15px; color: #CFC9BB; line-height: 1.5;
+  }
+  .cta b { color: var(--bone); }
+  .cta a { color: var(--signal); font-weight: 700; text-decoration: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+
+  @media print {
+    @page { size: letter; margin: .5in .55in; }
+    :root {
+      --carbon: #fff; --panel: #fff; --panel-up: #FFF8E2;
+      --hair: #C9C2BC; --bone: #14100F; --graphite: #5E5651;
+      --signal: #7A5B00; --signal-d: #7A5B00; --warn: #B93A18;
+    }
+    body { background-image: none; font-size: 10.5pt; }
+    .sheet { max-width: none; padding: 0; }
+    .actions, .said, .hint { display: none; }
+    .layer { opacity: 1 !important; }
+    .layer[hidden] { display: grid !important; }
+    textarea { border-bottom-color: #9AA0A8; min-height: .42in; }
+    .redline-note { background: none; }
+    h1 { font-size: 26pt; }
+    .q { font-size: 12pt; }
+  }
+</style>
+</head>
+<body>
+
+<div class="sheet">
+
+  <div class="top">
+    <span class="handle">@nicksdadhax</span>
+    <span class="meta">Sheet 01 · <span id="stamp">—</span></span>
+  </div>
+
+  <header>
+    <div class="protocol">Self-interview protocol <b>·</b> 12 minutes <b>·</b> nobody watching</div>
+    <h1>The 7 Layers <span class="of">of</span> Why</h1>
+    <p class="dek">You already know what you want. This is for finding out <em>why</em> — because a want you can't explain is the first thing you quit.</p>
+    <div class="rules">90 seconds each <span>·</span> no audience <span>·</span> go past bored</div>
+  </header>
+
+  <div class="block seed">
+    <label class="lbl" for="seed">Start here — the thing you say you want</label>
+    <textarea id="seed" rows="2" placeholder="say it plainly. no pitch."></textarea>
+  </div>
+
+  <div class="ladder" id="ladder"></div>
+
+  <div class="floor" id="floorBox" hidden>
+    <span class="lbl">The floor</span>
+    <p>Write layer 7 as one plain sentence. Not for anyone else. This is the one you read on a hard day.</p>
+    <textarea id="floor" rows="3" placeholder="the real reason, in your own words."></textarea>
+    <div class="actions">
+      <button id="copyBtn" type="button">Copy the whole thing</button>
+      <button id="printBtn" class="ghost" type="button">Print it</button>
+      <button id="resetBtn" class="ghost" type="button">Start over</button>
+    </div>
+    <div class="said" id="said" role="status" aria-live="polite"></div>
+  </div>
+
+  <dl class="titleblock">
+    <div class="tb"><dt>Protocol</dt><dd>7-LAYER WHY</dd></div>
+    <div class="tb"><dt>Sheet</dt><dd>01 of 03</dd></div>
+    <div class="tb"><dt>Depth</dt><dd class="red" id="depth">0 / 7</dd></div>
+    <div class="tb"><dt>By</dt><dd class="red">@nicksdadhax</dd></div>
+  </dl>
+
+  <p class="cta">Free. No email, no signup, nothing to unsubscribe from. If a layer hit you sideways, <b>tell me which number in the comments</b> — I read every one. More tools: <a href="index.html">DadHax Tools</a>.</p>
+
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var LAYERS = [
+    { q: "Why do you want that?",              hint: "first honest thing. don't compose." },
+    { q: "And why does that matter to you?",   hint: "not why it matters. why it matters to YOU." },
+    { q: "What would it actually give you?",   hint: "name the feeling, not the outcome.",
+      note: { t: "if you stalled here", b: "You're describing the situation, not yourself. Reread your last answer and ask it about you." } },
+    { q: "And why do you need that?",          hint: "need, not want. different question." },
+    { q: "What are you afraid of without it?", hint: "this is where it usually turns.",
+      note: { t: "if you got emotional", b: "That's the layer. Don't tidy it up. Underline it and keep going one more." } },
+    { q: "Who taught you that?",               hint: "a person, usually. sometimes a year." },
+    { q: "So what is this really about?",      hint: "say it out loud before you type it." }
+  ];
+
+  var BREAK_BEFORE = 4;
+
+  var ladder  = document.getElementById("ladder"),
+      seed    = document.getElementById("seed"),
+      floorBx = document.getElementById("floorBox"),
+      floor   = document.getElementById("floor"),
+      said    = document.getElementById("said"),
+      depthEl = document.getElementById("depth");
+
+  var KEY = "ndh-7layers-v1";
+
+  LAYERS.forEach(function (L, i) {
+    if (i === BREAK_BEFORE) {
+      var br = document.createElement("div");
+      br.className = "breakline";
+      br.id = "brk";
+      br.textContent = "past the cover";
+      br.hidden = true;
+      ladder.appendChild(br);
+    }
+
+    var row = document.createElement("div");
+    row.className = "layer";
+    row.id = "L" + i;
+    row.hidden = true;
+
+    var n = document.createElement("div");
+    n.className = "num";
+    n.textContent = i + 1;
+
+    var body = document.createElement("div");
+
+    var q = document.createElement("p");
+    q.className = "q";
+    q.id = "q" + i;
+    q.textContent = L.q;
+
+    var ta = document.createElement("textarea");
+    ta.rows = 2;
+    ta.id = "a" + i;
+    ta.setAttribute("aria-label", "Layer " + (i + 1) + " answer");
+    ta.placeholder = "…";
+
+    var h = document.createElement("p");
+    h.className = "hint";
+    h.textContent = L.hint;
+
+    body.appendChild(q);
+    body.appendChild(ta);
+    body.appendChild(h);
+    row.appendChild(n);
+    row.appendChild(body);
+
+    if (L.note) {
+      var nt = document.createElement("div");
+      nt.className = "redline-note";
+      var b = document.createElement("b");
+      b.textContent = L.note.t;
+      nt.appendChild(b);
+      nt.appendChild(document.createTextNode(L.note.b));
+      row.appendChild(nt);
+    }
+
+    ladder.appendChild(row);
+  });
+
+  function val(el) { return (el.value || "").trim(); }
+
+  function echo(i) {
+    if (i === 0) return;
+    var prev = val(document.getElementById("a" + (i - 1)));
+    var q = document.getElementById("q" + i);
+    var base = LAYERS[i].q;
+    if (!prev) { q.textContent = base; return; }
+    var words = prev.split(/\s+/);
+    var frag = words.slice(0, 9).join(" ") + (words.length > 9 ? "…" : "");
+    if (i === 1) {
+      q.innerHTML = "";
+      q.appendChild(document.createTextNode("And why does "));
+      var em = document.createElement("span");
+      em.className = "echo";
+      em.textContent = "“" + frag + "”";
+      q.appendChild(em);
+      q.appendChild(document.createTextNode(" matter to you?"));
+    } else {
+      q.textContent = base;
+    }
+  }
+
+  function refresh() {
+    var unlocked = val(seed) ? 1 : 0;
+    for (var i = 0; i < LAYERS.length; i++) {
+      if (val(document.getElementById("a" + i))) unlocked = i + 2;
+      else break;
+    }
+    if (unlocked > LAYERS.length) unlocked = LAYERS.length;
+
+    var answered = 0;
+    for (var j = 0; j < LAYERS.length; j++) {
+      var row = document.getElementById("L" + j);
+      var show = j < unlocked;
+      row.hidden = !show;
+      row.classList.toggle("live", show && j === unlocked - 1);
+      row.classList.toggle("done", !!val(document.getElementById("a" + j)));
+      if (val(document.getElementById("a" + j))) answered++;
+      if (show) echo(j);
+    }
+
+    document.getElementById("brk").hidden = unlocked < BREAK_BEFORE + 1;
+
+    var deep = val(document.getElementById("a" + (LAYERS.length - 1)));
+    floorBx.hidden = !deep;
+
+    depthEl.textContent = answered + " / 7";
+    save();
+  }
+
+  function save() {
+    try {
+      var d = { seed: seed.value, floor: floor.value, a: [] };
+      for (var i = 0; i < LAYERS.length; i++) d.a.push(document.getElementById("a" + i).value);
+      localStorage.setItem(KEY, JSON.stringify(d));
+    } catch (e) {}
+  }
+
+  function load() {
+    try {
+      var d = JSON.parse(localStorage.getItem(KEY) || "null");
+      if (!d) return;
+      seed.value = d.seed || "";
+      floor.value = d.floor || "";
+      (d.a || []).forEach(function (v, i) {
+        var el = document.getElementById("a" + i);
+        if (el) el.value = v || "";
+      });
+    } catch (e) {}
+  }
+
+  function grow(el) { el.style.height = "auto"; el.style.height = el.scrollHeight + "px"; }
+
+  var fields = [seed, floor];
+  for (var i = 0; i < LAYERS.length; i++) fields.push(document.getElementById("a" + i));
+  fields.forEach(function (el) {
+    el.addEventListener("input", function () { grow(el); refresh(); });
+  });
+
+  document.getElementById("printBtn").addEventListener("click", function () { window.print(); });
+
+  document.getElementById("resetBtn").addEventListener("click", function () {
+    fields.forEach(function (el) { el.value = ""; grow(el); });
+    try { localStorage.removeItem(KEY); } catch (e) {}
+    refresh();
+    said.textContent = "Cleared.";
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  document.getElementById("copyBtn").addEventListener("click", function () {
+    var out = ["THE 7 LAYERS OF WHY — " + new Date().toLocaleDateString(), ""];
+    out.push("WHAT I SAY I WANT: " + val(seed), "");
+    for (var i = 0; i < LAYERS.length; i++) {
+      out.push((i + 1) + ". " + LAYERS[i].q, "   " + val(document.getElementById("a" + i)));
+    }
+    out.push("", "THE FLOOR: " + val(floor), "", "7 Layers of Why — @nicksdadhax");
+    var text = out.join("\n");
+
+    function fallback() {
+      var t = document.createElement("textarea");
+      t.value = text;
+      t.style.position = "fixed";
+      t.style.opacity = "0";
+      document.body.appendChild(t);
+      t.select();
+      try { document.execCommand("copy"); } catch (e) {}
+      document.body.removeChild(t);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () {
+        said.textContent = "Copied — paste it somewhere you'll find it again.";
+      }, function () { fallback(); said.textContent = "Copied."; });
+    } else { fallback(); said.textContent = "Copied."; }
+  });
+
+  try {
+    document.getElementById("stamp").textContent =
+      new Date().toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" });
+  } catch (e) {}
+
+  load();
+  fields.forEach(grow);
+  refresh();
+})();
+</script>
+
+</body>
+</html>
