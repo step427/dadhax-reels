@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Start With AI — 8 Focus Steps — @nicksdadhax</title>
+<style>
+  /* @nicksdadhax — dark field-instrument identity.
+     carbon ground · bone text · SIGNAL YELLOW = the mark · mono labels ·
+     faint drafting grid. Deconflicted from Perennial (sage) and Azara (navy). */
+  :root {
+    --carbon:#0F0E0B; --panel:#17150F; --panel-up:#1E1B14; --hair:#302B21;
+    --bone:#F4F0E6; --graphite:#8F887A; --signal:#FFC629; --signal-d:#C8930F; --warn:#E8502C;
+    --mono: ui-monospace,"SF Mono",SFMono-Regular,"Cascadia Mono","Roboto Mono",Menlo,Consolas,monospace;
+    --sans: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    --gutter: clamp(18px,5vw,40px);
+  }
+  * { box-sizing:border-box; }
+  body {
+    margin:0; background:var(--carbon); color:var(--bone);
+    font:17px/1.55 var(--sans); -webkit-text-size-adjust:100%;
+    background-image:
+      repeating-linear-gradient(to right,  rgba(242,237,231,.035) 0 1px, transparent 1px 28px),
+      repeating-linear-gradient(to bottom, rgba(242,237,231,.035) 0 1px, transparent 1px 28px);
+  }
+  .sheet { max-width:660px; margin:0 auto; padding:0 var(--gutter) 96px; }
+  .top {
+    display:flex; justify-content:space-between; align-items:baseline; gap:16px; flex-wrap:wrap;
+    padding:22px 0 18px; border-bottom:1px solid var(--hair);
+    font-family:var(--mono); font-size:12px; letter-spacing:.08em; text-transform:uppercase;
+  }
+  .top .handle { color:var(--signal); font-weight:700; }
+  .top .meta { color:var(--graphite); }
+  header { padding:34px 0 8px; }
+  .protocol { font-family:var(--mono); font-size:11.5px; letter-spacing:.17em; text-transform:uppercase; color:var(--graphite); }
+  .protocol b { color:var(--signal); font-weight:700; }
+  h1 {
+    font-family:var(--mono); font-weight:700; font-size:clamp(28px,7.5vw,46px);
+    line-height:1.04; letter-spacing:-.03em; text-transform:uppercase; margin:12px 0 0; text-wrap:balance;
+  }
+  h1 .of { color:var(--signal); }
+  .dek { margin:14px 0 0; max-width:50ch; color:#CFC9BB; }
+  .dek em { color:var(--bone); font-style:normal; border-bottom:1.5px solid var(--signal-d); }
+  ol { list-style:none; margin:34px 0 0; padding:0; border-top:1px solid var(--hair); counter-reset:p; }
+  li { counter-increment:p; display:grid; grid-template-columns:44px 1fr; gap:0 14px;
+       padding:18px 0 16px; border-bottom:1px solid var(--hair); }
+  li::before {
+    content:counter(p,decimal-leading-zero); font-family:var(--mono); font-size:18px; font-weight:700;
+    color:var(--signal); line-height:1.2; font-variant-numeric:tabular-nums;
+  }
+  li b { display:block; font-size:19px; letter-spacing:-.01em; margin-bottom:3px; }
+  li span { color:#CFC9BB; font-size:15.5px; }
+  li code { font-family:var(--mono); font-size:14px; color:var(--bone);
+    background:var(--panel-up); border:1px solid var(--hair); padding:1px 5px; }
+  .note {
+    margin-top:32px; border:2px solid var(--signal); background:var(--panel-up); padding:18px 16px;
+    font-size:15.5px; color:#CFC9BB;
+  }
+  .note b { display:block; font-family:var(--mono); font-size:11.5px; letter-spacing:.13em;
+    text-transform:uppercase; color:var(--signal); margin-bottom:6px; }
+  .dont { margin-top:16px; border:1px solid var(--hair); background:var(--panel); padding:18px 16px;
+    font-size:15.5px; color:#CFC9BB; }
+  .dont b { display:block; font-family:var(--mono); font-size:11.5px; letter-spacing:.13em;
+    text-transform:uppercase; color:var(--warn); margin-bottom:8px; }
+  .dont ul { margin:0; padding-left:18px; }
+  .dont li { display:list-item; border:0; padding:0 0 6px; }
+  .dont li::before { content:none; }
+  .titleblock { margin-top:44px; border:1px solid var(--hair); display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(108px,1fr)); }
+  .tb { padding:11px 13px; border-right:1px solid var(--hair); }
+  .tb:last-child { border-right:0; }
+  .tb dt { font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--graphite); margin:0 0 4px; }
+  .tb dd { margin:0; font-family:var(--mono); font-size:13px; font-weight:700; color:var(--bone); }
+  .tb dd.red { color:var(--signal); }
+  .cta { margin-top:18px; font-size:15px; color:#CFC9BB; line-height:1.5; }
+  .cta b { color:var(--bone); }
+  .cta a { color:var(--signal); font-weight:700; text-decoration:none; }
+  @media print {
+    :root { --carbon:#fff; --panel:#F6F4EF; --panel-up:#FFF8E2; --hair:#C9C2BC; --bone:#14100F;
+      --graphite:#5E5651; --signal:#7A5B00; --signal-d:#7A5B00; --warn:#8C2F14; }
+    body { background-image:none; font-size:10.5pt; }
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <div class="top">
+    <span class="handle">@nicksdadhax</span>
+    <span class="meta">Sheet 03 · free · no signup</span>
+  </div>
+
+  <header>
+    <div class="protocol">Field reference <b>·</b> one path, not a menu</div>
+    <h1>Start <span class="of">With</span> AI</h1>
+    <p class="dek">Eight focus steps for one $20/month subscription. The problem with getting started isn't that there aren't enough resources — it's that there are <em>far too many</em>. So this is deliberately one path. Ignore everything else for thirty days.</p>
+  </header>
+
+  <ol>
+    <li><b>Pay for exactly one.</b><span>Free tiers teach you that AI is a toy, because the free version is a toy. Pick one paid assistant and commit for a month. I use Claude — the $20/month plan (about $17 if you pay yearly). One tool you actually learn beats four you sample.</span></li>
+
+    <li><b>Give it one job you already do.</b><span>Not "learn AI." Pick a specific task that shows up every week and that you resent: the follow-up emails, the spreadsheet cleanup, the notes nobody reads. One job. A real one. That's your whole curriculum for week one.</span></li>
+
+    <li><b>Get out of the chat window.</b><span>The chat box is the demo, not the product. The step-change is <b>Claude Code</b> — the same subscription, running in your computer's terminal, where it can read and change your actual files instead of describing what you should do. It's included in the $20 plan. This is the single biggest jump available to you.</span></li>
+
+    <li><b>Budget one bad afternoon.</b><span>Getting set up is genuinely annoying — installing things, permissions, error messages you don't understand. That friction is the price of admission, not evidence you're not technical enough. Everyone pays it once. Put it on the calendar so it doesn't ambush you.</span></li>
+
+    <li><b>Point it at your own files.</b><span>Generic questions get generic answers. The moment it's working on your documents, your numbers, your half-finished projects, it stops being a novelty. Start it in the folder where your real work already lives.</span></li>
+
+    <li><b>Use what other people already built.</b><span>Most of what you want, someone has already made and given away — on GitHub, mostly, for free. You don't need to understand how to write it. You need to know it exists and how to point your assistant at it. Ask it to find and set one up for you.</span></li>
+
+    <li><b>Watch the meter.</b><span>Usage is shared between the chat app and Claude Code — heavy sessions in one leave less for the other. Type <code>/status</code> in Claude Code to see where you stand. Learning that rhythm early prevents the frustrating surprise of running dry mid-task.</span></li>
+
+    <li><b>Keep a wins file, then cancel-test at thirty days.</b><span>One line every time it saves you real time. At day thirty, read the list and ask honestly whether it earned the $20. If it didn't, cancel — you've lost one dinner out. If it did, you'll have the receipts, which is the only argument that survives a bad week.</span></li>
+  </ol>
+
+  <div class="dont">
+    <b>What to skip for now</b>
+    <ul>
+      <li>Comparison videos and "best AI tool" lists. They're built to keep you choosing instead of using.</li>
+      <li>Prompt-engineering courses. Talk to it like a competent coworker; that's most of it.</li>
+      <li>Building your own custom setup before you've used a plain one for a month.</li>
+      <li>A second subscription. Adding tools is what overwhelm feels like from the inside.</li>
+    </ul>
+  </div>
+
+  <div class="note"><b>The takeaway</b>The point isn't to learn AI. The point is to hand off the forty minutes of work you hate and get that time back. Pick one job, pay for one tool, suffer through one setup, and give it thirty days. Everything else on the internet can wait.</div>
+
+  <dl class="titleblock">
+    <div class="tb"><dt>Plan</dt><dd>$20 / MONTH</dd></div>
+    <div class="tb"><dt>Sheet</dt><dd>03 of 04</dd></div>
+    <div class="tb"><dt>Window</dt><dd class="red">30 DAYS</dd></div>
+    <div class="tb"><dt>By</dt><dd class="red">@nicksdadhax</dd></div>
+  </dl>
+
+  <p class="cta">Free. No email, no signup, nothing to unsubscribe from. Pricing and limits change — check claude.com/pricing for what's current. More tools: <a href="index.html">DadHax Tools</a> · from <b>@nicksdadhax</b> — sorting it out loud.</p>
+
+</div>
+</body>
+</html>
