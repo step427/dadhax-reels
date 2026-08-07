@@ -70,6 +70,20 @@
   .cta { margin-top:18px; font-size:15px; color:#CFC9BB; line-height:1.5; }
   .cta b { color:var(--bone); }
   .cta a { color:var(--signal); font-weight:700; text-decoration:none; }
+  /* FULL TOOL BOX. Was a text link inside a fine-print paragraph -- invisible on a
+     phone, which is where everyone reads this. Nick, 8/7: make it a button. */
+  .toolbox {
+    display:flex; align-items:center; justify-content:space-between; gap:14px;
+    margin-top:30px; padding:16px 18px; text-decoration:none;
+    background:var(--signal); color:var(--carbon); border:2px solid var(--signal);
+  }
+  .toolbox .lbl { font-family:var(--mono); font-size:16px; font-weight:700;
+    letter-spacing:.1em; text-transform:uppercase; }
+  .toolbox small { display:block; font-family:var(--sans); font-size:12.5px; font-weight:400;
+    letter-spacing:0; text-transform:none; margin-top:4px; opacity:.78; }
+  .toolbox .arrow { font-family:var(--mono); font-size:22px; font-weight:700; line-height:1; }
+  .toolbox:hover { background:transparent; color:var(--signal); }
+
   /* PHONE FIRST (8/7) -- same reasoning as start-with-ai.html: at 375px the 44px
      counter column spends 15% of usable width on decoration and drops the line to
      33 characters. One column below 520px, ~40 chars. Desktop untouched (61 chars). */
@@ -123,7 +137,12 @@
     <div class="tb"><dt>By</dt><dd class="red">@nicksdadhax</dd></div>
   </dl>
 
-  <p class="cta">Free. No email, no signup, nothing to unsubscribe from. Search "Kleim &amp; Jones 2008 experience-dependent neural plasticity" for the original paper. More tools: <a href="index.html">DadHax Tools</a> · from <b>@nicksdadhax</b> — sorting it out loud.</p>
+  <a class="toolbox" href="index.html">
+    <span class="lbl">Full Tool Box<small>Every free sheet and tool, one page</small></span>
+    <span class="arrow">&rarr;</span>
+  </a>
+
+  <p class="cta">Free. No email, no signup, nothing to unsubscribe from. Search "Kleim &amp; Jones 2008 experience-dependent neural plasticity" for the original paper. From <b>@nicksdadhax</b> — sorting it out loud.</p>
 
 </div>
 </body>

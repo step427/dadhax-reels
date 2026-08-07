@@ -202,6 +202,19 @@
   }
   .tb dd.red { color: var(--signal); }
 
+  /* FULL TOOL BOX. Was a text link inside a fine-print paragraph -- invisible on a
+     phone, which is where everyone reads this. Nick, 8/7: make it a button. */
+  .toolbox {
+    display:flex; align-items:center; justify-content:space-between; gap:14px;
+    margin-top:30px; padding:16px 18px; text-decoration:none;
+    background:var(--signal); color:var(--carbon); border:2px solid var(--signal);
+  }
+  .toolbox .lbl { font-family:var(--mono); font-size:16px; font-weight:700;
+    letter-spacing:.1em; text-transform:uppercase; }
+  .toolbox small { display:block; font-family:var(--sans); font-size:12.5px; font-weight:400;
+    letter-spacing:0; text-transform:none; margin-top:4px; opacity:.78; }
+  .toolbox .arrow { font-family:var(--mono); font-size:22px; font-weight:700; line-height:1; }
+  .toolbox:hover { background:transparent; color:var(--signal); }
   .cta {
     margin-top: 18px; font-size: 15px; color: #CFC9BB; line-height: 1.5;
   }
@@ -273,7 +286,12 @@
     <div class="tb"><dt>By</dt><dd class="red">@nicksdadhax</dd></div>
   </dl>
 
-  <p class="cta">Free. No email, no signup, nothing to unsubscribe from. If a layer hit you sideways, <b>tell me which number in the comments</b> — I read every one. More tools: <a href="index.html">DadHax Tools</a>.</p>
+  <a class="toolbox" href="index.html">
+    <span class="lbl">Full Tool Box<small>Every free sheet and tool, one page</small></span>
+    <span class="arrow">&rarr;</span>
+  </a>
+
+  <p class="cta">Free. No email, no signup, nothing to unsubscribe from. If a layer hit you sideways, <b>tell me which number in the comments</b> — I read every one.</p>
 
 </div>
 
