@@ -204,16 +204,25 @@
 
   /* FULL TOOL BOX. Was a text link inside a fine-print paragraph -- invisible on a
      phone, which is where everyone reads this. Nick, 8/7: make it a button. */
+  /* Privacy statement. Deliberately NOT fine print -- it's the reason someone is willing
+     to answer honestly, so it sits with the exercise, not in the footer. */
+  .privacy {
+    margin:18px 0 0; padding:13px 15px; font-size:14.5px; line-height:1.5;
+    color:#CFC9BB; background:var(--panel); border-left:3px solid var(--signal);
+  }
+  .privacy b { color:var(--bone); }
   .toolbox {
-    display:flex; align-items:center; justify-content:space-between; gap:14px;
-    margin-top:30px; padding:16px 18px; text-decoration:none;
+    display:block; text-align:center; text-decoration:none;
+    margin-top:30px; padding:20px 16px 18px;
     background:var(--signal); color:var(--carbon); border:2px solid var(--signal);
   }
-  .toolbox .lbl { font-family:var(--mono); font-size:16px; font-weight:700;
-    letter-spacing:.1em; text-transform:uppercase; }
-  .toolbox small { display:block; font-family:var(--sans); font-size:12.5px; font-weight:400;
-    letter-spacing:0; text-transform:none; margin-top:4px; opacity:.78; }
-  .toolbox .arrow { font-family:var(--mono); font-size:22px; font-weight:700; line-height:1; }
+  .toolbox .kicker { display:block; font-family:var(--mono); font-size:13px; font-weight:700;
+    letter-spacing:.34em; text-transform:uppercase; opacity:.72; }
+  .toolbox .big { display:block; font-family:var(--mono); font-weight:700;
+    font-size:clamp(34px,12vw,52px); line-height:1; letter-spacing:-.02em;
+    text-transform:uppercase; margin-top:3px; }
+  .toolbox .sub { display:block; font-family:var(--sans); font-size:13.5px;
+    line-height:1.4; margin-top:9px; opacity:.82; }
   .toolbox:hover { background:transparent; color:var(--signal); }
   .cta {
     margin-top: 18px; font-size: 15px; color: #CFC9BB; line-height: 1.5;
@@ -258,6 +267,10 @@
     <h1>The 7 Layers <span class="of">of</span> Why</h1>
     <p class="dek">You already know what you want. This is for finding out <em>why</em> — because a want you can't explain is the first thing you quit.</p>
     <div class="rules">90 seconds each <span>·</span> no audience <span>·</span> go past bored</div>
+    <p class="privacy"><b>Nothing you write here leaves your device.</b> There's no account, no
+      server, and no analytics on this page — what you type is held in this browser tab so you
+      can reload without losing it, and it is erased the moment you close the tab. "Start over"
+      wipes it immediately. I can't read it. Nobody can. That's the point of the exercise.</p>
   </header>
 
   <div class="block seed">
@@ -287,8 +300,9 @@
   </dl>
 
   <a class="toolbox" href="index.html">
-    <span class="lbl">Full Tool Box<small>Every free sheet and tool, one page</small></span>
-    <span class="arrow">&rarr;</span>
+    <span class="kicker">Full</span>
+    <span class="big">Tool Box</span>
+    <span class="sub">Every free sheet and tool — one page, no signup</span>
   </a>
 
   <p class="cta">Free. No email, no signup, nothing to unsubscribe from. If a layer hit you sideways, <b>tell me which number in the comments</b> — I read every one.</p>
@@ -432,13 +446,23 @@
     try {
       var d = { seed: seed.value, floor: floor.value, a: [] };
       for (var i = 0; i < LAYERS.length; i++) d.a.push(document.getElementById("a" + i).value);
-      localStorage.setItem(KEY, JSON.stringify(d));
+      // sessionStorage, NOT localStorage (8/7). The promise on camera and on this page
+      // is "close it and it's gone". localStorage survives closing the browser, so that
+      // promise would have been false -- on the one sheet where the input is personal.
+      // sessionStorage keeps answers through reloads and dies with the tab. Claim matches code.
+      sessionStorage.setItem(KEY, JSON.stringify(d));
     } catch (e) {}
   }
 
   function load() {
     try {
-      var d = JSON.parse(localStorage.getItem(KEY) || "null");
+      // Anyone who used this before 8/7 has answers still sitting in localStorage that
+      // the new code neither reads nor clears. Purge it once, on the way in, so the
+      // "nothing is kept" promise is true for them too and not just for new visitors.
+      localStorage.removeItem(KEY);
+    } catch (e) {}
+    try {
+      var d = JSON.parse(sessionStorage.getItem(KEY) || "null");
       if (!d) return;
       seed.value = d.seed || "";
       floor.value = d.floor || "";
@@ -461,7 +485,7 @@
 
   document.getElementById("resetBtn").addEventListener("click", function () {
     fields.forEach(function (el) { el.value = ""; grow(el); });
-    try { localStorage.removeItem(KEY); } catch (e) {}
+    try { sessionStorage.removeItem(KEY); localStorage.removeItem(KEY); } catch (e) {}
     refresh();
     said.textContent = "Cleared.";
     window.scrollTo({ top: 0, behavior: "smooth" });

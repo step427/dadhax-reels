@@ -73,15 +73,17 @@
   /* FULL TOOL BOX. Was a text link inside a fine-print paragraph -- invisible on a
      phone, which is where everyone reads this. Nick, 8/7: make it a button. */
   .toolbox {
-    display:flex; align-items:center; justify-content:space-between; gap:14px;
-    margin-top:30px; padding:16px 18px; text-decoration:none;
+    display:block; text-align:center; text-decoration:none;
+    margin-top:30px; padding:20px 16px 18px;
     background:var(--signal); color:var(--carbon); border:2px solid var(--signal);
   }
-  .toolbox .lbl { font-family:var(--mono); font-size:16px; font-weight:700;
-    letter-spacing:.1em; text-transform:uppercase; }
-  .toolbox small { display:block; font-family:var(--sans); font-size:12.5px; font-weight:400;
-    letter-spacing:0; text-transform:none; margin-top:4px; opacity:.78; }
-  .toolbox .arrow { font-family:var(--mono); font-size:22px; font-weight:700; line-height:1; }
+  .toolbox .kicker { display:block; font-family:var(--mono); font-size:13px; font-weight:700;
+    letter-spacing:.34em; text-transform:uppercase; opacity:.72; }
+  .toolbox .big { display:block; font-family:var(--mono); font-weight:700;
+    font-size:clamp(34px,12vw,52px); line-height:1; letter-spacing:-.02em;
+    text-transform:uppercase; margin-top:3px; }
+  .toolbox .sub { display:block; font-family:var(--sans); font-size:13.5px;
+    line-height:1.4; margin-top:9px; opacity:.82; }
   .toolbox:hover { background:transparent; color:var(--signal); }
 
   /* PHONE FIRST (8/7) -- same reasoning as start-with-ai.html: at 375px the 44px
@@ -138,11 +140,12 @@
   </dl>
 
   <a class="toolbox" href="index.html">
-    <span class="lbl">Full Tool Box<small>Every free sheet and tool, one page</small></span>
-    <span class="arrow">&rarr;</span>
+    <span class="kicker">Full</span>
+    <span class="big">Tool Box</span>
+    <span class="sub">Every free sheet and tool — one page, no signup</span>
   </a>
 
-  <p class="cta">Free. No email, no signup, nothing to unsubscribe from. Search "Kleim &amp; Jones 2008 experience-dependent neural plasticity" for the original paper. From <b>@nicksdadhax</b> — sorting it out loud.</p>
+  <p class="cta">Free. No email, no signup, nothing to unsubscribe from. There's nothing to fill in on this page and no analytics running on it — there is nothing here to collect. Search "Kleim &amp; Jones 2008 experience-dependent neural plasticity" for the original paper. From <b>@nicksdadhax</b> — sorting it out loud.</p>
 
 </div>
 </body>
