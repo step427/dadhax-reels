@@ -48,6 +48,9 @@
     content:counter(p,decimal-leading-zero); font-family:var(--mono); font-size:18px; font-weight:700;
     color:var(--signal); line-height:1.2; font-variant-numeric:tabular-nums;
   }
+  /* b and span are SEPARATE grid children. Without this they auto-place, and the
+     body text wraps into the 44px counter column -- ~4 characters per line. */
+  ol > li > b, ol > li > span { grid-column:2; }
   li b { display:block; font-size:19px; letter-spacing:-.01em; margin-bottom:3px; }
   li span { color:#CFC9BB; font-size:15.5px; }
   .note {
