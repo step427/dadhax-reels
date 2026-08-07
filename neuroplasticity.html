@@ -70,6 +70,16 @@
   .cta { margin-top:18px; font-size:15px; color:#CFC9BB; line-height:1.5; }
   .cta b { color:var(--bone); }
   .cta a { color:var(--signal); font-weight:700; text-decoration:none; }
+  /* PHONE FIRST (8/7) -- same reasoning as start-with-ai.html: at 375px the 44px
+     counter column spends 15% of usable width on decoration and drops the line to
+     33 characters. One column below 520px, ~40 chars. Desktop untouched (61 chars). */
+  @media (max-width:520px) {
+    ol > li { grid-template-columns:1fr; gap:0; padding:16px 0 14px; }
+    ol > li::before { font-size:13px; letter-spacing:.12em; margin-bottom:4px; }
+    ol > li > b, ol > li > span { grid-column:1; }
+    li b { font-size:18px; }
+    li span { font-size:16px; }
+  }
   @media print {
     :root { --carbon:#fff; --panel-up:#FFF8E2; --hair:#C9C2BC; --bone:#14100F;
       --graphite:#5E5651; --signal:#7A5B00; --signal-d:#7A5B00; }

@@ -79,6 +79,18 @@
   .cta { margin-top:18px; font-size:15px; color:#CFC9BB; line-height:1.5; }
   .cta b { color:var(--bone); }
   .cta a { color:var(--signal); font-weight:700; text-decoration:none; }
+  /* PHONE FIRST (8/7). 99% of this traffic arrives from an Instagram caption, i.e.
+     a phone. At 375px the 44px counter column + gap spends 15% of usable width on a
+     decoration, leaving 33 characters per line -- choppy. Collapsing to one column
+     buys back 58px and lands ~40 chars, which is the mobile reading norm.
+     Desktop is deliberately untouched: it already measures 61 chars/line. */
+  @media (max-width:520px) {
+    ol > li { grid-template-columns:1fr; gap:0; padding:16px 0 14px; }
+    ol > li::before { font-size:13px; letter-spacing:.12em; margin-bottom:4px; }
+    ol > li > b, ol > li > span { grid-column:1; }
+    li b { font-size:18px; }
+    li span { font-size:16px; }
+  }
   @media print {
     :root { --carbon:#fff; --panel:#F6F4EF; --panel-up:#FFF8E2; --hair:#C9C2BC; --bone:#14100F;
       --graphite:#5E5651; --signal:#7A5B00; --signal-d:#7A5B00; --warn:#8C2F14; }
