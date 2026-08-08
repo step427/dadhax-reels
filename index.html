@@ -3,12 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DadHax Tools — free tools &amp; resources</title>
+<title>DadHax Tools — free sheets from one guy figuring it out</title>
+<meta name="description" content="None of this is secret — it's just scattered. Free sheets compiling what I learned the slow way, so you don't have to pay what I paid. One a week, no gate.">
 <style>
   /* @nicksdadhax — dark field-instrument identity. */
   :root {
-    --carbon:#0F0E0B; --panel:#17150F; --hair:#302B21; --bone:#F4F0E6;
-    --graphite:#8F887A; --signal:#FFC629; --signal-d:#C8930F;
+    --carbon:#0F0E0B; --panel:#17150F; --panel-up:#1E1B14; --hair:#302B21;
+    --bone:#F4F0E6; --graphite:#8F887A; --signal:#FFC629; --signal-d:#C8930F;
     --mono: ui-monospace,"SF Mono",SFMono-Regular,"Cascadia Mono","Roboto Mono",Menlo,Consolas,monospace;
     --sans: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   }
@@ -19,24 +20,25 @@
       repeating-linear-gradient(to right,  rgba(242,237,231,.035) 0 1px, transparent 1px 28px),
       repeating-linear-gradient(to bottom, rgba(242,237,231,.035) 0 1px, transparent 1px 28px);
   }
-  .sheet { max-width:660px; margin:0 auto; padding:0 clamp(18px,5vw,40px) 96px; }
-  .top {
-    display:flex; justify-content:space-between; align-items:baseline; gap:16px; flex-wrap:wrap;
-    padding:22px 0 18px; border-bottom:1px solid var(--hair);
-    font-family:var(--mono); font-size:12px; letter-spacing:.08em; text-transform:uppercase;
-  }
-  .top .handle { color:var(--signal); font-weight:700; }
-  .top .meta { color:var(--graphite); }
-  header { padding:38px 0 10px; }
-  .protocol { font-family:var(--mono); font-size:11.5px; letter-spacing:.17em; text-transform:uppercase; color:var(--graphite); }
+  .sheet { max-width:660px; margin:0 auto; padding:0 clamp(18px,5vw,40px) 80px; }
+  .visually-hidden { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); }
+
+  header { padding:34px 0 8px; }
+  .protocol { font-family:var(--mono); font-size:11.5px; letter-spacing:.17em;
+    text-transform:uppercase; color:var(--graphite); }
   .protocol b { color:var(--signal); }
-  h1 { font-family:var(--mono); font-weight:700; font-size:clamp(32px,9vw,54px); line-height:1.02;
+  h1 { font-family:var(--mono); font-weight:700; font-size:clamp(30px,8.2vw,50px); line-height:1.04;
        letter-spacing:-.03em; text-transform:uppercase; margin:12px 0 0; }
   h1 .of { color:var(--signal); }
-  .dek { margin:14px 0 14px; max-width:46ch; color:#CFC9BB; }
-  .cadence { margin:0 0 26px; padding:12px 14px; font-size:14.5px; line-height:1.5;
+  .dek { margin:16px 0 0; max-width:47ch; color:#CFC9BB; font-size:17.5px; }
+  .cadence { margin:20px 0 30px; padding:13px 15px; font-size:15px; line-height:1.55;
     color:#CFC9BB; background:var(--panel); border-left:3px solid var(--signal); }
   .cadence b { color:var(--signal); }
+
+  h2.sec { font-family:var(--mono); font-size:12px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--signal); margin:36px 0 14px; font-weight:700;
+    padding-bottom:8px; border-bottom:1px solid var(--hair); }
+
   a.card {
     display:grid; grid-template-columns:52px 1fr; gap:0 14px; align-items:start;
     border:1px solid var(--hair); background:var(--panel); padding:18px 16px;
@@ -45,35 +47,56 @@
   a.card:hover { border-color:var(--signal); }
   a.card .sheetno { font-family:var(--mono); font-size:16px; font-weight:700; color:var(--signal); }
   a.card b { display:block; font-size:19px; letter-spacing:-.01em; }
-  a.card span { display:block; color:var(--graphite); font-size:15px; margin-top:4px; }
+  a.card .d { display:block; color:var(--graphite); font-size:15px; margin-top:4px; }
   a.card em { display:block; font-style:normal; font-family:var(--mono); font-size:11.5px;
     letter-spacing:.12em; text-transform:uppercase; color:var(--signal); margin-top:10px; }
   .soon { opacity:.5; pointer-events:none; }
-  footer { margin-top:44px; padding-top:14px; border-top:1px solid var(--hair);
+
+  .story p { margin:0 0 13px; }
+  .story .pull { border-left:3px solid var(--signal); padding:2px 0 2px 14px; color:var(--bone); }
+
+  footer { margin-top:40px; padding-top:14px; border-top:1px solid var(--hair);
     color:var(--graphite); font-size:14px; font-family:var(--mono); letter-spacing:.04em; }
   footer a { color:var(--signal); font-weight:700; text-decoration:none; }
+
+  @media (prefers-color-scheme: light) {
+    :root { --carbon:#fff; --panel:#F6F4EF; --panel-up:#FFF8E2; --hair:#C9C2BC; --bone:#14100F;
+      --graphite:#5E5651; --signal:#7A5B00; --signal-d:#5C4400; }
+    .dek, .cadence { color:#3A342F; }
+  }
 </style>
+<link rel="stylesheet" href="site.css">
 </head>
 <body>
 <div class="sheet">
 
-  <div class="top">
-    <span class="handle">@nicksdadhax</span>
-    <span class="meta">free · no signup · no catch</span>
-  </div>
+  <nav class="nav">
+    <a class="brand" href="index.html">@nicksdadhax</a>
+    <a href="#sheets" aria-current="page">The Sheets</a>
+    <a href="#story">The Story</a>
+    <a href="#next">Get the next one</a>
+  </nav>
 
   <header>
-    <div class="protocol">Common tools, at the ready <b>·</b> friction removed</div>
-    <h1>DadHax <span class="of">Tools</span></h1>
-    <p class="dek">Everything promised in the reels, delivered. The point is to compress it: five years of me working this out, laid out so you can walk it in about one. Free, because friction is the enemy of getting better.</p>
-    <p class="cadence"><b>One new tool a week.</b> One, on purpose — so each one gets the attention it deserves and you get something you'll actually use instead of a pile you'll never open.</p>
+    <div class="protocol">Free sheets <b>·</b> no gate <b>·</b> one a week</div>
+    <h1>None of this <span class="of">is secret</span></h1>
+    <p class="dek">It's just scattered. Every answer you're looking for is already
+      out there for free — buried under ten thousand people trying to sell you
+      something first. Sorting it is what actually costs you.</p>
+    <p class="cadence">I went and got it the slow way — one confusing year at a
+      time, paying in time and in pain I didn't have to spend. <b>These are the
+      sheets I wish somebody had handed me.</b> If you're walking a similar road,
+      take them. That's the whole point.</p>
   </header>
+
+  <h2 class="sec" id="sheets">The sheets — start anywhere</h2>
 
   <a class="card" href="7-layers-of-why.html">
     <span class="sheetno">01</span>
     <span>
       <b>The 7 Layers of Why</b>
-      <span>A 12-minute self-interview. You know what you want — this finds out why, because a want you can't explain is the first thing you quit.</span>
+      <span class="d">A 12-minute self-interview. You know what you want — this
+        finds out why, because a want you can't explain is the first thing you quit.</span>
       <em>Open the sheet →</em>
     </span>
   </a>
@@ -82,7 +105,8 @@
     <span class="sheetno">02</span>
     <span>
       <b>The 10 Principles of Neuroplasticity</b>
-      <span>How your nervous system actually rewires — recovery, habits, beliefs. From a decade of PT practice. Keyword: REPS.</span>
+      <span class="d">How your nervous system actually rewires — recovery, habits,
+        beliefs. From a decade of physical therapy practice. Keyword: REPS.</span>
       <em>Open the sheet →</em>
     </span>
   </a>
@@ -91,7 +115,8 @@
     <span class="sheetno">03</span>
     <span>
       <b>Start With AI — 8 Focus Steps</b>
-      <span>One path, not a menu. What to do with a single $20/month subscription, in order — and what to ignore for thirty days.</span>
+      <span class="d">One path, not a menu. What to do with a single $20/month
+        subscription, in order — and what to ignore for thirty days.</span>
       <em>Open the sheet →</em>
     </span>
   </a>
@@ -100,12 +125,50 @@
     <span class="sheetno">04</span>
     <span>
       <b>Fact / Testable / Fantasy</b>
-      <span>The honesty filter for your own ideas. Coming next.</span>
+      <span class="d">The honesty filter for your own ideas. Coming next.</span>
       <em>In the shop</em>
     </span>
   </a>
 
-  <footer>A new one every week. No signup, no email, no analytics — nothing here to collect. From <a href="https://www.instagram.com/nicksdadhax/">@nicksdadhax</a> — sorting it out loud so it actually gets done.</footer>
+  <h2 class="sec" id="story">Who's writing these</h2>
+  <div class="story">
+    <p>I'm Nick. Physical therapist by trade, which means I've spent a decade
+      watching people rebuild things they were told wouldn't come back. Somewhere
+      in there I started buying old houses, then building businesses, then handing
+      the boring parts to machines.</p>
+    <p>None of it went in a straight line. Most of what I know cost me more than
+      it should have — wrong turns, wasted years, advice I paid for that a free
+      article would have given me.</p>
+    <p class="pull">So I'm compiling it as I go. Not the polished version — the
+      actual one, one sheet at a time, while it's still fresh enough to be honest
+      about what didn't work.</p>
+    <p>You're the one doing the work here. I'm just the guy a little further up
+      the same road, yelling back about where the potholes are.</p>
+  </div>
+
+  <h2 class="sec">Get the next one</h2>
+  <section class="optin" id="next">
+    <h2>One a week</h2>
+    <p>Everything here stays free and always will &mdash; nothing on this site is
+      behind an email, and there's no analytics running to watch you read it.</p>
+    <p class="free">The list isn't open yet &mdash; I'm still building it, and I'd
+      rather say that than put up a box that doesn't work. Until it is, the door is
+      my DMs: tell me what you're stuck on and I'll point you at whatever helped me.</p>
+    <div class="ctas">
+      <a href="https://www.instagram.com/nicksdadhax/"><b>Tell me what to build next</b><span>DM @nicksdadhax</span></a>
+    </div>
+    <p class="fine">When the list opens it'll be one email a week at most, and
+      leaving takes one click.</p>
+  </section>
+
+  <div class="ctas">
+    <a href="https://www.instagram.com/nicksdadhax/"><b>Send me a DM</b><span>Tell me what you're stuck on</span></a>
+    <a href="https://www.instagram.com/nicksdadhax/"><b>Follow along</b><span>@nicksdadhax</span></a>
+    <a href="https://www.instagram.com/nicksdadhax/"><b>Send it on</b><span>To whoever needs it</span></a>
+  </div>
+
+  <footer>A new one every week. From <a href="https://www.instagram.com/nicksdadhax/">@nicksdadhax</a>
+    — sorting it out loud so it actually gets done.</footer>
 
 </div>
 </body>

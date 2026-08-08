@@ -1,0 +1,77 @@
+/* Shared chrome for the DadHax site: top nav, sheet tail, signup, CTA row.
+ *
+ * Deliberately additive — every page keeps its own <style> block and its own
+ * :root tokens (including the light-mode flip). This file only styles the parts
+ * that must look identical on every page, so there is one copy of them instead
+ * of four drifting ones.
+ *
+ * NAV IS VISIBLE, NOT A HAMBURGER. NN/g, 179 participants: hidden navigation cut
+ * discoverability ~20%, and users were 39% slower on desktop / 15% on mobile.
+ * With three sheets there is nothing to hide. Revisit around sheet 8-10, and even
+ * then the pattern is 3-5 visible items + overflow, never everything behind a tap.
+ */
+
+/* ---------- top nav ---------- */
+.nav {
+  display: flex; align-items: center; gap: 0 18px; flex-wrap: wrap;
+  padding: 4px 0; border-bottom: 1px solid var(--hair);
+  font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase;
+}
+/* 44px minimum — a nav link too small to hit is worse than no nav link, and the
+   whole argument for visible nav over a hamburger is that it's easier to reach. */
+.nav a { color: var(--graphite); text-decoration: none;
+  display: flex; align-items: center; min-height: 44px; }
+.nav .brand { color: var(--signal); font-weight: 700; margin-right: auto; }
+.nav a:hover, .nav a:focus-visible { color: var(--bone); }
+.nav a[aria-current="page"] { color: var(--bone); box-shadow: inset 0 -2px 0 var(--signal); }
+
+/* ---------- end-of-sheet tail ---------- */
+.tail { margin-top: 40px; }
+.tail-next {
+  display: block; text-decoration: none; color: var(--bone);
+  border: 1px solid var(--hair); border-left: 3px solid var(--signal);
+  background: var(--panel); padding: 14px 16px; margin-bottom: 14px;
+}
+.tail-next:hover { border-color: var(--signal); }
+.tail-next .k {
+  display: block; font-family: var(--mono); font-size: 11px; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--signal); margin-bottom: 4px;
+}
+.tail-next b { font-size: 18px; letter-spacing: -.01em; }
+.tail-next span.s { display: block; color: var(--graphite); font-size: 14.5px; margin-top: 3px; }
+
+/* ---------- signup ---------- */
+.optin { border: 1px solid var(--hair); background: var(--panel); padding: 18px 16px; margin-bottom: 14px; }
+.optin h2 {
+  font-family: var(--mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--signal); margin: 0 0 10px; font-weight: 700;
+}
+.optin p { margin: 0 0 10px; font-size: 15.5px; line-height: 1.55; }
+.optin .free { color: var(--graphite); font-size: 14px; margin-bottom: 14px; }
+.optin form { display: flex; gap: 8px; flex-wrap: wrap; }
+.optin input[type=email] {
+  flex: 1 1 190px; min-height: 48px; padding: 12px 13px; font: 16px/1.2 var(--sans);
+  color: var(--bone); background: var(--carbon); border: 1px solid var(--hair);
+}
+.optin input[type=email]:focus-visible { outline: 2px solid var(--signal); outline-offset: -2px; }
+.optin button {
+  min-height: 48px; padding: 12px 18px; border: 0; cursor: pointer;
+  background: var(--signal); color: #14100F;
+  font: 700 13px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase;
+}
+.optin button:hover { background: var(--signal-d); }
+.optin .fine { color: var(--graphite); font-size: 13px; margin: 11px 0 0; }
+
+/* ---------- secondary CTA row ---------- */
+.ctas { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+.ctas a {
+  display: block; min-height: 48px; padding: 13px 14px; text-decoration: none;
+  border: 1px solid var(--hair); background: var(--panel); color: var(--bone);
+  font-size: 15px;
+}
+.ctas a:hover { border-color: var(--signal); }
+.ctas a b { display: block; }
+.ctas a span {
+  display: block; color: var(--graphite); font-size: 13px; margin-top: 2px;
+  font-family: var(--mono); letter-spacing: .04em;
+}
