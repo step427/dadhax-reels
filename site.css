@@ -62,6 +62,30 @@
 .optin button:hover { background: var(--signal-d); }
 .optin .fine { color: var(--graphite); font-size: 13px; margin: 11px 0 0; }
 
+/* The ask that comes FIRST and costs nothing. Nick, 8/8: lead with value, the price
+   is passing it on. The email is optional and secondary. */
+.pay-it { border: 1px solid var(--hair); border-left: 3px solid var(--signal);
+  background: var(--panel-up, var(--panel)); padding: 16px; margin-bottom: 14px; }
+.pay-it h2 { font-family: var(--mono); font-size: 12px; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--signal); margin: 0 0 9px; font-weight: 700; }
+.pay-it p { margin: 0 0 8px; font-size: 15.5px; line-height: 1.55; }
+.pay-it p:last-child { margin-bottom: 0; }
+
+/* "Here's what most lists cost you" -- the struck-out list. Costs, not prices. */
+.costs { list-style: none; padding: 0; margin: 10px 0; }
+/* display:block and the grid reset are LOAD-BEARING. The tool pages style their own
+   `li` as a 44px-counter grid; without this the struck text auto-places into that
+   44px column and renders ~6 characters wide. That is the exact bug audit.js was
+   written after (start-with-ai, 2026-08-07). Caught again here on 8/8. */
+ul.costs li { display: block; grid-template-columns: none; grid-column: auto;
+  position: relative; padding-left: 20px; margin-bottom: 6px;
+  font-size: 14.5px; line-height: 1.45; color: var(--graphite); }
+.costs li s { text-decoration: line-through; text-decoration-thickness: 1px; }
+.costs li::before { content: "✕"; position: absolute; left: 0; color: var(--signal-d);
+  font-size: 13px; }
+.optin .plain { font-size: 15px; line-height: 1.55; margin: 0 0 9px; }
+.optin .plain b { color: var(--signal); }
+
 /* ---------- secondary CTA row ---------- */
 .ctas { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
 .ctas a {
