@@ -75,6 +75,27 @@ If the list collects emails and never asks a question, it is a lie by the standa
 this whole operation is held to. **The first email has to ask one.** That is a
 commitment, not a flourish.
 
+## The signup ships in two stages — `optin.py`
+
+The account did not exist when the site shipped (both Buttondown endpoints 404'd,
+checked, not assumed). A form POSTing to nothing gives every reader an error page,
+on a site whose whole pitch is "no catch." So the slot ships **designed and honest**
+and activates in one command:
+
+```
+python _tools/reels/optin.py --check     # is the account live yet?
+python _tools/reels/optin.py --pending   # DM-first block, no form  (current)
+python _tools/reels/optin.py --live      # real subscribe form
+```
+
+`--live` **refuses to run** while the endpoint is dead (override with `--force`, and
+don't). It edits all four pages together so they can never disagree.
+
+The pending copy says the true thing — *"the list isn't open yet, I'm still building
+it, and I'd rather say that than put up a box that doesn't work"* — and routes to the
+DM, which Nick's own content playbook calls the money step anyway. Admitting the seam
+costs nothing here; it is on-brand for a site selling "no catch."
+
 ## Form endpoint
 
     https://buttondown.email/api/emails/embed-subscribe/nicksdadhax
