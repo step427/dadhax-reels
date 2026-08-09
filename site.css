@@ -111,3 +111,13 @@ ul.costs li { display: block; grid-template-columns: none; grid-column: auto;
   display: block; color: var(--graphite); font-size: 13px; margin-top: 2px;
   font-family: var(--mono); letter-spacing: .04em;
 }
+
+/* The seller offer, on the tool pages -- where the Instagram traffic actually lands.
+   Marketing audit 8/9: the money offer only existed on index + log, the two pages
+   deep-linked traffic never sees. */
+.buyhouses { border: 1px solid var(--signal); background: var(--panel);
+  padding: 18px 16px; margin-bottom: 14px; }
+.buyhouses h2 { font-family: var(--mono); font-size: 12px; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--signal); margin: 0 0 10px; font-weight: 700; }
+.buyhouses p { margin: 0 0 10px; font-size: 15.5px; line-height: 1.55; }
+.buyhouses .ctas { margin-top: 12px; }
