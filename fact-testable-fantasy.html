@@ -96,6 +96,12 @@
     font-size: 16.5px; line-height: 1.5;
   }
 
+  .story { margin-top: 24px; padding: 15px 16px; background: var(--panel);
+    border: 1px solid var(--hair); }
+  .story p { margin: 0 0 10px; font-size: 15.5px; line-height: 1.55; color: #CFC9BB; }
+  .story p:last-child { margin-bottom: 0; }
+  .story p b { color: var(--bone); }
+
   .block { margin-top: 26px; }
   .lbl {
     display: block; font-family: var(--mono); font-size: 11.5px;
@@ -169,6 +175,8 @@
   #vFant { border: 2px solid var(--warn); }
   #vFant .stamp { color: var(--warn); }
   .verdict .lbl { margin-top: 14px; }
+  .callbox { border: 2px dashed var(--signal-d); }
+  .callbox .lbl { margin-top: 0; color: var(--signal); }
 
   .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
   .actions button {
@@ -292,25 +300,35 @@
   <div class="buckets" aria-label="The three buckets">
     <div class="bucket b-fact">
       <span class="tag">Fact</span>
-      <p><b>Already true. You could verify it right now.</b> Facts don't sit in a pile —
-        you write down what they change and move on.</p>
+      <p><b>Already true — you could verify it right now.</b> Write what it changes,
+        move on.</p>
     </div>
     <div class="bucket b-test">
       <span class="tag">Testable</span>
-      <p><b>You could take the first physical action today, with what you already
-        have.</b> Not "soon." Not "once I look into it." Today, with today's money,
-        skills, and access.</p>
+      <p><b>First physical action possible today, with what you already have.</b>
+        Not "soon." Not "once I look into it."</p>
     </div>
     <div class="bucket b-fant">
       <span class="tag">Fantasy</span>
-      <p><b>It needs something you don't have yet.</b> Not deleted — parked, with the
-        missing pieces written next to it, so it can graduate later.</p>
+      <p><b>Needs something you don't have yet.</b> Not deleted — parked, with the
+        missing pieces named, so it can graduate.</p>
     </div>
   </div>
 
   <p class="pull">Most people's goals are Fantasy with no prerequisite list. That's why
     they sit there for years feeling like failure instead of feeling like a shopping
     list.</p>
+
+  <div class="story">
+    <span class="lbl">Why this one exists</span>
+    <p>I've had a notes app for years that's just a brain dump. A running list. And
+      here's what's actually different about my life from year to year because of it:
+      <b>the list is longer.</b> That's it. Ideas that got me genuinely excited — solid
+      ones — living in a phone.</p>
+    <p>If you've got one of those, this sheet is the nudge. Not to organize the list —
+      to move <b>one</b> thing off it into the shared world, where it can do somebody
+      some good. The rest of the page is just the honest way to pick which one.</p>
+  </div>
 
   <div class="block seed">
     <label class="lbl" for="seed">The idea — say it plainly</label>
@@ -385,8 +403,20 @@
       nothing.</b></p>
   </div>
 
+  <div class="verdict callbox" id="vCall" hidden>
+    <span class="lbl">The boulder question</span>
+    <p class="means">Most problems aren't about what you know. They're about who you
+      know. <b>Name one person you could call about this</b> — somebody who'd help push
+      the boulder up the hill in even the smallest way.</p>
+    <input type="text" id="callName" placeholder="a name. not 'someone in real estate' — a name.">
+    <p class="means" style="margin:12px 0 0"><b>Now make the call</b> — today, before
+      the feeling wears off. Whatever bucket the idea landed in, the call is the next
+      best step.</p>
+  </div>
+
   <div class="actions" id="fileRow" hidden>
     <button id="fileBtn" type="button">File it — sort the next one</button>
+    <button id="promptBtn" class="ghost" type="button">Copy a prompt for your AI</button>
     <button id="copyBtn" class="ghost" type="button">Copy everything</button>
     <button id="printBtn" class="ghost" type="button">Print a blank one</button>
     <button id="resetBtn" class="ghost" type="button">Start over</button>
@@ -488,7 +518,7 @@
     fant: document.getElementById("gFant")
   };
 
-  var fields = ["seed", "factChange", "testAction", "testKill", "fant1", "fant2", "fant3"]
+  var fields = ["seed", "factChange", "testAction", "testKill", "fant1", "fant2", "fant3", "callName"]
     .map(function (id) { return document.getElementById(id); });
 
   // state: q1 = "fact" | "plan" | null ; q2 = "yes" | "no" | null ; filed = [{bucket, idea, load}]
@@ -515,6 +545,7 @@
     verdicts.fact.hidden = b !== "fact";
     verdicts.test.hidden = b !== "test";
     verdicts.fant.hidden = b !== "fant";
+    document.getElementById("vCall").hidden = !b;
     fileRow.hidden = !b;
 
     renderShelf();
@@ -552,19 +583,21 @@
   }
 
   function currentLoad() {
-    var b = bucket();
-    if (b === "fact") return val(document.getElementById("factChange"));
+    var b = bucket(), out = "";
+    if (b === "fact") out = val(document.getElementById("factChange"));
     if (b === "test") {
       var a = val(document.getElementById("testAction")),
           k = val(document.getElementById("testKill"));
-      return a + (k ? " · wrong if: " + k : "");
+      out = a + (k ? " · wrong if: " + k : "");
     }
     if (b === "fant") {
-      return ["fant1", "fant2", "fant3"].map(function (id) {
+      out = ["fant1", "fant2", "fant3"].map(function (id) {
         return val(document.getElementById(id));
       }).filter(Boolean).join(" + ");
     }
-    return "";
+    var who = val(document.getElementById("callName"));
+    if (who) out += (out ? " · " : "") + "call: " + who;
+    return out;
   }
 
   function clearFlow() {
@@ -619,6 +652,69 @@
   });
 
   document.getElementById("printBtn").addEventListener("click", function () { window.print(); });
+
+  // "Copy a prompt for your AI" — the sorted list plus marching orders, ready to
+  // paste into whatever model they already use. The plan step lives there, not here.
+  document.getElementById("promptBtn").addEventListener("click", function () {
+    var names = { fact: "FACT", test: "TESTABLE", fant: "FANTASY (missing pieces listed)" };
+    var all = st.filed.slice();
+    var b = bucket();
+    if (b && val(seed)) all.push({ bucket: b, idea: val(seed), load: currentLoad() });
+    if (!all.length) { said.textContent = "Sort at least one idea first."; return; }
+
+    var lines = [];
+    ["test", "fant", "fact"].forEach(function (k) {
+      all.filter(function (f) { return f.bucket === k; }).forEach(function (f) {
+        lines.push("- [" + names[k] + "] " + f.idea + (f.load ? " (" + f.load + ")" : ""));
+      });
+    });
+
+    var text = [
+      "You are a blunt planning partner. No hype, no filler. If an idea is bad, say so.",
+      "",
+      "I sorted my ideas with a filter: FACT = already true, I noted what it changes.",
+      "TESTABLE = I could take the first physical action today with what I already have.",
+      "FANTASY = it needs something I don't have yet; the missing pieces are listed as a",
+      "price tag, not a no.",
+      "",
+      "My sorted list:",
+      lines.join("\n"),
+      "",
+      "Do this, in order:",
+      "1. Challenge my sort. If a TESTABLE secretly needs something I don't have,",
+      "   demote it and tell me why. I run optimistic.",
+      "2. For each TESTABLE: a 3-step plan for the next 7 days. Step 1 must take under",
+      "   15 minutes and be doable today. Keep the kill condition — the result that",
+      "   would prove it wrong.",
+      "3. For each FANTASY: take the cheapest missing piece and give me the fastest",
+      "   honest way to get it — or a way around it.",
+      "4. People over research. Most problems aren't about what you know, they're about",
+      "   who you know. For each idea, name the TYPE of person I should call and write",
+      "   the first sentence of that call.",
+      "5. End with the one question that would change this plan the most if I answered",
+      "   it honestly.",
+      "",
+      "Keep the whole thing under one page.",
+      "",
+      "(Sorted with Fact / Testable / Fantasy — @nicksdadhax)"
+    ].join("\n");
+
+    function fallback() {
+      var t = document.createElement("textarea");
+      t.value = text;
+      t.style.position = "fixed";
+      t.style.opacity = "0";
+      document.body.appendChild(t);
+      t.select();
+      try { document.execCommand("copy"); } catch (e) {}
+      document.body.removeChild(t);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () {
+        said.textContent = "Prompt copied — paste it into the AI you already use.";
+      }, function () { fallback(); said.textContent = "Prompt copied."; });
+    } else { fallback(); said.textContent = "Prompt copied."; }
+  });
 
   document.getElementById("resetBtn").addEventListener("click", function () {
     clearFlow();

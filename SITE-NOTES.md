@@ -117,6 +117,47 @@ Chose an email tool over a form-to-spreadsheet because *sending* is the promise 
   visitor intents. The single-CTA discipline applies to the optin block, not the page.
 - `queue-b7f3a91c.html` — private reel queue board. noindex, never linked from index.
 
+## The story spine (Nick's direction, 2026-08-10)
+
+Every weekly tool ties to **the theme he's posting on that week** — the tool is a
+chapter, not a random drop. Storytelling is the frame because that's how people
+actually learn and attach: each tool page carries (1) a bit of the running story and
+(2) a short first-person "why this one was useful for me" beat, told in story mode.
+Tool 04 got its beat retroactively: the notes-app confession — years of a brain-dump
+list, and the only year-over-year difference was *a longer list*.
+
+Two mechanics every tool should end on, added to 04 and standard going forward:
+- **The boulder question.** "Most problems aren't about what you know — who you
+  know. Name one person you can call who'd push the boulder even the smallest way.
+  Now make the call." The call is the universal next-best-action.
+- **The AI prompt.** If the tool can't compute a personalized output itself, it
+  hands the user a copyable, quality-framed prompt for whatever AI they already use
+  — plus, where possible, a loop/automation to keep pursuing it.
+
+## Tool 05 brief — Why Your Side Gig Wants an LLC
+
+The story (Nick's, told once-upon-a-time style): a good boy followed the path his
+folks and the generations before him prescribed, without question, and excelled at
+nearly every stop on it. Then one day he's got his own family, gray hairs coming in,
+and a sense of a life not yet lived nagging at him. A calling to take control of his
+own path — no idea where to begin. So he took the next best step that inspired him
+(prescribed, oddly, by yet another authority figure — but one he *chose*, because
+they lived a version of the life he wanted). Without yet knowing what value he'd
+give the world, he opened his first LLC.
+
+Who it's for: the dad with the gnawing gut feeling and the weight on his shoulders
+saying he's capable of more. The tool's job is to turn "someday" (i.e. never) into
+this year, this month, this day.
+
+The deliverable when someone finishes: (1) an LLC actually set up, and (2) a north
+star / framework built on their *own* current skills and asymmetric advantage —
+network, skills, whatever they already hold. If the page can't customize that
+output, it hands them the AI prompt that will, plus a loop or automation to pursue
+in relation to it. Boulder question + call at the end, per the spine.
+
+⚠️ Honesty rails for 05: no legal or tax advice — plain-language "why a container
+helps," and "ask your accountant/attorney" where it counts. Same no-gate promise.
+
 ## Gate
 
 Every page audited at 375px with `_tools/web/audit.js` before it ships: **PASS,
