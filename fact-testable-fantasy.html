@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fact / Testable / Fantasy — @nicksdadhax</title>
+<meta name="description" content="The honesty filter for your own ideas. Sort any idea into Fact, Testable, or Fantasy in two questions — free, no signup, nothing leaves your device.">
+
+<style>
+  /* @nicksdadhax — dark field-instrument identity. Same tokens as tools 01-03.
+     SIGNAL YELLOW = your input / the action bucket. WARN RED = the honest
+     correction — here that's the Fantasy verdict, which is the whole tool. */
+  :root {
+    --carbon:   #0F0E0B;
+    --panel:    #17150F;
+    --panel-up: #1E1B14;
+    --hair:     #302B21;
+    --bone:     #F4F0E6;
+    --graphite: #8F887A;
+    --signal:   #FFC629;
+    --signal-d: #C8930F;
+    --warn:     #E8502C;
+
+    --mono: ui-monospace, "SF Mono", SFMono-Regular, "Cascadia Mono",
+            "Roboto Mono", Menlo, Consolas, "Courier New", monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+            "Helvetica Neue", Arial, sans-serif;
+
+    --gutter: clamp(18px, 5vw, 40px);
+    --maxw: 660px;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--carbon);
+    color: var(--bone);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-text-size-adjust: 100%;
+    background-image:
+      repeating-linear-gradient(to right,  rgba(242,237,231,.035) 0 1px, transparent 1px 28px),
+      repeating-linear-gradient(to bottom, rgba(242,237,231,.035) 0 1px, transparent 1px 28px);
+  }
+
+  .sheet { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter) 96px; }
+
+  header { padding: 34px 0 8px; }
+  .protocol {
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: .17em;
+    text-transform: uppercase; color: var(--graphite);
+  }
+  .protocol b { color: var(--signal); font-weight: 700; }
+  h1 {
+    font-family: var(--mono); font-weight: 700;
+    font-size: clamp(28px, 8vw, 48px); line-height: 1.04;
+    letter-spacing: -.03em; text-transform: uppercase;
+    margin: 12px 0 0; text-wrap: balance;
+  }
+  h1 .of { color: var(--signal); }
+  .dek { margin: 14px 0 0; max-width: 46ch; color: #CFC9BB; font-size: 17px; }
+  .dek em { color: var(--bone); font-style: normal; border-bottom: 1.5px solid var(--signal-d); }
+
+  .rules {
+    margin: 20px 0 0; padding: 11px 0 0; border-top: 1px solid var(--hair);
+    font-family: var(--mono); font-size: 12.5px; letter-spacing: .04em;
+    color: var(--graphite); text-transform: uppercase;
+  }
+  .rules span { color: var(--bone); }
+
+  .privacy {
+    margin: 18px 0 0; padding: 13px 15px; font-size: 14.5px; line-height: 1.5;
+    color: #CFC9BB; background: var(--panel); border-left: 3px solid var(--signal);
+  }
+  .privacy b { color: var(--bone); }
+
+  /* the three buckets, explained up front */
+  .buckets { margin-top: 26px; border: 1px solid var(--hair); }
+  /* stacked, not a side column — a 92px label column squashed the copy to ~21
+     chars/line at 375px (audit catch, 8/10). */
+  .bucket { padding: 14px 15px; border-bottom: 1px solid var(--hair); }
+  .bucket:last-child { border-bottom: 0; }
+  .bucket .tag { display: block; font-family: var(--mono); font-size: 12.5px; font-weight: 700;
+    letter-spacing: .08em; text-transform: uppercase; margin-bottom: 5px; }
+  .bucket.b-fact .tag { color: var(--bone); }
+  .bucket.b-test .tag { color: var(--signal); }
+  .bucket.b-fant .tag { color: var(--warn); }
+  .bucket p { margin: 0; font-size: 15px; line-height: 1.5; color: #CFC9BB; }
+  .bucket p b { color: var(--bone); }
+
+  .pull {
+    margin: 22px 0 0; padding: 2px 0 2px 14px;
+    border-left: 3px solid var(--signal); color: var(--bone);
+    font-size: 16.5px; line-height: 1.5;
+  }
+
+  .block { margin-top: 26px; }
+  .lbl {
+    display: block; font-family: var(--mono); font-size: 11.5px;
+    letter-spacing: .13em; text-transform: uppercase; color: var(--graphite);
+    margin-bottom: 8px;
+  }
+  .seed {
+    border: 1.5px solid var(--signal); background: var(--panel);
+    padding: 16px 16px 14px;
+  }
+  .seed .lbl { color: var(--signal); }
+
+  textarea, input[type=text] {
+    display: block; width: 100%; resize: none;
+    background: transparent; border: 0; border-bottom: 1.5px solid #453E2C;
+    color: var(--bone); font-family: var(--sans); font-size: 17px;
+    line-height: 1.5; padding: 4px 0 8px; border-radius: 0;
+  }
+  textarea::placeholder, input::placeholder { color: #6B6455; }
+  textarea:focus, input:focus { outline: 0; border-bottom-color: var(--signal); }
+  textarea:focus-visible { box-shadow: 0 3px 0 -1px rgba(255,198,41,.35); }
+
+  /* question steps */
+  .step { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--hair); }
+  .step[hidden] { display: none; }
+  .q {
+    font-size: clamp(19px, 4.6vw, 23px); line-height: 1.3;
+    letter-spacing: -.015em; margin: 0 0 6px; text-wrap: balance;
+  }
+  .hint {
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: .05em;
+    text-transform: uppercase; color: var(--graphite); margin: 0 0 14px;
+  }
+  .choices { display: flex; flex-wrap: wrap; gap: 10px; }
+  .choices button {
+    font-family: var(--sans); font-size: 15.5px; font-weight: 600;
+    text-align: left; line-height: 1.35;
+    padding: 13px 15px; border-radius: 0; cursor: pointer;
+    background: var(--panel); color: var(--bone); border: 1.5px solid #453E2C;
+    flex: 1 1 240px; min-height: 48px;
+  }
+  .choices button:hover { border-color: var(--signal); }
+  .choices button[aria-pressed="true"] {
+    background: var(--signal); color: #14100F; border-color: var(--signal);
+  }
+  .choices button:focus-visible { outline: 2px solid var(--bone); outline-offset: 2px; }
+
+  .redline-note {
+    margin: 14px 0 0; padding: 9px 12px;
+    border-left: 2.5px solid var(--warn);
+    background: rgba(232,80,44,.08);
+    font-size: 14.5px; line-height: 1.45; color: #E7DCD6;
+  }
+  .redline-note b { color: var(--warn); font-family: var(--mono);
+    font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase;
+    display: block; margin-bottom: 3px; }
+
+  /* verdict panels */
+  .verdict { margin-top: 28px; padding: 18px 16px 16px; background: var(--panel-up); }
+  .verdict[hidden] { display: none; }
+  .verdict .stamp {
+    font-family: var(--mono); font-weight: 700; font-size: clamp(24px, 7vw, 34px);
+    letter-spacing: .02em; text-transform: uppercase; line-height: 1;
+  }
+  .verdict .means { margin: 10px 0 14px; font-size: 15px; color: #CFC9BB; line-height: 1.5; }
+  .verdict .means b { color: var(--bone); }
+  #vFact { border: 2px solid var(--bone); }
+  #vFact .stamp { color: var(--bone); }
+  #vTest { border: 2px solid var(--signal); }
+  #vTest .stamp { color: var(--signal); }
+  #vFant { border: 2px solid var(--warn); }
+  #vFant .stamp { color: var(--warn); }
+  .verdict .lbl { margin-top: 14px; }
+
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+  .actions button {
+    font-family: var(--mono); font-size: 12.5px; letter-spacing: .1em;
+    text-transform: uppercase; font-weight: 700; min-height: 48px;
+    padding: 13px 18px; border-radius: 0; cursor: pointer;
+    background: var(--signal); color: #14100F; border: 1.5px solid var(--signal);
+  }
+  .actions button.ghost { background: transparent; color: var(--bone); border-color: #453E2C; }
+  .actions button:hover { filter: brightness(1.1); }
+  .actions button.ghost:hover { border-color: var(--signal); color: var(--signal); filter: none; }
+  .actions button:focus-visible { outline: 2px solid var(--bone); outline-offset: 2px; }
+
+  .said {
+    margin-top: 14px; font-family: var(--mono); font-size: 12px;
+    letter-spacing: .06em; text-transform: uppercase; color: var(--signal);
+    min-height: 1em;
+  }
+
+  /* the shelf — everything sorted this sitting */
+  .shelf { margin-top: 36px; }
+  .shelf[hidden] { display: none; }
+  .shelf h2 {
+    font-family: var(--mono); font-size: 12px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--signal); margin: 0 0 12px; font-weight: 700;
+    padding-bottom: 8px; border-bottom: 1px solid var(--hair);
+  }
+  .shelf .grp { margin-bottom: 16px; }
+  .shelf .grp[hidden] { display: none; }
+  .shelf .grp h3 {
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: .1em;
+    text-transform: uppercase; margin: 0 0 6px;
+  }
+  .shelf .g-fact h3 { color: var(--bone); }
+  .shelf .g-test h3 { color: var(--signal); }
+  .shelf .g-fant h3 { color: var(--warn); }
+  .shelf .item {
+    border: 1px solid var(--hair); background: var(--panel);
+    padding: 11px 13px; margin-bottom: 8px; font-size: 15px; line-height: 1.45;
+  }
+  .shelf .item .idea { display: block; }
+  .shelf .item .load { display: block; color: var(--graphite); font-size: 13.5px; margin-top: 4px; }
+  .shelf .item .load b { color: #CFC9BB; font-weight: 600; }
+
+  .titleblock {
+    margin-top: 44px; border: 1px solid var(--hair);
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(108px, 1fr));
+  }
+  .tb { padding: 11px 13px; border-right: 1px solid var(--hair); }
+  .tb:last-child { border-right: 0; }
+  .tb dt {
+    font-family: var(--mono); font-size: 10px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--graphite); margin: 0 0 4px;
+  }
+  .tb dd {
+    margin: 0; font-family: var(--mono); font-size: 13px; font-weight: 700;
+    color: var(--bone); font-variant-numeric: tabular-nums;
+  }
+  .tb dd.red { color: var(--signal); }
+
+  .cta { margin-top: 18px; font-size: 15px; color: #CFC9BB; line-height: 1.5; }
+  .cta b { color: var(--bone); }
+  .cta a { color: var(--signal); font-weight: 700; text-decoration: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+
+  @media print {
+    @page { size: letter; margin: .5in .55in; }
+    :root {
+      --carbon: #fff; --panel: #fff; --panel-up: #FFF8E2;
+      --hair: #C9C2BC; --bone: #14100F; --graphite: #5E5651;
+      --signal: #7A5B00; --signal-d: #7A5B00; --warn: #B93A18;
+    }
+    body { background-image: none; font-size: 10.5pt; }
+    .sheet { max-width: none; padding: 0; }
+    .actions, .said, .hint, .choices, .nav, .tail, .cta { display: none; }
+    /* print = blank worksheet: every step and verdict visible with blanks */
+    .step[hidden], .verdict[hidden] { display: block !important; }
+    .shelf[hidden] { display: none !important; }
+    textarea, input[type=text] { border-bottom-color: #9AA0A8; min-height: .42in; }
+    .redline-note { background: none; }
+    h1 { font-size: 26pt; }
+    .q { font-size: 12pt; }
+    .verdict { margin-top: 14pt; padding: 10pt; }
+  }
+</style>
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+
+<div class="sheet">
+
+  <nav class="nav">
+    <div class="navtop">
+      <a class="brand" href="index.html">@nicksdadhax</a>
+      <span class="meta">Tool 04 · free · no gate</span>
+    </div>
+    <div class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="index.html#tools" aria-current="page">The Tools</a>
+      <a href="log.html">The Log</a>
+      <a href="index.html#houses">I have a house</a>
+    </div>
+  </nav>
+
+  <header>
+    <div class="protocol">Idea triage protocol <b>·</b> 2 minutes per idea <b>·</b> be honest</div>
+    <h1>Fact <span class="of">/</span> Testable <span class="of">/</span> Fantasy</h1>
+    <p class="dek">Every idea you're carrying goes in one of three buckets. Two questions
+      sort it. The rule that makes it work: <em>you're not allowed to lie to yourself
+      about which bucket it's in.</em></p>
+    <div class="rules">one idea at a time <span>·</span> first action or price tag <span>·</span> park, don't delete</div>
+    <p class="privacy"><b>Nothing you write here leaves your device.</b> There's no account, no
+      server, and no analytics on this page — what you type is held in this browser tab so you
+      can reload without losing it, and it is erased the moment you close the tab. "Start over"
+      wipes it immediately. I can't read it. Nobody can.</p>
+  </header>
+
+  <div class="buckets" aria-label="The three buckets">
+    <div class="bucket b-fact">
+      <span class="tag">Fact</span>
+      <p><b>Already true. You could verify it right now.</b> Facts don't sit in a pile —
+        you write down what they change and move on.</p>
+    </div>
+    <div class="bucket b-test">
+      <span class="tag">Testable</span>
+      <p><b>You could take the first physical action today, with what you already
+        have.</b> Not "soon." Not "once I look into it." Today, with today's money,
+        skills, and access.</p>
+    </div>
+    <div class="bucket b-fant">
+      <span class="tag">Fantasy</span>
+      <p><b>It needs something you don't have yet.</b> Not deleted — parked, with the
+        missing pieces written next to it, so it can graduate later.</p>
+    </div>
+  </div>
+
+  <p class="pull">Most people's goals are Fantasy with no prerequisite list. That's why
+    they sit there for years feeling like failure instead of feeling like a shopping
+    list.</p>
+
+  <div class="block seed">
+    <label class="lbl" for="seed">The idea — say it plainly</label>
+    <textarea id="seed" rows="2" placeholder="one sentence. no pitch."></textarea>
+  </div>
+
+  <div class="step" id="step1" hidden>
+    <p class="q">First — is this a fact, or a plan?</p>
+    <p class="hint">a fact already happened. a plan is something you'd do.</p>
+    <div class="choices">
+      <button type="button" id="cFact" aria-pressed="false">It's a fact — it's already
+        true and I could verify it right now</button>
+      <button type="button" id="cPlan" aria-pressed="false">It's a plan — something I
+        could do</button>
+    </div>
+  </div>
+
+  <div class="step" id="step2" hidden>
+    <p class="q">Could you take the first physical action <em>today</em> — with the
+      money, skills, access, and permission you already have?</p>
+    <p class="hint">physical action. a thing done with your hands or your phone, not a thing thought about.</p>
+    <div class="choices">
+      <button type="button" id="cYes" aria-pressed="false">Yes — today, with what I
+        have</button>
+      <button type="button" id="cNo" aria-pressed="false">No — it needs something I
+        don't have yet</button>
+    </div>
+    <div class="redline-note">
+      <b>the trap is "basically yes"</b>
+      If the first action needs anything you don't already own — a license, a partner,
+      money, a skill, someone's permission — that's a prerequisite, and this is a
+      Fantasy for now. I run optimistic, so I built this filter to argue with me.
+      An inflated "Testable" is how a week gets busy and moves nothing.
+    </div>
+  </div>
+
+  <div class="verdict" id="vFact" hidden>
+    <span class="stamp">Fact</span>
+    <p class="means">Good — then it's not an idea, it's information. Information is only
+      worth what it changes. <b>Write what it changes, then stop thinking about it.</b></p>
+    <label class="lbl" for="factChange">What does knowing this change?</label>
+    <textarea id="factChange" rows="2" placeholder="one decision, one number, one plan it updates."></textarea>
+  </div>
+
+  <div class="verdict" id="vTest" hidden>
+    <span class="stamp">Testable</span>
+    <p class="means">This is the bucket that pays. Two things make it real: the first
+      physical action, and — this is the part everyone skips — <b>what result would
+      prove the idea wrong.</b> If nothing could prove it wrong, you don't have an idea,
+      you have a hope.</p>
+    <label class="lbl" for="testAction">The first physical action — today</label>
+    <textarea id="testAction" rows="2" placeholder="starts with a verb. small enough to finish before dinner."></textarea>
+    <label class="lbl" for="testKill">What would prove it wrong?</label>
+    <textarea id="testKill" rows="2" placeholder="the result that would make you drop it — decided now, not later."></textarea>
+  </div>
+
+  <div class="verdict" id="vFant" hidden>
+    <span class="stamp">Fantasy — for now</span>
+    <p class="means">This is not a no. <b>Fantasy isn't a no. It's a not-yet with the
+      price tag written on it.</b> Write the missing pieces, specifically — each one is
+      either something you can go get, or the honest reason this idea stays parked.</p>
+    <label class="lbl" for="fant1">Missing piece 1</label>
+    <input type="text" id="fant1" placeholder="what exactly? name it — 'money' is not a name, '$14k for the down payment' is.">
+    <label class="lbl" for="fant2">Missing piece 2</label>
+    <input type="text" id="fant2" placeholder="…">
+    <label class="lbl" for="fant3">Missing piece 3</label>
+    <input type="text" id="fant3" placeholder="…">
+    <p class="means" style="margin-top:14px">One of the best things I own sorted Fantasy
+      on a Thursday. I wrote down the four missing pieces — and inside 24 hours a
+      version of the same idea came back Testable, because I could finally see which
+      piece to work around. <b>The list is what does that. The bucket alone does
+      nothing.</b></p>
+  </div>
+
+  <div class="actions" id="fileRow" hidden>
+    <button id="fileBtn" type="button">File it — sort the next one</button>
+    <button id="copyBtn" class="ghost" type="button">Copy everything</button>
+    <button id="printBtn" class="ghost" type="button">Print a blank one</button>
+    <button id="resetBtn" class="ghost" type="button">Start over</button>
+  </div>
+  <div class="said" id="said" role="status" aria-live="polite"></div>
+
+  <div class="shelf" id="shelf" hidden>
+    <h2>Sorted this sitting</h2>
+    <div class="grp g-test" id="gTest" hidden><h3>Testable — do these</h3></div>
+    <div class="grp g-fact" id="gFact" hidden><h3>Fact — filed</h3></div>
+    <div class="grp g-fant" id="gFant" hidden><h3>Fantasy — parked with a price tag</h3></div>
+  </div>
+
+  <dl class="titleblock">
+    <div class="tb"><dt>Protocol</dt><dd>IDEA TRIAGE</dd></div>
+    <div class="tb"><dt>Tool</dt><dd>04 of 04</dd></div>
+    <div class="tb"><dt>Sorted</dt><dd class="red" id="count">0</dd></div>
+    <div class="tb"><dt>By</dt><dd class="red">@nicksdadhax</dd></div>
+  </dl>
+
+  <!--TAIL-->
+  <div class="tail">
+  <a class="tail-next" href="7-layers-of-why.html">
+    <span class="k">Read next</span>
+    <b>Tool 01 — The 7 Layers of Why</b>
+    <span class="s">You kept the idea. Now find out why you want it — a want you can't explain is the first thing you quit.</span>
+  </a>
+  <section class="buyhouses">
+    <h2>Also &mdash; I buy houses</h2>
+    <p><b>Washington or Dakota County, Minnesota.</b> Off-market, or straight from the
+      owner &mdash; I'm the buyer, not a middleman passing it along. Woodbury, Cottage
+      Grove, Hastings, Stillwater, Eagan, Inver Grove Heights, Lakeville.</p>
+    <p>If that's you, or you know somebody quietly thinking about selling, I'll lay out
+      your options &mdash; <b>all of them, including the ones I don't make a dime on.</b>
+      Nothing to sign, no walkthrough unless you ask.</p>
+    <div class="ctas">
+      <a href="index.html#houses"><b>I have a house</b><span>Or I know someone who does</span></a>
+    </div>
+  </section>
+
+  <section class="optin" id="next">
+    <h2>What I ask</h2>
+    <p class="plain">That was free and nothing here sits behind an email. If it was
+      useful, here's the whole exchange: <b>send it to one or two people who'd use it
+      too.</b> That's it. I'm trusting you with it, you pass it on.</p>
+    <p class="plain">Want the next one before anyone else? I'm building an interest
+      list &mdash; no selling, no sequence, your address goes nowhere.
+      <a href="index.html#next">Exactly what that means, in plain words.</a></p>
+    <p class="fine">The list itself isn't open yet &mdash; I'm still setting it up, and
+      I'd rather say that than put up a box that doesn't work. The ask above stands
+      either way, and it's the one that matters. If you want to tell me what to build
+      next, my DMs are open.</p>
+    <div class="ctas">
+      <a href="https://www.instagram.com/nicksdadhax/"><b>Tell me what to build next</b><span>DM @nicksdadhax</span></a>
+    </div>
+  </section>
+  <div class="ctas">
+    <a href="https://www.instagram.com/nicksdadhax/"><b>Send me a DM</b><span>Tell me what you're stuck on</span></a>
+    <a href="https://www.instagram.com/nicksdadhax/"><b>Follow along</b><span>@nicksdadhax</span></a>
+    <a href="https://www.instagram.com/nicksdadhax/"><b>Send it on</b><span>To whoever needs it</span></a>
+  </div>
+  </div>
+  <!--/TAIL-->
+
+  <p class="cta">Free. This tool asks you for nothing — no gate, no email, no analytics
+    on it. If an idea of yours just landed in a bucket you didn't expect,
+    <b>tell me which bucket in the comments</b> — I read every one.</p>
+
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var KEY = "ndh-ftf-v1";
+
+  var seed = document.getElementById("seed"),
+      step1 = document.getElementById("step1"),
+      step2 = document.getElementById("step2"),
+      said = document.getElementById("said"),
+      count = document.getElementById("count"),
+      shelf = document.getElementById("shelf"),
+      fileRow = document.getElementById("fileRow");
+
+  var choiceBtns = {
+    fact: document.getElementById("cFact"),
+    plan: document.getElementById("cPlan"),
+    yes:  document.getElementById("cYes"),
+    no:   document.getElementById("cNo")
+  };
+  var verdicts = {
+    fact: document.getElementById("vFact"),
+    test: document.getElementById("vTest"),
+    fant: document.getElementById("vFant")
+  };
+  var groups = {
+    fact: document.getElementById("gFact"),
+    test: document.getElementById("gTest"),
+    fant: document.getElementById("gFant")
+  };
+
+  var fields = ["seed", "factChange", "testAction", "testKill", "fant1", "fant2", "fant3"]
+    .map(function (id) { return document.getElementById(id); });
+
+  // state: q1 = "fact" | "plan" | null ; q2 = "yes" | "no" | null ; filed = [{bucket, idea, load}]
+  var st = { q1: null, q2: null, filed: [] };
+
+  function val(el) { return (el.value || "").trim(); }
+
+  function bucket() {
+    if (st.q1 === "fact") return "fact";
+    if (st.q1 === "plan" && st.q2 === "yes") return "test";
+    if (st.q1 === "plan" && st.q2 === "no") return "fant";
+    return null;
+  }
+
+  function refresh() {
+    step1.hidden = !val(seed);
+    choiceBtns.fact.setAttribute("aria-pressed", String(st.q1 === "fact"));
+    choiceBtns.plan.setAttribute("aria-pressed", String(st.q1 === "plan"));
+    step2.hidden = st.q1 !== "plan";
+    choiceBtns.yes.setAttribute("aria-pressed", String(st.q2 === "yes"));
+    choiceBtns.no.setAttribute("aria-pressed", String(st.q2 === "no"));
+
+    var b = bucket();
+    verdicts.fact.hidden = b !== "fact";
+    verdicts.test.hidden = b !== "test";
+    verdicts.fant.hidden = b !== "fant";
+    fileRow.hidden = !b;
+
+    renderShelf();
+    count.textContent = String(st.filed.length);
+    save();
+  }
+
+  function renderShelf() {
+    shelf.hidden = st.filed.length === 0;
+    Object.keys(groups).forEach(function (k) {
+      var g = groups[k];
+      // rebuild items (keep the h3)
+      while (g.children.length > 1) g.removeChild(g.lastChild);
+      var mine = st.filed.filter(function (f) { return f.bucket === k; });
+      g.hidden = mine.length === 0;
+      mine.forEach(function (f) {
+        var d = document.createElement("div");
+        d.className = "item";
+        var idea = document.createElement("span");
+        idea.className = "idea";
+        idea.textContent = f.idea;          // textContent, never innerHTML — user text
+        d.appendChild(idea);
+        if (f.load) {
+          var load = document.createElement("span");
+          load.className = "load";
+          var lbl = document.createElement("b");
+          lbl.textContent = k === "test" ? "First action: " : (k === "fant" ? "Price tag: " : "Changes: ");
+          load.appendChild(lbl);
+          load.appendChild(document.createTextNode(f.load));
+          d.appendChild(load);
+        }
+        g.appendChild(d);
+      });
+    });
+  }
+
+  function currentLoad() {
+    var b = bucket();
+    if (b === "fact") return val(document.getElementById("factChange"));
+    if (b === "test") {
+      var a = val(document.getElementById("testAction")),
+          k = val(document.getElementById("testKill"));
+      return a + (k ? " · wrong if: " + k : "");
+    }
+    if (b === "fant") {
+      return ["fant1", "fant2", "fant3"].map(function (id) {
+        return val(document.getElementById(id));
+      }).filter(Boolean).join(" + ");
+    }
+    return "";
+  }
+
+  function clearFlow() {
+    st.q1 = null; st.q2 = null;
+    fields.forEach(function (el) { el.value = ""; grow(el); });
+  }
+
+  function save() {
+    try {
+      var d = { q1: st.q1, q2: st.q2, filed: st.filed, v: {} };
+      fields.forEach(function (el) { d.v[el.id] = el.value; });
+      // sessionStorage, NOT localStorage — same promise as tool 01: close the
+      // tab and it's gone. The privacy block above says so; the code has to agree.
+      sessionStorage.setItem(KEY, JSON.stringify(d));
+    } catch (e) {}
+  }
+
+  function load() {
+    try {
+      var d = JSON.parse(sessionStorage.getItem(KEY) || "null");
+      if (!d) return;
+      st.q1 = d.q1 || null;
+      st.q2 = d.q2 || null;
+      st.filed = Array.isArray(d.filed) ? d.filed : [];
+      fields.forEach(function (el) { if (d.v && d.v[el.id]) el.value = d.v[el.id]; });
+    } catch (e) {}
+  }
+
+  function grow(el) {
+    if (el.tagName !== "TEXTAREA") return;
+    el.style.height = "auto"; el.style.height = el.scrollHeight + "px";
+  }
+
+  choiceBtns.fact.addEventListener("click", function () { st.q1 = "fact"; st.q2 = null; refresh(); });
+  choiceBtns.plan.addEventListener("click", function () { st.q1 = "plan"; refresh(); });
+  choiceBtns.yes.addEventListener("click", function () { st.q2 = "yes"; refresh(); });
+  choiceBtns.no.addEventListener("click", function () { st.q2 = "no"; refresh(); });
+
+  fields.forEach(function (el) {
+    el.addEventListener("input", function () { grow(el); refresh(); });
+  });
+
+  document.getElementById("fileBtn").addEventListener("click", function () {
+    var b = bucket();
+    if (!b || !val(seed)) return;
+    st.filed.push({ bucket: b, idea: val(seed), load: currentLoad() });
+    clearFlow();
+    refresh();
+    said.textContent = "Filed. Next idea.";
+    seed.focus();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  document.getElementById("printBtn").addEventListener("click", function () { window.print(); });
+
+  document.getElementById("resetBtn").addEventListener("click", function () {
+    clearFlow();
+    st.filed = [];
+    try { sessionStorage.removeItem(KEY); } catch (e) {}
+    refresh();
+    said.textContent = "Cleared.";
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  document.getElementById("copyBtn").addEventListener("click", function () {
+    var names = { fact: "FACT", test: "TESTABLE", fant: "FANTASY (FOR NOW)" };
+    var out = ["FACT / TESTABLE / FANTASY — " + new Date().toLocaleDateString(), ""];
+    var all = st.filed.slice();
+    var b = bucket();
+    if (b && val(seed)) all.push({ bucket: b, idea: val(seed), load: currentLoad() });
+    if (!all.length) { said.textContent = "Nothing to copy yet."; return; }
+    ["test", "fact", "fant"].forEach(function (k) {
+      var mine = all.filter(function (f) { return f.bucket === k; });
+      if (!mine.length) return;
+      out.push(names[k]);
+      mine.forEach(function (f) {
+        out.push("- " + f.idea + (f.load ? "  [" + f.load + "]" : ""));
+      });
+      out.push("");
+    });
+    out.push("Fact / Testable / Fantasy — @nicksdadhax");
+    var text = out.join("\n");
+
+    function fallback() {
+      var t = document.createElement("textarea");
+      t.value = text;
+      t.style.position = "fixed";
+      t.style.opacity = "0";
+      document.body.appendChild(t);
+      t.select();
+      try { document.execCommand("copy"); } catch (e) {}
+      document.body.removeChild(t);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () {
+        said.textContent = "Copied — paste it where you plan your day.";
+      }, function () { fallback(); said.textContent = "Copied."; });
+    } else { fallback(); said.textContent = "Copied."; }
+  });
+
+  load();
+  fields.forEach(grow);
+  refresh();
+})();
+</script>
+
+</body>
+</html>

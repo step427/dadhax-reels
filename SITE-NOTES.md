@@ -52,8 +52,9 @@ Each sheet now ends in the sequence Nick specified: **value first, then the ask.
 
     next sheet  →  sign up  →  DM / follow / share
 
-`Read next` is a real recommendation, not a shuffle: 01 → 02 → 03 → 01. Find the
-why, then how wiring changes, then what to do about it.
+`Read next` is a real recommendation, not a shuffle: 01 → 02 → 03 → 04 → 01. Find
+the why, how wiring changes, what to do about it, then how to sort the ideas the
+doing generates — and back to the why.
 
 ## The signup, and the promise it nearly broke
 
@@ -118,5 +119,6 @@ Chose an email tool over a form-to-spreadsheet because *sending* is the promise 
 
 ## Gate
 
-All four pages audited at 375px with `_tools/web/audit.js`: **PASS, zero warnings.**
-Heights 2.7 / 3.7 / 4.2 / 5.3 phone screens. Nothing ships without re-running it.
+Every page audited at 375px with `_tools/web/audit.js` before it ships: **PASS,
+zero warnings**, including tool 04 (2026-08-10) audited in its fully-expanded state.
+Nothing ships without re-running it.
