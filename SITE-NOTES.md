@@ -176,3 +176,26 @@ page beats 04's density meaningfully, tighten this note.
 Tool 05 (side-gig-llc.html) shipped 2026-08-11: audit PASS, zero fails, density
 at 04 parity. Chain is now 01→02→03→04→05→01. Index carries a titleless "06 — in
 the shop" card (next week's tool comes from next week's story; no false promise).
+
+## Publishing runs on GitHub Actions (2026-08-12)
+
+`.github/workflows/publish.yml` fires `publisher/publish.py` at 14:00 / 18:00 /
+23:00 UTC — 9am / 1pm / 6pm Central while CDT is in effect. It takes the next
+eligible item out of `queue.json`, posts it to Instagram and the Facebook page,
+marks it posted, prunes the mp4, and commits the queue back.
+
+**Why it moved:** it used to be a Windows Scheduled Task on Nick's laptop. A
+laptop that is asleep can be woken; a laptop that is off cannot. That produced a
+zero-post day on 8/7 and two missed slots on 8/12.
+
+**Required repo secrets** (Settings -> Secrets and variables -> Actions):
+`IG_USER_ID`, `META_ACCESS_TOKEN`, `META_PAGE_TOKEN`. Values live only in
+`Rook/_local-secrets/meta-ig.env` on Nick's machine — never in this repo.
+
+**Never add a `pull_request_target` trigger.** This repo is public. Secrets are
+withheld from fork pull requests, which is what keeps schedule + manual dispatch
+safe; `pull_request_target` would hand them to arbitrary PR code.
+
+`queue.json` here is the single source of truth. The reel loop pulls, appends
+new cuts, and pushes. Both publishers commit their result so neither re-posts
+what the other already put out.
