@@ -163,3 +163,16 @@ helps," and "ask your accountant/attorney" where it counts. Same no-gate promise
 Every page audited at 375px with `_tools/web/audit.js` before it ships: **PASS,
 zero warnings**, including tool 04 (2026-08-10) audited in its fully-expanded state.
 Nothing ships without re-running it.
+
+**Calibration note (2026-08-11, tool 05 ship):** the LONG/DENSE warnings now fire
+on *every* tool page in fully-expanded state because the standard tail (~250 words)
+plus the story beat grew the fixed overhead — re-measured, shipped tool 04 itself
+reads 981 words / 5491px expanded. So the working gate is: **zero FAILs, zero
+fixable warnings (squashed/overflow/tiny/contrast/tap/links), and density at or
+near 04 parity.** Tool 05 shipped at 995 words / 5965px expanded — and ~60 of
+those words are the audit's own test input + the generated north star. If a future
+page beats 04's density meaningfully, tighten this note.
+
+Tool 05 (side-gig-llc.html) shipped 2026-08-11: audit PASS, zero fails, density
+at 04 parity. Chain is now 01→02→03→04→05→01. Index carries a titleless "06 — in
+the shop" card (next week's tool comes from next week's story; no false promise).

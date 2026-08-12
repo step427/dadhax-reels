@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Your Side Gig Wants an LLC — @nicksdadhax</title>
+<meta name="description" content="The someday-to-this-week move: a real container for the thing you keep almost starting. Plain-language why, a filing checklist, and a north star built on what you already have. Free, no gate.">
+
+<style>
+  /* @nicksdadhax — dark field-instrument identity. Same tokens as tools 01-04.
+     SIGNAL YELLOW = your input / the action. WARN RED = the honest rail —
+     here that's "not legal advice" and the upsell trap. */
+  :root {
+    --carbon:   #0F0E0B;
+    --panel:    #17150F;
+    --panel-up: #1E1B14;
+    --hair:     #302B21;
+    --bone:     #F4F0E6;
+    --graphite: #8F887A;
+    --signal:   #FFC629;
+    --signal-d: #C8930F;
+    --warn:     #E8502C;
+
+    --mono: ui-monospace, "SF Mono", SFMono-Regular, "Cascadia Mono",
+            "Roboto Mono", Menlo, Consolas, "Courier New", monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+            "Helvetica Neue", Arial, sans-serif;
+
+    --gutter: clamp(18px, 5vw, 40px);
+    --maxw: 660px;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--carbon);
+    color: var(--bone);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-text-size-adjust: 100%;
+    background-image:
+      repeating-linear-gradient(to right,  rgba(242,237,231,.035) 0 1px, transparent 1px 28px),
+      repeating-linear-gradient(to bottom, rgba(242,237,231,.035) 0 1px, transparent 1px 28px);
+  }
+
+  .sheet { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter) 96px; }
+
+  header { padding: 34px 0 8px; }
+  .protocol {
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: .17em;
+    text-transform: uppercase; color: var(--graphite);
+  }
+  .protocol b { color: var(--signal); font-weight: 700; }
+  h1 {
+    font-family: var(--mono); font-weight: 700;
+    font-size: clamp(28px, 8vw, 48px); line-height: 1.04;
+    letter-spacing: -.03em; text-transform: uppercase;
+    margin: 12px 0 0; text-wrap: balance;
+  }
+  h1 .of { color: var(--signal); }
+  .dek { margin: 14px 0 0; max-width: 46ch; color: #CFC9BB; font-size: 17px; }
+  .dek em { color: var(--bone); font-style: normal; border-bottom: 1.5px solid var(--signal-d); }
+
+  .rules {
+    margin: 20px 0 0; padding: 11px 0 0; border-top: 1px solid var(--hair);
+    font-family: var(--mono); font-size: 12.5px; letter-spacing: .04em;
+    color: var(--graphite); text-transform: uppercase;
+  }
+  .rules span { color: var(--bone); }
+
+  .privacy {
+    margin: 18px 0 0; padding: 13px 15px; font-size: 14.5px; line-height: 1.5;
+    color: #CFC9BB; background: var(--panel); border-left: 3px solid var(--signal);
+  }
+  .privacy b { color: var(--bone); }
+
+  .story { margin-top: 24px; padding: 15px 16px; background: var(--panel);
+    border: 1px solid var(--hair); }
+  .story p { margin: 0 0 10px; font-size: 15.5px; line-height: 1.55; color: #CFC9BB; }
+  .story p:last-child { margin-bottom: 0; }
+  .story p b { color: var(--bone); }
+
+  /* what a container does — stacked rows, same reasoning as 04's buckets:
+     no side label column at 375px. */
+  .whys { margin-top: 26px; border: 1px solid var(--hair); }
+  .why { padding: 14px 15px; border-bottom: 1px solid var(--hair); }
+  .why:last-child { border-bottom: 0; }
+  .why .tag { display: block; font-family: var(--mono); font-size: 12.5px; font-weight: 700;
+    letter-spacing: .08em; text-transform: uppercase; margin-bottom: 5px; color: var(--signal); }
+  .why p { margin: 0; font-size: 15px; line-height: 1.5; color: #CFC9BB; }
+  .why p b { color: var(--bone); }
+
+  .redline-note {
+    margin: 14px 0 0; padding: 9px 12px;
+    border-left: 2.5px solid var(--warn);
+    background: rgba(232,80,44,.08);
+    font-size: 14.5px; line-height: 1.45; color: #E7DCD6;
+  }
+  .redline-note b { color: var(--warn); font-family: var(--mono);
+    font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase;
+    display: block; margin-bottom: 3px; }
+
+  .block { margin-top: 30px; }
+  .lbl {
+    display: block; font-family: var(--mono); font-size: 11.5px;
+    letter-spacing: .13em; text-transform: uppercase; color: var(--graphite);
+    margin-bottom: 8px;
+  }
+  h2.part {
+    font-family: var(--mono); font-size: 12px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--signal); margin: 34px 0 4px; font-weight: 700;
+    padding-top: 20px; border-top: 1px solid var(--hair);
+  }
+  .partdek { margin: 0 0 14px; font-size: 15px; color: #CFC9BB; line-height: 1.5; }
+  .partdek b { color: var(--bone); }
+
+  .seed {
+    border: 1.5px solid var(--signal); background: var(--panel);
+    padding: 16px 16px 14px;
+  }
+  .seed .lbl { color: var(--signal); }
+
+  textarea, input[type=text] {
+    display: block; width: 100%; resize: none;
+    background: transparent; border: 0; border-bottom: 1.5px solid #453E2C;
+    color: var(--bone); font-family: var(--sans); font-size: 17px;
+    line-height: 1.5; padding: 4px 0 8px; border-radius: 0;
+  }
+  textarea::placeholder, input::placeholder { color: #6B6455; }
+  textarea:focus, input:focus { outline: 0; border-bottom-color: var(--signal); }
+  textarea:focus-visible { box-shadow: 0 3px 0 -1px rgba(255,198,41,.35); }
+  .seed .lbl + textarea, .seed .lbl + input { margin-bottom: 14px; }
+  .seed .lbl:first-child { margin-top: 0; }
+  .seed .lbl { margin-top: 0; }
+
+  /* the composed north star */
+  .northstar { margin-top: 22px; padding: 18px 16px; background: var(--panel-up);
+    border: 2px solid var(--signal); }
+  .northstar[hidden] { display: none; }
+  .northstar .lbl { color: var(--signal); }
+  .northstar p { margin: 0; font-size: 17.5px; line-height: 1.5; color: var(--bone); }
+  .northstar .fine { margin-top: 10px; font-size: 14px; color: #CFC9BB; }
+
+  /* filing checklist */
+  .steps { border: 1px solid var(--hair); }
+  .stepitem { display: flex; gap: 13px; align-items: flex-start;
+    padding: 14px 15px; border-bottom: 1px solid var(--hair); min-height: 44px; }
+  .stepitem:last-child { border-bottom: 0; }
+  .stepitem input[type=checkbox] {
+    appearance: none; -webkit-appearance: none; flex: 0 0 auto;
+    width: 24px; height: 24px; margin: 2px 0 0; cursor: pointer;
+    background: var(--panel); border: 1.5px solid #453E2C; border-radius: 0;
+  }
+  .stepitem input[type=checkbox]:checked {
+    background: var(--signal); border-color: var(--signal);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12.5 10 18 19 6.5' fill='none' stroke='%2314100F' stroke-width='3'/%3E%3C/svg%3E");
+  }
+  .stepitem input[type=checkbox]:focus-visible { outline: 2px solid var(--bone); outline-offset: 2px; }
+  .stepitem label { cursor: pointer; }
+  .stepitem label b { display: block; font-size: 15.5px; color: var(--bone); }
+  .stepitem label span { display: block; font-size: 14.5px; line-height: 1.45; color: #CFC9BB; margin-top: 2px; }
+  .stepitem.done label b { color: var(--graphite); text-decoration: line-through; }
+
+  /* boulder callbox */
+  .callbox { margin-top: 28px; padding: 18px 16px 16px; background: var(--panel-up);
+    border: 2px dashed var(--signal-d); }
+  .callbox .lbl { color: var(--signal); }
+  .callbox .means { margin: 10px 0 14px; font-size: 15px; color: #CFC9BB; line-height: 1.5; }
+  .callbox .means b { color: var(--bone); }
+
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+  .actions button {
+    font-family: var(--mono); font-size: 12.5px; letter-spacing: .1em;
+    text-transform: uppercase; font-weight: 700; min-height: 48px;
+    padding: 13px 18px; border-radius: 0; cursor: pointer;
+    background: var(--signal); color: #14100F; border: 1.5px solid var(--signal);
+  }
+  .actions button.ghost { background: transparent; color: var(--bone); border-color: #453E2C; }
+  .actions button:hover { filter: brightness(1.1); }
+  .actions button.ghost:hover { border-color: var(--signal); color: var(--signal); filter: none; }
+  .actions button:focus-visible { outline: 2px solid var(--bone); outline-offset: 2px; }
+
+  .said {
+    margin-top: 14px; font-family: var(--mono); font-size: 12px;
+    letter-spacing: .06em; text-transform: uppercase; color: var(--signal);
+    min-height: 1em;
+  }
+
+  .titleblock {
+    margin-top: 44px; border: 1px solid var(--hair);
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(108px, 1fr));
+  }
+  .tb { padding: 11px 13px; border-right: 1px solid var(--hair); }
+  .tb:last-child { border-right: 0; }
+  .tb dt {
+    font-family: var(--mono); font-size: 10px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--graphite); margin: 0 0 4px;
+  }
+  .tb dd {
+    margin: 0; font-family: var(--mono); font-size: 13px; font-weight: 700;
+    color: var(--bone); font-variant-numeric: tabular-nums;
+  }
+  .tb dd.red { color: var(--signal); }
+
+  .cta { margin-top: 18px; font-size: 15px; color: #CFC9BB; line-height: 1.5; }
+  .cta b { color: var(--bone); }
+  .cta a { color: var(--signal); font-weight: 700; text-decoration: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+
+  @media print {
+    @page { size: letter; margin: .5in .55in; }
+    :root {
+      --carbon: #fff; --panel: #fff; --panel-up: #FFF8E2;
+      --hair: #C9C2BC; --bone: #14100F; --graphite: #5E5651;
+      --signal: #7A5B00; --signal-d: #7A5B00; --warn: #B93A18;
+    }
+    body { background-image: none; font-size: 10.5pt; }
+    .sheet { max-width: none; padding: 0; }
+    .actions, .said, .nav, .tail, .cta, .privacy { display: none; }
+    .northstar[hidden] { display: block !important; }
+    textarea, input[type=text] { border-bottom-color: #9AA0A8; min-height: .42in; }
+    .redline-note { background: none; }
+    h1 { font-size: 26pt; }
+  }
+</style>
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+
+<div class="sheet">
+
+  <nav class="nav">
+    <div class="navtop">
+      <a class="brand" href="index.html">@nicksdadhax</a>
+      <span class="meta">Tool 05 · free · no gate</span>
+    </div>
+    <div class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="index.html#tools" aria-current="page">The Tools</a>
+      <a href="log.html">The Log</a>
+      <a href="index.html#houses">I have a house</a>
+    </div>
+  </nav>
+
+  <header>
+    <div class="protocol">Container protocol <b>·</b> someday &rarr; this week <b>·</b> not legal advice</div>
+    <h1>Why your side gig wants an <span class="of">LLC</span></h1>
+    <p class="dek">You've been circling the idea for years. What ends "someday" is a
+      <em>container real enough to hold a decision</em>: filed, named, yours.
+      This week.</p>
+    <div class="rules">your state's site, not a middleman <span>·</span> this week has seven days</div>
+    <p class="privacy"><b>Nothing you write here leaves your device.</b> No account, no
+      server, no analytics — what you type is held in this browser tab so you can
+      reload without losing it, and erased when you close the tab. "Start over" wipes
+      it now. I can't read it. Nobody can.</p>
+  </header>
+
+  <div class="story">
+    <span class="lbl">Why this one exists</span>
+    <p>Once upon a time a good boy followed the prescribed path — school, degree,
+      career — and excelled at nearly every stop. Then one day: his own family, gray
+      hairs coming in, a life not yet lived nagging at him. No idea where to begin.
+      So he took the one next step that inspired him — <b>before he knew what value
+      he'd give the world, he opened his first LLC.</b> That was me. The filing wasn't
+      a business. It was the decision, finally made somewhere that could hold one.</p>
+  </div>
+
+  <div class="whys" aria-label="What a container actually does">
+    <div class="why">
+      <span class="tag">It makes it real</span>
+      <p><b>A filed thing with a name is a decision you can't quietly un-make.</b>
+        You stop auditioning and start operating.</p>
+    </div>
+    <div class="why">
+      <span class="tag">It separates the money</span>
+      <p>Its own bank account from day one. <b>Year-end becomes a report, not
+        archaeology</b> through your personal statements.</p>
+    </div>
+    <div class="why">
+      <span class="tag">It's built to hold risk</span>
+      <p>Designed so the gig's problems stay the gig's. <b>How much protection you
+        really get depends on keeping it clean</b> — an attorney question, not a
+        web page's.</p>
+    </div>
+    <div class="why">
+      <span class="tag">It's cheap and reversible</span>
+      <p>Most states: $50&ndash;$300 to open, a form to close. <b>The price of ending
+        "someday" is a dinner out.</b></p>
+    </div>
+  </div>
+
+  <div class="redline-note">
+    <b>the honest rail</b>
+    Not a lawyer, not an accountant. Whether an LLC fits you — taxes, elections,
+    liability in your state — goes to a pro. This page gets you to the starting
+    line; it doesn't replace them.
+  </div>
+
+  <h2 class="part">Part 1 — Your raw material</h2>
+  <p class="partdek">The business is the overlap of what you already hold.
+    <b>Answer plainly — no pitch.</b></p>
+
+  <div class="block seed">
+    <label class="lbl" for="asked">What do people already come to you for?</label>
+    <textarea id="asked" rows="2" placeholder="the thing friends and coworkers ask your help with"></textarea>
+    <label class="lbl" for="skill">What does your day job pay you to be good at?</label>
+    <textarea id="skill" rows="2" placeholder="the skill, not the job title"></textarea>
+    <label class="lbl" for="people">What access do you have that most people don't?</label>
+    <textarea id="people" rows="2" placeholder="an industry, a trade, a group, a town"></textarea>
+    <label class="lbl" for="hours">Hours a week you can actually give</label>
+    <input type="text" id="hours" inputmode="numeric" placeholder="a real number. 3 honest beats 15 imaginary.">
+  </div>
+
+  <div class="northstar" id="northstar" hidden>
+    <span class="lbl">Your north star — first draft</span>
+    <p id="nsOut"></p>
+    <p class="fine">Rough on purpose. "Copy a prompt" below sharpens it.</p>
+  </div>
+
+  <h2 class="part">Part 2 — File it. This week.</h2>
+  <p class="partdek">Every step lives on your state's own website or irs.gov —
+    <b>no middleman needed.</b></p>
+
+  <div class="steps">
+    <div class="stepitem" id="si1">
+      <input type="checkbox" id="s1">
+      <label for="s1"><b>Name it</b>
+        <span>Search your state's Secretary of State database. The LLC name isn't
+        your brand — don't stall here.</span></label>
+    </div>
+    <div class="stepitem" id="si2">
+      <input type="checkbox" id="s2">
+      <label for="s2"><b>File Articles of Organization</b>
+        <span>On the state site directly. One-time fee, most states
+        $50&ndash;$300.</span></label>
+    </div>
+    <div class="stepitem" id="si3">
+      <input type="checkbox" id="s3">
+      <label for="s3"><b>Registered agent</b>
+        <span>Most states let you be your own with an in-state address.</span></label>
+    </div>
+    <div class="stepitem" id="si4">
+      <input type="checkbox" id="s4">
+      <label for="s4"><b>Get your EIN</b>
+        <span>Free at irs.gov, about ten minutes. <b>Never pay anyone for an EIN.</b></span></label>
+    </div>
+    <div class="stepitem" id="si5">
+      <input type="checkbox" id="s5">
+      <label for="s5"><b>Open the business bank account</b>
+        <span>Separate money from day one — the habit that makes the container
+        worth having.</span></label>
+    </div>
+    <div class="stepitem" id="si6">
+      <input type="checkbox" id="s6">
+      <label for="s6"><b>Calendar the annual renewal</b>
+        <span>Most states have one. Missing it is how LLCs quietly die.</span></label>
+    </div>
+  </div>
+
+  <div class="redline-note">
+    <b>the upsell trap</b>
+    A whole industry charges $200+ to file forms your state sells at the base fee —
+    then rents you a registered agent forever. You don't need them. State site.
+    irs.gov. Done.
+  </div>
+
+  <div class="block seed">
+    <label class="lbl" for="fileday">Someday isn't a day. Which of the next seven is your filing day?</label>
+    <input type="text" id="fileday" placeholder="a weekday, written down. that's the whole trick.">
+  </div>
+
+  <div class="callbox">
+    <span class="lbl">The boulder question</span>
+    <p class="means">Most problems aren't what-you-know. They're who-you-know.
+      <b>Name one person who's already filed one</b> — somebody who'd push the
+      boulder even the smallest way.</p>
+    <input type="text" id="callName" placeholder="a name. not 'a guy from work' — a name.">
+    <p class="means" style="margin:12px 0 0"><b>Now make the call</b> — today, before
+      the feeling wears off. Ask what they'd skip if they did it again.</p>
+  </div>
+
+  <div class="actions">
+    <button id="promptBtn" type="button">Copy a prompt for your AI</button>
+    <button id="copyBtn" class="ghost" type="button">Copy everything</button>
+    <button id="printBtn" class="ghost" type="button">Print a blank one</button>
+    <button id="resetBtn" class="ghost" type="button">Start over</button>
+  </div>
+  <div class="said" id="said" role="status" aria-live="polite"></div>
+
+  <dl class="titleblock">
+    <div class="tb"><dt>Protocol</dt><dd>CONTAINER</dd></div>
+    <div class="tb"><dt>Tool</dt><dd>05 of 05</dd></div>
+    <div class="tb"><dt>Steps</dt><dd class="red" id="count">0 / 6</dd></div>
+    <div class="tb"><dt>By</dt><dd class="red">@nicksdadhax</dd></div>
+  </dl>
+
+  <!--TAIL-->
+  <div class="tail">
+  <a class="tail-next" href="7-layers-of-why.html">
+    <span class="k">Read next</span>
+    <b>Tool 01 — The 7 Layers of Why</b>
+    <span class="s">The container's real. Now dig out why you wanted it — a want you can't explain is the first thing you quit.</span>
+  </a>
+  <section class="buyhouses">
+    <h2>Also &mdash; I buy houses</h2>
+    <p><b>Washington or Dakota County, Minnesota.</b> Off-market, or straight from the
+      owner &mdash; I'm the buyer, not a middleman passing it along. Woodbury, Cottage
+      Grove, Hastings, Stillwater, Eagan, Inver Grove Heights, Lakeville.</p>
+    <p>If that's you, or you know somebody quietly thinking about selling, I'll lay out
+      your options &mdash; <b>all of them, including the ones I don't make a dime on.</b>
+      Nothing to sign, no walkthrough unless you ask.</p>
+    <div class="ctas">
+      <a href="index.html#houses"><b>I have a house</b><span>Or I know someone who does</span></a>
+    </div>
+  </section>
+
+  <section class="optin" id="next">
+    <h2>What I ask</h2>
+    <p class="plain">That was free and nothing here sits behind an email. If it was
+      useful, here's the whole exchange: <b>send it to one or two people who'd use it
+      too.</b> That's it. I'm trusting you with it, you pass it on.</p>
+    <p class="plain">Want the next one before anyone else? I'm building an interest
+      list &mdash; no selling, no sequence, your address goes nowhere.
+      <a href="index.html#next">Exactly what that means, in plain words.</a></p>
+    <p class="fine">The list itself isn't open yet &mdash; I'm still setting it up, and
+      I'd rather say that than put up a box that doesn't work. The ask above stands
+      either way, and it's the one that matters. If you want to tell me what to build
+      next, my DMs are open.</p>
+    <div class="ctas">
+      <a href="https://www.instagram.com/nicksdadhax/"><b>Tell me what to build next</b><span>DM @nicksdadhax</span></a>
+    </div>
+  </section>
+  <div class="ctas">
+    <a href="https://www.instagram.com/nicksdadhax/"><b>Send me a DM</b><span>Tell me what you're stuck on</span></a>
+    <a href="https://www.instagram.com/nicksdadhax/"><b>Follow along</b><span>@nicksdadhax</span></a>
+    <a href="https://www.instagram.com/nicksdadhax/"><b>Send it on</b><span>To whoever needs it</span></a>
+  </div>
+  </div>
+  <!--/TAIL-->
+
+  <p class="cta">Free. This tool asks you for nothing — no gate, no email, no
+    analytics. When yours is filed, <b>tell me the name in the comments</b> — I read
+    every one.</p>
+
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var KEY = "ndh-llc-v1";
+
+  var said = document.getElementById("said"),
+      count = document.getElementById("count"),
+      northstar = document.getElementById("northstar"),
+      nsOut = document.getElementById("nsOut");
+
+  var fields = ["asked", "skill", "people", "hours", "fileday", "callName"]
+    .map(function (id) { return document.getElementById(id); });
+  var checks = ["s1", "s2", "s3", "s4", "s5", "s6"]
+    .map(function (id) { return document.getElementById(id); });
+
+  function val(el) { return (el.value || "").trim(); }
+
+  function compose() {
+    var asked = val(document.getElementById("asked")),
+        skill = val(document.getElementById("skill")),
+        people = val(document.getElementById("people")),
+        hours = val(document.getElementById("hours"));
+    var have = [asked, skill].filter(Boolean);
+    if (have.length < 2) { northstar.hidden = true; nsOut.textContent = ""; return; }
+    // textContent, never innerHTML — user text
+    var line = "Use " + skill.toLowerCase() + " and what people already trust you for — "
+      + asked.toLowerCase() + " — ";
+    line += people ? "to serve the people your access to " + people.toLowerCase()
+      + " puts in front of you" : "to serve people you already know";
+    line += hours ? ", " + hours + " focused hours a week," : ",";
+    line += " run through a container with your name on it.";
+    nsOut.textContent = line;
+    northstar.hidden = false;
+  }
+
+  function refresh() {
+    var done = checks.filter(function (c) { return c.checked; }).length;
+    count.textContent = done + " / 6";
+    checks.forEach(function (c, i) {
+      document.getElementById("si" + (i + 1)).classList.toggle("done", c.checked);
+    });
+    compose();
+    save();
+  }
+
+  function save() {
+    try {
+      var d = { v: {}, c: checks.map(function (c) { return c.checked; }) };
+      fields.forEach(function (el) { d.v[el.id] = el.value; });
+      // sessionStorage, NOT localStorage — same promise as tools 01-04: close
+      // the tab and it's gone. The privacy block says so; the code has to agree.
+      sessionStorage.setItem(KEY, JSON.stringify(d));
+    } catch (e) {}
+  }
+
+  function load() {
+    try {
+      var d = JSON.parse(sessionStorage.getItem(KEY) || "null");
+      if (!d) return;
+      fields.forEach(function (el) { if (d.v && d.v[el.id]) el.value = d.v[el.id]; });
+      if (Array.isArray(d.c)) checks.forEach(function (c, i) { c.checked = !!d.c[i]; });
+    } catch (e) {}
+  }
+
+  function grow(el) {
+    if (el.tagName !== "TEXTAREA") return;
+    el.style.height = "auto"; el.style.height = el.scrollHeight + "px";
+  }
+
+  fields.forEach(function (el) {
+    el.addEventListener("input", function () { grow(el); refresh(); });
+  });
+  checks.forEach(function (c) { c.addEventListener("change", refresh); });
+
+  document.getElementById("printBtn").addEventListener("click", function () { window.print(); });
+
+  function copyText(text, okMsg) {
+    function fallback() {
+      var t = document.createElement("textarea");
+      t.value = text;
+      t.style.position = "fixed";
+      t.style.opacity = "0";
+      document.body.appendChild(t);
+      t.select();
+      try { document.execCommand("copy"); } catch (e) {}
+      document.body.removeChild(t);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () {
+        said.textContent = okMsg;
+      }, function () { fallback(); said.textContent = okMsg; });
+    } else { fallback(); said.textContent = okMsg; }
+  }
+
+  // "Copy a prompt for your AI" — their raw material plus marching orders, ready
+  // to paste into whatever model they already use. The deep planning lives there.
+  document.getElementById("promptBtn").addEventListener("click", function () {
+    var asked = val(document.getElementById("asked")),
+        skill = val(document.getElementById("skill")),
+        people = val(document.getElementById("people")),
+        hours = val(document.getElementById("hours")),
+        fileday = val(document.getElementById("fileday"));
+    if (!asked && !skill) { said.textContent = "Fill in Part 1 first — the prompt is built from it."; return; }
+
+    var text = [
+      "You are a blunt planning partner. No hype, no filler. If my raw material is too",
+      "thin for a real business, say so and tell me what to go get first.",
+      "",
+      "I'm starting a side business and setting up an LLC as the container" +
+        (fileday ? " (filing day: " + fileday + ")." : "."),
+      "",
+      "My raw material:",
+      "- People already come to me for: " + (asked || "(blank)"),
+      "- My day job pays me to be good at: " + (skill || "(blank)"),
+      "- Access most people don't have: " + (people || "(blank)"),
+      "- Real hours per week: " + (hours || "(blank)"),
+      "",
+      "Do this, in order:",
+      "1. Name my asymmetric advantage in one sentence — the overlap above that is",
+      "   hardest for someone else to copy.",
+      "2. Write my north star: one sentence, who I help + with what + why me.",
+      "   Make it about them, not me.",
+      "3. Give me 3 first offers I could sell inside 30 days with zero new skills.",
+      "   Pick the one to start with and say why.",
+      "4. Build me a weekly loop that fits my hours: the 2-3 repeating actions that",
+      "   find people and make offers. Include one automation worth setting up in",
+      "   month one so the loop keeps running on a bad week.",
+      "5. Most problems are who-you-know problems. Name the TYPE of person I should",
+      "   call first and write the opening sentence of that call.",
+      "",
+      "Keep the whole thing under one page.",
+      "",
+      "(Built with Why Your Side Gig Wants an LLC — @nicksdadhax)"
+    ].join("\n");
+
+    copyText(text, "Prompt copied — paste it into the AI you already use.");
+  });
+
+  document.getElementById("copyBtn").addEventListener("click", function () {
+    var done = checks.filter(function (c) { return c.checked; }).length;
+    var names = ["Name searched", "Articles filed", "Registered agent set",
+                 "EIN in hand", "Business account open", "Renewal on calendar"];
+    var out = ["SIDE GIG -> LLC — " + new Date().toLocaleDateString(), ""];
+    if (!northstar.hidden) { out.push("North star: " + nsOut.textContent, ""); }
+    out.push("Filing: " + done + "/6");
+    checks.forEach(function (c, i) { out.push((c.checked ? "[x] " : "[ ] ") + names[i]); });
+    var fileday = val(document.getElementById("fileday")),
+        who = val(document.getElementById("callName"));
+    if (fileday) out.push("", "Filing day: " + fileday);
+    if (who) out.push("Call: " + who);
+    out.push("", "Why Your Side Gig Wants an LLC — @nicksdadhax");
+    copyText(out.join("\n"), "Copied — paste it where you plan your week.");
+  });
+
+  document.getElementById("resetBtn").addEventListener("click", function () {
+    fields.forEach(function (el) { el.value = ""; grow(el); });
+    checks.forEach(function (c) { c.checked = false; });
+    try { sessionStorage.removeItem(KEY); } catch (e) {}
+    refresh();
+    said.textContent = "Cleared.";
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  load();
+  fields.forEach(grow);
+  refresh();
+})();
+</script>
+
+</body>
+</html>
