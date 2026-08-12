@@ -2,6 +2,13 @@
   "_note": "Ordered post queue for ig_daily.py. The scheduler owns WHEN, this file owns WHAT'S NEXT. Refilled by the Monday reel loop. Files must be pushed to github.com/step427/dadhax-reels first.",
   "items": [
     {
+      "file": "ig-0812-proof.mp4",
+      "title": "Live proof — the system posted this reel (raw 20260812_161230)",
+      "status": "pending",
+      "earliest": "2026-08-12",
+      "caption": "Hey Dad,\n\nThis video is the receipt. I recorded it, dropped the file in a folder, and the system did the rest — cut it, captioned it, posted it, while I sat here filming the next one.\n\nI won't pretend it was free. Getting the bugs out took a real day of pain. But that was the trade: pain once, simple forever. Now my job is just to talk to you — the machine owns the rest.\n\nRecord. Drop. Done. That's the whole system.\n\nThanks, Dad. I love you, Dad.\n\nFree tools and sheets — full list in my profile."
+    },
+    {
       "file": "ig-0807-devil.mp4",
       "title": "The devil's weapon is ambivalence",
       "status": "posted",
