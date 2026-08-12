@@ -1,0 +1,67 @@
+name: Publish next reel
+
+# Three slots a day, in UTC because that is all cron speaks here.
+# 14:00 / 18:00 / 23:00 UTC = 9am / 1pm / 6pm Central while CDT is in effect.
+# When the US falls back on 2026-11-01 these land an hour early (8am/12pm/5pm);
+# bump each to 15/19/00 then, or leave it -- the script reads Central time itself,
+# so the slot logic stays correct either way, only the clock time shifts.
+#
+# GitHub's scheduler is best-effort and can run several minutes late under load.
+# That is fine: nothing here is time-critical to the minute.
+on:
+  schedule:
+    - cron: "0 14 * * *"
+    - cron: "0 18 * * *"
+    - cron: "0 23 * * *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Stage but do not publish"
+        type: boolean
+        default: false
+
+# NEVER add pull_request_target here. Secrets are withheld from fork PRs, and
+# this repo is public -- schedule + manual dispatch are the only safe triggers.
+
+# One run at a time. This is what replaces the old staging lock: two overlapping
+# runs could otherwise claim the same queue item and double-post it.
+concurrency:
+  group: publish-reel
+  cancel-in-progress: false
+
+permissions:
+  contents: write          # to commit the updated queue.json back
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Publish
+        env:
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
+          META_PAGE_TOKEN: ${{ secrets.META_PAGE_TOKEN }}
+        run: |
+          python publisher/publish.py ${{ inputs.dry_run && '--dry-run' || '' }}
+
+      - name: Commit the queue
+        if: always()
+        run: |
+          git config user.name  "dadhax-publisher"
+          git config user.email "publisher@users.noreply.github.com"
+          git add -A queue.json '*.mp4'
+          git diff --cached --quiet && { echo "nothing changed"; exit 0; }
+          git commit -m "Publish run: update queue"
+          # the reel loop pushes here too, so rebase onto whatever landed meanwhile
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push origin main && exit 0
+            sleep 5
+          done
+          echo "could not push the queue after 3 tries" >&2
+          exit 1
