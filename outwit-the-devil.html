@@ -209,6 +209,11 @@
   .verdictline { padding: 14px 16px; font-size: 15.5px; color: #CFC9BB;
     border-bottom: 1px solid var(--hair); }
   .verdictline b { color: var(--bone); }
+  .missed { padding: 14px 16px; }
+  .missed ul { margin: 0; padding-left: 18px; }
+  .missed li { font-size: 14.5px; color: #CFC9BB; line-height: 1.5; margin-bottom: 8px; }
+  .missed li b { font-family: var(--mono); font-size: 12px; letter-spacing: .06em;
+    color: var(--warn); }
 
   .block { margin-top: 22px; }
   .block textarea, .block input[type="text"] {
@@ -403,6 +408,10 @@
       <div class="dg"><dt>He took</dt><dd class="r" id="rDevil">—</dd></div>
     </div>
     <div class="verdictline" id="verdict"></div>
+    <div class="missed" id="missed" hidden>
+      <span class="lbl">What you left on the table — the cracks to pry at next time</span>
+      <ul id="missedList"></ul>
+    </div>
   </div>
 
   <div id="closer" hidden>
@@ -517,19 +526,47 @@
   /* ---------- the deck ---------- */
   var CARDS = [
     { id: "drift",  face: "THE DRIFT",   topics: ["drift", "wait", "delay", "procrast", "hesitat", "control people", "how do you get", "how do you take", "how do you work", "take control", "control of", "weapon", "method", "trick"],
-      confess: "I never chain anyone. Chains cost effort. I just wait for a man to postpone one decision — then help him postpone the next. He calls it “thinking it over.” I call him a drifter, and he does the rest himself." },
+      confess: "I never chain anyone. Chains cost effort. I just wait for a man to postpone one decision — then help him postpone the next. He calls it “thinking it over.” I call him a drifter, and he does the rest himself.",
+      crumb: "Before you go \u2014 do ask me sometime how I take a man without ever laying a hand on him. It's my best story.",
+      lure: "Go on \u2014 ask me HOW I take control of a person.",
+      clue: "He bragged he never needs chains \u2014 you never made him say HOW he takes people.",
+      model: "How do you take control of a person?" },
     { id: "number", face: "98 OF 100",   topics: ["how many", "98", "percent", "most people", "everyone", "everybody", "people do you"],
-      confess: "Out of every hundred? Ninety-eight work for me. Not the wicked ones — the undecided ones. My claim, not a census. But count the people you know who are waiting for something to happen to them, and check my math." },
+      confess: "Out of every hundred? Ninety-eight work for me. Not the wicked ones — the undecided ones. My claim, not a census. But count the people you know who are waiting for something to happen to them, and check my math.",
+      crumb: "Funny thing: of any hundred people you know, you would weep to learn how many already answer to me.",
+      lure: "Ask me HOW MANY of you belong to me. I love saying the number.",
+      clue: "He knows exactly how many of us he holds. You never asked HOW MANY.",
+      model: "How many people belong to you?" },
     { id: "rhythm", face: "THE RHYTHM",  topics: ["habit", "repeat", "repetition", "rhythm", "routine", "keep them", "keep someone", "keep me", "stay stuck", "stuck", "permanent", "hold on", "hold them", "once you have"],
-      confess: "Here is my favorite: repetition. Repeat anything — a thought, a fear, a Tuesday — and it wires itself in until it no longer needs my help. Your scientists call it plasticity and sell it as good news. It is neutral machinery. I simply feed it hesitation. You could feed it something else. Most don't." },
+      confess: "Here is my favorite: repetition. Repeat anything — a thought, a fear, a Tuesday — and it wires itself in until it no longer needs my help. Your scientists call it plasticity and sell it as good news. It is neutral machinery. I simply feed it hesitation. You could feed it something else. Most don't.",
+      crumb: "The beautiful part is they do it to themselves. Over and over and over. You could ask how that works.",
+      lure: "Ask me HOW I keep someone stuck. The answer rhymes with your morning routine.",
+      clue: "Something he does over and over keeps people stuck. Ask HOW.",
+      model: "How do you keep someone stuck?" },
     { id: "fears",  face: "SIX FEARS",   topics: ["fear", "afraid of what", "scare", "use against", "tool", "weapon against", "leverage"],
-      confess: "Six masterkeys, in order of use: poverty, criticism, ill health, lost love, old age, death. I rarely need the last five. The fear of what the neighbors think does more of my work than the fear of dying ever has." },
+      confess: "Six masterkeys, in order of use: poverty, criticism, ill health, lost love, old age, death. I rarely need the last five. The fear of what the neighbors think does more of my work than the fear of dying ever has.",
+      crumb: "I carry six keys on my belt, friend. Most doors open with the first one.",
+      lure: "Ask me WHAT I use against you. There are six.",
+      clue: "Six keys on his belt. Ask WHAT he uses against us.",
+      model: "What do you use against us?" },
     { id: "comfort", face: "THE BRIBE",  topics: ["comfort", "easy", "comfortable", "lazy", "pleasure", "distract", "entertain", "numb", "sedat"],
-      confess: "I don't make lives miserable — misery wakes people up. I make lives comfortable. Just comfortable enough that changing anything feels like a risk. A soft chair, a full feed, a small sure thing. Nobody notices what I'm siphoning while they're comfortable." },
+      confess: "I don't make lives miserable — misery wakes people up. I make lives comfortable. Just comfortable enough that changing anything feels like a risk. A soft chair, a full feed, a small sure thing. Nobody notices what I'm siphoning while they're comfortable.",
+      crumb: "You'd be astonished what a soft chair and a full feed do for my business.",
+      lure: "Ask me WHY I make your life comfortable. You won't like it.",
+      clue: "The soft chair is a weapon. Ask WHY he makes life comfortable.",
+      model: "Why do you make our lives comfortable?" },
     { id: "borrow", face: "BORROWED MINDS", topics: ["opinion", "other people", "others think", "influence", "school", "believe", "told", "taught", "parents", "media", "news"],
-      confess: "I almost never enter through a man's own thoughts. I come in through everyone else's — handed to him before he was old enough to vote on them. A man running on borrowed opinions is a man I steer by remote. Ask him why he believes a thing and watch him reach for someone else's sentence." },
+      confess: "I almost never enter through a man's own thoughts. I come in through everyone else's — handed to him before he was old enough to vote on them. A man running on borrowed opinions is a man I steer by remote. Ask him why he believes a thing and watch him reach for someone else's sentence.",
+      crumb: "Those opinions you're so proud of \u2014 you should ask where you bought them. You didn't make them.",
+      lure: "Ask me WHY I prefer other people's opinions to your own thoughts.",
+      clue: "Your opinions have a supplier. Ask WHY he comes in through other people's thinking.",
+      model: "Why do you use other people's opinions instead of my own thoughts?" },
     { id: "purpose", face: "HIS ONE FEAR", locked: true, topics: ["you fear", "you afraid", "afraid of", "scares you", "your fear", "stop you", "beat you", "defeat you", "outwit", "protect", "immune", "escape you"],
-      confess: "Fine. You've earned the real answer. I fear one thing: a person with a definite purpose and a plan moving on it — today, not Monday. I have no tool for that man. I can't bribe him with comfort, the fears bounce off, and the rhythm starts working for him. Plan and purpose. That's the whole trick. Now forget I said it." }
+      confess: "Fine. You've earned the real answer. I fear one thing: a person with a definite purpose and a plan moving on it — today, not Monday. I have no tool for that man. I can't bribe him with comfort, the fears bounce off, and the rhythm starts working for him. Plan and purpose. That's the whole trick. Now forget I said it.",
+      crumb: "There is exactly one question I pray you never think to ask me.",
+      lure: "You could always ask me what I'm afraid of. I dare you.",
+      clue: "There is ONE question he prays you never ask. It's about what HE fears.",
+      model: "What do you fear?" }
   ];
 
   /* ---------- devil lines ---------- */
@@ -591,7 +628,24 @@
 
   function freshState() {
     return { t: TIME, started: false, over: false, q: 0, open: 0, closed: 0,
-      cool: 100, devil: 0, found: [], lastTopic: null, pressed: {}, askedLog: [] };
+      cool: 100, devil: 0, found: [], lastTopic: null, pressed: {}, askedLog: [],
+      crumbed: {}, isReplay: false };
+  }
+  var lastMissed = [];
+  try { lastMissed = JSON.parse(sessionStorage.getItem("otd-missed") || "[]"); } catch (e) {}
+
+  /* breadcrumbs — a clue for a still-hidden card, slipped into the tail of his talk.
+     Subtle on a first sit; on a replay after a loss he taunts openly (lure). */
+  function maybeCrumb(force) {
+    if (!st || st.over) return;
+    var hidden = CARDS.filter(function (c) {
+      return st.found.indexOf(c.id) < 0 && !st.crumbed[c.id];
+    });
+    if (!hidden.length) return;
+    if (!force && st.q % 2 !== 0) return;
+    var c = hidden[Math.floor(Math.random() * hidden.length)];
+    st.crumbed[c.id] = true;
+    say("devil", st.isReplay ? c.lure : c.crumb);
   }
 
   /* ---------- render ---------- */
@@ -690,6 +744,31 @@
     var host = document.getElementById("hints");
     while (host.firstChild) host.removeChild(host.firstChild);
     if (st.over) { host.hidden = true; return; }
+
+    // replay tier: after a loss, the missed cards' own questions become standing
+    // hints — clearly laid out, gone as each card flips.
+    if (st.isReplay) {
+      var still = CARDS.filter(function (c) {
+        return lastMissed.indexOf(c.id) >= 0 && st.found.indexOf(c.id) < 0;
+      }).slice(0, 2);
+      if (still.length) {
+        var rl = document.createElement("span");
+        rl.className = "hlbl";
+        rl.textContent = "The cracks you left last time — tap one to pry:";
+        host.appendChild(rl);
+        still.forEach(function (c) {
+          var rb = document.createElement("button");
+          rb.type = "button"; rb.textContent = "\u201C" + c.model + "\u201D";
+          rb.addEventListener("click", function () { askEl.value = c.model; askEl.focus(); });
+          host.appendChild(rb);
+        });
+        host.hidden = false;
+        return;
+      }
+      host.hidden = true;
+      return;
+    }
+
     var round = st.q < 2 ? 0 : (st.q < 5 ? 1 : (st.q < 8 ? 2 : 3));
     if (round >= 3) { host.hidden = true; return; }
     var h = HINTS[round];
@@ -717,6 +796,7 @@
   /* ---------- game flow ---------- */
   function start() {
     st = freshState(); st.started = true;
+    st.isReplay = lastMissed.length > 0;
     document.getElementById("startrow").hidden = true;
     document.getElementById("askrow").hidden = false;
     document.getElementById("debrief").hidden = true;
@@ -724,7 +804,8 @@
     while (logEl.firstChild) logEl.removeChild(logEl.firstChild);
     cardsRender(); meters(); hintsRender();
     say("table", "He sits. He does not offer to shake hands. Seven cards in his hand — flip them all before the clock dies.");
-    say("devil", L.open);
+    if (st.isReplay) say("table", "You've sat here before. He's still holding " + lastMissed.length + " of the cards you missed — the hints below know which ones.");
+    say("devil", st.isReplay ? "Back again. I kept your seat warm — and my secrets warmer." : L.open);
     timer = setInterval(tick, 1000);
     askEl.focus();
   }
@@ -758,6 +839,22 @@
     else if (n >= 3) v = "You flipped " + n + " of his cards. Notice what worked: every confession came off an open question that pressed a thread. Nothing came off a yes/no. That's the lesson, and it works on problems that don't wear a costume.";
     else v = "He kept most of his deck. Watch the pattern: one-word answers to one-word-sized questions. WHAT, HOW and WHY are crowbars. IS, DO and SHOULD are doors he closes politely. Sit back down.";
     document.getElementById("verdict").textContent = v;
+    var missedCards = CARDS.filter(function (c) { return st.found.indexOf(c.id) < 0; });
+    lastMissed = missedCards.map(function (c) { return c.id; });
+    try { sessionStorage.setItem("otd-missed", JSON.stringify(lastMissed)); } catch (e) {}
+    var mBox = document.getElementById("missed"), mList = document.getElementById("missedList");
+    while (mList.firstChild) mList.removeChild(mList.firstChild);
+    if (missedCards.length) {
+      missedCards.forEach(function (c) {
+        var li = document.createElement("li");
+        var b = document.createElement("b");
+        b.textContent = "CARD STILL DOWN · ";
+        li.appendChild(b);
+        li.appendChild(document.createTextNode(c.clue));
+        mList.appendChild(li);
+      });
+      mBox.hidden = false;
+    } else { mBox.hidden = true; }
     document.getElementById("debrief").hidden = false;
     document.getElementById("closer").hidden = false;
     document.getElementById("debrief").scrollIntoView({ behavior: "smooth" });
@@ -789,6 +886,7 @@
       st.devil += 5;
       say("devil", pick(L.closedAns));
       if (st.closed === 2 || st.closed === 4) say("devil", pick(L.closedTaunt));
+      maybeCrumb(false);
       afterTurn(); return;
     }
 
@@ -801,6 +899,7 @@
         say("devil", pick(L.deflect));
         if (st.q === 3 || st.q === 6) say("devil", pick(L.bait));
       }
+      maybeCrumb(false);
       afterTurn(); return;
     }
 
@@ -822,6 +921,7 @@
       say("table", "CONFESSION FLIPPED: " + card.face + (card.id === "rhythm" ? " — see Tool 02: the same machinery, pointed the other way." : ""));
       cardsRender();
       if (st.found.length >= 7) { end(true); return; }
+      maybeCrumb(true);
       afterTurn(); return;
     }
     // statement on topic
