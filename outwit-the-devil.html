@@ -106,6 +106,13 @@
   .allegory { margin-top: 18px; font-size: 14px; color: var(--graphite); line-height: 1.55; }
   .allegory b { color: #CFC9BB; font-weight: 600; }
 
+  .brief { margin-top: 24px; border: 1px solid var(--hair); background: var(--panel);
+    padding: 15px 16px; }
+  .brief ol { margin: 0; padding-left: 20px; }
+  .brief li { font-size: 15px; line-height: 1.5; color: #CFC9BB; margin-bottom: 10px; }
+  .brief li:last-child { margin-bottom: 0; }
+  .brief b { color: var(--bone); }
+
   /* ---------- the table (game board) ---------- */
   .board { margin-top: 28px; border: 1px solid var(--hair); background: var(--panel); }
   .boardbar {
@@ -160,6 +167,13 @@
     padding: 0 18px; cursor: pointer; min-height: 48px;
   }
   .askrow button:disabled { background: var(--hair); color: var(--graphite); cursor: default; }
+  .askrow .micbtn { background: var(--panel-up); color: var(--bone); border: 1px solid var(--hair);
+    font-size: 18px; padding: 0 14px; }
+  .askrow .micbtn.listening { border-color: var(--warn); color: var(--warn); }
+  .voicebtn { background: var(--panel-up); color: var(--bone); border: 1px solid var(--hair);
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: .08em; padding: 6px 10px;
+    cursor: pointer; min-height: 32px; }
+  .voicebtn[aria-pressed="false"] { color: var(--graphite); }
 
   .hints { padding: 0 14px 12px; display: flex; flex-direction: column; gap: 6px; }
   .hints .hlbl { font-family: var(--mono); font-size: 10.5px; letter-spacing: .14em;
@@ -323,20 +337,31 @@
 
   <div class="story">
     <span class="lbl">Why this one exists</span>
-    <p>I listen to books on my drives, and lately it's Napoleon Hill interrogating the
-      devil — an interview he wrote in 1938 that his family kept locked away until 2011.
-      I keep getting caught mid-sentence: <b>yep, guilty of that. Yep, guilty of that.</b></p>
-    <p>Here's the thing I do for a living, twice over: I ask questions. As a physical
-      therapist, the closed question gets me nothing — "does it hurt?" — "yes." The open
-      one finds the source. Buying houses, same deal. So when Hill put the devil in a
-      chair and made him confess, I recognized the sport immediately.
-      <b>This is that chair.</b> Your turn.</p>
+    <p>I've been listening to Napoleon Hill interrogate the devil on my drives — written
+      1938, locked away until 2011 — and I keep getting caught mid-sentence:
+      <b>yep, guilty of that.</b> This is that chair, turned around. Your turn.</p>
   </div>
 
   <p class="allegory"><b>What you're talking to:</b> Hill's devil isn't theology — he's
     an allegory with a voice: fear and drift, personified so you can cross-examine them.
     The one at this table is scripted — a sparring dummy wearing the costume. The real
     one doesn't use a script, which is exactly why the practice matters.</p>
+
+  <!-- ---------- the brief ---------- -->
+  <div class="brief">
+    <span class="lbl">The brief — read before you sit</span>
+    <ol>
+      <li><b>He is holding seven cards — his secrets.</b> The face-down cards below are
+        his hand: how he actually takes people. Your job is to make him confess every
+        one before the clock dies. Each confession flips a card face-up.</li>
+      <li><b>Your only crowbar is the open question.</b> WHAT, HOW, WHY — aimed at how
+        he works, what he uses, what he's afraid of. Press a thread and he has to give
+        it up.</li>
+      <li><b>He scores three ways:</b> yes/no questions (one-word answer, your clock
+        burns) · your temper (every degree you heat up, he cools down) · the clock
+        itself. The seventh card is locked until you've earned it.</li>
+    </ol>
+  </div>
 
   <!-- ---------- the game ---------- -->
   <div class="board" id="board">
@@ -347,6 +372,7 @@
         <span>COOL <b id="mCool">100</b></span>
         <span class="dv">HIS <b id="mDevil">0</b></span>
       </div>
+      <button id="voiceBtn" type="button" class="voicebtn" aria-pressed="true">🔈 HE SPEAKS</button>
     </div>
 
     <div class="cards" id="cards" aria-label="Confessions flipped"></div>
@@ -357,12 +383,13 @@
 
     <div class="askrow" id="askrow" hidden>
       <textarea id="ask" rows="2" placeholder="ask him something he can't dodge…" aria-label="Your question"></textarea>
+      <button id="micBtn" type="button" class="micbtn" hidden aria-label="Dictate your question">🎙</button>
       <button id="askBtn" type="button">Ask</button>
     </div>
 
     <div class="startrow" id="startrow">
-      <button id="startBtn" type="button">Sit down at the table</button>
-      <p>Five minutes. Seven confessions in the deck. He wins every second you waste.</p>
+      <button id="startBtn" type="button">Start your interview with the devil</button>
+      <p>The chair is pulled out. Five minutes, seven confessions. He wins every second you waste.</p>
     </div>
   </div>
 
@@ -599,8 +626,35 @@
     d.appendChild(w); d.appendChild(p);
     logEl.appendChild(d);
     logEl.scrollTop = logEl.scrollHeight;
+    if (who === "devil") speak(text);
   }
   function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+  /* ---------- the devil's voice — browser speech engine, pitched to the basement.
+     No files, no network, no promise broken: the voice lives on the device. ---------- */
+  var voiceOn = true, devilVoiceCache = null;
+  function devilVoice() {
+    if (devilVoiceCache) return devilVoiceCache;
+    if (!window.speechSynthesis) return null;
+    var vs = speechSynthesis.getVoices().filter(function (v) { return /^en/i.test(v.lang); });
+    if (!vs.length) return null;
+    var prefer = /daniel|george|arthur|aaron|guy|male|baritone|deep/i;
+    devilVoiceCache = vs.filter(function (v) { return prefer.test(v.name); })[0] || vs[0];
+    return devilVoiceCache;
+  }
+  if (window.speechSynthesis && speechSynthesis.onvoiceschanged !== undefined) {
+    speechSynthesis.onvoiceschanged = function () { devilVoiceCache = null; devilVoice(); };
+  }
+  function speak(text) {
+    if (!voiceOn || !window.speechSynthesis) return;
+    try {
+      speechSynthesis.cancel();
+      var u = new SpeechSynthesisUtterance(text);
+      u.pitch = 0.5; u.rate = 0.95;
+      var v = devilVoice(); if (v) u.voice = v;
+      speechSynthesis.speak(u);
+    } catch (e) {}
+  }
 
   /* ---------- classification ---------- */
   var OPENERS = /^(what|how|why|who|where|when|which|tell me|walk me|explain|describe|show me|talk about|say more|go on about)\b/i;
@@ -669,7 +723,7 @@
     document.getElementById("closer").hidden = true;
     while (logEl.firstChild) logEl.removeChild(logEl.firstChild);
     cardsRender(); meters(); hintsRender();
-    say("table", "He sits. He does not offer to shake hands.");
+    say("table", "He sits. He does not offer to shake hands. Seven cards in his hand — flip them all before the clock dies.");
     say("devil", L.open);
     timer = setInterval(tick, 1000);
     askEl.focus();
@@ -687,7 +741,9 @@
     document.getElementById("askrow").hidden = true;
     document.getElementById("hints").hidden = true;
     say("devil", won ? L.win : (st.t > 0 ? L.doneEarly : L.lose));
-    say("table", "He is gone. The chair was never warm.");
+    setTimeout(function () {
+      say("table", "He is gone. The chair was never warm.");
+    }, 400);
 
     var craft = st.q ? Math.round(100 * st.open / st.q) : 0;
     var n = st.found.length;
@@ -799,6 +855,37 @@
 
   /* ---------- buttons ---------- */
   document.getElementById("startBtn").addEventListener("click", start);
+
+  var voiceBtn = document.getElementById("voiceBtn");
+  voiceBtn.addEventListener("click", function () {
+    voiceOn = !voiceOn;
+    voiceBtn.setAttribute("aria-pressed", String(voiceOn));
+    voiceBtn.textContent = voiceOn ? "🔈 HE SPEAKS" : "🔇 MUTED";
+    if (!voiceOn && window.speechSynthesis) try { speechSynthesis.cancel(); } catch (e) {}
+  });
+  if (!window.speechSynthesis) { voiceBtn.hidden = true; voiceOn = false; }
+
+  /* dictation — ask your question out loud (Chrome/Safari; hidden where unsupported) */
+  var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  var micBtn = document.getElementById("micBtn");
+  if (SR) {
+    micBtn.hidden = false;
+    var listening = false, rec = null;
+    micBtn.addEventListener("click", function () {
+      if (listening) { try { rec.stop(); } catch (e) {} return; }
+      rec = new SR();
+      rec.lang = "en-US"; rec.interimResults = false; rec.maxAlternatives = 1;
+      listening = true; micBtn.classList.add("listening");
+      rec.onresult = function (e) {
+        var t = e.results[0][0].transcript;
+        askEl.value = (askEl.value ? askEl.value + " " : "") + t;
+        askEl.focus();
+      };
+      rec.onend = function () { listening = false; micBtn.classList.remove("listening"); };
+      rec.onerror = rec.onend;
+      try { rec.start(); } catch (e) { rec.onend(); }
+    });
+  }
   document.getElementById("askBtn").addEventListener("click", handle);
   askEl.addEventListener("keydown", function (e) {
     if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); handle(); }
