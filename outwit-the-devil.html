@@ -270,12 +270,19 @@
       repeating-linear-gradient(to right,  rgba(242,237,231,.035) 0 1px, transparent 1px 28px),
       repeating-linear-gradient(to bottom, rgba(242,237,231,.035) 0 1px, transparent 1px 28px);
   }
-  .gatebox { max-width: 380px; width: 100%; border: 1px solid var(--hair);
+  .gatebox { max-width: 420px; width: 100%; border: 1px solid #5A2417;
     background: var(--panel); padding: 22px; }
   .gatebox .protocol { margin-bottom: 10px; }
+  .gatebox .protocol .him { color: var(--warn); }
   .gatebox h2 { font-family: var(--mono); font-size: 20px; text-transform: uppercase;
-    letter-spacing: -.01em; margin: 0 0 8px; }
+    letter-spacing: -.01em; margin: 0 0 8px; color: var(--warn); }
   .gatebox p { font-size: 14px; color: var(--graphite); margin: 0 0 14px; }
+  .gatebox .hisword { color: #D8B9AE; border-left: 3px solid var(--warn);
+    padding: 8px 0 8px 12px; line-height: 1.55; }
+  .gatebox .hisword b { color: var(--warn); }
+  .gatebox .riddle { font-family: var(--mono); font-size: 13.5px; line-height: 1.6;
+    color: #CFC9BB; background: var(--carbon); border: 1px dashed #5A2417; padding: 12px; }
+  .gatebox .riddle b { color: var(--bone); }
   .gatebox input { width: 100%; background: var(--carbon); border: 1px solid var(--hair);
     color: var(--bone); font-family: var(--mono); font-size: 18px; letter-spacing: .2em;
     text-transform: uppercase; padding: 12px; text-align: center; }
@@ -298,11 +305,18 @@
     + the robots meta above, then set the nav meta to "Tool 06 · free · no gate". -->
 <div id="gate">
   <div class="gatebox">
-    <span class="protocol">NICKSDADHAX // FIELD TEST — NOT YET PUBLIC</span>
-    <h2>Access code</h2>
-    <p>This one's still in the shop. If you have the code, you're the test pilot.</p>
-    <input id="gateIn" type="text" autocomplete="off" autocapitalize="characters" aria-label="Access code">
-    <button id="gateBtn" type="button">Open the door</button>
+    <span class="protocol">NICKSDADHAX // SEALED UNTIL 8·18 — <b class="him">HE ANSWERED THE DOOR</b></span>
+    <h2>You're early.</h2>
+    <p class="hisword">"The man who built this table says the door stays shut until
+      the eighteenth. But eagerness is my favorite sin — so here is my offer. Three
+      tries at one riddle. Crack it and walk in early. Miss all three and you wait
+      like everyone else. And waiting, friend, is <b>my</b> favorite game."</p>
+    <p class="riddle">There are two men in every man. One hesitates, drifts,
+      and waits — <b>that one is mine.</b> The other gives the orders, and he is the
+      only thing on this earth I fear. Hill met him and gave him a name.<br>
+      <b>Say his name — two words, spoken as one — and the door opens.</b></p>
+    <input id="gateIn" type="text" autocomplete="off" autocapitalize="characters" aria-label="Your answer to his riddle">
+    <button id="gateBtn" type="button">Answer him</button>
     <div class="gerr" id="gateErr"></div>
   </div>
 </div>
@@ -502,15 +516,35 @@
       }).join("");
     });
   }
+  var MISS_LINES = [
+    "No. Two tries left — and the drifting half of you is showing.",
+    "Wrong again. One try, friend. Think: which man in you do I run from?",
+    "Three misses. The door stays shut until the eighteenth — and I do so love a man who waits."
+  ];
+  function gateTries() {
+    try { return parseInt(sessionStorage.getItem("otd-tries") || "0", 10); } catch (e) { return 0; }
+  }
+  function lockGate() {
+    document.getElementById("gateIn").disabled = true;
+    document.getElementById("gateBtn").disabled = true;
+    document.getElementById("gateErr").textContent = MISS_LINES[2];
+  }
+  if (gateTries() >= 3) lockGate();
   function tryGate() {
-    var v = (document.getElementById("gateIn").value || "").trim().toUpperCase();
-    if (!v) return;
+    var raw = (document.getElementById("gateIn").value || "").trim().toUpperCase();
+    if (!raw) return;
+    // normalize the riddle answer: letters only, optional leading THE/MY —
+    // "the other self", "other self", "OTHERSELF" all resolve the same
+    var v = raw.replace(/[^A-Z]/g, "").replace(/^THE/, "").replace(/^MY/, "");
     sha256hex(v).then(function (h) {
       if (h === GATE_HASH) {
-        try { sessionStorage.setItem("otd-gate", "open"); } catch (e) {}
+        try { sessionStorage.setItem("otd-gate", "open"); sessionStorage.removeItem("otd-tries"); } catch (e) {}
         gate.parentNode.removeChild(gate);
       } else {
-        document.getElementById("gateErr").textContent = "Not it. The devil smiles.";
+        var t = gateTries() + 1;
+        try { sessionStorage.setItem("otd-tries", String(t)); } catch (e) {}
+        if (t >= 3) { lockGate(); return; }
+        document.getElementById("gateErr").textContent = MISS_LINES[t - 1];
       }
     });
   }
@@ -527,43 +561,43 @@
   var CARDS = [
     { id: "drift",  face: "THE DRIFT",   topics: ["drift", "wait", "delay", "procrast", "hesitat", "control people", "how do you get", "how do you take", "how do you work", "take control", "control of", "weapon", "method", "trick"],
       confess: "I never chain anyone. Chains cost effort. I just wait for a man to postpone one decision — then help him postpone the next. He calls it “thinking it over.” I call him a drifter, and he does the rest himself.",
-      crumb: "Before you go \u2014 do ask me sometime how I take a man without ever laying a hand on him. It's my best story.",
+      crumb: "A riddle while you flail: I own no chains, no cage, no rope \u2014 and yet my prisoners never leave. How do I hold them?",
       lure: "Go on \u2014 ask me HOW I take control of a person.",
       clue: "He bragged he never needs chains \u2014 you never made him say HOW he takes people.",
       model: "How do you take control of a person?" },
     { id: "number", face: "98 OF 100",   topics: ["how many", "98", "percent", "most people", "everyone", "everybody", "people do you"],
       confess: "Out of every hundred? Ninety-eight work for me. Not the wicked ones — the undecided ones. My claim, not a census. But count the people you know who are waiting for something to happen to them, and check my math.",
-      crumb: "Funny thing: of any hundred people you know, you would weep to learn how many already answer to me.",
+      crumb: "A riddle: count one hundred people you know. How many of them, do you suppose, answer to me? I love saying the number.",
       lure: "Ask me HOW MANY of you belong to me. I love saying the number.",
       clue: "He knows exactly how many of us he holds. You never asked HOW MANY.",
       model: "How many people belong to you?" },
     { id: "rhythm", face: "THE RHYTHM",  topics: ["habit", "repeat", "repetition", "rhythm", "routine", "keep them", "keep someone", "keep me", "stay stuck", "stuck", "permanent", "hold on", "hold them", "once you have"],
       confess: "Here is my favorite: repetition. Repeat anything — a thought, a fear, a Tuesday — and it wires itself in until it no longer needs my help. Your scientists call it plasticity and sell it as good news. It is neutral machinery. I simply feed it hesitation. You could feed it something else. Most don't.",
-      crumb: "The beautiful part is they do it to themselves. Over and over and over. You could ask how that works.",
+      crumb: "A riddle: what digs a man's grave an inch a day and calls itself his routine?",
       lure: "Ask me HOW I keep someone stuck. The answer rhymes with your morning routine.",
       clue: "Something he does over and over keeps people stuck. Ask HOW.",
       model: "How do you keep someone stuck?" },
     { id: "fears",  face: "SIX FEARS",   topics: ["fear", "afraid of what", "scare", "use against", "tool", "weapon against", "leverage"],
       confess: "Six masterkeys, in order of use: poverty, criticism, ill health, lost love, old age, death. I rarely need the last five. The fear of what the neighbors think does more of my work than the fear of dying ever has.",
-      crumb: "I carry six keys on my belt, friend. Most doors open with the first one.",
+      crumb: "A riddle: I carry six keys on one belt, and the first key opens most men. Name them.",
       lure: "Ask me WHAT I use against you. There are six.",
       clue: "Six keys on his belt. Ask WHAT he uses against us.",
       model: "What do you use against us?" },
     { id: "comfort", face: "THE BRIBE",  topics: ["comfort", "easy", "comfortable", "lazy", "pleasure", "distract", "entertain", "numb", "sedat"],
       confess: "I don't make lives miserable — misery wakes people up. I make lives comfortable. Just comfortable enough that changing anything feels like a risk. A soft chair, a full feed, a small sure thing. Nobody notices what I'm siphoning while they're comfortable.",
-      crumb: "You'd be astonished what a soft chair and a full feed do for my business.",
+      crumb: "A riddle: name my only weapon that leaves no wound \u2014 the one my victims thank me for.",
       lure: "Ask me WHY I make your life comfortable. You won't like it.",
       clue: "The soft chair is a weapon. Ask WHY he makes life comfortable.",
       model: "Why do you make our lives comfortable?" },
     { id: "borrow", face: "BORROWED MINDS", topics: ["opinion", "other people", "others think", "influence", "school", "believe", "told", "taught", "parents", "media", "news"],
       confess: "I almost never enter through a man's own thoughts. I come in through everyone else's — handed to him before he was old enough to vote on them. A man running on borrowed opinions is a man I steer by remote. Ask him why he believes a thing and watch him reach for someone else's sentence.",
-      crumb: "Those opinions you're so proud of \u2014 you should ask where you bought them. You didn't make them.",
+      crumb: "A riddle: whose thoughts are you thinking right now? Careful, friend \u2014 'my own' is the wrong answer.",
       lure: "Ask me WHY I prefer other people's opinions to your own thoughts.",
       clue: "Your opinions have a supplier. Ask WHY he comes in through other people's thinking.",
       model: "Why do you use other people's opinions instead of my own thoughts?" },
     { id: "purpose", face: "HIS ONE FEAR", locked: true, topics: ["you fear", "you afraid", "afraid of", "scares you", "your fear", "stop you", "beat you", "defeat you", "outwit", "protect", "immune", "escape you"],
       confess: "Fine. You've earned the real answer. I fear one thing: a person with a definite purpose and a plan moving on it — today, not Monday. I have no tool for that man. I can't bribe him with comfort, the fears bounce off, and the rhythm starts working for him. Plan and purpose. That's the whole trick. Now forget I said it.",
-      crumb: "There is exactly one question I pray you never think to ask me.",
+      crumb: "One riddle I pray you never solve: what is the only thing in this world that makes me run?",
       lure: "You could always ask me what I'm afraid of. I dare you.",
       clue: "There is ONE question he prays you never ask. It's about what HE fears.",
       model: "What do you fear?" }

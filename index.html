@@ -51,6 +51,10 @@
   a.card em { display:block; font-style:normal; font-family:var(--mono); font-size:11.5px;
     letter-spacing:.12em; text-transform:uppercase; color:var(--signal); margin-top:10px; }
   .soon { opacity:.5; pointer-events:none; }
+  a.card.devil { border-color:#5A2417; }
+  a.card.devil:hover { border-color:#E8502C; }
+  a.card.devil .sheetno, a.card.devil em { color:#E8502C; }
+  a.card.devil .d i { color:#D8B9AE; font-style:italic; }
 
   .collector { margin:16px 0 0; padding:15px 16px; background:var(--panel-up);
     border:1px solid var(--hair); font-size:16px; line-height:1.6; }
@@ -62,12 +66,6 @@
   footer { margin-top:40px; padding-top:14px; border-top:1px solid var(--hair);
     color:var(--graphite); font-size:14px; font-family:var(--mono); letter-spacing:.04em; }
   footer a { color:var(--signal); font-weight:700; text-decoration:none; }
-
-  @media (prefers-color-scheme: light) {
-    :root { --carbon:#fff; --panel:#F6F4EF; --panel-up:#FFF8E2; --hair:#C9C2BC; --bone:#14100F;
-      --graphite:#5E5651; --signal:#7A5B00; --signal-d:#5C4400; }
-    .dek, .cadence { color:#3A342F; }
-  }
 </style>
 <link rel="stylesheet" href="site.css">
 </head>
@@ -151,13 +149,18 @@
     </span>
   </a>
 
-  <a class="card soon" href="#">
+  <!-- TUESDAY FLIP: on 8/18 replace this sealed teaser card with a normal open-tool
+       card (same pattern as 01-05) linking outwit-the-devil.html, and restore a
+       generic "in the shop" 07 placeholder below it. -->
+  <a class="card devil" href="outwit-the-devil.html">
     <span class="sheetno">06</span>
     <span>
-      <b>Next week's tool</b>
-      <span class="d">Comes from next week's story — that's how this works. Want a
-        vote on what it is? My DMs are open.</span>
-      <em>In the shop</em>
+      <b>Outwit the Devil</b>
+      <span class="d">Sealed until 8/18. There's a note nailed to the door, in a
+        handwriting nobody recognizes: <i>"Eagerness is my favorite sin. Three tries
+        at my riddle, little drifter — crack it and come in early. Miss, and you wait
+        like the rest."</i></span>
+      <em>Knock on the door →</em>
     </span>
   </a>
 
