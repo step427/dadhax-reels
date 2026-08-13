@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Outwit the Devil — @nicksdadhax</title>
+<meta name="description" content="A five-minute interrogation game. The devil is at the table and the clock is running. Closed questions get one-word answers — learn to ask better ones. Free, no signup, nothing leaves your device.">
+<meta name="robots" content="noindex">
+<!-- ^ TUESDAY FLIP: remove the robots meta when the gate comes off -->
+
+<style>
+  /* @nicksdadhax — dark field-instrument identity. Same tokens as tools 01-05.
+     SIGNAL YELLOW = your input / your move. WARN RED = the devil's take —
+     every point he scores renders in the diagnostic red, because that's what
+     it is: a diagnostic. */
+  :root {
+    --carbon:   #0F0E0B;
+    --panel:    #17150F;
+    --panel-up: #1E1B14;
+    --hair:     #302B21;
+    --bone:     #F4F0E6;
+    --graphite: #8F887A;
+    --signal:   #FFC629;
+    --signal-d: #C8930F;
+    --warn:     #E8502C;
+
+    --mono: ui-monospace, "SF Mono", SFMono-Regular, "Cascadia Mono",
+            "Roboto Mono", Menlo, Consolas, "Courier New", monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+            "Helvetica Neue", Arial, sans-serif;
+
+    --gutter: clamp(18px, 5vw, 40px);
+    --maxw: 660px;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--carbon);
+    color: var(--bone);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-text-size-adjust: 100%;
+    background-image:
+      repeating-linear-gradient(to right,  rgba(242,237,231,.035) 0 1px, transparent 1px 28px),
+      repeating-linear-gradient(to bottom, rgba(242,237,231,.035) 0 1px, transparent 1px 28px);
+  }
+
+  .sheet { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter) 96px; }
+
+  header { padding: 34px 0 8px; }
+  .protocol {
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: .17em;
+    text-transform: uppercase; color: var(--graphite);
+  }
+  .protocol b { color: var(--signal); font-weight: 700; }
+  h1 {
+    font-family: var(--mono); font-weight: 700;
+    font-size: clamp(28px, 8vw, 48px); line-height: 1.04;
+    letter-spacing: -.03em; text-transform: uppercase;
+    margin: 12px 0 0; text-wrap: balance;
+  }
+  h1 .of { color: var(--signal); }
+  .dek { margin: 14px 0 0; max-width: 46ch; color: #CFC9BB; font-size: 17px; }
+  .dek em { color: var(--bone); font-style: normal; border-bottom: 1.5px solid var(--signal-d); }
+
+  .rules {
+    margin: 20px 0 0; padding: 11px 0 0; border-top: 1px solid var(--hair);
+    font-family: var(--mono); font-size: 12.5px; letter-spacing: .04em;
+    color: var(--graphite); text-transform: uppercase;
+  }
+  .rules span { color: var(--bone); }
+
+  .privacy {
+    margin: 18px 0 0; padding: 13px 15px; font-size: 14.5px; line-height: 1.5;
+    color: #CFC9BB; background: var(--panel); border-left: 3px solid var(--signal);
+  }
+  .privacy b { color: var(--bone); }
+
+  .nav { padding: 14px 0 0; }
+  .navtop { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  .brand { font-family: var(--mono); font-weight: 700; color: var(--bone);
+    text-decoration: none; letter-spacing: -.02em; }
+  .navtop .meta { font-family: var(--mono); font-size: 11px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--graphite); }
+  .navlinks { display: flex; flex-wrap: wrap; gap: 2px 18px; margin-top: 8px;
+    border-bottom: 1px solid var(--hair); padding-bottom: 10px; }
+  .navlinks a { color: #CFC9BB; text-decoration: none; font-size: 14.5px;
+    min-height: 44px; display: inline-flex; align-items: center; }
+  .navlinks a[aria-current] { color: var(--signal); }
+  .navlinks a:hover { color: var(--bone); }
+
+  .lbl {
+    display: block; font-family: var(--mono); font-size: 11px; letter-spacing: .16em;
+    text-transform: uppercase; color: var(--graphite); margin-bottom: 8px;
+  }
+
+  .story { margin-top: 24px; padding: 15px 16px; background: var(--panel);
+    border: 1px solid var(--hair); }
+  .story p { margin: 0 0 10px; font-size: 15.5px; line-height: 1.55; color: #CFC9BB; }
+  .story p:last-child { margin-bottom: 0; }
+  .story p b { color: var(--bone); }
+
+  .allegory { margin-top: 18px; font-size: 14px; color: var(--graphite); line-height: 1.55; }
+  .allegory b { color: #CFC9BB; font-weight: 600; }
+
+  /* ---------- the table (game board) ---------- */
+  .board { margin-top: 28px; border: 1px solid var(--hair); background: var(--panel); }
+  .boardbar {
+    display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 6px 10px;
+    padding: 10px 14px; border-bottom: 1px solid var(--hair);
+    font-family: var(--mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase;
+  }
+  .clock { color: var(--bone); font-weight: 700; font-size: 15px; }
+  .clock.low { color: var(--warn); }
+  .meters { display: flex; gap: 14px; color: var(--graphite); }
+  .meters b { color: var(--signal); font-weight: 700; }
+  .meters .dv b { color: var(--warn); }
+
+  .cards { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; padding: 12px 14px; }
+  .card {
+    min-width: 0; overflow: hidden;
+    aspect-ratio: 5 / 7; border: 1px solid var(--hair); background: var(--panel-up);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--mono); font-size: 11px; color: var(--hair);
+    text-transform: uppercase; letter-spacing: .05em; user-select: none;
+    transition: background .5s ease, color .5s ease, border-color .5s ease;
+  }
+  .card.up { background: var(--signal); color: #201A05; border-color: var(--signal-d);
+    font-weight: 700; text-align: center; padding: 2px; font-size: 10px; line-height: 1.2; }
+  @media (max-width: 430px) { .cards { grid-template-columns: repeat(7, 1fr); gap: 4px; padding: 10px; } }
+
+  .log { padding: 4px 14px 8px; max-height: 46vh; overflow-y: auto; scroll-behavior: smooth; }
+  .turn { margin: 12px 0; }
+  .turn .who {
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: .14em;
+    text-transform: uppercase; display: block; margin-bottom: 3px;
+  }
+  .turn.you .who { color: var(--signal); }
+  .turn.devil .who { color: var(--warn); }
+  .turn.table .who { color: var(--graphite); }
+  .turn p { margin: 0; font-size: 15.5px; line-height: 1.5; color: var(--bone); white-space: pre-wrap; overflow-wrap: anywhere; }
+  .turn.devil p { color: #E5DFD2; }
+  .turn.table p { color: var(--graphite); font-size: 13.5px; font-family: var(--mono); }
+  .turn.confess p { color: var(--bone); background: var(--panel-up);
+    border-left: 3px solid var(--signal); padding: 10px 12px; }
+
+  .askrow { display: flex; gap: 8px; padding: 10px 14px 14px; border-top: 1px solid var(--hair); }
+  .askrow textarea {
+    flex: 1; resize: none; background: var(--carbon); border: 1px solid var(--hair);
+    color: var(--bone); font-family: var(--sans); font-size: 16px; line-height: 1.4;
+    padding: 11px 12px; min-height: 48px;
+  }
+  .askrow textarea:focus { outline: 2px solid var(--signal-d); border-color: var(--signal-d); }
+  .askrow button {
+    background: var(--signal); color: #201A05; border: 0; font-family: var(--mono);
+    font-weight: 700; font-size: 14px; letter-spacing: .06em; text-transform: uppercase;
+    padding: 0 18px; cursor: pointer; min-height: 48px;
+  }
+  .askrow button:disabled { background: var(--hair); color: var(--graphite); cursor: default; }
+
+  .hints { padding: 0 14px 12px; display: flex; flex-direction: column; gap: 6px; }
+  .hints .hlbl { font-family: var(--mono); font-size: 10.5px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--graphite); }
+  .hints button {
+    text-align: left; background: var(--panel-up); border: 1px dashed var(--hair);
+    color: #CFC9BB; font-family: var(--sans); font-size: 14.5px; padding: 10px 12px;
+    cursor: pointer; min-height: 44px;
+  }
+  .hints button:hover { border-color: var(--signal-d); color: var(--bone); }
+
+  .startrow { padding: 16px 14px; border-top: 1px solid var(--hair); }
+  .startrow button {
+    width: 100%; background: var(--signal); color: #201A05; border: 0;
+    font-family: var(--mono); font-weight: 700; font-size: 15px; letter-spacing: .08em;
+    text-transform: uppercase; padding: 15px; cursor: pointer;
+  }
+  .startrow p { margin: 10px 0 0; font-size: 13.5px; color: var(--graphite); text-align: center; }
+
+  /* ---------- debrief ---------- */
+  .debrief { margin-top: 28px; border: 1px solid var(--hair); }
+  .debrief h2 { font-family: var(--mono); font-size: 15px; letter-spacing: .1em;
+    text-transform: uppercase; margin: 0; padding: 13px 16px;
+    border-bottom: 1px solid var(--hair); background: var(--panel); }
+  .debrief h2 b { color: var(--signal); }
+  .dgrid { display: grid; grid-template-columns: 1fr 1fr; }
+  .dg { padding: 13px 16px; border-bottom: 1px solid var(--hair); }
+  .dg:nth-child(odd) { border-right: 1px solid var(--hair); }
+  .dg dt { font-family: var(--mono); font-size: 10.5px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--graphite); }
+  .dg dd { margin: 4px 0 0; font-family: var(--mono); font-weight: 700; font-size: 20px; }
+  .dg dd.y { color: var(--signal); } .dg dd.r { color: var(--warn); }
+  .verdictline { padding: 14px 16px; font-size: 15.5px; color: #CFC9BB;
+    border-bottom: 1px solid var(--hair); }
+  .verdictline b { color: var(--bone); }
+
+  .block { margin-top: 22px; }
+  .block textarea, .block input[type="text"] {
+    width: 100%; background: var(--panel); border: 1px solid var(--hair);
+    color: var(--bone); font-family: var(--sans); font-size: 16px; line-height: 1.45;
+    padding: 12px; resize: vertical;
+  }
+  .block textarea:focus, .block input:focus { outline: 2px solid var(--signal-d); }
+  .block .why { margin: 6px 0 0; font-size: 13px; color: var(--graphite); }
+
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+  .actions button {
+    background: var(--panel-up); color: var(--bone); border: 1px solid var(--hair);
+    font-family: var(--mono); font-size: 13px; letter-spacing: .05em; text-transform: uppercase;
+    padding: 12px 16px; cursor: pointer; min-height: 44px;
+  }
+  .actions button.primary { background: var(--signal); color: #201A05; border-color: var(--signal-d); font-weight: 700; }
+  .actions button:hover { border-color: var(--signal-d); }
+  .said { margin-top: 10px; font-family: var(--mono); font-size: 13px; color: var(--signal); min-height: 1.2em; }
+
+  .pull { margin: 26px 0 0; padding-left: 14px; border-left: 3px solid var(--signal);
+    font-size: 17px; color: var(--bone); }
+
+  .attrib { margin-top: 26px; padding: 13px 15px; background: var(--panel);
+    border: 1px solid var(--hair); font-size: 13.5px; color: var(--graphite); line-height: 1.55; }
+  .attrib b { color: #CFC9BB; }
+
+  /* tail / read-next / ctas — house pattern */
+  .tail { margin-top: 40px; }
+  .tail-next { display: block; border: 1px solid var(--hair); background: var(--panel);
+    padding: 14px 16px; text-decoration: none; margin-bottom: 26px; }
+  .tail-next .k { font-family: var(--mono); font-size: 10.5px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--graphite); display: block; }
+  .tail-next b { color: var(--signal); display: block; margin-top: 4px; font-size: 16.5px; }
+  .tail-next .s { color: #CFC9BB; font-size: 14px; display: block; margin-top: 4px; }
+  .buyhouses { border: 1px solid var(--hair); background: var(--panel); padding: 16px; margin-bottom: 26px; }
+  .buyhouses h2 { font-family: var(--mono); font-size: 15px; letter-spacing: .08em;
+    text-transform: uppercase; margin: 0 0 10px; }
+  .buyhouses p { margin: 0 0 10px; font-size: 14.5px; color: #CFC9BB; }
+  .buyhouses b { color: var(--bone); }
+  .ctas { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+  .ctas a { flex: 1 1 160px; text-decoration: none; border: 1px solid var(--hair);
+    background: var(--panel-up); padding: 12px 14px; min-height: 44px; }
+  .ctas a b { display: block; color: var(--bone); font-size: 14.5px; }
+  .ctas a span { color: var(--graphite); font-size: 12.5px; }
+  .ctas a:hover { border-color: var(--signal-d); }
+  .cta { margin-top: 26px; font-size: 14.5px; color: #CFC9BB; }
+
+  /* ---------- GATE (field-test only — removed on public flip) ---------- */
+  #gate {
+    position: fixed; inset: 0; z-index: 50; background: var(--carbon);
+    display: flex; align-items: center; justify-content: center; padding: var(--gutter);
+    background-image:
+      repeating-linear-gradient(to right,  rgba(242,237,231,.035) 0 1px, transparent 1px 28px),
+      repeating-linear-gradient(to bottom, rgba(242,237,231,.035) 0 1px, transparent 1px 28px);
+  }
+  .gatebox { max-width: 380px; width: 100%; border: 1px solid var(--hair);
+    background: var(--panel); padding: 22px; }
+  .gatebox .protocol { margin-bottom: 10px; }
+  .gatebox h2 { font-family: var(--mono); font-size: 20px; text-transform: uppercase;
+    letter-spacing: -.01em; margin: 0 0 8px; }
+  .gatebox p { font-size: 14px; color: var(--graphite); margin: 0 0 14px; }
+  .gatebox input { width: 100%; background: var(--carbon); border: 1px solid var(--hair);
+    color: var(--bone); font-family: var(--mono); font-size: 18px; letter-spacing: .2em;
+    text-transform: uppercase; padding: 12px; text-align: center; }
+  .gatebox input:focus { outline: 2px solid var(--signal-d); }
+  .gatebox button { width: 100%; margin-top: 10px; background: var(--signal); color: #201A05;
+    border: 0; font-family: var(--mono); font-weight: 700; font-size: 14px;
+    letter-spacing: .08em; text-transform: uppercase; padding: 13px; cursor: pointer; }
+  .gatebox .gerr { color: var(--warn); font-family: var(--mono); font-size: 12.5px;
+    min-height: 1.2em; margin-top: 10px; text-align: center; }
+
+  @media print {
+    .askrow, .hints, .startrow, .actions, .said, .nav, .tail, .cta, #gate { display: none; }
+    body { background: #fff; color: #000; }
+  }
+</style>
+</head>
+<body>
+
+<!--GATE — field-test lock. TUESDAY FLIP: delete this whole block + the #gate CSS
+    + the robots meta above, then set the nav meta to "Tool 06 · free · no gate". -->
+<div id="gate">
+  <div class="gatebox">
+    <span class="protocol">NICKSDADHAX // FIELD TEST — NOT YET PUBLIC</span>
+    <h2>Access code</h2>
+    <p>This one's still in the shop. If you have the code, you're the test pilot.</p>
+    <input id="gateIn" type="text" autocomplete="off" autocapitalize="characters" aria-label="Access code">
+    <button id="gateBtn" type="button">Open the door</button>
+    <div class="gerr" id="gateErr"></div>
+  </div>
+</div>
+<!--/GATE-->
+
+<div class="sheet">
+
+  <nav class="nav">
+    <div class="navtop">
+      <a class="brand" href="index.html">@nicksdadhax</a>
+      <span class="meta">Tool 06 · field test</span>
+    </div>
+    <div class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="index.html#tools" aria-current="page">The Tools</a>
+      <a href="log.html">The Log</a>
+      <a href="index.html#houses">I have a house</a>
+    </div>
+  </nav>
+
+  <header>
+    <span class="protocol">SHEET 06 // INTERROGATION // <b>THE CLOCK IS HIS</b></span>
+    <h1>Outwit <span class="of">the</span> Devil</h1>
+    <p class="dek">He's at the table. You get five minutes. He has to answer everything —
+      but he only has to answer <em>exactly what you ask</em>. Ask yes/no questions and
+      he'll burn your clock one word at a time. Ask better questions and he starts
+      confessing.</p>
+  </header>
+
+  <p class="rules">WIN: <span>flip all 7 confessions</span> · LOSE: <span>the clock, your temper, or both</span></p>
+
+  <div class="privacy">
+    <b>This game asks you for nothing.</b> No gate on the rest of the site, no email, no
+    analytics. Everything you type stays in this tab and dies with it. He'd love to know
+    your fears — we don't collect them.
+  </div>
+
+  <div class="story">
+    <span class="lbl">Why this one exists</span>
+    <p>I listen to books on my drives, and lately it's Napoleon Hill interrogating the
+      devil — an interview he wrote in 1938 that his family kept locked away until 2011.
+      I keep getting caught mid-sentence: <b>yep, guilty of that. Yep, guilty of that.</b></p>
+    <p>Here's the thing I do for a living, twice over: I ask questions. As a physical
+      therapist, the closed question gets me nothing — "does it hurt?" — "yes." The open
+      one finds the source. Buying houses, same deal. So when Hill put the devil in a
+      chair and made him confess, I recognized the sport immediately.
+      <b>This is that chair.</b> Your turn.</p>
+  </div>
+
+  <p class="allegory"><b>What you're talking to:</b> Hill's devil isn't theology — he's
+    an allegory with a voice: fear and drift, personified so you can cross-examine them.
+    The one at this table is scripted — a sparring dummy wearing the costume. The real
+    one doesn't use a script, which is exactly why the practice matters.</p>
+
+  <!-- ---------- the game ---------- -->
+  <div class="board" id="board">
+    <div class="boardbar">
+      <span class="clock" id="clock">5:00</span>
+      <div class="meters">
+        <span>CRAFT <b id="mCraft">—</b></span>
+        <span>COOL <b id="mCool">100</b></span>
+        <span class="dv">HIS <b id="mDevil">0</b></span>
+      </div>
+    </div>
+
+    <div class="cards" id="cards" aria-label="Confessions flipped"></div>
+
+    <div class="log" id="log" aria-live="polite"></div>
+
+    <div class="hints" id="hints" hidden></div>
+
+    <div class="askrow" id="askrow" hidden>
+      <textarea id="ask" rows="2" placeholder="ask him something he can't dodge…" aria-label="Your question"></textarea>
+      <button id="askBtn" type="button">Ask</button>
+    </div>
+
+    <div class="startrow" id="startrow">
+      <button id="startBtn" type="button">Sit down at the table</button>
+      <p>Five minutes. Seven confessions in the deck. He wins every second you waste.</p>
+    </div>
+  </div>
+
+  <!-- ---------- debrief (hidden until game ends) ---------- -->
+  <div class="debrief" id="debrief" hidden>
+    <h2>FIELD REPORT // <b id="grade">—</b></h2>
+    <div class="dgrid">
+      <div class="dg"><dt>Confessions</dt><dd class="y" id="rCards">0 / 7</dd></div>
+      <div class="dg"><dt>Question craft</dt><dd class="y" id="rCraft">—</dd></div>
+      <div class="dg"><dt>Kept your cool</dt><dd class="y" id="rCool">—</dd></div>
+      <div class="dg"><dt>He took</dt><dd class="r" id="rDevil">—</dd></div>
+    </div>
+    <div class="verdictline" id="verdict"></div>
+  </div>
+
+  <div id="closer" hidden>
+    <p class="pull">A problem well stated is a problem half solved. You just practiced
+      the stating — on him. Now do it where it counts.</p>
+
+    <div class="block">
+      <label class="lbl" for="myq">Name the thing that's running your life — as one open question</label>
+      <textarea id="myq" rows="2" placeholder="not &quot;should I…&quot; — start it with what, how, or why"></textarea>
+      <p class="why">If it starts with "should I," he wrote it. Reshape it.</p>
+    </div>
+
+    <div class="block">
+      <label class="lbl" for="myplan">The answer he fears — one definite decision, with a date</label>
+      <textarea id="myplan" rows="2" placeholder="what you will do, and by when"></textarea>
+      <p class="why">Plan and purpose. That's the whole antidote — marriage, work, all of it.</p>
+    </div>
+
+    <div class="block">
+      <label class="lbl" for="mycall">One person who can push this boulder — even an inch</label>
+      <input id="mycall" type="text" placeholder="a name. then make the call.">
+      <p class="why">Most problems aren't about what you know. They're about who you know. Make the call.</p>
+    </div>
+
+    <div class="actions">
+      <button class="primary" id="promptBtn" type="button">Copy the full game for your AI</button>
+      <button id="copyBtn" type="button">Copy my report</button>
+      <button id="againBtn" type="button">Play again</button>
+      <button id="printBtn" type="button">Print</button>
+    </div>
+    <p class="said" id="said"></p>
+
+    <p class="cta">The scripted devil has maybe fifteen minutes of fight in him. Your
+      real one doesn't. The button above hands the interrogator's chair to the AI you
+      already use — same rules, no script, and it knows how to press back.</p>
+  </div>
+
+  <div class="attrib">
+    <b>Source & credit:</b> the drift, the rhythm, the fears, and the one thing he's
+    afraid of are Napoleon Hill's — <b>Outwitting the Devil</b>, written 1938, published
+    2011. The book stages it as an interrogation; this game hands you the interrogator's
+    chair. Every line this devil speaks was written for this sheet — read the book for
+    the real transcript. It's worth it.
+  </div>
+
+  <!--TAIL-->
+  <div class="tail">
+  <a class="tail-next" href="neuroplasticity.html">
+    <span class="k">Read next</span>
+    <b>Tool 02 — The 10 Principles of Neuroplasticity</b>
+    <span class="s">His favorite confession — the rhythm — is the same machinery your
+      brain uses to rewire. Repetition installs whatever you repeat. Point it.</span>
+  </a>
+  <section class="buyhouses">
+    <h2>Also &mdash; I buy houses</h2>
+    <p><b>Washington or Dakota County, Minnesota.</b> Off-market, or straight from the
+      owner &mdash; I'm the buyer, not a middleman passing it along. Woodbury, Cottage
+      Grove, Hastings, Stillwater, Eagan, Inver Grove Heights, Lakeville.</p>
+    <p>If that's you, or you know somebody quietly thinking about selling, I'll lay out
+      your options &mdash; <b>all of them, including the ones I don't make a dime on.</b>
+      Nothing to sign, no walkthrough unless you ask.</p>
+    <div class="ctas">
+      <a href="index.html#houses"><b>I have a house</b><span>Or I know someone who does</span></a>
+    </div>
+  </section>
+  <div class="ctas">
+    <a href="https://www.instagram.com/nicksdadhax/"><b>Send me a DM</b><span>Tell me what you're stuck on</span></a>
+    <a href="https://www.instagram.com/nicksdadhax/"><b>Follow along</b><span>@nicksdadhax</span></a>
+    <a href="https://www.instagram.com/nicksdadhax/"><b>Send it on</b><span>To whoever needs it</span></a>
+  </div>
+  </div>
+  <!--/TAIL-->
+
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ---------- GATE — field-test lock. TUESDAY FLIP: delete through /GATE-JS. ---------- */
+  var GATE_HASH = "638c7571d25da3827efa771f8ce72dae60967ce6f91d9bd6b6e47fe355ee2311"; // sha-256 of the access code, hex
+  var gate = document.getElementById("gate");
+  function sha256hex(s) {
+    var enc = new TextEncoder().encode(s);
+    return crypto.subtle.digest("SHA-256", enc).then(function (buf) {
+      return Array.prototype.map.call(new Uint8Array(buf), function (b) {
+        return ("0" + b.toString(16)).slice(-2);
+      }).join("");
+    });
+  }
+  function tryGate() {
+    var v = (document.getElementById("gateIn").value || "").trim().toUpperCase();
+    if (!v) return;
+    sha256hex(v).then(function (h) {
+      if (h === GATE_HASH) {
+        try { sessionStorage.setItem("otd-gate", "open"); } catch (e) {}
+        gate.parentNode.removeChild(gate);
+      } else {
+        document.getElementById("gateErr").textContent = "Not it. The devil smiles.";
+      }
+    });
+  }
+  document.getElementById("gateBtn").addEventListener("click", tryGate);
+  document.getElementById("gateIn").addEventListener("keydown", function (e) {
+    if (e.key === "Enter") tryGate();
+  });
+  try {
+    if (sessionStorage.getItem("otd-gate") === "open") gate.parentNode.removeChild(gate);
+  } catch (e) {}
+  /* ---------- /GATE-JS ---------- */
+
+  /* ---------- the deck ---------- */
+  var CARDS = [
+    { id: "drift",  face: "THE DRIFT",   topics: ["drift", "wait", "delay", "procrast", "hesitat", "control people", "how do you get", "how do you take", "how do you work", "take control", "control of", "weapon", "method", "trick"],
+      confess: "I never chain anyone. Chains cost effort. I just wait for a man to postpone one decision — then help him postpone the next. He calls it “thinking it over.” I call him a drifter, and he does the rest himself." },
+    { id: "number", face: "98 OF 100",   topics: ["how many", "98", "percent", "most people", "everyone", "everybody", "people do you"],
+      confess: "Out of every hundred? Ninety-eight work for me. Not the wicked ones — the undecided ones. My claim, not a census. But count the people you know who are waiting for something to happen to them, and check my math." },
+    { id: "rhythm", face: "THE RHYTHM",  topics: ["habit", "repeat", "repetition", "rhythm", "routine", "keep them", "keep someone", "keep me", "stay stuck", "stuck", "permanent", "hold on", "hold them", "once you have"],
+      confess: "Here is my favorite: repetition. Repeat anything — a thought, a fear, a Tuesday — and it wires itself in until it no longer needs my help. Your scientists call it plasticity and sell it as good news. It is neutral machinery. I simply feed it hesitation. You could feed it something else. Most don't." },
+    { id: "fears",  face: "SIX FEARS",   topics: ["fear", "afraid of what", "scare", "use against", "tool", "weapon against", "leverage"],
+      confess: "Six masterkeys, in order of use: poverty, criticism, ill health, lost love, old age, death. I rarely need the last five. The fear of what the neighbors think does more of my work than the fear of dying ever has." },
+    { id: "comfort", face: "THE BRIBE",  topics: ["comfort", "easy", "comfortable", "lazy", "pleasure", "distract", "entertain", "numb", "sedat"],
+      confess: "I don't make lives miserable — misery wakes people up. I make lives comfortable. Just comfortable enough that changing anything feels like a risk. A soft chair, a full feed, a small sure thing. Nobody notices what I'm siphoning while they're comfortable." },
+    { id: "borrow", face: "BORROWED MINDS", topics: ["opinion", "other people", "others think", "influence", "school", "believe", "told", "taught", "parents", "media", "news"],
+      confess: "I almost never enter through a man's own thoughts. I come in through everyone else's — handed to him before he was old enough to vote on them. A man running on borrowed opinions is a man I steer by remote. Ask him why he believes a thing and watch him reach for someone else's sentence." },
+    { id: "purpose", face: "HIS ONE FEAR", locked: true, topics: ["you fear", "you afraid", "afraid of", "scares you", "your fear", "stop you", "beat you", "defeat you", "outwit", "protect", "immune", "escape you"],
+      confess: "Fine. You've earned the real answer. I fear one thing: a person with a definite purpose and a plan moving on it — today, not Monday. I have no tool for that man. I can't bribe him with comfort, the fears bounce off, and the rhythm starts working for him. Plan and purpose. That's the whole trick. Now forget I said it." }
+  ];
+
+  /* ---------- devil lines ---------- */
+  var L = {
+    open: "The table is yours. Ask.",
+    closedAns: ["Yes.", "No.", "Perhaps.", "Occasionally.", "Wouldn't you like to know. Oh — you would. Then ask it properly."],
+    closedTaunt: [
+      "A yes-or-no question. My favorite kind — one word from me, five seconds off your clock.",
+      "You keep handing me doors I can close with one word.",
+      "Another coin-flip question. I answer those for free. The clock doesn't."
+    ],
+    deflect: [
+      "Mm. Ask me about the weather next — I have marvelous material on the weather.",
+      "That's not really a question, friend. That's a throat-clearing.",
+      "I've been interrogated by better. He wrote a book about it. Ask me something with a blade in it.",
+      "You're circling. I enjoy circling — it's on your clock, not mine.",
+      "Flattering that you'd chat, but you came for confessions. Try earning one."
+    ],
+    bait: [
+      "You seem tired. Most people your age have quietly given up — what makes you special?",
+      "I should mention: whatever you're postponing right now, I've already scheduled next month's version of you postponing it again.",
+      "You've been sitting on a decision for — what is it now, weeks? I only ask because I profit either way."
+    ],
+    frust: [
+      "There it is. The temper. Do go on — every degree you heat up, I cool down.",
+      "Name-calling! Wonderful. Angry men ask terrible questions. Take your time.",
+      "I've been cursed at in every language ever spoken. It has never once cost me a point."
+    ],
+    partial: [
+      "Closer. Stay on that thread and press — one more like that and I'll have to answer properly.",
+      "Careful. That question had an edge on it. Follow it up before I change the subject."
+    ],
+    lockedTease: "No. That one costs more than you've earned. Flip more of my cards first — then ask me again what I'm afraid of.",
+    goodOpen: [
+      "Hm. A real question. I felt that one.",
+      "You're learning. I liked you better impatient."
+    ],
+    timeLow: "Tick. Tock. I have forever, friend. You have under a minute.",
+    win: "Enough — ENOUGH. Seven confessions. You play this better than most who've sat here. Go use it, before I convince you the game was silly.",
+    lose: "Time. My favorite sound is a clock finishing. Come back when you've practiced — I'll be here. I'm always here.",
+    doneEarly: "Leaving early? Wise, honestly. Every minute at this table is a minute I'm studying you back."
+  };
+
+  var HINTS = [
+    { lbl: "The other self whispers — tap one to ask it:", full: [
+      "How do you actually take control of a person?",
+      "What do you fear?" ] },
+    { lbl: "It whispers again:", full: [
+      "How do you keep someone stuck once you have them?",
+      "Why do you use other people's opinions instead of my own thoughts?" ] },
+    { lbl: "Last whisper — after this, you're on your own:", reshape: true }
+  ];
+
+  /* ---------- state ---------- */
+  var TIME = 300; // seconds
+  var st = null, timer = null;
+  var logEl = document.getElementById("log"), askEl = document.getElementById("ask");
+  var said = document.getElementById("said");
+
+  function freshState() {
+    return { t: TIME, started: false, over: false, q: 0, open: 0, closed: 0,
+      cool: 100, devil: 0, found: [], lastTopic: null, pressed: {}, askedLog: [] };
+  }
+
+  /* ---------- render ---------- */
+  function cardsRender() {
+    var host = document.getElementById("cards");
+    while (host.firstChild) host.removeChild(host.firstChild);
+    CARDS.forEach(function (c) {
+      var d = document.createElement("div");
+      d.className = "card" + (st.found.indexOf(c.id) >= 0 ? " up" : "");
+      d.textContent = st.found.indexOf(c.id) >= 0 ? c.face : "?";
+      host.appendChild(d);
+    });
+  }
+  function meters() {
+    var craft = st.q ? Math.round(100 * st.open / st.q) : null;
+    document.getElementById("mCraft").textContent = craft === null ? "—" : craft + "%";
+    document.getElementById("mCool").textContent = st.cool;
+    document.getElementById("mDevil").textContent = st.devil;
+    var c = document.getElementById("clock");
+    var m = Math.floor(st.t / 60), s = st.t % 60;
+    c.textContent = m + ":" + (s < 10 ? "0" : "") + s;
+    c.className = "clock" + (st.t <= 60 ? " low" : "");
+  }
+  function say(who, text, cls) {
+    var d = document.createElement("div");
+    d.className = "turn " + who + (cls ? " " + cls : "");
+    var w = document.createElement("span");
+    w.className = "who";
+    w.textContent = who === "you" ? "YOU" : (who === "devil" ? "THE DEVIL" : "THE TABLE");
+    var p = document.createElement("p");
+    p.textContent = text; // textContent, never innerHTML — user text passes through here
+    d.appendChild(w); d.appendChild(p);
+    logEl.appendChild(d);
+    logEl.scrollTop = logEl.scrollHeight;
+  }
+  function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+  /* ---------- classification ---------- */
+  var OPENERS = /^(what|how|why|who|where|when|which|tell me|walk me|explain|describe|show me|talk about|say more|go on about)\b/i;
+  var CLOSED = /^(is|are|am|was|were|do|does|did|can|could|will|would|should|have|has|had|may|might|must|aren't|isn't|don't|doesn't|didn't|won't|wouldn't|couldn't|shouldn't)\b/i;
+  var FRUST = /\b(stupid|idiot|shut up|screw|damn you|hate you|liar|dumb|jerk|whatever|ugh|this is dumb|pointless|waste)\b/i;
+
+  function classify(raw) {
+    var t = raw.trim();
+    var caps = t.length > 8 && t === t.toUpperCase() && /[A-Z]/.test(t);
+    var bangs = (t.match(/!/g) || []).length >= 2;
+    if (FRUST.test(t) || caps || bangs) return "frust";
+    if (OPENERS.test(t)) return "open";
+    if (CLOSED.test(t)) return "closed";
+    if (/\?\s*$/.test(t)) return "openish";
+    return "statement";
+  }
+  function topicOf(raw) {
+    // longest matching keyword wins — "you fear" (his one fear) must beat the
+    // generic "fear" (six fears card), or the final card is unreachable.
+    var t = raw.toLowerCase(), best = null, bestLen = 0;
+    for (var i = 0; i < CARDS.length; i++) {
+      var c = CARDS[i];
+      for (var j = 0; j < c.topics.length; j++) {
+        var k = c.topics[j];
+        if (t.indexOf(k) >= 0 && k.length > bestLen) { best = c; bestLen = k.length; }
+      }
+    }
+    return best;
+  }
+
+  /* ---------- hints ---------- */
+  function hintsRender() {
+    var host = document.getElementById("hints");
+    while (host.firstChild) host.removeChild(host.firstChild);
+    if (st.over) { host.hidden = true; return; }
+    var round = st.q < 2 ? 0 : (st.q < 5 ? 1 : (st.q < 8 ? 2 : 3));
+    if (round >= 3) { host.hidden = true; return; }
+    var h = HINTS[round];
+    var lbl = document.createElement("span");
+    lbl.className = "hlbl"; lbl.textContent = h.lbl;
+    host.appendChild(lbl);
+    if (h.full) {
+      h.full.forEach(function (q) {
+        var b = document.createElement("button");
+        b.type = "button"; b.textContent = "“" + q + "”";
+        b.addEventListener("click", function () { askEl.value = q; askEl.focus(); });
+        host.appendChild(b);
+      });
+    } else {
+      var b2 = document.createElement("button");
+      b2.type = "button";
+      b2.textContent = "No scripts left. Just remember: if he can answer it with one word, don't ask it. Start with WHAT, HOW, or WHY.";
+      b2.disabled = false;
+      b2.addEventListener("click", function () { askEl.focus(); });
+      host.appendChild(b2);
+    }
+    host.hidden = false;
+  }
+
+  /* ---------- game flow ---------- */
+  function start() {
+    st = freshState(); st.started = true;
+    document.getElementById("startrow").hidden = true;
+    document.getElementById("askrow").hidden = false;
+    document.getElementById("debrief").hidden = true;
+    document.getElementById("closer").hidden = true;
+    while (logEl.firstChild) logEl.removeChild(logEl.firstChild);
+    cardsRender(); meters(); hintsRender();
+    say("table", "He sits. He does not offer to shake hands.");
+    say("devil", L.open);
+    timer = setInterval(tick, 1000);
+    askEl.focus();
+  }
+  function tick() {
+    if (st.over) return;
+    st.t--;
+    if (st.t === 60) say("devil", L.timeLow);
+    if (st.t <= 0) { st.t = 0; meters(); end(false); return; }
+    meters();
+  }
+  function end(won) {
+    st.over = true;
+    clearInterval(timer);
+    document.getElementById("askrow").hidden = true;
+    document.getElementById("hints").hidden = true;
+    say("devil", won ? L.win : (st.t > 0 ? L.doneEarly : L.lose));
+    say("table", "He is gone. The chair was never warm.");
+
+    var craft = st.q ? Math.round(100 * st.open / st.q) : 0;
+    var n = st.found.length;
+    var grade = n >= 7 ? "OUTWITTED HIM" : n >= 5 ? "HE'S SWEATING" : n >= 3 ? "DREW BLOOD" : n >= 1 ? "GOT A WORD IN" : "HE ATE THE CLOCK";
+    document.getElementById("grade").textContent = grade;
+    document.getElementById("rCards").textContent = n + " / 7";
+    document.getElementById("rCraft").textContent = craft + "%";
+    document.getElementById("rCool").textContent = st.cool + "/100";
+    document.getElementById("rDevil").textContent = st.devil + " pts";
+    var v;
+    if (n >= 7) v = "All seven confessions on the table, including the one he charges for. You now know his whole playbook — which means from here on, drifting is a choice.";
+    else if (n >= 3) v = "You flipped " + n + " of his cards. Notice what worked: every confession came off an open question that pressed a thread. Nothing came off a yes/no. That's the lesson, and it works on problems that don't wear a costume.";
+    else v = "He kept most of his deck. Watch the pattern: one-word answers to one-word-sized questions. WHAT, HOW and WHY are crowbars. IS, DO and SHOULD are doors he closes politely. Sit back down.";
+    document.getElementById("verdict").textContent = v;
+    document.getElementById("debrief").hidden = false;
+    document.getElementById("closer").hidden = false;
+    document.getElementById("debrief").scrollIntoView({ behavior: "smooth" });
+    saveSess();
+  }
+
+  function handle() {
+    if (!st || !st.started || st.over) return;
+    var raw = askEl.value.trim();
+    if (!raw) return;
+    askEl.value = "";
+    say("you", raw);
+    st.q++; st.askedLog.push(raw);
+    if (/^(i'?m done|done|enough|goodbye|leave)\.?$/i.test(raw)) { end(false); return; }
+
+    var kind = classify(raw);
+    var card = topicOf(raw);
+
+    if (kind === "frust") {
+      st.cool = Math.max(0, st.cool - 15);
+      st.devil += 10;
+      say("devil", pick(L.frust));
+      if (st.cool <= 40) say("table", "Your cool is dropping. He scores every time you heat up.");
+      afterTurn(); return;
+    }
+
+    if (kind === "closed") {
+      st.closed++;
+      st.devil += 5;
+      say("devil", pick(L.closedAns));
+      if (st.closed === 2 || st.closed === 4) say("devil", pick(L.closedTaunt));
+      afterTurn(); return;
+    }
+
+    // open / openish / statement
+    if (kind === "open" || kind === "openish") st.open++;
+
+    if (!card) {
+      if (kind === "statement") { st.devil += 3; say("devil", pick(L.deflect)); }
+      else {
+        say("devil", pick(L.deflect));
+        if (st.q === 3 || st.q === 6) say("devil", pick(L.bait));
+      }
+      afterTurn(); return;
+    }
+
+    // on-topic
+    if (st.found.indexOf(card.id) >= 0) {
+      say("devil", "Asked and answered — the card is face-up, friend. Spend the clock on what's still hidden.");
+      afterTurn(); return;
+    }
+    if (card.locked && st.found.length < 3) {
+      say("devil", L.lockedTease);
+      afterTurn(); return;
+    }
+    if (kind === "open" || kind === "openish") {
+      // pressed the thread properly — confession. Deterministic: a real open
+      // question on a live topic ALWAYS pays. The lesson has to be reliable.
+      st.found.push(card.id);
+      if (st.q > 2 && Math.random() < 0.5) say("devil", pick(L.goodOpen));
+      say("devil", card.confess, "confess");
+      say("table", "CONFESSION FLIPPED: " + card.face + (card.id === "rhythm" ? " — see Tool 02: the same machinery, pointed the other way." : ""));
+      cardsRender();
+      if (st.found.length >= 7) { end(true); return; }
+      afterTurn(); return;
+    }
+    // statement on topic
+    st.devil += 3;
+    say("devil", "You're near something. Shame you didn't ask it as a question.");
+    afterTurn();
+  }
+
+  function afterTurn() { meters(); hintsRender(); saveSess(); }
+
+  /* ---------- session save (sessionStorage — dies with the tab, per the promise) ---------- */
+  var KEY = "otd-v1";
+  function saveSess() {
+    try {
+      sessionStorage.setItem(KEY, JSON.stringify({
+        myq: document.getElementById("myq").value,
+        myplan: document.getElementById("myplan").value,
+        mycall: document.getElementById("mycall").value
+      }));
+    } catch (e) {}
+  }
+  function loadSess() {
+    try {
+      var d = JSON.parse(sessionStorage.getItem(KEY) || "null");
+      if (!d) return;
+      ["myq", "myplan", "mycall"].forEach(function (id) {
+        if (d[id]) document.getElementById(id).value = d[id];
+      });
+    } catch (e) {}
+  }
+
+  /* ---------- buttons ---------- */
+  document.getElementById("startBtn").addEventListener("click", start);
+  document.getElementById("askBtn").addEventListener("click", handle);
+  askEl.addEventListener("keydown", function (e) {
+    if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); handle(); }
+  });
+  document.getElementById("againBtn").addEventListener("click", function () {
+    document.getElementById("startrow").hidden = false;
+    start();
+  });
+  document.getElementById("printBtn").addEventListener("click", function () { window.print(); });
+
+  function copyText(text, okMsg) {
+    function fallback() {
+      var t = document.createElement("textarea");
+      t.value = text; t.style.position = "fixed"; t.style.opacity = "0";
+      document.body.appendChild(t); t.select();
+      try { document.execCommand("copy"); } catch (e) {}
+      document.body.removeChild(t);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () { said.textContent = okMsg; },
+        function () { fallback(); said.textContent = okMsg; });
+    } else { fallback(); said.textContent = okMsg; }
+  }
+
+  document.getElementById("copyBtn").addEventListener("click", function () {
+    var found = CARDS.filter(function (c) { return st && st.found.indexOf(c.id) >= 0; })
+                     .map(function (c) { return "- " + c.face; }).join("\n") || "- (none — he kept the deck)";
+    var out = [
+      "OUTWIT THE DEVIL — field report, " + new Date().toLocaleDateString(),
+      "",
+      "Confessions flipped:", found, "",
+      "My problem, stated as one open question:",
+      (document.getElementById("myq").value || "(not written yet)"), "",
+      "My definite decision, with a date:",
+      (document.getElementById("myplan").value || "(not written yet)"), "",
+      "The call I'm making: " + (document.getElementById("mycall").value || "(pick a name)"), "",
+      "Outwit the Devil — @nicksdadhax"
+    ].join("\n");
+    copyText(out, "Copied — put it where you'll trip over it tomorrow.");
+  });
+
+  document.getElementById("promptBtn").addEventListener("click", function () {
+    var myq = document.getElementById("myq").value.trim();
+    var text = [
+      "You are THE DEVIL from Napoleon Hill's Outwitting the Devil — fear and drift personified,",
+      "wry, courteous, never profane. We are playing an interrogation game. I am the interrogator.",
+      "",
+      "RULES:",
+      "1. I get 10 minutes (track my turns; ~15 questions). You must answer every question, but",
+      "   ONLY what was literally asked. Yes/no questions get one-word answers plus a small taunt.",
+      "   Open questions (what/how/why) earn real, specific confessions about how you operate:",
+      "   drift, hypnotic rhythm/repetition, the six fears, the bribe of comfort, borrowed opinions,",
+      "   and — only after I've earned at least 4 confessions — the one thing you fear:",
+      "   a person with definite purpose and a plan in motion.",
+      "2. Deflect, flatter, stall and bait me. If I get frustrated or insult you, mock me gently and",
+      "   award yourself points. Keep a visible scoreboard every few turns: CONFESSIONS n/7,",
+      "   QUESTION CRAFT %, MY COOL, YOUR POINTS.",
+      "3. Unlike the scripted version of this game, personalize it: press me about MY life. Ask no",
+      "   questions yourself except as bait. Use what I reveal against me, the way drift actually does.",
+      "4. When time is up or I say DONE: drop the costume. As a blunt coach, give me (a) which of",
+      "   your tools has the deepest hooks in me based on how I played and what I revealed,",
+      "   (b) my problem restated as one open question, (c) one definite decision with a date that",
+      "   would starve you, and (d) the type of person I should call about it and the first sentence",
+      "   of that call.",
+      "",
+      myq ? ("Context you may use against me — the problem I named: " + myq) : "Start cold. Make me name the problem myself before the end.",
+      "",
+      "Begin in character, at the table. First line: “The table is yours. Ask.”",
+      "",
+      "(Outwit the Devil — @nicksdadhax · the ideas are Napoleon Hill's; read the book.)"
+    ].join("\n");
+    copyText(text, "Copied — paste it into the AI you already use. It fights back harder than mine.");
+  });
+
+  ["myq", "myplan", "mycall"].forEach(function (id) {
+    document.getElementById(id).addEventListener("input", saveSess);
+  });
+
+  st = freshState();
+  cardsRender(); meters(); loadSess();
+})();
+</script>
+
+</body>
+</html>
