@@ -8,11 +8,16 @@ name: Publish next reel
 #
 # GitHub's scheduler is best-effort and can run several minutes late under load.
 # That is fine: nothing here is time-critical to the minute.
+# The 03:00 UTC run is the safety net: that is 10pm Central the SAME day, and
+# the script targets the full three by then. If both earlier slots died, this
+# one puts the day right. Three a day is the contract; the clock times are only
+# how we spread them out.
 on:
   schedule:
     - cron: "0 14 * * *"
     - cron: "0 18 * * *"
     - cron: "0 23 * * *"
+    - cron: "0 3 * * *"
   workflow_dispatch:
     inputs:
       dry_run:

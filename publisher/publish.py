@@ -39,6 +39,8 @@ RAW_BASE = "https://raw.githubusercontent.com/step427/dadhax-reels/main/"
 GRAPH = "https://graph.facebook.com/v21.0"
 FB_PAGE_ID = "1146254621914259"          # Nicksdadhax page — public id, not a secret
 LOCAL_ENV = Path.home() / "Rook" / "_local-secrets" / "meta-ig.env"
+POSTS_PER_DAY = 3                        # the contract. Slots are just delivery.
+CATCHUP_GAP = 120                        # seconds between two posts in one run
 
 
 def _central():
@@ -117,23 +119,40 @@ def save_queue(q):
     tmp.replace(QUEUE)
 
 
-def claim_next(q, today):
-    """First pending item that is eligible today.
+def slot_target(now):
+    """How many posts should be on the board by the end of THIS run.
 
-    An item dated ahead of today is not eligible yet -- without that, posting a
-    day's batch early just pulls tomorrow's reel forward and the queue eats
-    itself one day at a time.
+    The contract is three a day, not three fixed clock times. Each run tops the
+    day up to its target, so a slot that never fired is made up by the next one
+    rather than silently lost -- that is the whole point. Morning aims for one,
+    midday for two, and everything from late afternoon on aims for the full
+    three, which is what makes the late safety-net run able to rescue a day
+    where both earlier slots died.
+    """
+    if now.hour < 12:
+        return 1
+    if now.hour < 17:
+        return 2
+    return POSTS_PER_DAY
+
+
+def claim_next(q):
+    """The next pending item, in queue order.
+
+    ponytail: the old per-item `earliest` date gate is gone. Its job was to stop
+    the queue eating itself a day early, and the 3-a-day cap already does that
+    job -- keeping both meant a missed slot could NOT be made up, because
+    tomorrow's reel was fenced off behind its own date. The `earliest` field is
+    left in queue.json (harmless, and the board still displays it) but nothing
+    reads it now. Queue ORDER is the schedule.
 
     No staging lock here: the workflow sets `concurrency` so two runs cannot
     overlap, which is a stronger guarantee than the lock it replaces (a crashed
     run used to leave an item wedged in 'staging' until a timeout reclaimed it).
     """
     for item in q["items"]:
-        if item.get("status") != "pending":
-            continue
-        if item.get("earliest", today) > today:
-            continue
-        return item
+        if item.get("status") == "pending":
+            return item
     return None
 
 
@@ -211,49 +230,23 @@ def prune(q):
     return gone
 
 
-def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--status", action="store_true")
-    ap.add_argument("--dry-run", action="store_true")
-    ap.add_argument("--prune", action="store_true")
-    a = ap.parse_args()
+def publish_one(item, q, c, dry_run):
+    """Post one queued reel to IG (then the FB page). True if IG accepted it.
 
-    q = load_queue()
-    pending = [i for i in q["items"] if i.get("status") == "pending"]
-
-    if a.status:
-        print(f"queue depth: {len(pending)} pending, "
-              f"{sum(1 for i in q['items'] if i.get('status') == 'posted')} posted")
-        for i in pending[:8]:
-            print(f"  next: {i.get('earliest', '-')}  {i['file']}  {i.get('title', '')}")
-        return
-
-    if a.prune:
-        prune(q)
-        return
-
-    today = datetime.now(TZ).date().isoformat()
-    item = claim_next(q, today)
-    if not item:
-        log("QUEUE EMPTY for today - nothing posted. Refill via the reel loop.")
-        return
-    if len(pending) < 4:
-        log(f"LOW QUEUE: {len(pending)} reels left, under two days.")
-
-    c = creds()
-    _REDACT.extend([c["META_ACCESS_TOKEN"], c.get("META_PAGE_TOKEN", "")])
-    url = RAW_BASE + item["file"]
+    The queue is saved the moment IG succeeds, before Facebook is attempted, so
+    a crash between the two surfaces can never re-post the reel to Instagram.
+    """
     log(f"staging {item['file']}")
-
     try:
-        link = publish_ig(item, url, c["META_ACCESS_TOKEN"], c["IG_USER_ID"], a.dry_run)
+        link = publish_ig(item, RAW_BASE + item["file"],
+                          c["META_ACCESS_TOKEN"], c["IG_USER_ID"], dry_run)
     except (RuntimeError, urllib.error.URLError) as e:
         # leave it pending so the next slot retries it, and say why out loud
         log(f"IG FAILED, left pending: {e}")
-        sys.exit(1)
+        return False
 
-    if a.dry_run:
-        return
+    if dry_run:
+        return True
 
     item["status"] = "posted"
     item["permalink"] = link
@@ -270,8 +263,73 @@ def main():
             log(f"FB PAGE PUBLISHED {item['file']} -> video_id={vid}")
         except BaseException as e:
             log(f"FB PAGE FAILED (IG post unaffected): {type(e).__name__}: {e}")
+    return True
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--status", action="store_true")
+    ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--prune", action="store_true")
+    a = ap.parse_args()
+
+    q = load_queue()
+    pending = [i for i in q["items"] if i.get("status") == "pending"]
+
+    if a.status:
+        posted = sum(1 for i in q["items"] if i.get("status") == "posted")
+        days, rem = divmod(len(pending), POSTS_PER_DAY)
+        today = datetime.now(TZ).date()
+        dry = today + timedelta(days=days)
+        print(f"queue depth: {len(pending)} pending, {posted} posted")
+        print(f"cover at {POSTS_PER_DAY}/day: {days} full days"
+              f"{f' + {rem}' if rem else ''} -- runs dry {dry.isoformat()}")
+        for n, i in enumerate(pending[:9]):
+            print(f"  {today + timedelta(days=n // POSTS_PER_DAY)}  "
+                  f"{i['file']:<26} {i.get('title', '')}")
+        return
+
+    if a.prune:
+        prune(q)
+        return
+
+    now = datetime.now(TZ)
+    today = now.date().isoformat()
+    done = sum(1 for i in q["items"] if i.get("status") == "posted"
+               and str(i.get("posted_at", "")).startswith(today))
+    owed = max(0, slot_target(now) - done)
+    if a.dry_run:
+        owed = min(owed, 1)   # a dry run never marks posted, so it would restage item 1
+    log(f"{done} posted today, this slot targets {slot_target(now)} -> posting {owed}")
+    if not owed:
+        log("already at target for this slot - nothing to do")
+        return
+    if len(pending) < POSTS_PER_DAY * 2:
+        log(f"LOW QUEUE: {len(pending)} reels = "
+            f"{len(pending) // POSTS_PER_DAY} days of cover. Refill the queue.")
+
+    c = creds()
+    _REDACT.extend([c["META_ACCESS_TOKEN"], c.get("META_PAGE_TOKEN", "")])
+
+    failed = False
+    for n in range(owed):
+        item = claim_next(q)
+        if not item:
+            log("QUEUE EMPTY - nothing left to post. Refill via the reel loop.")
+            break
+        if n:
+            # Two reels inside one catch-up run go out spaced, not back to back.
+            log(f"waiting {CATCHUP_GAP}s before the next catch-up post")
+            time.sleep(CATCHUP_GAP)
+        if not publish_one(item, q, c, a.dry_run):
+            # A bad token or a dead network fails every remaining item the same
+            # way, so stop rather than burn the queue against a broken pipe.
+            failed = True
+            break
 
     prune(q)
+    if failed:
+        sys.exit(1)
 
 
 if __name__ == "__main__":
