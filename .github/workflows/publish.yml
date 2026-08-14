@@ -12,12 +12,17 @@ name: Publish next reel
 # the script targets the full three by then. If both earlier slots died, this
 # one puts the day right. Three a day is the contract; the clock times are only
 # how we spread them out.
+#
+# Minutes are deliberately odd. On the hour is the most contended slot on the
+# whole platform, and GitHub does not merely DELAY a congested schedule -- under
+# enough load it DROPS the run entirely. Observed here 2026-08-14: the 18:00 run
+# was still unqueued 21 minutes later. Odd minutes sit off the stampede.
 on:
   schedule:
-    - cron: "0 14 * * *"
-    - cron: "0 18 * * *"
-    - cron: "0 23 * * *"
-    - cron: "0 3 * * *"
+    - cron: "7 14 * * *"
+    - cron: "23 18 * * *"
+    - cron: "11 23 * * *"
+    - cron: "41 3 * * *"
   workflow_dispatch:
     inputs:
       dry_run:
