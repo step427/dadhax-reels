@@ -79,7 +79,7 @@
     </div>
     <div class="navlinks">
       <a href="index.html" aria-current="page">Home</a>
-      <a href="index.html#tools">The Tools</a>
+      <a href="index.html#tools"><svg class="tbx" width="15" height="13" viewBox="0 0 16 14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><g class="lid"><path d="M5.5 4.5v-.75a2.5 2.5 0 0 1 5 0v.75"/><rect x="1" y="4.5" width="14" height="2.5" rx=".5"/></g><rect x="1" y="7" width="14" height="6" rx=".5"/></svg>The Toolbox</a>
       <a href="log.html">The Log</a>
       <a href="index.html#houses">I have a house</a>
     </div>
@@ -97,7 +97,7 @@
       out. Free, no email, take what's useful and leave the rest.</p>
   </header>
 
-  <h2 class="sec" id="tools">The tools — start anywhere</h2>
+  <h2 class="sec" id="tools"><svg class="tbx" width="17" height="15" viewBox="0 0 16 14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><g class="lid"><path d="M5.5 4.5v-.75a2.5 2.5 0 0 1 5 0v.75"/><rect x="1" y="4.5" width="14" height="2.5" rx=".5"/></g><rect x="1" y="7" width="14" height="6" rx=".5"/></svg>The Toolbox — start anywhere</h2>
 
   <a class="card" href="7-layers-of-why.html">
     <span class="sheetno">01</span>
@@ -242,5 +242,14 @@
     — sorting it out loud so it actually gets done.</footer>
 
 </div>
+<script>
+/* Toolbox lid opens when the section scrolls into view. No network, no storage —
+   the privacy copy stays true. If IO is missing the lid just stays shut. */
+(function(){var s=document.getElementById('tools');
+if(!s||!('IntersectionObserver'in window))return;
+var o=new IntersectionObserver(function(es){es.forEach(function(e){
+if(e.isIntersecting){s.classList.add('open');o.disconnect();}});},{threshold:.9});
+o.observe(s);})();
+</script>
 </body>
 </html>

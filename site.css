@@ -37,6 +37,20 @@
   background: var(--signal); color: #14100F; border-color: var(--signal); font-weight: 700;
 }
 
+/* ---------- the Toolbox icon ---------- */
+/* Nick, 8/14: the nav button IS a toolbox — the lid pops open on hover/focus, and
+   on the index #tools heading when it scrolls into view (that's the mobile show,
+   since phones don't hover). One inline SVG per nav link; class is .tbx because
+   .toolbox was already taken by the tool pages' tail link. */
+.tbx { overflow: visible; flex: none; margin-right: 8px;
+  stroke: currentColor; stroke-width: 1.5; fill: none; }
+h2 .tbx { vertical-align: -2.5px; }
+.tbx .lid { transform-box: view-box; transform-origin: 1px 7px;
+  transition: transform .3s cubic-bezier(.34,1.56,.64,1); }
+.navlinks a:hover .tbx .lid, .navlinks a:focus-visible .tbx .lid,
+#tools.open .tbx .lid { transform: rotate(-35deg); }
+@media (prefers-reduced-motion: reduce) { .tbx .lid { transition: none; } }
+
 /* ---------- end-of-sheet tail ---------- */
 .tail { margin-top: 40px; }
 .tail-next {

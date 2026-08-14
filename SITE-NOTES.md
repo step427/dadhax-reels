@@ -108,6 +108,18 @@ string in `index.html` and in the three sheets is the only edit.**
 Chose an email tool over a form-to-spreadsheet because *sending* is the promise —
 "first to hear" is worthless if there is no way to send.
 
+## The Toolbox (renamed from "The Tools", 2026-08-14)
+
+Nick's call: the nav button IS a toolbox. Each nav chip carries a small inline
+SVG toolbox whose lid pops open on hover/focus (`.tbx` in site.css — `.toolbox`
+was already taken by the tool pages' tail link). On index, the `#tools` heading
+has the same icon and the lid swings open when the section scrolls into view
+(tiny IntersectionObserver at the bottom of index.html — no network, no storage,
+the privacy copy stays true). That scroll-open is the mobile show, since phones
+don't hover. The SVG carries `fill`/`stroke` presentation attributes so it
+renders correctly standalone; outwit-the-devil.html doesn't link site.css and
+carries its own copy of the icon CSS in its style block.
+
 ## Files
 
 - `site.css` — shared chrome only (nav, tail, optin, CTA row). Every page keeps its

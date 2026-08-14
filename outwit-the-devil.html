@@ -91,6 +91,12 @@
     min-height: 44px; display: inline-flex; align-items: center; }
   .navlinks a[aria-current] { color: var(--signal); }
   .navlinks a:hover { color: var(--bone); }
+  /* Toolbox icon — this page doesn't load site.css, so it carries its own copy. */
+  .tbx { overflow: visible; flex: none; margin-right: 7px; }
+  .tbx .lid { transform-box: view-box; transform-origin: 1px 7px;
+    transition: transform .3s cubic-bezier(.34,1.56,.64,1); }
+  .navlinks a:hover .tbx .lid, .navlinks a:focus-visible .tbx .lid { transform: rotate(-35deg); }
+  @media (prefers-reduced-motion: reduce) { .tbx .lid { transition: none; } }
 
   .lbl {
     display: block; font-family: var(--mono); font-size: 11px; letter-spacing: .16em;
@@ -331,7 +337,7 @@
     </div>
     <div class="navlinks">
       <a href="index.html">Home</a>
-      <a href="index.html#tools" aria-current="page">The Tools</a>
+      <a href="index.html#tools" aria-current="page"><svg class="tbx" width="15" height="13" viewBox="0 0 16 14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><g class="lid"><path d="M5.5 4.5v-.75a2.5 2.5 0 0 1 5 0v.75"/><rect x="1" y="4.5" width="14" height="2.5" rx=".5"/></g><rect x="1" y="7" width="14" height="6" rx=".5"/></svg>The Toolbox</a>
       <a href="log.html">The Log</a>
       <a href="index.html#houses">I have a house</a>
     </div>
