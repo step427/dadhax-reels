@@ -198,7 +198,7 @@
   }
   .hints button:hover { border-color: var(--signal-d); color: var(--bone); }
 
-  .startrow { padding: 16px 14px; border-top: 1px solid var(--hair); }
+  .startrow { padding: 16px 14px; border-bottom: 1px solid var(--hair); }
   .startrow button {
     width: 100%; background: var(--signal); color: #201A05; border: 0;
     font-family: var(--mono); font-weight: 700; font-size: 15px; letter-spacing: .08em;
@@ -386,6 +386,11 @@
 
   <!-- ---------- the game ---------- -->
   <div class="board" id="board">
+    <div class="startrow" id="startrow">
+      <button id="startBtn" type="button">Start your interview with the devil</button>
+      <p>The chair is pulled out. Five minutes, seven confessions. He wins every second you waste.</p>
+    </div>
+
     <div class="boardbar">
       <span class="clock" id="clock">5:00</span>
       <div class="meters">
@@ -405,11 +410,6 @@
       <textarea id="ask" rows="2" placeholder="ask him something he can't dodge…" aria-label="Your question"></textarea>
       <button id="micBtn" type="button" class="micbtn" hidden aria-label="Dictate your question">🎙</button>
       <button id="askBtn" type="button">Ask</button>
-    </div>
-
-    <div class="startrow" id="startrow">
-      <button id="startBtn" type="button">Start your interview with the devil</button>
-      <p>The chair is pulled out. Five minutes, seven confessions. He wins every second you waste.</p>
     </div>
   </div>
 
