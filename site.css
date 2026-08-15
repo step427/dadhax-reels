@@ -33,7 +33,9 @@
   text-decoration: none; font-size: 14px; line-height: 1.2;
 }
 .navlinks a:hover, .navlinks a:focus-visible { border-color: var(--signal); }
-.navlinks a[aria-current="page"] {
+/* [aria-current] matches both "page" (you are ON this page) and "true" (you are
+   inside this section — e.g. a tool page marking the Toolbox chip). */
+.navlinks a[aria-current] {
   background: var(--signal); color: #14100F; border-color: var(--signal); font-weight: 700;
 }
 
@@ -48,7 +50,8 @@ h2 .tbx { vertical-align: -2.5px; }
 .tbx .lid { transform-box: view-box; transform-origin: 1px 7px;
   transition: transform .3s cubic-bezier(.34,1.56,.64,1); }
 .navlinks a:hover .tbx .lid, .navlinks a:focus-visible .tbx .lid,
-#tools.open .tbx .lid { transform: rotate(-35deg); }
+.door:hover .tbx .lid, .door:focus-visible .tbx .lid,
+#tools.open .tbx .lid, #doorcta.open .tbx .lid { transform: rotate(-35deg); }
 @media (prefers-reduced-motion: reduce) { .tbx .lid { transition: none; } }
 
 /* ---------- end-of-sheet tail ---------- */

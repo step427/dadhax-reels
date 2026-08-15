@@ -170,6 +170,48 @@ in relation to it. Boulder question + call at the end, per the spine.
 ⚠️ Honesty rails for 05: no legal or tax advice — plain-language "why a container
 helps," and "ask your accountant/attorney" where it counts. Same no-gate promise.
 
+## The relaunch — page-per-job architecture (Nick's call, 2026-08-15)
+
+Nick: "there's legitimately just too much going on on the home page… each page
+needs its own specialty and focus." And the refocused vision, his words distilled:
+**the brand promise is "make the life of a Dad more POWERFUL," not easier.** Two
+lanes: make the trivial easy (bag→bowl, claw-hammer carries the plywood — new
+perspective on ordinary things buys back time) so you can spend it on the hard
+work that matters — dad, husband, productive member of society, impact in your
+direct community. The site is a framework toward a purpose-filled life.
+
+The map (research-backed: StoryBrand section order, NN/g one-job-per-page,
+single-CTA evidence — full report in agent transcripts 8/15):
+
+- **index.html — orientation & story ONLY.** Hero (kept) → the turn
+  (easier→powerful) → two lanes → guide block → 3-step plan → ONE CTA (the
+  Toolbox door, lid animates) → "New this week" line → optin #next (optin.py
+  still targets it — do not rename the anchor) → footer (view-source trust line,
+  houses one-liner). Old #tools/#houses hashes JS-redirect to the new pages.
+- **toolbox.html — pick a tool.** Owns the #tools identity, lid opens on
+  arrival, cards newest-first, sealed 06 card. ⚠ TUESDAY FLIP now happens HERE
+  (the sealed card moved off index — flip instructions in the toolbox.html
+  comment still apply, plus remove outwit's gate block + robots meta).
+- **houses.html — the seller offer, alone.** Full pitch moved verbatim from
+  index. Nav keeps its "I have a house" chip (kept against strict research
+  advice — it's the money channel; deliberate call).
+- **log.html — proof of cadence.** Unchanged content, nav made consistent.
+- Tool pages unchanged except nav/tail links → toolbox.html / houses.html.
+  Their .buyhouses tail sections stay (8/9 audit: deep-link traffic never sees
+  the homepage).
+
+GitHub scan verdict (8/15): in-house workflow beats available skills; worth
+adapting someday: anti-slop design checklist (jiji262/claude-design-skill),
+axe-core pass bolted onto audit.js.
+
+**Tail change, supersedes the 8/8 "DM / follow / share" trio:** the three-button
+IG row at the bottom of every tool page is gone (critique loop 8/15: five
+buttons to one URL was the only funnel-smelling spot on the site). The tail
+sequence survives with less noise — next sheet → optin block (share ask + one
+DM button). "Tell me in the comments" phrasing became "DM me" — no comments
+exist on-site. Tool pages mark the Toolbox chip aria-current="true" (inside
+the section), real pages use "page"; site.css matches bare [aria-current].
+
 ## Story-first is law (Nick, 2026-08-15)
 
 Storytelling is the skeleton of everything this operation makes — the site, each

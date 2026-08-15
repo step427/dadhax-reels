@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DadHax — free tools for the gap you can't name</title>
-<meta name="description" content="Free tools for dads, from Nick — physical therapist in the east metro. I also buy off-market houses in Washington &amp; Dakota County, MN. Nothing here is behind an email.">
+<title>DadHax — make the life of a dad more powerful</title>
+<meta name="description" content="Free tools for dads — no gate, no email, one a week. Make the trivial easy, then spend what you save on the hard work that makes a life: the kids, the marriage, the thing you keep thinking over.">
 <style>
   /* @nicksdadhax — dark field-instrument identity. */
   :root {
@@ -21,7 +21,6 @@
       repeating-linear-gradient(to bottom, rgba(242,237,231,.035) 0 1px, transparent 1px 28px);
   }
   .sheet { max-width:660px; margin:0 auto; padding:0 clamp(18px,5vw,40px) 80px; }
-  .visually-hidden { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); }
 
   header { padding:34px 0 8px; }
   .protocol { font-family:var(--mono); font-size:11.5px; letter-spacing:.17em;
@@ -31,40 +30,48 @@
        letter-spacing:-.03em; text-transform:uppercase; margin:12px 0 0; }
   h1 .of { color:var(--signal); display:block; }
   .dek { margin:16px 0 0; max-width:47ch; color:#CFC9BB; font-size:17.5px; }
-  .cadence { margin:18px 0 30px; padding:13px 15px; font-size:15.5px; line-height:1.55;
+
+  /* the turn — easy was never the point */
+  .turn { margin:26px 0 0; }
+  .turn p { margin:0 0 13px; }
+  .turn b { color:var(--signal); }
+
+  .lanes { margin:22px 0 0; border:1px solid var(--hair); }
+  .lane { padding:14px 15px; border-bottom:1px solid var(--hair); font-size:15.5px;
+    line-height:1.55; color:#CFC9BB; }
+  .lane:last-child { border-bottom:0; }
+  .lane .tag { display:block; font-family:var(--mono); font-size:12px; font-weight:700;
+    letter-spacing:.1em; text-transform:uppercase; color:var(--signal); margin-bottom:5px; }
+  .lane b { color:var(--bone); }
+
+  /* guide */
+  .guide { margin:22px 0 0; padding:13px 15px; font-size:15.5px; line-height:1.55;
     color:#CFC9BB; background:var(--panel); border-left:3px solid var(--signal); }
-  .cadence b { color:var(--signal); }
+  .guide b { color:var(--bone); }
 
-  h2.sec { font-family:var(--mono); font-size:12px; letter-spacing:.14em; text-transform:uppercase;
-    color:var(--signal); margin:34px 0 14px; font-weight:700;
-    padding-bottom:8px; border-bottom:1px solid var(--hair); }
+  /* plan */
+  .plan { margin:24px 0 0; padding:0; list-style:none; }
+  .plan li { display:grid; grid-template-columns:30px 1fr; gap:0 10px; align-items:baseline;
+    margin-bottom:8px; font-size:15.5px; color:#CFC9BB; }
+  .plan li b { color:var(--bone); }
+  .plan .n { font-family:var(--mono); font-weight:700; color:var(--signal); font-size:15px; }
 
-  a.card {
-    display:grid; grid-template-columns:52px 1fr; gap:0 14px; align-items:start;
-    border:1px solid var(--hair); background:var(--panel); padding:18px 16px;
-    text-decoration:none; color:var(--bone); margin-bottom:12px;
-  }
-  a.card:hover { border-color:var(--signal); }
-  a.card .sheetno { font-family:var(--mono); font-size:16px; font-weight:700; color:var(--signal); }
-  a.card b { display:block; font-size:19px; letter-spacing:-.01em; }
-  a.card .d { display:block; color:var(--graphite); font-size:15px; margin-top:4px; }
-  a.card em { display:block; font-style:normal; font-family:var(--mono); font-size:11.5px;
-    letter-spacing:.12em; text-transform:uppercase; color:var(--signal); margin-top:10px; }
-  .soon { opacity:.5; pointer-events:none; }
-  a.card.devil { border-color:#5A2417; }
-  a.card.devil:hover { border-color:#E8502C; }
-  a.card.devil .sheetno, a.card.devil em { color:#E8502C; }
-  a.card.devil .d i { color:#D8B9AE; font-style:italic; }
-
-  .collector { margin:16px 0 0; padding:15px 16px; background:var(--panel-up);
-    border:1px solid var(--hair); font-size:16px; line-height:1.6; }
-  .collector b { color:var(--signal); }
-
-  .story p { margin:0 0 13px; }
-  .story .pull { border-left:3px solid var(--signal); padding:2px 0 2px 14px; color:var(--bone); }
+  /* the door — the one CTA */
+  .door { display:block; margin:28px 0 0; text-decoration:none; color:var(--bone);
+    border:2px solid var(--signal); background:var(--panel);
+    padding:20px 18px; }
+  .door:hover, .door:focus-visible { background:var(--panel-up); }
+  .door .row { display:flex; align-items:center; gap:16px; }
+  .door .tbx { width:44px; height:38px; flex:none; }
+  .door .big { display:block; font-family:var(--mono); font-weight:700; font-size:21px;
+    letter-spacing:-.01em; text-transform:uppercase; color:var(--signal); }
+  .door .sub { display:block; color:var(--graphite); font-size:14px; margin-top:3px; }
+  .newline { margin:12px 0 0; font-size:14.5px; color:var(--graphite); }
+  .newline a { color:var(--signal); font-weight:700; text-decoration:none; }
 
   footer { margin-top:40px; padding-top:14px; border-top:1px solid var(--hair);
     color:var(--graphite); font-size:14px; font-family:var(--mono); letter-spacing:.04em; }
+  footer p { margin:0 0 8px; }
   footer a { color:var(--signal); font-weight:700; text-decoration:none; }
 </style>
 <link rel="stylesheet" href="site.css">
@@ -79,9 +86,9 @@
     </div>
     <div class="navlinks">
       <a href="index.html" aria-current="page">Home</a>
-      <a href="index.html#tools"><svg class="tbx" width="15" height="13" viewBox="0 0 16 14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><g class="lid"><path d="M5.5 4.5v-.75a2.5 2.5 0 0 1 5 0v.75"/><rect x="1" y="4.5" width="14" height="2.5" rx=".5"/></g><rect x="1" y="7" width="14" height="6" rx=".5"/></svg>The Toolbox</a>
+      <a href="toolbox.html"><svg class="tbx" width="15" height="13" viewBox="0 0 16 14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><g class="lid"><path d="M5.5 4.5v-.75a2.5 2.5 0 0 1 5 0v.75"/><rect x="1" y="4.5" width="14" height="2.5" rx=".5"/></g><rect x="1" y="7" width="14" height="6" rx=".5"/></svg>The Toolbox</a>
       <a href="log.html">The Log</a>
-      <a href="index.html#houses">I have a house</a>
+      <a href="houses.html">I have a house</a>
     </div>
   </nav>
 
@@ -92,138 +99,56 @@
       and you'd mean it. And still — somewhere between the driveway and the kitchen
       there's a weight you can't name, and it's been there long enough that you
       stopped trying to name it.</p>
-    <p class="cadence">It isn't a crisis. It's a gap. <b>I know that drive, because I
-      spent a long time sitting in it.</b> What's below is what I wrote down on the way
-      out. Free, no email, take what's useful and leave the rest.</p>
   </header>
 
-  <h2 class="sec" id="tools"><svg class="tbx" width="17" height="15" viewBox="0 0 16 14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><g class="lid"><path d="M5.5 4.5v-.75a2.5 2.5 0 0 1 5 0v.75"/><rect x="1" y="4.5" width="14" height="2.5" rx=".5"/></g><rect x="1" y="7" width="14" height="6" rx=".5"/></svg>The Toolbox — start anywhere</h2>
-
-  <a class="card" href="7-layers-of-why.html">
-    <span class="sheetno">01</span>
-    <span>
-      <b>The 7 Layers of Why</b>
-      <span class="d">A 12-minute self-interview. You know what you want — this finds
-        out why, because a want you can't explain is the first thing you quit.</span>
-      <em>Open the tool →</em>
-    </span>
-  </a>
-
-  <a class="card" href="neuroplasticity.html">
-    <span class="sheetno">02</span>
-    <span>
-      <b>The 10 Principles of Neuroplasticity</b>
-      <span class="d">How your nervous system actually rewires — recovery, habits,
-        beliefs. From a decade of physical therapy practice. Keyword: REPS.</span>
-      <em>Open the tool →</em>
-    </span>
-  </a>
-
-  <a class="card" href="start-with-ai.html">
-    <span class="sheetno">03</span>
-    <span>
-      <b>Start With AI — 8 Focus Steps</b>
-      <span class="d">One path, not a menu. What to do with a single $20/month
-        subscription, in order — and what to ignore for thirty days.</span>
-      <em>Open the tool →</em>
-    </span>
-  </a>
-
-  <a class="card" href="fact-testable-fantasy.html">
-    <span class="sheetno">04</span>
-    <span>
-      <b>Fact / Testable / Fantasy</b>
-      <span class="d">The honesty filter for your own ideas. Two questions sort any
-        idea into do-it-today, file-it, or parked-with-a-price-tag.</span>
-      <em>Open the tool →</em>
-    </span>
-  </a>
-
-  <a class="card" href="side-gig-llc.html">
-    <span class="sheetno">05</span>
-    <span>
-      <b>Why Your Side Gig Wants an LLC</b>
-      <span class="d">The someday-to-this-week move: a real container for the thing
-        you keep almost starting — plus a north star built on what you already have.</span>
-      <em>Open the tool →</em>
-    </span>
-  </a>
-
-  <!-- TUESDAY FLIP: on 8/18 replace this sealed teaser card with a normal open-tool
-       card (same pattern as 01-05) linking outwit-the-devil.html, and restore a
-       generic "in the shop" 07 placeholder below it. -->
-  <a class="card devil" href="outwit-the-devil.html">
-    <span class="sheetno">06</span>
-    <span>
-      <b>Outwit the Devil</b>
-      <span class="d">Sealed until 8/18. There's a note nailed to the door, in a
-        handwriting nobody recognizes: <i>"Impatience is my favorite sin. Three tries
-        at my riddle, little drifter — crack it and come in early. Miss, and you wait
-        like the rest."</i></span>
-      <em>Knock on the door →</em>
-    </span>
-  </a>
-
-  <p class="collector">I'm a collector of tools. I own a lot more than I use — that's
-    the honest part. <b>So don't be me.</b> Take one, actually use it, let it do the
-    job it was built for. Then hand it to another dad in your network your gut says
-    needs it about as much as you did.</p>
-
-  <h2 class="sec" id="story">Why this is free</h2>
-  <div class="story">
-    <p>I'm Nick. Physical therapist, ten years — a decade of watching people rebuild
-      things they'd been told wouldn't come back.</p>
-    <p>Then I bought one old house. My first, and so far my only. It ran three months
-      past what I was quoted, which cost me $2,200 a month I hadn't planned for —
-      <b>$6,600 gone before I'd sold anything.</b> It's under contract now.</p>
-    <p>That's the whole résumé. I don't own a business. I'm not standing on the far
-      side of this telling you how it's done.</p>
-    <p class="pull">The person I'm best positioned to help is me, five years ago. He
-      didn't need a course. He needed somebody to have written it down. You're about
-      where he was.</p>
+  <div class="turn">
+    <p>I started DadHax to make a dad's life <i>easier</i>. Hacks, shortcuts, the claw
+      of a hammer carrying a full sheet of plywood one-handed.</p>
+    <p>Then it clicked why those matter: <b>the good parts of a dad's life are supposed
+      to be heavy.</b> The marriage. The kids. The block you live on. The thing you
+      keep "thinking over." That work is hard because it's the work that counts —
+      an easier life was never the goal. <b>A more powerful one is.</b></p>
   </div>
 
-  <h2 class="sec" id="houses">I buy houses in Washington &amp; Dakota County</h2>
-  <div class="story">
-    <p class="pull"><b>I'm looking for the next one.</b> Washington or Dakota County,
-      Minnesota. Off-market, or straight from the owner — I'm the buyer, not a
-      middleman passing it along to somebody else. Woodbury, Cottage Grove, Hastings,
-      Stillwater, Eagan, Inver Grove Heights, Lakeville.</p>
-    <p>I've bought one house and I'm under contract to sell it. I'm not a company with
-      a call center &mdash; you'd be dealing with me. That one ran three months long and
-      <b>I ate the carry myself rather than push it onto anybody.</b> I'll tell you
-      exactly what I can and can't do before you commit to a thing.</p>
-    <p>If that's you, or you know someone quietly thinking about selling and dreading
-      the whole circus of it — signs, showings, strangers walking through the kitchen —
-      message me.</p>
-    <p><b>Here's exactly what happens if you do</b>, because "no obligation" is a
-      thing everybody says:</p>
-    <p>You tell me the address and roughly what's going on. I look it up that night
-      myself &mdash; county records, what's sold nearby, what it'd cost to fix. Then I
-      lay out your options. <b>All of them, including the ones I don't make a dime on.</b></p>
-    <p><b>And if listing it with an agent is your best move, I'll tell you that.</b>
-      I'd rather be the guy who told you the truth than the guy who got the deal.</p>
-    <p class="pull"><b>1. Sell it to me as-is.</b> No agent, no commission, no
-      showings, no repairs &mdash; leave behind whatever you don't want. I need room in
-      it to make it work, so my number is lower than a perfect retail sale. I'll show
-      you the math I used to get there so you can check it.</p>
-    <p class="pull"><b>2. Carry the note.</b> You sell it to me and I pay you monthly,
-      with interest, instead of all at once. More money in total over time &mdash; and
-      <b>you'd hold a mortgage on the house exactly like a bank would, so if I ever
-      stopped paying, you'd get it back.</b> Sometimes it's better on taxes; ask your
-      accountant that one, not me.</p>
-    <p class="pull"><b>3. List it the normal way.</b> Usually the highest price. Costs a
-      commission, takes months, means showings and a repair list from the buyer.</p>
-    <p class="pull"><b>4. Somebody else entirely.</b> If it isn't a fit for me, I'll
-      tell you who to call.</p>
-    <p>Then you pick. Or you pick none of them &mdash; say no and that's the end of it,
-      I won't call you again about it. No walkthrough unless you ask for one, no sign in
-      the yard, and nothing to sign at any point in that conversation.</p>
-</div>
-  <div class="ctas">
-    <a href="https://www.instagram.com/nicksdadhax/"><b>I have a house</b><span>Or I know someone who does</span></a>
-    <a href="log.html"><b>See what I did with the last one</b><span>The log, start to finish</span></a>
+  <div class="lanes">
+    <div class="lane">
+      <span class="tag">Lane one — make the trivial easy</span>
+      The bag becomes the bowl and nobody does dishes tonight — more minutes at the
+      table. <b>The stuff that doesn't matter should cost you nothing</b> — that's
+      what the everyday hacks are for.
+    </div>
+    <div class="lane">
+      <span class="tag">Lane two — spend it where it's hard</span>
+      Every hour lane one buys back goes to the work that compounds: <b>the dad, the
+      husband, the useful man, the guy your block is glad lives there.</b> The tools
+      in the toolbox are built for that lane.
+    </div>
   </div>
+
+  <div class="guide">
+    <b>I'm Nick.</b> Physical therapist for ten years, first flip under contract, a dad
+    sorting it out loud. Everything here is free and ungated because it's just what I
+    needed somebody to have written down five years ago.
+  </div>
+
+  <ul class="plan">
+    <li><span class="n">1.</span><span><b>Open the toolbox.</b> Pick the tool that names your stuck point.</span></li>
+    <li><span class="n">2.</span><span><b>Give it ten minutes.</b> Every tool ends with a step you can take tonight.</span></li>
+    <li><span class="n">3.</span><span><b>Spend what it frees on the heavy stuff.</b> That's the whole system.</span></li>
+  </ul>
+
+  <a class="door" href="toolbox.html" id="doorcta">
+    <span class="row">
+      <svg class="tbx" viewBox="0 0 16 14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.2"><g class="lid"><path d="M5.5 4.5v-.75a2.5 2.5 0 0 1 5 0v.75"/><rect x="1" y="4.5" width="14" height="2.5" rx=".5"/></g><rect x="1" y="7" width="14" height="6" rx=".5"/></svg>
+      <span>
+        <span class="big">Open the Toolbox</span>
+        <span class="sub">Six free tools · a new one every week</span>
+      </span>
+    </span>
+  </a>
+  <p class="newline">New this week: <a href="side-gig-llc.html">Why Your Side Gig Wants an
+    LLC →</a> &nbsp;·&nbsp; and something is <a href="outwit-the-devil.html">sealed at the
+    door until Tuesday</a>.</p>
 
   <section class="optin" id="next">
     <h2>What I ask</h2>
@@ -238,14 +163,23 @@
     </div>
   </section>
 
-  <footer>A new tool every week. From <a href="https://www.instagram.com/nicksdadhax/">@nicksdadhax</a>
-    — sorting it out loud so it actually gets done.</footer>
+  <footer>
+    <p>Own a house in Washington or Dakota County, MN and need it gone?
+      <a href="houses.html">I buy houses &mdash; and I'll tell you if you shouldn't sell me yours.</a></p>
+    <p>A new tool every week. From <a href="https://www.instagram.com/nicksdadhax/">@nicksdadhax</a>
+      &mdash; sorting it out loud so it actually gets done. Hand-built, nothing tracking you:
+      <a href="https://github.com/step427/dadhax-reels">view source</a>.</p>
+  </footer>
 
 </div>
 <script>
-/* Toolbox lid opens when the section scrolls into view. No network, no storage —
-   the privacy copy stays true. If IO is missing the lid just stays shut. */
-(function(){var s=document.getElementById('tools');
+/* Old deep links pointed at homepage sections that are real pages now. */
+(function(){
+  if (location.hash === '#tools') location.replace('toolbox.html');
+  if (location.hash === '#houses') location.replace('houses.html');
+})();
+/* The toolbox lid opens when the door scrolls into view. No network, no storage. */
+(function(){var s=document.getElementById('doorcta');
 if(!s||!('IntersectionObserver'in window))return;
 var o=new IntersectionObserver(function(es){es.forEach(function(e){
 if(e.isIntersecting){s.classList.add('open');o.disconnect();}});},{threshold:.9});

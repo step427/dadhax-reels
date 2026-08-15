@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Toolbox — @nicksdadhax</title>
+<meta name="description" content="Free tools for dads — one a week, no gate, no email. Find your why, rewire the habits, put AI to work, sort your ideas honestly, start the thing.">
+<style>
+  /* @nicksdadhax — dark field-instrument identity. Tokens match index. */
+  :root {
+    --carbon:#0F0E0B; --panel:#17150F; --panel-up:#1E1B14; --hair:#302B21;
+    --bone:#F4F0E6; --graphite:#8F887A; --signal:#FFC629; --signal-d:#C8930F;
+    --mono: ui-monospace,"SF Mono",SFMono-Regular,"Cascadia Mono","Roboto Mono",Menlo,Consolas,monospace;
+    --sans: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  }
+  * { box-sizing:border-box; }
+  body {
+    margin:0; background:var(--carbon); color:var(--bone); font:17px/1.55 var(--sans);
+    background-image:
+      repeating-linear-gradient(to right,  rgba(242,237,231,.035) 0 1px, transparent 1px 28px),
+      repeating-linear-gradient(to bottom, rgba(242,237,231,.035) 0 1px, transparent 1px 28px);
+  }
+  .sheet { max-width:660px; margin:0 auto; padding:0 clamp(18px,5vw,40px) 80px; }
+
+  header { padding:30px 0 6px; }
+  .protocol { font-family:var(--mono); font-size:11.5px; letter-spacing:.17em;
+    text-transform:uppercase; color:var(--graphite); }
+  .protocol b { color:var(--signal); }
+  h1 { font-family:var(--mono); font-weight:700; font-size:clamp(29px,7.6vw,46px); line-height:1.06;
+       letter-spacing:-.03em; text-transform:uppercase; margin:12px 0 0;
+       display:flex; align-items:center; gap:14px; }
+  h1 .tbx { width:38px; height:33px; flex:none; }
+  .dek { margin:14px 0 0; max-width:47ch; color:#CFC9BB; font-size:17px; }
+  .dek b { color:var(--signal); }
+
+  .lanes { margin:18px 0 26px; padding:13px 15px; font-size:15px; line-height:1.55;
+    color:#CFC9BB; background:var(--panel); border-left:3px solid var(--signal); }
+  .lanes b { color:var(--bone); }
+
+  a.card {
+    display:grid; grid-template-columns:52px 1fr; gap:0 14px; align-items:start;
+    border:1px solid var(--hair); background:var(--panel); padding:18px 16px;
+    text-decoration:none; color:var(--bone); margin-bottom:12px;
+  }
+  a.card:hover { border-color:var(--signal); }
+  a.card .sheetno { font-family:var(--mono); font-size:16px; font-weight:700; color:var(--signal); }
+  a.card b { display:block; font-size:19px; letter-spacing:-.01em; }
+  a.card .d { display:block; color:var(--graphite); font-size:15px; margin-top:4px; }
+  a.card em { display:block; font-style:normal; font-family:var(--mono); font-size:11.5px;
+    letter-spacing:.12em; text-transform:uppercase; color:var(--signal); margin-top:10px; }
+  .soon { opacity:.5; pointer-events:none; }
+  a.card.devil { border-color:#5A2417; }
+  a.card.devil:hover { border-color:#E8502C; }
+  a.card.devil .sheetno, a.card.devil em { color:#E8502C; }
+  a.card.devil .d i { color:#D8B9AE; font-style:italic; }
+
+  .collector { margin:16px 0 0; padding:15px 16px; background:var(--panel-up);
+    border:1px solid var(--hair); font-size:16px; line-height:1.6; }
+  .collector b { color:var(--signal); }
+
+  .backhome { margin:26px 0 0; font-size:15px; }
+  .backhome a { color:var(--signal); font-weight:700; text-decoration:none; }
+
+  footer { margin-top:40px; padding-top:14px; border-top:1px solid var(--hair);
+    color:var(--graphite); font-size:14px; font-family:var(--mono); letter-spacing:.04em; }
+  footer a { color:var(--signal); font-weight:700; text-decoration:none; }
+</style>
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<div class="sheet">
+
+  <nav class="nav">
+    <div class="navtop">
+      <a class="brand" href="index.html">@nicksdadhax</a>
+      <span class="meta">Free tools · no gate · one a week</span>
+    </div>
+    <div class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="toolbox.html" aria-current="page"><svg class="tbx" width="15" height="13" viewBox="0 0 16 14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><g class="lid"><path d="M5.5 4.5v-.75a2.5 2.5 0 0 1 5 0v.75"/><rect x="1" y="4.5" width="14" height="2.5" rx=".5"/></g><rect x="1" y="7" width="14" height="6" rx=".5"/></svg>The Toolbox</a>
+      <a href="log.html">The Log</a>
+      <a href="houses.html">I have a house</a>
+    </div>
+  </nav>
+
+  <header>
+    <div class="protocol">One new tool a week <b>·</b> no email to read them <b>·</b> take what's useful</div>
+    <h1 id="tools"><svg class="tbx" viewBox="0 0 16 14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.2"><g class="lid"><path d="M5.5 4.5v-.75a2.5 2.5 0 0 1 5 0v.75"/><rect x="1" y="4.5" width="14" height="2.5" rx=".5"/></g><rect x="1" y="7" width="14" height="6" rx=".5"/></svg>The Toolbox</h1>
+    <p class="dek">Every tool in here serves one job: <b>the hard work that makes a dad's
+      life powerful.</b> Purpose, habits, honest thinking, the first real move. Start
+      anywhere — each one hands you the next.</p>
+  </header>
+
+  <p class="lanes"><b>How to use it:</b> pick the one that names the thing you're stuck
+    on. Give it the ten minutes it asks for. Every tool ends with a next step you can
+    take tonight — none of them end with "buy something."</p>
+
+  <a class="card" href="7-layers-of-why.html">
+    <span class="sheetno">01</span>
+    <span>
+      <b>The 7 Layers of Why</b>
+      <span class="d">A 12-minute self-interview. You know what you want — this finds
+        out why, because a want you can't explain is the first thing you quit.</span>
+      <em>Open the tool →</em>
+    </span>
+  </a>
+
+  <a class="card" href="neuroplasticity.html">
+    <span class="sheetno">02</span>
+    <span>
+      <b>The 10 Principles of Neuroplasticity</b>
+      <span class="d">How your nervous system actually rewires — recovery, habits,
+        beliefs. From a decade of physical therapy practice. Keyword: REPS.</span>
+      <em>Open the tool →</em>
+    </span>
+  </a>
+
+  <a class="card" href="start-with-ai.html">
+    <span class="sheetno">03</span>
+    <span>
+      <b>Start With AI — 8 Focus Steps</b>
+      <span class="d">One path, not a menu. What to do with a single $20/month
+        subscription, in order — and what to ignore for thirty days.</span>
+      <em>Open the tool →</em>
+    </span>
+  </a>
+
+  <a class="card" href="fact-testable-fantasy.html">
+    <span class="sheetno">04</span>
+    <span>
+      <b>Fact / Testable / Fantasy</b>
+      <span class="d">The honesty filter for your own ideas. Two questions sort any
+        idea into do-it-today, file-it, or parked-with-a-price-tag.</span>
+      <em>Open the tool →</em>
+    </span>
+  </a>
+
+  <a class="card" href="side-gig-llc.html">
+    <span class="sheetno">05</span>
+    <span>
+      <b>Why Your Side Gig Wants an LLC</b>
+      <span class="d">The someday-to-this-week move: a real container for the thing
+        you keep almost starting — plus a north star built on what you already have.</span>
+      <em>Open the tool →</em>
+    </span>
+  </a>
+
+  <!-- TUESDAY FLIP: on 8/18 replace this sealed teaser card with a normal open-tool
+       card (same pattern as 01-05) linking outwit-the-devil.html, and restore a
+       generic "in the shop" 07 placeholder below it. -->
+  <a class="card devil" href="outwit-the-devil.html">
+    <span class="sheetno">06</span>
+    <span>
+      <b>Outwit the Devil</b>
+      <span class="d">Sealed until 8/18. There's a note nailed to the door, in a
+        handwriting nobody recognizes: <i>"Impatience is my favorite sin. Three tries
+        at my riddle, little drifter — crack it and come in early. Miss, and you wait
+        like the rest."</i></span>
+      <em>Knock on the door →</em>
+    </span>
+  </a>
+
+  <p class="collector">I'm a collector of tools. I own a lot more than I use — that's
+    the honest part. <b>So don't be me.</b> Take one, actually use it, let it do the
+    job it was built for. Then hand it to another dad in your network your gut says
+    needs it about as much as you did.</p>
+
+  <p class="backhome">New here and wondering why any of this is free?
+    <a href="index.html">The story's on the front page.</a> Want the next tool when it
+    lands? <a href="index.html#next">Here's what I ask.</a></p>
+
+  <footer>A new tool every week. From <a href="https://www.instagram.com/nicksdadhax/">@nicksdadhax</a>
+    — sorting it out loud so it actually gets done.</footer>
+
+</div>
+<script>
+/* The lid opens as you arrive — you did just open a toolbox. No network, no storage. */
+(function(){var h=document.getElementById('tools');if(!h)return;
+setTimeout(function(){h.classList.add('open');},350);})();
+</script>
+</body>
+</html>
