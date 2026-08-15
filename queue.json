@@ -196,11 +196,10 @@
     {
       "file": "ig-diy-phone.mp4",
       "title": "Stop your phone sliding out of your pocket",
-      "status": "held",
+      "status": "pending",
       "caption": "Hey Dad,\n\nIf your phone hits the floor every time you sit down, it isn't you. It's the pocket.\n\nOne small change to how it goes in and it stays put \u00e2\u20ac\u201d in the truck, on the couch, on the mower.\n\nSmall annoyance, thirty seconds to fix, and you stop paying for screens.\n\nThanks, Dad. I love you, Dad.\n\nFree tools \u00e2\u20ac\u201d full list in my profile.",
       "earliest": "2026-08-17",
-      "slot": 13,
-      "hold_reason": "karaoke layer is Dutch/Afrikaans garbage (Whisper hallucination on speechless clip) - re-cut hook-only before releasing; see Rook capture 2026-08-15-karaoke-language-hallucination"
+      "slot": 13
     },
     {
       "file": "ig-0810-bird.mp4",
