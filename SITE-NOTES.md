@@ -170,6 +170,39 @@ in relation to it. Boulder question + call at the end, per the spine.
 ⚠️ Honesty rails for 05: no legal or tax advice — plain-language "why a container
 helps," and "ask your accountant/attorney" where it counts. Same no-gate promise.
 
+## Story-first is law (Nick, 2026-08-15)
+
+Storytelling is the skeleton of everything this operation makes — the site, each
+tool, every post. Humans move on story, not information. Every new artifact gets
+a story pass before it ships: who's the hero (always the reader), what's the
+negative force, what instrument do they leave with. The site-wide frame is the
+hero's journey with the reader early in theirs; Nick is the guide, never the hero.
+
+## Tool 06 — the Devil's character law + chapter frame (story pass 2026-08-15)
+
+**The character law (Nick's rule):** the Devil names every concept by its NEGATIVE
+form — he is the negative forces personified, so a virtue never appears in his
+mouth under its positive name. Impatience, never eagerness. Drift, never rest.
+Stubbornness, never persistence. The bribe, never comfort. Borrowed opinions,
+never education. His flattery is bait; his endearments ("friend") are
+condescension; his honesty arrives only when literally cornered, grudging or
+tolled. He NEVER praises, encourages, coaches, or uses hero-language about the
+player — a dare is the closest he comes. His one fear (definite purpose + a plan
+in motion) is always framed as "a problem I have no tool for," never admiration.
+Only THE TABLE (narrator, clinical mono) and the site-owner voice (story note,
+attribution) may frame the player hero-positively.
+
+**The chapter frame:** this tool is one early chapter of a hero's journey — the
+first close look at the antagonist (vast, bored, certain, doesn't rate you yet)
+combined with the first real fight, which is against a PHANTOM wearing his
+costume, not the man himself. Winning it is real skill; the copy is the only
+reason the fight is winnable tonight. The hero leaves with the enemy's whole
+playbook and one instrument: the well-aimed open question. The win line is the
+emotional spine — no praise from him, just distaste at what the player is
+becoming, echoing the 7th confession's "now forget I said it." (Private
+structural reference: young hero's first courtyard exchange + the phantom
+duel — never named in page copy.)
+
 ## Gate
 
 Every page audited at 375px with `_tools/web/audit.js` before it ships: **PASS,

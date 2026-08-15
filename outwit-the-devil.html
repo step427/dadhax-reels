@@ -82,7 +82,8 @@
   .nav { padding: 14px 0 0; }
   .navtop { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
   .brand { font-family: var(--mono); font-weight: 700; color: var(--bone);
-    text-decoration: none; letter-spacing: -.02em; }
+    text-decoration: none; letter-spacing: -.02em;
+    display: inline-flex; align-items: center; min-height: 44px; }
   .navtop .meta { font-family: var(--mono); font-size: 11px; letter-spacing: .14em;
     text-transform: uppercase; color: var(--graphite); }
   .navlinks { display: flex; flex-wrap: wrap; gap: 2px 18px; margin-top: 8px;
@@ -178,7 +179,7 @@
   .askrow .micbtn.listening { border-color: var(--warn); color: var(--warn); }
   .voicebtn { background: var(--panel-up); color: var(--bone); border: 1px solid var(--hair);
     font-family: var(--mono); font-size: 10.5px; letter-spacing: .08em; padding: 6px 10px;
-    cursor: pointer; min-height: 32px; }
+    cursor: pointer; min-height: 44px; }
   .voicebtn[aria-pressed="false"] { color: var(--graphite); }
 
   .hints { padding: 0 14px 12px; display: flex; flex-direction: column; gap: 6px; }
@@ -314,8 +315,9 @@
     <span class="protocol">NICKSDADHAX // SEALED UNTIL 8·18 — <b class="him">HE ANSWERED THE DOOR</b></span>
     <h2>You're early.</h2>
     <p class="hisword">"The man who built this table says the door stays shut until
-      the eighteenth. But eagerness is my favorite sin — so here is my offer. Three
-      tries at one riddle. Crack it and walk in early. Miss all three and you wait
+      the eighteenth. But impatience is my favorite sin — ten thousand have stood at
+      this door wearing yours — so here is my offer. Three tries at one riddle. Crack
+      it and walk in early. Miss all three and you wait
       like everyone else. And waiting, friend, is <b>my</b> favorite game."</p>
     <p class="riddle">There are two men in every man. One hesitates, drifts,
       and waits — <b>that one is mine.</b> The other gives the orders, and he is the
@@ -346,7 +348,8 @@
   <header>
     <span class="protocol">SHEET 06 // INTERROGATION // <b>THE CLOCK IS HIS</b></span>
     <h1>Outwit <span class="of">the</span> Devil</h1>
-    <p class="dek">He's at the table. You get five minutes. He has to answer everything —
+    <p class="dek">He's at the table — his ten-thousandth time in that chair. Your first.
+      You get five minutes. He has to answer everything —
       but he only has to answer <em>exactly what you ask</em>. Ask yes/no questions and
       he'll burn your clock one word at a time. Ask better questions and he starts
       confessing.</p>
@@ -364,13 +367,15 @@
     <span class="lbl">Why this one exists</span>
     <p>I've been listening to Napoleon Hill interrogate the devil on my drives — written
       1938, locked away until 2011 — and I keep getting caught mid-sentence:
-      <b>yep, guilty of that.</b> This is that chair, turned around. Your turn.</p>
+      <b>yep, guilty of that.</b> This is that chair, turned around. Everyone who ever
+      stood up to this thing started small — in a chair exactly like this one. Your turn.</p>
   </div>
 
   <p class="allegory"><b>What you're talking to:</b> Hill's devil isn't theology — he's
     an allegory with a voice: fear and drift, personified so you can cross-examine them.
-    The one at this table is scripted — a sparring dummy wearing the costume. The real
-    one doesn't use a script, which is exactly why the practice matters.</p>
+    The one at this table is a phantom — a sparring copy wearing the costume, which is
+    the only reason this fight is winnable tonight. Beat it and the skill is still real.
+    The real one doesn't use a script, which is exactly why the practice matters.</p>
 
   <!-- ---------- the brief ---------- -->
   <div class="brief">
@@ -381,7 +386,8 @@
         one before the clock dies. Each confession flips a card face-up.</li>
       <li><b>Your only crowbar is the open question.</b> WHAT, HOW, WHY — aimed at how
         he works, what he uses, what he's afraid of. Press a thread and he has to give
-        it up.</li>
+        it up. The crowbar is the one thing you carry out of this room — it opens more
+        than devils.</li>
       <li><b>He scores three ways:</b> yes/no questions (one-word answer, your clock
         burns) · your temper (every degree you heat up, he cools down) · the clock
         itself. The seventh card is locked until you've earned it.</li>
@@ -464,9 +470,11 @@
     </div>
     <p class="said" id="said"></p>
 
-    <p class="cta">The scripted devil has maybe fifteen minutes of fight in him. Your
-      real one doesn't. The button above hands the interrogator's chair to the AI you
-      already use — same rules, no script, and it knows how to press back.</p>
+    <p class="cta">That was the practice phantom — scripted, maybe fifteen minutes of
+      fight in him. The button above summons the next one up: the AI you already use,
+      same rules, no script, and it presses back. The real one outranks them both —
+      he's already in your week, wearing "thinking it over." That's the fight the
+      practice is for.</p>
   </div>
 
   <div class="attrib">
@@ -566,7 +574,7 @@
   /* ---------- the deck ---------- */
   var CARDS = [
     { id: "drift",  face: "THE DRIFT",   topics: ["drift", "wait", "delay", "procrast", "hesitat", "control people", "how do you get", "how do you take", "how do you work", "take control", "control of", "weapon", "method", "trick"],
-      confess: "I never chain anyone. Chains cost effort. I just wait for a man to postpone one decision — then help him postpone the next. He calls it “thinking it over.” I call him a drifter, and he does the rest himself.",
+      confess: "I never chain anyone. Chains cost effort. I just wait for a man to postpone one decision — then help him postpone the next. He calls it “thinking it over.” I call him a drifter, and he does the rest himself. I'll explain the whole mechanism to anyone who asks — knowing it has never once saved the man I explained it to.",
       crumb: "A riddle while you flail: I own no chains, no cage, no rope \u2014 and yet my prisoners never leave. How do I hold them?",
       lure: "Go on \u2014 ask me HOW I take control of a person.",
       clue: "He bragged he never needs chains \u2014 you never made him say HOW he takes people.",
@@ -611,7 +619,7 @@
 
   /* ---------- devil lines ---------- */
   var L = {
-    open: "The table is yours. Ask.",
+    open: "Sit. You would be my ten-thousandth. The table is yours. Ask.",
     closedAns: ["Yes.", "No.", "Perhaps.", "Occasionally.", "Wouldn't you like to know. Oh — you would. Then ask it properly."],
     closedTaunt: [
       "A yes-or-no question. My favorite kind — one word from me, five seconds off your clock.",
@@ -636,8 +644,8 @@
       "I've been cursed at in every language ever spoken. It has never once cost me a point."
     ],
     partial: [
-      "Closer. Stay on that thread and press — one more like that and I'll have to answer properly.",
-      "Careful. That question had an edge on it. Follow it up before I change the subject."
+      "Closer than I'd like. One more with that edge and I'll have to answer properly. Most lose the nerve here.",
+      "Careful. That question had an edge on it. I'll be changing the subject before you find another."
     ],
     lockedTease: "No. That one costs more than you've earned. Flip more of my cards first — then ask me again what I'm afraid of.",
     goodOpen: [
@@ -645,9 +653,9 @@
       "You're learning. I liked you better impatient."
     ],
     timeLow: "Tick. Tock. I have forever, friend. You have under a minute.",
-    win: "Enough — ENOUGH. Seven confessions. You play this better than most who've sat here. Go use it, before I convince you the game was silly.",
+    win: "Enough — ENOUGH. Seven confessions — including the one I told you to forget. You are turning into the one problem I have no tool for. I'm needed at other tables, friend. Ninety-eight of them.",
     lose: "Time. My favorite sound is a clock finishing. Come back when you've practiced — I'll be here. I'm always here.",
-    doneEarly: "Leaving early? Wise, honestly. Every minute at this table is a minute I'm studying you back."
+    doneEarly: "Leaving early? Wise, honestly. Every minute at this table is a minute I'm studying you back. I'll file you where I found you: harmless. For now."
   };
 
   var HINTS = [
@@ -863,7 +871,7 @@
     document.getElementById("hints").hidden = true;
     say("devil", won ? L.win : (st.t > 0 ? L.doneEarly : L.lose));
     setTimeout(function () {
-      say("table", "He is gone. The chair was never warm.");
+      say("table", "He is gone. The chair was never warm — it was never really him. The costume was enough to learn from.");
     }, 400);
 
     var craft = st.q ? Math.round(100 * st.open / st.q) : 0;
@@ -875,8 +883,8 @@
     document.getElementById("rCool").textContent = st.cool + "/100";
     document.getElementById("rDevil").textContent = st.devil + " pts";
     var v;
-    if (n >= 7) v = "All seven confessions on the table, including the one he charges for. You now know his whole playbook — which means from here on, drifting is a choice.";
-    else if (n >= 3) v = "You flipped " + n + " of his cards. Notice what worked: every confession came off an open question that pressed a thread. Nothing came off a yes/no. That's the lesson, and it works on problems that don't wear a costume.";
+    if (n >= 7) v = "All seven confessions, including the one he charges for. Understand what happened here: you beat the copy — the costume exists so this fight could be won at all. The real one doesn't use a script, but he runs these same seven moves, and you now hold his whole playbook. From here on, drifting is a choice.";
+    else if (n >= 3) v = "You flipped " + n + " of his cards — earned, not lucky, and this early in the fight that's what counts. Notice what worked: every confession came off an open question that pressed a thread. Nothing came off a yes/no. That's the lesson, and it works on problems that don't wear a costume.";
     else v = "He kept most of his deck. Watch the pattern: one-word answers to one-word-sized questions. WHAT, HOW and WHY are crowbars. IS, DO and SHOULD are doors he closes politely. Sit back down.";
     document.getElementById("verdict").textContent = v;
     var missedCards = CARDS.filter(function (c) { return st.found.indexOf(c.id) < 0; });
@@ -945,7 +953,7 @@
 
     // on-topic
     if (st.found.indexOf(card.id) >= 0) {
-      say("devil", "Asked and answered — the card is face-up, friend. Spend the clock on what's still hidden.");
+      say("devil", "Asked and answered — the card is face-up, friend. By all means, keep spending your clock on it.");
       afterTurn(); return;
     }
     if (card.locked && st.found.length < 3) {
