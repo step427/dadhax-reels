@@ -212,6 +212,20 @@ DM button). "Tell me in the comments" phrasing became "DM me" — no comments
 exist on-site. Tool pages mark the Toolbox chip aria-current="true" (inside
 the section), real pages use "page"; site.css matches bare [aria-current].
 
+## The yellow grammar (Nick flagged "color scheme is off," 8/15 relaunch night)
+
+Signal yellow #FFC629 has exactly three jobs, in this order, and the relaunch
+briefly broke them by using yellow as a voice instead of a scalpel:
+1. **SOLID yellow block = the one primary action on the page.** The gate button,
+   the optin button, the Toolbox door. ONE per page, never two.
+2. **Thin yellow = small mono labels and marks.** Section tags, sheet numbers,
+   "open the tool," lane tags, plan numbers, one left-border.
+3. **Yellow prose = at most one bold phrase per zone** (the thesis line, the
+   optin ask). Never whole link-sentences, never bold link rows, never the
+   footer as a yellow wall.
+If a screen shows more than one loud yellow element, the hierarchy is broken —
+strip until the primary action is unmistakable.
+
 ## Story-first is law (Nick, 2026-08-15)
 
 Storytelling is the skeleton of everything this operation makes — the site, each

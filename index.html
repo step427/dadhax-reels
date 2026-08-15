@@ -31,10 +31,11 @@
   h1 .of { color:var(--signal); display:block; }
   .dek { margin:16px 0 0; max-width:47ch; color:#CFC9BB; font-size:17.5px; }
 
-  /* the turn — easy was never the point */
+  /* the turn — easy was never the point. One yellow moment only: the thesis. */
   .turn { margin:26px 0 0; }
   .turn p { margin:0 0 13px; }
-  .turn b { color:var(--signal); }
+  .turn b { color:var(--bone); }
+  .turn b.k { color:var(--signal); }
 
   .lanes { margin:22px 0 0; border:1px solid var(--hair); }
   .lane { padding:14px 15px; border-bottom:1px solid var(--hair); font-size:15.5px;
@@ -56,18 +57,19 @@
   .plan li b { color:var(--bone); }
   .plan .n { font-family:var(--mono); font-weight:700; color:var(--signal); font-size:15px; }
 
-  /* the door — the one CTA */
-  .door { display:block; margin:28px 0 0; text-decoration:none; color:var(--bone);
-    border:2px solid var(--signal); background:var(--panel);
+  /* the door — the one CTA, and the one place solid yellow lives on this page.
+     Matches the primary-button grammar the site already speaks (gate, optin). */
+  .door { display:block; margin:28px 0 0; text-decoration:none; color:#14100F;
+    background:var(--signal); border:2px solid var(--signal);
     padding:20px 18px; }
-  .door:hover, .door:focus-visible { background:var(--panel-up); }
+  .door:hover, .door:focus-visible { background:var(--signal-d); border-color:var(--signal-d); }
   .door .row { display:flex; align-items:center; gap:16px; }
   .door .tbx { width:44px; height:38px; flex:none; }
   .door .big { display:block; font-family:var(--mono); font-weight:700; font-size:21px;
-    letter-spacing:-.01em; text-transform:uppercase; color:var(--signal); }
-  .door .sub { display:block; color:var(--graphite); font-size:14px; margin-top:3px; }
+    letter-spacing:-.01em; text-transform:uppercase; color:#14100F; }
+  .door .sub { display:block; color:#4A3B08; font-size:14px; margin-top:3px; }
   .newline { margin:12px 0 0; font-size:14.5px; color:var(--graphite); }
-  .newline a { color:var(--signal); font-weight:700; text-decoration:none; }
+  .newline a { color:var(--signal); text-decoration:none; }
 
   footer { margin-top:40px; padding-top:14px; border-top:1px solid var(--hair);
     color:var(--graphite); font-size:14px; font-family:var(--mono); letter-spacing:.04em; }
@@ -107,7 +109,7 @@
     <p>Then it clicked why those matter: <b>the good parts of a dad's life are supposed
       to be heavy.</b> The marriage. The kids. The block you live on. The thing you
       keep "thinking over." That work is hard because it's the work that counts —
-      an easier life was never the goal. <b>A more powerful one is.</b></p>
+      an easier life was never the goal. <b class="k">A more powerful one is.</b></p>
   </div>
 
   <div class="lanes">
@@ -165,7 +167,8 @@
 
   <footer>
     <p>Own a house in Washington or Dakota County, MN and need it gone?
-      <a href="houses.html">I buy houses &mdash; and I'll tell you if you shouldn't sell me yours.</a></p>
+      <a href="houses.html">I buy houses</a> &mdash; and I'll tell you if you
+      shouldn't sell me yours.</p>
     <p>A new tool every week. From <a href="https://www.instagram.com/nicksdadhax/">@nicksdadhax</a>
       &mdash; sorting it out loud so it actually gets done. Hand-built, nothing tracking you:
       <a href="https://github.com/step427/dadhax-reels">view source</a>.</p>
