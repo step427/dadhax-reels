@@ -203,6 +203,34 @@ becoming, echoing the 7th confession's "now forget I said it." (Private
 structural reference: young hero's first courtyard exchange + the phantom
 duel — never named in page copy.)
 
+## Tool 06 — clunk pass (drifter-persona audit, 2026-08-15)
+
+Nick called the tool clunky and story-thin; a full journey audit (home page →
+gate → game → closer, run in persona: a drifter on the verge of discovery,
+10:40pm, phone) agreed. The fixes, and why they stay:
+
+- **The gate is a hint ladder and a door, not a wall.** Misses hand over more of
+  the answer; the third miss opens the door anyway with a sneer and brands the
+  session a drifter (his opener changes). A lockout in front of the best content
+  was the #1 reader-loss point. Body scroll locks while the door is shut.
+- **Lines arrive on beats.** say() renders through a queue — the devil pauses
+  ~750ms behind a "…" while he considers you; the table follows a half-step
+  behind. Instant replies read as a vending machine, not a presence.
+- **The devil's first line is personal.** He names the thing you keep "thinking
+  over" before you ask anything — the one moment the fiction reaches through the
+  glass, moved from a random mid-game bait to the opener.
+- **Truth costs him.** Every confession pays +20s back (capped at 5:00), so
+  reading his best paragraphs is never punished by his own clock.
+- **Voice is muted by default** and even opted-in he only speaks lines ≤14 words
+  — the browser robot reading an 80-word confession broke the fiction.
+- **CRAFT % lives only in the debrief.** A live percentage is a rubric; he
+  scores you, the table doesn't.
+- **Preamble collapsed** to one "Before you sit" block (Start ~1.7 screens from
+  top, was 2.4); the owner's origin note moved below the game, by the credit.
+- **The closer is staged.** Only the open-question field shows until it's
+  answered; then the decision + "text them tonight" (a 10:55pm dad can send a
+  text; he cannot make a call).
+
 ## Gate
 
 Every page audited at 375px with `_tools/web/audit.js` before it ships: **PASS,

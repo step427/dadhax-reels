@@ -143,11 +143,17 @@
     transition: background .5s ease, color .5s ease, border-color .5s ease;
   }
   .card.up { background: var(--signal); color: #201A05; border-color: var(--signal-d);
-    font-weight: 700; text-align: center; padding: 2px; font-size: 10px; line-height: 1.2; }
+    font-weight: 700; text-align: center; padding: 2px; font-size: 10px; line-height: 1.2;
+    animation: flipin .45s ease; }
+  @keyframes flipin { 0% { transform: rotateX(90deg); } 60% { transform: rotateX(-12deg); }
+    100% { transform: rotateX(0); } }
   @media (max-width: 430px) { .cards { grid-template-columns: repeat(7, 1fr); gap: 4px; padding: 10px; } }
 
-  .log { padding: 4px 14px 8px; max-height: 46vh; overflow-y: auto; scroll-behavior: smooth; }
-  .turn { margin: 12px 0; }
+  .log { padding: 4px 14px 8px; max-height: 60vh; overflow-y: auto; scroll-behavior: smooth; }
+  .turn { margin: 12px 0; animation: turnin .25s ease; }
+  @keyframes turnin { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: none; } }
+  .turn.typing { color: var(--graphite); letter-spacing: 4px; font-size: 18px; margin: 6px 0; }
+  @media (prefers-reduced-motion: reduce) { .turn, .card.up { animation: none; } }
   .turn .who {
     font-family: var(--mono); font-size: 10.5px; letter-spacing: .14em;
     text-transform: uppercase; display: block; margin-bottom: 3px;
@@ -363,34 +369,18 @@
     your fears — we don't collect them.
   </div>
 
-  <div class="story">
-    <span class="lbl">Why this one exists</span>
-    <p>I've been listening to Napoleon Hill interrogate the devil on my drives — written
-      1938, locked away until 2011 — and I keep getting caught mid-sentence:
-      <b>yep, guilty of that.</b> This is that chair, turned around. Everyone who ever
-      stood up to this thing started small — in a chair exactly like this one. Your turn.</p>
-  </div>
-
-  <p class="allegory"><b>What you're talking to:</b> Hill's devil isn't theology — he's
-    an allegory with a voice: fear and drift, personified so you can cross-examine them.
-    The one at this table is a phantom — a sparring copy wearing the costume, which is
-    the only reason this fight is winnable tonight. Beat it and the skill is still real.
-    The real one doesn't use a script, which is exactly why the practice matters.</p>
-
   <!-- ---------- the brief ---------- -->
   <div class="brief">
-    <span class="lbl">The brief — read before you sit</span>
+    <span class="lbl">Before you sit — three things</span>
     <ol>
-      <li><b>He is holding seven cards — his secrets.</b> The face-down cards below are
-        his hand: how he actually takes people. Your job is to make him confess every
-        one before the clock dies. Each confession flips a card face-up.</li>
-      <li><b>Your only crowbar is the open question.</b> WHAT, HOW, WHY — aimed at how
-        he works, what he uses, what he's afraid of. Press a thread and he has to give
-        it up. The crowbar is the one thing you carry out of this room — it opens more
-        than devils.</li>
-      <li><b>He scores three ways:</b> yes/no questions (one-word answer, your clock
-        burns) · your temper (every degree you heat up, he cools down) · the clock
-        itself. The seventh card is locked until you've earned it.</li>
+      <li><b>He must answer — but only exactly what you ask.</b> Yes/no gets one word
+        and your clock burns. WHAT, HOW, WHY is the crowbar — press a thread and he
+        has to give it up.</li>
+      <li><b>The seven face-down cards are his playbook.</b> Flip them all before the
+        clock dies. Every confession hands you time back — truth costs him.</li>
+      <li><b>The one at this table is a phantom.</b> A copy in the costume — the only
+        reason tonight is winnable. The real one doesn't use a script. That's why
+        you practice.</li>
     </ol>
   </div>
 
@@ -399,11 +389,10 @@
     <div class="boardbar">
       <span class="clock" id="clock">5:00</span>
       <div class="meters">
-        <span>CRAFT <b id="mCraft">—</b></span>
         <span>COOL <b id="mCool">100</b></span>
         <span class="dv">HIS <b id="mDevil">0</b></span>
       </div>
-      <button id="voiceBtn" type="button" class="voicebtn" aria-pressed="true">🔈 HE SPEAKS</button>
+      <button id="voiceBtn" type="button" class="voicebtn" aria-pressed="false">🔇 MUTED</button>
     </div>
 
     <div class="cards" id="cards" aria-label="Confessions flipped"></div>
@@ -450,16 +439,17 @@
       <p class="why">If it starts with "should I," he wrote it. Reshape it.</p>
     </div>
 
-    <div class="block">
+    <div class="block" id="closer2" hidden>
       <label class="lbl" for="myplan">The answer he fears — one definite decision, with a date</label>
       <textarea id="myplan" rows="2" placeholder="what you will do, and by when"></textarea>
       <p class="why">Plan and purpose. That's the whole antidote — marriage, work, all of it.</p>
     </div>
 
-    <div class="block">
-      <label class="lbl" for="mycall">One person who can push this boulder — even an inch</label>
-      <input id="mycall" type="text" placeholder="a name. then make the call.">
-      <p class="why">Most problems aren't about what you know. They're about who you know. Make the call.</p>
+    <div class="block" id="closer3" hidden>
+      <label class="lbl" for="mycall">One person who can push this boulder — text them tonight</label>
+      <input id="mycall" type="text" placeholder="a name. send the text before you close this.">
+      <p class="why">Most problems aren't about what you know. They're about who you know.
+        A text tonight beats a call someday — the call can be tomorrow.</p>
     </div>
 
     <div class="actions">
@@ -475,6 +465,14 @@
       same rules, no script, and it presses back. The real one outranks them both —
       he's already in your week, wearing "thinking it over." That's the fight the
       practice is for.</p>
+  </div>
+
+  <div class="story">
+    <span class="lbl">Why this one exists</span>
+    <p>I've been listening to Napoleon Hill interrogate the devil on my drives — written
+      1938, locked away until 2011 — and I keep getting caught mid-sentence:
+      <b>yep, guilty of that.</b> This chair, turned around, is what came of it. Everyone
+      who ever stood up to this thing started small — in a chair exactly like this one.</p>
   </div>
 
   <div class="attrib">
@@ -530,20 +528,29 @@
       }).join("");
     });
   }
+  /* The riddle is a hint ladder, not a password: each miss hands over more of the
+     answer, and the third miss opens the door anyway — a wall in front of the best
+     content costs readers; a sneer costs nothing. (Drifter-persona audit, 8/15.) */
   var MISS_LINES = [
-    "No. Two tries left — and the drifting half of you is showing.",
-    "Wrong again. One try, friend. Think: which man in you do I run from?",
-    "Three misses. The door stays shut until the eighteenth — and I do so love a man who waits."
+    "No. Two words, friend — and the first of them is already in my riddle. I said it twice.",
+    "Wrong again. The one who gives the orders is the OTHER man. Now say what he is to you. Last try."
   ];
   function gateTries() {
     try { return parseInt(sessionStorage.getItem("otd-tries") || "0", 10); } catch (e) { return 0; }
   }
-  function lockGate() {
-    document.getElementById("gateIn").disabled = true;
-    document.getElementById("gateBtn").disabled = true;
-    document.getElementById("gateErr").textContent = MISS_LINES[2];
+  function removeGate() {
+    if (gate && gate.parentNode) gate.parentNode.removeChild(gate);
+    document.body.style.overflow = "";
   }
-  if (gateTries() >= 3) lockGate();
+  function openDoor(line, wait) {
+    try { sessionStorage.setItem("otd-gate", "open"); sessionStorage.removeItem("otd-tries"); } catch (e) {}
+    if (line) {
+      document.getElementById("gateIn").disabled = true;
+      document.getElementById("gateBtn").disabled = true;
+      document.getElementById("gateErr").textContent = line;
+      setTimeout(removeGate, wait || 1600);
+    } else removeGate();
+  }
   function tryGate() {
     var raw = (document.getElementById("gateIn").value || "").trim().toUpperCase();
     if (!raw) return;
@@ -552,12 +559,15 @@
     var v = raw.replace(/[^A-Z]/g, "").replace(/^THE/, "").replace(/^MY/, "");
     sha256hex(v).then(function (h) {
       if (h === GATE_HASH) {
-        try { sessionStorage.setItem("otd-gate", "open"); sessionStorage.removeItem("otd-tries"); } catch (e) {}
-        gate.parentNode.removeChild(gate);
+        openDoor("…said aloud, no less. Come in, then — and mind the clock. It's mine.");
       } else {
         var t = gateTries() + 1;
         try { sessionStorage.setItem("otd-tries", String(t)); } catch (e) {}
-        if (t >= 3) { lockGate(); return; }
+        if (t >= 3) {
+          try { sessionStorage.setItem("otd-drifter", "1"); } catch (e) {}
+          openDoor("Three misses. A drifter to the bone — no wonder you knocked. Oh, come in anyway. I do my best work on your kind.", 2200);
+          return;
+        }
         document.getElementById("gateErr").textContent = MISS_LINES[t - 1];
       }
     });
@@ -566,8 +576,9 @@
   document.getElementById("gateIn").addEventListener("keydown", function (e) {
     if (e.key === "Enter") tryGate();
   });
+  document.body.style.overflow = "hidden"; // no peeking behind the door
   try {
-    if (sessionStorage.getItem("otd-gate") === "open") gate.parentNode.removeChild(gate);
+    if (sessionStorage.getItem("otd-gate") === "open") removeGate();
   } catch (e) {}
   /* ---------- /GATE-JS ---------- */
 
@@ -619,7 +630,8 @@
 
   /* ---------- devil lines ---------- */
   var L = {
-    open: "Sit. You would be my ten-thousandth. The table is yours. Ask.",
+    open: "Sit. Before you ask — the thing you keep “thinking over.” I've watched you not decide it for years. The table is yours. Ask.",
+    openDrifter: "Sit, drifter. Three misses at a child's riddle — this should not take long. The table is yours. Ask.",
     closedAns: ["Yes.", "No.", "Perhaps.", "Occasionally.", "Wouldn't you like to know. Oh — you would. Then ask it properly."],
     closedTaunt: [
       "A yes-or-no question. My favorite kind — one word from me, five seconds off your clock.",
@@ -708,8 +720,8 @@
     });
   }
   function meters() {
-    var craft = st.q ? Math.round(100 * st.open / st.q) : null;
-    document.getElementById("mCraft").textContent = craft === null ? "—" : craft + "%";
+    /* CRAFT % lives only in the debrief now — a live percentage grade is a rubric,
+       and a rubric mid-scene breaks the fiction. He scores you; the table doesn't. */
     document.getElementById("mCool").textContent = st.cool;
     document.getElementById("mDevil").textContent = st.devil;
     var c = document.getElementById("clock");
@@ -717,24 +729,55 @@
     c.textContent = m + ":" + (s < 10 ? "0" : "") + s;
     c.className = "clock" + (st.t <= 60 ? " low" : "");
   }
-  function say(who, text, cls) {
+  /* A scene needs beats. Lines queue and arrive with a pause — the devil takes a
+     moment before he speaks (with a "…" while he considers you), the table follows
+     a half-step behind. Game logic never reads the log, so delayed rendering is
+     purely theatrical. (Both 8/15 audits: instant replies read as a vending machine.) */
+  var sayQ = [], sayBusy = false;
+  function renderTurn(item) {
     var d = document.createElement("div");
-    d.className = "turn " + who + (cls ? " " + cls : "");
+    d.className = "turn " + item.who + (item.cls ? " " + item.cls : "");
     var w = document.createElement("span");
     w.className = "who";
-    w.textContent = who === "you" ? "YOU" : (who === "devil" ? "THE DEVIL" : "THE TABLE");
+    w.textContent = item.who === "you" ? "YOU" : (item.who === "devil" ? "THE DEVIL" : "THE TABLE");
     var p = document.createElement("p");
-    p.textContent = text; // textContent, never innerHTML — user text passes through here
+    p.textContent = item.text; // textContent, never innerHTML — user text passes through here
     d.appendChild(w); d.appendChild(p);
     logEl.appendChild(d);
     logEl.scrollTop = logEl.scrollHeight;
-    if (who === "devil") speak(text);
+    if (item.who === "devil") speak(item.text);
+  }
+  function say(who, text, cls) {
+    sayQ.push({ who: who, text: text, cls: cls });
+    drainSay();
+  }
+  function drainSay() {
+    if (sayBusy || !sayQ.length) return;
+    var item = sayQ.shift();
+    var wait = item.who === "devil" ? 750 : (item.who === "table" ? 300 : 0);
+    sayBusy = true;
+    var dots = null;
+    if (item.who === "devil") {
+      dots = document.createElement("div");
+      dots.className = "turn typing";
+      dots.textContent = "…";
+      logEl.appendChild(dots);
+      logEl.scrollTop = logEl.scrollHeight;
+    }
+    setTimeout(function () {
+      if (dots && dots.parentNode) dots.parentNode.removeChild(dots);
+      renderTurn(item);
+      sayBusy = false;
+      drainSay();
+    }, wait);
   }
   function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
 
   /* ---------- the devil's voice — browser speech engine, pitched to the basement.
      No files, no network, no promise broken: the voice lives on the device. ---------- */
-  var voiceOn = true, devilVoiceCache = null;
+  /* Muted by default — the browser robot reading an 80-word confession breaks the
+     fiction it's meant to sell. Opt in, and even then he only speaks short lines. */
+  var voiceOn = false, devilVoiceCache = null;
   function devilVoice() {
     if (devilVoiceCache) return devilVoiceCache;
     if (!window.speechSynthesis) return null;
@@ -749,6 +792,7 @@
   }
   function speak(text) {
     if (!voiceOn || !window.speechSynthesis) return;
+    if (text.split(/\s+/).length > 14) return; // taunts and verdicts, never paragraphs
     try {
       speechSynthesis.cancel();
       var u = new SpeechSynthesisUtterance(text);
@@ -853,7 +897,10 @@
     cardsRender(); meters(); hintsRender();
     say("table", "He sits. He does not offer to shake hands. Seven cards in his hand — flip them all before the clock dies.");
     if (st.isReplay) say("table", "You've sat here before. He's still holding " + lastMissed.length + " of the cards you missed — the hints below know which ones.");
-    say("devil", st.isReplay ? "Back again. I kept your seat warm — and my secrets warmer." : L.open);
+    var cameInDrifting = false;
+    try { cameInDrifting = sessionStorage.getItem("otd-drifter") === "1"; } catch (e) {}
+    say("devil", st.isReplay ? "Back again. I kept your seat warm — and my secrets warmer."
+      : (cameInDrifting ? L.openDrifter : L.open));
     timer = setInterval(tick, 1000);
     askEl.focus();
   }
@@ -964,9 +1011,10 @@
       // pressed the thread properly — confession. Deterministic: a real open
       // question on a live topic ALWAYS pays. The lesson has to be reliable.
       st.found.push(card.id);
+      st.t = Math.min(TIME, st.t + 20); // truth costs him — reading his best lines is never punished
       if (st.q > 2 && Math.random() < 0.5) say("devil", pick(L.goodOpen));
       say("devil", card.confess, "confess");
-      say("table", "CONFESSION FLIPPED: " + card.face + (card.id === "rhythm" ? " — see Tool 02: the same machinery, pointed the other way." : ""));
+      say("table", "CONFESSION FLIPPED: " + card.face + " · +20s — truth costs him." + (card.id === "rhythm" ? " See Tool 02: the same machinery, pointed the other way." : ""));
       cardsRender();
       if (st.found.length >= 7) { end(true); return; }
       maybeCrumb(true);
@@ -1112,8 +1160,20 @@
     document.getElementById(id).addEventListener("input", saveSess);
   });
 
+  /* The closer is staged, not a worksheet ambush: the open question is the payoff
+     of the whole game and stands alone; the decision and the text-tonight only
+     appear once the question exists. */
+  function stageCloser() {
+    if (document.getElementById("myq").value.trim().length > 8) {
+      document.getElementById("closer2").hidden = false;
+      document.getElementById("closer3").hidden = false;
+    }
+  }
+  document.getElementById("myq").addEventListener("input", stageCloser);
+
   st = freshState();
   cardsRender(); meters(); loadSess();
+  stageCloser(); // a saved question from earlier in the session reopens the rest
 })();
 </script>
 
