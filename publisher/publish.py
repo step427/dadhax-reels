@@ -230,10 +230,15 @@ def claim_next(q, prefer_old):
 
 
 def publish_ig(item, url, tok, ig, dry_run):
-    cid = call("POST", f"{ig}/media", {
-        "media_type": "REELS", "video_url": url,
-        "caption": item["caption"], "access_token": tok,
-    })["id"]
+    params = {"media_type": "REELS", "video_url": url,
+              "caption": item["caption"], "access_token": tok}
+    # Frame one is the thumbnail, and a MINED reel starts wherever its first
+    # sentence started -- often mid-blink or looking away. thumb_offset lets the
+    # cover come from anywhere in the reel without touching the edit. Set
+    # "cover_ms" on the queue item (pick_cover.py shortlists candidates).
+    if item.get("cover_ms"):
+        params["thumb_offset"] = int(item["cover_ms"])
+    cid = call("POST", f"{ig}/media", params)["id"]
 
     for _ in range(60):
         time.sleep(5)
