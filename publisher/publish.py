@@ -20,6 +20,10 @@ Nothing secret is ever written to disk or to the log.
 
 queue.json in this repo is the single source of truth. The reel loop appends to
 it (pull, append, push); this script consumes it and commits the result back.
+
+The day's MIX is 2 fresh cuts to 1 reformatted back-catalog reel (Nick, 8/15,
+after a day of three straight reposts). Queue order no longer decides that on
+its own -- see claim_next.
 """
 import argparse
 import json
@@ -41,6 +45,24 @@ FB_PAGE_ID = "1146254621914259"          # Nicksdadhax page — public id, not a
 LOCAL_ENV = Path.home() / "Rook" / "_local-secrets" / "meta-ig.env"
 POSTS_PER_DAY = 3                        # the contract. Slots are just delivery.
 CATCHUP_GAP = 120                        # seconds between two posts in one run
+
+# Reformatted back-catalog: the old YouTube cuts (ig-yt-) and the DIY hacks
+# (ig-diy-). Everything else is a fresh shoot.
+OLD_PREFIXES = ("ig-yt-", "ig-diy-")
+OLD_PER_DAY = 1                          # 2 fresh : 1 reformat (Nick, 2026-08-15)
+FRESH_PER_DAY = POSTS_PER_DAY - OLD_PER_DAY
+
+
+def is_old(item):
+    """Reformatted back-catalog, or a fresh shoot?
+
+    ponytail: read the kind off the filename prefix instead of adding a field to
+    every one of the 40-odd queue rows. The reel loop already names files this
+    way, so nothing has to be migrated and nothing new has to be remembered. An
+    explicit "kind": "new" | "old" in queue.json wins if it is ever set.
+    """
+    return item.get("kind", "old" if item["file"].startswith(OLD_PREFIXES)
+                    else "new") == "old"
 
 
 def _central():
@@ -119,6 +141,45 @@ def save_queue(q):
     tmp.replace(QUEUE)
 
 
+SLOTS = ((9, "9:00a"), (13, "1:00p"), (18, "6:00p"))
+
+
+def wants_old(index, olds_today):
+    """Should the post at `index` in today's run be back-catalog?
+
+    The middle slot is the repost slot and it is the only one -- which is just
+    2 fresh : 1 reformat spelled out. `index >= 1` rather than `== 1` so that a
+    day whose 1pm slot had to fall back to fresh still gets its repost at 6pm
+    instead of silently dropping to 3-fresh and draining the fresh pool faster.
+    """
+    return olds_today < OLD_PER_DAY and index >= 1
+
+
+def plan(pending, start, days, skip=0):
+    """Project the next `days` of the board as (date, slot label, item).
+
+    The same choice the live run makes, walked forward on paper. The phone board
+    renders this, so a board that disagrees with the publisher is no longer
+    possible by construction -- it did disagree through 8/13-8/15, which is how
+    three straight reposts reached Instagram without the board ever showing it.
+    """
+    left, out = list(pending), []
+    for d in range(days):
+        day = start + timedelta(days=d)
+        olds = 0
+        for n, (_, label) in enumerate(SLOTS):
+            if d == 0 and n < skip:
+                continue
+            if not left:
+                return out
+            prefer = wants_old(n, olds)
+            item = next((i for i in left if is_old(i) == prefer), left[0])
+            left.remove(item)
+            olds += is_old(item)
+            out.append((day, label, item))
+    return out
+
+
 def slot_target(now):
     """How many posts should be on the board by the end of THIS run.
 
@@ -136,24 +197,36 @@ def slot_target(now):
     return POSTS_PER_DAY
 
 
-def claim_next(q):
-    """The next pending item, in queue order.
+def claim_next(q, prefer_old):
+    """The next pending item, preferring the kind this slot is owed.
+
+    Queue ORDER used to decide everything, and that is exactly what put three
+    reformatted back-catalog reels on the board on 8/15: the pending block ran
+    four fresh cuts and then sixteen DIY reposts in a row, so a whole day landed
+    inside the old block. (The `"slot": 13` field some rows carry was meant to
+    fence reposts into the 1pm slot -- nothing ever read it.) Order still picks
+    which reel OF A KIND goes next; kind now decides the mix.
+
+    Falls back to the other kind when the preferred one is empty. A dry fresh
+    pool must never cost a post -- three a day is the contract, and Nick would
+    rather see a repost than a gap.
 
     ponytail: the old per-item `earliest` date gate is gone. Its job was to stop
     the queue eating itself a day early, and the 3-a-day cap already does that
     job -- keeping both meant a missed slot could NOT be made up, because
     tomorrow's reel was fenced off behind its own date. The `earliest` field is
     left in queue.json (harmless, and the board still displays it) but nothing
-    reads it now. Queue ORDER is the schedule.
+    reads it now.
 
     No staging lock here: the workflow sets `concurrency` so two runs cannot
     overlap, which is a stronger guarantee than the lock it replaces (a crashed
     run used to leave an item wedged in 'staging' until a timeout reclaimed it).
     """
-    for item in q["items"]:
-        if item.get("status") == "pending":
+    pending = [i for i in q["items"] if i.get("status") == "pending"]
+    for item in pending:
+        if is_old(item) == prefer_old:
             return item
-    return None
+    return pending[0] if pending else None
 
 
 def publish_ig(item, url, tok, ig, dry_run):
@@ -278,15 +351,26 @@ def main():
 
     if a.status:
         posted = sum(1 for i in q["items"] if i.get("status") == "posted")
-        days, rem = divmod(len(pending), POSTS_PER_DAY)
+        fresh = [i for i in pending if not is_old(i)]
+        old = [i for i in pending if is_old(i)]
         today = datetime.now(TZ).date()
-        dry = today + timedelta(days=days)
-        print(f"queue depth: {len(pending)} pending, {posted} posted")
-        print(f"cover at {POSTS_PER_DAY}/day: {days} full days"
-              f"{f' + {rem}' if rem else ''} -- runs dry {dry.isoformat()}")
-        for n, i in enumerate(pending[:9]):
-            print(f"  {today + timedelta(days=n // POSTS_PER_DAY)}  "
-                  f"{i['file']:<26} {i.get('title', '')}")
+        # Cover is whichever side runs out first: the mix degrades to all
+        # back-catalog the day the fresh pool empties, which is the number that
+        # actually matters. Reporting total depth alone hides that entirely.
+        days = min(len(fresh) // FRESH_PER_DAY, len(old) // OLD_PER_DAY)
+        print(f"queue depth: {len(pending)} pending "
+              f"({len(fresh)} fresh, {len(old)} back-catalog), {posted} posted")
+        print(f"mix {FRESH_PER_DAY} fresh : {OLD_PER_DAY} reformat per day")
+        print(f"  fresh cover:   {len(fresh) // FRESH_PER_DAY} days "
+              f"-- dry {(today + timedelta(days=len(fresh) // FRESH_PER_DAY)).isoformat()}")
+        print(f"  catalog cover: {len(old) // OLD_PER_DAY} days "
+              f"-- dry {(today + timedelta(days=len(old) // OLD_PER_DAY)).isoformat()}")
+        print(f"  mix holds for {days} day{'' if days == 1 else 's'}, "
+              f"then falls back to whatever is left")
+        now = datetime.now(TZ)
+        gone = sum(1 for h, _ in SLOTS if h <= now.hour)
+        for day, label, item in plan(pending, today, 4, skip=gone):
+            print(f"  {day}  {label:<8} {item['file']:<26} {item.get('title', '')}")
         return
 
     if a.prune:
@@ -295,32 +379,48 @@ def main():
 
     now = datetime.now(TZ)
     today = now.date().isoformat()
-    done = sum(1 for i in q["items"] if i.get("status") == "posted"
-               and str(i.get("posted_at", "")).startswith(today))
+    posted_today = [i for i in q["items"] if i.get("status") == "posted"
+                    and str(i.get("posted_at", "")).startswith(today)]
+    done = len(posted_today)
+    olds_today = sum(1 for i in posted_today if is_old(i))
     owed = max(0, slot_target(now) - done)
     if a.dry_run:
         owed = min(owed, 1)   # a dry run never marks posted, so it would restage item 1
-    log(f"{done} posted today, this slot targets {slot_target(now)} -> posting {owed}")
+    log(f"{done} posted today ({olds_today} back-catalog), "
+        f"this slot targets {slot_target(now)} -> posting {owed}")
     if not owed:
         log("already at target for this slot - nothing to do")
         return
+    fresh = [i for i in pending if not is_old(i)]
     if len(pending) < POSTS_PER_DAY * 2:
         log(f"LOW QUEUE: {len(pending)} reels = "
             f"{len(pending) // POSTS_PER_DAY} days of cover. Refill the queue.")
+    # The mix is the thing that silently degrades: the total can look healthy
+    # while the fresh side is empty and every slot falls back to a repost.
+    if len(fresh) < FRESH_PER_DAY * 2:
+        log(f"LOW FRESH: {len(fresh)} fresh cuts = "
+            f"{len(fresh) // FRESH_PER_DAY} days at {FRESH_PER_DAY}/day. "
+            f"Drop raws in Reels drop or the board goes all back-catalog.")
 
     c = creds()
     _REDACT.extend([c["META_ACCESS_TOKEN"], c.get("META_PAGE_TOKEN", "")])
 
     failed = False
     for n in range(owed):
-        item = claim_next(q)
+        # `done + n` is this post's index in the DAY, not in the run, so a
+        # catch-up run that fires all three still lands fresh / repost / fresh.
+        item = claim_next(q, wants_old(done + n, olds_today))
         if not item:
             log("QUEUE EMPTY - nothing left to post. Refill via the reel loop.")
             break
+        if is_old(item):
+            olds_today += 1
         if n:
             # Two reels inside one catch-up run go out spaced, not back to back.
             log(f"waiting {CATCHUP_GAP}s before the next catch-up post")
             time.sleep(CATCHUP_GAP)
+        log(f"slot {done + n + 1}/{POSTS_PER_DAY}: "
+            f"{'back-catalog' if is_old(item) else 'FRESH'}")
         if not publish_one(item, q, c, a.dry_run):
             # A bad token or a dead network fails every remaining item the same
             # way, so stop rather than burn the queue against a broken pipe.
