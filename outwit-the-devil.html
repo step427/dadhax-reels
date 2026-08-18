@@ -5,8 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Outwit the Devil — @nicksdadhax</title>
 <meta name="description" content="A five-minute interrogation game. The devil is at the table and the clock is running. Closed questions get one-word answers — learn to ask better ones. Free, no signup, nothing leaves your device.">
-<meta name="robots" content="noindex">
-<!-- ^ TUESDAY FLIP: remove the robots meta when the gate comes off -->
 
 <style>
   /* @nicksdadhax — dark field-instrument identity. Same tokens as tools 01-05.
@@ -275,73 +273,21 @@
   .ctas a:hover { border-color: var(--signal-d); }
   .cta { margin-top: 26px; font-size: 14.5px; color: #CFC9BB; }
 
-  /* ---------- GATE (field-test only — removed on public flip) ---------- */
-  #gate {
-    position: fixed; inset: 0; z-index: 50; background: var(--carbon);
-    display: flex; align-items: center; justify-content: center; padding: var(--gutter);
-    background-image:
-      repeating-linear-gradient(to right,  rgba(242,237,231,.035) 0 1px, transparent 1px 28px),
-      repeating-linear-gradient(to bottom, rgba(242,237,231,.035) 0 1px, transparent 1px 28px);
-  }
-  .gatebox { max-width: 420px; width: 100%; border: 1px solid #5A2417;
-    background: var(--panel); padding: 22px; }
-  .gatebox .protocol { margin-bottom: 10px; }
-  .gatebox .protocol .him { color: var(--warn); }
-  .gatebox h2 { font-family: var(--mono); font-size: 20px; text-transform: uppercase;
-    letter-spacing: -.01em; margin: 0 0 8px; color: var(--warn); }
-  .gatebox p { font-size: 14px; color: var(--graphite); margin: 0 0 14px; }
-  .gatebox .hisword { color: #D8B9AE; border-left: 3px solid var(--warn);
-    padding: 8px 0 8px 12px; line-height: 1.55; }
-  .gatebox .hisword b { color: var(--warn); }
-  .gatebox .riddle { font-family: var(--mono); font-size: 13.5px; line-height: 1.6;
-    color: #CFC9BB; background: var(--carbon); border: 1px dashed #5A2417; padding: 12px; }
-  .gatebox .riddle b { color: var(--bone); }
-  .gatebox input { width: 100%; background: var(--carbon); border: 1px solid var(--hair);
-    color: var(--bone); font-family: var(--mono); font-size: 18px; letter-spacing: .2em;
-    text-transform: uppercase; padding: 12px; text-align: center; }
-  .gatebox input:focus { outline: 2px solid var(--signal-d); }
-  .gatebox button { width: 100%; margin-top: 10px; background: var(--signal); color: #201A05;
-    border: 0; font-family: var(--mono); font-weight: 700; font-size: 14px;
-    letter-spacing: .08em; text-transform: uppercase; padding: 13px; cursor: pointer; }
-  .gatebox .gerr { color: var(--warn); font-family: var(--mono); font-size: 12.5px;
-    min-height: 1.2em; margin-top: 10px; text-align: center; }
-
   @media print {
-    .askrow, .hints, .startrow, .actions, .said, .nav, .tail, .cta, #gate { display: none; }
+    .askrow, .hints, .startrow, .actions, .said, .nav, .tail, .cta { display: none; }
     body { background: #fff; color: #000; }
   }
 </style>
 </head>
 <body>
 
-<!--GATE — field-test lock. TUESDAY FLIP: delete this whole block + the #gate CSS
-    + the robots meta above, then set the nav meta to "Tool 06 · free · no gate". -->
-<div id="gate">
-  <div class="gatebox">
-    <span class="protocol">NICKSDADHAX // SEALED UNTIL 8·18 — <b class="him">HE ANSWERED THE DOOR</b></span>
-    <h2>You're early.</h2>
-    <p class="hisword">"The man who built this table says the door stays shut until
-      the eighteenth. But impatience is my favorite sin — ten thousand have stood at
-      this door wearing yours — so here is my offer. Three tries at one riddle. Crack
-      it and walk in early. Miss all three and you wait
-      like everyone else. And waiting, friend, is <b>my</b> favorite game."</p>
-    <p class="riddle">There are two men in every man. One hesitates, drifts,
-      and waits — <b>that one is mine.</b> The other gives the orders, and he is the
-      only thing on this earth I fear. Hill met him and gave him a name.<br>
-      <b>Say his name — two words, spoken as one — and the door opens.</b></p>
-    <input id="gateIn" type="text" autocomplete="off" autocapitalize="characters" aria-label="Your answer to his riddle">
-    <button id="gateBtn" type="button">Answer him</button>
-    <div class="gerr" id="gateErr"></div>
-  </div>
-</div>
-<!--/GATE-->
 
 <div class="sheet">
 
   <nav class="nav">
     <div class="navtop">
       <a class="brand" href="index.html">@nicksdadhax</a>
-      <span class="meta">Tool 06 · field test</span>
+      <span class="meta">Tool 06 · free · no gate</span>
     </div>
     <div class="navlinks">
       <a href="index.html">Home</a>
@@ -512,70 +458,6 @@
 (function () {
   "use strict";
 
-  /* ---------- GATE — field-test lock. TUESDAY FLIP: delete through /GATE-JS. ---------- */
-  var GATE_HASH = "638c7571d25da3827efa771f8ce72dae60967ce6f91d9bd6b6e47fe355ee2311"; // sha-256 of the access code, hex
-  var gate = document.getElementById("gate");
-  function sha256hex(s) {
-    var enc = new TextEncoder().encode(s);
-    return crypto.subtle.digest("SHA-256", enc).then(function (buf) {
-      return Array.prototype.map.call(new Uint8Array(buf), function (b) {
-        return ("0" + b.toString(16)).slice(-2);
-      }).join("");
-    });
-  }
-  /* The riddle is a hint ladder, not a password: each miss hands over more of the
-     answer, and the third miss opens the door anyway — a wall in front of the best
-     content costs readers; a sneer costs nothing. (Drifter-persona audit, 8/15.) */
-  var MISS_LINES = [
-    "No. Two words, friend — and the first of them is already in my riddle. I said it twice.",
-    "Wrong again. The one who gives the orders is the OTHER man. Now say what he is to you. Last try."
-  ];
-  function gateTries() {
-    try { return parseInt(sessionStorage.getItem("otd-tries") || "0", 10); } catch (e) { return 0; }
-  }
-  function removeGate() {
-    if (gate && gate.parentNode) gate.parentNode.removeChild(gate);
-    document.body.style.overflow = "";
-  }
-  function openDoor(line, wait) {
-    try { sessionStorage.setItem("otd-gate", "open"); sessionStorage.removeItem("otd-tries"); } catch (e) {}
-    if (line) {
-      document.getElementById("gateIn").disabled = true;
-      document.getElementById("gateBtn").disabled = true;
-      document.getElementById("gateErr").textContent = line;
-      setTimeout(removeGate, wait || 1600);
-    } else removeGate();
-  }
-  function tryGate() {
-    var raw = (document.getElementById("gateIn").value || "").trim().toUpperCase();
-    if (!raw) return;
-    // normalize the riddle answer: letters only, optional leading THE/MY —
-    // "the other self", "other self", "OTHERSELF" all resolve the same
-    var v = raw.replace(/[^A-Z]/g, "").replace(/^THE/, "").replace(/^MY/, "");
-    sha256hex(v).then(function (h) {
-      if (h === GATE_HASH) {
-        openDoor("…said aloud, no less. Come in, then — and mind the clock. It's mine.");
-      } else {
-        var t = gateTries() + 1;
-        try { sessionStorage.setItem("otd-tries", String(t)); } catch (e) {}
-        if (t >= 3) {
-          try { sessionStorage.setItem("otd-drifter", "1"); } catch (e) {}
-          openDoor("Three misses. A drifter to the bone — no wonder you knocked. Oh, come in anyway. I do my best work on your kind.", 2200);
-          return;
-        }
-        document.getElementById("gateErr").textContent = MISS_LINES[t - 1];
-      }
-    });
-  }
-  document.getElementById("gateBtn").addEventListener("click", tryGate);
-  document.getElementById("gateIn").addEventListener("keydown", function (e) {
-    if (e.key === "Enter") tryGate();
-  });
-  document.body.style.overflow = "hidden"; // no peeking behind the door
-  try {
-    if (sessionStorage.getItem("otd-gate") === "open") removeGate();
-  } catch (e) {}
-  /* ---------- /GATE-JS ---------- */
 
   /* ---------- the deck ---------- */
   var CARDS = [

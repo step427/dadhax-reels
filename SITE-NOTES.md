@@ -328,3 +328,14 @@ safe; `pull_request_target` would hand them to arbitrary PR code.
 `queue.json` here is the single source of truth. The reel loop pulls, appends
 new cuts, and pushes. Both publishers commit their result so neither re-posts
 what the other already put out.
+
+## Tool 06 went public (2026-08-18)
+
+`outwit-the-devil.html` — the interrogation game — lost its field-test gate on
+schedule (scheduled flip, Nick in the Boundary Waters): riddle door, three-try
+lock, and `noindex` all removed; nav meta now "free · no gate". The toolbox's
+sealed devil card became a normal open card and an 07 "in the shop" placeholder
+took its slot. Read-next chain now runs 05 -> 06 -> 02 (the rhythm confession
+hands off to neuroplasticity on purpose — same machinery, pointed the other way).
+The unused `a.card.devil` styles stay in toolbox.html for the next sealed-door
+pre-launch — the teaser pattern is worth repeating.
