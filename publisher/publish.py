@@ -128,10 +128,40 @@ def call(method, path, params):
 _REDACT = []
 
 
+# cp1252 lead bytes of UTF-8 that got decoded as cp1252 somewhere upstream.
+_MANGLED = ("\u00c2", "\u00c3", "\u00e2")
+
+
+def _demojibake(s):
+    """Undo one round of UTF-8 bytes read back as cp1252.
+
+    Captions are hand-authored upstream and have come through a cp1252 step
+    more than once -- every em-dash arriving as a three-character smear. 106 of
+    them reached live posts before anyone caught it (2026-08-21), and the
+    repost slot kept re-serving the same garbage. A caption cannot be edited
+    once a reel is published, so scrub on the way in rather than trusting
+    whatever wrote the queue.
+
+    Only touches text that carries one of the tell-tale lead characters, and
+    only when the round trip actually decodes -- clean text is returned as-is.
+    """
+    if not any(c in s for c in _MANGLED):
+        return s
+    try:
+        return s.encode("cp1252").decode("utf-8")
+    except (UnicodeEncodeError, UnicodeDecodeError):
+        return s
+
+
 def load_queue():
     if not QUEUE.exists():
         sys.exit(f"No queue at {QUEUE}")
-    return json.loads(QUEUE.read_text(encoding="utf-8"))
+    q = json.loads(QUEUE.read_text(encoding="utf-8"))
+    for item in q.get("items", []):
+        for field in ("caption", "title"):
+            if isinstance(item.get(field), str):
+                item[field] = _demojibake(item[field])
+    return q
 
 
 def save_queue(q):
