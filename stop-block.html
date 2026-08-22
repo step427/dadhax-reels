@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- LAUNCH FLIP (owner: Nick / laptop or next cloud session, on his go):
+     1. Remove the robots meta below.
+     2. toolbox.html: flip the 07 "in the shop" placeholder to this card
+        (title: The Stop Block · meta: Tool 07 · free · no gate) and add an
+        08 placeholder.
+     3. outwit-the-devil.html: point its read-next tail at stop-block.html
+        (chain becomes 05 -> 06 -> 07 -> 02).
+     4. Re-run the 375px audit, then push. -->
+<meta name="robots" content="noindex">
+<title>The Stop Block — @nicksdadhax</title>
+<meta name="description" content="Willpower is holding the tape measure all day. A stop block is a decision made once and physically installed, so drift can't move it. Name the repeat cut, build the block, run the one-crank test. Free, no gate.">
+
+<style>
+  /* @nicksdadhax — dark field-instrument identity. Same tokens as tools 01-06.
+     SIGNAL YELLOW = your input / the action. WARN RED = the honest rail —
+     here that's "the block isn't a jail" and the willpower trap. */
+  :root {
+    --carbon:   #0F0E0B;
+    --panel:    #17150F;
+    --panel-up: #1E1B14;
+    --hair:     #302B21;
+    --bone:     #F4F0E6;
+    --graphite: #8F887A;
+    --signal:   #FFC629;
+    --signal-d: #C8930F;
+    --warn:     #E8502C;
+
+    --mono: ui-monospace, "SF Mono", SFMono-Regular, "Cascadia Mono",
+            "Roboto Mono", Menlo, Consolas, "Courier New", monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+            "Helvetica Neue", Arial, sans-serif;
+
+    --gutter: clamp(18px, 5vw, 40px);
+    --maxw: 660px;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--carbon);
+    color: var(--bone);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-text-size-adjust: 100%;
+    background-image:
+      repeating-linear-gradient(to right,  rgba(242,237,231,.035) 0 1px, transparent 1px 28px),
+      repeating-linear-gradient(to bottom, rgba(242,237,231,.035) 0 1px, transparent 1px 28px);
+  }
+
+  .sheet { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter) 96px; }
+
+  header { padding: 34px 0 8px; }
+  .protocol {
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: .17em;
+    text-transform: uppercase; color: var(--graphite);
+  }
+  .protocol b { color: var(--signal); font-weight: 700; }
+  h1 {
+    font-family: var(--mono); font-weight: 700;
+    font-size: clamp(28px, 8vw, 48px); line-height: 1.04;
+    letter-spacing: -.03em; text-transform: uppercase;
+    margin: 12px 0 0; text-wrap: balance;
+  }
+  h1 .of { color: var(--signal); }
+  .dek { margin: 14px 0 0; max-width: 46ch; color: #CFC9BB; font-size: 17px; }
+  .dek em { color: var(--bone); font-style: normal; border-bottom: 1.5px solid var(--signal-d); }
+
+  .rules {
+    margin: 20px 0 0; padding: 11px 0 0; border-top: 1px solid var(--hair);
+    font-family: var(--mono); font-size: 12.5px; letter-spacing: .04em;
+    color: var(--graphite); text-transform: uppercase;
+  }
+  .rules span { color: var(--bone); }
+
+  .privacy {
+    margin: 18px 0 0; padding: 13px 15px; font-size: 14.5px; line-height: 1.5;
+    color: #CFC9BB; background: var(--panel); border-left: 3px solid var(--signal);
+  }
+  .privacy b { color: var(--bone); }
+
+  .story { margin-top: 24px; padding: 15px 16px; background: var(--panel);
+    border: 1px solid var(--hair); }
+  .story p { margin: 0 0 10px; font-size: 15.5px; line-height: 1.55; color: #CFC9BB; }
+  .story p:last-child { margin-bottom: 0; }
+  .story p b { color: var(--bone); }
+
+  .whys { margin-top: 26px; border: 1px solid var(--hair); }
+  .why { padding: 14px 15px; border-bottom: 1px solid var(--hair); }
+  .why:last-child { border-bottom: 0; }
+  .why .tag { display: block; font-family: var(--mono); font-size: 12.5px; font-weight: 700;
+    letter-spacing: .08em; text-transform: uppercase; margin-bottom: 5px; color: var(--signal); }
+  .why p { margin: 0; font-size: 15px; line-height: 1.5; color: #CFC9BB; }
+  .why p b { color: var(--bone); }
+
+  .redline-note {
+    margin: 14px 0 0; padding: 9px 12px;
+    border-left: 2.5px solid var(--warn);
+    background: rgba(232,80,44,.08);
+    font-size: 14.5px; line-height: 1.45; color: #E7DCD6;
+  }
+  .redline-note b { color: var(--warn); font-family: var(--mono);
+    font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase;
+    display: block; margin-bottom: 3px; }
+
+  .block { margin-top: 30px; }
+  .lbl {
+    display: block; font-family: var(--mono); font-size: 11.5px;
+    letter-spacing: .13em; text-transform: uppercase; color: var(--graphite);
+    margin-bottom: 8px;
+  }
+  h2.part {
+    font-family: var(--mono); font-size: 12px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--signal); margin: 34px 0 4px; font-weight: 700;
+    padding-top: 20px; border-top: 1px solid var(--hair);
+  }
+  .partdek { margin: 0 0 14px; font-size: 15px; color: #CFC9BB; line-height: 1.5; }
+  .partdek b { color: var(--bone); }
+
+  .seed {
+    border: 1.5px solid var(--signal); background: var(--panel);
+    padding: 16px 16px 14px;
+  }
+  .seed .lbl { color: var(--signal); margin-top: 0; }
+  textarea, input[type=text] {
+    display: block; width: 100%; resize: none;
+    background: transparent; border: 0; border-bottom: 1.5px solid #453E2C;
+    color: var(--bone); font-family: var(--sans); font-size: 17px;
+    line-height: 1.5; padding: 4px 0 8px; border-radius: 0;
+  }
+  textarea::placeholder, input::placeholder { color: #6B6455; }
+  textarea:focus, input:focus { outline: 0; border-bottom-color: var(--signal); }
+  textarea:focus-visible { box-shadow: 0 3px 0 -1px rgba(255,198,41,.35); }
+  .seed .lbl + textarea, .seed .lbl + input { margin-bottom: 14px; }
+
+  /* the composed block spec */
+  .spec { margin-top: 22px; padding: 18px 16px; background: var(--panel-up);
+    border: 2px solid var(--signal); }
+  .spec[hidden] { display: none; }
+  .spec .lbl { color: var(--signal); }
+  .spec p { margin: 0; font-size: 17.5px; line-height: 1.5; color: var(--bone); }
+  .spec .fine { margin-top: 10px; font-size: 14px; color: #CFC9BB; }
+
+  /* block-type rows double as a picker */
+  .types { border: 1px solid var(--hair); }
+  .typeitem { display: flex; gap: 13px; align-items: flex-start;
+    padding: 14px 15px; border-bottom: 1px solid var(--hair); min-height: 44px; }
+  .typeitem:last-child { border-bottom: 0; }
+  .typeitem input[type=radio] {
+    appearance: none; -webkit-appearance: none; flex: 0 0 auto;
+    width: 24px; height: 24px; margin: 2px 0 0; cursor: pointer;
+    background: var(--panel); border: 1.5px solid #453E2C; border-radius: 50%;
+  }
+  .typeitem input[type=radio]:checked {
+    background: var(--signal); border-color: var(--signal);
+    box-shadow: inset 0 0 0 6px var(--panel);
+  }
+  .typeitem input[type=radio]:focus-visible { outline: 2px solid var(--bone); outline-offset: 2px; }
+  .typeitem label { cursor: pointer; }
+  .typeitem label b { display: block; font-size: 15.5px; color: var(--bone); }
+  .typeitem label b i { font-style: normal; font-family: var(--mono); font-size: 12px;
+    letter-spacing: .08em; text-transform: uppercase; color: var(--signal); margin-right: 7px; }
+  .typeitem label span { display: block; font-size: 14.5px; line-height: 1.45; color: #CFC9BB; margin-top: 2px; }
+
+  /* one-crank test checklist */
+  .steps { border: 1px solid var(--hair); }
+  .stepitem { display: flex; gap: 13px; align-items: flex-start;
+    padding: 14px 15px; border-bottom: 1px solid var(--hair); min-height: 44px; }
+  .stepitem:last-child { border-bottom: 0; }
+  .stepitem input[type=checkbox] {
+    appearance: none; -webkit-appearance: none; flex: 0 0 auto;
+    width: 24px; height: 24px; margin: 2px 0 0; cursor: pointer;
+    background: var(--panel); border: 1.5px solid #453E2C; border-radius: 0;
+  }
+  .stepitem input[type=checkbox]:checked {
+    background: var(--signal); border-color: var(--signal);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12.5 10 18 19 6.5' fill='none' stroke='%2314100F' stroke-width='3'/%3E%3C/svg%3E");
+  }
+  .stepitem input[type=checkbox]:focus-visible { outline: 2px solid var(--bone); outline-offset: 2px; }
+  .stepitem label { cursor: pointer; }
+  .stepitem label b { display: block; font-size: 15.5px; color: var(--bone); }
+  .stepitem label span { display: block; font-size: 14.5px; line-height: 1.45; color: #CFC9BB; margin-top: 2px; }
+  .stepitem.done label b { color: var(--graphite); text-decoration: line-through; }
+
+  .callbox { margin-top: 28px; padding: 18px 16px 16px; background: var(--panel-up);
+    border: 2px dashed var(--signal-d); }
+  .callbox .lbl { color: var(--signal); }
+  .callbox .means { margin: 10px 0 14px; font-size: 15px; color: #CFC9BB; line-height: 1.5; }
+  .callbox .means b { color: var(--bone); }
+
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+  .actions button {
+    font-family: var(--mono); font-size: 12.5px; letter-spacing: .1em;
+    text-transform: uppercase; font-weight: 700; min-height: 48px;
+    padding: 13px 18px; border-radius: 0; cursor: pointer;
+    background: var(--signal); color: #14100F; border: 1.5px solid var(--signal);
+  }
+  .actions button.ghost { background: transparent; color: var(--bone); border-color: #453E2C; }
+  .actions button:hover { filter: brightness(1.1); }
+  .actions button.ghost:hover { border-color: var(--signal); color: var(--signal); filter: none; }
+  .actions button:focus-visible { outline: 2px solid var(--bone); outline-offset: 2px; }
+
+  .said {
+    margin-top: 14px; font-family: var(--mono); font-size: 12px;
+    letter-spacing: .06em; text-transform: uppercase; color: var(--signal);
+    min-height: 1em;
+  }
+
+  .titleblock {
+    margin-top: 44px; border: 1px solid var(--hair);
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(108px, 1fr));
+  }
+  .tb { padding: 11px 13px; border-right: 1px solid var(--hair); }
+  .tb:last-child { border-right: 0; }
+  .tb dt {
+    font-family: var(--mono); font-size: 10px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--graphite); margin: 0 0 4px;
+  }
+  .tb dd {
+    margin: 0; font-family: var(--mono); font-size: 13px; font-weight: 700;
+    color: var(--bone); font-variant-numeric: tabular-nums;
+  }
+  .tb dd.red { color: var(--signal); }
+
+  .cta { margin-top: 18px; font-size: 15px; color: #CFC9BB; line-height: 1.5; }
+  .cta b { color: var(--bone); }
+  .cta a { color: var(--signal); font-weight: 700; text-decoration: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+
+  @media print {
+    @page { size: letter; margin: .5in .55in; }
+    :root {
+      --carbon: #fff; --panel: #fff; --panel-up: #FFF8E2;
+      --hair: #C9C2BC; --bone: #14100F; --graphite: #5E5651;
+      --signal: #7A5B00; --signal-d: #7A5B00; --warn: #B93A18;
+    }
+    body { background-image: none; font-size: 10.5pt; }
+    .sheet { max-width: none; padding: 0; }
+    .actions, .said, .nav, .tail, .cta, .privacy { display: none; }
+    .spec[hidden] { display: block !important; }
+    textarea, input[type=text] { border-bottom-color: #9AA0A8; min-height: .42in; }
+    .redline-note { background: none; }
+    h1 { font-size: 26pt; }
+  }
+</style>
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+
+<div class="sheet">
+
+  <nav class="nav">
+    <div class="navtop">
+      <a class="brand" href="index.html">@nicksdadhax</a>
+      <span class="meta">Tool 07 · free · no gate</span>
+    </div>
+    <div class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="toolbox.html" aria-current="true"><svg class="tbx" width="15" height="13" viewBox="0 0 16 14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><g class="lid"><path d="M5.5 4.5v-.75a2.5 2.5 0 0 1 5 0v.75"/><rect x="1" y="4.5" width="14" height="2.5" rx=".5"/></g><rect x="1" y="7" width="14" height="6" rx=".5"/></svg>The Toolbox</a>
+      <a href="log.html">The Log</a>
+      <a href="houses.html">I have a house</a>
+    </div>
+  </nav>
+
+  <header>
+    <div class="protocol">Setup protocol <b>·</b> decide once <b>·</b> drift can't move it</div>
+    <h1>The stop <span class="of">block</span></h1>
+    <p class="dek">You don't re-measure because the block holds the measurement.
+      Willpower is holding the tape all day. <em>A stop block is a decision made
+      once, physically installed</em> — so it holds when you're tired, busy, or gone.</p>
+    <div class="rules">one repeat cut <span>·</span> one block <span>·</span> installed this week</div>
+    <p class="privacy"><b>Nothing you write here leaves your device.</b> No account, no
+      server, no analytics — what you type is held in this browser tab so you can
+      reload without losing it, and erased when you close the tab. "Start over" wipes
+      it now. I can't read it. Nobody can.</p>
+  </header>
+
+  <div class="story">
+    <span class="lbl">Why this one exists</span>
+    <p>The week before a canoe trip I built roof racks alone in my garage. What
+      saved the build was a two-dollar clamp holding a scrap block against the saw
+      fence: set the length once, and every cut lands in the same place with nobody
+      holding a tape. <b>Six near-identical pieces, zero re-measuring.</b></p>
+    <p>Then I left — no phone, no laptop, four days on the water. The racks carried
+      two canoes home, and the posting system I'd built kept this page alive, three
+      posts a day, with me in a canoe. <b>Nothing I was holding by hand survived the
+      trip. Everything I'd built a block for did.</b></p>
+  </div>
+
+  <div class="whys" aria-label="What a stop block actually does">
+    <div class="why">
+      <span class="tag">It decides once</span>
+      <p>A choice re-made daily is a choice you'll eventually make wrong.
+        <b>The block makes it once, on a good day, then keeps making it for you.</b></p>
+    </div>
+    <div class="why">
+      <span class="tag">It doesn't run on willpower</span>
+      <p>Willpower is a hand getting tired. <b>A block is clamped down</b> — it holds
+        at 5am, at 11pm, on the day you're sick of it.</p>
+    </div>
+    <div class="why">
+      <span class="tag">Drift compounds</span>
+      <p>A dull pencil costs a sixteenth of an inch — per mark, per cut.
+        <b>Tiny re-decisions drift the same way,</b> and you only see it when the
+        pieces don't line up.</p>
+    </div>
+    <div class="why">
+      <span class="tag">It holds while you're gone</span>
+      <p>The test of a setup isn't how it runs when you're watching.
+        <b>It's the week you can't be there.</b></p>
+    </div>
+  </div>
+
+  <div class="redline-note">
+    <b>the willpower trap</b>
+    "I just need to be more disciplined" is the plan that's already failed you a
+    hundred times, and it was never a plan. Don't buy more discipline. Build a
+    block.
+  </div>
+
+  <h2 class="part">Part 1 — Name the repeat cut</h2>
+  <p class="partdek">One decision you keep making over and over. <b>Small and real
+    beats big and vague.</b></p>
+
+  <div class="block seed">
+    <label class="lbl" for="cut">The decision you re-make constantly</label>
+    <textarea id="cut" rows="2" placeholder="phone at the dinner table · snooze or gym · one more episode · check the feed"></textarea>
+    <label class="lbl" for="cost">What each re-decision costs you</label>
+    <textarea id="cost" rows="2" placeholder="the sixteenth of an inch: 20 minutes, a short temper, a workout, being half-there"></textarea>
+    <label class="lbl" for="when">When it happens — the time and place</label>
+    <input type="text" id="when" placeholder="6:15pm, kitchen · 5:30am, edge of the bed · 9pm, couch">
+  </div>
+
+  <div class="spec" id="spec" hidden>
+    <span class="lbl">Your cut list — first draft</span>
+    <p id="specOut"></p>
+    <p class="fine">Rough on purpose. Part 2 builds the block that holds it.</p>
+  </div>
+
+  <h2 class="part">Part 2 — Build the block</h2>
+  <p class="partdek">A block is <b>physical or structural, never mental.</b> If the
+    plan lives in your head, it's willpower wearing a hard hat. Pick the type that
+    fits your cut.</p>
+
+  <div class="types" role="radiogroup" aria-label="Block types">
+    <div class="typeitem">
+      <input type="radio" name="btype" id="t1" value="Removal">
+      <label for="t1"><b><i>Removal</i>the thing isn't there</b>
+        <span>The phone charges in the mudroom at 6pm. You can't re-decide about
+        what's not in reach.</span></label>
+    </div>
+    <div class="typeitem">
+      <input type="radio" name="btype" id="t2" value="Placement">
+      <label for="t2"><b><i>Placement</i>the path is pre-loaded</b>
+        <span>Gym bag on the driver's seat the night before. The next step sits
+        physically in the way of the old one.</span></label>
+    </div>
+    <div class="typeitem">
+      <input type="radio" name="btype" id="t3" value="Automation">
+      <label for="t3"><b><i>Automation</i>a machine does it</b>
+        <span>Auto-transfer on payday. The bill on autopay. My posting system is
+        this — it never asks me daily, so it can't drift.</span></label>
+    </div>
+    <div class="typeitem">
+      <input type="radio" name="btype" id="t4" value="Appointment">
+      <label for="t4"><b><i>Appointment</i>a person is waiting</b>
+        <span>A standing walk. A lifting partner. Skipping alone is free; standing
+        somebody up costs — so you show.</span></label>
+    </div>
+    <div class="typeitem">
+      <input type="radio" name="btype" id="t5" value="Lock">
+      <label for="t5"><b><i>Lock</i>the door is shut ahead of time</b>
+        <span>App timer that ends the scroll at 9:30. Cash envelope that ends the
+        spending when it's empty.</span></label>
+    </div>
+  </div>
+
+  <div class="block seed" style="margin-top:16px">
+    <label class="lbl" for="blockdesc">Your block, in one sentence — what holds the decision without you?</label>
+    <textarea id="blockdesc" rows="2" placeholder="the phone lives on the mudroom charger from 6 to 8, every night"></textarea>
+    <label class="lbl" for="installday">Installed by — a real day this week</label>
+    <input type="text" id="installday" placeholder="a weekday, written down. that's the whole trick.">
+  </div>
+
+  <div class="redline-note">
+    <b>the block isn't a jail</b>
+    Tear it out three times in a week and the block was clamped in the wrong place
+    — not proof you're broken. Re-clamp somewhere easier. A block you keep is worth
+    ten you were ashamed into.
+  </div>
+
+  <h2 class="part">Part 3 — The one-crank test</h2>
+  <p class="partdek">A block either holds or it doesn't. <b>One week tells you.</b></p>
+
+  <div class="steps">
+    <div class="stepitem" id="si1">
+      <input type="checkbox" id="s1">
+      <label for="s1"><b>Named the cut</b>
+        <span>One repeat decision, its cost, its time and place — written above.</span></label>
+    </div>
+    <div class="stepitem" id="si2">
+      <input type="checkbox" id="s2">
+      <label for="s2"><b>Picked the block type</b>
+        <span>Removal, placement, automation, appointment, or lock.</span></label>
+    </div>
+    <div class="stepitem" id="si3">
+      <input type="checkbox" id="s3">
+      <label for="s3"><b>Physically installed it</b>
+        <span>Moved the charger. Packed the bag. Set the transfer. If nothing in
+        the real world changed, nothing changed.</span></label>
+    </div>
+    <div class="stepitem" id="si4">
+      <input type="checkbox" id="s4">
+      <label for="s4"><b>Held for one week</b>
+        <span>Not perfectly — held. If it didn't, re-clamp easier and run the week
+        again.</span></label>
+    </div>
+  </div>
+
+  <div class="callbox">
+    <span class="lbl">The boulder question</span>
+    <p class="means">Most problems aren't what-you-know. They're who-you-know.
+      <b>Name one person who already has this handled</b> — the guy whose gym bag
+      is always in the truck.</p>
+    <input type="text" id="callName" placeholder="a name. not 'a guy from work' — a name.">
+    <p class="means" style="margin:12px 0 0"><b>Now make the call</b> — ask them one
+      question: "what holds it in place when you don't feel like it?" Their answer is
+      a block you can copy.</p>
+  </div>
+
+  <div class="actions">
+    <button id="promptBtn" type="button">Copy a prompt for your AI</button>
+    <button id="copyBtn" class="ghost" type="button">Copy everything</button>
+    <button id="printBtn" class="ghost" type="button">Print a blank one</button>
+    <button id="resetBtn" class="ghost" type="button">Start over</button>
+  </div>
+  <div class="said" id="said" role="status" aria-live="polite"></div>
+
+  <dl class="titleblock">
+    <div class="tb"><dt>Protocol</dt><dd>SETUP</dd></div>
+    <div class="tb"><dt>Tool</dt><dd>07 of 07</dd></div>
+    <div class="tb"><dt>Test</dt><dd class="red" id="count">0 / 4</dd></div>
+    <div class="tb"><dt>By</dt><dd class="red">@nicksdadhax</dd></div>
+  </dl>
+
+  <!--TAIL-->
+  <div class="tail">
+  <a class="tail-next" href="outwit-the-devil.html">
+    <span class="k">Read next</span>
+    <b>Tool 06 — Outwit the Devil</b>
+    <span class="s">The thing that loves your re-deciding has a name, and he'll tell
+      you his whole playbook if you ask the right questions. The block you just built
+      is what starves him.</span>
+  </a>
+  <section class="buyhouses">
+    <h2>Also &mdash; I buy houses</h2>
+    <p><b>Washington or Dakota County, Minnesota.</b> Off-market, or straight from the
+      owner &mdash; I'm the buyer, not a middleman passing it along. Woodbury, Cottage
+      Grove, Hastings, Stillwater, Eagan, Inver Grove Heights, Lakeville.</p>
+    <p>If that's you, or you know somebody quietly thinking about selling, I'll lay out
+      your options &mdash; <b>all of them, including the ones I don't make a dime on.</b>
+      Nothing to sign, no walkthrough unless you ask.</p>
+    <div class="ctas">
+      <a href="houses.html"><b>I have a house</b><span>Or I know someone who does</span></a>
+    </div>
+  </section>
+
+  <section class="optin" id="next">
+    <h2>What I ask</h2>
+    <p class="plain">That was free and nothing here sits behind an email. If it was
+      useful, here's the whole exchange: <b>send it to one or two people who'd use it
+      too.</b> That's it. I'm trusting you with it, you pass it on.</p>
+    <p class="plain">Want the next one before anyone else? I'm building an interest
+      list &mdash; no selling, no sequence, your address goes nowhere.
+      <a href="index.html#next">Exactly what that means, in plain words.</a></p>
+    <p class="fine">The list itself isn't open yet &mdash; I'm still setting it up, and
+      I'd rather say that than put up a box that doesn't work. The ask above stands
+      either way, and it's the one that matters. If you want to tell me what to build
+      next, my DMs are open.</p>
+    <div class="ctas">
+      <a href="https://www.instagram.com/nicksdadhax/"><b>Tell me what to build next</b><span>DM @nicksdadhax</span></a>
+    </div>
+  </section>
+  </div>
+  <!--/TAIL-->
+
+  <p class="cta">Free. This tool asks you for nothing — no gate, no email, no
+    analytics. When your block survives its first week, <b>DM me what held</b> — I
+    answer every one.</p>
+
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var KEY = "ndh-stopblock-v1";
+
+  var said = document.getElementById("said"),
+      count = document.getElementById("count"),
+      spec = document.getElementById("spec"),
+      specOut = document.getElementById("specOut");
+
+  var fields = ["cut", "cost", "when", "blockdesc", "installday", "callName"]
+    .map(function (id) { return document.getElementById(id); });
+  var checks = ["s1", "s2", "s3", "s4"]
+    .map(function (id) { return document.getElementById(id); });
+  var radios = ["t1", "t2", "t3", "t4", "t5"]
+    .map(function (id) { return document.getElementById(id); });
+
+  function val(el) { return (el.value || "").trim(); }
+  function btype() {
+    var r = radios.filter(function (x) { return x.checked; })[0];
+    return r ? r.value : "";
+  }
+
+  function compose() {
+    var cut = val(document.getElementById("cut")),
+        cost = val(document.getElementById("cost")),
+        when = val(document.getElementById("when"));
+    if (!cut || !cost) { spec.hidden = true; specOut.textContent = ""; return; }
+    // textContent, never innerHTML — user text
+    var line = "The repeat cut: " + cut.toLowerCase() + ". Every re-decision costs "
+      + cost.toLowerCase();
+    line += when ? ", and it happens at " + when.toLowerCase() + "." : ".";
+    line += " That's the measurement. Now build the block that holds it.";
+    specOut.textContent = line;
+    spec.hidden = false;
+  }
+
+  function refresh() {
+    var done = checks.filter(function (c) { return c.checked; }).length;
+    count.textContent = done + " / 4";
+    checks.forEach(function (c, i) {
+      document.getElementById("si" + (i + 1)).classList.toggle("done", c.checked);
+    });
+    compose();
+    save();
+  }
+
+  function save() {
+    try {
+      var d = { v: {}, c: checks.map(function (c) { return c.checked; }), t: btype() };
+      fields.forEach(function (el) { d.v[el.id] = el.value; });
+      // sessionStorage, NOT localStorage — same promise as tools 01-06: close
+      // the tab and it's gone. The privacy block says so; the code has to agree.
+      sessionStorage.setItem(KEY, JSON.stringify(d));
+    } catch (e) {}
+  }
+
+  function load() {
+    try {
+      var d = JSON.parse(sessionStorage.getItem(KEY) || "null");
+      if (!d) return;
+      fields.forEach(function (el) { if (d.v && d.v[el.id]) el.value = d.v[el.id]; });
+      if (Array.isArray(d.c)) checks.forEach(function (c, i) { c.checked = !!d.c[i]; });
+      if (d.t) radios.forEach(function (r) { r.checked = (r.value === d.t); });
+    } catch (e) {}
+  }
+
+  function grow(el) {
+    if (el.tagName !== "TEXTAREA") return;
+    el.style.height = "auto"; el.style.height = el.scrollHeight + "px";
+  }
+
+  fields.forEach(function (el) {
+    el.addEventListener("input", function () { grow(el); refresh(); });
+  });
+  checks.forEach(function (c) { c.addEventListener("change", refresh); });
+  radios.forEach(function (r) { r.addEventListener("change", refresh); });
+
+  document.getElementById("printBtn").addEventListener("click", function () { window.print(); });
+
+  function copyText(text, okMsg) {
+    function fallback() {
+      var t = document.createElement("textarea");
+      t.value = text;
+      t.style.position = "fixed";
+      t.style.opacity = "0";
+      document.body.appendChild(t);
+      t.select();
+      try { document.execCommand("copy"); } catch (e) {}
+      document.body.removeChild(t);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () {
+        said.textContent = okMsg;
+      }, function () { fallback(); said.textContent = okMsg; });
+    } else { fallback(); said.textContent = okMsg; }
+  }
+
+  // "Copy a prompt for your AI" — their cut plus marching orders, ready to paste
+  // into whatever model they already use. The deep design work lives there.
+  document.getElementById("promptBtn").addEventListener("click", function () {
+    var cut = val(document.getElementById("cut")),
+        cost = val(document.getElementById("cost")),
+        when = val(document.getElementById("when")),
+        bd = val(document.getElementById("blockdesc")),
+        day = val(document.getElementById("installday"));
+    if (!cut) { said.textContent = "Fill in Part 1 first — the prompt is built from it."; return; }
+
+    var text = [
+      "You are a blunt systems designer. No hype, no pep talks. If my block relies on",
+      "me remembering, deciding, or being strong in the moment, reject it and say why.",
+      "",
+      "I'm replacing a repeated decision with a stop block — a decision made once and",
+      "physically installed, so it holds without willpower.",
+      "",
+      "My repeat cut:",
+      "- The decision I keep re-making: " + (cut || "(blank)"),
+      "- What each re-decision costs: " + (cost || "(blank)"),
+      "- When and where it happens: " + (when || "(blank)"),
+      bd ? "- My current block idea: " + bd : "- My current block idea: (none yet)",
+      day ? "- Install day: " + day : "",
+      "",
+      "Do this, in order:",
+      "1. Diagnose the cut: what is the real trigger, and what reward is the drift",
+      "   paying me? One short paragraph.",
+      "2. Design 3 candidate stop blocks across different types (removal, placement,",
+      "   automation, appointment, lock). Each must change something in the physical",
+      "   world and survive a bad day. Rank them by holding power vs. install effort.",
+      "3. Pick the winner and give me the exact install steps I can finish in under",
+      "   30 minutes this week.",
+      "4. Tell me how the block fails: the 2 most likely ways I'll tear it out, and",
+      "   the pre-decision for each.",
+      "5. Build the one-week test: what I check on day 7, and the single question",
+      "   that decides re-clamp vs. keep.",
+      "",
+      "Keep the whole thing under one page.",
+      "",
+      "(Built with The Stop Block — @nicksdadhax)"
+    ].filter(function (l) { return l !== ""; }).join("\n");
+
+    copyText(text, "Prompt copied — paste it into the AI you already use.");
+  });
+
+  document.getElementById("copyBtn").addEventListener("click", function () {
+    var done = checks.filter(function (c) { return c.checked; }).length;
+    var names = ["Cut named", "Block type picked", "Physically installed", "Held one week"];
+    var out = ["THE STOP BLOCK — " + new Date().toLocaleDateString(), ""];
+    if (!spec.hidden) { out.push(specOut.textContent, ""); }
+    var t = btype(), bd = val(document.getElementById("blockdesc")),
+        day = val(document.getElementById("installday")),
+        who = val(document.getElementById("callName"));
+    if (t) out.push("Block type: " + t);
+    if (bd) out.push("The block: " + bd);
+    if (day) out.push("Install by: " + day);
+    out.push("", "Test: " + done + "/4");
+    checks.forEach(function (c, i) { out.push((c.checked ? "[x] " : "[ ] ") + names[i]); });
+    if (who) out.push("", "Call: " + who);
+    out.push("", "The Stop Block — @nicksdadhax");
+    copyText(out.join("\n"), "Copied — paste it where you plan your week.");
+  });
+
+  document.getElementById("resetBtn").addEventListener("click", function () {
+    fields.forEach(function (el) { el.value = ""; grow(el); });
+    checks.forEach(function (c) { c.checked = false; });
+    radios.forEach(function (r) { r.checked = false; });
+    try { sessionStorage.removeItem(KEY); } catch (e) {}
+    refresh();
+    said.textContent = "Cleared.";
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  load();
+  fields.forEach(grow);
+  refresh();
+})();
+</script>
+
+</body>
+</html>
