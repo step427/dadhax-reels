@@ -107,22 +107,65 @@ def creds():
     return out
 
 
-def call(method, path, params):
-    data = urllib.parse.urlencode(params).encode()
-    if method == "GET":
-        req = urllib.request.Request(f"{GRAPH}/{path}?{data.decode()}")
-    else:
-        req = urllib.request.Request(f"{GRAPH}/{path}", data=data, method="POST")
+# Meta returns a 500 with "is_transient": true and tells you, in the payload, to
+# retry later -- their documented behaviour for error code 2. This used to take
+# that at face value and drop the slot: 8/21 lost the 1:00p reel to exactly this
+# and 8/17 lost 9:00a. The day still reached three posts, because the next run
+# tops the day up, but it got there by posting two reels two minutes apart --
+# worse for reach than the slot it was covering for.
+_RETRY_STATUS = (500, 502, 503, 504)
+_RETRIES = 4
+_BACKOFF = 5  # seconds, doubling: 5, 10, 20
+
+
+def _scrub(body):
+    """The error body can echo the query string back, token included."""
+    for secret in _REDACT:
+        if secret:
+            body = body.replace(secret, "<redacted>")
+    return body
+
+
+def _is_transient(status, body):
+    if status in _RETRY_STATUS:
+        return True
     try:
-        with urllib.request.urlopen(req, timeout=180) as r:
-            return json.load(r)
-    except urllib.error.HTTPError as e:
-        # the body can echo the query string back, token included -- never log it raw
-        body = e.read().decode()[:400]
-        for secret in _REDACT:
-            if secret:
-                body = body.replace(secret, "<redacted>")
-        raise RuntimeError(f"Graph API error {e.code} on {path}: {body}")
+        err = json.loads(body).get("error", {})
+    except ValueError:
+        return False  # truncated or non-JSON body; the status is all we have
+    return bool(err.get("is_transient")) or err.get("code") == 2
+
+
+def call(method, path, params, retry=True):
+    """POST/GET the Graph API, retrying what Meta flags as transient.
+
+    `retry=False` is for calls that must not be repeated blind. media_publish is
+    the one that matters: if it succeeded server-side but the response was lost,
+    a retry posts the reel twice. Letting that one fail is cheap -- the item
+    stays pending and the next run builds a fresh container for it.
+    """
+    data = urllib.parse.urlencode(params).encode()
+    for attempt in range(_RETRIES if retry else 1):
+        if method == "GET":
+            req = urllib.request.Request(f"{GRAPH}/{path}?{data.decode()}")
+        else:
+            req = urllib.request.Request(f"{GRAPH}/{path}", data=data, method="POST")
+        try:
+            with urllib.request.urlopen(req, timeout=180) as r:
+                return json.load(r)
+        except urllib.error.HTTPError as e:
+            raw = e.read().decode()[:400]
+            transient = _is_transient(e.code, raw)
+            err = RuntimeError(f"Graph API error {e.code} on {path}: {_scrub(raw)}")
+        except urllib.error.URLError as e:
+            transient = True
+            err = RuntimeError(f"network error on {path}: {e.reason}")
+
+        if not transient or attempt == _RETRIES - 1 or not retry:
+            raise err
+        wait = _BACKOFF * 2 ** attempt
+        log(f"transient error on {path} - retrying in {wait}s ({err})")
+        time.sleep(wait)
 
 
 _REDACT = []
@@ -286,7 +329,7 @@ def publish_ig(item, url, tok, ig, dry_run):
         return None
 
     media_id = call("POST", f"{ig}/media_publish",
-                    {"creation_id": cid, "access_token": tok})["id"]
+                    {"creation_id": cid, "access_token": tok}, retry=False)["id"]
     return call("GET", media_id, {"fields": "permalink",
                                   "access_token": tok}).get("permalink", media_id)
 
