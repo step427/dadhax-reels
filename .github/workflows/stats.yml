@@ -1,0 +1,57 @@
+name: Snapshot Instagram stats
+
+# Once a day at 05:13 UTC = 12:13am Central, after the 10pm safety-net run has
+# had its say, so the snapshot covers a complete posting day.
+#
+# Deliberately SEPARATE from publish.yml. Stats are nice to have; posting is the
+# contract. A broken stats run must never be able to fail a posting slot, and
+# a slow one must never hold the publish concurrency group.
+#
+# Odd minute for the same reason publish.yml uses one: GitHub drops congested
+# on-the-hour schedules under load rather than merely delaying them.
+on:
+  schedule:
+    - cron: "13 5 * * *"
+  workflow_dispatch:
+
+# NEVER add pull_request_target here. Secrets are withheld from fork PRs and
+# this repo is public.
+
+concurrency:
+  group: stats-snapshot
+  cancel-in-progress: false
+
+permissions:
+  contents: write          # to commit stats/ back
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Pull counts
+        env:
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
+          META_PAGE_TOKEN: ${{ secrets.META_PAGE_TOKEN }}
+        run: python publisher/stats.py
+
+      - name: Commit the snapshot
+        run: |
+          git config user.name  "dadhax-publisher"
+          git config user.email "publisher@users.noreply.github.com"
+          git add -A stats
+          git diff --cached --quiet && { echo "nothing changed"; exit 0; }
+          git commit -m "Stats snapshot"
+          # the publisher and the reel loop both push here too
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push origin main && exit 0
+            sleep 5
+          done
+          echo "could not push the snapshot after 3 tries" >&2
+          exit 1
