@@ -4,7 +4,7 @@
 Nick's ask, early August: "we need to start being able to figure out ways to get
 the statistics on how videos perform based on when they are posted." That ran
 through Zapier until the task quota died, and nothing replaced it -- so the
-publisher has been posting into the dark since ~8/12.
+publisher had been posting into the dark since ~8/12.
 
 This runs in Actions (.github/workflows/stats.yml), which already holds the
 token. It is deliberately a SEPARATE workflow from publishing: a stats failure
@@ -18,15 +18,31 @@ Two outputs, both committed back to the repo:
   stats/history.jsonl   one line per post per snapshot. Append-only, so the
                         trend is recoverable later -- a single current count
                         cannot tell you whether a reel is still gathering.
-  stats/README.md       the readable cut: by hour, by weekday, fresh vs
-                        back-catalog, and the leaderboard.
+  stats/README.md       the readable cut.
+
+Three things the first real run (8/24) taught us, all of them now handled here
+because each one quietly produces a WRONG answer rather than an obvious error:
+
+  1. The account goes back to June 2024 and carries 500+ posts. The old page
+     cap of 5 stopped at exactly 500 and said nothing, so the report looked
+     complete while silently dropping the tail. The cap is higher now and a
+     truncated pull says so in the report.
+  2. Median likes are 0 while the mean is 2.0 -- the distribution is mostly
+     zeros with a handful of outliers. A mean-only table hands back "05:00 is
+     a great hour, 4.8 likes" when that bucket is one viral post from Aug 2025
+     carrying ten dead ones. Every table now shows n, median AND mean.
+  3. Only ~52 of those posts had their hour CHOSEN by the publisher. The rest
+     is two years of Nick posting by hand at whatever time he happened to be
+     free. Blending them cannot answer "what hour should the machine post?",
+     so the actionable tables cover the automated era and all-time is kept
+     separately as context.
 
 Insights (views, reach, watch time) need instagram_manage_insights, which this
-token does not carry. Likes and comments are what is reachable; they are also
-the only two numbers that have ever moved on this account.
+token does not carry. Likes and comments are what is reachable.
 """
 import argparse
 import json
+import statistics
 import sys
 from collections import defaultdict
 from datetime import datetime
@@ -40,10 +56,16 @@ STATS = REPO / "stats"
 HISTORY = STATS / "history.jsonl"
 REPORT = STATS / "README.md"
 FIELDS = "id,timestamp,permalink,like_count,comments_count,media_type"
+PAGE_CAP = 30          # 3000 posts; the account had ~500 on 8/24
+DOW = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 
 
-def fetch_media(ig, tok, pages=5):
-    """Every post the account can see, newest first, following the cursor."""
+def fetch_media(ig, tok, pages=PAGE_CAP):
+    """Every post the account can see, newest first, following the cursor.
+
+    Returns (posts, truncated). `truncated` is the thing that matters: hitting
+    the cap silently is how a partial pull gets read as a complete one.
+    """
     out, after = [], None
     for _ in range(pages):
         params = {"fields": FIELDS, "limit": 100, "access_token": tok}
@@ -53,8 +75,8 @@ def fetch_media(ig, tok, pages=5):
         out.extend(page.get("data", []))
         after = page.get("paging", {}).get("cursors", {}).get("after")
         if not after or not page.get("data"):
-            break
-    return out
+            return out, False
+    return out, True
 
 
 def central(ts):
@@ -63,7 +85,11 @@ def central(ts):
 
 
 def kinds_by_permalink():
-    """fresh vs back-catalog, read off the queue rather than guessed."""
+    """fresh vs back-catalog, read off the queue rather than guessed.
+
+    Doubles as the era marker: a permalink the queue knows about is a post the
+    publisher made, so it is the only kind whose HOUR the machine chose.
+    """
     try:
         q = json.loads((REPO / "queue.json").read_text(encoding="utf-8"))
     except (OSError, ValueError):
@@ -93,68 +119,89 @@ def _table(rows, headers):
     return "\n".join(out)
 
 
-def _mean(xs):
-    return sum(xs) / len(xs) if xs else 0.0
+def _stat_row(label, likes):
+    """n, median, mean, best -- in that order, because median is the honest one."""
+    return (label, len(likes), f"{statistics.median(likes):.1f}",
+            f"{statistics.mean(likes):.1f}", max(likes))
 
 
-def report(media, today):
+STAT_COLS = ["Posts", "Median", "Mean", "Best"]
+
+
+def _grouped(posts, key):
+    g = defaultdict(list)
+    for p in posts:
+        g[key(p)].append(p["likes"])
+    return g
+
+
+def _by_hour(posts):
+    g = _grouped(posts, lambda p: p["when"].hour)
+    return [_stat_row(f"{h:02d}:00", v) for h, v in sorted(g.items())]
+
+
+def _by_dow(posts):
+    g = _grouped(posts, lambda p: p["when"].strftime("%a"))
+    return [_stat_row(d, g[d]) for d in DOW if g[d]]
+
+
+def report(media, today, truncated=False):
     kinds = kinds_by_permalink()
     posts = []
     for m in media:
         if not m.get("timestamp"):
             continue
-        when = central(m["timestamp"])
         posts.append({
-            "when": when,
+            "when": central(m["timestamp"]),
             "likes": m.get("like_count", 0),
             "comments": m.get("comments_count", 0),
             "permalink": m.get("permalink", ""),
-            "kind": kinds.get(m.get("permalink", ""), "unknown"),
+            "kind": kinds.get(m.get("permalink", ""), "hand-posted"),
         })
     posts.sort(key=lambda p: p["when"], reverse=True)
+    auto = [p for p in posts if p["kind"] != "hand-posted"]
 
-    lines = ["# @nicksdadhax — likes and comments by posting time",
-             "",
-             f"Snapshot {today}. {len(posts)} posts. Generated by "
-             "`publisher/stats.py`; do not hand-edit.",
-             "",
-             "Likes and comments only — views and reach need "
-             "`instagram_manage_insights`, which this token does not carry.",
-             ""]
+    lines = ["# @nicksdadhax — likes and comments by posting time", "",
+             f"Snapshot {today}. {len(posts)} posts, {len(auto)} of them posted "
+             "by the publisher. Generated by `publisher/stats.py`; do not "
+             "hand-edit.", ""]
+    if truncated:
+        lines += ["> **Partial pull.** The page cap was reached, so the oldest "
+                  "posts are missing from this snapshot. Raise `PAGE_CAP`.", ""]
+    lines += ["Likes and comments only — views and reach need "
+              "`instagram_manage_insights`, which this token does not carry.",
+              "",
+              "**Read the median, not the mean.** Across the whole account the "
+              "mean is a few likes and the median is zero: most posts get "
+              "nothing and a handful go off. One old viral post can make a "
+              "dead hour look like the best hour on the board.", ""]
 
-    # The question Nick actually asked: does the hour matter?
-    by_hour = defaultdict(list)
-    for p in posts:
-        by_hour[p["when"].hour].append(p["likes"])
-    rows = [(f"{h:02d}:00", len(v), f"{_mean(v):.1f}", max(v))
-            for h, v in sorted(by_hour.items())]
-    lines += ["## By hour posted (Central)", "",
-              _table(rows, ["Hour", "Posts", "Avg likes", "Best"]), ""]
+    if auto:
+        first = min(p["when"] for p in auto).strftime("%Y-%m-%d")
+        lines += [f"## The automated era ({len(auto)} posts since {first})", "",
+                  "The only posts whose hour the publisher actually chose — so "
+                  "the only ones that can answer what the machine should do "
+                  "next.", "",
+                  "### By hour posted (Central)", "",
+                  _table(_by_hour(auto), ["Hour"] + STAT_COLS), "",
+                  "### By weekday", "",
+                  _table(_by_dow(auto), ["Day"] + STAT_COLS), "",
+                  "### Fresh vs back-catalog", ""]
+        g = _grouped(auto, lambda p: p["kind"])
+        lines += [_table([_stat_row(k, v) for k, v in sorted(g.items())],
+                         ["Kind"] + STAT_COLS), ""]
 
-    by_dow = defaultdict(list)
-    for p in posts:
-        by_dow[p["when"].strftime("%a")].append(p["likes"])
-    order = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
-    rows = [(d, len(by_dow[d]), f"{_mean(by_dow[d]):.1f}")
-            for d in order if by_dow[d]]
-    lines += ["## By weekday", "",
-              _table(rows, ["Day", "Posts", "Avg likes"]), ""]
-
-    by_kind = defaultdict(list)
-    for p in posts:
-        by_kind[p["kind"]].append(p["likes"])
-    rows = [(k, len(v), f"{_mean(v):.1f}") for k, v in sorted(by_kind.items())]
-    lines += ["## Fresh vs back-catalog", "",
-              _table(rows, ["Kind", "Posts", "Avg likes"]), ""]
+    lines += [f"## All time, for context ({len(posts)} posts)", "",
+              "Mostly Nick posting by hand at whatever hour he was free, going "
+              "back to 2024. Useful as history, not as a scheduling signal.", "",
+              _table(_by_hour(posts), ["Hour"] + STAT_COLS), "",
+              _table(_by_dow(posts), ["Day"] + STAT_COLS), ""]
 
     top = sorted(posts, key=lambda p: p["likes"], reverse=True)[:10]
-    rows = [(p["when"].strftime("%Y-%m-%d %H:%M"), p["likes"], p["comments"],
-             p["kind"], p["permalink"]) for p in top]
     lines += ["## Top 10 by likes", "",
-              _table(rows, ["Posted (CT)", "Likes", "Comments", "Kind", "Link"]),
-              "",
-              "Sample is small and every number here is still gathering — read "
-              "the shape, not the decimals.", ""]
+              _table([(p["when"].strftime("%Y-%m-%d %H:%M"), p["likes"],
+                       p["comments"], p["kind"], p["permalink"]) for p in top],
+                     ["Posted (CT)", "Likes", "Comments", "Kind", "Link"]), ""]
     return "\n".join(lines)
 
 
@@ -170,10 +217,10 @@ def main():
     # the error body can echo the query string back, token included
     publish._REDACT = [c["META_ACCESS_TOKEN"], c["META_PAGE_TOKEN"]]
 
-    media = fetch_media(c["IG_USER_ID"], c["META_ACCESS_TOKEN"])
-    publish.log(f"pulled {len(media)} posts")
+    media, truncated = fetch_media(c["IG_USER_ID"], c["META_ACCESS_TOKEN"])
+    publish.log(f"pulled {len(media)} posts{' (TRUNCATED)' if truncated else ''}")
     today = datetime.now(publish.TZ).strftime("%Y-%m-%d")
-    text = report(media, today)
+    text = report(media, today, truncated)
 
     if args.dry_run:
         print(text)
