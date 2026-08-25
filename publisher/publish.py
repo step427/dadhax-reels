@@ -270,6 +270,40 @@ def slot_target(now):
     return POSTS_PER_DAY
 
 
+TOPIC_RANK = {"utility": 0, "talk": 1, "meta": 2}
+
+
+def topic_class(item):
+    """utility | talk | meta, off the queue field with a prefix fallback.
+
+    The 8/25 review cut 36 posts by topic: utility medians 10.5, talk 1.5, meta
+    2.0. Twelve talk posts and not one cleared 5 likes, at any hour, fresh or
+    reposted -- while fresh-vs-back-catalog, the axis the mix rule is written
+    on, came out 11.0 against 10.0. Topic is the axis that predicts; origin is
+    not.
+    """
+    tc = item.get("topic_class")
+    if tc in TOPIC_RANK:
+        return tc
+    stem = item["file"].rsplit(".", 1)[0]
+    return "talk" if stem.startswith("ig-yt-") else "utility"
+
+
+def _by_topic(pending):
+    """Stable-sort the pending block so utility comes first, meta last.
+
+    NOT a filter, and that distinction is the whole design. Utility supply runs
+    about 1.1 reels/day against a contract of 3, so gating on topic would starve
+    the queue and cost posts -- and three a day is Nick's non-negotiable, the
+    one thing that does not get traded for a better median. Same doctrine as
+    the fresh/back-catalog preference below it: prefer, fall back, never gap.
+
+    Sorting rather than filtering also means the talk backlog still ships; it
+    just stops being what the machine reaches for first.
+    """
+    return sorted(pending, key=lambda i: TOPIC_RANK[topic_class(i)])
+
+
 def claim_next(q, prefer_old):
     """The next pending item, preferring the kind this slot is owed.
 
@@ -295,7 +329,7 @@ def claim_next(q, prefer_old):
     overlap, which is a stronger guarantee than the lock it replaces (a crashed
     run used to leave an item wedged in 'staging' until a timeout reclaimed it).
     """
-    pending = [i for i in q["items"] if i.get("status") == "pending"]
+    pending = _by_topic([i for i in q["items"] if i.get("status") == "pending"])
     for item in pending:
         if is_old(item) == prefer_old:
             return item
@@ -479,6 +513,16 @@ def main():
         log(f"LOW FRESH: {len(fresh)} fresh cuts = "
             f"{len(fresh) // FRESH_PER_DAY} days at {FRESH_PER_DAY}/day. "
             f"Drop raws in Reels drop or the board goes all back-catalog.")
+    # Utility is the supply that actually decides how the day performs: it
+    # medians 10.5 against 1.5 for talk (8/25 review, n=32). When it runs out
+    # the machine still posts -- three a day is the contract -- it just posts
+    # the category that has never cleared 5 likes. That is worth saying out
+    # loud, because it is the one shortage a garage afternoon fixes.
+    utility = [i for i in pending if topic_class(i) == "utility"]
+    if len(utility) < POSTS_PER_DAY:
+        log(f"LOW UTILITY: {len(utility)} utility reels left of {len(pending)} "
+            f"pending. Below a day of cover -- the board falls back to talk, "
+            f"which medians 1.5. One shoot of hands-and-tools clips fixes it.")
 
     c = creds()
     _REDACT.extend([c["META_ACCESS_TOKEN"], c.get("META_PAGE_TOKEN", "")])
