@@ -191,6 +191,21 @@ def report(media, today, truncated=False):
         lines += [_table([_stat_row(k, v) for k, v in sorted(g.items())],
                          ["Kind"] + STAT_COLS), ""]
 
+        # Hour and kind are ENTANGLED here: the 1pm slot is the repost slot, so
+        # every back-catalog reel is also a 1pm reel. Reading either table on
+        # its own gets the driver backwards -- it did on 8/24, where the kind
+        # table alone said content type was doing the work and this cross-tab
+        # said the hour was. Neither is settled; the cell that would settle it
+        # is fresh-at-1pm, which has never been posted.
+        lines += ["### Hour x kind — which one is actually driving it", "",
+                  _table([_stat_row(f"{k} @ {h}", v) for (k, h), v in sorted(
+                      _grouped(auto, lambda p: (p["kind"],
+                                                f"{p['when'].hour:02d}:00")).items())],
+                         ["Bucket"] + STAT_COLS),
+                  "",
+                  "An empty cell is not a zero — it is an experiment nobody has "
+                  "run yet.", ""]
+
     lines += [f"## All time, for context ({len(posts)} posts)", "",
               "Mostly Nick posting by hand at whatever hour he was free, going "
               "back to 2024. Useful as history, not as a scheduling signal.", "",
