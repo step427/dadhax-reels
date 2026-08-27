@@ -98,6 +98,18 @@ def kinds_by_permalink():
             for i in q.get("items", []) if i.get("permalink")}
 
 
+def already_snapshotted(today):
+    """Has today's snapshot already been written?
+
+    Guards the backup run below from double-counting. Cheap tail read rather
+    than parsing the whole file: today's rows, if any, are at the end.
+    """
+    if not HISTORY.exists():
+        return False
+    tail = HISTORY.read_text(encoding="utf-8").splitlines()[-800:]
+    return any(f'"snapshot": "{today}"' in line for line in tail)
+
+
 def snapshot(media, today):
     """Append today's counts. One line per post, so nothing is ever overwritten."""
     STATS.mkdir(exist_ok=True)
@@ -239,6 +251,13 @@ def main():
 
     if args.dry_run:
         print(text)
+        return
+    if already_snapshotted(today):
+        # The backup cron caught a day the primary already covered. Refresh the
+        # readable report, but never append a second set of rows for one day --
+        # that would double-weight it in any trend read off history.jsonl.
+        REPORT.write_text(text, encoding="utf-8")
+        publish.log(f"{today} already snapshotted - report refreshed, history untouched")
         return
     snapshot(media, today)
     STATS.mkdir(exist_ok=True)
