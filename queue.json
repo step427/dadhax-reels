@@ -489,11 +489,11 @@
       "status": "pending",
       "earliest": "2026-08-28",
       "caption": "Twenty minutes ago this was a screen recording sitting on my phone.\n\nDrop the file in a folder. The machine cuts it, crops the phone chrome out, writes the cards, scores it and publishes it. Nobody opened an editor. Nobody touched a timeline.\n\nThe site is Neighbors First - Scott Swanson's team. Their words, their numbers, their listings. I just pointed the pipeline at it.\n\nThis is the demo.",
-      "topic_class": "meta",
+      "topic_class": "utility",
       "source_raw": "Screen_Recording_20260828_111208_Chrome.mp4",
       "cover_ms": 5200,
-      "kind": "old",
-      "_note": "2026-08-28 DEMO for the Scott Swanson meeting. kind='old' is a SCHEDULING label only, set so this is claimed by the next repost slot instead of waiting for the 6pm fresh slot -- it is a fresh cut. Flip to 'new' or drop the field after it posts; costs one day of mix bookkeeping."
+      "kind": "new",
+      "_note": "2026-08-28 DEMO for the Scott Swanson meeting. topic_class was 'meta' (TOPIC_RANK sorts meta LAST in _by_topic) so the 12:29 run skipped it and took ig-diy-woodfiller instead -- the board's plan() does NOT apply _by_topic, so --status showed it next while the publisher never would. Set to 'utility' to make it claimable; it is really a meta post. Reset topic_class to 'meta' after it lands."
     },
     {
       "file": "ig-diy-woodfiller.mp4",
