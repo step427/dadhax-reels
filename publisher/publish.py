@@ -345,6 +345,11 @@ def publish_ig(item, url, tok, ig, dry_run):
     # "cover_ms" on the queue item (pick_cover.py shortlists candidates).
     if item.get("cover_ms"):
         params["thumb_offset"] = int(item["cover_ms"])
+    # Collab posts land on BOTH grids and draw on both audiences. Meta caps it at
+    # 3, the accounts must be public, and the invite has to be ACCEPTED before it
+    # shows on theirs -- a queued collab is a request, not a done deal.
+    if item.get("collaborators"):
+        params["collaborators"] = json.dumps(item["collaborators"][:3])
     cid = call("POST", f"{ig}/media", params)["id"]
 
     for _ in range(60):
