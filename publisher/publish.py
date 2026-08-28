@@ -456,6 +456,10 @@ def main():
     ap.add_argument("--status", action="store_true")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--prune", action="store_true")
+    ap.add_argument("--force", action="store_true",
+                    help="Post one now even if this slot is already at target. "
+                         "Manual dispatch only -- the 3-a-day cap below still holds, "
+                         "so this pulls a later slot forward, it does not add a 4th post.")
     a = ap.parse_args()
 
     q = load_queue()
@@ -496,6 +500,13 @@ def main():
     done = len(posted_today)
     olds_today = sum(1 for i in posted_today if is_old(i))
     owed = max(0, slot_target(now) - done)
+    if a.force and not owed and done < POSTS_PER_DAY:
+        # Manual override for a live demo: the slot clock says wait, but the day
+        # still owes a post. Pull it forward rather than adding one -- the
+        # 3-a-day contract is the invariant, the clock times are only spacing.
+        owed = 1
+        log(f"--force: slot target met but only {done}/{POSTS_PER_DAY} posted today "
+            f"-> pulling the next slot forward")
     if a.dry_run:
         owed = min(owed, 1)   # a dry run never marks posted, so it would restage item 1
     log(f"{done} posted today ({olds_today} back-catalog), "
