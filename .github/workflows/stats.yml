@@ -12,14 +12,21 @@ name: Snapshot Instagram stats
 on:
   schedule:
     - cron: "13 5 * * *"
-    # Backup run. GitHub does not merely delay a congested schedule, it DROPS
-    # it -- the publisher workflow has carried that warning since 8/14 and has
-    # a 4th slot for exactly this reason. I built this workflow with a single
-    # cron anyway, and on 8/27 the 05:13 run never fired: that day's counts are
-    # gone for good, because history.jsonl is a point-in-time series and a
-    # missing day cannot be backfilled from anywhere. Second run, several hours
-    # later, well off the stampede. snapshot() is idempotent per day, so on a
-    # normal day this one refreshes the report and writes no history.
+    # Backup run. GitHub delays congested schedules and, under enough load,
+    # drops them outright -- publish.yml has carried that warning since 8/14 and
+    # runs a 4th slot for it.
+    #
+    # Correction, 8/28: this comment first claimed the 8/27 05:13 run was
+    # DROPPED and that day's counts lost. It was not. It fired at 16:29 UTC,
+    # eleven hours late, and the snapshot is in history.jsonl. Absence at the
+    # time of checking looked like a drop and was only lateness.
+    #
+    # The backup earns its place anyway, because the failure it guards against
+    # is real and unrecoverable: history.jsonl is a point-in-time series, the
+    # API only ever reports counts as they are NOW, so a genuinely dropped day
+    # cannot be backfilled from anywhere. This is insurance, not a rescue.
+    # snapshot() is idempotent per day, so on a normal day -- including a very
+    # late one -- this run refreshes the report and writes no history rows.
     - cron: "37 11 * * *"
   workflow_dispatch:
 
