@@ -847,12 +847,15 @@
     {
       "file": "ig-0828-alreadybuilt.mp4",
       "title": "It's already built",
-      "status": "pending",
+      "status": "posted",
       "earliest": "2026-08-28",
       "caption": "Hey Dad,\n\nYour AI agent will happily spend a whole weekend building something that already exists. It doesn't know to check. It just builds.\n\nThere's a repo called Ponytail that fixes that. It's the quiet guy who has been at the company longer than the version control — you show him fifty lines, he says nothing, and replaces them with one.\n\nThe rule that came out of it: if it's already built, don't build it. Go get it, bring it back, modify it to fit.\n\nOne of these every day. Follow or miss it.\n\nThanks, Dad. I love you, Dad.",
       "topic_class": "utility",
       "source_raw": "20260810_085813.mp4",
-      "cover_ms": 600
+      "cover_ms": 600,
+      "permalink": "https://www.instagram.com/reel/DcmFD-7FYcJ/",
+      "posted_at": "2026-08-28T14:09:43-05:00",
+      "fb_page_video_id": "1089472416839546"
     },
     {
       "file": "ig-0828-delay.mp4",
