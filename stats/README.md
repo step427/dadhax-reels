@@ -15,11 +15,11 @@ The only posts whose hour the publisher actually chose — so the only ones that
 | Hour | Posts | Median | Mean | Best |
 |---|---|---|---|---|
 | 01:00 | 1 | 0.0 | 0.0 | 0 |
-| 05:00 | 1 | 1.0 | 1.0 | 1 |
+| 05:00 | 1 | 5.0 | 5.0 | 5 |
 | 09:00 | 16 | 2.0 | 5.1 | 26 |
-| 12:00 | 5 | 1.0 | 5.4 | 25 |
+| 12:00 | 5 | 1.0 | 6.0 | 26 |
 | 13:00 | 9 | 11.0 | 12.9 | 31 |
-| 14:00 | 10 | 1.5 | 5.0 | 21 |
+| 14:00 | 10 | 2.0 | 5.3 | 21 |
 | 15:00 | 2 | 6.0 | 6.0 | 11 |
 | 16:00 | 4 | 1.5 | 1.8 | 4 |
 | 18:00 | 20 | 2.0 | 3.7 | 26 |
@@ -34,8 +34,8 @@ The only posts whose hour the publisher actually chose — so the only ones that
 | Tue | 9 | 2.0 | 5.1 | 21 |
 | Wed | 10 | 3.5 | 5.2 | 19 |
 | Thu | 9 | 2.0 | 5.0 | 26 |
-| Fri | 14 | 1.0 | 4.4 | 26 |
-| Sat | 10 | 3.5 | 6.1 | 31 |
+| Fri | 14 | 1.0 | 4.9 | 26 |
+| Sat | 10 | 4.0 | 6.5 | 31 |
 | Sun | 9 | 2.0 | 7.2 | 23 |
 
 ### Fresh vs back-catalog
@@ -43,24 +43,24 @@ The only posts whose hour the publisher actually chose — so the only ones that
 | Kind | Posts | Median | Mean | Best |
 |---|---|---|---|---|
 | back-catalog | 28 | 3.0 | 8.0 | 31 |
-| fresh | 42 | 1.5 | 3.5 | 26 |
+| fresh | 42 | 2.0 | 3.7 | 26 |
 
 ### Hour x kind — which one is actually driving it
 
 | Bucket | Posts | Median | Mean | Best |
 |---|---|---|---|---|
 | back-catalog @ 09:00 | 2 | 6.0 | 6.0 | 10 |
-| back-catalog @ 12:00 | 1 | 25.0 | 25.0 | 25 |
+| back-catalog @ 12:00 | 1 | 26.0 | 26.0 | 26 |
 | back-catalog @ 13:00 | 9 | 11.0 | 12.9 | 31 |
 | back-catalog @ 14:00 | 7 | 2.0 | 6.9 | 21 |
 | back-catalog @ 15:00 | 2 | 6.0 | 6.0 | 11 |
 | back-catalog @ 16:00 | 2 | 0.0 | 0.0 | 0 |
 | back-catalog @ 18:00 | 5 | 2.0 | 2.0 | 5 |
 | fresh @ 01:00 | 1 | 0.0 | 0.0 | 0 |
-| fresh @ 05:00 | 1 | 1.0 | 1.0 | 1 |
+| fresh @ 05:00 | 1 | 5.0 | 5.0 | 5 |
 | fresh @ 09:00 | 14 | 2.0 | 5.0 | 26 |
-| fresh @ 12:00 | 4 | 0.5 | 0.5 | 1 |
-| fresh @ 14:00 | 3 | 1.0 | 0.7 | 1 |
+| fresh @ 12:00 | 4 | 1.0 | 1.0 | 2 |
+| fresh @ 14:00 | 3 | 1.0 | 1.7 | 4 |
 | fresh @ 16:00 | 2 | 3.5 | 3.5 | 4 |
 | fresh @ 18:00 | 15 | 3.0 | 4.3 | 26 |
 | fresh @ 19:00 | 1 | 1.0 | 1.0 | 1 |
@@ -78,16 +78,16 @@ Mostly Nick posting by hand at whatever hour he was free, going back to 2024. Us
 | 01:00 | 5 | 0.0 | 0.4 | 2 |
 | 02:00 | 4 | 0.0 | 0.2 | 1 |
 | 03:00 | 2 | 0.0 | 0.0 | 0 |
-| 05:00 | 12 | 0.0 | 4.5 | 50 |
+| 05:00 | 12 | 0.0 | 4.8 | 50 |
 | 06:00 | 16 | 0.0 | 0.5 | 3 |
 | 07:00 | 17 | 1.0 | 0.6 | 3 |
 | 08:00 | 31 | 1.0 | 2.2 | 30 |
 | 09:00 | 39 | 2.0 | 3.8 | 34 |
 | 10:00 | 34 | 0.0 | 0.7 | 5 |
 | 11:00 | 20 | 0.0 | 0.8 | 5 |
-| 12:00 | 28 | 0.0 | 4.3 | 72 |
+| 12:00 | 28 | 0.5 | 4.4 | 72 |
 | 13:00 | 30 | 1.0 | 4.2 | 31 |
-| 14:00 | 40 | 1.0 | 2.1 | 21 |
+| 14:00 | 40 | 1.0 | 2.2 | 21 |
 | 15:00 | 44 | 0.0 | 1.1 | 12 |
 | 16:00 | 39 | 1.0 | 1.5 | 20 |
 | 17:00 | 46 | 0.0 | 1.1 | 12 |
@@ -105,7 +105,7 @@ Mostly Nick posting by hand at whatever hour he was free, going back to 2024. Us
 | Wed | 74 | 1.0 | 2.7 | 50 |
 | Thu | 73 | 1.0 | 2.2 | 35 |
 | Fri | 84 | 0.0 | 1.7 | 26 |
-| Sat | 101 | 0.0 | 2.3 | 72 |
+| Sat | 101 | 0.0 | 2.4 | 72 |
 | Sun | 121 | 0.0 | 1.6 | 42 |
 
 ## Top 10 by likes
@@ -120,5 +120,5 @@ Mostly Nick posting by hand at whatever hour he was free, going back to 2024. Us
 | 2026-03-12 21:14 | 33 | 0 | hand-posted | https://www.instagram.com/reel/DVzrRdFDoPw/ |
 | 2026-08-15 13:52 | 31 | 1 | back-catalog | https://www.instagram.com/reel/DcEk1L0CZii/ |
 | 2025-07-19 08:31 | 30 | 0 | hand-posted | https://www.instagram.com/reel/DMRD82dgU_L/ |
+| 2026-08-28 12:29 | 26 | 0 | back-catalog | https://www.instagram.com/reel/Dcl5mWqksgL/ |
 | 2026-08-21 09:50 | 26 | 2 | fresh | https://www.instagram.com/reel/DcTl1tblOAx/ |
-| 2026-08-20 18:39 | 26 | 0 | fresh | https://www.instagram.com/reel/DcR9o12ljoI/ |
