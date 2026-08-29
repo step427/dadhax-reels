@@ -21,7 +21,7 @@ exists so that recording is the only thing he has to do.** It already does that.
 
 | | |
 |---|---|
-| **3 posts/day** | Every day. Non-negotiable — this is a 5DNN identity commitment, not a performance lever. It is never traded for a better median. |
+| **3 posts/day, as a FLOOR** | Every day. Non-negotiable — a 5DNN identity commitment, not a performance lever, and never traded for a better median. **Amended 8/29:** three is the floor, not a ceiling (Nick, 8/28: *"i dont really care if i do more than 3/day. but the floor is 3 posts/day"*). The scheduled runs still top a day up TO three; `--force` and deliberate releases go on top. A day with five posts is not a breach — a day with two is. This line originally read as a ceiling and would have had the 8/28 Neighbors First collab release flagged as a contract violation. |
 | **0 mangled captions** | `_demojibake` guards the load path. |
 | **0 silent failures** | Transients retry; a run that cannot post says so in the log. |
 | **Queue never under 7 days of cover** | Below that, `LOW QUEUE` / `LOW FRESH` / `LOW UTILITY` fire. |
