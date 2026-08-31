@@ -119,6 +119,10 @@ def snapshot(media, today):
                 "snapshot": today,
                 "id": m["id"],
                 "posted": m.get("timestamp"),
+                # permalink is the join key to queue.json's craft metadata
+                # (topic_class, kind, cover, collaborators). Without it the
+                # engagement numbers cannot be tied back to how a reel was cut.
+                "permalink": m.get("permalink"),
                 "likes": m.get("like_count", 0),
                 "comments": m.get("comments_count", 0),
             }, sort_keys=True) + "\n")
