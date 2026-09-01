@@ -22,7 +22,7 @@ The only posts whose hour the publisher actually chose — so the only ones that
 | 12:00 | 6 | 2.0 | 8.3 | 36 |
 | 13:00 | 10 | 7.5 | 11.6 | 31 |
 | 14:00 | 10 | 2.0 | 5.6 | 21 |
-| 15:00 | 3 | 1.0 | 4.3 | 11 |
+| 15:00 | 3 | 2.0 | 4.7 | 11 |
 | 16:00 | 4 | 1.5 | 1.8 | 4 |
 | 17:00 | 1 | 2.0 | 2.0 | 2 |
 | 18:00 | 20 | 2.0 | 3.7 | 26 |
@@ -34,7 +34,7 @@ The only posts whose hour the publisher actually chose — so the only ones that
 
 | Day | Posts | Median | Mean | Best |
 |---|---|---|---|---|
-| Mon | 12 | 2.0 | 3.5 | 15 |
+| Mon | 12 | 2.0 | 3.6 | 15 |
 | Tue | 10 | 2.0 | 4.6 | 21 |
 | Wed | 10 | 3.5 | 5.2 | 19 |
 | Thu | 9 | 2.0 | 5.0 | 26 |
@@ -57,7 +57,7 @@ The only posts whose hour the publisher actually chose — so the only ones that
 | back-catalog @ 12:00 | 2 | 22.5 | 22.5 | 36 |
 | back-catalog @ 13:00 | 10 | 7.5 | 11.6 | 31 |
 | back-catalog @ 14:00 | 7 | 2.0 | 6.9 | 21 |
-| back-catalog @ 15:00 | 3 | 1.0 | 4.3 | 11 |
+| back-catalog @ 15:00 | 3 | 2.0 | 4.7 | 11 |
 | back-catalog @ 16:00 | 2 | 0.0 | 0.0 | 0 |
 | back-catalog @ 18:00 | 5 | 2.0 | 2.0 | 5 |
 | fresh @ 01:00 | 1 | 0.0 | 0.0 | 0 |
