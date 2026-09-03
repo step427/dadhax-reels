@@ -489,7 +489,7 @@
       "status": "posted",
       "earliest": "2026-08-28",
       "caption": "Twenty minutes ago this was a screen recording sitting on my phone.\n\nDrop the file in a folder. The machine cuts it, crops the phone chrome out, writes the cards, scores it and publishes it. Nobody opened an editor. Nobody touched a timeline.\n\nThe site is Neighbors First - Scott Swanson's team. Their words, their numbers, their listings. I just pointed the pipeline at it.\n\nThis is the demo.",
-      "topic_class": "utility",
+      "topic_class": "meta",
       "source_raw": "Screen_Recording_20260828_111208_Chrome.mp4",
       "cover_ms": 5200,
       "kind": "new",
@@ -789,7 +789,7 @@
       "permalink": "https://www.instagram.com/reel/Dcd6HWPEfBG/",
       "posted_at": "2026-08-25T10:00:04-05:00",
       "fb_page_video_id": "2641236602941420",
-      "topic_class": "utility"
+      "topic_class": "talk"
     },
     {
       "file": "ig-0824-loop.mp4",
@@ -922,7 +922,7 @@
     {
       "file": "ig-0827-giveaway.mp4",
       "title": "I built it. It's yours, free.",
-      "topic_class": "utility",
+      "topic_class": "meta",
       "source_raw": "20260810_085141.mp4",
       "nav_safe": true,
       "status": "posted",
@@ -946,7 +946,7 @@
       "status": "posted",
       "earliest": "2026-08-28",
       "caption": "Hey Dad,\n\nYour AI agent will happily spend a whole weekend building something that already exists. It doesn't know to check. It just builds.\n\nThere's a repo called Ponytail that fixes that. It's the quiet guy who has been at the company longer than the version control — you show him fifty lines, he says nothing, and replaces them with one.\n\nThe rule that came out of it: if it's already built, don't build it. Go get it, bring it back, modify it to fit.\n\nOne of these every day. Follow or miss it.\n\nThanks, Dad. I love you, Dad.",
-      "topic_class": "utility",
+      "topic_class": "talk",
       "source_raw": "20260810_085813.mp4",
       "cover_ms": 600,
       "permalink": "https://www.instagram.com/reel/DcmFD-7FYcJ/",
@@ -969,7 +969,7 @@
       "status": "posted",
       "earliest": "2026-08-28",
       "caption": "Hey Dad,\n\nIf you've got a side thing going and money is moving through your personal account, you already know you should have separated it. You just haven't.\n\nThat was me, longer than I want to admit. What stood in the way was never the paperwork or the money. It was the decision.\n\nThe Sunday I finally sat down, it took about two hours and about fifty bucks. (Filing fees vary by state — check yours.)\n\nSo I built the tool I wish I'd had for that shift. Free, link in bio.\n\nFree tools: step427.github.io/dadhax-reels\n\nThanks, Dad. I love you, Dad.",
-      "topic_class": "utility",
+      "topic_class": "talk",
       "source_raw": "20260811_195610.mp4",
       "cover_ms": 300,
       "permalink": "https://www.instagram.com/reel/Dcr5bHODtAy/",
@@ -1096,7 +1096,7 @@
     {
       "file": "ig-0901-alignment.mp4",
       "title": "Quit calling it good or bad",
-      "topic_class": "utility",
+      "topic_class": "talk",
       "source_raw": "20260812_143526.mp4",
       "nav_safe": true,
       "status": "posted",
@@ -1109,7 +1109,7 @@
     {
       "file": "ig-0901-signal.mp4",
       "title": "Pain is a signal",
-      "topic_class": "utility",
+      "topic_class": "talk",
       "source_raw": "20260812_143526.mp4",
       "nav_safe": true,
       "status": "posted",

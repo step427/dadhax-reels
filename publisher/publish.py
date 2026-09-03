@@ -270,7 +270,9 @@ def slot_target(now):
     return POSTS_PER_DAY
 
 
-TOPIC_RANK = {"utility": 0, "talk": 1, "meta": 2}
+# "unknown" sits between: an unlabelled cut is a coin flip, so it should
+# neither jump ahead of known-good utility nor be buried under known-poor talk.
+TOPIC_RANK = {"utility": 0, "unknown": 1, "talk": 2, "meta": 3}
 
 
 def topic_class(item):
@@ -286,7 +288,19 @@ def topic_class(item):
     if tc in TOPIC_RANK:
         return tc
     stem = item["file"].rsplit(".", 1)[0]
-    return "talk" if stem.startswith("ig-yt-") else "utility"
+    if stem.startswith("ig-diy-"):
+        return "utility"
+    if stem.startswith("ig-yt-"):
+        return "talk"
+    # Everything else is UNKNOWN, not utility. The old fallback assumed any
+    # fresh cut was hands-and-tools, and on 9/3 an audit found 7 of 24
+    # defaulted items were mindset or meta -- "Pain is a signal" and "Quit
+    # calling it good or bad" were both being served as utility. Guessing
+    # optimistically is worse than admitting the gap: it inflates the utility
+    # cover number AND makes the preference reach for the wrong reel.
+    # The real fix is upstream -- the reel loop should set topic_class -- and
+    # is on the laptop handoff list.
+    return "unknown"
 
 
 def _by_topic(pending):
