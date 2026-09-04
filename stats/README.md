@@ -15,13 +15,13 @@ The only posts whose hour the publisher actually chose — so the only ones that
 | Hour | Posts | Median | Mean | Best |
 |---|---|---|---|---|
 | 01:00 | 1 | 0.0 | 0.0 | 0 |
-| 03:00 | 4 | 0.0 | 0.5 | 2 |
+| 03:00 | 4 | 1.0 | 1.0 | 2 |
 | 04:00 | 1 | 0.0 | 0.0 | 0 |
 | 05:00 | 2 | 8.0 | 8.0 | 15 |
 | 09:00 | 16 | 2.0 | 5.1 | 26 |
 | 12:00 | 9 | 1.0 | 5.6 | 36 |
 | 13:00 | 10 | 7.5 | 11.6 | 31 |
-| 14:00 | 10 | 2.0 | 5.6 | 21 |
+| 14:00 | 10 | 2.0 | 5.7 | 21 |
 | 15:00 | 3 | 3.0 | 5.0 | 11 |
 | 16:00 | 4 | 1.5 | 1.8 | 4 |
 | 17:00 | 1 | 2.0 | 2.0 | 2 |
@@ -38,7 +38,7 @@ The only posts whose hour the publisher actually chose — so the only ones that
 | Tue | 12 | 2.0 | 4.0 | 21 |
 | Wed | 13 | 2.0 | 4.2 | 19 |
 | Thu | 12 | 1.0 | 3.8 | 26 |
-| Fri | 15 | 1.0 | 5.5 | 36 |
+| Fri | 15 | 1.0 | 5.7 | 36 |
 | Sat | 12 | 4.0 | 7.0 | 31 |
 | Sun | 12 | 1.5 | 5.5 | 23 |
 
@@ -47,7 +47,7 @@ The only posts whose hour the publisher actually chose — so the only ones that
 | Kind | Posts | Median | Mean | Best |
 |---|---|---|---|---|
 | back-catalog | 31 | 3.0 | 7.9 | 36 |
-| fresh | 57 | 1.0 | 3.1 | 26 |
+| fresh | 57 | 1.0 | 3.2 | 26 |
 
 ### Hour x kind — which one is actually driving it
 
@@ -61,12 +61,12 @@ The only posts whose hour the publisher actually chose — so the only ones that
 | back-catalog @ 16:00 | 2 | 0.0 | 0.0 | 0 |
 | back-catalog @ 18:00 | 5 | 2.0 | 2.0 | 5 |
 | fresh @ 01:00 | 1 | 0.0 | 0.0 | 0 |
-| fresh @ 03:00 | 4 | 0.0 | 0.5 | 2 |
+| fresh @ 03:00 | 4 | 1.0 | 1.0 | 2 |
 | fresh @ 04:00 | 1 | 0.0 | 0.0 | 0 |
 | fresh @ 05:00 | 2 | 8.0 | 8.0 | 15 |
 | fresh @ 09:00 | 14 | 2.0 | 5.0 | 26 |
 | fresh @ 12:00 | 7 | 0.0 | 0.7 | 3 |
-| fresh @ 14:00 | 3 | 1.0 | 2.7 | 7 |
+| fresh @ 14:00 | 3 | 1.0 | 3.0 | 8 |
 | fresh @ 16:00 | 2 | 3.5 | 3.5 | 4 |
 | fresh @ 17:00 | 1 | 2.0 | 2.0 | 2 |
 | fresh @ 18:00 | 15 | 3.0 | 4.3 | 26 |
@@ -85,7 +85,7 @@ Mostly Nick posting by hand at whatever hour he was free, going back to 2024. Us
 | 00:00 | 14 | 0.0 | 0.8 | 4 |
 | 01:00 | 5 | 0.0 | 0.4 | 2 |
 | 02:00 | 4 | 0.0 | 0.2 | 1 |
-| 03:00 | 6 | 0.0 | 0.3 | 2 |
+| 03:00 | 6 | 0.0 | 0.7 | 2 |
 | 04:00 | 1 | 0.0 | 0.0 | 0 |
 | 05:00 | 13 | 0.0 | 5.3 | 50 |
 | 06:00 | 16 | 0.0 | 0.5 | 3 |
