@@ -28,7 +28,7 @@ The only posts whose hour the publisher actually chose — so the only ones that
 | 16:00 | 4 | 1.5 | 1.8 | 4 |
 | 17:00 | 1 | 2.0 | 2.0 | 2 |
 | 18:00 | 20 | 2.0 | 3.7 | 26 |
-| 19:00 | 2 | 0.5 | 0.5 | 1 |
+| 19:00 | 2 | 1.0 | 1.0 | 1 |
 | 20:00 | 4 | 0.5 | 0.8 | 2 |
 | 23:00 | 1 | 0.0 | 0.0 | 0 |
 
@@ -74,7 +74,7 @@ The only posts whose hour the publisher actually chose — so the only ones that
 | fresh @ 16:00 | 2 | 3.5 | 3.5 | 4 |
 | fresh @ 17:00 | 1 | 2.0 | 2.0 | 2 |
 | fresh @ 18:00 | 15 | 3.0 | 4.3 | 26 |
-| fresh @ 19:00 | 2 | 0.5 | 0.5 | 1 |
+| fresh @ 19:00 | 2 | 1.0 | 1.0 | 1 |
 | fresh @ 20:00 | 4 | 0.5 | 0.8 | 2 |
 | fresh @ 23:00 | 1 | 0.0 | 0.0 | 0 |
 
@@ -105,7 +105,7 @@ Mostly Nick posting by hand at whatever hour he was free, going back to 2024. Us
 | 16:00 | 39 | 1.0 | 1.5 | 20 |
 | 17:00 | 47 | 0.0 | 1.1 | 12 |
 | 18:00 | 51 | 0.0 | 1.7 | 26 |
-| 19:00 | 26 | 1.0 | 1.4 | 16 |
+| 19:00 | 26 | 1.0 | 1.5 | 16 |
 | 20:00 | 34 | 0.0 | 0.7 | 7 |
 | 21:00 | 22 | 0.0 | 2.4 | 33 |
 | 22:00 | 19 | 1.0 | 2.9 | 42 |
@@ -116,7 +116,7 @@ Mostly Nick posting by hand at whatever hour he was free, going back to 2024. Us
 | Mon | 72 | 0.0 | 1.5 | 16 |
 | Tue | 61 | 0.0 | 1.7 | 21 |
 | Wed | 77 | 1.0 | 2.6 | 50 |
-| Thu | 76 | 0.0 | 2.1 | 35 |
+| Thu | 76 | 0.5 | 2.1 | 35 |
 | Fri | 87 | 0.0 | 1.9 | 36 |
 | Sat | 104 | 0.0 | 2.5 | 72 |
 | Sun | 124 | 0.0 | 1.6 | 42 |
