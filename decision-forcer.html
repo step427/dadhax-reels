@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Launched 2026-09-08. Shipped UNGATED on purpose: the council's ship plan says
+     "no flip routine, no gate — ship it ungated instead." No scheduled flip routine
+     exists yet, so this page went live directly rather than sitting behind a noindex. -->
+<title>The Decision Forcer — @nicksdadhax</title>
+<meta name="description" content="Every other decision tool asks which option. This one asks whether the decision deserves any more of your life, and when it has to die. Two questions, one verdict, a deadline that leaves the page. Free, no gate.">
+
+<style>
+  /* @nicksdadhax — dark field-instrument identity. Same tokens as tools 01-07.
+     SIGNAL YELLOW = your input / the verdict. WARN RED = the honest rail —
+     here that's the science caveat and the "a deadline you don't keep is a wish". */
+  :root {
+    --carbon:   #0F0E0B;
+    --panel:    #17150F;
+    --panel-up: #1E1B14;
+    --hair:     #302B21;
+    --bone:     #F4F0E6;
+    --graphite: #8F887A;
+    --signal:   #FFC629;
+    --signal-d: #C8930F;
+    --warn:     #E8502C;
+
+    --mono: ui-monospace, "SF Mono", SFMono-Regular, "Cascadia Mono",
+            "Roboto Mono", Menlo, Consolas, "Courier New", monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+            "Helvetica Neue", Arial, sans-serif;
+
+    --gutter: clamp(18px, 5vw, 40px);
+    --maxw: 660px;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--carbon);
+    color: var(--bone);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-text-size-adjust: 100%;
+    background-image:
+      repeating-linear-gradient(to right,  rgba(242,237,231,.035) 0 1px, transparent 1px 28px),
+      repeating-linear-gradient(to bottom, rgba(242,237,231,.035) 0 1px, transparent 1px 28px);
+  }
+
+  .sheet { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter) 96px; }
+
+  header { padding: 34px 0 8px; }
+  .protocol {
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: .17em;
+    text-transform: uppercase; color: var(--graphite);
+  }
+  .protocol b { color: var(--signal); font-weight: 700; }
+  h1 {
+    font-family: var(--mono); font-weight: 700;
+    font-size: clamp(28px, 8vw, 48px); line-height: 1.04;
+    letter-spacing: -.03em; text-transform: uppercase;
+    margin: 12px 0 0; text-wrap: balance;
+  }
+  h1 .of { color: var(--signal); }
+  .dek { margin: 14px 0 0; max-width: 46ch; color: #CFC9BB; font-size: 17px; }
+  .dek em { color: var(--bone); font-style: normal; border-bottom: 1.5px solid var(--signal-d); }
+
+  .rules {
+    margin: 20px 0 0; padding: 11px 0 0; border-top: 1px solid var(--hair);
+    font-family: var(--mono); font-size: 12.5px; letter-spacing: .04em;
+    color: var(--graphite); text-transform: uppercase;
+  }
+  .rules span { color: var(--bone); }
+
+  .privacy {
+    margin: 18px 0 0; padding: 13px 15px; font-size: 14.5px; line-height: 1.5;
+    color: #CFC9BB; background: var(--panel); border-left: 3px solid var(--signal);
+  }
+  .privacy b { color: var(--bone); }
+
+  .story { margin-top: 24px; padding: 15px 16px; background: var(--panel);
+    border: 1px solid var(--hair); }
+  .story p { margin: 0 0 10px; font-size: 15.5px; line-height: 1.55; color: #CFC9BB; }
+  .story p:last-child { margin-bottom: 0; }
+  .story p b { color: var(--bone); }
+  .story .lbl { margin-bottom: 8px; }
+
+  .whys { margin-top: 26px; border: 1px solid var(--hair); }
+  .why { padding: 14px 15px; border-bottom: 1px solid var(--hair); }
+  .why:last-child { border-bottom: 0; }
+  .why .tag { display: block; font-family: var(--mono); font-size: 12.5px; font-weight: 700;
+    letter-spacing: .08em; text-transform: uppercase; margin-bottom: 5px; color: var(--signal); }
+  .why p { margin: 0; font-size: 15px; line-height: 1.5; color: #CFC9BB; }
+  .why p b { color: var(--bone); }
+
+  .redline-note {
+    margin: 14px 0 0; padding: 9px 12px;
+    border-left: 2.5px solid var(--warn);
+    background: rgba(232,80,44,.08);
+    font-size: 14.5px; line-height: 1.45; color: #E7DCD6;
+  }
+  .redline-note b { color: var(--warn); font-family: var(--mono);
+    font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase;
+    display: block; margin-bottom: 3px; }
+  /* inline emphasis inside the note — <b> here is the label, so prose uses <strong> */
+  .redline-note strong { color: var(--bone); font-weight: 700; }
+
+  .lbl {
+    display: block; font-family: var(--mono); font-size: 11.5px;
+    letter-spacing: .13em; text-transform: uppercase; color: var(--graphite);
+    margin-bottom: 8px;
+  }
+  h2.part {
+    font-family: var(--mono); font-size: 12px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--signal); margin: 34px 0 4px; font-weight: 700;
+    padding-top: 20px; border-top: 1px solid var(--hair);
+  }
+  .partdek { margin: 0 0 14px; font-size: 15px; color: #CFC9BB; line-height: 1.5; }
+  .partdek b { color: var(--bone); }
+
+  .seed {
+    border: 1.5px solid var(--signal); background: var(--panel);
+    padding: 16px 16px 14px;
+  }
+  .seed .lbl { color: var(--signal); margin-top: 0; }
+  textarea, input[type=text] {
+    display: block; width: 100%; resize: none;
+    background: transparent; border: 0; border-bottom: 1.5px solid #453E2C;
+    color: var(--bone); font-family: var(--sans); font-size: 17px;
+    line-height: 1.5; padding: 4px 0 8px; border-radius: 0;
+  }
+  textarea::placeholder, input::placeholder { color: #6B6455; }
+  textarea:focus, input:focus { outline: 0; border-bottom-color: var(--signal); }
+  textarea:focus-visible { box-shadow: 0 3px 0 -1px rgba(255,198,41,.35); }
+
+  /* ---- the two doors: full-width stacked rows, never a squashed 2-up grid ---- */
+  .binary { border: 1px solid var(--hair); }
+  .opt { display: flex; gap: 13px; align-items: flex-start;
+    padding: 14px 15px; border-bottom: 1px solid var(--hair); min-height: 44px; }
+  .opt:last-child { border-bottom: 0; }
+  .opt input[type=radio] {
+    appearance: none; -webkit-appearance: none; flex: 0 0 auto;
+    width: 24px; height: 24px; margin: 2px 0 0; cursor: pointer;
+    background: var(--panel); border: 1.5px solid #453E2C; border-radius: 50%;
+  }
+  .opt input[type=radio]:checked {
+    background: var(--signal); border-color: var(--signal);
+    box-shadow: inset 0 0 0 6px var(--panel);
+  }
+  .opt input[type=radio]:focus-visible { outline: 2px solid var(--bone); outline-offset: 2px; }
+  .opt label { cursor: pointer; }
+  .opt label b { display: block; font-size: 15.5px; color: var(--bone); }
+  .opt label b i { font-style: normal; font-family: var(--mono); font-size: 12px;
+    letter-spacing: .08em; text-transform: uppercase; color: var(--signal); margin-right: 7px; }
+  .opt label span { display: block; font-size: 14.5px; line-height: 1.45; color: #CFC9BB; margin-top: 2px; }
+
+  .attrib {
+    margin: 10px 0 0; padding: 9px 12px; background: var(--panel);
+    border-left: 2.5px solid var(--signal-d);
+    font-size: 13.5px; line-height: 1.45; color: #CFC9BB;
+  }
+  .attrib b { display: block; color: var(--signal); font-family: var(--mono);
+    font-size: 11px; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 3px; }
+  .attrib q { color: var(--bone); font-style: italic; }
+
+  /* ---- the cost: two small number fields ---- */
+  .cost { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px; }
+  .costfield { border: 1px solid var(--hair); background: var(--panel); padding: 12px 14px; }
+  .costfield .lbl { margin-bottom: 6px; }
+  .costfield input[type=number] {
+    display: block; width: 100%; background: transparent; border: 0;
+    border-bottom: 1.5px solid #453E2C; color: var(--bone);
+    font-family: var(--mono); font-size: 26px; font-weight: 700;
+    padding: 2px 0 6px; border-radius: 0; -moz-appearance: textfield;
+  }
+  .costfield input[type=number]::-webkit-outer-spin-button,
+  .costfield input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  .costfield input:focus { outline: 0; border-bottom-color: var(--signal); }
+
+  /* ---- the verdict ---- */
+  .verdict { margin-top: 26px; padding: 0; background: var(--panel-up);
+    border: 2px solid var(--signal); }
+  .verdict[hidden] { display: none; }
+  .vhead { padding: 16px 16px 14px; border-bottom: 1px solid var(--hair); }
+  .badge {
+    display: inline-block; font-family: var(--mono); font-size: 12.5px; font-weight: 700;
+    letter-spacing: .12em; text-transform: uppercase;
+    background: var(--signal); color: #14100F; padding: 7px 11px;
+  }
+  .badge.hot { background: var(--warn); color: #FFF4F0; }
+  .vhead .say { margin: 12px 0 0; font-size: 19px; line-height: 1.4; color: var(--bone); }
+  .vhead .say b { color: var(--signal); }
+  .vsteps { padding: 14px 16px 16px; }
+  .vsteps ol { margin: 0; padding-left: 1.15em; }
+  .vsteps li { margin: 0 0 9px; font-size: 15.5px; line-height: 1.5; color: #CFC9BB; }
+  .vsteps li:last-child { margin-bottom: 0; }
+  .vsteps li b { color: var(--bone); }
+
+  /* ---- the face ---- */
+  .facewrap { margin-top: 26px; border: 1px solid var(--hair); background: var(--panel);
+    padding: 16px 15px 14px; }
+  .faceflex { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .facesvg { flex: 0 0 auto; width: 108px; height: 108px; }
+  .facetext { flex: 1 1 190px; min-width: 190px; }
+  .facetext .stage { font-family: var(--mono); font-size: 11.5px; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--signal); }
+  .facetext p { margin: 6px 0 0; font-size: 15.5px; line-height: 1.5; color: #CFC9BB; }
+  .facetext p b { color: var(--bone); }
+
+  .facesvg .skin { fill: #2A2620; stroke: #6B6455; stroke-width: 2.5; }
+  .facesvg .hairtop { stroke-width: 7; stroke-linecap: round; fill: none; }
+  .facesvg .eye { fill: var(--bone); }
+  .facesvg .line { stroke: #6B6455; stroke-width: 2.2; fill: none; stroke-linecap: round; }
+  .facesvg .mouth { stroke: var(--bone); stroke-width: 2.6; fill: none; stroke-linecap: round; }
+  .facesvg .brow { stroke: #A79E8C; stroke-width: 2.8; fill: none; stroke-linecap: round; }
+  .facesvg .st { display: none; }
+  .facesvg[data-stage="0"] .s0, .facesvg[data-stage="1"] .s1,
+  .facesvg[data-stage="2"] .s2, .facesvg[data-stage="3"] .s3,
+  .facesvg[data-stage="4"] .s4, .facesvg[data-stage="5"] .s5 { display: inline; }
+  .facesvg[data-stage="0"] .hairtop { stroke: #4A4232; }
+  .facesvg[data-stage="1"] .hairtop { stroke: #554C3A; }
+  .facesvg[data-stage="2"] .hairtop { stroke: #6E6553; }
+  .facesvg[data-stage="3"] .hairtop { stroke: #8F887A; }
+  .facesvg[data-stage="4"] .hairtop { stroke: #B5AEA0; }
+  .facesvg[data-stage="5"] .hairtop { stroke: #E4DFD4; }
+  .facesvg .bags { display: none; }
+  .facesvg[data-stage="3"] .bags, .facesvg[data-stage="4"] .bags,
+  .facesvg[data-stage="5"] .bags { display: inline; }
+
+  /* ---- the thing that leaves the page ---- */
+  .leave { margin-top: 26px; padding: 18px 16px 16px; background: var(--panel-up);
+    border: 2px dashed var(--signal-d); }
+  .leave[hidden] { display: none; }
+  .leave .lbl { color: var(--signal); }
+  .leave .means { margin: 10px 0 14px; font-size: 15px; color: #CFC9BB; line-height: 1.5; }
+  .leave .means b { color: var(--bone); }
+  .outbox { margin: 0 0 12px; padding: 12px 13px; background: var(--panel);
+    border: 1px solid var(--hair); }
+  .outbox .k { display: block; font-family: var(--mono); font-size: 10.5px;
+    letter-spacing: .13em; text-transform: uppercase; color: var(--graphite); margin-bottom: 6px; }
+  .outbox p { margin: 0; font-size: 15.5px; line-height: 1.5; color: var(--bone);
+    word-break: break-word; }
+
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+  .actions button {
+    font-family: var(--mono); font-size: 12.5px; letter-spacing: .1em;
+    text-transform: uppercase; font-weight: 700; min-height: 48px;
+    padding: 13px 18px; border-radius: 0; cursor: pointer;
+    background: var(--signal); color: #14100F; border: 1.5px solid var(--signal);
+  }
+  .actions button.ghost { background: transparent; color: var(--bone); border-color: #453E2C; }
+  .actions button:hover { filter: brightness(1.1); }
+  .actions button.ghost:hover { border-color: var(--signal); color: var(--signal); filter: none; }
+  .actions button:focus-visible { outline: 2px solid var(--bone); outline-offset: 2px; }
+
+  .said {
+    margin-top: 14px; font-family: var(--mono); font-size: 12px;
+    letter-spacing: .06em; text-transform: uppercase; color: var(--signal);
+    min-height: 1em;
+  }
+
+  .titleblock {
+    margin-top: 44px; border: 1px solid var(--hair);
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(108px, 1fr));
+  }
+  .tb { padding: 11px 13px; border-right: 1px solid var(--hair); }
+  .tb:last-child { border-right: 0; }
+  .tb dt {
+    font-family: var(--mono); font-size: 10px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--graphite); margin: 0 0 4px;
+  }
+  .tb dd {
+    margin: 0; font-family: var(--mono); font-size: 13px; font-weight: 700;
+    color: var(--bone); font-variant-numeric: tabular-nums;
+  }
+  .tb dd.red { color: var(--signal); }
+
+  .cta { margin-top: 18px; font-size: 15px; color: #CFC9BB; line-height: 1.5; }
+  .cta b { color: var(--bone); }
+  .cta a { color: var(--signal); font-weight: 700; text-decoration: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+
+  @media print {
+    @page { size: letter; margin: .5in .55in; }
+    :root {
+      --carbon: #fff; --panel: #fff; --panel-up: #FFF8E2;
+      --hair: #C9C2BC; --bone: #14100F; --graphite: #5E5651;
+      --signal: #7A5B00; --signal-d: #7A5B00; --warn: #B93A18;
+    }
+    body { background-image: none; font-size: 10.5pt; }
+    .sheet { max-width: none; padding: 0; }
+    .actions, .said, .nav, .tail, .cta, .privacy { display: none; }
+    .verdict[hidden], .leave[hidden] { display: block !important; }
+    textarea, input[type=text] { border-bottom-color: #9AA0A8; min-height: .42in; }
+    .redline-note { background: none; }
+    h1 { font-size: 26pt; }
+  }
+</style>
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+
+<div class="sheet">
+
+  <nav class="nav">
+    <div class="navtop">
+      <a class="brand" href="index.html">@nicksdadhax</a>
+      <span class="meta">Tool 08 · free · no gate</span>
+    </div>
+    <div class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="toolbox.html" aria-current="true"><svg class="tbx" width="15" height="13" viewBox="0 0 16 14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><g class="lid"><path d="M5.5 4.5v-.75a2.5 2.5 0 0 1 5 0v.75"/><rect x="1" y="4.5" width="14" height="2.5" rx=".5"/></g><rect x="1" y="7" width="14" height="6" rx=".5"/></svg>The Toolbox</a>
+      <a href="log.html">The Log</a>
+      <a href="houses.html">I have a house</a>
+    </div>
+  </nav>
+
+  <header>
+    <div class="protocol">Triage protocol <b>·</b> two questions <b>·</b> one deadline</div>
+    <h1>The decision <span class="of">forcer</span></h1>
+    <p class="dek">Every other decision tool on the internet asks you <em>which option</em>.
+      This one doesn't care which option. It asks whether this decision deserves any
+      more of your life &mdash; and sets the date it has to die.</p>
+    <div class="rules">one decision <span>·</span> two questions <span>·</span> a deadline that leaves this page</div>
+    <p class="privacy"><b>Nothing you write here leaves your device.</b> No account, no
+      server, no analytics &mdash; what you type is held in this browser tab so you can
+      reload without losing it, and erased when you close the tab. "Start over" wipes
+      it now. I can't read it. Nobody can.</p>
+  </header>
+
+  <div class="story">
+    <span class="lbl">Why this one exists</span>
+    <p>I went looking for a tool that does this and there isn't one. Every decision
+      app on the market is either a randomizer &mdash; spin a wheel, flip a coin &mdash;
+      or a weighted matrix where you score options in a grid. <b>All of them answer
+      "which one?"</b></p>
+    <p>Not one of them asks the question that actually costs you: <b>does this
+      decision deserve more time, and when does it have to be over?</b> The
+      one-way/two-way door idea is all over the internet as something to read. Nowhere
+      as something you can use. So this is the instrument version.</p>
+    <p>It sits upstream of every coin-flipper out there. <b>You don't need help
+      picking. You need permission to stop circling.</b></p>
+  </div>
+
+  <div class="whys" aria-label="What this tool actually does">
+    <div class="why">
+      <span class="tag">It triages, it doesn't compare</span>
+      <p>Most decisions aren't hard. They're just <b>undecided</b>. This sorts the ones
+        worth agonizing over from the ones you should have called last Tuesday.</p>
+    </div>
+    <div class="why">
+      <span class="tag">It ends with a date, not a feeling</span>
+      <p>A verdict you nod at changes nothing. <b>This one hands you a calendar line and
+        a message to one named person</b> — because a deadline nobody else knows about
+        is just a wish.</p>
+    </div>
+    <div class="why">
+      <span class="tag">It costs you two taps</span>
+      <p>Two questions. That's the whole instrument. <b>Anything longer and you'd be
+        using the tool to avoid the decision</b> — which is the exact thing it's for.</p>
+    </div>
+  </div>
+
+  <h2 class="part">Part 1 — Name it out loud</h2>
+  <p class="partdek">Write the decision as a sentence someone else could read.
+    <b>Vague in, vague out</b> — "the job thing" is not a decision, it's a mood.</p>
+
+  <div class="seed">
+    <label class="lbl" for="decision">What are you deciding?</label>
+    <input type="text" id="decision" maxlength="140"
+      placeholder="e.g. Whether to quit the Saturday shift" autocomplete="off">
+  </div>
+
+  <h2 class="part">Part 2 — Which door is it?</h2>
+  <p class="partdek">If this goes badly, <b>can you walk back through?</b> Not "would it
+    be awkward" — can it actually be undone.</p>
+
+  <div class="binary" role="radiogroup" aria-label="Is this decision reversible?">
+    <div class="opt">
+      <input type="radio" name="rev" id="rev-yes" value="yes">
+      <label for="rev-yes"><b><i>Two-way</i>Yes — I can undo this</b>
+        <span>Wrong turn, walk back out. Costs time or a little pride, not much else.</span></label>
+    </div>
+    <div class="opt">
+      <input type="radio" name="rev" id="rev-no" value="no">
+      <label for="rev-no"><b><i>One-way</i>No — this door locks behind me</b>
+        <span>Sold, signed, said out loud, or spent. Undoing it isn't really available.</span></label>
+    </div>
+  </div>
+  <p class="attrib"><b>Where this comes from</b>Jeff Bezos, 2016 Amazon shareholder
+    letter — the one-way / two-way door distinction. Most people treat every decision
+    like a one-way door. Most decisions aren't.</p>
+
+  <h2 class="part">Part 3 — Do you have enough?</h2>
+  <p class="partdek">Not all of it. <b>Enough.</b> There's no slider here on purpose —
+    a slider is one more decision, and you came here with too many already.</p>
+
+  <div class="binary" role="radiogroup" aria-label="Do you have about 70 percent of the information?">
+    <div class="opt">
+      <input type="radio" name="info" id="info-yes" value="yes">
+      <label for="info-yes"><b><i>Enough</i>Yes — I'm at roughly 70%</b>
+        <span>More research now would mostly be comfort, not information.</span></label>
+    </div>
+    <div class="opt">
+      <input type="radio" name="info" id="info-no" value="no">
+      <label for="info-no"><b><i>Short</i>No — something real is missing</b>
+        <span>There's a specific fact I don't have, and it would genuinely change my answer.</span></label>
+    </div>
+  </div>
+  <p class="attrib"><b>The 70% rule — same 2016 letter</b><q>Most decisions should
+    probably be made with somewhere around 70 percent of the information you wish you
+    had. If you wait for 90 percent, in most cases, you're probably being slow.</q></p>
+
+  <h2 class="part">Part 4 — What it's already cost you</h2>
+  <p class="partdek">Optional, and the verdict works without it. But this is the part
+    people don't look at: <b>the decision has been charging you rent this whole time.</b></p>
+
+  <div class="cost">
+    <div class="costfield">
+      <label class="lbl" for="days">Days you've sat on it</label>
+      <input type="number" id="days" min="0" max="9999" inputmode="numeric" placeholder="0">
+    </div>
+    <div class="costfield">
+      <label class="lbl" for="times">Times a day it crosses your mind</label>
+      <input type="number" id="times" min="0" max="999" inputmode="numeric" placeholder="0">
+    </div>
+  </div>
+
+  <div class="facewrap">
+    <div class="faceflex">
+      <svg class="facesvg" id="face" data-stage="0" viewBox="0 0 100 100" role="img"
+           aria-labelledby="facealt">
+        <title id="facealt">A face showing what the waiting has cost so far</title>
+        <circle class="skin" cx="50" cy="52" r="30"/>
+        <path class="hairtop" d="M26 36c6-13 42-13 48 0"/>
+        <circle class="eye" cx="40" cy="49" r="3"/>
+        <circle class="eye" cx="60" cy="49" r="3"/>
+        <path class="line bags" d="M35 56c3 3 7 3 10 0"/>
+        <path class="line bags" d="M55 56c3 3 7 3 10 0"/>
+        <g class="brow">
+          <path class="st s0" d="M34 41c4-2 8-2 12 0"/><path class="st s0" d="M54 41c4-2 8-2 12 0"/>
+          <path class="st s1" d="M34 41h12"/><path class="st s1" d="M54 41h12"/>
+          <path class="st s2" d="M34 40l12 2"/><path class="st s2" d="M66 40l-12 2"/>
+          <path class="st s3" d="M34 39l12 4"/><path class="st s3" d="M66 39l-12 4"/>
+          <path class="st s4" d="M33 38l13 5"/><path class="st s4" d="M67 38l-13 5"/>
+          <path class="st s5" d="M32 37l14 6"/><path class="st s5" d="M68 37l-14 6"/>
+        </g>
+        <g class="mouth">
+          <path class="st s0" d="M39 65c5 6 17 6 22 0"/>
+          <path class="st s1" d="M39 66c5 3 17 3 22 0"/>
+          <path class="st s2" d="M39 67h22"/>
+          <path class="st s3" d="M39 69c5-4 17-4 22 0"/>
+          <path class="st s4" d="M38 71c6-7 18-7 24 0"/>
+          <path class="st s5" d="M37 72c3-6 8-2 13-5 5-3 9 2 13 5"/>
+        </g>
+        <g class="line">
+          <path class="st s4" d="M28 60c-2 3-2 6 0 9"/><path class="st s4" d="M72 60c2 3 2 6 0 9"/>
+          <path class="st s5" d="M28 58c-3 4-3 8 0 12"/><path class="st s5" d="M72 58c3 4 3 8 0 12"/>
+          <path class="st s5" d="M44 34l-2-5"/><path class="st s5" d="M56 34l2-5"/>
+        </g>
+      </svg>
+      <div class="facetext">
+        <span class="stage" id="stageLbl">Nothing entered yet</span>
+        <p id="stageSay">Fill in the two numbers above and this face will show you what
+          the waiting has already cost.</p>
+      </div>
+    </div>
+    <div class="redline-note">
+      <b>the honest version of the science</b>
+      Cultured human cells exposed to the stress hormone cortisol burned about
+      <strong>60% more energy</strong> — that's Dr. Martin Picard's lab at Columbia.
+      Cells in a dish, though, not a study of deciding versus not deciding.
+      <strong>Nobody has measured that</strong>, and I'm not going to pretend otherwise.
+      But indecision is a stress-hormone machine, and stress-related graying is that
+      same lab's work — which is why this page ages a face instead of printing a
+      made-up number. The faces are the Wong-Baker FACES idea: the same faces scale
+      we use in the clinic.
+    </div>
+  </div>
+
+  <div class="verdict" id="verdict" hidden aria-live="polite">
+    <div class="vhead">
+      <span class="badge" id="badge">—</span>
+      <p class="say" id="say"></p>
+    </div>
+    <div class="vsteps">
+      <span class="lbl">Do this</span>
+      <ol id="steps"></ol>
+    </div>
+  </div>
+
+  <div class="leave" id="leave" hidden>
+    <span class="lbl">Now get it off this page</span>
+    <p class="means">A verdict you only read is a verdict you'll re-litigate tomorrow.
+      <b>Two things leave here:</b> a line for your calendar, and a message to one
+      person who will ask you about it. Copy them. That's the whole mechanism.</p>
+
+    <div class="outbox">
+      <span class="k">Calendar line</span>
+      <p id="calOut"></p>
+    </div>
+    <div class="outbox">
+      <span class="k">Message to one named person</span>
+      <p id="textOut"></p>
+    </div>
+
+    <div class="actions">
+      <button type="button" id="copyCal">Copy calendar line</button>
+      <button type="button" class="ghost" id="copyText">Copy the message</button>
+    </div>
+    <p class="said" id="said" role="status"></p>
+  </div>
+
+  <div class="actions">
+    <button type="button" class="ghost" id="reset">Start over</button>
+    <button type="button" class="ghost" id="printme">Print / save as PDF</button>
+  </div>
+
+  <dl class="titleblock">
+    <div class="tb"><dt>Protocol</dt><dd>TRIAGE</dd></div>
+    <div class="tb"><dt>Tool</dt><dd>08 of 08</dd></div>
+    <div class="tb"><dt>Verdict</dt><dd class="red" id="vstat">Pending</dd></div>
+    <div class="tb"><dt>By</dt><dd class="red">@nicksdadhax</dd></div>
+  </dl>
+
+  <!--TAIL-->
+  <div class="tail">
+  <a class="tail-next" href="neuroplasticity.html">
+    <span class="k">Read next</span>
+    <b>Tool 02 — The 10 Principles of Neuroplasticity</b>
+    <span class="s">Forcing one call is a good day. Making "I decide by Friday" the
+      thing you actually are takes repetition — here's the machinery underneath that,
+      and how to point it.</span>
+  </a>
+  <section class="buyhouses">
+    <h2>Also &mdash; I buy houses</h2>
+    <p><b>Washington or Dakota County, Minnesota.</b> Off-market, or straight from the
+      owner &mdash; I'm the buyer, not a middleman passing it along. Woodbury, Cottage
+      Grove, Hastings, Stillwater, Eagan, Inver Grove Heights, Lakeville.</p>
+    <p>If that's you, or you know somebody quietly thinking about selling, I'll lay out
+      your options &mdash; <b>all of them, including the ones I don't make a dime on.</b>
+      Nothing to sign, no walkthrough unless you ask.</p>
+    <div class="ctas">
+      <a href="houses.html"><b>I have a house</b><span>Or I know someone who does</span></a>
+    </div>
+  </section>
+
+  <section class="optin" id="next">
+    <h2>What I ask</h2>
+    <p class="plain">That was free and nothing here sits behind an email. If it was
+      useful, here's the whole exchange: <b>send it to one or two people who'd use it
+      too.</b> That's it. I'm trusting you with it, you pass it on.</p>
+    <p class="plain">Want the next one before anyone else? I'm building an interest
+      list &mdash; no selling, no sequence, your address goes nowhere.
+      <a href="index.html#next">Exactly what that means, in plain words.</a></p>
+    <p class="fine">The list itself isn't open yet &mdash; I'm still setting it up, and
+      I'd rather say that than put up a box that doesn't work. The ask above stands
+      either way, and it's the one that matters. If you want to tell me what to build
+      next, my DMs are open.</p>
+    <div class="ctas">
+      <a href="https://www.instagram.com/nicksdadhax/"><b>Tell me what to build next</b><span>DM @nicksdadhax</span></a>
+    </div>
+  </section>
+  </div>
+  <!--/TAIL-->
+
+  <p class="cta">Free. This tool asks you for nothing — no gate, no email, no
+    analytics. When you actually hit the deadline it gave you, <b>DM me which one you
+    called</b> — I answer every one.</p>
+
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var KEY = "ndh-decisionforcer-v1";
+
+  var decision = document.getElementById("decision"),
+      days     = document.getElementById("days"),
+      times    = document.getElementById("times"),
+      face     = document.getElementById("face"),
+      stageLbl = document.getElementById("stageLbl"),
+      stageSay = document.getElementById("stageSay"),
+      verdict  = document.getElementById("verdict"),
+      badge    = document.getElementById("badge"),
+      say      = document.getElementById("say"),
+      steps    = document.getElementById("steps"),
+      leave    = document.getElementById("leave"),
+      calOut   = document.getElementById("calOut"),
+      textOut  = document.getElementById("textOut"),
+      said     = document.getElementById("said"),
+      vstat    = document.getElementById("vstat");
+
+  function radio(name) {
+    var r = document.querySelector('input[name="' + name + '"]:checked');
+    return r ? r.value : "";
+  }
+  function num(el) {
+    var n = parseInt(el.value, 10);
+    return isNaN(n) || n < 0 ? 0 : n;
+  }
+  function val(el) { return (el.value || "").trim(); }
+
+  /* ---- the face: days x times/day, six stages ---- */
+  var STAGES = [
+    ["Clock not started", "Nothing here yet. A decision you haven't started avoiding is just a question."],
+    ["Fresh", "Still cheap. This is the window where deciding costs you almost nothing."],
+    ["It's started charging you", "Not free anymore. You're carrying this one around now."],
+    ["Paying rent on it", "This decision has a room in your head and it isn't paying for it."],
+    ["Aging you faster than it's aging", "The thing you're deciding about hasn't changed in weeks. You have."],
+    ["Be honest with yourself", "You've now spent more time thinking about this than doing it would have taken. Probably twice."]
+  ];
+  function stageFor(d, t) {
+    var score = d * t;
+    if (d === 0 && t === 0) return 0;
+    if (score <= 6) return 1;
+    if (score <= 20) return 2;
+    if (score <= 60) return 3;
+    if (score <= 150) return 4;
+    return 5;
+  }
+
+  /* ---- dates ---- */
+  function fmtDate(dt) {
+    return dt.toLocaleDateString(undefined, { weekday: "short", month: "short", day: "numeric" });
+  }
+  function fmtTime(dt) {
+    return dt.toLocaleTimeString(undefined, { hour: "numeric", minute: "2-digit" });
+  }
+  function plus(mins) { return new Date(Date.now() + mins * 60000); }
+  function fivePM() {
+    var d = new Date();
+    d.setHours(17, 0, 0, 0);
+    // already past 5pm? then it's 5pm tomorrow, and say so honestly.
+    if (d.getTime() < Date.now()) d.setDate(d.getDate() + 1);
+    return d;
+  }
+  // 48 hours out, but snapped to an hour a human would actually keep.
+  // Raw "now + 48h" produces things like 2:59 AM, and a deadline nobody
+  // would honour is the same as no deadline.
+  function timebox48() {
+    var d = new Date(Date.now() + 48 * 3600000);
+    if (d.getMinutes() || d.getSeconds() || d.getMilliseconds()) {
+      d.setMinutes(0, 0, 0);
+      d.setHours(d.getHours() + 1);          // round up to the next whole hour
+    }
+    var h = d.getHours();
+    if (h < 8) d.setHours(9, 0, 0, 0);                             // middle of the night
+    else if (h > 21) { d.setDate(d.getDate() + 1); d.setHours(9, 0, 0, 0); }
+    return d;
+  }
+
+  /* ---- the three cases, straight from the spec ---- */
+  function compute() {
+    var rev = radio("rev"), info = radio("info"), what = val(decision);
+    var d = num(days), t = num(times), st = stageFor(d, t);
+
+    face.setAttribute("data-stage", String(st));
+    stageLbl.textContent = STAGES[st][0];
+    stageSay.textContent = STAGES[st][1];
+
+    if (!rev || !info) {
+      verdict.hidden = true;
+      leave.hidden = true;
+      vstat.textContent = "Pending";
+      save();
+      return;
+    }
+
+    var label = what || "this decision";
+    var kind, hot = false, line, list, deadline, calLine, msg;
+
+    if (rev === "yes") {
+      kind = "Type 2 · Execute now";
+      deadline = plus(15);
+      line = "Two-way door. You are allowed to be wrong here.";
+      list = [
+        "<b>Call it in the next 15 minutes.</b> Not after one more think.",
+        "<b>Put a 14-day review on the calendar</b> — that's your walk-back date, and it's what makes calling it now safe.",
+        "If it turns out wrong, <b>you go back through the door.</b> That was always the deal."
+      ];
+      calLine = "DECIDE (2-way door): " + label + " — call it by " +
+        fmtTime(deadline) + " today. Review " + fmtDate(new Date(Date.now() + 14 * 864e5)) + ".";
+      msg = "Deciding " + label + " in the next 15 minutes. It's reversible, so I'm not going to keep circling it. Ask me tomorrow what I picked.";
+    } else if (info === "yes") {
+      kind = "High-stakes · Pull the trigger today";
+      hot = true;
+      deadline = fivePM();
+      line = "One-way door, and you already have enough. That's not a research problem.";
+      list = [
+        "<b>Write your top 2 risks.</b> Two. Not a list — the two that actually keep you up.",
+        "<b>Name one mitigation for each.</b> One line apiece, something you'd actually do.",
+        "<b>Execute by " + fmtTime(deadline) + " " + (deadline.getDate() === new Date().getDate() ? "today" : "tomorrow") + ".</b> More information is not coming."
+      ];
+      calLine = "DECIDE (1-way door, 70% in): " + label + " — top 2 risks + mitigations, execute by " +
+        fmtTime(deadline) + " " + fmtDate(deadline) + ".";
+      msg = "I'm calling " + label + " by " + fmtTime(deadline) + " " + fmtDate(deadline) +
+        ". It's a one-way door and I already have what I need. Check that I did it.";
+    } else {
+      kind = "Type 1 · 48-hour timebox";
+      deadline = timebox48();
+      line = "One-way door and something real is missing. You get 48 hours — not forever.";
+      list = [
+        "<b>Name the ONE missing data point.</b> If you can't write it in a sentence, it isn't real and you're stalling.",
+        "<b>Assign an owner — a name, not \"me.\"</b> Who is getting that fact, by when.",
+        "<b>Hard deadline " + fmtTime(deadline) + " " + fmtDate(deadline) + ".</b> At that moment you decide with whatever you have. The timebox is the decision."
+      ];
+      calLine = "DECIDE (1-way door, info short): " + label + " — get the one missing fact, then decide by " +
+        fmtTime(deadline) + " " + fmtDate(deadline) + " regardless.";
+      msg = "I've got 48 hours on " + label + ". One fact is missing and then I decide either way by " +
+        fmtTime(deadline) + " " + fmtDate(deadline) + ". Hold me to that date.";
+    }
+
+    badge.textContent = kind;
+    badge.className = hot ? "badge hot" : "badge";
+    say.textContent = line;
+    vstat.textContent = rev === "yes" ? "Type 2" : (info === "yes" ? "High-stakes" : "Type 1");
+
+    // innerHTML here is OUR copy only; the user's text goes in via textContent below.
+    steps.innerHTML = "";
+    list.forEach(function (h) {
+      var li = document.createElement("li");
+      li.innerHTML = h;
+      steps.appendChild(li);
+    });
+
+    verdict.hidden = false;
+
+    // the deadline only leaves the page once the decision is actually named
+    if (what) {
+      calOut.textContent = calLine;   // textContent, never innerHTML — user text
+      textOut.textContent = msg;
+      leave.hidden = false;
+    } else {
+      leave.hidden = true;
+    }
+    save();
+  }
+
+  /* ---- copy ---- */
+  function flash(m) {
+    said.textContent = m;
+    setTimeout(function () { said.textContent = ""; }, 2600);
+  }
+  function copy(el, okmsg) {
+    var t = el.textContent;
+    if (!t) return;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(t).then(function () { flash(okmsg); },
+        function () { flash("Couldn't copy — select it and copy by hand."); });
+    } else {
+      flash("Couldn't copy — select it and copy by hand.");
+    }
+  }
+
+  /* ---- session persistence (tab-scoped, matches the promise up top) ---- */
+  function save() {
+    try {
+      var d = {
+        decision: val(decision), days: days.value, times: times.value,
+        rev: radio("rev"), info: radio("info")
+      };
+      sessionStorage.setItem(KEY, JSON.stringify(d));
+    } catch (e) {}
+  }
+  function load() {
+    try {
+      var d = JSON.parse(sessionStorage.getItem(KEY) || "null");
+      if (!d) return;
+      if (d.decision) decision.value = d.decision;
+      if (d.days) days.value = d.days;
+      if (d.times) times.value = d.times;
+      if (d.rev) { var r = document.getElementById("rev-" + d.rev); if (r) r.checked = true; }
+      if (d.info) { var i = document.getElementById("info-" + d.info); if (i) i.checked = true; }
+    } catch (e) {}
+  }
+
+  [decision, days, times].forEach(function (el) {
+    el.addEventListener("input", compute);
+  });
+  Array.prototype.forEach.call(
+    document.querySelectorAll('input[type=radio]'),
+    function (r) { r.addEventListener("change", compute); }
+  );
+
+  document.getElementById("copyCal").addEventListener("click", function () {
+    copy(calOut, "Calendar line copied — go paste it.");
+  });
+  document.getElementById("copyText").addEventListener("click", function () {
+    copy(textOut, "Copied. Send it to someone who'll actually ask.");
+  });
+  document.getElementById("printme").addEventListener("click", function () { window.print(); });
+  document.getElementById("reset").addEventListener("click", function () {
+    decision.value = ""; days.value = ""; times.value = "";
+    Array.prototype.forEach.call(
+      document.querySelectorAll('input[type=radio]'),
+      function (r) { r.checked = false; }
+    );
+    try { sessionStorage.removeItem(KEY); } catch (e) {}
+    compute();
+    decision.focus();
+  });
+
+  load();
+  compute();
+})();
+</script>
+</body>
+</html>
