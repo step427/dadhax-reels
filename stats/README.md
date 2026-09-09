@@ -21,7 +21,7 @@ The only posts whose hour the publisher actually chose — so the only ones that
 | 05:00 | 2 | 8.0 | 8.0 | 15 |
 | 09:00 | 16 | 2.0 | 5.1 | 26 |
 | 11:00 | 2 | 1.0 | 1.0 | 2 |
-| 12:00 | 10 | 1.0 | 5.4 | 36 |
+| 12:00 | 10 | 1.0 | 5.5 | 36 |
 | 13:00 | 11 | 4.0 | 10.7 | 31 |
 | 14:00 | 10 | 2.0 | 5.7 | 21 |
 | 15:00 | 5 | 3.0 | 4.2 | 11 |
@@ -29,7 +29,7 @@ The only posts whose hour the publisher actually chose — so the only ones that
 | 17:00 | 1 | 2.0 | 2.0 | 2 |
 | 18:00 | 20 | 2.0 | 3.7 | 26 |
 | 19:00 | 3 | 1.0 | 0.7 | 1 |
-| 20:00 | 7 | 0.0 | 2.3 | 13 |
+| 20:00 | 7 | 0.0 | 2.6 | 15 |
 | 23:00 | 1 | 0.0 | 0.0 | 0 |
 
 ### By weekday
@@ -37,7 +37,7 @@ The only posts whose hour the publisher actually chose — so the only ones that
 | Day | Posts | Median | Mean | Best |
 |---|---|---|---|---|
 | Mon | 15 | 2.0 | 3.2 | 15 |
-| Tue | 15 | 2.0 | 4.3 | 21 |
+| Tue | 15 | 2.0 | 4.5 | 21 |
 | Wed | 14 | 2.0 | 4.0 | 19 |
 | Thu | 12 | 1.0 | 3.8 | 26 |
 | Fri | 17 | 1.0 | 5.2 | 36 |
@@ -69,7 +69,7 @@ The only posts whose hour the publisher actually chose — so the only ones that
 | fresh @ 05:00 | 2 | 8.0 | 8.0 | 15 |
 | fresh @ 09:00 | 14 | 2.0 | 5.0 | 26 |
 | fresh @ 11:00 | 2 | 1.0 | 1.0 | 2 |
-| fresh @ 12:00 | 8 | 0.5 | 1.1 | 4 |
+| fresh @ 12:00 | 8 | 0.5 | 1.2 | 4 |
 | fresh @ 13:00 | 1 | 2.0 | 2.0 | 2 |
 | fresh @ 14:00 | 3 | 1.0 | 3.0 | 8 |
 | fresh @ 15:00 | 2 | 3.0 | 3.0 | 6 |
@@ -77,7 +77,7 @@ The only posts whose hour the publisher actually chose — so the only ones that
 | fresh @ 17:00 | 1 | 2.0 | 2.0 | 2 |
 | fresh @ 18:00 | 15 | 3.0 | 4.3 | 26 |
 | fresh @ 19:00 | 3 | 1.0 | 0.7 | 1 |
-| fresh @ 20:00 | 7 | 0.0 | 2.3 | 13 |
+| fresh @ 20:00 | 7 | 0.0 | 2.6 | 15 |
 | fresh @ 23:00 | 1 | 0.0 | 0.0 | 0 |
 
 An empty cell is not a zero — it is an experiment nobody has run yet.
@@ -108,7 +108,7 @@ Mostly Nick posting by hand at whatever hour he was free, going back to 2024. Us
 | 17:00 | 47 | 0.0 | 1.1 | 12 |
 | 18:00 | 51 | 0.0 | 1.7 | 26 |
 | 19:00 | 27 | 1.0 | 1.4 | 16 |
-| 20:00 | 37 | 0.0 | 1.0 | 13 |
+| 20:00 | 37 | 0.0 | 1.0 | 15 |
 | 21:00 | 22 | 0.0 | 2.4 | 33 |
 | 22:00 | 19 | 1.0 | 2.9 | 42 |
 | 23:00 | 12 | 2.0 | 4.6 | 35 |
@@ -116,7 +116,7 @@ Mostly Nick posting by hand at whatever hour he was free, going back to 2024. Us
 | Day | Posts | Median | Mean | Best |
 |---|---|---|---|---|
 | Mon | 75 | 0.0 | 1.5 | 16 |
-| Tue | 64 | 0.5 | 1.8 | 21 |
+| Tue | 64 | 0.5 | 1.9 | 21 |
 | Wed | 78 | 1.0 | 2.6 | 50 |
 | Thu | 76 | 0.5 | 2.1 | 35 |
 | Fri | 87 | 0.0 | 1.9 | 36 |
