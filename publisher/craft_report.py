@@ -18,6 +18,7 @@ RETENTION is the point. avg_watch_time / duration = the share of the reel people
 actually sat through, and it is the only number that says whether a hook held.
 Likes are a weak proxy on a small account (median ~2).
 """
+import datetime
 import json
 import statistics
 import subprocess
@@ -35,6 +36,12 @@ STATS = REPO / "stats"
 HISTORY = STATS / "history.jsonl"
 QUEUE = REPO / "queue.json"
 REPORT = STATS / "CRAFT.md"
+RULES = STATS / "CUT-RULES.md"
+DIMS = (("topic", "topic"), ("len", "duration"), ("kind", "fresh/catalog"),
+        ("cover", "cover"), ("collab", "collab"))
+LEN_ORDER = ("under 20s", "20-35s", "35-50s", "50-70s", "over 70s")
+THIN = 10   # a bucket with fewer posts than this is shown, never acted on
+FLAT = 5    # points of median retention; a smaller spread is noise, not a lever
 
 # verified live 2026-08-31; `plays` is NOT a valid metric on this edge
 METRICS = ("views,reach,saved,total_interactions,"
@@ -146,6 +153,64 @@ def table(groups, label, pct=False):
     return out + [""]
 
 
+def cut_rules(joined):
+    """The one-screen cut contract the reel loop reads before it cuts (2026-09-11).
+
+    Findings from this report kept dying inside an 1,800-line playbook: the
+    30-45s target sat in reel-loop.md three days after n=100 retired it, and
+    "custom covers buy nothing" was never written anywhere a cutter reads.
+    This file is REWRITTEN from the numbers every run, never appended to, so a
+    rule the data stops supporting disappears on its own instead of waiting for
+    a human to retire it. Retention decides; views are a cross-check only.
+    """
+    today = datetime.date.today().isoformat()
+    levers = []
+    for d, lab in DIMS:
+        ret, views = defaultdict(list), defaultdict(list)
+        for j in joined:
+            if j[d] == "unknown":
+                continue
+            if "retention" in j:
+                ret[j[d]].append(j["retention"])
+            if "views" in j:
+                views[j[d]].append(j["views"])
+        med = {k: statistics.median(v) for k, v in ret.items()}
+        solid = [k for k in med if len(ret[k]) >= THIN]
+        order = [k for k in LEN_ORDER if k in med] if d == "len" else sorted(med, key=med.get, reverse=True)
+        cells = " · ".join(f"{k} {med[k]:.0f}% (n={len(ret[k])}{', thin' if k not in solid else ''})"
+                           for k in order)
+        if len(solid) < 2:
+            levers.append((0, lab, f"**TOO THIN** — not enough posts on both sides to act on. {cells}"))
+            continue
+        best, worst = max(solid, key=med.get), min(solid, key=med.get)
+        spread = med[best] - med[worst]
+        if spread < FLAT:
+            levers.append((0, lab, f"**NO LEVER** — {spread:.0f} pts is noise; spend no effort here. {cells}"))
+            continue
+        vb, vw = views.get(best), views.get(worst)
+        agree = ("views agree" if vb and vw and statistics.median(vb) >= statistics.median(vw)
+                 else "⚠️ views DISAGREE — check CRAFT.md before leaning on this")
+        mono = (d == "len" and all(med[a] >= med[b] for a, b in zip(order, order[1:])))
+        line = (f"**LEVER** — favour **{best}**, {spread:.0f} pts over {worst}; {agree}. {cells}"
+                + (". Retention falls at EVERY step longer: cut to the number, not the material." if mono else ""))
+        levers.append((spread, lab, line))
+    levers.sort(key=lambda x: -x[0])
+    n = sum(1 for j in joined if "retention" in j)
+    L = ["# CUT RULES — read before you cut. Generated; never hand-edit.", "",
+         f"_Written by `publisher/craft_report.py` on **{today}** from **{n}** posted reels "
+         f"(median retention = share of the reel actually watched). Rewritten every run, "
+         f"so a hand edit dies at the next one — change the data or the code. "
+         f"Full tables: `CRAFT.md`. **Where this file and SAM-PLAYBOOK.md disagree, this file wins.**_", "",
+         f"**Stale check:** if that date is more than 8 days old, say so in the delivery, then "
+         f"run `python publisher/stats.py && python publisher/craft_report.py` and COMMIT both "
+         f"files — an uncommitted re-run is erased by the next checkout (the n=100 run was, 9/08).", "",
+         "## Levers, biggest first", ""]
+    L += [f"{i}. **{lab}** — {line}" for i, (_, lab, line) in enumerate(levers, 1)]
+    L += ["", f"_LEVER = at least {FLAT} pts between two buckets that each have {THIN}+ posts. "
+          "Thin buckets are shown so you can see them coming, never acted on._", ""]
+    RULES.write_text(chr(10).join(L), encoding="utf-8")
+
+
 def main():
     hist = latest_by_permalink()
     tok = publish.creds()["META_ACCESS_TOKEN"]
@@ -187,8 +252,7 @@ def main():
     if why:
         L += [f"> **Insights unavailable:** {why}.", ""]
 
-    dims = (("topic", "topic"), ("len", "duration"), ("kind", "fresh/catalog"),
-            ("cover", "cover"), ("collab", "collab"))
+    dims = DIMS
 
     if any("retention" in j for j in joined):
         L += ["## Retention - the edit-quality metric", "",
@@ -221,6 +285,9 @@ def main():
         DURCACHE.write_text(json.dumps(cache, indent=2, sort_keys=True), encoding="utf-8")
     REPORT.write_text(chr(10).join(L), encoding="utf-8")
     publish.log(f"wrote {REPORT.relative_to(REPO)} ({len(joined)} reels joined)")
+    if any("retention" in j for j in joined):   # no retention = keep the old file; its date shows the staleness
+        cut_rules(joined)
+        publish.log(f"wrote {RULES.relative_to(REPO)}")
     if why:
         publish.log(f"NOTE: {why}")
 
