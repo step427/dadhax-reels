@@ -20,6 +20,7 @@ Likes are a weak proxy on a small account (median ~2).
 """
 import datetime
 import json
+import shutil
 import statistics
 import subprocess
 import sys
@@ -113,6 +114,8 @@ def duration_s(fname, mid, tok, cache):
             d = _probe(url, 120)
     except Exception:
         return None                       # transient -- do NOT cache the failure
+    if d is None and not shutil.which("ffprobe"):
+        return None                       # no ffprobe on this box is not a real miss -- caching it would blank the reel forever
     cache[mid] = d
     return d
 
@@ -214,6 +217,7 @@ def cut_rules(joined):
 def main():
     hist = latest_by_permalink()
     tok = publish.creds()["META_ACCESS_TOKEN"]
+    publish._REDACT.append(tok)           # runs in Actions now, and this repo's logs are public
     joined, why = [], ""
     cache = json.loads(DURCACHE.read_text(encoding="utf-8")) if DURCACHE.exists() else {}
     cache_at_start = dict(cache)

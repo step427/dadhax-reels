@@ -57,6 +57,26 @@ jobs:
           META_PAGE_TOKEN: ${{ secrets.META_PAGE_TOKEN }}
         run: python publisher/stats.py
 
+      # CRAFT.md + CUT-RULES.md, regenerated every night (2026-09-12). Before
+      # this they refreshed only when a session remembered to run them by hand,
+      # and the cut contract the reel loop reads first sat 5 days stale.
+      # Neither step may cost the snapshot: continue-on-error on both, and they
+      # run after stats.py so the commit below carries everything in one push.
+      # ffprobe is NOT on ubuntu-latest. New reels need it to measure length;
+      # posted ones are already cached in stats/durations.json.
+      - name: Install ffprobe
+        continue-on-error: true
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq --no-install-recommends ffmpeg
+
+      - name: Craft report
+        continue-on-error: true
+        timeout-minutes: 15    # ~110 Graph calls; a hang must not hold the concurrency group
+        env:
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
+          META_PAGE_TOKEN: ${{ secrets.META_PAGE_TOKEN }}
+        run: python publisher/craft_report.py
+
       - name: Commit the snapshot
         run: |
           git config user.name  "dadhax-publisher"
