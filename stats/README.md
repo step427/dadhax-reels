@@ -41,7 +41,7 @@ The only posts whose hour the publisher actually chose — so the only ones that
 | Wed | 16 | 2.5 | 4.2 | 19 |
 | Thu | 15 | 1.0 | 3.1 | 26 |
 | Fri | 20 | 1.0 | 5.0 | 37 |
-| Sat | 18 | 2.5 | 5.0 | 31 |
+| Sat | 18 | 2.5 | 5.1 | 31 |
 | Sun | 16 | 1.0 | 4.5 | 23 |
 
 ### Fresh vs back-catalog
@@ -49,7 +49,7 @@ The only posts whose hour the publisher actually chose — so the only ones that
 | Kind | Posts | Median | Mean | Best |
 |---|---|---|---|---|
 | back-catalog | 31 | 3.0 | 8.0 | 37 |
-| fresh | 84 | 1.0 | 2.9 | 26 |
+| fresh | 84 | 1.0 | 3.0 | 26 |
 
 ### Hour x kind — which one is actually driving it
 
@@ -69,7 +69,7 @@ The only posts whose hour the publisher actually chose — so the only ones that
 | fresh @ 05:00 | 2 | 8.0 | 8.0 | 15 |
 | fresh @ 09:00 | 14 | 2.0 | 5.0 | 26 |
 | fresh @ 11:00 | 2 | 1.0 | 1.0 | 2 |
-| fresh @ 12:00 | 12 | 1.0 | 2.1 | 9 |
+| fresh @ 12:00 | 12 | 1.0 | 2.2 | 9 |
 | fresh @ 13:00 | 1 | 2.0 | 2.0 | 2 |
 | fresh @ 14:00 | 3 | 1.0 | 3.0 | 8 |
 | fresh @ 15:00 | 2 | 3.0 | 3.0 | 6 |
