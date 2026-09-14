@@ -502,6 +502,17 @@ def main():
               f"-- dry {(today + timedelta(days=len(old) // OLD_PER_DAY)).isoformat()}")
         print(f"  mix holds for {days} day{'' if days == 1 else 's'}, "
               f"then falls back to whatever is left")
+        # Topic is the biggest lever in stats/CUT-RULES.md and, until 9/14,
+        # nothing watched it: on 9/07 the queue ran 8-of-8 talk and only a
+        # session's eye caught it. Warn, never gate -- three a day still ships.
+        # No numbers frozen here; CUT-RULES carries the live ones.
+        mix = {t: sum(topic_class(i) == t for i in pending) for t in TOPIC_RANK}
+        print("  topic mix:     " + " / ".join(f"{n} {t}" for t, n in mix.items()))
+        weak = mix["talk"] + mix["meta"]
+        if weak * 2 > len(pending):
+            print(f"  TALK-HEAVY: {weak} of {len(pending)} pending are talk/meta. "
+                  f"Topic is a LEVER in stats/CUT-RULES.md -- cut utility next, "
+                  f"or say 'no utility raws' in the delivery.")
         now = datetime.now(TZ)
         gone = sum(1 for h, _ in SLOTS if h <= now.hour)
         for day, label, item in plan(pending, today, 4, skip=gone):
