@@ -502,6 +502,10 @@ def main():
               f"-- dry {(today + timedelta(days=len(old) // OLD_PER_DAY)).isoformat()}")
         print(f"  mix holds for {days} day{'' if days == 1 else 's'}, "
               f"then falls back to whatever is left")
+        # 9/13: fresh cover read 3d while catalog was 0, so every slot burned
+        # fresh at 3/day and 9/15 went dark. Gate on this line, not fresh cover.
+        print(f"  total cover:   {len(pending) / POSTS_PER_DAY:.1f} days at "
+              f"{POSTS_PER_DAY}/day -- gate on THIS when catalog is dry")
         # Topic is the biggest lever in stats/CUT-RULES.md and, until 9/14,
         # nothing watched it: on 9/07 the queue ran 8-of-8 talk and only a
         # session's eye caught it. Warn, never gate -- three a day still ships.
