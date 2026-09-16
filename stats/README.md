@@ -22,7 +22,7 @@ The only posts whose hour the publisher actually chose — so the only ones that
 | 09:00 | 16 | 2.0 | 5.1 | 26 |
 | 11:00 | 2 | 1.0 | 1.0 | 2 |
 | 12:00 | 15 | 1.0 | 4.8 | 37 |
-| 13:00 | 12 | 4.0 | 10.1 | 31 |
+| 13:00 | 12 | 7.0 | 10.7 | 31 |
 | 14:00 | 11 | 2.0 | 5.5 | 21 |
 | 15:00 | 5 | 3.0 | 4.2 | 11 |
 | 16:00 | 4 | 1.5 | 1.8 | 4 |
@@ -37,7 +37,7 @@ The only posts whose hour the publisher actually chose — so the only ones that
 | Day | Posts | Median | Mean | Best |
 |---|---|---|---|---|
 | Mon | 18 | 2.0 | 2.9 | 15 |
-| Tue | 18 | 2.0 | 4.0 | 21 |
+| Tue | 18 | 2.0 | 4.4 | 21 |
 | Wed | 17 | 2.0 | 4.0 | 19 |
 | Thu | 15 | 1.0 | 3.1 | 26 |
 | Fri | 20 | 1.0 | 5.0 | 37 |
@@ -48,7 +48,7 @@ The only posts whose hour the publisher actually chose — so the only ones that
 
 | Kind | Posts | Median | Mean | Best |
 |---|---|---|---|---|
-| back-catalog | 33 | 3.0 | 7.7 | 37 |
+| back-catalog | 33 | 4.0 | 7.9 | 37 |
 | fresh | 91 | 1.0 | 2.7 | 26 |
 
 ### Hour x kind — which one is actually driving it
@@ -57,7 +57,7 @@ The only posts whose hour the publisher actually chose — so the only ones that
 |---|---|---|---|---|
 | back-catalog @ 09:00 | 2 | 6.0 | 6.0 | 10 |
 | back-catalog @ 12:00 | 2 | 23.0 | 23.0 | 37 |
-| back-catalog @ 13:00 | 11 | 4.0 | 10.8 | 31 |
+| back-catalog @ 13:00 | 11 | 10.0 | 11.5 | 31 |
 | back-catalog @ 14:00 | 8 | 3.0 | 6.5 | 21 |
 | back-catalog @ 15:00 | 3 | 3.0 | 5.0 | 11 |
 | back-catalog @ 16:00 | 2 | 0.0 | 0.0 | 0 |
@@ -101,7 +101,7 @@ Mostly Nick posting by hand at whatever hour he was free, going back to 2024. Us
 | 10:00 | 34 | 0.0 | 0.7 | 5 |
 | 11:00 | 22 | 0.0 | 0.9 | 5 |
 | 12:00 | 38 | 0.5 | 4.4 | 72 |
-| 13:00 | 33 | 1.0 | 3.9 | 31 |
+| 13:00 | 33 | 1.0 | 4.2 | 31 |
 | 14:00 | 41 | 1.0 | 2.3 | 21 |
 | 15:00 | 47 | 0.0 | 1.2 | 12 |
 | 16:00 | 39 | 1.0 | 1.5 | 20 |
@@ -116,7 +116,7 @@ Mostly Nick posting by hand at whatever hour he was free, going back to 2024. Us
 | Day | Posts | Median | Mean | Best |
 |---|---|---|---|---|
 | Mon | 78 | 0.0 | 1.5 | 16 |
-| Tue | 67 | 0.0 | 1.9 | 21 |
+| Tue | 67 | 0.0 | 2.0 | 21 |
 | Wed | 81 | 1.0 | 2.7 | 50 |
 | Thu | 79 | 0.0 | 2.1 | 35 |
 | Fri | 90 | 0.0 | 2.0 | 37 |
