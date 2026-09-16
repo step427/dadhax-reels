@@ -517,6 +517,14 @@ def main():
             print(f"  TALK-HEAVY: {weak} of {len(pending)} pending are talk/meta. "
                   f"Topic is a LEVER in stats/CUT-RULES.md -- cut utility next, "
                   f"or say 'no utility raws' in the delivery.")
+        # BUILD-QUEUE #24: arc_slot / pix / value_forms / sam_verdict on every
+        # row. WARN-ONLY until reel_gate.ENFORCE is flipped on purpose.
+        import reel_gate
+        ok, total, kinds = reel_gate.summary(pending)
+        line = f"  reel gate:     {ok} of {total} pending pass"
+        if kinds:
+            line += " -- " + ", ".join(f"{n} {k}" for k, n in sorted(kinds.items()))
+        print(line + ("" if reel_gate.ENFORCE else " [warn-only]"))
         now = datetime.now(TZ)
         gone = sum(1 for h, _ in SLOTS if h <= now.hour)
         for day, label, item in plan(pending, today, 4, skip=gone):
