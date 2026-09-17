@@ -1636,7 +1636,7 @@
     {
       "file": "ig-yt-alexa.mp4",
       "title": "Start your dust collection by voice",
-      "status": "pending",
+      "status": "posted",
       "earliest": "2026-09-19",
       "caption": "Hey Dad,\n\nStart your dust collection with your voice.\n\nMy setup:\n1. Plug the miter saw and a small shop vac into a Wi-Fi smart power strip. Leave the vac's own switch ON.\n2. Add the strip in the Alexa app and name it \"miter saw.\" I have a smart speaker in the garage.\n3. \"Alexa, turn on the miter saw.\" The vac kicks on and the saw has power. You still pull the trigger. Or push the strip's button.\n\nHonest downside: once the vacuum is running, it's harder for Alexa to hear you. Work in progress.\n\nThere's one of these every day. Follow so you're getting them.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
       "arc_slot": "Sat 9/19 1p",
@@ -1649,7 +1649,10 @@
       "source_raw": "yt:Uzfh1pjja78",
       "topic_class": "utility",
       "nav_safe": true,
-      "cover_ms": 3000
+      "cover_ms": 3000,
+      "permalink": "https://www.instagram.com/reel/DdZeLT6DeBP/",
+      "posted_at": "2026-09-17T13:10:23-05:00",
+      "fb_page_video_id": "1235867672952951"
     },
     {
       "file": "ig-yt-joint.mp4",
