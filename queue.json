@@ -1632,6 +1632,43 @@
       "permalink": "https://www.instagram.com/reel/DdXrI0Mkv8P/",
       "posted_at": "2026-09-16T20:25:10-05:00",
       "fb_page_video_id": "1876333097082161"
+    },
+    {
+      "file": "ig-yt-alexa.mp4",
+      "title": "Start your dust collection by voice",
+      "status": "pending",
+      "earliest": "2026-09-19",
+      "caption": "Hey Dad,\n\nStart your dust collection with your voice.\n\nMy setup:\n1. Plug the miter saw and a small shop vac into a Wi-Fi smart power strip. Leave the vac's own switch ON.\n2. Add the strip in the Alexa app and name it \"miter saw.\" I have a smart speaker in the garage.\n3. \"Alexa, turn on the miter saw.\" The vac kicks on and the saw has power. You still pull the trigger. Or push the strip's button.\n\nHonest downside: once the vacuum is running, it's harder for Alexa to hear you. Work in progress.\n\nThere's one of these every day. Follow so you're getting them.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "Sat 9/19 1p",
+      "pix": "P",
+      "value_forms": [
+        "entertainment",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-09-17",
+      "source_raw": "yt:Uzfh1pjja78",
+      "topic_class": "utility",
+      "nav_safe": true,
+      "cover_ms": 3000
+    },
+    {
+      "file": "ig-yt-joint.mp4",
+      "title": "Joint boards without a jointer",
+      "status": "pending",
+      "earliest": "2026-09-19",
+      "caption": "Hey Dad,\n\nNo jointer? You don't need one for a tight glue-up.\n\nI tried three ways:\n1. Table saw straight-edge jig. Took a lot of material off, but left the edge wavy.\n2. Handheld power planer. Gaps along the joint, worst at the ends.\n3. Router with a flush-trim bit riding a straight edge. Tight joints, just needs sanding.\n\nHands down the easiest was the router. For a big project with a lot of jointing, a cheap jointer will still save you time.\n\nA glue-up is a good third thing: two sets of hands, one clamp job.\n\nAll three methods, and every joint up close, are in the full video on my YouTube (NicksDadHax).\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "Sun 9/20 9a",
+      "pix": "P",
+      "value_forms": [
+        "idea",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-09-17",
+      "source_raw": "yt:CoyJGPF3SMM",
+      "topic_class": "utility",
+      "nav_safe": true,
+      "cover_ms": 500,
+      "note": "caption_gate NO-DESTINATION overridden: 9/09 rule (yt source >3x short, steps omitted) makes the YouTube long-form the one ask; Sam POST 2026-09-17 with this condition"
     }
   ]
 }
