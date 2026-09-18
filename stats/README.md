@@ -16,7 +16,7 @@ The only posts whose hour the publisher actually chose — so the only ones that
 |---|---|---|---|---|
 | 01:00 | 1 | 0.0 | 0.0 | 0 |
 | 02:00 | 1 | 0.0 | 0.0 | 0 |
-| 03:00 | 16 | 1.0 | 1.3 | 6 |
+| 03:00 | 16 | 1.0 | 1.9 | 16 |
 | 04:00 | 2 | 0.0 | 0.0 | 0 |
 | 05:00 | 2 | 8.0 | 8.0 | 15 |
 | 09:00 | 16 | 2.0 | 5.1 | 26 |
@@ -29,7 +29,7 @@ The only posts whose hour the publisher actually chose — so the only ones that
 | 17:00 | 1 | 2.0 | 2.0 | 2 |
 | 18:00 | 20 | 2.0 | 3.7 | 26 |
 | 19:00 | 3 | 1.0 | 0.7 | 1 |
-| 20:00 | 16 | 0.0 | 2.5 | 16 |
+| 20:00 | 16 | 0.0 | 2.6 | 16 |
 | 23:00 | 1 | 0.0 | 0.0 | 0 |
 
 ### By weekday
@@ -39,8 +39,8 @@ The only posts whose hour the publisher actually chose — so the only ones that
 | Mon | 18 | 2.0 | 2.9 | 15 |
 | Tue | 18 | 2.0 | 4.4 | 21 |
 | Wed | 19 | 3.0 | 4.3 | 19 |
-| Thu | 18 | 1.0 | 2.8 | 26 |
-| Fri | 21 | 1.0 | 5.0 | 37 |
+| Thu | 18 | 1.0 | 2.9 | 26 |
+| Fri | 21 | 1.0 | 5.5 | 37 |
 | Sat | 18 | 2.5 | 5.1 | 31 |
 | Sun | 18 | 0.5 | 4.0 | 23 |
 
@@ -49,7 +49,7 @@ The only posts whose hour the publisher actually chose — so the only ones that
 | Kind | Posts | Median | Mean | Best |
 |---|---|---|---|---|
 | back-catalog | 35 | 4.0 | 7.8 | 37 |
-| fresh | 95 | 1.0 | 2.7 | 26 |
+| fresh | 95 | 1.0 | 2.9 | 26 |
 
 ### Hour x kind — which one is actually driving it
 
@@ -65,7 +65,7 @@ The only posts whose hour the publisher actually chose — so the only ones that
 | back-catalog @ 20:00 | 1 | 10.0 | 10.0 | 10 |
 | fresh @ 01:00 | 1 | 0.0 | 0.0 | 0 |
 | fresh @ 02:00 | 1 | 0.0 | 0.0 | 0 |
-| fresh @ 03:00 | 16 | 1.0 | 1.3 | 6 |
+| fresh @ 03:00 | 16 | 1.0 | 1.9 | 16 |
 | fresh @ 04:00 | 2 | 0.0 | 0.0 | 0 |
 | fresh @ 05:00 | 2 | 8.0 | 8.0 | 15 |
 | fresh @ 09:00 | 14 | 2.0 | 5.0 | 26 |
@@ -78,7 +78,7 @@ The only posts whose hour the publisher actually chose — so the only ones that
 | fresh @ 17:00 | 1 | 2.0 | 2.0 | 2 |
 | fresh @ 18:00 | 15 | 3.0 | 4.3 | 26 |
 | fresh @ 19:00 | 3 | 1.0 | 0.7 | 1 |
-| fresh @ 20:00 | 15 | 0.0 | 2.0 | 16 |
+| fresh @ 20:00 | 15 | 0.0 | 2.1 | 16 |
 | fresh @ 23:00 | 1 | 0.0 | 0.0 | 0 |
 
 An empty cell is not a zero — it is an experiment nobody has run yet.
@@ -92,7 +92,7 @@ Mostly Nick posting by hand at whatever hour he was free, going back to 2024. Us
 | 00:00 | 14 | 0.0 | 0.8 | 4 |
 | 01:00 | 5 | 0.0 | 0.4 | 2 |
 | 02:00 | 5 | 0.0 | 0.2 | 1 |
-| 03:00 | 18 | 0.5 | 1.2 | 6 |
+| 03:00 | 18 | 0.5 | 1.7 | 16 |
 | 04:00 | 2 | 0.0 | 0.0 | 0 |
 | 05:00 | 13 | 0.0 | 5.3 | 50 |
 | 06:00 | 16 | 0.0 | 0.5 | 3 |
@@ -120,7 +120,7 @@ Mostly Nick posting by hand at whatever hour he was free, going back to 2024. Us
 | Tue | 67 | 0.0 | 2.0 | 21 |
 | Wed | 83 | 1.0 | 2.8 | 50 |
 | Thu | 82 | 0.5 | 2.0 | 35 |
-| Fri | 91 | 0.0 | 2.0 | 37 |
+| Fri | 91 | 0.0 | 2.1 | 37 |
 | Sat | 109 | 0.0 | 2.4 | 72 |
 | Sun | 130 | 0.0 | 1.6 | 42 |
 
