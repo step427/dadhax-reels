@@ -1663,7 +1663,7 @@
     {
       "file": "ig-yt-joint.mp4",
       "title": "Joint boards without a jointer",
-      "status": "pending",
+      "status": "posted",
       "earliest": "2026-09-19",
       "caption": "Hey Dad,\n\nNo jointer? You don't need one for a tight glue-up.\n\nI tried three ways:\n1. Table saw straight-edge jig. Took a lot of material off, but left the edge wavy.\n2. Handheld power planer. Gaps along the joint, worst at the ends.\n3. Router with a flush-trim bit riding a straight edge. Tight joints, just needs sanding.\n\nHands down the easiest was the router. For a big project with a lot of jointing, a cheap jointer will still save you time.\n\nA glue-up is a good third thing: two sets of hands, one clamp job.\n\nAll three methods, and every joint up close, are in the full video on my YouTube (NicksDadHax).\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
       "arc_slot": "Sun 9/20 9a",
@@ -1677,7 +1677,10 @@
       "topic_class": "utility",
       "nav_safe": true,
       "cover_ms": 500,
-      "note": "caption_gate NO-DESTINATION overridden: 9/09 rule (yt source >3x short, steps omitted) makes the YouTube long-form the one ask; Sam POST 2026-09-17 with this condition"
+      "note": "caption_gate NO-DESTINATION overridden: 9/09 rule (yt source >3x short, steps omitted) makes the YouTube long-form the one ask; Sam POST 2026-09-17 with this condition",
+      "permalink": "https://www.instagram.com/reel/Ddb_coFjObq/",
+      "posted_at": "2026-09-18T12:39:37-05:00",
+      "fb_page_video_id": "1413635373790324"
     },
     {
       "file": "ig-yt-sheet.mp4",
