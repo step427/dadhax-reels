@@ -1678,6 +1678,57 @@
       "nav_safe": true,
       "cover_ms": 500,
       "note": "caption_gate NO-DESTINATION overridden: 9/09 rule (yt source >3x short, steps omitted) makes the YouTube long-form the one ask; Sam POST 2026-09-17 with this condition"
+    },
+    {
+      "file": "ig-yt-sheet.mp4",
+      "title": "Break down a full sheet on the floor",
+      "status": "pending",
+      "earliest": "2026-09-19",
+      "caption": "Hey Dad,\n\nYou don't need a table saw or a second set of hands to break down a full sheet of plywood.\n\nDo it on the floor:\n1. Lay a 4x8 sheet of foam board down first. It carries the whole sheet so nothing sags mid-cut, and your blade runs into foam instead of concrete.\n2. Plywood on top, with the cut side hanging past the foam far enough to get a clamp on it.\n3. Clamp a straight edge on your pre-marked line, set so the saw's shoe rides the edge and the blade lands where you want the cut.\n4. Drop your blade depth so it passes just below the plywood, barely into the foam. Shallow means the foam survives for many more cuts and the underside of the cut comes out cleaner.\n5. Walk the saw down the straight edge in one pass.\n\nA straight edge, a couple of clamps and a sheet of foam is the whole kit. Check today's prices yourself, mine are three years old.\n\nBreaking down sheets is a good third thing, too. Put someone on the far end and you talk while you work.\n\nThe full breakdown is on my YouTube (NicksDadHax), including getting the sheet down from overhead storage without dragging out a ladder.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "Sat 9/19 9a",
+      "pix": "P",
+      "value_forms": [
+        "idea",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-09-18",
+      "source_raw": "yt:OXSKUYNloxw",
+      "topic_class": "utility",
+      "nav_safe": true
+    },
+    {
+      "file": "ig-yt-stop.mp4",
+      "title": "Why your French cleats fall off the wall",
+      "status": "pending",
+      "earliest": "2026-09-19",
+      "caption": "Hey Dad,\n\nIf your French cleats keep working loose, the problem is leverage, not the cleat.\n\nMine kept dropping off the wall, worst with angle brackets for shelving. The farther the weight sits out from the wall, the more torque there is trying to pry the hanger off the rail.\n\nThe fix is a stop: a block on the bottom of the hanger that bears against the wall underneath the cleat. Now the load pushes into the wall instead of levering the hanger away from it.\n\nWant more out of it, drive a wedge in behind the stop. That locks it down tight.\n\nHanging a cleat wall is a good third thing, too. Do it with someone and you'll talk for two hours without trying.\n\nThe whole garage system, the magnet strips, the PVC racks, even the shaving mirror, is in the full video on my YouTube (NicksDadHax).\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "OFF-ARC cover",
+      "pix": "P",
+      "value_forms": [
+        "idea",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-09-18",
+      "source_raw": "yt:y9Z-vIpuY38",
+      "topic_class": "utility",
+      "nav_safe": true
+    },
+    {
+      "file": "ig-yt-nails.mp4",
+      "title": "Dip your nail hangers so they don't mar tools",
+      "status": "pending",
+      "earliest": "2026-09-20",
+      "caption": "Hey Dad,\n\nThe hangers on my French cleat wall are just nails. Two per block, and I can knock out forty of them in a day.\n\nThe part that matters is the coating. I dipped them in a rubbery paint, Flex Seal I think, so the nail doesn't mar the tool hanging on it. Bare steel against a drill chuck or a hammer handle leaves marks. Rubber doesn't.\n\nSame two nails hold drills, hammers, pry bars, paint stirrers. One block, one pattern, the whole wall.\n\nThe rest of the system, the PVC racks for long stock, the wedge trick, the shaving mirror, is in the full video on my YouTube (NicksDadHax).\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "OFF-ARC cover",
+      "pix": "P",
+      "value_forms": [
+        "idea",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-09-18",
+      "source_raw": "yt:y9Z-vIpuY38",
+      "topic_class": "utility",
+      "nav_safe": true
     }
   ]
 }
