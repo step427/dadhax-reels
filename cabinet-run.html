@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Tool 09. Built 2026-09-05 off the mudroom build; Tuesday flip is Nick's. -->
+<title>The Cabinet Run — @nicksdadhax</title>
+<meta name="description" content="Type in a wall and a ceiling. Get the stock-cabinet combinations that actually close, the filler widths, the height stack, and the exact search strings for the store — before you fall in love with a rendering. Free, no gate.">
+
+<style>
+  /* @nicksdadhax — dark field-instrument identity. Same tokens as tools 01-07.
+     SIGNAL YELLOW = your input / the action. WARN RED = the honest rail —
+     here that's "the rendering isn't a plan" and the 24-inch trap. */
+  :root {
+    --carbon:   #0F0E0B;
+    --panel:    #17150F;
+    --panel-up: #1E1B14;
+    --hair:     #302B21;
+    --bone:     #F4F0E6;
+    --graphite: #8F887A;
+    --signal:   #FFC629;
+    --signal-d: #C8930F;
+    --warn:     #E8502C;
+
+    --mono: ui-monospace, "SF Mono", SFMono-Regular, "Cascadia Mono",
+            "Roboto Mono", Menlo, Consolas, "Courier New", monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+            "Helvetica Neue", Arial, sans-serif;
+
+    --gutter: clamp(18px, 5vw, 40px);
+    --maxw: 660px;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--carbon);
+    color: var(--bone);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-text-size-adjust: 100%;
+    background-image:
+      repeating-linear-gradient(to right,  rgba(242,237,231,.035) 0 1px, transparent 1px 28px),
+      repeating-linear-gradient(to bottom, rgba(242,237,231,.035) 0 1px, transparent 1px 28px);
+  }
+
+  .sheet { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter) 96px; }
+
+  header { padding: 34px 0 8px; }
+  .protocol {
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: .17em;
+    text-transform: uppercase; color: var(--graphite);
+  }
+  .protocol b { color: var(--signal); font-weight: 700; }
+  h1 {
+    font-family: var(--mono); font-weight: 700;
+    font-size: clamp(28px, 8vw, 48px); line-height: 1.04;
+    letter-spacing: -.03em; text-transform: uppercase;
+    margin: 12px 0 0; text-wrap: balance;
+  }
+  h1 .of { color: var(--signal); }
+  .dek { margin: 14px 0 0; max-width: 46ch; color: #CFC9BB; font-size: 17px; }
+  .dek em { color: var(--bone); font-style: normal; border-bottom: 1.5px solid var(--signal-d); }
+
+  .rules {
+    margin: 20px 0 0; padding: 11px 0 0; border-top: 1px solid var(--hair);
+    font-family: var(--mono); font-size: 12.5px; letter-spacing: .04em;
+    color: var(--graphite); text-transform: uppercase;
+  }
+  .rules span { color: var(--bone); }
+
+  .privacy {
+    margin: 18px 0 0; padding: 13px 15px; font-size: 14.5px; line-height: 1.5;
+    color: #CFC9BB; background: var(--panel); border-left: 3px solid var(--signal);
+  }
+  .privacy b { color: var(--bone); }
+
+  .story { margin-top: 24px; padding: 15px 16px; background: var(--panel);
+    border: 1px solid var(--hair); }
+  .story p { margin: 0 0 10px; font-size: 15.5px; line-height: 1.55; color: #CFC9BB; }
+  .story p:last-child { margin-bottom: 0; }
+  .story p b { color: var(--bone); }
+
+  .whys { margin-top: 26px; border: 1px solid var(--hair); }
+  .why { padding: 14px 15px; border-bottom: 1px solid var(--hair); }
+  .why:last-child { border-bottom: 0; }
+  .why .tag { display: block; font-family: var(--mono); font-size: 12.5px; font-weight: 700;
+    letter-spacing: .08em; text-transform: uppercase; margin-bottom: 5px; color: var(--signal); }
+  .why p { margin: 0; font-size: 15px; line-height: 1.5; color: #CFC9BB; }
+  .why p b { color: var(--bone); }
+
+  .redline-note {
+    margin: 14px 0 0; padding: 9px 12px;
+    border-left: 2.5px solid var(--warn);
+    background: rgba(232,80,44,.08);
+    font-size: 14.5px; line-height: 1.45; color: #E7DCD6;
+  }
+  .redline-note b { color: var(--warn); font-family: var(--mono);
+    font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase;
+    display: block; margin-bottom: 3px; }
+
+  .block { margin-top: 30px; }
+  .lbl {
+    display: block; font-family: var(--mono); font-size: 11.5px;
+    letter-spacing: .13em; text-transform: uppercase; color: var(--graphite);
+    margin-bottom: 8px;
+  }
+  h2.part {
+    font-family: var(--mono); font-size: 12px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--signal); margin: 34px 0 4px; font-weight: 700;
+    padding-top: 20px; border-top: 1px solid var(--hair);
+  }
+  .partdek { margin: 0 0 14px; font-size: 15px; color: #CFC9BB; line-height: 1.5; }
+  .partdek b { color: var(--bone); }
+
+  .seed {
+    border: 1.5px solid var(--signal); background: var(--panel);
+    padding: 16px 16px 14px;
+  }
+  .seed .lbl { color: var(--signal); margin-top: 0; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; }
+  @media (max-width: 380px) { .grid2 { grid-template-columns: 1fr; } }
+  input[type=text], input[type=number] {
+    display: block; width: 100%;
+    background: transparent; border: 0; border-bottom: 1.5px solid #453E2C;
+    color: var(--bone); font-family: var(--mono); font-size: 18px;
+    line-height: 1.5; padding: 4px 0 8px; border-radius: 0;
+    font-variant-numeric: tabular-nums; -moz-appearance: textfield;
+  }
+  input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  input::placeholder { color: #6B6455; font-family: var(--sans); font-size: 15px; }
+  input:focus { outline: 0; border-bottom-color: var(--signal); }
+  .seed .lbl + input { margin-bottom: 14px; }
+  .unit { font-family: var(--mono); font-size: 11px; color: var(--graphite); letter-spacing: .08em; }
+
+  .hint { margin: 6px 0 0; font-size: 13.5px; color: var(--graphite); line-height: 1.45; }
+
+  /* result rows double as a picker */
+  .rows { border: 1px solid var(--hair); margin-top: 14px; }
+  .rows[hidden] { display: none; }
+  .row { display: flex; gap: 13px; align-items: flex-start; width: 100%; text-align: left;
+    padding: 13px 15px; border: 0; border-bottom: 1px solid var(--hair); min-height: 44px;
+    background: transparent; color: var(--bone); font: inherit; cursor: pointer; }
+  .row:last-child { border-bottom: 0; }
+  .row:hover { background: var(--panel); }
+  .row:focus-visible { outline: 2px solid var(--bone); outline-offset: -2px; }
+  .row .dot { flex: 0 0 auto; width: 22px; height: 22px; margin-top: 2px; border-radius: 50%;
+    border: 1.5px solid #453E2C; background: var(--panel); }
+  .row[aria-pressed="true"] .dot { background: var(--signal); border-color: var(--signal);
+    box-shadow: inset 0 0 0 5px var(--panel); }
+  .row b { display: block; font-family: var(--mono); font-size: 15.5px; letter-spacing: -.01em;
+    font-variant-numeric: tabular-nums; }
+  .row span.s { display: block; font-size: 14px; line-height: 1.45; color: #CFC9BB; margin-top: 3px; }
+  .row span.s i { font-style: normal; color: var(--warn); }
+  .row span.s u { text-decoration: none; color: var(--signal); }
+
+  .empty { margin-top: 14px; padding: 13px 15px; border: 1px dashed var(--hair);
+    font-size: 14.5px; color: #CFC9BB; line-height: 1.5; }
+  .empty[hidden] { display: none; }
+
+  /* the composed run */
+  .spec { margin-top: 22px; padding: 18px 16px; background: var(--panel-up);
+    border: 2px solid var(--signal); }
+  .spec[hidden] { display: none; }
+  .spec .lbl { color: var(--signal); }
+  .spec p { margin: 0 0 8px; font-size: 16.5px; line-height: 1.5; color: var(--bone); }
+  .spec p:last-of-type { margin-bottom: 0; }
+  .spec .fine { margin-top: 10px; font-size: 14px; color: #CFC9BB; }
+  .spec ul { margin: 8px 0 0; padding: 0 0 0 18px; }
+  .spec li { font-family: var(--mono); font-size: 13.5px; line-height: 1.6; color: var(--bone); }
+  .spec li i { font-style: normal; color: var(--graphite); }
+
+  .callbox { margin-top: 28px; padding: 18px 16px 16px; background: var(--panel-up);
+    border: 2px dashed var(--signal-d); }
+  .callbox .lbl { color: var(--signal); }
+  .callbox .means { margin: 10px 0 14px; font-size: 15px; color: #CFC9BB; line-height: 1.5; }
+  .callbox .means b { color: var(--bone); }
+  .callbox input[type=text] { font-family: var(--sans); font-size: 17px; }
+
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+  .actions button {
+    font-family: var(--mono); font-size: 12.5px; letter-spacing: .1em;
+    text-transform: uppercase; font-weight: 700; min-height: 48px;
+    padding: 13px 18px; border-radius: 0; cursor: pointer;
+    background: var(--signal); color: #14100F; border: 1.5px solid var(--signal);
+  }
+  .actions button.ghost { background: transparent; color: var(--bone); border-color: #453E2C; }
+  .actions button:hover { filter: brightness(1.1); }
+  .actions button.ghost:hover { border-color: var(--signal); color: var(--signal); filter: none; }
+  .actions button:focus-visible { outline: 2px solid var(--bone); outline-offset: 2px; }
+
+  .said {
+    margin-top: 14px; font-family: var(--mono); font-size: 12px;
+    letter-spacing: .06em; text-transform: uppercase; color: var(--signal);
+    min-height: 1em;
+  }
+
+  .titleblock {
+    margin-top: 44px; border: 1px solid var(--hair);
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(108px, 1fr));
+  }
+  .tb { padding: 11px 13px; border-right: 1px solid var(--hair); }
+  .tb:last-child { border-right: 0; }
+  .tb dt {
+    font-family: var(--mono); font-size: 10px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--graphite); margin: 0 0 4px;
+  }
+  .tb dd {
+    margin: 0; font-family: var(--mono); font-size: 13px; font-weight: 700;
+    color: var(--bone); font-variant-numeric: tabular-nums;
+  }
+  .tb dd.red { color: var(--signal); }
+
+  .cta { margin-top: 18px; font-size: 15px; color: #CFC9BB; line-height: 1.5; }
+  .cta b { color: var(--bone); }
+  .cta a { color: var(--signal); font-weight: 700; text-decoration: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+
+  @media print {
+    @page { size: letter; margin: .5in .55in; }
+    :root {
+      --carbon: #fff; --panel: #fff; --panel-up: #FFF8E2;
+      --hair: #C9C2BC; --bone: #14100F; --graphite: #5E5651;
+      --signal: #7A5B00; --signal-d: #7A5B00; --warn: #B93A18;
+    }
+    body { background-image: none; font-size: 10.5pt; }
+    .sheet { max-width: none; padding: 0; }
+    .actions, .said, .nav, .tail, .cta, .privacy { display: none; }
+    .spec[hidden] { display: block !important; }
+    input { border-bottom-color: #9AA0A8; min-height: .42in; }
+    .redline-note { background: none; }
+    h1 { font-size: 26pt; }
+  }
+</style>
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+
+<div class="sheet">
+
+  <nav class="nav">
+    <div class="navtop">
+      <a class="brand" href="index.html">@nicksdadhax</a>
+      <span class="meta">Tool 09 · free · no gate</span>
+    </div>
+    <div class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="toolbox.html" aria-current="true"><svg class="tbx" width="15" height="13" viewBox="0 0 16 14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><g class="lid"><path d="M5.5 4.5v-.75a2.5 2.5 0 0 1 5 0v.75"/><rect x="1" y="4.5" width="14" height="2.5" rx=".5"/></g><rect x="1" y="7" width="14" height="6" rx=".5"/></svg>The Toolbox</a>
+      <a href="log.html">The Log</a>
+      <a href="houses.html">I have a house</a>
+    </div>
+  </nav>
+
+  <header>
+    <div class="protocol">Layout protocol <b>·</b> measure once <b>·</b> let the math close it</div>
+    <h1>The cabinet <span class="of">run</span></h1>
+    <p class="dek">Stock cabinets come in a handful of widths. A wall comes in one.
+      <em>The run is the set of stock boxes that fills your wall to the sixteenth</em>
+      &mdash; fillers where the wall isn't square, a height stack that lands on the
+      ceiling.</p>
+    <div class="rules">one wall <span>·</span> one ceiling <span>·</span> the run that closes</div>
+    <p class="privacy"><b>Nothing you type here leaves your device.</b> No account, no
+      server, no analytics &mdash; your numbers live in this browser tab and are erased
+      when you close it. "Start over" wipes them now. Nobody can read them.</p>
+  </header>
+
+  <div class="story">
+    <span class="lbl">Why this one exists</span>
+    <p>Last Saturday: a 93&frac34;-inch mudroom wall, a nine-foot ceiling, a rendering
+      that looked finished, and an AI chat that had invented a &ldquo;window nook&rdquo;
+      off two numbers on my sketch. <b>The tape didn't care about the picture.</b> The
+      math closed on its own &mdash; <b>1&frac78; + 30 + 30 + 30 + 1&frac78; = 93&frac34;</b>,
+      <b>90 + 18 = 108</b> &mdash; and then the store's house brand turned out not to make
+      that pantry in 30 wide. A different line did. <b>The rendering wasn't a plan. The tape was.</b></p>
+  </div>
+
+  <div class="whys" aria-label="What the run actually does">
+    <div class="why">
+      <span class="tag">Stock sizes are the alphabet</span>
+      <p>12 to 36 in 3-inch steps. <b>Your wall gets spelled with those</b>, plus a
+        filler each end for the inch and a half no wall gives you square.</p>
+    </div>
+    <div class="why">
+      <span class="tag">Seams stack, height is a stack</span>
+      <p>Uppers match the widths below so every seam lines up. <b>Tall plus upper
+        reaches the ceiling</b>: an inch short is scribe, four is crown.</p>
+    </div>
+    <div class="why">
+      <span class="tag">A window is a bay</span>
+      <p>One bay, open &mdash; drawers below, wall above. <b>Never across a seam.</b></p>
+    </div>
+  </div>
+
+
+  <h2 class="part">Part 1 &mdash; Measure the wall</h2>
+  <p class="partdek">Inches. <b>Ceiling at both ends and the middle; type the smallest.</b></p>
+
+  <div class="block seed">
+    <div class="grid2">
+      <div>
+        <label class="lbl" for="wall">Wall width <span class="unit">inches</span></label>
+        <input type="number" id="wall" inputmode="decimal" step="0.0625" min="24" max="300" placeholder="93.75">
+      </div>
+      <div>
+        <label class="lbl" for="ceil">Ceiling height <span class="unit">inches</span></label>
+        <input type="number" id="ceil" inputmode="decimal" step="0.0625" min="80" max="144" placeholder="108">
+      </div>
+    </div>
+    <label class="lbl" for="filler">Minimum filler each side <span class="unit">inches &middot; 1.5 to 3 is normal</span></label>
+    <input type="number" id="filler" inputmode="decimal" step="0.125" min="0" max="6" placeholder="1.875">
+  </div>
+
+  <h2 class="part">Part 2 &mdash; The window, if there is one</h2>
+  <p class="partdek">Skip if the wall is blank. Otherwise <b>outside edge of the trim.</b></p>
+
+  <div class="block seed">
+    <div class="grid2">
+      <div>
+        <label class="lbl" for="wleft">Left wall to window <span class="unit">in</span></label>
+        <input type="number" id="wleft" inputmode="decimal" step="0.0625" min="0" placeholder="34.1875">
+      </div>
+      <div>
+        <label class="lbl" for="wwidth">Window width <span class="unit">in</span></label>
+        <input type="number" id="wwidth" inputmode="decimal" step="0.0625" min="0" placeholder="25.3125">
+      </div>
+      <div>
+        <label class="lbl" for="whead">Floor to top of window <span class="unit">in</span></label>
+        <input type="number" id="whead" inputmode="decimal" step="0.0625" min="0" placeholder="83.5">
+      </div>
+      <div>
+        <label class="lbl" for="wsill">Floor to bottom of window <span class="unit">in</span></label>
+        <input type="number" id="wsill" inputmode="decimal" step="0.0625" min="0" placeholder="59">
+      </div>
+    </div>
+  </div>
+
+  <h2 class="part">Part 3 &mdash; The runs that close</h2>
+  <p class="partdek">Best first, under three inches of slack. Tap one.</p>
+
+  <div class="empty" id="wEmpty">Type a wall width above and the runs appear here.</div>
+  <div class="rows" id="wRows" role="group" aria-label="Width layouts" hidden></div>
+
+  <h2 class="part">Part 4 &mdash; The stack that lands</h2>
+  <p class="partdek">Tall plus upper. Tap one.</p>
+
+  <div class="empty" id="hEmpty">Type a ceiling height and the stacks appear here.</div>
+  <div class="rows" id="hRows" role="group" aria-label="Height stacks" hidden></div>
+
+  <div class="spec" id="spec" hidden>
+    <span class="lbl">Your run</span>
+    <p id="specLine"></p>
+    <p id="specStack"></p>
+    <p id="specWin"></p>
+    <span class="lbl" style="margin-top:14px">Search these, in this order</span>
+    <ul id="specSearch"></ul>
+    <p class="fine">Search the tall first &mdash; if the line lacks that width, the run re-spells.</p>
+  </div>
+
+  <div class="redline-note">
+    <b>the 24-inch trap</b>
+    Most house brands make the 90-inch pantry in 24 and 36 wide, nothing between.
+    If your run leans on a 30, confirm a line carries it first.
+  </div>
+
+  <div class="callbox">
+    <span class="lbl">The boulder question</span>
+    <p class="means">Most problems are who-you-know. <b>Name one person who has hung
+      cabinets.</b></p>
+    <input type="text" id="callName" placeholder="a name. not 'a guy from work' — a name.">
+    <p class="means" style="margin:12px 0 0"><b>Now make the call</b> &mdash; ask:
+      &ldquo;what would you check before you ordered?&rdquo;</p>
+  </div>
+
+  <div class="actions">
+    <button id="promptBtn" type="button">Copy a prompt for your AI</button>
+    <button id="copyBtn" class="ghost" type="button">Copy the run</button>
+    <button id="printBtn" class="ghost" type="button">Print it</button>
+    <button id="resetBtn" class="ghost" type="button">Start over</button>
+  </div>
+  <div class="said" id="said" role="status" aria-live="polite"></div>
+
+  <dl class="titleblock">
+    <div class="tb"><dt>Protocol</dt><dd>LAYOUT</dd></div>
+    <div class="tb"><dt>Tool</dt><dd>09 of 09</dd></div>
+    <div class="tb"><dt>Runs</dt><dd class="red" id="count">0</dd></div>
+    <div class="tb"><dt>By</dt><dd class="red">@nicksdadhax</dd></div>
+  </dl>
+
+  <!--TAIL-->
+  <div class="tail">
+  <a class="tail-next" href="fact-testable-fantasy.html">
+    <span class="k">Read next</span>
+    <b>Tool 04 &mdash; Fact / Testable / Fantasy</b>
+    <span class="s">The rendering was Fantasy until the tape made it Testable. Here's
+      the two-question filter that sorts every idea you've got into the same three
+      piles &mdash; before you spend a Saturday on the wrong one.</span>
+  </a>
+  <section class="buyhouses">
+    <h2>Also &mdash; I buy houses</h2>
+    <p><b>Washington or Dakota County, Minnesota.</b> Off-market, or straight from the
+      owner &mdash; I'm the buyer, not a middleman passing it along. Woodbury, Cottage
+      Grove, Hastings, Stillwater, Eagan, Inver Grove Heights, Lakeville.</p>
+    <p>If that's you, or you know somebody quietly thinking about selling, I'll lay out
+      your options &mdash; <b>all of them, including the ones I don't make a dime on.</b>
+      Nothing to sign, no walkthrough unless you ask.</p>
+    <div class="ctas">
+      <a href="houses.html"><b>I have a house</b><span>Or I know someone who does</span></a>
+    </div>
+  </section>
+
+  <section class="optin" id="next">
+    <h2>What I ask</h2>
+    <p class="plain">That was free and nothing here sits behind an email. If it was
+      useful, here's the whole exchange: <b>send it to one or two people who'd use it
+      too.</b> That's it. I'm trusting you with it, you pass it on.</p>
+    <p class="plain">Want the next one before anyone else? I'm building an interest
+      list &mdash; no selling, no sequence, your address goes nowhere.
+      <a href="index.html#next">Exactly what that means, in plain words.</a></p>
+    <p class="fine">The list itself isn't open yet &mdash; I'm still setting it up, and
+      I'd rather say that than put up a box that doesn't work. The ask above stands
+      either way, and it's the one that matters. If you want to tell me what to build
+      next, my DMs are open.</p>
+    <div class="ctas">
+      <a href="https://www.instagram.com/nicksdadhax/"><b>Tell me what to build next</b><span>DM @nicksdadhax</span></a>
+    </div>
+  </section>
+  </div>
+  <!--/TAIL-->
+
+  <p class="cta">Free. This tool asks you for nothing &mdash; no gate, no email, no
+    analytics. When your run comes back in stock, <b>DM me the wall</b>.</p>
+
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var KEY = "ndh-cabinetrun-v1";
+  var WIDTHS = [12, 15, 18, 21, 24, 27, 30, 33, 36];
+  var TALLS = [84, 90, 96];
+  var UPPERS = [12, 15, 18, 21, 24, 30, 36];
+
+  var $ = function (id) { return document.getElementById(id); };
+  var inputs = ["wall", "ceil", "filler", "wleft", "wwidth", "whead", "wsill", "callName"].map($);
+  var said = $("said"), count = $("count"),
+      wRows = $("wRows"), hRows = $("hRows"), wEmpty = $("wEmpty"), hEmpty = $("hEmpty"),
+      spec = $("spec");
+
+  var pickW = null, pickH = null;     // selected layout / stack keys
+  var layouts = [], stacks = [];
+
+  function num(id) { var v = parseFloat($(id).value); return isFinite(v) ? v : null; }
+  function frac(x) {
+    // 93.75 -> "93 3/4"
+    var neg = x < 0; x = Math.abs(x);
+    var whole = Math.floor(x), r = Math.round((x - whole) * 16);
+    if (r === 16) { whole += 1; r = 0; }
+    if (r === 0) return (neg ? "-" : "") + whole;
+    var g = (function gcd(a, b) { return b ? gcd(b, a % b) : a; })(r, 16);
+    return (neg ? "-" : "") + (whole ? whole + " " : "") + (r / g) + "/" + (16 / g);
+  }
+  function win() {
+    var l = num("wleft"), w = num("wwidth"), h = num("whead"), s = num("wsill");
+    return (l !== null && w !== null && w > 0) ? { l: l, r: l + w, w: w, head: h, sill: s } : null;
+  }
+
+  // ---- widths: every ordered composition of 2..5 stock widths that fits ----
+  function computeLayouts() {
+    var wall = num("wall"), f = num("filler"); if (f === null) f = 1.875;
+    layouts = [];
+    if (wall === null || wall < 24) return;
+    var usable = wall - 2 * f, seen = {};
+    var W = win();
+    (function rec(parts, sum) {
+      if (parts.length >= 2) {
+        var left = usable - sum;
+        if (left >= 0 && left <= 3) {
+          var key = parts.join("+");
+          if (!seen[key]) { seen[key] = 1; layouts.push(score(parts.slice(), left, f, wall, W)); }
+        }
+      }
+      if (parts.length === 5) return;
+      for (var i = 0; i < WIDTHS.length; i++) {
+        if (sum + WIDTHS[i] > usable) break;
+        parts.push(WIDTHS[i]); rec(parts, sum + WIDTHS[i]); parts.pop();
+      }
+    })([], 0);
+    layouts.sort(function (a, b) { return a.score - b.score; });
+    layouts = layouts.slice(0, 3);
+  }
+  function score(parts, left, f, wall, W) {
+    var n = parts.length, sym = parts.slice().reverse().join() === parts.join();
+    var small = parts.filter(function (p) { return p < 15; }).length;
+    var uniform = parts.every(function (p) { return p === parts[0]; });
+    var sc = left * 2 + n + (sym ? 0 : 2.5) + small * 2 - (uniform ? 1.5 : 0);
+    var eachF = f + left / 2;
+    // window check: which bay holds it
+    var note = "", bad = false;
+    if (W) {
+      var x = eachF, bays = [];
+      parts.forEach(function (p) { bays.push([x, x + p]); x += p; });
+      var hit = bays.filter(function (b) { return W.r > b[0] && W.l < b[1]; });
+      if (hit.length === 1) {
+        var b = hit[0];
+        note = "window in bay " + (bays.indexOf(b) + 1) + " · clears " + frac(W.l - b[0]) + " / " + frac(b[1] - W.r);
+        if (W.l - b[0] < 0.5 || b[1] - W.r < 0.5) { note += " Tight."; sc += 3; }
+      } else if (hit.length > 1) { note = "window crosses a seam — skip"; bad = true; sc += 30; }
+    }
+    return { parts: parts, left: left, eachF: eachF, sym: sym, score: sc, note: note, bad: bad, wall: wall,
+             key: parts.join("+") };
+  }
+
+  // ---- heights ----
+  function computeStacks() {
+    var c = num("ceil"); stacks = [];
+    if (c === null || c < 80) return;
+    var W = win();
+    TALLS.forEach(function (t) {
+      var g = c - t;
+      if (g >= 0 && g <= 4) stacks.push(mk(t, 0, g, W));
+      UPPERS.forEach(function (u) {
+        var gap = c - t - u;
+        if (gap >= 0 && gap <= 4) stacks.push(mk(t, u, gap, W));
+      });
+    });
+    stacks.sort(function (a, b) { return a.score - b.score; });
+    stacks = stacks.slice(0, 3);
+  }
+  function mk(t, u, gap, W) {
+    var how = gap < 0.0001 ? "dead on — fine if the ceiling runs high; else next stack" : gap <= 1 ? "scribe" : "crown";
+    var sc = Math.abs(gap - 0.5) * 2 + (u ? 0 : 1);
+    var note = "", bad = false;
+    if (W && W.head !== null) {
+      var clr = t - W.head;
+      if (u) {
+        if (clr < 1) { note = "hits the window (" + frac(clr) + ") — taller tall"; bad = true; sc += 30; }
+        else note = "clears window by " + frac(clr);
+      }
+    }
+    return { t: t, u: u, gap: gap, how: how, score: sc, note: note, bad: bad, key: t + "/" + u };
+  }
+
+  // ---- render ----
+  function row(key, main, sub, pressed, bad) {
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "row"; b.setAttribute("aria-pressed", String(pressed)); b.dataset.key = key;
+    var d = document.createElement("span"); d.className = "dot";
+    var t = document.createElement("span");
+    var m = document.createElement("b"); m.textContent = main;
+    var s = document.createElement("span"); s.className = "s";
+    if (bad) { var i = document.createElement("i"); i.textContent = sub; s.appendChild(i); }
+    else s.textContent = sub;
+    t.appendChild(m); t.appendChild(s); b.appendChild(d); b.appendChild(t);
+    return b;
+  }
+  function renderW() {
+    wRows.textContent = "";
+    if (!layouts.length) { wRows.hidden = true; wEmpty.hidden = false;
+      wEmpty.textContent = num("wall") === null ? "Type a wall width above and the runs appear here."
+        : "Nothing closes within three inches with that filler. Try a smaller minimum filler, or check the wall number."; return; }
+    var curL = layouts.filter(function (L) { return L.key === pickW; })[0];
+    if (!curL || curL.bad) pickW = layouts[0].key;
+    layouts.forEach(function (L) {
+      var main = frac(L.eachF) + " + " + L.parts.join(" + ") + " + " + frac(L.eachF) + " = " + frac(L.wall);
+      var sub = (L.parts.every(function (p) { return p === L.parts[0]; }) ? "one width · " : L.sym ? "symmetric · " : "") + "filler " + frac(L.eachF)
+        + (L.left > 0 ? " (absorbs " + frac(L.left) + ")" : "") + (L.note ? " · " + L.note : "");
+      wRows.appendChild(row(L.key, main, sub, L.key === pickW, L.bad));
+    });
+    wRows.hidden = false; wEmpty.hidden = true;
+  }
+  function renderH() {
+    hRows.textContent = "";
+    if (!stacks.length) { hRows.hidden = true; hEmpty.hidden = false;
+      hEmpty.textContent = num("ceil") === null ? "Type a ceiling height and the stacks appear here."
+        : "No tall-plus-upper stack lands within four inches of that ceiling. Odd ceiling — plan a soffit, or a base-and-upper run instead."; return; }
+    var curS = stacks.filter(function (S) { return S.key === pickH; })[0];
+    if (!curS || curS.bad) pickH = stacks[0].key;
+    stacks.forEach(function (S) {
+      var main = S.u ? S.t + " tall + " + S.u + " upper = " + (S.t + S.u) : S.t + " tall alone";
+      var sub = (S.gap < 0.0001 ? "0" : frac(S.gap)) + " to ceiling → " + S.how + (S.note ? " · " + S.note : "");
+      hRows.appendChild(row(S.key, main, sub, S.key === pickH, S.bad));
+    });
+    hRows.hidden = false; hEmpty.hidden = true;
+  }
+  function cur() {
+    var L = layouts.filter(function (x) { return x.key === pickW; })[0];
+    var S = stacks.filter(function (x) { return x.key === pickH; })[0];
+    return { L: L, S: S };
+  }
+  function renderSpec() {
+    var c = cur(), L = c.L, S = c.S;
+    if (!L || !S) { spec.hidden = true; return; }
+    var W = win();
+    $("specLine").textContent = "Width: " + frac(L.eachF) + " filler + " + L.parts.join(" + ") + " + " + frac(L.eachF)
+      + " filler = " + frac(L.wall) + ". Order 3-inch fillers; scribe to " + frac(L.eachF) + ".";
+    $("specStack").textContent = "Height: " + (S.u ? S.t + "-inch talls with " + S.u + "-inch uppers on top = " + (S.t + S.u) : S.t + "-inch talls")
+      + ", " + (S.gap < 0.0001 ? "dead on the ceiling" : frac(S.gap) + " short, closed with " + S.how) + ".";
+    var wl = "";
+    if (W) {
+      wl = L.note ? L.note : "";
+      if (W.sill !== null) wl += (wl ? " " : "") + "A 36-inch counter leaves " + frac(W.sill - 36) + " of wall under the window.";
+      if (S.note) wl += " " + S.note;
+    }
+    $("specWin").textContent = wl; $("specWin").hidden = !wl;
+    var ul = $("specSearch"); ul.textContent = "";
+    var open = -1;
+    if (W) { var x = L.eachF; L.parts.forEach(function (p, i) { if (W.r > x && W.l < x + p && open < 0) open = i; x += p; }); }
+    var lines = [];
+    L.parts.forEach(function (p, i) {
+      if (i === open) lines.push([p + " in drawer base cabinet", "open bay"]);
+      else lines.push([p + "x" + S.t + "x24 pantry cabinet", "tall — confirm width FIRST"]);
+    });
+    if (S.u) {
+      var seenW = {};
+      L.parts.forEach(function (p) {
+        if (seenW[p]) return; seenW[p] = 1;
+        var qty = L.parts.filter(function (q) { return q === p; }).length;
+        lines.push([p + "x" + S.u + " wall cabinet 24 in deep", "upper" + (qty > 1 ? " ×" + qty : "")]);
+      });
+    }
+    lines.push(["cabinet filler 3 x 96", "2 per side over 96"]);
+    lines.push(["cabinet toe kick 96", "often not included"]);
+    lines.push([S.gap <= 1 ? "cabinet scribe molding 96" : "cabinet crown molding 96", "ceiling gap"]);
+    lines.forEach(function (l) {
+      var li = document.createElement("li"); li.textContent = l[0] + " ";
+      var i = document.createElement("i"); i.textContent = "— " + l[1]; li.appendChild(i); ul.appendChild(li);
+    });
+    spec.hidden = false;
+  }
+
+  function refresh() {
+    computeLayouts(); computeStacks();
+    renderW(); renderH(); renderSpec();
+    count.textContent = String(layouts.length);
+    save();
+  }
+
+  wRows.addEventListener("click", function (e) {
+    var b = e.target.closest(".row"); if (!b) return; pickW = b.dataset.key; renderW(); renderSpec(); save();
+  });
+  hRows.addEventListener("click", function (e) {
+    var b = e.target.closest(".row"); if (!b) return; pickH = b.dataset.key; renderH(); renderSpec(); save();
+  });
+
+  function save() {
+    try {
+      var d = { v: {}, pw: pickW, ph: pickH };
+      inputs.forEach(function (el) { d.v[el.id] = el.value; });
+      // sessionStorage, NOT localStorage — same promise as tools 01-07.
+      sessionStorage.setItem(KEY, JSON.stringify(d));
+    } catch (e) {}
+  }
+  function load() {
+    try {
+      var d = JSON.parse(sessionStorage.getItem(KEY) || "null"); if (!d) return;
+      inputs.forEach(function (el) { if (d.v && d.v[el.id]) el.value = d.v[el.id]; });
+      pickW = d.pw || null; pickH = d.ph || null;
+    } catch (e) {}
+  }
+
+  inputs.forEach(function (el) { el.addEventListener("input", refresh); });
+  $("printBtn").addEventListener("click", function () { window.print(); });
+
+  function copyText(text, okMsg) {
+    function fallback() {
+      var t = document.createElement("textarea"); t.value = text;
+      t.style.position = "fixed"; t.style.opacity = "0"; document.body.appendChild(t); t.select();
+      try { document.execCommand("copy"); } catch (e) {} document.body.removeChild(t);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () { said.textContent = okMsg; },
+        function () { fallback(); said.textContent = okMsg; });
+    } else { fallback(); said.textContent = okMsg; }
+  }
+  function runText() {
+    var c = cur(); if (!c.L || !c.S) return null;
+    var out = ["THE CABINET RUN — " + new Date().toLocaleDateString(), "",
+      $("specLine").textContent, $("specStack").textContent];
+    if (!$("specWin").hidden && $("specWin").textContent) out.push($("specWin").textContent);
+    out.push("", "Search, in order:");
+    [].forEach.call($("specSearch").children, function (li) { out.push("- " + li.textContent); });
+    var who = $("callName").value.trim(); if (who) out.push("", "Call: " + who);
+    out.push("", "The Cabinet Run — @nicksdadhax");
+    return out.join("\n");
+  }
+  $("copyBtn").addEventListener("click", function () {
+    var t = runText(); if (!t) { said.textContent = "Type a wall and a ceiling first."; return; }
+    copyText(t, "Copied — take it to the desk.");
+  });
+  $("promptBtn").addEventListener("click", function () {
+    var wall = num("wall"), c = num("ceil");
+    if (wall === null || c === null) { said.textContent = "Type a wall and a ceiling first — the prompt is built from them."; return; }
+    var cu = cur(), W = win();
+    var text = [
+      "You are a master cabinet installer reviewing a first-timer's plan. Blunt, specific,",
+      "no hype. If a number below can't be true, say so. Never invent a product or price —",
+      "tell me what to verify at the store instead.",
+      "",
+      "The wall: " + frac(wall) + " in wide, ceiling " + frac(c) + " in.",
+      W ? "Window: " + frac(W.w) + " wide, left edge " + frac(W.l) + " from the left wall"
+          + (W.head !== null ? ", top at " + frac(W.head) + " AFF" : "") + (W.sill !== null ? ", bottom at " + frac(W.sill) + " AFF" : "") + "." : "No window.",
+      cu.L ? "Proposed widths: " + frac(cu.L.eachF) + " filler + " + cu.L.parts.join(" + ") + " + " + frac(cu.L.eachF) + " filler." : "",
+      cu.S ? "Proposed stack: " + cu.S.t + " tall" + (cu.S.u ? " + " + cu.S.u + " upper" : "") + ", " + frac(cu.S.gap) + " gap to ceiling." : "",
+      "",
+      "Do this, in order:",
+      "1. Check the arithmetic and the seams. Tell me anything that doesn't close.",
+      "2. List every clearance I must tape before ordering: doors and casings on the",
+      "   side walls within 24 inches of the corner, outlets and switches that a 24-inch",
+      "   deep box would bury, vents, the ceiling at both ends and the middle.",
+      "3. Give me the install sequence for two people in one weekend, including what to",
+      "   remove from the boxes before lifting and how to anchor into studs.",
+      "4. Name the three ways this plan most often fails at the store — stock widths that",
+      "   don't exist in a line, depth mismatches, fillers too short for the ceiling — and",
+      "   the one question to ask the desk for each.",
+      "5. If I'm painting: what to test on a scrap before I paint the boxes.",
+      "",
+      "Keep the whole thing under one page.",
+      "",
+      "(Built with The Cabinet Run — @nicksdadhax)"
+    ].filter(function (l) { return l !== ""; }).join("\n");
+    copyText(text, "Prompt copied — paste it into the AI you already use.");
+  });
+  $("resetBtn").addEventListener("click", function () {
+    inputs.forEach(function (el) { el.value = ""; }); pickW = pickH = null;
+    try { sessionStorage.removeItem(KEY); } catch (e) {}
+    refresh(); said.textContent = "Cleared."; window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  load(); refresh();
+})();
+</script>
+
+</body>
+</html>

@@ -339,3 +339,40 @@ took its slot. Read-next chain now runs 05 -> 06 -> 02 (the rhythm confession
 hands off to neuroplasticity on purpose — same machinery, pointed the other way).
 The unused `a.card.devil` styles stay in toolbox.html for the next sealed-door
 pre-launch — the teaser pattern is worth repeating.
+
+## Tool 09 — The Cabinet Run (built 2026-09-05 as 08, renumbered 09 on 2026-09-14; the flip is Nick's)
+
+`cabinet-run.html`. Born the same day out of the mudroom build: a 93 3/4" wall, a
+9-ft ceiling, an AI chat that invented a "window nook" off two numbers on a sketch,
+and a rendering that looked finished. The tape closed it — 1 7/8 + 30 + 30 + 30 +
+1 7/8 = 93 3/4, 90 + 18 = 108 — and then the house brand turned out not to make
+that pantry in 30 wide. The tool does the part that saved the project: wall +
+ceiling (+ optional window) in, every stock-width composition that closes within
+3" of slack out, ranked (uniform widths first, then symmetric, fewest boxes, least
+slack), plus tall+upper stacks that land within 4" of the ceiling, the window
+flagged into its bay, and the search strings for the desk. Two rails: the 24-inch
+trap, and "confirm the tall width exists FIRST." Same privacy contract
+(sessionStorage, no network). Story beat is first-person, honest; closers are the
+boulder question and an AI-review prompt that forbids invented products/prices.
+
+Engine notes: compositions are ordered (so 24+36+30 and 30+36+24 both appear —
+that's intentional, a window can sit in either); a pick that turns "bad" after the
+window is entered re-picks the top row; `frac()` renders sixteenths. One real bug
+shipped and was caught in the audit pass: a self-referencing gcd closure that threw
+on any non-integer — if the page ever shows 0 runs for a sane wall, look there.
+
+Gate (2026-09-05, 375px, fully expanded with the mudroom numbers): **PASS, zero
+fails**, 1080 words / 6067px expanded — 05 parity (995 / 5965). Lists capped at 3
+rows each to get there; the first draft was 1795 / 8195 and failed TOO LONG.
+
+Chain: 07 → **08** → 04 (the rendering was Fantasy until the tape made it
+Testable). Toolbox card 08 live, 09 "in the shop"; index "New this week" points at
+08; 07's titleblock reads 07 of 08. Branch `tool-08-cabinet-run`, not pushed —
+Nick merges/pushes Tuesday after his own look.
+
+**Renumbered to Tool 09 (2026-09-14).** The Decision Forcer shipped as 08 on 9/08
+while this sat on its local branch. Rebased onto main as `tool-09-cabinet-run`:
+chain is now 07 → 08 Decision Forcer → **09 Cabinet Run** → 04 (08's tail used to
+loop to 02). Toolbox card 09 live, 10 "in the shop", index reads "Nine free tools"
+and "New this week" points at 09, and the titleblocks read 07/08/09 of 09. The
+branch-only notes above are kept as history.
