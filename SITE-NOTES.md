@@ -376,3 +376,85 @@ chain is now 07 → 08 Decision Forcer → **09 Cabinet Run** → 04 (08's tail 
 loop to 02). Toolbox card 09 live, 10 "in the shop", index reads "Nine free tools"
 and "New this week" points at 09, and the titleblocks read 07/08/09 of 09. The
 branch-only notes above are kept as history.
+
+## The four-beat open (Nick's direction, 2026-09-19) — and the check that enforces it
+
+Nick, looking at Tool 09: *"you don't have a very good intro that describes what the
+tool is doing for a person, and why it's useful... it's pointless to create tools that
+nobody uses, and nobody will use a tool if they don't understand what it's for."*
+
+He was right, and the uncomfortable part is that **the doctrine for this was already
+on this page.** "The reader is the hero, Nick is the guide" has been the thesis since
+August: *a character has a problem, meets a guide, gets a plan, and is called to act.*
+Tool 09 shipped opening with an aphorism, then a definition of the mechanism, then
+Nick's own story — the reader's problem never stated, and Nick's life promoted from
+**credential** to **subject**, which is the exact inversion the thesis warns about.
+
+So this is not new doctrine. It is the old doctrine given an **order** and a **meter**.
+
+### The order — all four, before the first input
+
+1. **PROBLEM** — their situation, in their words. A pain they already have, not one
+   the page has to teach them to feel first.
+2. **PRICE** — what it costs to keep guessing. Stakes, and why now.
+3. **PROMISE** — the artifact they walk out holding. A thing, never an adjective.
+4. **PROOF** — it working on real numbers, *before* anything is asked of them. The
+   council's own Value Architect lens already demanded this: *does the page look like
+   it works in the first five seconds? Bought with proof and a visible mechanism,
+   never with adjectives.*
+
+Then the two rules that were already standard: the first input costs under ten
+seconds, and the answer leaves the page (the boulder question, the AI prompt, a
+copyable output).
+
+**The mechanism definition is beat five, not beat one.** "Stock cabinets come in a
+handful of widths. A wall comes in one" is a good line. It just cannot be the first
+thing a stranger reads, because it explains a thing they have not yet agreed to care
+about.
+
+### The meter — `_tools/web/intro_audit.py`
+
+```
+python3 _tools/web/intro_audit.py --live        # all live tools
+python3 _tools/web/intro_audit.py page.html
+python3 _tools/web/intro_audit.py --selftest
+```
+
+It measures the mechanical shadow of the four beats: how much framing exists before
+the first input, whether the opening addresses a reader at all, second-person density
+across the intro, and whether a concrete number appears before the ask. It cannot
+judge whether the problem named is the *right* one — that judgment stays with the
+Sunday routine, exactly as `council.py` leaves scoring to Claude.
+
+**First run, 2026-09-19, ranked by second-person density:**
+
+| Page | density | note |
+|---|---|---|
+| 7-layers-of-why | 0.092 | the benchmark |
+| outwit-the-devil | 0.061 | |
+| start-with-ai | 0.053 | but 972 words before the tool — a wall |
+| side-gig-llc | 0.050 | |
+| decision-forcer | 0.049 | no proof number |
+| stop-block | 0.043 | no proof number |
+| fact-testable-fantasy | 0.036 | |
+| neuroplasticity | 0.033 | 550 words — a wall |
+| **cabinet-run** | **0.023** | **worst on the site**, and its only "you"s were in the privacy notice |
+
+Tool 09 was measurably the least reader-addressed page of the nine — a quarter of Tool
+01's rate. Nick caught that by eye. After the rewrite: **0.038, clean pass.**
+
+### The check was wrong first, and got tuned — not skipped
+
+Its first version counted the nav as opening copy, so every page "opened" with
+*@nicksdadhax Tool 09 free no gate Home The Toolbox The Log* — twenty words of
+furniture that masked the exact defect it was built to find. It scored Tool 09 a PASS.
+Chrome is now stripped before anything is measured.
+
+Same rule `audit.js` and `aeo_audit.py` both live under: **when a check misses the real
+one, fix the check and write down why.** Skipping its output is what is not allowed.
+
+### Still owed on the older pages
+
+`start-with-ai` (972 words) and `neuroplasticity` (550) bury their tools under walls of
+intro. Tools 06, 07 and 08 carry no concrete number before the ask. None of these are
+FAILs; all of them are the retrofit queue.
