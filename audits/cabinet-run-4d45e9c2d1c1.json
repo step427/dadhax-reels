@@ -1,0 +1,21 @@
+{
+ "page": "cabinet-run.html",
+ "sha": "4d45e9c2d1c1",
+ "verdict": "PASS WITH WARNINGS",
+ "fail": [],
+ "warn": [
+  "LINE LENGTH: 33 chars/line on mobile (aim 35-45).",
+  "LONG: 6.1 phone screens of scroll."
+ ],
+ "stats": {
+  "viewport": "375x812",
+  "charsPerLine": 33,
+  "words": 779,
+  "pageHeightPx": 4975,
+  "screens": 6.1,
+  "longestBlockWords": 0,
+  "links": 9
+ },
+ "fills": {},
+ "audited": "2026-09-19T15:44:27+00:00"
+}

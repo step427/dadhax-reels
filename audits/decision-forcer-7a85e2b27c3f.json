@@ -1,0 +1,23 @@
+{
+ "page": "decision-forcer.html",
+ "sha": "7a85e2b27c3f",
+ "verdict": "PASS WITH WARNINGS",
+ "fail": [],
+ "warn": [
+  "LINE LENGTH: 33 chars/line on mobile (aim 35-45).",
+  "LONG: 6.9 phone screens of scroll.",
+  "DENSE: 1042 words. A free sheet nobody finishes is the same as no sheet.",
+  "CONTRAST: rgb(232, 80, 44) on rgba(232, 80, 44, 0.08) = 1.00:1 (want 4.5:1)."
+ ],
+ "stats": {
+  "viewport": "375x812",
+  "charsPerLine": 33,
+  "words": 1042,
+  "pageHeightPx": 5587,
+  "screens": 6.9,
+  "longestBlockWords": 0,
+  "links": 9
+ },
+ "fills": {},
+ "audited": "2026-09-19T15:44:30+00:00"
+}
