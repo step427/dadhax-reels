@@ -16,7 +16,7 @@ The only posts whose hour the publisher actually chose — so the only ones that
 |---|---|---|---|---|
 | 01:00 | 1 | 0.0 | 0.0 | 0 |
 | 02:00 | 1 | 0.0 | 0.0 | 0 |
-| 03:00 | 17 | 1.0 | 2.0 | 18 |
+| 03:00 | 17 | 1.0 | 2.1 | 18 |
 | 04:00 | 2 | 0.0 | 0.0 | 0 |
 | 05:00 | 2 | 8.0 | 8.0 | 15 |
 | 09:00 | 16 | 2.0 | 5.1 | 26 |
@@ -41,7 +41,7 @@ The only posts whose hour the publisher actually chose — so the only ones that
 | Wed | 19 | 3.0 | 4.3 | 19 |
 | Thu | 18 | 1.0 | 3.0 | 26 |
 | Fri | 23 | 1.0 | 5.2 | 37 |
-| Sat | 19 | 2.0 | 4.8 | 31 |
+| Sat | 19 | 2.0 | 4.9 | 31 |
 | Sun | 18 | 0.5 | 4.0 | 23 |
 
 ### Fresh vs back-catalog
@@ -65,7 +65,7 @@ The only posts whose hour the publisher actually chose — so the only ones that
 | back-catalog @ 20:00 | 1 | 10.0 | 10.0 | 10 |
 | fresh @ 01:00 | 1 | 0.0 | 0.0 | 0 |
 | fresh @ 02:00 | 1 | 0.0 | 0.0 | 0 |
-| fresh @ 03:00 | 17 | 1.0 | 2.0 | 18 |
+| fresh @ 03:00 | 17 | 1.0 | 2.1 | 18 |
 | fresh @ 04:00 | 2 | 0.0 | 0.0 | 0 |
 | fresh @ 05:00 | 2 | 8.0 | 8.0 | 15 |
 | fresh @ 09:00 | 14 | 2.0 | 5.0 | 26 |
