@@ -1748,7 +1748,7 @@
     {
       "file": "ig-0914-lesser.mp4",
       "title": "My past pain, at a lesser degree",
-      "status": "pending",
+      "status": "posted",
       "earliest": "2026-09-19",
       "caption": "Hey Dad,\n\nI post one of these every day. Not because I've got it figured out — because I already paid for the lessons, and some of them cost me years.\n\nIf you're on the same wavelength, I'd rather you get the benefit at a lesser degree than the one I paid.\n\nThat's the trade.\n\nHere's how to make it stick, today: pick one thing that cost you something, and hand the short version to one person this week. Not a lecture. Shoulder to shoulder, over a third thing — a build, a drive, a game of catch. That's where it actually lands.\n\nOne of these daily. Follow and it's there first.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
       "arc_slot": "Sat 9/19 6p",
@@ -1760,7 +1760,10 @@
       "sam_verdict": "POST 2026-09-19",
       "topic_class": "talk",
       "source_raw": "20260914_104941.mp4",
-      "cover_ms": 600
+      "cover_ms": 600,
+      "permalink": "https://www.instagram.com/reel/DdgMY5OkvyB/",
+      "posted_at": "2026-09-20T03:49:36-05:00",
+      "fb_page_video_id": "1097957836025077"
     }
   ]
 }
