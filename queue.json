@@ -1828,7 +1828,7 @@
     {
       "file": "ig-0921-purpose.mp4",
       "title": "Kids find purpose every day. Then we grow up.",
-      "status": "pending",
+      "status": "posted",
       "earliest": "2026-09-21",
       "caption": "Hey Dad,\n\nI've been reading about purpose lately. Some say you discover it. Some say you decide it.\n\nThe common thread: they compare it to how a child sees the world, and how we lose that as we get older.\n\nA kid finds meaning and purpose every single day.\n\nTry this today: watch your kid for ten minutes and notice what they get lit up about. Then ask yourself when you last felt that about anything.\n\nI post the one I wish somebody had told me. Every day. Follow so you don't have to go looking for it.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
       "arc_slot": "OFF-ARC cover",
@@ -1839,7 +1839,10 @@
       ],
       "sam_verdict": "POST 2026-09-21",
       "topic_class": "talk",
-      "source_raw": "20260831_154949.mp4"
+      "source_raw": "20260831_154949.mp4",
+      "permalink": "https://www.instagram.com/reel/DdkL_fglBQV/",
+      "posted_at": "2026-09-21T17:03:07-05:00",
+      "fb_page_video_id": "1763507678305781"
     },
     {
       "file": "ig-yt-blade.mp4",
