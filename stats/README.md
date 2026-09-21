@@ -17,11 +17,11 @@ The only posts whose hour the publisher actually chose — so the only ones that
 | 01:00 | 1 | 0.0 | 0.0 | 0 |
 | 02:00 | 1 | 0.0 | 0.0 | 0 |
 | 03:00 | 18 | 1.0 | 2.0 | 18 |
-| 04:00 | 3 | 0.0 | 0.0 | 0 |
+| 04:00 | 3 | 0.0 | 0.7 | 2 |
 | 05:00 | 2 | 8.0 | 8.0 | 15 |
 | 09:00 | 16 | 2.0 | 5.1 | 26 |
 | 11:00 | 2 | 1.0 | 1.0 | 2 |
-| 12:00 | 18 | 1.0 | 4.4 | 37 |
+| 12:00 | 18 | 1.0 | 4.5 | 38 |
 | 13:00 | 14 | 4.0 | 9.4 | 31 |
 | 14:00 | 11 | 2.0 | 5.8 | 21 |
 | 15:00 | 5 | 3.0 | 4.2 | 11 |
@@ -29,41 +29,41 @@ The only posts whose hour the publisher actually chose — so the only ones that
 | 17:00 | 1 | 2.0 | 2.0 | 2 |
 | 18:00 | 20 | 2.0 | 3.7 | 26 |
 | 19:00 | 3 | 1.0 | 0.7 | 1 |
-| 20:00 | 19 | 0.0 | 2.4 | 16 |
+| 20:00 | 19 | 0.0 | 2.5 | 16 |
 | 23:00 | 1 | 0.0 | 0.0 | 0 |
 
 ### By weekday
 
 | Day | Posts | Median | Mean | Best |
 |---|---|---|---|---|
-| Mon | 19 | 2.0 | 2.9 | 15 |
+| Mon | 19 | 2.0 | 3.0 | 15 |
 | Tue | 18 | 2.0 | 4.3 | 21 |
 | Wed | 19 | 3.0 | 4.3 | 19 |
 | Thu | 18 | 1.0 | 3.0 | 26 |
-| Fri | 23 | 1.0 | 5.2 | 37 |
+| Fri | 23 | 1.0 | 5.3 | 38 |
 | Sat | 21 | 2.0 | 4.6 | 31 |
-| Sun | 21 | 1.0 | 3.7 | 23 |
+| Sun | 21 | 1.0 | 3.8 | 23 |
 
 ### Fresh vs back-catalog
 
 | Kind | Posts | Median | Mean | Best |
 |---|---|---|---|---|
-| back-catalog | 39 | 3.0 | 7.2 | 37 |
+| back-catalog | 39 | 3.0 | 7.3 | 38 |
 | fresh | 100 | 1.0 | 2.8 | 26 |
 
 ### Hour x kind — which one is actually driving it
 
 | Bucket | Posts | Median | Mean | Best |
 |---|---|---|---|---|
-| back-catalog @ 04:00 | 1 | 0.0 | 0.0 | 0 |
+| back-catalog @ 04:00 | 1 | 2.0 | 2.0 | 2 |
 | back-catalog @ 09:00 | 2 | 6.0 | 6.0 | 10 |
-| back-catalog @ 12:00 | 5 | 5.0 | 10.8 | 37 |
+| back-catalog @ 12:00 | 5 | 5.0 | 11.0 | 38 |
 | back-catalog @ 13:00 | 12 | 6.5 | 10.5 | 31 |
 | back-catalog @ 14:00 | 8 | 4.0 | 6.9 | 21 |
 | back-catalog @ 15:00 | 3 | 3.0 | 5.0 | 11 |
 | back-catalog @ 16:00 | 2 | 0.0 | 0.0 | 0 |
 | back-catalog @ 18:00 | 5 | 2.0 | 2.0 | 5 |
-| back-catalog @ 20:00 | 1 | 10.0 | 10.0 | 10 |
+| back-catalog @ 20:00 | 1 | 11.0 | 11.0 | 11 |
 | fresh @ 01:00 | 1 | 0.0 | 0.0 | 0 |
 | fresh @ 02:00 | 1 | 0.0 | 0.0 | 0 |
 | fresh @ 03:00 | 18 | 1.0 | 2.0 | 18 |
@@ -79,7 +79,7 @@ The only posts whose hour the publisher actually chose — so the only ones that
 | fresh @ 17:00 | 1 | 2.0 | 2.0 | 2 |
 | fresh @ 18:00 | 15 | 3.0 | 4.3 | 26 |
 | fresh @ 19:00 | 3 | 1.0 | 0.7 | 1 |
-| fresh @ 20:00 | 18 | 0.0 | 1.9 | 16 |
+| fresh @ 20:00 | 18 | 0.0 | 2.0 | 16 |
 | fresh @ 23:00 | 1 | 0.0 | 0.0 | 0 |
 
 An empty cell is not a zero — it is an experiment nobody has run yet.
@@ -94,7 +94,7 @@ Mostly Nick posting by hand at whatever hour he was free, going back to 2024. Us
 | 01:00 | 5 | 0.0 | 0.4 | 2 |
 | 02:00 | 5 | 0.0 | 0.2 | 1 |
 | 03:00 | 20 | 1.0 | 1.8 | 18 |
-| 04:00 | 3 | 0.0 | 0.0 | 0 |
+| 04:00 | 3 | 0.0 | 0.7 | 2 |
 | 05:00 | 13 | 0.0 | 5.3 | 50 |
 | 06:00 | 16 | 0.0 | 0.5 | 3 |
 | 07:00 | 17 | 1.0 | 0.6 | 3 |
@@ -102,7 +102,7 @@ Mostly Nick posting by hand at whatever hour he was free, going back to 2024. Us
 | 09:00 | 39 | 2.0 | 3.8 | 33 |
 | 10:00 | 34 | 0.0 | 0.7 | 5 |
 | 11:00 | 22 | 0.0 | 0.9 | 5 |
-| 12:00 | 41 | 1.0 | 4.2 | 72 |
+| 12:00 | 41 | 1.0 | 4.3 | 72 |
 | 13:00 | 35 | 1.0 | 4.0 | 31 |
 | 14:00 | 41 | 1.0 | 2.4 | 21 |
 | 15:00 | 47 | 0.0 | 1.2 | 12 |
@@ -110,7 +110,7 @@ Mostly Nick posting by hand at whatever hour he was free, going back to 2024. Us
 | 17:00 | 47 | 0.0 | 1.1 | 12 |
 | 18:00 | 51 | 0.0 | 1.7 | 26 |
 | 19:00 | 27 | 1.0 | 1.4 | 16 |
-| 20:00 | 49 | 0.0 | 1.3 | 16 |
+| 20:00 | 49 | 0.0 | 1.4 | 16 |
 | 21:00 | 22 | 0.0 | 2.4 | 33 |
 | 22:00 | 19 | 1.0 | 2.9 | 42 |
 | 23:00 | 12 | 2.0 | 4.6 | 35 |
@@ -121,7 +121,7 @@ Mostly Nick posting by hand at whatever hour he was free, going back to 2024. Us
 | Tue | 67 | 0.0 | 2.0 | 21 |
 | Wed | 83 | 1.0 | 2.8 | 50 |
 | Thu | 82 | 0.5 | 2.1 | 35 |
-| Fri | 93 | 1.0 | 2.1 | 37 |
+| Fri | 93 | 1.0 | 2.1 | 38 |
 | Sat | 112 | 0.0 | 2.4 | 72 |
 | Sun | 133 | 0.0 | 1.6 | 42 |
 
@@ -132,7 +132,7 @@ Mostly Nick posting by hand at whatever hour he was free, going back to 2024. Us
 | 2025-11-22 12:47 | 72 | 0 | hand-posted | https://www.instagram.com/reel/DRXot5Bjzbn/ |
 | 2025-08-06 05:28 | 50 | 0 | hand-posted | https://www.instagram.com/reel/DNAppmhgQfr/ |
 | 2025-03-16 22:44 | 42 | 0 | hand-posted | https://www.instagram.com/reel/DHR_-19AZnk/ |
-| 2026-08-28 12:29 | 37 | 0 | back-catalog | https://www.instagram.com/reel/Dcl5mWqksgL/ |
+| 2026-08-28 12:29 | 38 | 0 | back-catalog | https://www.instagram.com/reel/Dcl5mWqksgL/ |
 | 2025-08-07 23:32 | 35 | 1 | hand-posted | https://www.instagram.com/reel/DNFKc9Rg0g8/ |
 | 2026-04-29 09:15 | 33 | 2 | hand-posted | https://www.instagram.com/p/DXt_QhvAU5A/ |
 | 2026-03-12 21:14 | 33 | 0 | hand-posted | https://www.instagram.com/reel/DVzrRdFDoPw/ |
