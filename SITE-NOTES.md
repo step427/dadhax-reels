@@ -458,3 +458,35 @@ one, fix the check and write down why.** Skipping its output is what is not allo
 `start-with-ai` (972 words) and `neuroplasticity` (550) bury their tools under walls of
 intro. Tools 06, 07 and 08 carry no concrete number before the ask. None of these are
 FAILs; all of them are the retrofit queue.
+
+## Tool 10 — The Cleat Wall (built 2026-09-22 by `dadhax-weekly-tool`, ships Tue 9/29)
+
+`cleat-wall.html`. Council pick 9/22 (83.9; runner-up Past Fine 75.9, banked). The
+implementation layer of `ARC-2026-09-20` ("the wall does the storing", easter egg **45**).
+Wall width in (everything else defaults: rails 16→80 every 8, studs 16 o.c., first stud
+at 16, 4" strips); out comes rails + heights, 45° rips, sheets, stud marks, screws, rail
+pieces split so **every joint lands on a stud**, and hanger/stop counts. Engine is a
+pure `plan()` function; pieces pack first-fit-decreasing into 96" strips with a 1/8"
+kerf. The dek's proof line (10-ft wall → 9 rails, 12 rips, 2 sheets, 144 screws) was
+computed by that engine; if the engine changes, re-run it and fix the sentence.
+
+Story beat is Nick's own words only: `ig-0908-cleat101` caption (90% of the garage, no
+shed), `ig-0912-cleathub` (office nook three years ago → backpack hub), `ig-yt-stop`
+(hangers fell off until the stop), cleat long-form yt:y9Z-vIpuY38 ("rip a 45 … whole
+garage in a weekend"), and his Gemini chat "Plywood Tool Holder Demo" (the AI drew the
+cleat backwards and forgot the mirroring piece). Rails: screws into studs only, "this page
+doesn't know your wall." Boulder question carries last week's "third thing".
+
+**Launch reel (S7 path 1):** repost `ig-0908-cleat101.mp4` "This is why I don't need a
+shed" (source_raw `20260907_120012.mp4`) under a catalog prefix, caption rewritten so the
+45 pays off and the one link is `https://step427.github.io/dadhax-reels/cleat-wall.html`.
+
+**Audit fill:** `--fill wall=120 bottom=16 top=80 gap=8 oc=16 first=16 strip=4 hang=30 callName=Sam`
+→ PASS, 984 words / 5636px expanded (09 is 1170 / 6557). The `.redline-note` background
+is the solid composite `#20130E` instead of `rgba(232,80,44,.08)` because the audit
+reads the translucent one as 1:1 contrast; same look. `decision-forcer.html` still
+carries that pre-existing CONTRAST warn (not touched beyond its titleblock).
+
+Chain: 09 → **10** → 04. Toolbox card 10 live, 11 "in the shop", index "Ten free tools"
++ "New this week" → 10, titleblocks 07/08/09/10 read "of 10" (01–05 still read "of 05",
+as they did at the 09 ship).
