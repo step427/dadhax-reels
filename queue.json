@@ -1960,6 +1960,22 @@
       "sam_verdict": "POST 2026-09-23",
       "topic_class": "utility",
       "source_raw": "yt:QMJwTDorok4"
+    },
+    {
+      "file": "ig-0924-demo.mp4",
+      "title": "The AI cut this one before we finished our coffee",
+      "status": "pending",
+      "earliest": "2026-09-24",
+      "caption": "Hey Dad,\n\n6 a.m. at the coffee shop. Two laptops, two coffees, and the same question every Thursday: what can we hand off to a machine this week.\n\nI shot this one sitting across from a buddy who's about to start his own channel. Before we finished our coffee the AI had cut it, captioned it, and dropped it in the queue. I never touched it.\n\nThat's the whole thing. The posting was never the work. The posting is the tax you pay on the work — and the tax is what makes people quit, because you skip it on the busy days, and the busy days are the ones worth showing.\n\nFollow and you'll watch a guy automate himself out of his own posting, one job at a time.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "Thu 9/24 9a",
+      "pix": "X",
+      "value_forms": [
+        "entertainment",
+        "idea"
+      ],
+      "sam_verdict": "in review 2026-09-24",
+      "topic_class": "meta",
+      "source_raw": "20260924_063018.mp4"
     }
   ]
 }
