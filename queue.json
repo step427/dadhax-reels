@@ -1964,7 +1964,7 @@
     {
       "file": "ig-0924-demo.mp4",
       "title": "Posting is the tax you pay on the work",
-      "status": "pending",
+      "status": "posted",
       "earliest": "2026-09-24",
       "caption": "Hey Dad,\n\n6 a.m. at the coffee shop. Two laptops and one conversation that keeps going: what can we hand off to a machine this week.\n\nI shot this one sitting across from a friend while I was showing him how it works. The machine cut it, captioned it and queued it — and then argued with me about half the cuts. I still had to decide what mattered. That part doesn't automate.\n\nBut the posting was never the work. The posting is the tax you pay on the work — and the tax is what makes people quit, because you skip it on the busy days, and the busy days are the ones worth showing.\n\nOne dad hack a day. Follow so you stop losing them.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
       "sam_verdict": "FIX r2 applied 2026-09-24",
@@ -1975,7 +1975,10 @@
         "alissamt64"
       ],
       "cover_ms": 6000,
-      "kind": "new"
+      "kind": "new",
+      "permalink": "https://www.instagram.com/reel/DdrhVvRgPL8/",
+      "posted_at": "2026-09-24T13:24:20-05:00",
+      "fb_page_video_id": "2112199946045549"
     },
     {
       "file": "ig-yt-gap.mp4",
