@@ -1963,23 +1963,19 @@
     },
     {
       "file": "ig-0924-demo.mp4",
-      "title": "The AI cut this one before we finished our coffee",
-      "status": "hold",
+      "title": "Posting is the tax you pay on the work",
+      "status": "pending",
       "earliest": "2026-09-24",
-      "caption": "Hey Dad,\n\n6 a.m. at the coffee shop. Two laptops, two coffees, and the same question every Thursday: what can we hand off to a machine this week.\n\nI shot this one sitting across from a buddy who's about to start his own channel. Before we finished our coffee the AI had cut it, captioned it, and dropped it in the queue. I never touched it.\n\nThat's the whole thing. The posting was never the work. The posting is the tax you pay on the work — and the tax is what makes people quit, because you skip it on the busy days, and the busy days are the ones worth showing.\n\nFollow and you'll watch a guy automate himself out of his own posting, one job at a time.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
-      "arc_slot": "Thu 9/24 9a",
-      "pix": "X",
-      "value_forms": [
-        "entertainment",
-        "idea"
-      ],
-      "sam_verdict": "FIX 2026-09-24 r1",
+      "caption": "Hey Dad,\n\n6 a.m. at the coffee shop. Two laptops and one conversation that keeps going: what can we hand off to a machine this week.\n\nI shot this one sitting across from a friend while I was showing him how it works. The machine cut it, captioned it and queued it — and then argued with me about half the cuts. I still had to decide what mattered. That part doesn't automate.\n\nBut the posting was never the work. The posting is the tax you pay on the work — and the tax is what makes people quit, because you skip it on the busy days, and the busy days are the ones worth showing.\n\nOne dad hack a day. Follow so you stop losing them.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "sam_verdict": "FIX r2 applied 2026-09-24",
       "topic_class": "meta",
       "source_raw": "20260924_063018.mp4",
       "collaborators": [
         "caseythompson719",
         "alissamt64"
-      ]
+      ],
+      "cover_ms": 6000,
+      "kind": "new"
     },
     {
       "file": "ig-yt-gap.mp4",
