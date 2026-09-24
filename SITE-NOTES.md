@@ -481,7 +481,7 @@ doesn't know your wall." Boulder question carries last week's "third thing".
 shed" (source_raw `20260907_120012.mp4`) under a catalog prefix, caption rewritten so the
 45 pays off and the one link is `https://step427.github.io/dadhax-reels/cleat-wall.html`.
 
-**Audit fill:** `--fill wall=120 bottom=16 top=80 gap=8 oc=16 first=16 strip=4 hang=30 callName=Sam`
+**Audit fills (Tool 10):** `--fill wall=120 bottom=16 top=80 gap=8 oc=16 first=16 strip=4 hang=30 callName=Sam` — every input the page needs set before its real output exists on screen. Never a real person's name or a sensitive number.
 → PASS, 984 words / 5636px expanded (09 is 1170 / 6557). The `.redline-note` background
 is the solid composite `#20130E` instead of `rgba(232,80,44,.08)` because the audit
 reads the translucent one as 1:1 contrast; same look. `decision-forcer.html` still
