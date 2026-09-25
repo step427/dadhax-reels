@@ -2017,6 +2017,63 @@
       "sam_verdict": "POST 2026-09-24",
       "topic_class": "utility",
       "source_raw": "yt:QMJwTDorok4"
+    },
+    {
+      "file": "ig-0925-walk.mp4",
+      "kind": "new",
+      "status": "pending",
+      "earliest": "2026-09-25",
+      "title": "Stop fighting the good fight alone",
+      "caption": "Hey Dad,\n\nNick here with Nick.\n\nHe's a capital raiser who loves giving back, and he's on a similar journey to mine. He invited me out for a walk and coffee this morning. We talked more about spirituality than anything else. That's just how it goes.\n\nThere are people out there fighting the good fight and putting one foot in front of the other. We quite literally did that today, together. I walked into the rest of the day with more power in it.\n\nThere's one of these every day. Follow so you're getting them.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "cover_ms": 12922,
+      "topic_class": "talk",
+      "source_raw": "20260814_095616.mp4",
+      "arc_slot": "Fri 9/25 9a OFF-ARC cover (fresh pool was 0 on 9/25)",
+      "pix": "I",
+      "value_forms": [
+        "entertainment",
+        "idea"
+      ],
+      "sam_verdict": "POST 2026-09-25",
+      "cut_by": "cloud session 2026-09-25 (Rook captures/2026-09-25-cloud-cut-ten-fresh-reels.md)"
+    },
+    {
+      "file": "ig-0925-child.mp4",
+      "kind": "new",
+      "status": "pending",
+      "earliest": "2026-09-25",
+      "title": "Every employee is somebody's child",
+      "caption": "Hey Dad,\n\nThis one's from Leaders Eat Last: the gap between millennials and baby boomers. The example in the book is Bob Chapman, who runs a Midwestern manufacturing company.\n\nHe was maybe the one baby boomer in that era who closed the gap. Not resentment for the millennials, not acting like a baby boomer, but realizing that's somebody's child.\n\nJust like how he handed off his daughter on her wedding day and wanted to make sure she was well cared for. She was safe. He started applying that concept to business.\n\nSkills you learn as a parent, empathy, putting your kids first. They translate to business.\n\nOne dad hack a day. Follow so you stop losing the next one.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "cover_ms": 14560,
+      "topic_class": "talk",
+      "source_raw": "20260822_115924.mp4",
+      "arc_slot": "Sat 9/26 9a OFF-ARC cover (fresh pool was 0 on 9/25)",
+      "pix": "I",
+      "value_forms": [
+        "idea",
+        "entertainment"
+      ],
+      "sam_verdict": "POST 2026-09-25",
+      "cut_by": "cloud session 2026-09-25 (Rook captures/2026-09-25-cloud-cut-ten-fresh-reels.md)"
+    },
+    {
+      "file": "ig-0925-focus.mp4",
+      "kind": "new",
+      "status": "pending",
+      "earliest": "2026-09-25",
+      "title": "Stop focusing on criticism",
+      "caption": "Hey Dad,\n\nIt's still hard to get criticism.\n\nBut what you focus on, that's what comes up in your life. So don't focus on criticism. Take the same thing, flip it, and focus on growth.\n\nI post the one I wish somebody had told me. Every day. Follow so it finds you.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "cover_ms": 10296,
+      "topic_class": "talk",
+      "source_raw": "20260909_093045.mp4",
+      "arc_slot": "Sun 9/27 9a OFF-ARC cover (fresh pool was 0 on 9/25)",
+      "pix": "I",
+      "value_forms": [
+        "idea",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-09-25",
+      "cut_by": "cloud session 2026-09-25 (Rook captures/2026-09-25-cloud-cut-ten-fresh-reels.md)"
     }
   ]
 }
