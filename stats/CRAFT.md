@@ -10,11 +10,11 @@ _Share of the reel actually watched. This is the hook test._
 |---|---|---|---|---|
 | utility | 73 | 41% | 43% | 100% |
 | meta | 9 | 34% | 29% | 50% |
-| talk | 75 | 26% | 27% | 53% |
+| talk | 75 | 27% | 27% | 54% |
 
 | duration | n | median | mean | best |
 |---|---|---|---|---|
-| under 20s | 47 | 45% | 49% | 100% |
+| under 20s | 47 | 48% | 50% | 100% |
 | 20-35s | 43 | 31% | 34% | 67% |
 | 35-50s | 34 | 27% | 29% | 56% |
 | 50-70s | 22 | 17% | 23% | 69% |
@@ -23,11 +23,11 @@ _Share of the reel actually watched. This is the hook test._
 | fresh/catalog | n | median | mean | best |
 |---|---|---|---|---|
 | back-catalog | 49 | 41% | 44% | 100% |
-| fresh | 108 | 29% | 30% | 69% |
+| fresh | 108 | 30% | 30% | 69% |
 
 | cover | n | median | mean | best |
 |---|---|---|---|---|
-| custom cover | 77 | 33% | 35% | 81% |
+| custom cover | 77 | 34% | 36% | 81% |
 | default cover | 80 | 31% | 34% | 100% |
 
 | collab | n | median | mean | best |
@@ -39,44 +39,44 @@ _Share of the reel actually watched. This is the hook test._
 
 | topic | n | median | mean | best |
 |---|---|---|---|---|
-| utility | 73 | 312.0 | 752.9 | 2788.0 |
+| utility | 73 | 312.0 | 753.3 | 2790.0 |
 | meta | 9 | 153.0 | 167.8 | 289.0 |
-| talk | 75 | 123.0 | 127.5 | 1339.0 |
+| talk | 75 | 127.0 | 129.8 | 1339.0 |
 
 | duration | n | median | mean | best |
 |---|---|---|---|---|
-| under 20s | 47 | 194.0 | 616.0 | 2549.0 |
-| 35-50s | 34 | 159.5 | 454.4 | 2788.0 |
+| under 20s | 47 | 194.0 | 620.1 | 2550.0 |
+| 35-50s | 34 | 159.5 | 454.5 | 2790.0 |
 | 50-70s | 22 | 147.0 | 287.8 | 1571.0 |
 | over 70s | 11 | 145.0 | 139.8 | 494.0 |
-| 20-35s | 43 | 142.0 | 320.0 | 1847.0 |
+| 20-35s | 43 | 143.0 | 320.1 | 1847.0 |
 
 | fresh/catalog | n | median | mean | best |
 |---|---|---|---|---|
-| back-catalog | 49 | 268.0 | 779.9 | 2788.0 |
-| fresh | 108 | 138.0 | 257.6 | 1841.0 |
+| back-catalog | 49 | 277.0 | 780.5 | 2790.0 |
+| fresh | 108 | 139.0 | 259.1 | 1841.0 |
 
 | cover | n | median | mean | best |
 |---|---|---|---|---|
-| default cover | 80 | 162.0 | 507.4 | 2788.0 |
-| custom cover | 77 | 148.0 | 330.5 | 2379.0 |
+| default cover | 80 | 162.0 | 507.7 | 2790.0 |
+| custom cover | 77 | 148.0 | 332.7 | 2380.0 |
 
 | collab | n | median | mean | best |
 |---|---|---|---|---|
 | collab | 6 | 193.0 | 416.7 | 1532.0 |
-| solo | 151 | 152.0 | 420.8 | 2788.0 |
+| solo | 151 | 152.0 | 422.1 | 2790.0 |
 
 ## By reach
 
 | topic | n | median | mean | best |
 |---|---|---|---|---|
-| utility | 73 | 262.0 | 601.6 | 2376.0 |
+| utility | 73 | 262.0 | 602.0 | 2376.0 |
 | meta | 9 | 131.0 | 131.9 | 219.0 |
-| talk | 75 | 109.0 | 108.9 | 1191.0 |
+| talk | 75 | 111.0 | 110.8 | 1191.0 |
 
 | duration | n | median | mean | best |
 |---|---|---|---|---|
-| under 20s | 47 | 166.0 | 475.9 | 1868.0 |
+| under 20s | 47 | 166.0 | 479.5 | 1869.0 |
 | 35-50s | 34 | 135.5 | 380.1 | 2376.0 |
 | 50-70s | 22 | 134.0 | 241.9 | 1316.0 |
 | over 70s | 11 | 129.0 | 124.0 | 446.0 |
@@ -84,18 +84,18 @@ _Share of the reel actually watched. This is the hook test._
 
 | fresh/catalog | n | median | mean | best |
 |---|---|---|---|---|
-| back-catalog | 49 | 225.0 | 616.0 | 2376.0 |
-| fresh | 108 | 118.5 | 213.8 | 1430.0 |
+| back-catalog | 49 | 227.0 | 616.5 | 2376.0 |
+| fresh | 108 | 119.0 | 215.1 | 1430.0 |
 
 | cover | n | median | mean | best |
 |---|---|---|---|---|
-| default cover | 80 | 145.0 | 408.9 | 2376.0 |
-| custom cover | 77 | 122.0 | 267.1 | 1746.0 |
+| default cover | 80 | 145.0 | 409.1 | 2376.0 |
+| custom cover | 77 | 124.0 | 269.0 | 1749.0 |
 
 | collab | n | median | mean | best |
 |---|---|---|---|---|
 | collab | 6 | 152.5 | 335.8 | 1260.0 |
-| solo | 151 | 133.0 | 339.5 | 2376.0 |
+| solo | 151 | 133.0 | 340.6 | 2376.0 |
 
 ## By saves
 

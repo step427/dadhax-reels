@@ -6,10 +6,10 @@ _Written by `publisher/craft_report.py` on **2026-09-27** from **157** posted re
 
 ## Levers, biggest first
 
-1. **duration** — **LEVER** — favour **under 20s**, 32 pts over over 70s; views agree. under 20s 45% (n=47) · 20-35s 31% (n=43) · 35-50s 27% (n=34) · 50-70s 17% (n=22) · over 70s 13% (n=11). Retention falls at EVERY step longer: cut to the number, not the material.
-2. **topic** — **LEVER** — favour **utility**, 15 pts over talk; views agree. utility 41% (n=73) · meta 34% (n=9, thin) · talk 26% (n=75)
-3. **fresh/catalog** — **LEVER** — favour **back-catalog**, 12 pts over fresh; views agree. back-catalog 41% (n=49) · fresh 29% (n=108)
-4. **cover** — **NO LEVER** — 3 pts is noise; spend no effort here. custom cover 33% (n=77) · default cover 31% (n=80)
+1. **duration** — **LEVER** — favour **under 20s**, 35 pts over over 70s; views agree. under 20s 48% (n=47) · 20-35s 31% (n=43) · 35-50s 27% (n=34) · 50-70s 17% (n=22) · over 70s 13% (n=11). Retention falls at EVERY step longer: cut to the number, not the material.
+2. **topic** — **LEVER** — favour **utility**, 14 pts over talk; views agree. utility 41% (n=73) · meta 34% (n=9, thin) · talk 27% (n=75)
+3. **fresh/catalog** — **LEVER** — favour **back-catalog**, 11 pts over fresh; views agree. back-catalog 41% (n=49) · fresh 30% (n=108)
+4. **cover** — **NO LEVER** — 3 pts is noise; spend no effort here. custom cover 34% (n=77) · default cover 31% (n=80)
 5. **collab** — **TOO THIN** — not enough posts on both sides to act on. collab 36% (n=6, thin) · solo 32% (n=151)
 
 _LEVER = at least 5 pts between two buckets that each have 10+ posts. Thin buckets are shown so you can see them coming, never acted on._
