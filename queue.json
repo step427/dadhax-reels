@@ -2122,7 +2122,7 @@
     {
       "file": "ig-0925-bucket.mp4",
       "title": "Overcomplicating it is procrastination",
-      "status": "pending",
+      "status": "posted",
       "earliest": "2026-09-26",
       "caption": "Hey Dad,\n\nOvercomplicating a plan feels like work. It's usually procrastination.\n\nYou get a little rest out of it. Then you spend that rest stressed about everything still on your plate. Same stress, different bucket.\n\nThe signal is telling you to get back to work. Move a centimeter and you're ahead of zero. Need a first centimeter? Rip one 45 on one strip.\n\nTomorrow's centimeter drops here. Follow so you don't have to go find it.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
       "arc_slot": "Fri 9/25 1p",
@@ -2134,7 +2134,10 @@
       "sam_verdict": "POST 2026-09-25",
       "topic_class": "talk",
       "source_raw": "20260813_153946.mp4",
-      "cover_ms": 1900
+      "cover_ms": 1900,
+      "permalink": "https://www.instagram.com/reel/DdxbOv-jbBw/",
+      "posted_at": "2026-09-26T20:26:20-05:00",
+      "fb_page_video_id": "2334332574049031"
     },
     {
       "file": "ig-0925-letter.mp4",
