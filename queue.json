@@ -2189,7 +2189,7 @@
     {
       "file": "ig-0925-fourhours.mp4",
       "kind": "new",
-      "status": "pending",
+      "status": "posted",
       "earliest": "2026-09-25",
       "title": "Someone I follow blocks the first four hours",
       "caption": "Hey Dad,\n\nSomeone I follow says the highest-leverage thing he's ever done is to block the first four hours of his day to work on the one thing that would move the needle. Waking up at 4 a.m. to do it.\n\nAm I waking up at 4:30 a.m.? I'll be honest. Nope. Do I set my alarm for it some days? Yeah.\n\nI think it'll start with me actually going to bed on time.\n\nI post the one I wish somebody had told me. Every day. Follow so it finds you.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
@@ -2203,7 +2203,10 @@
         "implementation"
       ],
       "sam_verdict": "POST 2026-09-25",
-      "cut_by": "cloud session 2026-09-25 (Rook captures/2026-09-25-cloud-cut-ten-fresh-reels.md)"
+      "cut_by": "cloud session 2026-09-25 (Rook captures/2026-09-25-cloud-cut-ten-fresh-reels.md)",
+      "permalink": "https://www.instagram.com/reel/Dd075ZNFVdF/",
+      "posted_at": "2026-09-28T05:09:36-05:00",
+      "fb_page_video_id": "3731082663708323"
     },
     {
       "file": "ig-0925-stalled.mp4",
