@@ -2299,6 +2299,44 @@
       ],
       "sam_verdict": "POST 2026-09-27",
       "cut_by": "cloud session 2026-09-27 (Rook captures/2026-09-27-mudroom-install-pip-reel.md); follow-up to ig-0912-mudroom"
+    },
+    {
+      "file": "ig-0928-reveal.mp4",
+      "title": "The plan. Then the wall.",
+      "status": "pending",
+      "earliest": "2026-09-29",
+      "caption": "Hey Dad,\n\nMorning: the cabinets were going in. That night: the wall's up.\n\nPaper plan first. Then the level. Then the wall.\n\nI post the build and the plan behind it. Follow so you see both.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "Sun 10/4 6p",
+      "pix": "X",
+      "value_forms": [
+        "entertainment",
+        "idea"
+      ],
+      "sam_verdict": "POST 2026-09-28",
+      "topic_class": "utility",
+      "source_raw": "20260927_200410.mp4",
+      "cover_ms": 4500,
+      "source_raws": [
+        "20260927_200529.mp4",
+        "20260927_200410.mp4"
+      ]
+    },
+    {
+      "file": "ig-yt-limits.mp4",
+      "title": "Read these 4 before the first pass",
+      "status": "pending",
+      "earliest": "2026-09-30",
+      "caption": "Hey Dad,\n\nWhen my jointer came out of the box, I read four limits before the first board. My manual says:\n\n1. Nothing shorter than 8-1/8\".\n2. Nothing narrower than 3/4\".\n3. Nothing thinner than 1/4\".\n4. Never a cut deeper than 1/8\".\n\nIt also says: narrower or thinner than 3\"? Use a push block. Yours may differ, so check your own manual.\n\nThe limits nobody reads until it's too late. Follow for the next one.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "Wed 9/30 9a",
+      "pix": "P",
+      "value_forms": [
+        "implementation",
+        "idea"
+      ],
+      "sam_verdict": "POST 2026-09-28",
+      "topic_class": "utility",
+      "source_raw": "yt:Ouk5DaYDK60",
+      "cover_ms": 4000
     }
   ]
 }
