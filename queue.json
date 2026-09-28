@@ -2306,7 +2306,7 @@
     {
       "file": "ig-0928-reveal.mp4",
       "title": "The plan. Then the wall.",
-      "status": "pending",
+      "status": "posted",
       "earliest": "2026-09-29",
       "caption": "Hey Dad,\n\nMorning: the cabinets were going in. That night: the wall's up.\n\nPaper plan first. Then the level. Then the wall.\n\nI post the build and the plan behind it. Follow so you see both.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
       "arc_slot": "Sun 10/4 6p",
@@ -2322,7 +2322,10 @@
       "source_raws": [
         "20260927_200529.mp4",
         "20260927_200410.mp4"
-      ]
+      ],
+      "permalink": "https://www.instagram.com/reel/Dd2Wpl9DIUQ/",
+      "posted_at": "2026-09-28T18:22:41-05:00",
+      "fb_page_video_id": "3680813425399848"
     },
     {
       "file": "ig-yt-limits.mp4",
