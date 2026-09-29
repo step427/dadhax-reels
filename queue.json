@@ -2365,6 +2365,44 @@
       "topic_class": "utility",
       "source_raw": "yt:Ouk5DaYDK60",
       "cover_ms": 4000
+    },
+    {
+      "file": "ig-diy-sharppencil.mp4",
+      "title": "A dull pencil costs you a sixteenth",
+      "status": "pending",
+      "earliest": "2026-09-30",
+      "caption": "Hey Dad,\n\nYou can measure right and still be off about a sixteenth of an inch. A dull pencil does that.\n\nThe sharper your pencil, the better.\n\nAnother trick: put your pencil on your target first, then bring your square to the pencil.\n\nSharpen it before the first cut. On a 45, a sixteenth is a gap you can see.\n\nFollow so your next mark lands where you meant it.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "Wed 9/30 6p",
+      "pix": "P",
+      "value_forms": [
+        "idea",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-09-29",
+      "topic_class": "utility",
+      "source_raw": "20260816_105629.mp4",
+      "cover_ms": 500,
+      "recut_of": "ig-0817-pencil.mp4",
+      "kind": "old"
+    },
+    {
+      "file": "ig-diy-dirtyblade.mp4",
+      "title": "Your blade isn't dull. It's dirty.",
+      "status": "pending",
+      "earliest": "2026-10-02",
+      "caption": "Hey Dad,\n\nI was cutting red oak and it started smoking. I figured the blade was dull.\n\nNine times out of ten it's buildup on the teeth.\n\nUnplug the saw or pull the battery. Safety glasses on, a wire wheel throws bristles. All you need is a drill and a wire brush. Run it in reverse on one side, hitting the teeth at an angle so the blade spins through. Keep your free hand off the blade. Forward on the other side.\n\nThis gets it about 90 percent. There's still some gunk on the inside.\n\nTwo minutes, before the first cut. Straight rip or a 45.\n\nFollow before you buy a blade you don't need.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "Fri 10/2 6p",
+      "pix": "P",
+      "value_forms": [
+        "idea",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-09-29",
+      "topic_class": "utility",
+      "source_raw": "20260907_112354.mp4",
+      "cover_ms": 1000,
+      "recut_of": "ig-0908-blade.mp4",
+      "kind": "old"
     }
   ]
 }
