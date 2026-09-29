@@ -2234,6 +2234,25 @@
       "fb_page_video_id": "1114976161035092"
     },
     {
+      "file": "ig-diy-cleatwall.mp4",
+      "title": "One 45° cut hangs 90% of my garage",
+      "status": "pending",
+      "earliest": "2026-09-29",
+      "caption": "Hey Dad,\n\nA French cleat is one strip of wood ripped at 45 degrees. Half goes on the wall. The other half goes on the back of whatever you're hanging. They hook together, and you can pick it up and move it anywhere.\n\nAbout 90% of my garage hangs on one.\n\nThe cleat is the easy part. The cut list is where the Saturday goes: how many rails, how many 45s, how many sheets.\n\nThere's a free tool for that now. Before you buy a sheet, measure your wall once and type in the width. A 10-foot wall comes back as 9 rails, twelve 45° rips and 2 sheets, with every joint landing on a stud.\n\nIt's in my profile.\n\nThanks, Dad. I love you, Dad.\n\nhttps://step427.github.io/dadhax-reels/cleat-wall.html",
+      "arc_slot": "Tue 9/29 9a",
+      "pix": "P",
+      "value_forms": [
+        "idea",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-09-29",
+      "topic_class": "utility",
+      "source_raw": "20260907_120012.mp4",
+      "cover_ms": 1000,
+      "recut_of": "ig-0908-cleat101.mp4",
+      "kind": "old"
+    },
+    {
       "file": "ig-yt-bins.mp4",
       "title": "Set the counter up before the first cut",
       "status": "pending",
