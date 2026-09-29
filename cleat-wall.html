@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Tool 10. Built 2026-09-22 by the dadhax-weekly-tool routine off the French cleat reels; ships Tue 9/29. -->
+<title>The Cleat Wall — @nicksdadhax</title>
+<meta name="description" content="Type in a wall. Get the French cleat cut list: rail heights, how many 45-degree rips, how many sheets, where every stud and screw lands, and the stop that keeps hangers on the wall. Free, no gate.">
+
+<style>
+  /* @nicksdadhax — dark field-instrument identity. Same tokens as tools 01-07.
+     SIGNAL YELLOW = your input / the action. WARN RED = the honest rail —
+     here that's "this page doesn't know your wall." */
+  :root {
+    --carbon:   #0F0E0B;
+    --panel:    #17150F;
+    --panel-up: #1E1B14;
+    --hair:     #302B21;
+    --bone:     #F4F0E6;
+    --graphite: #8F887A;
+    --signal:   #FFC629;
+    --signal-d: #C8930F;
+    --warn:     #E8502C;
+
+    --mono: ui-monospace, "SF Mono", SFMono-Regular, "Cascadia Mono",
+            "Roboto Mono", Menlo, Consolas, "Courier New", monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+            "Helvetica Neue", Arial, sans-serif;
+
+    --gutter: clamp(18px, 5vw, 40px);
+    --maxw: 660px;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--carbon);
+    color: var(--bone);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-text-size-adjust: 100%;
+    background-image:
+      repeating-linear-gradient(to right,  rgba(242,237,231,.035) 0 1px, transparent 1px 28px),
+      repeating-linear-gradient(to bottom, rgba(242,237,231,.035) 0 1px, transparent 1px 28px);
+  }
+
+  .sheet { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter) 96px; }
+
+  header { padding: 34px 0 8px; }
+  .protocol {
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: .17em;
+    text-transform: uppercase; color: var(--graphite);
+  }
+  .protocol b { color: var(--signal); font-weight: 700; }
+  h1 {
+    font-family: var(--mono); font-weight: 700;
+    font-size: clamp(28px, 8vw, 48px); line-height: 1.04;
+    letter-spacing: -.03em; text-transform: uppercase;
+    margin: 12px 0 0; text-wrap: balance;
+  }
+  h1 .of { color: var(--signal); }
+  .dek { margin: 14px 0 0; max-width: 46ch; color: #CFC9BB; font-size: 17px; }
+  .dek em { color: var(--bone); font-style: normal; border-bottom: 1.5px solid var(--signal-d); }
+
+  .rules {
+    margin: 20px 0 0; padding: 11px 0 0; border-top: 1px solid var(--hair);
+    font-family: var(--mono); font-size: 12.5px; letter-spacing: .04em;
+    color: var(--graphite); text-transform: uppercase;
+  }
+  .rules span { color: var(--bone); }
+
+  .privacy {
+    margin: 18px 0 0; padding: 13px 15px; font-size: 14.5px; line-height: 1.5;
+    color: #CFC9BB; background: var(--panel); border-left: 3px solid var(--signal);
+  }
+  .privacy b { color: var(--bone); }
+
+  .story { margin-top: 24px; padding: 15px 16px; background: var(--panel);
+    border: 1px solid var(--hair); }
+  .story p { margin: 0 0 10px; font-size: 15.5px; line-height: 1.55; color: #CFC9BB; }
+  .story p:last-child { margin-bottom: 0; }
+  .story p b { color: var(--bone); }
+
+  .whys { margin-top: 26px; border: 1px solid var(--hair); }
+  .why { padding: 14px 15px; border-bottom: 1px solid var(--hair); }
+  .why:last-child { border-bottom: 0; }
+  .why .tag { display: block; font-family: var(--mono); font-size: 12.5px; font-weight: 700;
+    letter-spacing: .08em; text-transform: uppercase; margin-bottom: 5px; color: var(--signal); }
+  .why p { margin: 0; font-size: 15px; line-height: 1.5; color: #CFC9BB; }
+  .why p b { color: var(--bone); }
+
+  .redline-note {
+    margin: 14px 0 0; padding: 9px 12px;
+    border-left: 2.5px solid var(--warn);
+    background: #20130E; /* rgba(232,80,44,.08) on --carbon, solid so contrast is measurable */
+    font-size: 14.5px; line-height: 1.45; color: #E7DCD6;
+  }
+  .redline-note b { color: var(--warn); font-family: var(--mono);
+    font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase;
+    display: block; margin-bottom: 3px; }
+
+  .block { margin-top: 30px; }
+  .lbl {
+    display: block; font-family: var(--mono); font-size: 11.5px;
+    letter-spacing: .13em; text-transform: uppercase; color: var(--graphite);
+    margin-bottom: 8px;
+  }
+  h2.part {
+    font-family: var(--mono); font-size: 12px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--signal); margin: 34px 0 4px; font-weight: 700;
+    padding-top: 20px; border-top: 1px solid var(--hair);
+  }
+  .partdek { margin: 0 0 14px; font-size: 15px; color: #CFC9BB; line-height: 1.5; }
+  .partdek b { color: var(--bone); }
+
+  .seed {
+    border: 1.5px solid var(--signal); background: var(--panel);
+    padding: 16px 16px 14px;
+  }
+  .seed .lbl { color: var(--signal); margin-top: 0; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; }
+  @media (max-width: 380px) { .grid2 { grid-template-columns: 1fr; } }
+  input[type=text], input[type=number] {
+    display: block; width: 100%;
+    background: transparent; border: 0; border-bottom: 1.5px solid #453E2C;
+    color: var(--bone); font-family: var(--mono); font-size: 18px;
+    line-height: 1.5; padding: 4px 0 8px; border-radius: 0;
+    font-variant-numeric: tabular-nums; -moz-appearance: textfield;
+  }
+  input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  input::placeholder { color: #6B6455; font-family: var(--sans); font-size: 15px; }
+  input:focus { outline: 0; border-bottom-color: var(--signal); }
+  .seed .lbl + input { margin-bottom: 14px; }
+  .unit { font-family: var(--mono); font-size: 11px; color: var(--graphite); letter-spacing: .08em; }
+
+  .hint { margin: 6px 0 0; font-size: 13.5px; color: var(--graphite); line-height: 1.45; }
+
+  /* result rows double as a picker */
+  .rows { border: 1px solid var(--hair); margin-top: 14px; }
+  .rows[hidden] { display: none; }
+  .row { display: flex; gap: 13px; align-items: flex-start; width: 100%; text-align: left;
+    padding: 13px 15px; border: 0; border-bottom: 1px solid var(--hair); min-height: 44px;
+    background: transparent; color: var(--bone); font: inherit; cursor: pointer; }
+  .row:last-child { border-bottom: 0; }
+  .row:hover { background: var(--panel); }
+  .row:focus-visible { outline: 2px solid var(--bone); outline-offset: -2px; }
+  .row .dot { flex: 0 0 auto; width: 22px; height: 22px; margin-top: 2px; border-radius: 50%;
+    border: 1.5px solid #453E2C; background: var(--panel); }
+  .row[aria-pressed="true"] .dot { background: var(--signal); border-color: var(--signal);
+    box-shadow: inset 0 0 0 5px var(--panel); }
+  .row b { display: block; font-family: var(--mono); font-size: 15.5px; letter-spacing: -.01em;
+    font-variant-numeric: tabular-nums; }
+  .row span.s { display: block; font-size: 14px; line-height: 1.45; color: #CFC9BB; margin-top: 3px; }
+  .row span.s i { font-style: normal; color: var(--warn); }
+  .row span.s u { text-decoration: none; color: var(--signal); }
+
+  .empty { margin-top: 14px; padding: 13px 15px; border: 1px dashed var(--hair);
+    font-size: 14.5px; color: #CFC9BB; line-height: 1.5; }
+  .empty[hidden] { display: none; }
+
+  /* the composed run */
+  .spec { margin-top: 22px; padding: 18px 16px; background: var(--panel-up);
+    border: 2px solid var(--signal); }
+  .spec[hidden] { display: none; }
+  .spec .lbl { color: var(--signal); }
+  .spec p { margin: 0 0 8px; font-size: 16.5px; line-height: 1.5; color: var(--bone); }
+  .spec p:last-of-type { margin-bottom: 0; }
+  .spec .fine { margin-top: 10px; font-size: 14px; color: #CFC9BB; }
+  .spec ul { margin: 8px 0 0; padding: 0 0 0 18px; }
+  .spec li { font-family: var(--mono); font-size: 13.5px; line-height: 1.6; color: var(--bone); }
+  .spec li i { font-style: normal; color: var(--graphite); }
+
+  .callbox { margin-top: 28px; padding: 18px 16px 16px; background: var(--panel-up);
+    border: 2px dashed var(--signal-d); }
+  .callbox .lbl { color: var(--signal); }
+  .callbox .means { margin: 10px 0 14px; font-size: 15px; color: #CFC9BB; line-height: 1.5; }
+  .callbox .means b { color: var(--bone); }
+  .callbox input[type=text] { font-family: var(--sans); font-size: 17px; }
+
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+  .actions button {
+    font-family: var(--mono); font-size: 12.5px; letter-spacing: .1em;
+    text-transform: uppercase; font-weight: 700; min-height: 48px;
+    padding: 13px 18px; border-radius: 0; cursor: pointer;
+    background: var(--signal); color: #14100F; border: 1.5px solid var(--signal);
+  }
+  .actions button.ghost { background: transparent; color: var(--bone); border-color: #453E2C; }
+  .actions button:hover { filter: brightness(1.1); }
+  .actions button.ghost:hover { border-color: var(--signal); color: var(--signal); filter: none; }
+  .actions button:focus-visible { outline: 2px solid var(--bone); outline-offset: 2px; }
+
+  .said {
+    margin-top: 14px; font-family: var(--mono); font-size: 12px;
+    letter-spacing: .06em; text-transform: uppercase; color: var(--signal);
+    min-height: 1em;
+  }
+
+  .titleblock {
+    margin-top: 44px; border: 1px solid var(--hair);
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(108px, 1fr));
+  }
+  .tb { padding: 11px 13px; border-right: 1px solid var(--hair); }
+  .tb:last-child { border-right: 0; }
+  .tb dt {
+    font-family: var(--mono); font-size: 10px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--graphite); margin: 0 0 4px;
+  }
+  .tb dd {
+    margin: 0; font-family: var(--mono); font-size: 13px; font-weight: 700;
+    color: var(--bone); font-variant-numeric: tabular-nums;
+  }
+  .tb dd.red { color: var(--signal); }
+
+  .cta { margin-top: 18px; font-size: 15px; color: #CFC9BB; line-height: 1.5; }
+  .cta b { color: var(--bone); }
+  .cta a { color: var(--signal); font-weight: 700; text-decoration: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+
+  @media print {
+    @page { size: letter; margin: .5in .55in; }
+    :root {
+      --carbon: #fff; --panel: #fff; --panel-up: #FFF8E2;
+      --hair: #C9C2BC; --bone: #14100F; --graphite: #5E5651;
+      --signal: #7A5B00; --signal-d: #7A5B00; --warn: #B93A18;
+    }
+    body { background-image: none; font-size: 10.5pt; }
+    .sheet { max-width: none; padding: 0; }
+    .actions, .said, .nav, .tail, .cta, .privacy { display: none; }
+    .spec[hidden] { display: block !important; }
+    input { border-bottom-color: #9AA0A8; min-height: .42in; }
+    .redline-note { background: none; }
+    h1 { font-size: 26pt; }
+  }
+</style>
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+
+<div class="sheet">
+
+  <nav class="nav">
+    <div class="navtop">
+      <a class="brand" href="index.html">@nicksdadhax</a>
+      <span class="meta">Tool 10 · free · no gate</span>
+    </div>
+    <div class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="toolbox.html" aria-current="true"><svg class="tbx" width="15" height="13" viewBox="0 0 16 14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><g class="lid"><path d="M5.5 4.5v-.75a2.5 2.5 0 0 1 5 0v.75"/><rect x="1" y="4.5" width="14" height="2.5" rx=".5"/></g><rect x="1" y="7" width="14" height="6" rx=".5"/></svg>The Toolbox</a>
+      <a href="log.html">The Log</a>
+      <a href="houses.html">I have a house</a>
+    </div>
+  </nav>
+
+    <header>
+    <div class="protocol">Wall protocol <b>·</b> one 45 <b>·</b> studs, not drywall</div>
+    <h1>The cleat <span class="of">wall</span></h1>
+    <p class="dek">Your tools are on the floor, on the bench, in a bin you dig through
+      every time you need the drill. A French cleat wall fixes that, but it looks like
+      a weekend of math you'd rather not get wrong.</p>
+    <p class="dek">Guess, and you're back at the store for the sheet you were one strip
+      short on, or you screw a rail into drywall and watch a loaded shelf pry itself
+      off the wall.</p>
+    <p class="dek"><em>Type your wall and you get the cut list</em>: how many rails and
+      at what heights, how many 45&deg; rips, how many sheets, where every stud and screw
+      lands. Here's a 10-foot wall with rails every 8 inches from 16 to 80: <b>nine rails,
+      twelve 45&deg; rips, two sheets (not one), 144 screws, every one in a stud.</b></p>
+    <p class="dek">A cleat is one strip ripped at 45&deg; down the middle. Half goes on
+      the wall, angle up. Half goes on the back of whatever you hang, angle down. They
+      hook together.</p>
+    <p class="privacy"><b>Nothing you type here leaves your device.</b> No account, no
+      server, no analytics. Your numbers live in this browser tab and are erased when
+      you close it. "Start over" wipes them now.</p>
+  </header>
+
+  <div class="story">
+    <span class="lbl">Why this one exists</span>
+    <p>About 90% of my garage hangs on a French cleat. <b>It's the reason I never had to
+      buy a shed.</b> Three years ago I turned an office nook into one; this fall that same
+      wall became the backpack hub. My first hangers kept falling off, worst with shelf
+      brackets, until I added a stop. And when I asked an AI to draw me a cleat, <b>it drew
+      it backwards and forgot the other half.</b> Once you get the 45 down, you can do a
+      whole garage in a weekend. This does the math for that weekend.</p>
+  </div>
+
+  <div class="whys" aria-label="What makes a cleat wall hold">
+    <div class="why">
+      <span class="tag">One 45, two halves</span>
+      <p>Every strip you rip gives <b>one wall cleat and one hanger cleat.</b> Count rips,
+        not boards.</p>
+    </div>
+    <div class="why">
+      <span class="tag">Studs, not drywall</span>
+      <p>Every rail screws into every stud it crosses, and <b>every joint lands on a
+        stud.</b> Anchors are for pictures.</p>
+    </div>
+    <div class="why">
+      <span class="tag">The stop</span>
+      <p>A block on the bottom of each hanger, as thick as the cleat, <b>bears on the wall
+        below</b> so weight pushes in instead of prying out.</p>
+    </div>
+  </div>
+
+  <h2 class="part">Part 1 &mdash; The wall</h2>
+  <p class="partdek">Inches. <b>Only the width is required;</b> the rest start at
+    common numbers.</p>
+
+  <div class="block seed">
+    <label class="lbl" for="wall">Wall width <span class="unit">inches</span></label>
+    <input type="number" id="wall" inputmode="decimal" step="0.125" min="12" max="600" placeholder="120">
+    <div class="grid2">
+      <div>
+        <label class="lbl" for="bottom">Lowest rail <span class="unit">in from floor</span></label>
+        <input type="number" id="bottom" inputmode="decimal" step="0.5" min="0" max="120" placeholder="16">
+      </div>
+      <div>
+        <label class="lbl" for="top">Highest rail <span class="unit">in from floor</span></label>
+        <input type="number" id="top" inputmode="decimal" step="0.5" min="0" max="144" placeholder="80">
+      </div>
+      <div>
+        <label class="lbl" for="gap">Rail spacing <span class="unit">in &middot; 6&ndash;12 common</span></label>
+        <input type="number" id="gap" inputmode="decimal" step="0.5" min="3" max="48" placeholder="8">
+      </div>
+      <div>
+        <label class="lbl" for="oc">Stud spacing <span class="unit">16 or 24</span></label>
+        <input type="number" id="oc" inputmode="decimal" step="1" min="12" max="24" placeholder="16">
+      </div>
+    </div>
+  </div>
+
+  <h2 class="part">Part 2 &mdash; The details</h2>
+  <p class="partdek">Find the first stud with a finder or a nail. <b>Center, from the
+    left end.</b></p>
+
+  <div class="block seed">
+    <div class="grid2">
+      <div>
+        <label class="lbl" for="first">First stud center <span class="unit">in</span></label>
+        <input type="number" id="first" inputmode="decimal" step="0.125" min="0" max="24" placeholder="16">
+      </div>
+      <div>
+        <label class="lbl" for="strip">Strip width <span class="unit">in before the 45</span></label>
+        <input type="number" id="strip" inputmode="decimal" step="0.25" min="2" max="12" placeholder="4">
+      </div>
+    </div>
+    <label class="lbl" for="hang">Things to hang <span class="unit">count &middot; optional</span></label>
+    <input type="number" id="hang" inputmode="numeric" step="1" min="0" max="500" placeholder="30">
+  </div>
+
+  <h2 class="part">Part 3 &mdash; Your cut list</h2>
+
+  <div class="empty" id="empty">Type a wall width above and the cut list appears here.</div>
+
+  <div class="spec" id="spec" hidden>
+    <span class="lbl">Your wall</span>
+    <p id="oRails"></p>
+    <p id="oRip"></p>
+    <p id="oBuy"></p>
+    <p id="oStuds"></p>
+    <p id="oScrews"></p>
+    <p id="oHang"></p>
+    <span class="lbl" style="margin-top:14px">Cut the rails</span>
+    <ul id="oCuts"></ul>
+    <p class="fine" id="oWarn"></p>
+  </div>
+
+  <div class="redline-note">
+    <b>this page doesn't know your wall</b>
+    Plaster, block, or a wall with wires and pipes behind it changes everything. Load
+    the bottom rails heaviest, and if a rail doesn't bite a stud, it doesn't hold weight.
+  </div>
+
+  <div class="callbox">
+    <span class="lbl">The boulder question</span>
+    <p class="means">Most problems are who-you-know. <b>Name one person who'd hang this
+      wall with you.</b> It's a good third thing: do it side by side and you'll talk
+      for two hours without trying.</p>
+    <input type="text" id="callName" placeholder="a name. not 'a guy from work' — a name.">
+    <p class="means" style="margin:12px 0 0"><b>Now make the call</b> &mdash; ask:
+      &ldquo;got a Saturday? I'll buy lunch.&rdquo;</p>
+  </div>
+
+  <div class="actions">
+    <button id="promptBtn" type="button">Copy a prompt for your AI</button>
+    <button id="copyBtn" class="ghost" type="button">Copy the cut list</button>
+    <button id="printBtn" class="ghost" type="button">Print it</button>
+    <button id="resetBtn" class="ghost" type="button">Start over</button>
+  </div>
+  <div class="said" id="said" role="status" aria-live="polite"></div>
+
+  <dl class="titleblock">
+    <div class="tb"><dt>Protocol</dt><dd>WALL</dd></div>
+    <div class="tb"><dt>Tool</dt><dd>10 of 10</dd></div>
+    <div class="tb"><dt>45&deg; rips</dt><dd class="red" id="count">0</dd></div>
+    <div class="tb"><dt>By</dt><dd class="red">@nicksdadhax</dd></div>
+  </dl>
+
+  <!--TAIL-->
+  <div class="tail">
+  <a class="tail-next" href="fact-testable-fantasy.html">
+    <span class="k">Read next</span>
+    <b>Tool 04 &mdash; Fact / Testable / Fantasy</b>
+    <span class="s">The wall gave you a Saturday back. Here's the two-question filter
+      for what to spend it on, before it goes to the wrong idea.</span>
+  </a>
+  <section class="buyhouses">
+    <h2>Also &mdash; I buy houses</h2>
+    <p><b>Washington or Dakota County, Minnesota.</b> Off-market, or straight from the
+      owner &mdash; I'm the buyer, not a middleman passing it along. Woodbury, Cottage
+      Grove, Hastings, Stillwater, Eagan, Inver Grove Heights, Lakeville.</p>
+    <p>If that's you, or you know somebody quietly thinking about selling, I'll lay out
+      your options &mdash; <b>all of them, including the ones I don't make a dime on.</b>
+      Nothing to sign, no walkthrough unless you ask.</p>
+    <div class="ctas">
+      <a href="houses.html"><b>I have a house</b><span>Or I know someone who does</span></a>
+    </div>
+  </section>
+
+  <section class="optin" id="next">
+    <h2>What I ask</h2>
+    <p class="plain">That was free and nothing here sits behind an email. If it was
+      useful, here's the whole exchange: <b>send it to one or two people who'd use it
+      too.</b> That's it. I'm trusting you with it, you pass it on.</p>
+    <p class="plain">Want the next one before anyone else? I'm building an interest
+      list &mdash; no selling, no sequence, your address goes nowhere.
+      <a href="index.html#next">Exactly what that means, in plain words.</a></p>
+    <p class="fine">The list itself isn't open yet &mdash; I'm still setting it up, and
+      I'd rather say that than put up a box that doesn't work. The ask above stands
+      either way, and it's the one that matters. If you want to tell me what to build
+      next, my DMs are open.</p>
+    <div class="ctas">
+      <a href="https://www.instagram.com/nicksdadhax/"><b>Tell me what to build next</b><span>DM @nicksdadhax</span></a>
+    </div>
+  </section>
+  </div>
+  <!--/TAIL-->
+
+  <p class="cta">Free. This tool asks you for nothing &mdash; no gate, no email, no
+    analytics. When your wall is up, <b>DM me a picture</b>.</p>
+
+</div>
+
+<script>
+(function () {
+  "use strict";
+  // ---- the engine: pure, so it can be checked outside the page ----
+  var STOCK = 96, KERF = 0.125, SHEET_W = 48, HANGER_IN = 8;
+  function plan(o) {
+    var wall = o.wall, oc = o.oc, first = o.first, S = o.strip;
+    var rails = [];
+    for (var h = o.bottom; h <= o.top + 1e-9; h += o.gap) rails.push(h);
+    var studs = [];
+    for (var x = first; x <= wall - 0.75 + 1e-9; x += oc) if (x >= 0.75) studs.push(x);
+    // split one rail at studs so every joint lands on one
+    var pieces = [], joints = [], warn = [], start = 0;
+    while (wall - start > STOCK + 1e-9) {
+      var cand = studs.filter(function (s) { return s > start + 1e-9 && s - start <= STOCK + 1e-9; });
+      var j = cand.length ? cand[cand.length - 1] : start + STOCK;
+      if (!cand.length) warn.push("A joint at " + j + " in misses every stud. Check the stud numbers.");
+      pieces.push(j - start); joints.push(j); start = j;
+    }
+    pieces.push(wall - start);
+    // pack every rail's pieces into 96-inch strips, longest first
+    var all = [];
+    rails.forEach(function () { pieces.forEach(function (p) { all.push(p); }); });
+    all.sort(function (a, b) { return b - a; });
+    var bins = [];
+    all.forEach(function (p) {
+      for (var i = 0; i < bins.length; i++) if (bins[i] + KERF + p <= STOCK + 1e-9) { bins[i] += KERF + p; return; }
+      bins.push(p);
+    });
+    var wallStrips = bins.length;
+    var supply = wallStrips * STOCK, need = (o.hang || 0) * HANGER_IN, extra = 0;
+    if (need > supply) extra = Math.ceil((need - supply) / (2 * STOCK));
+    var strips = wallStrips + extra;
+    var perSheet = Math.floor((SHEET_W + KERF) / (S + KERF));
+    var sheets = perSheet > 0 ? Math.ceil(strips / perSheet) : 0;
+    var screws = rails.length * (studs.length * 2 + joints.length * 2);
+    if (rails.length > 1 && o.gap < S / 2 + 1) warn.push("Rails " + o.gap + " in apart leave no room to hook a hanger between them. Try " + Math.ceil(S / 2 + 2) + " or more.");
+    if (studs.length < 2) warn.push("Fewer than two studs behind this wall. It will not carry weight.");
+    return { rails: rails, studs: studs, pieces: pieces, joints: joints, strips: strips, wallStrips: wallStrips,
+             extra: extra, perSheet: perSheet, sheets: sheets, screws: screws, hangers: o.hang || 0,
+             hangerCap: Math.floor((supply + extra * 2 * STOCK) / HANGER_IN), warn: warn };
+  }
+
+  var KEY = "ndh-cleatwall-v1";
+  var $ = function (id) { return document.getElementById(id); };
+  var inputs = ["wall", "bottom", "top", "gap", "oc", "first", "strip", "hang", "callName"].map($);
+  var said = $("said"), spec = $("spec"), empty = $("empty"), count = $("count");
+  var last = null;
+
+  function num(id, dflt) { var v = parseFloat($(id).value); return isFinite(v) ? v : dflt; }
+  function frac(x) {
+    var whole = Math.floor(x), r = Math.round((x - whole) * 8);
+    if (r === 8) { whole += 1; r = 0; }
+    if (r === 0) return String(whole);
+    var n = r, d = 8; while (n % 2 === 0) { n /= 2; d /= 2; }
+    return (whole ? whole + " " : "") + n + "/" + d;
+  }
+  function list(a) { return a.map(frac).join(", "); }
+  function opts() {
+    var wall = num("wall", null);
+    if (wall === null || wall < 12) return null;
+    var oc = num("oc", 16); if (oc < 12) oc = 16;
+    var bottom = num("bottom", 16), top = num("top", 80), gap = num("gap", 8);
+    if (gap < 3) gap = 3;
+    if (top < bottom) { var t = top; top = bottom; bottom = t; }
+    return { wall: wall, bottom: bottom, top: top, gap: gap, oc: oc, first: num("first", oc),
+             strip: Math.max(2, num("strip", 4)), hang: Math.max(0, Math.round(num("hang", 0))) };
+  }
+
+  function refresh() {
+    var o = opts();
+    if (!o) { spec.hidden = true; empty.hidden = false; count.textContent = "0"; last = null; save(); return; }
+    var p = plan(o); last = { o: o, p: p };
+    $("oRails").textContent = p.rails.length + " rail" + (p.rails.length === 1 ? "" : "s") + ", top edge at " + list(p.rails) + " in from the floor.";
+    $("oRip").textContent = "Rip " + p.strips + " strips " + frac(o.strip) + " in wide, then one 45° rip down the middle of each: " + p.strips + " wall halves, " + p.strips + " hanger halves.";
+    $("oBuy").textContent = "Buy " + p.sheets + " sheet" + (p.sheets === 1 ? "" : "s") + " of 3/4 plywood (" + p.perSheet + " strips per 4x8 sheet, 1/8 in blade).";
+    $("oStuds").textContent = p.studs.length ? "Studs at " + list(p.studs) + " in from the left end. Mark them once, floor to top rail." : "No studs found inside this wall. Check the numbers.";
+    $("oScrews").textContent = p.screws + " screws, 2 1/2 in: two per stud on every rail" + (p.joints.length ? ", plus two more at every joint." : ".");
+    $("oHang").textContent = o.hang
+      ? o.hang + " hangers, each with a stop block 3/4 in thick. Hanger halves cover about " + p.hangerCap + " at 8 in each" + (p.extra ? " (includes " + p.extra + " extra strip" + (p.extra === 1 ? "" : "s") + ")." : ".")
+      : "Hanger halves cover about " + p.hangerCap + " hangers at 8 in each. Every one gets a stop, 3/4 in thick.";
+    var ul = $("oCuts"); ul.textContent = "";
+    var li = document.createElement("li");
+    li.textContent = p.pieces.map(frac).join(" + ") + " = " + frac(o.wall) + " in, ×" + p.rails.length;
+    ul.appendChild(li);
+    if (p.joints.length) {
+      var lj = document.createElement("li");
+      lj.textContent = "joints at " + list(p.joints) + " in, each on a stud";
+      ul.appendChild(lj);
+    }
+    $("oWarn").textContent = p.warn.join(" ");
+    $("oWarn").hidden = !p.warn.length;
+    count.textContent = String(p.strips);
+    spec.hidden = false; empty.hidden = true;
+    save();
+  }
+
+  function save() {
+    try {
+      var d = {};
+      inputs.forEach(function (el) { d[el.id] = el.value; });
+      // sessionStorage, NOT localStorage: same promise as every tool on the site.
+      sessionStorage.setItem(KEY, JSON.stringify(d));
+    } catch (e) {}
+  }
+  function load() {
+    try {
+      var d = JSON.parse(sessionStorage.getItem(KEY) || "null"); if (!d) return;
+      inputs.forEach(function (el) { if (d[el.id]) el.value = d[el.id]; });
+    } catch (e) {}
+  }
+
+  inputs.forEach(function (el) { el.addEventListener("input", refresh); });
+  $("printBtn").addEventListener("click", function () { window.print(); });
+
+  function copyText(text, okMsg) {
+    function fallback() {
+      var t = document.createElement("textarea"); t.value = text;
+      t.style.position = "fixed"; t.style.opacity = "0"; document.body.appendChild(t); t.select();
+      try { document.execCommand("copy"); } catch (e) {} document.body.removeChild(t);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () { said.textContent = okMsg; },
+        function () { fallback(); said.textContent = okMsg; });
+    } else { fallback(); said.textContent = okMsg; }
+  }
+  function listText() {
+    if (!last) return null;
+    var out = ["THE CLEAT WALL — " + new Date().toLocaleDateString(), ""];
+    ["oRails", "oRip", "oBuy", "oStuds", "oScrews", "oHang"].forEach(function (id) { out.push($(id).textContent); });
+    out.push("", "Cut the rails:");
+    [].forEach.call($("oCuts").children, function (li) { out.push("- " + li.textContent); });
+    if (!$("oWarn").hidden) out.push("", $("oWarn").textContent);
+    var who = $("callName").value.trim(); if (who) out.push("", "Call: " + who);
+    out.push("", "The Cleat Wall — @nicksdadhax");
+    return out.join("\n");
+  }
+  $("copyBtn").addEventListener("click", function () {
+    var t = listText(); if (!t) { said.textContent = "Type a wall width first."; return; }
+    copyText(t, "Copied — take it to the saw.");
+  });
+  $("promptBtn").addEventListener("click", function () {
+    if (!last) { said.textContent = "Type a wall width first — the prompt is built from it."; return; }
+    var o = last.o, p = last.p;
+    var text = [
+      "You are a master carpenter reviewing a first-timer's French cleat wall plan. Blunt,",
+      "specific, no hype. If a number below can't be right, say so. Never invent a product",
+      "or a price; tell me what to check at the store instead.",
+      "",
+      "The wall: " + frac(o.wall) + " in wide, studs " + o.oc + " in on center, first stud center at " + frac(o.first) + " in.",
+      "Plan: " + p.rails.length + " rails from " + frac(o.bottom) + " to " + frac(o.top) + " in, " + frac(o.gap) + " in apart, cut from "
+        + frac(o.strip) + " in strips of 3/4 plywood ripped at 45 degrees. " + p.strips + " strips, " + p.sheets + " sheet(s), " + p.screws + " screws.",
+      "What I plan to hang: [list the heaviest five things and roughly what they weigh]",
+      "",
+      "Do this, in order:",
+      "1. Check the plan against what I'm hanging. Which rail should carry the heavy things?",
+      "2. Tell me how to confirm every stud before I drive a screw, and what to do where a",
+      "   rail crosses an outlet, a switch, or a spot with no stud.",
+      "3. Give me the safest way to make the 45-degree rip on the saw I own: [name your saw].",
+      "4. Show me three hanger designs with a stop block for my five heaviest things.",
+      "5. Name the three ways a cleat wall most often fails, and how I'd spot each early.",
+      "",
+      "Keep the whole thing under one page.",
+      "",
+      "(Built with The Cleat Wall — @nicksdadhax)"
+    ].join("\n");
+    copyText(text, "Prompt copied — paste it into the AI you already use.");
+  });
+  $("resetBtn").addEventListener("click", function () {
+    inputs.forEach(function (el) { el.value = ""; });
+    try { sessionStorage.removeItem(KEY); } catch (e) {}
+    refresh(); said.textContent = "Cleared."; window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  load(); refresh();
+})();
+</script>
+
+</body>
+</html>
