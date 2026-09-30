@@ -22,6 +22,7 @@
     --signal:   #FFC629;
     --signal-d: #C8930F;
     --warn:     #E8502C;
+    --ply:      #B8935A;
 
     --mono: ui-monospace, "SF Mono", SFMono-Regular, "Cascadia Mono",
             "Roboto Mono", Menlo, Consolas, "Courier New", monospace;
@@ -181,6 +182,18 @@
   .spec ul { margin: 8px 0 0; padding: 0 0 0 18px; }
   .spec li { font-family: var(--mono); font-size: 13.5px; line-height: 1.6; color: var(--bone); }
   .spec li i { font-style: normal; color: var(--graphite); }
+  .steps { margin: 6px 0 0; }
+  .step { padding: 10px 0 8px; border-top: 1px solid var(--hair); }
+  .step .head { display: flex; gap: 12px; align-items: center; margin: 0 0 6px; }
+  .step .pic { flex: 0 0 72px; }
+  .step .pic svg { display: block; width: 72px; height: auto; }
+  .step .pic text { font-family: var(--mono); font-weight: 700; font-size: 10px; fill: var(--signal); }
+  .step h3 { margin: 0; font-family: var(--mono); font-size: 14px; letter-spacing: .05em;
+    text-transform: uppercase; color: var(--signal); }
+  .step ul { margin: 0; padding: 0 0 0 18px; }
+  .step ul li { font-family: var(--sans); font-size: 14.5px; line-height: 1.4; color: var(--bone); }
+  .step ul li.w { color: #E7DCD6; list-style: "! "; }
+  .step ul li.w::marker { color: var(--warn); font-family: var(--mono); font-weight: 700; }
 
   .callbox { margin-top: 28px; padding: 18px 16px 16px; background: var(--panel-up);
     border: 2px dashed var(--signal-d); }
@@ -236,7 +249,7 @@
     :root {
       --carbon: #fff; --panel: #fff; --panel-up: #FFF8E2;
       --hair: #C9C2BC; --bone: #14100F; --graphite: #5E5651;
-      --signal: #7A5B00; --signal-d: #7A5B00; --warn: #B93A18;
+      --signal: #7A5B00; --signal-d: #7A5B00; --warn: #B93A18; --ply: #E4D2A8;
     }
     body { background-image: none; font-size: 10.5pt; }
     .sheet { max-width: none; padding: 0; }
@@ -279,11 +292,6 @@
       at what heights, how many 45&deg; rips, how many sheets, where every stud and screw
       lands. Here's a 10-foot wall behind a workbench, rails every 6 inches from 40 to 88: <b>nine rails,
       six 45&deg; rips, one sheet for the rails, 144 screws, every one in a stud.</b></p>
-    <p class="dek">A cleat is a strip with one edge ripped at 45&deg;. One goes on the
-      wall, angled edge up, short face against the wall, so the point stands off the
-      wall and leaves a pocket behind it. A smaller one goes on the back of whatever
-      you hang, angled edge down, short face against the hanger. The point drops into
-      the pocket.</p>
     <p class="privacy"><b>Nothing you type here leaves your device.</b> No account, no
       server, no analytics. Your numbers live in this browser tab and are erased when
       you close it. "Start over" wipes them now.</p>
@@ -388,20 +396,8 @@
   <div class="empty" id="empty">Type a wall width above and the cut list appears here.</div>
 
   <div class="spec" id="spec" hidden>
-    <span class="lbl">Your wall</span>
-    <p id="oRails"></p>
-    <p id="oRip"></p>
-    <p class="fine" id="oSaw">At the saw: riving knife in, push shoe on every pass, outfeed
-      support or a helper for 8-foot rips. If the blade leans toward the fence, stop: the
-      strip is pinned under it. The hanger cleats and the 3/4 in stops are narrow rips.
-      Use a sacrificial push shoe that rides over the blade, and your fingers never go
-      between blade and fence.</p>
-    <p id="oBuy"></p>
-    <p id="oStuds"></p>
-    <p id="oScrews"></p>
-    <p id="oHang"></p>
-    <span class="lbl" style="margin-top:14px">Cut the rails</span>
-    <ul id="oCuts"></ul>
+    <span class="lbl">Your wall, step by step</span>
+    <div class="steps" id="oSteps"></div>
     <p class="fine" id="oWarn"></p>
   </div>
 
@@ -582,23 +578,56 @@
     var o = opts();
     if (!o) { spec.hidden = true; empty.hidden = false; count.textContent = "0"; last = null; save(); return; }
     var p = plan(o); last = { o: o, p: p };
-    $("oRails").textContent = p.rails.length + " rail" + (p.rails.length === 1 ? "" : "s") + ", bottom edge at " + list(p.rails) + " in from the floor.";
-    $("oRip").textContent = "Rip " + p.wallStrips + " strip" + (p.wallStrips === 1 ? "" : "s") + " " + frac(p.strip) + " in wide. Then tilt the blade to 45°, leaning away from the fence (right-tilt saw: move the fence to the left of the blade). Set the fence " + frac(p.fence) + " in from the blade, measured at the table, not off the fence scale. One pass down each: " + (2 * p.wallStrips) + " eight-foot wall cleats, each " + frac(o.height) + " in tall on the wide face. Run a scrap first; both halves should measure " + frac(o.height) + " in.";
-    $("oBuy").textContent = "Buy " + p.sheets + " sheet" + (p.sheets === 1 ? "" : "s") + " of 3/4 plywood. Every strip is a full 8-foot rip, 1/8 in blade.";
-    $("oStuds").textContent = p.studs.length ? "Studs at " + list(p.studs) + " in from the left end. Mark them once, floor to top rail." : "No studs found inside this wall. Check the numbers.";
-    $("oScrews").textContent = p.screws + " construction screws, 2 1/2 in, not drywall screws: two per stud on every rail" + (p.joints.length ? ", plus two more at every joint." : ".");
-    $("oHang").textContent = o.hang
-      ? o.hang + " hanger" + (o.hang === 1 ? "" : "s") + " at 8 in wide: rip " + p.hangStrips + " strip" + (p.hangStrips === 1 ? "" : "s") + " " + frac(p.hStrip) + " in wide and run " + (p.hangStrips === 1 ? "it" : "them") + " at 45°, blade leaning away from the fence, fence at " + frac(p.hFence) + " in, for the hanger cleats (" + frac(HCLEAT) + " in tall). Plus " + p.plateStrips + " strip" + (p.plateStrips === 1 ? "" : "s") + " " + frac(PLATE) + " in wide for the plates and " + p.stopStrips + " at " + frac(STOP) + " in for the stops. The sheet count above includes them."
-      : "Hangers are their own, smaller rip. Type a count above and the hanger cleats, plates and stops join the cut list.";
-    var ul = $("oCuts"); ul.textContent = "";
-    var li = document.createElement("li");
-    li.textContent = p.pieces.map(frac).join(" + ") + " = " + frac(o.wall) + " in, ×" + p.rails.length;
-    ul.appendChild(li);
-    if (p.joints.length) {
-      var lj = document.createElement("li");
-      lj.textContent = "joints at " + list(p.joints) + " in, each on a stud";
-      ul.appendChild(lj);
-    }
+    var n = function (k, word) { return k + " " + word + (k === 1 ? "" : "s"); };
+    var ink = ' stroke="var(--bone)" stroke-width="2"', ply = ' fill="var(--ply)"' + ink;
+    var steps = [];
+    steps.push({ t: "Buy", pic: '<rect x="6" y="12" width="72" height="38"' + ply + '/><text x="42" y="35" text-anchor="middle">' + p.sheets + ' × 4x8</text>', b: [
+      n(p.sheets, "sheet") + " of 3/4 plywood",
+      p.screws + " construction screws, 2 1/2 in (not drywall screws)" ] });
+    var rips = [n(p.wallStrips, "strip") + " " + frac(p.strip) + " wide, for the wall"];
+    if (o.hang) rips.push(n(p.hangStrips, "strip") + " " + frac(p.hStrip) + " wide, hanger cleats",
+      n(p.plateStrips, "strip") + " " + frac(PLATE) + " wide, hanger plates",
+      n(p.stopStrips, "strip") + " " + frac(STOP) + " wide, stops");
+    rips.push("Blade straight up. Every rip runs the full 8 feet.");
+    steps.push({ t: "Rip the strips", pic: '<rect x="6" y="10" width="72" height="44"' + ply + '/><path d="M6 19h72M6 28h72M6 37h72M6 46h72" stroke="var(--bone)" stroke-width="1.5" stroke-dasharray="4 3"/><text x="42" y="63" text-anchor="middle">' + frac(p.strip) + '</text>', b: rips });
+    var saw = ["Tilt the blade to 45°, leaning away from the fence",
+      "Fence " + frac(p.fence) + " from the blade, measured at the table",
+      "Scrap first: both halves should measure " + frac(o.height),
+      "One pass down each wall strip: " + n(2 * p.wallStrips, "cleat") + ", " + frac(o.height) + " tall"];
+    if (o.hang) saw.push("Hanger strips: fence " + frac(p.hFence) + ", same tilt");
+    steps.push({ t: "Cut the 45", pic: '<path d="M4 44h76"' + ink + '/><rect x="64" y="24" width="7" height="20" fill="var(--graphite)"' + ink + '/><rect x="24" y="36" width="40" height="8"' + ply + '/><path d="M46 44L30 28" stroke="var(--signal)" stroke-width="3"/><path d="M46 50h18M46 47v6M64 47v6" stroke="var(--signal)" stroke-width="1.5"/><text x="55" y="62" text-anchor="middle">' + frac(p.fence) + '</text>', b: saw, w: [
+      "Right-tilt saw: move the fence to the left of the blade",
+      "Riving knife in, push shoe on every pass",
+      "Blade leaning toward the fence? Stop. The strip is pinned." ] });
+    var cuts = [p.pieces.map(frac).join(" + ") + " = " + frac(o.wall) + ", × " + p.rails.length];
+    if (p.joints.length) cuts.push("Joints at " + list(p.joints) + ", each on a stud");
+    steps.push({ t: "Cut the rails to length", pic: '<rect x="4" y="26" width="50" height="10"' + ply + '/><rect x="58" y="26" width="22" height="10"' + ply + '/><path d="M56 18v26" stroke="var(--signal)" stroke-width="2" stroke-dasharray="3 2"/>', b: cuts });
+    steps.push({ t: "Mark the studs", pic: '<rect x="6" y="8" width="72" height="48" fill="none"' + ink + '/><path d="M20 8v48M42 8v48M64 8v48" stroke="var(--signal)" stroke-width="1.5" stroke-dasharray="4 3"/>', b: p.studs.length ? [
+      "Studs at " + list(p.studs) + " from the left end",
+      "One line per stud, floor to top rail" ] : ["No studs found inside this wall. Check the numbers."] });
+    steps.push({ t: "Screw on the rails", pic: '<rect x="14" y="4" width="12" height="56" fill="var(--graphite)"' + ink + '/><polygon points="26,48 38,48 38,14 26,26"' + ply + '/><path d="M20 34h18M20 42h18"' + ink + '/><path d="M60 30h-14" stroke="var(--signal)" stroke-width="3"/><polygon points="42,30 50,25 50,35" fill="var(--signal)"/>', b: [
+      n(p.rails.length, "rail") + ", bottom edge at " + list(p.rails) + " from the floor",
+      "Angled edge up, short face against the wall",
+      "Two screws per stud" + (p.joints.length ? ", two more at each joint" : "") ] });
+    steps.push({ t: "Build the hangers", pic: '<rect x="44" y="6" width="9" height="52"' + ply + '/><polygon points="35,6 44,6 44,16 35,25"' + ply + '/><polygon points="35,53 38,50 44,50 44,58 35,58" fill="var(--signal)"' + ink + '/><text x="4" y="40">wall</text>', b: o.hang ? [
+      n(o.hang, "hanger") + ", about 8 wide each",
+      "Cleat at the top of the plate, angled edge down",
+      "Stop at the bottom, top wall-side corner clipped" ] : [
+      "Type a count above and the hanger stock joins the list",
+      "Each one: plate, cleat at the top, stop at the bottom" ] });
+    var ol = $("oSteps"); ol.textContent = "";
+    steps.forEach(function (st, i) {
+      var box = document.createElement("div"), head = document.createElement("div"), pic = document.createElement("span");
+      box.className = "step"; head.className = "head";
+      pic.className = "pic"; pic.innerHTML = '<svg viewBox="0 0 84 66" aria-hidden="true">' + st.pic + "</svg>";
+      var h = document.createElement("h3"); h.textContent = (i + 1) + ". " + st.t;
+      head.appendChild(pic); head.appendChild(h);
+      var ul = document.createElement("ul");
+      st.b.forEach(function (t) { var x = document.createElement("li"); x.textContent = t; ul.appendChild(x); });
+      (st.w || []).forEach(function (t) { var x = document.createElement("li"); x.className = "w"; x.textContent = t; ul.appendChild(x); });
+      box.appendChild(head); box.appendChild(ul); ol.appendChild(box);
+    });
+    last.steps = steps;
     $("oWarn").textContent = p.warn.join(" ");
     $("oWarn").hidden = !p.warn.length;
     count.textContent = String(p.strips);
@@ -642,9 +671,11 @@
   function listText() {
     if (!last) return null;
     var out = ["THE CLEAT WALL — " + new Date().toLocaleDateString(), ""];
-    ["oRails", "oRip", "oSaw", "oBuy", "oStuds", "oScrews", "oHang"].forEach(function (id) { out.push($(id).textContent.replace(/\s+/g, " ")); });
-    out.push("", "Cut the rails:");
-    [].forEach.call($("oCuts").children, function (li) { out.push("- " + li.textContent); });
+    last.steps.forEach(function (st, i) {
+      out.push((i + 1) + ". " + st.t.toUpperCase());
+      st.b.forEach(function (t) { out.push("   - " + t); });
+      (st.w || []).forEach(function (t) { out.push("   ! " + t); });
+    });
     if (!$("oWarn").hidden) out.push("", $("oWarn").textContent);
     var who = $("callName").value.trim(); if (who) out.push("", "Call: " + who);
     out.push("", "The Cleat Wall — @nicksdadhax");
