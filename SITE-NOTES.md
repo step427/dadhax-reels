@@ -481,7 +481,24 @@ doesn't know your wall." Boulder question carries last week's "third thing".
 shed" (source_raw `20260907_120012.mp4`) under a catalog prefix, caption rewritten so the
 45 pays off and the one link is `https://step427.github.io/dadhax-reels/cleat-wall.html`.
 
-**Audit fills (Tool 10):** `--fill wall=120 bottom=16 top=80 gap=8 oc=16 first=16 strip=4 hang=30 callName=Sam` — every input the page needs set before its real output exists on screen. Never a real person's name or a sensitive number.
+**Rip math corrected 2026-09-30 (hotfix; Nick caught it off his own saw setup).** The 9/22
+engine split every strip "down the middle" into one wall half + one hanger half, gave no
+fence number, and defaulted to a 4" strip (~2 5/16" cleats, not the 3" Nick builds and
+films). Now: the input is **finished cleat height** (default 3, id `height`, replaces
+`strip`); fence = height − 3/4; strip = 2·fence + 3/4 + 3/16 (a 1/8 kerf at 45° eats 3/16
+across the face) → **5 7/16 strip, fence 2 1/4**; one pass makes **two wall cleats**, so
+strips = half the 96" cleat lengths. Hangers are their own stock: 1 3/4" cleats from a
+2 15/16 strip (fence 1), 5" plates, 3/4" stops, 8" per hanger, all counted in the sheets.
+Rail heights now print as **bottom edge**. Gap warning fires under height + 2. The proof
+line above is now **9 rails, 6 rips, 1 sheet, 144 screws** (2 sheets with 30 hangers); the
+9/29 launch caption and its `log.html` copy still say "twelve rips, 2 sheets" and are left
+as the record of what was posted. Engine checked against Rook `captures/_tools/cleat_cutlist.py`.
+`silva` review 9/30: FIX, applied (saw-safety line `oSaw`, orientation sentence in the dek,
+cleat height clamped 1.75 to 3.25 because the 5" plate's stop lands on a taller rail, spacing
+warning under max(height + 2, 6), "construction screws, not drywall"). Left for Nick: screw
+gauge and plywood grade (silva wants cabinet-grade named). Not done here (next Sunday build): the "behind a workbench?" 6"/12" toggle and the spacer line.
+
+**Audit fills (Tool 10):** `--fill wall=120 bottom=16 top=80 gap=8 oc=16 first=16 height=3 hang=30 callName=Sam` — every input the page needs set before its real output exists on screen. Never a real person's name or a sensitive number.
 → PASS, 984 words / 5636px expanded (09 is 1170 / 6557). The `.redline-note` background
 is the solid composite `#20130E` instead of `rgba(232,80,44,.08)` because the audit
 reads the translucent one as 1:1 contrast; same look. `decision-forcer.html` still

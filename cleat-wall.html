@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Tool 10. Built 2026-09-22 by the dadhax-weekly-tool routine off the French cleat reels; ships Tue 9/29. -->
+<!-- Tool 10. Built 2026-09-22 by the dadhax-weekly-tool routine off the French cleat reels; shipped Tue 9/29.
+     Rip math corrected 2026-09-30: both halves of a wall strip are wall cleats; hangers are their own rip. -->
 <title>The Cleat Wall — @nicksdadhax</title>
 <meta name="description" content="Type in a wall. Get the French cleat cut list: rail heights, how many 45-degree rips, how many sheets, where every stud and screw lands, and the stop that keeps hangers on the wall. Free, no gate.">
 
@@ -268,10 +269,12 @@
     <p class="dek"><em>Type your wall and you get the cut list</em>: how many rails and
       at what heights, how many 45&deg; rips, how many sheets, where every stud and screw
       lands. Here's a 10-foot wall with rails every 8 inches from 16 to 80: <b>nine rails,
-      twelve 45&deg; rips, two sheets (not one), 144 screws, every one in a stud.</b></p>
-    <p class="dek">A cleat is one strip ripped at 45&deg; down the middle. Half goes on
-      the wall, angle up. Half goes on the back of whatever you hang, angle down. They
-      hook together.</p>
+      six 45&deg; rips, one sheet for the rails, 144 screws, every one in a stud.</b></p>
+    <p class="dek">A cleat is a strip with one edge ripped at 45&deg;. One goes on the
+      wall, angled edge up, short face against the wall, so the point stands off the
+      wall and leaves a pocket behind it. A smaller one goes on the back of whatever
+      you hang, angled edge down, short face against the hanger. The point drops into
+      the pocket.</p>
     <p class="privacy"><b>Nothing you type here leaves your device.</b> No account, no
       server, no analytics. Your numbers live in this browser tab and are erased when
       you close it. "Start over" wipes them now.</p>
@@ -289,9 +292,9 @@
 
   <div class="whys" aria-label="What makes a cleat wall hold">
     <div class="why">
-      <span class="tag">One 45, two halves</span>
-      <p>Every strip you rip gives <b>one wall cleat and one hanger cleat.</b> Count rips,
-        not boards.</p>
+      <span class="tag">One 45, two cleats</span>
+      <p>Every strip you rip at 45 gives <b>two wall cleats.</b> Hanger cleats are a
+        smaller rip from their own strip.</p>
     </div>
     <div class="why">
       <span class="tag">Studs, not drywall</span>
@@ -343,8 +346,8 @@
         <input type="number" id="first" inputmode="decimal" step="0.125" min="0" max="24" placeholder="16">
       </div>
       <div>
-        <label class="lbl" for="strip">Strip width <span class="unit">in before the 45</span></label>
-        <input type="number" id="strip" inputmode="decimal" step="0.25" min="2" max="12" placeholder="4">
+        <label class="lbl" for="height">Cleat height <span class="unit">in, finished</span></label>
+        <input type="number" id="height" inputmode="decimal" step="0.25" min="1.75" max="3.25" placeholder="3">
       </div>
     </div>
     <label class="lbl" for="hang">Things to hang <span class="unit">count &middot; optional</span></label>
@@ -359,6 +362,11 @@
     <span class="lbl">Your wall</span>
     <p id="oRails"></p>
     <p id="oRip"></p>
+    <p class="fine" id="oSaw">At the saw: riving knife in, push shoe on every pass, outfeed
+      support or a helper for 8-foot rips. If the blade leans toward the fence, stop: the
+      strip is pinned under it. The hanger cleats and the 3/4 in stops are narrow rips.
+      Use a sacrificial push shoe that rides over the blade, and your fingers never go
+      between blade and fence.</p>
     <p id="oBuy"></p>
     <p id="oStuds"></p>
     <p id="oScrews"></p>
@@ -449,8 +457,22 @@
   "use strict";
   // ---- the engine: pure, so it can be checked outside the page ----
   var STOCK = 96, KERF = 0.125, SHEET_W = 48, HANGER_IN = 8;
+  var T = 0.75, K45 = KERF * Math.SQRT2;   // 3/4 ply; a 1/8 kerf at 45° eats ~3/16 across the face
+  var HCLEAT = 1.75, PLATE = 5, STOP = 0.75;   // hanger cleat, plate, stop
+  function up16(x) { return Math.ceil(x * 16 - 1e-9) / 16; }
+  // first-fit-decreasing: how many bins of `cap` hold these lengths, a kerf between each
+  function pack(lens, cap) {
+    var bins = [];
+    lens.slice().sort(function (a, b) { return b - a; }).forEach(function (p) {
+      for (var i = 0; i < bins.length; i++) if (bins[i] + KERF + p <= cap + 1e-9) { bins[i] += KERF + p; return; }
+      bins.push(p);
+    });
+    return bins.length;
+  }
+  // strip width and fence setting that make two identical cleats of height H in one 45° pass
+  function bevel(H) { return { fence: H - T, strip: up16(2 * (H - T) + T + K45) }; }
   function plan(o) {
-    var wall = o.wall, oc = o.oc, first = o.first, S = o.strip;
+    var wall = o.wall, oc = o.oc, first = o.first, H = o.height;
     var rails = [];
     for (var h = o.bottom; h <= o.top + 1e-9; h += o.gap) rails.push(h);
     var studs = [];
@@ -464,41 +486,43 @@
       pieces.push(j - start); joints.push(j); start = j;
     }
     pieces.push(wall - start);
-    // pack every rail's pieces into 96-inch strips, longest first
+    // wall cleats: pack every rail's pieces into 96-inch cleats. One 45° pass down one
+    // strip makes TWO of them, so strips = half the cleats.
     var all = [];
     rails.forEach(function () { pieces.forEach(function (p) { all.push(p); }); });
-    all.sort(function (a, b) { return b - a; });
-    var bins = [];
-    all.forEach(function (p) {
-      for (var i = 0; i < bins.length; i++) if (bins[i] + KERF + p <= STOCK + 1e-9) { bins[i] += KERF + p; return; }
-      bins.push(p);
-    });
-    var wallStrips = bins.length;
-    var supply = wallStrips * STOCK, need = (o.hang || 0) * HANGER_IN, extra = 0;
-    if (need > supply) extra = Math.ceil((need - supply) / (2 * STOCK));
-    var strips = wallStrips + extra;
-    var perSheet = Math.floor((SHEET_W + KERF) / (S + KERF));
-    var sheets = perSheet > 0 ? Math.ceil(strips / perSheet) : 0;
+    var A = bevel(H), wallStrips = Math.ceil(pack(all, STOCK) / 2);
+    // hangers: their own smaller 45° strip, plus a plate strip and a stop strip
+    var hl = [];
+    for (var n = 0; n < (o.hang || 0); n++) hl.push(HANGER_IN);
+    var runs = pack(hl, STOCK);              // 96-inch lengths of hanger stock
+    var B = bevel(HCLEAT), hangStrips = Math.ceil(runs / 2);
+    var widths = [], k;
+    for (k = 0; k < wallStrips; k++) widths.push(A.strip);
+    for (k = 0; k < hangStrips; k++) widths.push(B.strip);
+    for (k = 0; k < runs; k++) widths.push(PLATE);
+    for (k = 0; k < runs; k++) widths.push(STOP);
+    var sheets = pack(widths, SHEET_W);
     var screws = rails.length * (studs.length * 2 + joints.length * 2);
-    if (rails.length > 1 && o.gap < S / 2 + 1) warn.push("Rails " + o.gap + " in apart leave no room to hook a hanger between them. Try " + Math.ceil(S / 2 + 2) + " or more.");
+    if (rails.length > 1 && o.gap < Math.max(H + 2, PLATE + 1)) warn.push("Rails " + o.gap + " in apart leave no room to hook a hanger between them. Try " + Math.ceil(Math.max(H + 3, PLATE + 1)) + " or more.");
     if (studs.length < 2) warn.push("Fewer than two studs behind this wall. It will not carry weight.");
-    return { rails: rails, studs: studs, pieces: pieces, joints: joints, strips: strips, wallStrips: wallStrips,
-             extra: extra, perSheet: perSheet, sheets: sheets, screws: screws, hangers: o.hang || 0,
-             hangerCap: Math.floor((supply + extra * 2 * STOCK) / HANGER_IN), warn: warn };
+    return { rails: rails, studs: studs, pieces: pieces, joints: joints, strips: wallStrips + hangStrips,
+             wallStrips: wallStrips, hangStrips: hangStrips, plateStrips: runs, stopStrips: runs,
+             strip: A.strip, fence: A.fence, hStrip: B.strip, hFence: B.fence,
+             sheets: sheets, screws: screws, hangers: o.hang || 0, warn: warn };
   }
 
   var KEY = "ndh-cleatwall-v1";
   var $ = function (id) { return document.getElementById(id); };
-  var inputs = ["wall", "bottom", "top", "gap", "oc", "first", "strip", "hang", "callName"].map($);
+  var inputs = ["wall", "bottom", "top", "gap", "oc", "first", "height", "hang", "callName"].map($);
   var said = $("said"), spec = $("spec"), empty = $("empty"), count = $("count");
   var last = null;
 
   function num(id, dflt) { var v = parseFloat($(id).value); return isFinite(v) ? v : dflt; }
   function frac(x) {
-    var whole = Math.floor(x), r = Math.round((x - whole) * 8);
-    if (r === 8) { whole += 1; r = 0; }
+    var whole = Math.floor(x), r = Math.round((x - whole) * 16);
+    if (r === 16) { whole += 1; r = 0; }
     if (r === 0) return String(whole);
-    var n = r, d = 8; while (n % 2 === 0) { n /= 2; d /= 2; }
+    var n = r, d = 16; while (n % 2 === 0) { n /= 2; d /= 2; }
     return (whole ? whole + " " : "") + n + "/" + d;
   }
   function list(a) { return a.map(frac).join(", "); }
@@ -510,21 +534,21 @@
     if (gap < 3) gap = 3;
     if (top < bottom) { var t = top; top = bottom; bottom = t; }
     return { wall: wall, bottom: bottom, top: top, gap: gap, oc: oc, first: num("first", oc),
-             strip: Math.max(2, num("strip", 4)), hang: Math.max(0, Math.round(num("hang", 0))) };
+             height: Math.min(3.25, Math.max(1.75, num("height", 3))), hang: Math.max(0, Math.round(num("hang", 0))) };
   }
 
   function refresh() {
     var o = opts();
     if (!o) { spec.hidden = true; empty.hidden = false; count.textContent = "0"; last = null; save(); return; }
     var p = plan(o); last = { o: o, p: p };
-    $("oRails").textContent = p.rails.length + " rail" + (p.rails.length === 1 ? "" : "s") + ", top edge at " + list(p.rails) + " in from the floor.";
-    $("oRip").textContent = "Rip " + p.strips + " strips " + frac(o.strip) + " in wide, then one 45° rip down the middle of each: " + p.strips + " wall halves, " + p.strips + " hanger halves.";
-    $("oBuy").textContent = "Buy " + p.sheets + " sheet" + (p.sheets === 1 ? "" : "s") + " of 3/4 plywood (" + p.perSheet + " strips per 4x8 sheet, 1/8 in blade).";
+    $("oRails").textContent = p.rails.length + " rail" + (p.rails.length === 1 ? "" : "s") + ", bottom edge at " + list(p.rails) + " in from the floor.";
+    $("oRip").textContent = "Rip " + p.wallStrips + " strip" + (p.wallStrips === 1 ? "" : "s") + " " + frac(p.strip) + " in wide. Then tilt the blade to 45°, leaning away from the fence (right-tilt saw: move the fence to the left of the blade). Set the fence " + frac(p.fence) + " in from the blade, measured at the table, not off the fence scale. One pass down each: " + (2 * p.wallStrips) + " eight-foot wall cleats, each " + frac(o.height) + " in tall on the wide face. Run a scrap first; both halves should measure " + frac(o.height) + " in.";
+    $("oBuy").textContent = "Buy " + p.sheets + " sheet" + (p.sheets === 1 ? "" : "s") + " of 3/4 plywood. Every strip is a full 8-foot rip, 1/8 in blade.";
     $("oStuds").textContent = p.studs.length ? "Studs at " + list(p.studs) + " in from the left end. Mark them once, floor to top rail." : "No studs found inside this wall. Check the numbers.";
-    $("oScrews").textContent = p.screws + " screws, 2 1/2 in: two per stud on every rail" + (p.joints.length ? ", plus two more at every joint." : ".");
+    $("oScrews").textContent = p.screws + " construction screws, 2 1/2 in, not drywall screws: two per stud on every rail" + (p.joints.length ? ", plus two more at every joint." : ".");
     $("oHang").textContent = o.hang
-      ? o.hang + " hangers, each with a stop block 3/4 in thick. Hanger halves cover about " + p.hangerCap + " at 8 in each" + (p.extra ? " (includes " + p.extra + " extra strip" + (p.extra === 1 ? "" : "s") + ")." : ".")
-      : "Hanger halves cover about " + p.hangerCap + " hangers at 8 in each. Every one gets a stop, 3/4 in thick.";
+      ? o.hang + " hanger" + (o.hang === 1 ? "" : "s") + " at 8 in wide: rip " + p.hangStrips + " strip" + (p.hangStrips === 1 ? "" : "s") + " " + frac(p.hStrip) + " in wide and run " + (p.hangStrips === 1 ? "it" : "them") + " at 45°, blade leaning away from the fence, fence at " + frac(p.hFence) + " in, for the hanger cleats (" + frac(HCLEAT) + " in tall). Plus " + p.plateStrips + " strip" + (p.plateStrips === 1 ? "" : "s") + " " + frac(PLATE) + " in wide for the plates and " + p.stopStrips + " at " + frac(STOP) + " in for the stops. The sheet count above includes them."
+      : "Hangers are their own, smaller rip. Type a count above and the hanger cleats, plates and stops join the cut list.";
     var ul = $("oCuts"); ul.textContent = "";
     var li = document.createElement("li");
     li.textContent = p.pieces.map(frac).join(" + ") + " = " + frac(o.wall) + " in, ×" + p.rails.length;
@@ -573,7 +597,7 @@
   function listText() {
     if (!last) return null;
     var out = ["THE CLEAT WALL — " + new Date().toLocaleDateString(), ""];
-    ["oRails", "oRip", "oBuy", "oStuds", "oScrews", "oHang"].forEach(function (id) { out.push($(id).textContent); });
+    ["oRails", "oRip", "oSaw", "oBuy", "oStuds", "oScrews", "oHang"].forEach(function (id) { out.push($(id).textContent.replace(/\s+/g, " ")); });
     out.push("", "Cut the rails:");
     [].forEach.call($("oCuts").children, function (li) { out.push("- " + li.textContent); });
     if (!$("oWarn").hidden) out.push("", $("oWarn").textContent);
@@ -594,8 +618,8 @@
       "or a price; tell me what to check at the store instead.",
       "",
       "The wall: " + frac(o.wall) + " in wide, studs " + o.oc + " in on center, first stud center at " + frac(o.first) + " in.",
-      "Plan: " + p.rails.length + " rails from " + frac(o.bottom) + " to " + frac(o.top) + " in, " + frac(o.gap) + " in apart, cut from "
-        + frac(o.strip) + " in strips of 3/4 plywood ripped at 45 degrees. " + p.strips + " strips, " + p.sheets + " sheet(s), " + p.screws + " screws.",
+      "Plan: " + p.rails.length + " rails from " + frac(o.bottom) + " to " + frac(o.top) + " in, " + frac(o.gap) + " in apart (bottom edge to bottom edge), wall cleats "
+        + frac(o.height) + " in tall from " + frac(p.strip) + " in strips of 3/4 plywood ripped at 45 degrees. " + p.strips + " strips get the 45, " + p.sheets + " sheet(s), " + p.screws + " screws.",
       "What I plan to hang: [list the heaviest five things and roughly what they weigh]",
       "",
       "Do this, in order:",
