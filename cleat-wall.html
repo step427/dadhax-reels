@@ -511,17 +511,23 @@
       pieces.push(j - start); joints.push(j); start = j;
     }
     pieces.push(wall - start);
-    // wall cleats: pack every rail's pieces into 96-inch cleats. One 45° pass down one
-    // strip makes TWO of them, so strips = half the cleats.
+    // wall cleats: pack every rail's pieces into 96-inch cleats.
     var all = [];
     rails.forEach(function () { pieces.forEach(function (p) { all.push(p); }); });
-    var A = bevel(H), wallStrips = Math.ceil(pack(all, STOCK) / 2);
-    // hangers: their own smaller 45° strip, plus a plate strip and a stop strip
+    var A = bevel(H), wallCleats = pack(all, STOCK);
     var hl = [];
     for (var n = 0; n < (o.hang || 0); n++) hl.push(HANGER_IN);
     var runs = pack(hl, STOCK);              // 96-inch lengths of hanger stock
-    var B = bevel(HCLEAT), hangStrips = Math.ceil(runs / 2);
+    // Nick's pairing (2026-09-30): one strip = one wall cleat on the fence side + one hanger
+    // cleat as the offcut, so the fence never moves and the wide piece is always the one
+    // against it. Width = the wall cleat's short face + the 45° kerf + the hanger cleat's
+    // wide face, which is the face on the table.
+    var pairStrips = Math.min(runs, wallCleats);
+    var pairStrip = up16(A.fence + K45 + HCLEAT);
+    var wallStrips = Math.ceil((wallCleats - pairStrips) / 2);   // two wall cleats each
+    var B = bevel(HCLEAT), hangStrips = Math.ceil((runs - pairStrips) / 2);   // only if hangers outnumber rails
     var widths = [], k;
+    for (k = 0; k < pairStrips; k++) widths.push(pairStrip);
     for (k = 0; k < wallStrips; k++) widths.push(A.strip);
     for (k = 0; k < hangStrips; k++) widths.push(B.strip);
     for (k = 0; k < runs; k++) widths.push(PLATE);
@@ -530,7 +536,8 @@
     var screws = rails.length * (studs.length * 2 + joints.length * 2);
     if (rails.length > 1 && o.gap < Math.max(H + 2, PLATE + 1)) warn.push("Rails " + o.gap + " in apart leave no room to hook a hanger between them. Try " + Math.ceil(Math.max(H + 3, PLATE + 1)) + " or more.");
     if (studs.length < 2) warn.push("Fewer than two studs behind this wall. It will not carry weight.");
-    return { rails: rails, studs: studs, pieces: pieces, joints: joints, strips: wallStrips + hangStrips,
+    return { rails: rails, studs: studs, pieces: pieces, joints: joints, strips: pairStrips + wallStrips + hangStrips,
+             wallCleats: wallCleats, pairStrips: pairStrips, pairStrip: pairStrip,
              wallStrips: wallStrips, hangStrips: hangStrips, plateStrips: runs, stopStrips: runs,
              strip: A.strip, fence: A.fence, hStrip: B.strip, hFence: B.fence,
              sheets: sheets, screws: screws, hangers: o.hang || 0, warn: warn };
@@ -584,21 +591,28 @@
     steps.push({ t: "Buy", pic: '<rect x="6" y="12" width="72" height="38"' + ply + '/><text x="42" y="35" text-anchor="middle">' + p.sheets + ' × 4x8</text>', b: [
       n(p.sheets, "sheet") + " of 3/4 plywood",
       p.screws + " construction screws, 2 1/2 in (not drywall screws)" ] });
-    var rips = [n(p.wallStrips, "strip") + " " + frac(p.strip) + " wide, for the wall"];
-    if (o.hang) rips.push(n(p.hangStrips, "strip") + " " + frac(p.hStrip) + " wide, hanger cleats",
-      n(p.plateStrips, "strip") + " " + frac(PLATE) + " wide, hanger plates",
+    var rips = [];
+    if (p.pairStrips) rips.push(n(p.pairStrips, "strip") + " " + frac(p.pairStrip) + " wide: a wall cleat + a hanger cleat each");
+    if (p.wallStrips) rips.push(n(p.wallStrips, "strip") + " " + frac(p.strip) + " wide: two wall cleats each");
+    if (p.hangStrips) rips.push(n(p.hangStrips, "strip") + " " + frac(p.hStrip) + " wide: two hanger cleats each");
+    if (o.hang) rips.push(n(p.plateStrips, "strip") + " " + frac(PLATE) + " wide, hanger plates",
       n(p.stopStrips, "strip") + " " + frac(STOP) + " wide, stops");
-    rips.push("Blade straight up. Every rip runs the full 8 feet.");
-    steps.push({ t: "Rip the strips", pic: '<rect x="6" y="10" width="72" height="44"' + ply + '/><path d="M6 19h72M6 28h72M6 37h72M6 46h72" stroke="var(--bone)" stroke-width="1.5" stroke-dasharray="4 3"/><text x="42" y="63" text-anchor="middle">' + frac(p.strip) + '</text>', b: rips });
+    rips.push("Blade at 90°, full 8-foot rips");
+    steps.push({ t: "Rip the strips", pic: '<rect x="6" y="10" width="72" height="44"' + ply + '/><path d="M6 19h72M6 28h72M6 37h72M6 46h72" stroke="var(--bone)" stroke-width="1.5" stroke-dasharray="4 3"/><text x="42" y="63" text-anchor="middle">' + frac(p.pairStrips ? p.pairStrip : p.strip) + '</text>', b: rips });
     var saw = ["Tilt the blade to 45°, leaning away from the fence",
-      "Fence " + frac(p.fence) + " from the blade, measured at the table",
-      "Scrap first: both halves should measure " + frac(o.height),
-      "One pass down each wall strip: " + n(2 * p.wallStrips, "cleat") + ", " + frac(o.height) + " tall"];
-    if (o.hang) saw.push("Hanger strips: fence " + frac(p.hFence) + ", same tilt");
+      "Fence " + frac(p.fence) + " from the blade, measured at the table" + (p.hangStrips ? "" : ". It never moves."),
+      p.pairStrips ? "Scrap first: fence side " + frac(o.height) + ", offcut " + frac(HCLEAT) + ". Off? Fix the strip width, not the fence."
+                   : "Scrap first: both halves should measure " + frac(o.height),
+      "You get " + n(p.pairStrips + 2 * p.wallStrips, "wall cleat") + (p.pairStrips + 2 * p.wallStrips > p.wallCleats ? " (1 spare)" : "") + ", " + frac(o.height) + " tall"];
+    var hc = p.pairStrips + 2 * p.hangStrips;
+    if (hc) saw.push("And " + n(hc, "hanger cleat") + ", " + frac(HCLEAT) + " tall");
+    if (p.hangStrips) saw.push(frac(p.hStrip) + " strips only: fence " + frac(p.hFence) + ", same tilt");
     steps.push({ t: "Cut the 45", pic: '<path d="M4 44h76"' + ink + '/><rect x="64" y="24" width="7" height="20" fill="var(--graphite)"' + ink + '/><rect x="24" y="36" width="40" height="8"' + ply + '/><path d="M46 44L30 28" stroke="var(--signal)" stroke-width="3"/><path d="M46 50h18M46 47v6M64 47v6" stroke="var(--signal)" stroke-width="1.5"/><text x="55" y="62" text-anchor="middle">' + frac(p.fence) + '</text>', b: saw, w: [
       "Right-tilt saw: move the fence to the left of the blade",
       "Riving knife in, push shoe on every pass",
-      "Blade leaning toward the fence? Stop. The strip is pinned." ] });
+      "Blade leaning toward the fence? Stop. The strip is pinned.",
+      "Leave the offcut until the blade stops. Never reach over.",
+      "Feel a ping of nerves? Stop and re-check these four." ] });
     var cuts = [p.pieces.map(frac).join(" + ") + " = " + frac(o.wall) + ", × " + p.rails.length];
     if (p.joints.length) cuts.push("Joints at " + list(p.joints) + ", each on a stud");
     steps.push({ t: "Cut the rails to length", pic: '<rect x="4" y="26" width="50" height="10"' + ply + '/><rect x="58" y="26" width="22" height="10"' + ply + '/><path d="M56 18v26" stroke="var(--signal)" stroke-width="2" stroke-dasharray="3 2"/>', b: cuts });
