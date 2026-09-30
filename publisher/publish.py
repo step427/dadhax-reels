@@ -364,7 +364,18 @@ def publish_ig(item, url, tok, ig, dry_run):
     # shows on theirs -- a queued collab is a request, not a done deal.
     if item.get("collaborators"):
         params["collaborators"] = json.dumps(item["collaborators"][:3])
-    cid = call("POST", f"{ig}/media", params)["id"]
+    # People tags (the "Tag people" list). Reels take usernames only, no x/y.
+    # A rejected tag must never cost the post: retry once untagged and say so.
+    if item.get("user_tags"):
+        params["user_tags"] = json.dumps([{"username": u} for u in item["user_tags"]])
+    try:
+        cid = call("POST", f"{ig}/media", params)["id"]
+    except RuntimeError as e:
+        if "user_tags" not in params:
+            raise
+        log(f"user_tags rejected on {item['file']} ({e}) - posting untagged")
+        params.pop("user_tags")
+        cid = call("POST", f"{ig}/media", params)["id"]
 
     for _ in range(60):
         time.sleep(5)
