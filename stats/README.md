@@ -23,7 +23,7 @@ The only posts whose hour the publisher actually chose — so the only ones that
 | 11:00 | 2 | 1.0 | 1.0 | 2 |
 | 12:00 | 19 | 1.0 | 4.3 | 38 |
 | 13:00 | 19 | 3.0 | 7.4 | 31 |
-| 14:00 | 13 | 2.0 | 15.8 | 138 |
+| 14:00 | 13 | 2.0 | 16.5 | 146 |
 | 15:00 | 6 | 2.5 | 3.8 | 11 |
 | 16:00 | 4 | 1.5 | 1.8 | 4 |
 | 17:00 | 3 | 2.0 | 2.0 | 2 |
@@ -36,8 +36,8 @@ The only posts whose hour the publisher actually chose — so the only ones that
 
 | Day | Posts | Median | Mean | Best |
 |---|---|---|---|---|
-| Mon | 24 | 2.0 | 2.7 | 15 |
-| Tue | 24 | 2.0 | 9.2 | 138 |
+| Mon | 24 | 2.0 | 2.8 | 16 |
+| Tue | 24 | 2.0 | 9.6 | 146 |
 | Wed | 23 | 2.0 | 3.6 | 19 |
 | Thu | 21 | 1.0 | 2.6 | 26 |
 | Fri | 26 | 1.0 | 4.9 | 38 |
@@ -48,7 +48,7 @@ The only posts whose hour the publisher actually chose — so the only ones that
 
 | Kind | Posts | Median | Mean | Best |
 |---|---|---|---|---|
-| back-catalog | 52 | 2.0 | 8.5 | 138 |
+| back-catalog | 52 | 2.0 | 8.7 | 146 |
 | fresh | 114 | 1.0 | 2.5 | 26 |
 
 ### Hour x kind — which one is actually driving it
@@ -60,7 +60,7 @@ The only posts whose hour the publisher actually chose — so the only ones that
 | back-catalog @ 09:00 | 2 | 6.0 | 6.0 | 10 |
 | back-catalog @ 12:00 | 6 | 3.5 | 9.2 | 38 |
 | back-catalog @ 13:00 | 15 | 4.0 | 8.9 | 31 |
-| back-catalog @ 14:00 | 9 | 6.0 | 21.8 | 138 |
+| back-catalog @ 14:00 | 9 | 6.0 | 22.9 | 146 |
 | back-catalog @ 15:00 | 4 | 2.5 | 4.2 | 11 |
 | back-catalog @ 16:00 | 2 | 0.0 | 0.0 | 0 |
 | back-catalog @ 18:00 | 5 | 2.0 | 2.0 | 5 |
@@ -105,7 +105,7 @@ Mostly Nick posting by hand at whatever hour he was free, going back to 2024. Us
 | 11:00 | 22 | 0.0 | 0.9 | 5 |
 | 12:00 | 42 | 1.0 | 4.2 | 72 |
 | 13:00 | 40 | 1.0 | 3.8 | 31 |
-| 14:00 | 43 | 1.0 | 5.6 | 138 |
+| 14:00 | 43 | 1.0 | 5.8 | 146 |
 | 15:00 | 48 | 0.0 | 1.2 | 12 |
 | 16:00 | 39 | 1.0 | 1.5 | 20 |
 | 17:00 | 49 | 0.0 | 1.1 | 12 |
@@ -118,8 +118,8 @@ Mostly Nick posting by hand at whatever hour he was free, going back to 2024. Us
 
 | Day | Posts | Median | Mean | Best |
 |---|---|---|---|---|
-| Mon | 84 | 0.0 | 1.5 | 16 |
-| Tue | 73 | 1.0 | 3.8 | 138 |
+| Mon | 84 | 0.0 | 1.6 | 16 |
+| Tue | 73 | 1.0 | 3.9 | 146 |
 | Wed | 87 | 1.0 | 2.6 | 50 |
 | Thu | 85 | 0.0 | 2.0 | 35 |
 | Fri | 96 | 1.0 | 2.1 | 38 |
@@ -130,7 +130,7 @@ Mostly Nick posting by hand at whatever hour he was free, going back to 2024. Us
 
 | Posted (CT) | Likes | Comments | Kind | Link |
 |---|---|---|---|---|
-| 2026-09-29 14:22 | 138 | 5 | back-catalog | https://www.instagram.com/reel/Dd4f9HOlWhe/ |
+| 2026-09-29 14:22 | 146 | 5 | back-catalog | https://www.instagram.com/reel/Dd4f9HOlWhe/ |
 | 2025-11-22 12:47 | 72 | 0 | hand-posted | https://www.instagram.com/reel/DRXot5Bjzbn/ |
 | 2025-08-06 05:28 | 50 | 0 | hand-posted | https://www.instagram.com/reel/DNAppmhgQfr/ |
 | 2025-03-16 22:44 | 42 | 0 | hand-posted | https://www.instagram.com/reel/DHR_-19AZnk/ |
