@@ -2309,7 +2309,7 @@
     {
       "file": "ig-0927-install.mp4",
       "kind": "new",
-      "status": "pending",
+      "status": "posted",
       "earliest": "2026-09-28",
       "title": "AI drew the plan. Here's the install.",
       "caption": "Hey Dad,\n\nLast week I showed you the mudroom plan Claude drew right on photos of the room. Today the cabinets are going in.\n\nAlmost exact. The one miss: we forgot to tell it there's a light in the ceiling. About half an inch. The middle cabinet drops down, done.\n\nAt the ceiling I've got maybe a quarter inch. No trim needed. Tight, with just enough wiggle room.\n\nPlan it before you build it. The plan is the cheap part.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
@@ -2329,7 +2329,10 @@
         "implementation"
       ],
       "sam_verdict": "POST 2026-09-27",
-      "cut_by": "cloud session 2026-09-27 (Rook captures/2026-09-27-mudroom-install-pip-reel.md); follow-up to ig-0912-mudroom"
+      "cut_by": "cloud session 2026-09-27 (Rook captures/2026-09-27-mudroom-install-pip-reel.md); follow-up to ig-0912-mudroom",
+      "permalink": "https://www.instagram.com/reel/Dd6EbFZADZ3/",
+      "posted_at": "2026-09-30T05:00:20-05:00",
+      "fb_page_video_id": "4677791245876299"
     },
     {
       "file": "ig-0928-reveal.mp4",
