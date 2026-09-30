@@ -498,7 +498,9 @@ cleat height clamped 1.75 to 3.25 because the 5" plate's stop lands on a taller 
 warning under max(height + 2, 6), "construction screws, not drywall"). Left for Nick: screw
 gauge and plywood grade (silva wants cabinet-grade named). Not done here (next Sunday build): the "behind a workbench?" 6"/12" toggle and the spacer line.
 
-**Audit fills (Tool 10):** `--fill wall=120 bottom=16 top=80 gap=8 oc=16 first=16 height=3 hang=30 callName=Sam` — every input the page needs set before its real output exists on screen. Never a real person's name or a sensitive number.
+**Zones + videos (2026-09-30, Nick: "pre-fill the numbers recommended by my experience ... the PT background should be highlighted").** One switch, "Is this wall behind a workbench?": Yes = rails every 6 from 40 to 88 (the default, and the dek's proof line: 9 rails, 6 rips, 1 sheet for the rails, 144 screws); No = every 12 from 16 to 88. The switch clears typed rail numbers so it visibly wins. Spacing is Nick's; the 40 and 16 start heights are placeholders until he gives his own. A fourth why-item carries the PT reasoning in his words (wellness lane: his wall, his reasoning, no clinical claim). A second story panel LINKS the wall tour (yt:y9Z-vIpuY38), `ig-diy-cleatwall` and `ig-0912-cleathub` on Instagram and Facebook (`facebook.com/reel/<fb_page_video_id>`). Links only, never embeds: the page promises no outside calls. The "One 45, two cleats" why-item was cut to stay under the TOO LONG line (now 8.3 screens; the next addition has to remove something).
+
+**Audit fills (Tool 10):** `--fill wall=120 bottom=40 top=88 gap=6 oc=16 first=16 height=3 hang=30 callName=Sam` — every input the page needs set before its real output exists on screen. Never a real person's name or a sensitive number.
 → PASS, 984 words / 5636px expanded (09 is 1170 / 6557). The `.redline-note` background
 is the solid composite `#20130E` instead of `rgba(232,80,44,.08)` because the audit
 reads the translucent one as 1:1 contrast; same look. `decision-forcer.html` still

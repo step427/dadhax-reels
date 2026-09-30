@@ -83,6 +83,15 @@
   .story p { margin: 0 0 10px; font-size: 15.5px; line-height: 1.55; color: #CFC9BB; }
   .story p:last-child { margin-bottom: 0; }
   .story p b { color: var(--bone); }
+  .story a { color: var(--signal); font-weight: 700; text-decoration: none; }
+  .story a:hover { text-decoration: underline; }
+  .zone { display: flex; gap: 10px; margin: 0 0 8px; }
+  .zone button { flex: 1 1 0; min-height: 48px; padding: 10px 8px; border-radius: 0; cursor: pointer;
+    font-family: var(--mono); font-size: 12.5px; letter-spacing: .06em; text-transform: uppercase;
+    font-weight: 700; background: transparent; color: var(--bone); border: 1.5px solid #453E2C; }
+  .zone button[aria-pressed="true"] { background: var(--signal); color: #14100F; border-color: var(--signal); }
+  .zone button:focus-visible { outline: 2px solid var(--bone); outline-offset: 2px; }
+  .seed .hint { margin: 0 0 16px; }
 
   .whys { margin-top: 26px; border: 1px solid var(--hair); }
   .why { padding: 14px 15px; border-bottom: 1px solid var(--hair); }
@@ -268,7 +277,7 @@
       off the wall.</p>
     <p class="dek"><em>Type your wall and you get the cut list</em>: how many rails and
       at what heights, how many 45&deg; rips, how many sheets, where every stud and screw
-      lands. Here's a 10-foot wall with rails every 8 inches from 16 to 80: <b>nine rails,
+      lands. Here's a 10-foot wall behind a workbench, rails every 6 inches from 40 to 88: <b>nine rails,
       six 45&deg; rips, one sheet for the rails, 144 screws, every one in a stud.</b></p>
     <p class="dek">A cleat is a strip with one edge ripped at 45&deg;. One goes on the
       wall, angled edge up, short face against the wall, so the point stands off the
@@ -290,12 +299,18 @@
       whole garage in a weekend. This does the math for that weekend.</p>
   </div>
 
+  <div class="story">
+    <span class="lbl">See it on a real wall</span>
+    <p><b>The garage:</b> <a href="https://www.youtube.com/watch?v=y9Z-vIpuY38">5-minute
+      tour on YouTube</a>, short cut on
+      <a href="https://www.instagram.com/reel/Dd4f9HOlWhe/">Instagram</a> and
+      <a href="https://www.facebook.com/reel/2795074607541518">Facebook</a>.
+      <b>The office nook,</b> now the backpack hub:
+      <a href="https://www.instagram.com/reel/DdMesNRFL1H/">Instagram</a>,
+      <a href="https://www.facebook.com/reel/2552037038614977">Facebook</a>.</p>
+  </div>
+
   <div class="whys" aria-label="What makes a cleat wall hold">
-    <div class="why">
-      <span class="tag">One 45, two cleats</span>
-      <p>Every strip you rip at 45 gives <b>two wall cleats.</b> Hanger cleats are a
-        smaller rip from their own strip.</p>
-    </div>
     <div class="why">
       <span class="tag">Studs, not drywall</span>
       <p>Every rail screws into every stud it crosses, and <b>every joint lands on a
@@ -306,27 +321,41 @@
       <p>A block on the bottom of each hanger, as thick as the cleat, <b>bears on the wall
         below</b> so weight pushes in instead of prying out.</p>
     </div>
+    <div class="why">
+      <span class="tag">Six at the bench, twelve everywhere else</span>
+      <p>I'm a physical therapist, and I spaced my wall like a workstation. <b>Hand
+        tools go in front of the bench, waist high and up, inside a normal reach,</b>
+        on rails 6 inches apart. Everything else gets 12. The top rail is above easy
+        reach on purpose: long things hang from it and you grab them low.</p>
+    </div>
   </div>
 
   <h2 class="part">Part 1 &mdash; The wall</h2>
-  <p class="partdek">Inches. <b>Only the width is required;</b> the rest start at
-    common numbers.</p>
+  <p class="partdek">Inches. <b>Only the width is required;</b> the rest is filled in
+    with the spacing I use on my own wall.</p>
 
   <div class="block seed">
     <label class="lbl" for="wall">Wall width <span class="unit">inches</span></label>
     <input type="number" id="wall" inputmode="decimal" step="0.125" min="12" max="600" placeholder="120">
+    <span class="lbl" id="zoneLbl">Is this wall behind a workbench?</span>
+    <div class="zone" role="group" aria-labelledby="zoneLbl">
+      <button type="button" id="zBench" aria-pressed="true">Yes &middot; rails every 6</button>
+      <button type="button" id="zStore" aria-pressed="false">No &middot; rails every 12</button>
+    </div>
+    <p class="hint">Lowest rail goes just above your bench top. Ceiling over 9 feet? Run
+      the highest up to 106.</p>
     <div class="grid2">
       <div>
-        <label class="lbl" for="bottom">Lowest rail <span class="unit">in from floor</span></label>
-        <input type="number" id="bottom" inputmode="decimal" step="0.5" min="0" max="120" placeholder="16">
+        <label class="lbl" for="bottom">Lowest rail <span class="unit">bottom edge, in from floor</span></label>
+        <input type="number" id="bottom" inputmode="decimal" step="0.5" min="0" max="120" placeholder="40">
       </div>
       <div>
-        <label class="lbl" for="top">Highest rail <span class="unit">in from floor</span></label>
-        <input type="number" id="top" inputmode="decimal" step="0.5" min="0" max="144" placeholder="80">
+        <label class="lbl" for="top">Highest rail <span class="unit">bottom edge, in from floor</span></label>
+        <input type="number" id="top" inputmode="decimal" step="0.5" min="0" max="144" placeholder="88">
       </div>
       <div>
-        <label class="lbl" for="gap">Rail spacing <span class="unit">in &middot; 6&ndash;12 common</span></label>
-        <input type="number" id="gap" inputmode="decimal" step="0.5" min="3" max="48" placeholder="8">
+        <label class="lbl" for="gap">Rail spacing <span class="unit">in, bottom to bottom</span></label>
+        <input type="number" id="gap" inputmode="decimal" step="0.5" min="3" max="48" placeholder="6">
       </div>
       <div>
         <label class="lbl" for="oc">Stud spacing <span class="unit">16 or 24</span></label>
@@ -516,6 +545,18 @@
   var inputs = ["wall", "bottom", "top", "gap", "oc", "first", "height", "hang", "callName"].map($);
   var said = $("said"), spec = $("spec"), empty = $("empty"), count = $("count");
   var last = null;
+  // Pre-filled from Nick's wall: 6 in rails in front of a bench, 12 in everywhere else.
+  var ZONES = { bench: { bottom: 40, top: 88, gap: 6 }, storage: { bottom: 16, top: 88, gap: 12 } };
+  var zone = "bench";
+  function setZone(z, keepTyped) {
+    zone = ZONES[z] ? z : "bench";
+    $("zBench").setAttribute("aria-pressed", String(zone === "bench"));
+    $("zStore").setAttribute("aria-pressed", String(zone === "storage"));
+    ["bottom", "top", "gap"].forEach(function (id) {
+      $(id).placeholder = String(ZONES[zone][id]);
+      if (!keepTyped) $(id).value = "";   // the switch has to visibly win over old typing
+    });
+  }
 
   function num(id, dflt) { var v = parseFloat($(id).value); return isFinite(v) ? v : dflt; }
   function frac(x) {
@@ -530,7 +571,7 @@
     var wall = num("wall", null);
     if (wall === null || wall < 12) return null;
     var oc = num("oc", 16); if (oc < 12) oc = 16;
-    var bottom = num("bottom", 16), top = num("top", 80), gap = num("gap", 8);
+    var Z = ZONES[zone], bottom = num("bottom", Z.bottom), top = num("top", Z.top), gap = num("gap", Z.gap);
     if (gap < 3) gap = 3;
     if (top < bottom) { var t = top; top = bottom; bottom = t; }
     return { wall: wall, bottom: bottom, top: top, gap: gap, oc: oc, first: num("first", oc),
@@ -569,6 +610,7 @@
     try {
       var d = {};
       inputs.forEach(function (el) { d[el.id] = el.value; });
+      d.zone = zone;
       // sessionStorage, NOT localStorage: same promise as every tool on the site.
       sessionStorage.setItem(KEY, JSON.stringify(d));
     } catch (e) {}
@@ -577,10 +619,13 @@
     try {
       var d = JSON.parse(sessionStorage.getItem(KEY) || "null"); if (!d) return;
       inputs.forEach(function (el) { if (d[el.id]) el.value = d[el.id]; });
+      if (d.zone) setZone(d.zone, true);
     } catch (e) {}
   }
 
   inputs.forEach(function (el) { el.addEventListener("input", refresh); });
+  $("zBench").addEventListener("click", function () { setZone("bench"); refresh(); });
+  $("zStore").addEventListener("click", function () { setZone("storage"); refresh(); });
   $("printBtn").addEventListener("click", function () { window.print(); });
 
   function copyText(text, okMsg) {
@@ -638,6 +683,7 @@
   });
   $("resetBtn").addEventListener("click", function () {
     inputs.forEach(function (el) { el.value = ""; });
+    setZone("bench");
     try { sessionStorage.removeItem(KEY); } catch (e) {}
     refresh(); said.textContent = "Cleared."; window.scrollTo({ top: 0, behavior: "smooth" });
   });
