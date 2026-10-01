@@ -2447,7 +2447,7 @@
     {
       "file": "ig-0930-packages.mp4",
       "title": "Two packages on your porch",
-      "status": "pending",
+      "status": "posted",
       "earliest": "2026-10-01",
       "caption": "Hey Dad,\n\nTwo packages on your porch. One is soggy and beat up. One is wrapped nice and neat. Same thing inside.\n\nYou know which one you open first.\n\nPackaging matters, and you can use it on yourself. Take the job you keep putting off and wrap it better: tie a small reward to getting it done by 5 today.\n\nFollow for the good stuff in plain wrapping.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
       "arc_slot": "OFF-ARC cover",
@@ -2459,7 +2459,10 @@
       "sam_verdict": "POST 2026-09-30",
       "topic_class": "talk",
       "source_raw": "20260929_140446.mp4",
-      "cover_ms": 500
+      "cover_ms": 500,
+      "permalink": "https://www.instagram.com/reel/Dd-A62yAMM5/",
+      "posted_at": "2026-10-01T17:46:35-05:00",
+      "fb_page_video_id": "1845711486416800"
     },
     {
       "file": "ig-0930-assign.mp4",
