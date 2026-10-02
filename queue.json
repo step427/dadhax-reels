@@ -2519,6 +2519,57 @@
       "cover_ms": 1000,
       "recut_of": "ig-0908-blade.mp4",
       "kind": "old"
+    },
+    {
+      "file": "ig-0930-spacing.mp4",
+      "title": "3-inch slats, 3-inch gaps",
+      "status": "pending",
+      "earliest": "2026-10-02",
+      "caption": "Hey Dad,\n\nBefore you hang the first slat, decide the spacing.\n\nFor hand tools I keep it tight: 3-inch slats, 3-inch gaps. That lets me stack 5-inch plates one above the other with about an inch between.\n\nFor the big stuff, clamps and the tall tools, I set the slats 12 inches bottom to bottom.\n\nEvery slat gets a 45 along the top edge, angle up, high side out, so it makes a pocket against the wall.\n\nScrew every slat into every stud it crosses, two screws per stud. No drywall anchors.\n\nType in your wall width and your slat spacing and the Cleat Wall gives you the cut list. It's free, and it's in my profile.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "Fri 10/2 1p",
+      "pix": "I",
+      "value_forms": [
+        "idea",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-09-30",
+      "topic_class": "utility",
+      "source_raw": "20260929_194345.mp4",
+      "cover_ms": 500
+    },
+    {
+      "file": "ig-1002-observe.mp4",
+      "title": "Watch the habit before you fight it",
+      "status": "pending",
+      "earliest": "2026-10-02",
+      "caption": "Hey Dad,\n\nGrowth starts with noticing.\n\nGot a habit you're trying to move away from? Maybe today you don't fight it. You just watch it.\n\nNotice what's going on inside you, and how you feel, around that habit. That's the whole assignment for today.\n\nFollow for one thing to notice tomorrow.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "OFF-ARC cover",
+      "pix": "I",
+      "value_forms": [
+        "idea",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-10-02",
+      "topic_class": "talk",
+      "source_raw": "20261001_165426.mp4",
+      "cover_ms": 200
+    },
+    {
+      "file": "ig-1002-cold.mp4",
+      "title": "Today you or tomorrow you",
+      "status": "pending",
+      "earliest": "2026-10-03",
+      "caption": "Hey Dad,\n\nAn ice-cold shower is the last thing most of us want in the morning.\n\nThat's the point. You do it to remind yourself how strong you really are.\n\nEvery day you pick who you're serving. The today you who wants comfort, or the tomorrow you.\n\nTomorrow morning, end your shower on cold for a few seconds. Pick the tomorrow you once before breakfast.\n\nFollow so tomorrow you gets one nudge a day.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "OFF-ARC cover",
+      "pix": "I",
+      "value_forms": [
+        "idea",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-10-02",
+      "topic_class": "talk",
+      "source_raw": "20261001_170735.mp4",
+      "cover_ms": 0
     }
   ]
 }
