@@ -6,7 +6,7 @@ _Written by `publisher/craft_report.py` on **2026-10-02** from **172** posted re
 
 ## Levers, biggest first
 
-1. **duration** — **LEVER** — favour **under 20s**, 35 pts over over 70s; views agree. under 20s 48% (n=57) · 20-35s 31% (n=46) · 35-50s 25% (n=35) · 50-70s 18% (n=23) · over 70s 13% (n=11). Retention falls at EVERY step longer: cut to the number, not the material.
+1. **duration** — **LEVER** — favour **under 20s**, 36 pts over over 70s; views agree. under 20s 49% (n=57) · 20-35s 31% (n=46) · 35-50s 25% (n=35) · 50-70s 18% (n=23) · over 70s 13% (n=11). Retention falls at EVERY step longer: cut to the number, not the material.
 2. **topic** — **LEVER** — favour **utility**, 14 pts over talk; views agree. utility 42% (n=80) · meta 28% (n=10) · talk 28% (n=82)
 3. **fresh/catalog** — **LEVER** — favour **back-catalog**, 13 pts over fresh; views agree. back-catalog 43% (n=54) · fresh 30% (n=118)
 4. **cover** — **NO LEVER** — 1 pts is noise; spend no effort here. custom cover 34% (n=87) · default cover 32% (n=85)
