@@ -2467,7 +2467,7 @@
     {
       "file": "ig-0930-assign.mp4",
       "title": "Assigned the role isn't doing the role",
-      "status": "pending",
+      "status": "posted",
       "earliest": "2026-09-30",
       "caption": "Hey Dad,\n\nI saw a line framed on a wall. Something like: a leader is not a position, it is action.\n\nYou can be handed the role at work, at home, on the team.\n\nBeing assigned it and doing it are two different things.\n\nPick the one thing the role needs from you today and do that first.\n\nFollow if you'd rather do it than hold the title.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
       "arc_slot": "OFF-ARC cover",
@@ -2479,7 +2479,10 @@
       "sam_verdict": "POST 2026-09-30",
       "topic_class": "talk",
       "source_raw": "20260929_140042.mp4",
-      "cover_ms": 200
+      "cover_ms": 200,
+      "permalink": "https://www.instagram.com/reel/Dd_OYYejw_I/",
+      "posted_at": "2026-10-02T05:03:34-05:00",
+      "fb_page_video_id": "1324945266245011"
     },
     {
       "file": "ig-0930-pack.mp4",
