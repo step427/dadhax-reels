@@ -2490,7 +2490,7 @@
     {
       "file": "ig-0930-pack.mp4",
       "title": "Why we still follow the pack",
-      "status": "pending",
+      "status": "posted",
       "earliest": "2026-09-30",
       "caption": "Hey Dad,\n\nThere was a time when getting kicked out of the cave meant you didn't make it. Being part of a pack is still wired in us.\n\nSo when a kid goes along with his friends instead of leading, I have to remind myself that's old wiring, not a flaw.\n\nNext time it happens, skip the lecture. Stay calm, be the safe place, and let it play out. They'll get there.\n\nFollow. No dad should figure this out alone.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
       "arc_slot": "OFF-ARC cover",
@@ -2502,7 +2502,10 @@
       "sam_verdict": "POST 2026-09-30",
       "topic_class": "talk",
       "source_raw": "20260929_095817.mp4",
-      "cover_ms": 500
+      "cover_ms": 500,
+      "permalink": "https://www.instagram.com/reel/DeBu1SxD1J0/",
+      "posted_at": "2026-10-03T04:25:26-05:00",
+      "fb_page_video_id": "2324861488339829"
     },
     {
       "file": "ig-diy-dirtyblade.mp4",
