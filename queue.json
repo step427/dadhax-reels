@@ -2387,7 +2387,7 @@
     {
       "file": "ig-diy-sharppencil.mp4",
       "title": "A dull pencil costs you a sixteenth",
-      "status": "pending",
+      "status": "posted",
       "earliest": "2026-09-30",
       "caption": "Hey Dad,\n\nYou can measure right and still be off about a sixteenth of an inch. A dull pencil does that.\n\nThe sharper your pencil, the better.\n\nAnother trick: put your pencil on your target first, then bring your square to the pencil.\n\nSharpen it before the first cut. On a 45, a sixteenth is a gap you can see.\n\nFollow so your next mark lands where you meant it.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
       "arc_slot": "Wed 9/30 6p",
@@ -2401,7 +2401,10 @@
       "source_raw": "20260816_105629.mp4",
       "cover_ms": 500,
       "recut_of": "ig-0817-pencil.mp4",
-      "kind": "old"
+      "kind": "old",
+      "permalink": "https://www.instagram.com/reel/DeCpFwogjyc/",
+      "posted_at": "2026-10-03T12:54:31-05:00",
+      "fb_page_video_id": "28617133541261482"
     },
     {
       "file": "ig-0930-hanger.mp4",
