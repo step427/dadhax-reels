@@ -10,6 +10,6 @@ _Written by `publisher/craft_report.py` on **2026-10-03** from **175** posted re
 2. **topic** — **LEVER** — favour **utility**, 14 pts over talk; views agree. utility 42% (n=82) · meta 28% (n=10) · talk 28% (n=83)
 3. **fresh/catalog** — **LEVER** — favour **back-catalog**, 12 pts over fresh; views agree. back-catalog 42% (n=55) · fresh 30% (n=120)
 4. **cover** — **NO LEVER** — 2 pts is noise; spend no effort here. custom cover 35% (n=90) · default cover 32% (n=85)
-5. **collab** — **TOO THIN** — not enough posts on both sides to act on. collab 36% (n=6, thin) · solo 33% (n=169)
+5. **collab** — **TOO THIN** — not enough posts on both sides to act on. collab 36% (n=6, thin) · solo 34% (n=169)
 
 _LEVER = at least 5 pts between two buckets that each have 10+ posts. Thin buckets are shown so you can see them coming, never acted on._
