@@ -2699,6 +2699,34 @@
       "cover_ms": 0,
       "recut_of": "ig-0908-waste.mp4",
       "kind": "old"
+    },
+    {
+      "file": "ig-1004-laundry.mp4",
+      "title": "Measured Sept 6. First box up today.",
+      "status": "pending",
+      "earliest": "2026-10-08",
+      "caption": "Hey Dad,\n\nThe cabinet adventure continues. The mudroom cabinets are in, so now it's the laundry room.\n\nSept 6, before we bought a thing, we measured the room and drew it on graph paper. Ceiling came in at 96 5/8.\n\nSept 12, that sketch turned into a plan, cabinet by cabinet.\n\nToday the first upper box went up.\n\nMeasure it, draw it, then buy it.\n\nFollow to see it finished.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "Thu 10/8 6p",
+      "pix": "I",
+      "value_forms": [
+        "entertainment",
+        "idea"
+      ],
+      "sam_verdict": "POST 2026-10-04",
+      "topic_class": "utility",
+      "kind": "new",
+      "source_raw": "PXL_20261004_211502402.mp4",
+      "source_raws": [
+        "PXL_20261004_211502402.mp4",
+        "PXL_20261004_211454873.jpg",
+        "_INBOX/Laundry/photos/20260906_184459.jpg",
+        "_INBOX/Laundry/photos/20260906_184604.jpg",
+        "_INBOX/Laundry/laundry-pack-print.html (Wall D elevation)"
+      ],
+      "nav_safe": true,
+      "cover_ms": 0,
+      "cut_by": "cloud session 2026-10-04 (Rook captures/2026-10-04-laundry-cabinets-reel.md); part 1 of the laundry build series, long-form assembles at the reveal",
+      "_note": "Nick pulled the 9/6 measuring photos from _INBOX/Laundry on camera ('pull pictures from when we originally took the measurements'); only that folder was opened, every frame screened: no kids, no names, no addresses."
     }
   ]
 }
