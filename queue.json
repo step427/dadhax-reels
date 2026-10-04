@@ -2642,6 +2642,60 @@
       "permalink": "https://www.instagram.com/reel/DeEYIkhifbj/",
       "posted_at": "2026-10-04T05:04:53-05:00",
       "fb_page_video_id": "3065174953814871"
+    },
+    {
+      "file": "ig-1004-measure.mp4",
+      "title": "Measure the widest part",
+      "status": "pending",
+      "earliest": "2026-10-05",
+      "caption": "Hey Dad,\n\nFiller strip for a built-in. Walls are rarely straight, so I measured the gap in more than one spot: 1 3/4 at the wall, 1 13/16 at the widest part.\n\nI ripped to the wider number. That sixteenth is wiggle room. Then the jigsaw and the sander sneak it down until it fits. You can always take more off. You can't put it back.\n\nDon't trust the fence scale. Measure from the fence to a tooth that leans toward it. The blade takes about an eighth, and that eighth comes out of the waste side, not your strip.\n\nUnder about 2 inches between blade and fence, a push stick does the pushing, not your fingers.\n\nFollow so the next project is one trip to the store.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "Mon 10/5 6p",
+      "pix": "P",
+      "value_forms": [
+        "entertainment",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-10-04",
+      "topic_class": "utility",
+      "source_raw": "20261003_161602.mp4",
+      "cover_ms": 0
+    },
+    {
+      "file": "ig-1004-fit.mp4",
+      "title": "I cheated the angle. It still fit.",
+      "status": "pending",
+      "earliest": "2026-10-05",
+      "caption": "Hey Dad,\n\nThe filler strip went in snug. The edge angle? I cheated it a little with the sander. Carpenters call that a back-bevel, and it's legit: only the front edge has to touch the wall.\n\nThen I got a little carried away with the nailer.\n\nSnug is the goal. Cut it a sixteenth fat and sand to fit. An eighth fat is a plane job, not a sander job. Then slow down on the nails, and keep your other hand out of the nail's path.\n\nI make the mistakes on camera. Follow so you don't have to.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "Wed 10/7 9a",
+      "pix": "I",
+      "value_forms": [
+        "entertainment",
+        "idea"
+      ],
+      "sam_verdict": "POST 2026-10-04",
+      "topic_class": "utility",
+      "source_raw": "20261003_162259.mp4",
+      "cover_ms": 0
+    },
+    {
+      "file": "ig-1004-waste.mp4",
+      "title": "Rip 2.5 inches. Get two hangers.",
+      "status": "pending",
+      "earliest": "2026-10-05",
+      "caption": "Hey Dad,\n\nMaking French cleat hangers. Rip an inch-and-a-half strip, tilt the blade to 45, and you get one hanger. The offcut is scrap. A whole 45, gone.\n\nStart at 2 1/2 inches instead and split it down the middle at 45. Same board, two identical hangers. The waste drops from a whole 45 to the kerf and a trim pass.\n\nThe blade takes about an eighth. The extra inch is slop, for the blade and for me not being a perfect woodworker.\n\nEvery board you don't waste is one you don't buy.\n\nFollow so your next board makes two, not one.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "OFF-ARC cover",
+      "pix": "P",
+      "value_forms": [
+        "idea",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-10-04",
+      "topic_class": "utility",
+      "source_raw": "20260907_120012.mp4",
+      "hypothesis": "If the 'lost a whole 45' consequence opens and the reel ends at 14.4s instead of 37.7s, then watch ratio beats the parent's 21%, because the parent's 8.1s average watch ended before the 2.5-inch fix was stated.",
+      "cover_ms": 0,
+      "recut_of": "ig-0908-waste.mp4",
+      "kind": "old"
     }
   ]
 }
