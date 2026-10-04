@@ -2626,7 +2626,7 @@
     {
       "file": "ig-1003-blade.mp4",
       "title": "I knew better. Block the blade first.",
-      "status": "pending",
+      "status": "posted",
       "earliest": "2026-10-03",
       "caption": "Hey Dad,\n\nLast mow of the season, so I swapped in a fresh blade. I knew better, but I did it anyway.\n\nBefore your hand goes anywhere near the blade, pull the battery (or the spark plug wire on a gas mower).\n\nThen wedge a block of wood between the blade and the deck so it can't spin when the bolt breaks loose. That's how a blade finds your knuckles.\n\nBolt won't budge? Check your manual for which way it turns first. A stuck bolt is often one you're tightening.\n\nNo breaker bar? Slide a length of pipe over a solid wrench for more leverage. Never over a ratchet. The pawl can let go all at once and send your hand into the deck.\n\nBlock first, then wrench. Ten seconds of setup.\n\nFollow so your knuckles don't learn it first.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
       "arc_slot": "Sat 10/3 6p",
@@ -2638,7 +2638,10 @@
       "sam_verdict": "POST 2026-10-03",
       "topic_class": "utility",
       "source_raw": "20261002_173748.mp4",
-      "cover_ms": 500
+      "cover_ms": 500,
+      "permalink": "https://www.instagram.com/reel/DeEYIkhifbj/",
+      "posted_at": "2026-10-04T05:04:53-05:00",
+      "fb_page_video_id": "3065174953814871"
     }
   ]
 }
