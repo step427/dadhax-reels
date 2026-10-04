@@ -30,7 +30,7 @@ The only posts whose hour the publisher actually chose — so the only ones that
 | 18:00 | 21 | 2.0 | 3.5 | 26 |
 | 19:00 | 3 | 1.0 | 0.7 | 1 |
 | 20:00 | 25 | 0.0 | 2.0 | 16 |
-| 21:00 | 1 | 10.0 | 10.0 | 10 |
+| 21:00 | 1 | 12.0 | 12.0 | 12 |
 | 23:00 | 1 | 0.0 | 0.0 | 0 |
 
 ### By weekday
@@ -42,7 +42,7 @@ The only posts whose hour the publisher actually chose — so the only ones that
 | Wed | 25 | 2.0 | 3.6 | 19 |
 | Thu | 24 | 0.5 | 2.3 | 26 |
 | Fri | 29 | 1.0 | 5.0 | 38 |
-| Sat | 27 | 2.0 | 4.0 | 31 |
+| Sat | 27 | 2.0 | 4.1 | 31 |
 | Sun | 25 | 1.0 | 3.6 | 23 |
 
 ### Fresh vs back-catalog
@@ -82,7 +82,7 @@ The only posts whose hour the publisher actually chose — so the only ones that
 | fresh @ 18:00 | 16 | 2.5 | 4.0 | 26 |
 | fresh @ 19:00 | 3 | 1.0 | 0.7 | 1 |
 | fresh @ 20:00 | 21 | 0.0 | 1.8 | 16 |
-| fresh @ 21:00 | 1 | 10.0 | 10.0 | 10 |
+| fresh @ 21:00 | 1 | 12.0 | 12.0 | 12 |
 | fresh @ 23:00 | 1 | 0.0 | 0.0 | 0 |
 
 An empty cell is not a zero — it is an experiment nobody has run yet.
@@ -114,7 +114,7 @@ Mostly Nick posting by hand at whatever hour he was free, going back to 2024. Us
 | 18:00 | 52 | 0.0 | 1.7 | 26 |
 | 19:00 | 27 | 1.0 | 1.4 | 16 |
 | 20:00 | 55 | 0.0 | 1.3 | 16 |
-| 21:00 | 23 | 0.0 | 2.7 | 33 |
+| 21:00 | 23 | 0.0 | 2.8 | 33 |
 | 22:00 | 19 | 1.0 | 2.9 | 42 |
 | 23:00 | 12 | 2.0 | 4.6 | 35 |
 
