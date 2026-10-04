@@ -2727,6 +2727,34 @@
       "cover_ms": 0,
       "cut_by": "cloud session 2026-10-04 (Rook captures/2026-10-04-laundry-cabinets-reel.md); part 1 of the laundry build series, long-form assembles at the reveal",
       "_note": "Nick pulled the 9/6 measuring photos from _INBOX/Laundry on camera ('pull pictures from when we originally took the measurements'); only that folder was opened, every frame screened: no kids, no names, no addresses."
+    },
+    {
+      "file": "ig-1004-laundry2.mp4",
+      "title": "Same doorway. Sept 6 vs. today.",
+      "status": "pending",
+      "earliest": "2026-10-11",
+      "caption": "Hey Dad,\n\nSame doorway, three times.\n\nSept 6: wire shelf, ironing board, laundry basket.\n4 PM today: cleared out, first box up.\n5 PM: both uppers in, hang rod between them.\n\nThen I opened a drawer. That doesn't sound good. A little touch-up, and it goes on the list.\n\nWant a real before and after of your own project? Stand in the doorway, phone at chest height, and shoot from that same spot every time.\n\nFollow to see how it ends.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "Sun 10/11 6p",
+      "pix": "X",
+      "value_forms": [
+        "entertainment",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-10-04",
+      "topic_class": "utility",
+      "kind": "new",
+      "source_raw": "PXL_20261004_221633716.mp4",
+      "source_raws": [
+        "PXL_20261004_221633716.mp4",
+        "PXL_20261004_221604692.mp4",
+        "PXL_20261004_221543376.MP.jpg",
+        "PXL_20261004_211442542.MP.jpg",
+        "_INBOX/Laundry/photos/20260906_184459.jpg"
+      ],
+      "nav_safe": true,
+      "cover_ms": 0,
+      "cut_by": "cloud session 2026-10-04 (Rook captures/2026-10-04-laundry-cabinets-reel.md); part 2 of the laundry build series",
+      "_note": "Mostly-visual cut: a synthesized major-key bed (make_bed variant, C-G-Am-F at 100 BPM) carries the stills and pan, ducked under the drawer and Nick's one line. Hallway frames at raw 22.2-23.8 (a bedroom through the door) are excluded on purpose."
     }
   ]
 }
