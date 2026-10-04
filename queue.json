@@ -2513,7 +2513,7 @@
     {
       "file": "ig-diy-dirtyblade.mp4",
       "title": "Your blade isn't dull. It's dirty.",
-      "status": "pending",
+      "status": "posted",
       "earliest": "2026-10-02",
       "caption": "Hey Dad,\n\nI was cutting red oak and it started smoking. I figured the blade was dull.\n\nNine times out of ten it's buildup on the teeth.\n\nUnplug the saw or pull the battery. Safety glasses on, a wire wheel throws bristles. All you need is a drill and a wire brush. Run it in reverse on one side, hitting the teeth at an angle so the blade spins through. Keep your free hand off the blade. Forward on the other side.\n\nThis gets it about 90 percent. There's still some gunk on the inside.\n\nTwo minutes, before the first cut. Straight rip or a 45.\n\nFollow before you buy a blade you don't need.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
       "arc_slot": "Fri 10/2 6p",
@@ -2527,7 +2527,10 @@
       "source_raw": "20260907_112354.mp4",
       "cover_ms": 1000,
       "recut_of": "ig-0908-blade.mp4",
-      "kind": "old"
+      "kind": "old",
+      "permalink": "https://www.instagram.com/reel/DeFPZPGAdbe/",
+      "posted_at": "2026-10-04T13:08:01-05:00",
+      "fb_page_video_id": "1398720375302087"
     },
     {
       "file": "ig-0930-spacing.mp4",
