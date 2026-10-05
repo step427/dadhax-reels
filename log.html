@@ -67,6 +67,19 @@
     display:inline-flex; align-items:center; min-height:44px; }
   .onlyig span { color:var(--graphite); font-size:13.5px; }
   .vid iframe.yt { aspect-ratio:16/10; }
+  .vid video.file { width:100%; max-width:300px; aspect-ratio:9/16; margin:0 auto;
+    display:block; background:#000; }
+  .beat .essay .notes { margin:0 0 10px; padding:10px 12px 10px 28px; background:var(--panel-up);
+    border:1px solid var(--hair); font-family:var(--mono); font-size:13.5px; line-height:1.5; }
+  .beat .essay .keep { margin:12px 0 12px; padding-top:10px; border-top:1px solid var(--hair); }
+  .beat .essay .keep b { font-family:var(--mono); font-size:11px; letter-spacing:.12em;
+    text-transform:uppercase; color:var(--signal); margin-right:6px; }
+  .headliner { margin:22px auto 0; max-width:340px; }
+  .headliner video { width:100%; height:auto; aspect-ratio:9/16; display:block;
+    background:var(--panel-up); border:1px solid var(--hair); }
+  .headliner figcaption { margin-top:9px; font-size:14.5px; line-height:1.45;
+    color:var(--graphite); text-align:center; }
+  .headliner figcaption b { color:var(--bone); }
   footer { margin-top:40px; padding-top:14px; border-top:1px solid var(--hair);
     color:var(--graphite); font-size:14px; font-family:var(--mono); letter-spacing:.04em; }
   footer a { color:var(--signal); font-weight:700; text-decoration:none; }
@@ -337,9 +350,16 @@ document.querySelectorAll('.vid[data-src]').forEach(function (box) {
   var kind = box.dataset.kind, id = box.dataset.src;
   var b = document.createElement('button');
   b.type = 'button';
-  b.innerHTML = '<span class="play">\u25B6</span><span class="lbl">Play \u2014 loads from '
-    + (kind === 'ig' ? 'Instagram' : 'YouTube') + '</span>';
+  b.innerHTML = '<span class="play">\u25B6</span><span class="lbl">Play \u2014 '
+    + (kind === 'file' ? box.dataset.label
+       : 'loads from ' + (kind === 'ig' ? 'Instagram' : 'YouTube')) + '</span>';
   b.addEventListener('click', function () {
+    if (kind === 'file') {
+      var v = document.createElement('video');
+      v.className = 'file'; v.src = id; v.controls = true; v.autoplay = true;
+      v.playsInline = true;
+      box.replaceChild(v, b); return;
+    }
     var f = document.createElement('iframe');
     f.className = kind;
     f.src = kind === 'ig'
