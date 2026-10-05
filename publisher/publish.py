@@ -256,18 +256,18 @@ def plan(pending, start, days, skip=0):
 def slot_target(now):
     """How many posts should be on the board by the end of THIS run.
 
-    The contract is three a day, not three fixed clock times. Each run tops the
-    day up to its target, so a slot that never fired is made up by the next one
-    rather than silently lost -- that is the whole point. Morning aims for one,
-    midday for two, and everything from late afternoon on aims for the full
-    three, which is what makes the late safety-net run able to rescue a day
-    where both earlier slots died.
+    One per slot whose clock time has passed: 0 before 9am, 1 from 9am, 2 from
+    1pm, 3 from 6pm. Each run tops the day up to its target, so a slot that never
+    fired is made up by the next run rather than silently lost.
+
+    The workflow runs this hourly (2026-10-05), so this function -- not the
+    cron -- is what sets the posting times. It used to aim for one post at ANY
+    hour before noon, which was harmless while the crons fired near their clock
+    times. Once GitHub started running them 3-7 hours late, the 10pm run landed
+    around 5am and posted the morning reel then. Zero before 9am closes that.
+    Same expression the --status board uses to skip slots already gone.
     """
-    if now.hour < 12:
-        return 1
-    if now.hour < 17:
-        return 2
-    return POSTS_PER_DAY
+    return sum(1 for h, _ in SLOTS if h <= now.hour)
 
 
 # "unknown" sits between: an unlabelled cut is a coin flip, so it should
