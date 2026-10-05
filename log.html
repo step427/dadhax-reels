@@ -67,6 +67,12 @@
     display:inline-flex; align-items:center; min-height:44px; }
   .onlyig span { color:var(--graphite); font-size:13.5px; }
   .vid iframe.yt { aspect-ratio:16/10; }
+  .headliner { margin:22px auto 0; max-width:340px; }
+  .headliner video { width:100%; height:auto; aspect-ratio:9/16; display:block;
+    background:var(--panel-up); border:1px solid var(--hair); }
+  .headliner figcaption { margin-top:9px; font-size:14.5px; line-height:1.45;
+    color:var(--graphite); text-align:center; }
+  .headliner figcaption b { color:var(--bone); }
   footer { margin-top:40px; padding-top:14px; border-top:1px solid var(--hair);
     color:var(--graphite); font-size:14px; font-family:var(--mono); letter-spacing:.04em; }
   footer a { color:var(--signal); font-weight:700; text-decoration:none; }
@@ -96,6 +102,15 @@
   <header>
     <div class="protocol">The log <b>&middot;</b> in the order it happened</div>
     <h1>One old <span class="of">house</span></h1>
+    <figure class="headliner">
+      <video controls playsinline preload="none" poster="one-old-house.jpg" width="720" height="1280"
+        aria-label="The whole first house, too far gone to finished, in 39 seconds">
+        <source src="one-old-house.mp4" type="video/mp4">
+        <a href="one-old-house.mp4">Watch the 39-second version</a>
+      </video>
+      <figcaption><b>The whole journey in 39 seconds.</b> Sound on &mdash; it's
+        stressful, but it's a game.</figcaption>
+    </figure>
     <p class="dek">I post these as they happen, which means they show up out of order
       and look like nothing in particular. They aren't. This is the same story, put
       back in sequence.</p>

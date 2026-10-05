@@ -515,3 +515,30 @@ carries that pre-existing CONTRAST warn (not touched beyond its titleblock).
 Chain: 09 → **10** → 04. Toolbox card 10 live, 11 "in the shop", index "Ten free tools"
 + "New this week" → 10, titleblocks 07/08/09/10 read "of 10" (01–05 still read "of 05",
 as they did at the 09 ship).
+
+## The Log's headliner video (2026-10-05, Nick's call)
+
+Nick: *"why aren't we having this be the headliner video? It summarizes pretty much
+the whole journey pretty quick."* The reel is "too far gone" (IG `Dbl-A5EBSXa`,
+posted 8/3, the reel loop's `out-flipdone-v5`). It now sits under the "One old house"
+h1 in `log.html`, ahead of the eight-part arc: the short version first, the long one
+below for whoever wants it.
+
+- **Self-hosted, not embedded.** Instagram's `/embed` is dead (8/9), and a native
+  `<video preload="none">` makes no outside call until the reader taps play, so the
+  site's "nothing here watches you read it" promise holds. `one-old-house.mp4`
+  (H.264 720x1280, faststart, ~9MB) + `one-old-house.jpg` poster sit at the root.
+  **Never add `one-old-house.mp4` to `queue.json`.** The publisher's prune deletes
+  any file whose queue rows are all `posted`.
+- **This is the clean cut, not the IG upload.** The live IG version still carries
+  the street address three ways: spoken + burned-in karaoke at 0:00-2.6, the porch
+  number plate through ~4.7s, and the number beside the red door in the closing
+  shot. This was flagged 8/4 and never reposted. The house has an occupant. The web cut
+  starts at 3.55s on "Get this flip done", blurs the strip above the hook bar
+  through the porch shot (the hook bar is punched back in sharp), and runs a tracked
+  blur on the door number from 39.44s on. Gated on the render at full res, every
+  frame of both windows, plus a Whisper transcript (the address is spoken only at
+  0.00-2.56).
+- **log.html is generated.** `Rook/_tools/reels/build_log.py` rewrites it 3x a day,
+  so the same block has to live in the builder or the next rebuild wipes it. The
+  patch is in Rook `captures/` (2026-10-05).
