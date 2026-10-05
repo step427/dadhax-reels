@@ -2705,6 +2705,38 @@
       "cover_ms": 0,
       "recut_of": "ig-0908-waste.mp4",
       "kind": "old"
+    },
+    {
+      "file": "ig-1005-drawer.mp4",
+      "title": "Soft close slammed? Check the rail.",
+      "status": "pending",
+      "earliest": "2026-10-06",
+      "caption": "Hey Dad,\n\nSoft-close drawer slammed shut instead of easing in. I'd shut it too hard and the rail popped over the little soft-close catch.\n\nBefore you order new slides, find that catch and pop the rail back over it. Took a little wiggling, and the soft close came right back.\n\nFollow before you pay someone to fix it.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "OFF-ARC cover",
+      "pix": "P",
+      "value_forms": [
+        "entertainment",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-10-05",
+      "topic_class": "utility",
+      "source_raw": "PXL_20261004_230510131.mp4"
+    },
+    {
+      "file": "ig-1005-scribe.mp4",
+      "title": "Wavy wall? Scribe it.",
+      "status": "pending",
+      "earliest": "2026-10-08",
+      "caption": "Hey Dad,\n\nFiller strip against a wall that isn't plumb. Skip the tape. Mark the gap right on a scrap stick. Now it's a story stick, a custom measuring stick. No numbers to read, so you can't misread an eighth.\n\nTransfer the gap to the filler. Drill a hole in a scrap block for your pencil, let the block's edge ride the wall, and the pencil draws the wall's wobble onto the board.\n\nCut on the waste side and save the line. Sand right up to it.\n\nGap where I checked: an inch and five eighths. The piece at that same spot: an inch and five eighths.\n\nFollow so your next filler fits the first time.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "Thu 10/8 9a (fresh fill of catalog row)",
+      "pix": "P",
+      "value_forms": [
+        "idea",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-10-05",
+      "topic_class": "utility",
+      "source_raw": "20261003_155818.mp4"
     }
   ]
 }
