@@ -2649,7 +2649,7 @@
     {
       "file": "ig-1004-measure.mp4",
       "title": "Measure the widest part",
-      "status": "pending",
+      "status": "posted",
       "earliest": "2026-10-05",
       "caption": "Hey Dad,\n\nFiller strip for a built-in. Walls are rarely straight, so I measured the gap in more than one spot: 1 3/4 at the wall, 1 13/16 at the widest part.\n\nI ripped to the wider number. That sixteenth is wiggle room. Then the jigsaw and the sander sneak it down until it fits. You can always take more off. You can't put it back.\n\nDon't trust the fence scale. Measure from the fence to a tooth that leans toward it. The blade takes about an eighth, and that eighth comes out of the waste side, not your strip.\n\nUnder about 2 inches between blade and fence, a push stick does the pushing, not your fingers.\n\nFollow so the next project is one trip to the store.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
       "arc_slot": "Mon 10/5 6p",
@@ -2661,7 +2661,10 @@
       "sam_verdict": "POST 2026-10-04",
       "topic_class": "utility",
       "source_raw": "20261003_161602.mp4",
-      "cover_ms": 0
+      "cover_ms": 0,
+      "permalink": "https://www.instagram.com/reel/DeGFgQvD4nq/",
+      "posted_at": "2026-10-04T21:00:35-05:00",
+      "fb_page_video_id": "2318409432265918"
     },
     {
       "file": "ig-1004-fit.mp4",
