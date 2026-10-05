@@ -209,6 +209,10 @@ def cut_rules(joined):
          f"files — an uncommitted re-run is erased by the next checkout (the n=100 run was, 9/08).", "",
          "## Levers, biggest first", ""]
     L += [f"{i}. **{lab}** — {line}" for i, (_, lab, line) in enumerate(levers, 1)]
+    # Nick 2026-10-05: % watched falls with length by construction; utility watch SECONDS grow with it
+    L += ["", "**Standing exception — hands-and-tools how-tos run 35-60s** (Nick, 2026-10-05). "
+          "The duration lever above is % watched; for utility, watch seconds grow with length. "
+          "Rules: Rook `_Skills/reel-loop.md` §3a."]
     L += ["", f"_LEVER = at least {FLAT} pts between two buckets that each have {THIN}+ posts. "
           "Thin buckets are shown so you can see them coming, never acted on._", ""]
     RULES.write_text(chr(10).join(L), encoding="utf-8")
