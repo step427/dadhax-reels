@@ -2669,7 +2669,7 @@
     {
       "file": "ig-1004-fit.mp4",
       "title": "I cheated the angle. It still fit.",
-      "status": "pending",
+      "status": "posted",
       "earliest": "2026-10-05",
       "caption": "Hey Dad,\n\nThe filler strip went in snug. The edge angle? I cheated it a little with the sander. Carpenters call that a back-bevel, and it's legit: only the front edge has to touch the wall.\n\nThen I got a little carried away with the nailer.\n\nSnug is the goal. Cut it a sixteenth fat and sand to fit. An eighth fat is a plane job, not a sander job. Then slow down on the nails, and keep your other hand out of the nail's path.\n\nI make the mistakes on camera. Follow so you don't have to.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
       "arc_slot": "Wed 10/7 9a",
@@ -2681,7 +2681,10 @@
       "sam_verdict": "POST 2026-10-04",
       "topic_class": "utility",
       "source_raw": "20261003_162259.mp4",
-      "cover_ms": 0
+      "cover_ms": 0,
+      "permalink": "https://www.instagram.com/reel/DeHCJp-F18K/",
+      "posted_at": "2026-10-05T05:50:35-05:00",
+      "fb_page_video_id": "2173642046908920"
     },
     {
       "file": "ig-1004-waste.mp4",
