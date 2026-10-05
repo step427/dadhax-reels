@@ -2609,7 +2609,7 @@
     {
       "file": "ig-1003-fingers.mp4",
       "title": "Wait for the stop before you lift",
-      "status": "pending",
+      "status": "posted",
       "earliest": "2026-10-03",
       "caption": "Hey Dad,\n\nThe scariest second on a miter saw comes after the cut.\n\nOnce the blade is through, it sits right between the two loose pieces. Lift it while it's still spinning and the teeth can catch the cutoff and throw it.\n\nSo one rule: let go of the trigger, hold the blade down, and wait until it has completely stopped. Not slowing. Stopped. Then lift.\n\nLess moving parts equals more fingers on your hand.\n\nFollow so your saw rules come before your scars.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
       "arc_slot": "Sat 10/3 1p",
@@ -2624,7 +2624,10 @@
       "hypothesis": "If the thesis line opens and closes the reel at 17s instead of landing at 34s of 42s, then retention beats the parent, because the parent lost viewers before the payoff.",
       "cover_ms": 500,
       "recut_of": "ig-0817-fingers.mp4",
-      "kind": "old"
+      "kind": "old",
+      "permalink": "https://www.instagram.com/reel/DeILJXcjbgo/",
+      "posted_at": "2026-10-05T16:28:21-05:00",
+      "fb_page_video_id": "1775303367063072"
     },
     {
       "file": "ig-1003-blade.mp4",
