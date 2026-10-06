@@ -612,7 +612,7 @@ this order because this is how we get the most out of the sheet."* Two changes, 
 
 **Audit (same fills as v1):** `intro_audit.py` PASS (382 words before the ask).
 `audit_headless.py` PASS WITH WARNINGS (LONG/DENSE/line length only), 1120 words / 6531px.
-The cut list is the added length. Record: `audits/sheet-cut-plan-fdadc32a4498.json`.
+The cut list is the added length. Record: `audits/sheet-cut-plan-a83a997a8696.json` (re-audited 10/6 after merging the shipped v1 and its nav rename, The Log -> The Flip).
 **The Rook-side copy of that record is not in `Rook/_tools/web/audits/`** (cloud sessions write
 only `captures/` there). The laptop must re-run `audit_headless.py` or copy the record from
 here before `ship_gate.py` will pass it.
