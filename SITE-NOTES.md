@@ -592,3 +592,27 @@ the deep link on a non-cleat theme (falsifier in `BRIEF-2026-10-02.md`).
 
 Chain: 10 → **11** → 04. Toolbox card 11 live, 12 "in the shop", index "Eleven free tools" +
 "New this week" → 11, titleblocks 07–11 read "of 11" (01–06 unchanged, as at the 10 ship).
+
+## Tool 11 v1.1 — cut drawings + three-stage engine (built 2026-10-06, cloud session; NOT shipped)
+
+Nick, 10/5: *"pictures are worth a thousand words... this is cut number one, two, three... in
+this order because this is how we get the most out of the sheet."* Two changes, same page:
+
+- **A drawing per sheet**, to scale, every cut a dashed line with a numbered badge. Under it is the
+  numbered cut list in the same order: all the first-direction cuts, then crosscuts, then the
+  small rips and trims. "At" is always measured from the fresh edge. The old text-only
+  "Rip the strips" / "Crosscut the strips" steps are gone; Buy and Mark stay.
+- **The engine** is three-stage: rip, crosscut, rip again. A narrow part can ride beside a wider
+  one, the search tries both first-cut directions, and it keeps the fewest sheets, then the fewest
+  cuts. 300 random lists: an extra sheet on 11, vs 95 for v1. Never worse than v1. 8/8 on the named
+  projects, and the mudroom bench is 1 sheet. Harness: Rook `captures/_tools/sheet-plan-check/`.
+- Copy changed in three places to stop describing the old engine: the "Rip first" rule box, the
+  red note, and the copy/prompt assumption lines. The dek's proof line (3 sheets / 2 at 15 7/8)
+  still holds and was re-checked.
+
+**Audit (same fills as v1):** `intro_audit.py` PASS (382 words before the ask).
+`audit_headless.py` PASS WITH WARNINGS (LONG/DENSE/line length only), 1120 words / 6531px.
+The cut list is the added length. Record: `audits/sheet-cut-plan-a83a997a8696.json` (re-audited 10/6 after merging the shipped v1 and its nav rename, The Log -> The Flip).
+**The Rook-side copy of that record is not in `Rook/_tools/web/audits/`** (cloud sessions write
+only `captures/` there). The laptop must re-run `audit_headless.py` or copy the record from
+here before `ship_gate.py` will pass it.
