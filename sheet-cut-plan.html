@@ -198,6 +198,12 @@
   .step ul li { font-family: var(--sans); font-size: 14.5px; line-height: 1.4; color: var(--bone); }
   .step ul li.w { color: #E7DCD6; list-style: "! "; }
   .step ul li.w::marker { color: var(--warn); font-family: var(--mono); font-weight: 700; }
+  .step .fig { margin: 4px 0 10px; }
+  .step .fig svg { display: block; width: 100%; height: auto; }
+  .step .fig text { font-family: var(--mono); font-weight: 700; }
+  .step ol.cuts { margin: 0; padding: 0 0 0 26px; }
+  .step ol.cuts li { font-family: var(--sans); font-size: 14.5px; line-height: 1.4; color: var(--bone); }
+  .step ol.cuts li::marker { font-family: var(--mono); font-weight: 700; color: var(--signal); }
 
   .callbox { margin-top: 28px; padding: 18px 16px 16px; background: var(--panel-up);
     border: 2px dashed var(--signal-d); }
@@ -321,8 +327,8 @@
   <div class="whys" aria-label="How the plan works">
     <div class="why">
       <span class="tag">Rip first</span>
-      <p>Every part rides a full-length strip as wide as the part. <b>Rip the strips, then
-        crosscut them.</b> Fewer fence moves, and the long cut is the easy one to get straight.</p>
+      <p>Rip the sheet into full-length strips, <b>then crosscut them.</b> A narrow part can ride
+        beside a wider one, and the drawing shows where to split it. Every cut is numbered, in order.</p>
     </div>
     <div class="why">
       <span class="tag">The blade's eighth</span>
@@ -375,7 +381,8 @@
 
   <div class="redline-note">
     <b>this page doesn't nest parts</b>
-    It rips first and never mixes widths on one strip, so it can overcount by a sheet.
+    It cuts in three stages (rip, crosscut, rip again) so a circular saw can follow it. On a
+    long, mixed list it can still miss a tighter layout by a sheet.
     For a true layout, put the same list into
     <a href="https://www.cutlistoptimizer.com/">cutlistoptimizer.com</a>, free.
   </div>
@@ -495,19 +502,79 @@
     });
     return { parts: parts, bad: bad };
   }
-  function plan(parts, L, W, kerf) {
-    var byW = {};
-    parts.forEach(function (p) { (byW[p.wid] = byW[p.wid] || []).push(p); });
-    var rips = [];
-    Object.keys(byW).forEach(function (w) {
-      packItems(byW[w], L, kerf, function (p) { return p.len; }).forEach(function (b) {
-        rips.push({ wid: +w, pieces: b.items, left: L - b.used });
+  // v1.1 (2026-10-06): three-stage cuts. Rip strips, crosscut them into pieces, and rip a
+  // piece again when a narrow part can ride beside a wider one. Tries both first-cut
+  // directions and a couple hundred part orders, seeded, so the same list always gives the
+  // same plan. Checked on 300 random lists: an extra sheet on 11, where the old
+  // one-width-per-strip engine needed one on 95 (Rook captures/_tools/sheet-plan-check).
+  function rng(seed) { return function () { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; }; }
+  function buildStrips(order, L, kerf) {
+    var strips = [];
+    order.forEach(function (p) {
+      var best = null;
+      strips.forEach(function (s) {
+        if (p.wid > s.wid + 1e-9) return;
+        s.segs.forEach(function (g) {   // stack beside parts already in a crosscut piece
+          var grow = Math.max(0, p.len - g.len);
+          if (g.used + kerf + p.wid <= s.wid + 1e-9 && s.used + grow <= L + 1e-9) {
+            var waste = Math.abs(g.len - p.len) * (grow ? g.used : p.wid);
+            if (!best || waste < best.waste) best = { waste: waste, s: s, g: g, grow: grow };
+          }
+        });
+        if (s.used + kerf + p.len <= L + 1e-9) {   // a new crosscut piece further down the strip
+          var waste2 = (s.wid - p.wid) * p.len;
+          if (!best || waste2 < best.waste) best = { waste: waste2, s: s, g: null };
+        }
+      });
+      if (best && best.g) { best.g.used += kerf + p.wid; best.g.parts.push(p); best.g.len += best.grow; best.s.used += best.grow; }
+      else if (best) { best.s.used += kerf + p.len; best.s.segs.push({ len: p.len, used: p.wid, parts: [p] }); }
+      else strips.push({ wid: p.wid, used: p.len, segs: [{ len: p.len, used: p.wid, parts: [p] }] });
+    });
+    return strips;
+  }
+  function cutCount(bins, L, W, kerf) {   // the same cuts sheetDrawing() numbers
+    var n = 0, E = 1e-6;
+    bins.forEach(function (b) {
+      var v = 0;
+      b.items.forEach(function (s) {
+        if (v + s.wid < W - E) n++;
+        var u = 0;
+        s.segs.forEach(function (g) {
+          if (u + g.len < L - E) n++;
+          var w = v;
+          g.parts.forEach(function (q) { if (w + q.wid < v + s.wid - E) n++; if (q.len < g.len - E) n++; w += q.wid + kerf; });
+          u += g.len + kerf;
+        });
+        v += s.wid + kerf;
       });
     });
-    var sheets = packItems(rips, W, kerf, function (r) { return r.wid; }).map(function (b) {
+    return n;
+  }
+  function search(parts, L, W, kerf, tries) {
+    var r = rng(parts.length * 7919 + 17), best = null;
+    for (var t = 0; t < tries; t++) {
+      var order = parts.map(function (p) {
+        var j = t < 2 ? 1 : 0.75 + 0.5 * r();
+        return { p: p, k: (t % 2 ? p.len * 1000 + p.wid : p.wid * 1000 + p.len) * j };
+      }).sort(function (a, b) { return b.k - a.k; }).map(function (x) { return x.p; });
+      var strips = buildStrips(order, L, kerf);
+      var bins = packItems(strips, W, kerf, function (s) { return s.wid; });
+      var score = bins.length * 1e6 + cutCount(bins, L, W, kerf) * 100 + strips.length;
+      if (!best || score < best.score) best = { score: score, strips: strips, bins: bins };
+    }
+    best.strips.forEach(function (s) { s.left = L - s.used; });
+    return { rips: best.strips, sheets: best.bins.map(function (b) {
       return { rips: b.items, left: W - b.used - (b.used < W - 1e-9 ? kerf : 0) };
-    });
-    return { rips: rips, sheets: sheets };
+    }) };
+  }
+  function plan(parts, L, W, kerf) {
+    var a = search(parts, L, W, kerf, 200), b = null;
+    // crosscut-first = the same search on the sheet turned 90 degrees; parts keep their grain
+    var t = parts.map(function (p) { return { len: p.wid, wid: p.len, label: p.label, src: p }; });
+    if (t.every(function (p) { return p.len <= W + 1e-9 && p.wid <= L + 1e-9; })) b = search(t, W, L, kerf, 200);
+    var best = b && b.sheets.length < a.sheets.length ? b : a;
+    best.cross = best === b;
+    return best;
   }
   // the near miss: can trimming one width by up to 1/2 in save a whole sheet?
   function nearMiss(parts, L, W, kerf, n) {
@@ -540,6 +607,72 @@
   }
   function plural(k, word) { return k + " " + word + (k === 1 ? "" : "s"); }
 
+  // One sheet, drawn to scale (96 across), every cut numbered in the order to make it.
+  // Plan coords: u runs along a strip, v across the strips. Rip-first: u = sheet length.
+  // Crosscut-first: the plan was solved on the sheet turned 90 degrees, so u and v swap.
+  function sheetDrawing(sh, cross, L, W, kerf) {
+    var Lu = cross ? W : L, Wv = cross ? L : W, E = 1e-6;
+    var vKind = cross ? "Crosscut" : "Rip", uKind = cross ? "Rip" : "Crosscut", noun = cross ? "panel" : "strip";
+    function group(ns) {   // ["side","side","top"] -> "side ×2, top"
+      var seen = [], c = {};
+      ns.forEach(function (x) { if (!c[x]) { c[x] = 0; seen.push(x); } c[x]++; });
+      return seen.map(function (x) { return x + (c[x] > 1 ? " \u00d7" + c[x] : ""); }).join(", ");
+    }
+    function name(q) { return (q.src || q).label || "part"; }
+    function rect(u, v, du, dv) { return cross ? { x: v, y: u, w: dv, h: du } : { x: u, y: v, w: du, h: dv }; }
+    function line(u0, v0, u1, v1) { return cross ? [v0, u0, v1, u1] : [u0, v0, u1, v1]; }
+    var parts = [], stage = [[], [], [], []], v0 = 0;
+    sh.rips.forEach(function (s) {
+      var names = []; s.segs.forEach(function (g) { g.parts.forEach(function (q) { names.push(name(q)); }); });
+      if (v0 + s.wid < Wv - E) stage[0].push({ l: line(0, v0 + s.wid, Lu, v0 + s.wid),
+        t: vKind + " at " + frac(s.wid) + ": the " + noun + " for " + group(names) });
+      var u0 = 0;
+      s.segs.forEach(function (g) {
+        var gn = g.parts.map(name);
+        if (u0 + g.len < Lu - E) stage[1].push({ l: line(u0 + g.len, v0, u0 + g.len, v0 + s.wid),
+          t: uKind + " the " + frac(s.wid) + " " + noun + " at " + frac(g.len) + ": " + (gn.length > 1 ? "a piece for " + group(gn) : gn[0]) });
+        var v1 = v0;
+        g.parts.forEach(function (q, k) {
+          var qr = rect(u0, v1, q.len, q.wid); qr.n = name(q); qr.d = frac(Math.max(q.len, q.wid)) + "×" + frac(Math.min(q.len, q.wid));
+          parts.push(qr);
+          if (v1 + q.wid < v0 + s.wid - E) stage[2].push({ l: line(u0, v1 + q.wid, u0 + g.len, v1 + q.wid),
+            t: vKind + " the " + frac(Math.max(g.len, s.wid)) + " \u00d7 " + frac(Math.min(g.len, s.wid)) + " piece at " + frac(q.wid) + ": " + qr.n +
+              (function (rest) { return rest.length && rest.some(function (x) { return x !== qr.n; }) ? " (the rest: " + group(rest) + ")" : ""; })(g.parts.slice(k + 1).map(name)) });
+          if (q.len < g.len - E) stage[3].push({ l: line(u0 + q.len, v1, u0 + q.len, v1 + q.wid),
+            t: uKind + " the " + qr.n + " to " + frac(q.len) });
+          v1 += q.wid + kerf;
+        });
+        u0 += g.len + kerf;
+      });
+      v0 += s.wid + kerf;
+    });
+    var cuts = stage[0].concat(stage[1], stage[2], stage[3]);
+    var o = ['<svg viewBox="-2 -2 ' + (L + 4) + ' ' + (W + 4) + '" role="img" aria-label="Sheet layout with ' + cuts.length + ' numbered cuts">',
+      '<rect x="0" y="0" width="' + L + '" height="' + W + '" fill="none" stroke="var(--graphite)" stroke-width=".4" stroke-dasharray="1.2 1"/>'];
+    parts.forEach(function (r) {
+      o.push('<rect x="' + r.x + '" y="' + r.y + '" width="' + r.w + '" height="' + r.h + '" fill="var(--ply)" fill-opacity=".85" stroke="var(--bone)" stroke-width=".25"/>');
+      var fs = Math.min(3.2, r.h * 0.42), lbl = r.n + " " + r.d;
+      if (fs >= 1.8 && lbl.length * fs * 0.62 > r.w - 1.5) lbl = r.n;
+      if (fs >= 1.8 && lbl.length * fs * 0.62 <= r.w - 1.5)
+        o.push('<text x="' + (r.x + r.w / 2) + '" y="' + (r.y + r.h / 2 + fs * 0.35) + '" font-size="' + fs.toFixed(2) + '" text-anchor="middle" fill="#14100F">' + esc(lbl) + '</text>');
+    });
+    cuts.forEach(function (c, k) {
+      var a = c.l;
+      o.push('<line x1="' + a[0] + '" y1="' + a[1] + '" x2="' + a[2] + '" y2="' + a[3] + '" stroke="var(--signal)" stroke-width=".55" stroke-dasharray="1.6 .9"/>');
+    });
+    cuts.forEach(function (c, k) {   // badges last, so a later line never covers a number
+      var a = c.l, horiz = Math.abs(a[1] - a[3]) < 1e-6;
+      var off = 4 + 7 * (k % 3);   // stagger, so cuts close together don't stack their numbers
+      var mx = horiz ? a[0] + Math.min(off, (a[2] - a[0]) / 2) : (a[0] + a[2]) / 2;
+      var my = horiz ? (a[1] + a[3]) / 2 : a[1] + Math.min(off, (a[3] - a[1]) / 2);
+      o.push('<circle cx="' + mx + '" cy="' + my + '" r="2.7" fill="var(--signal)" stroke="var(--carbon)" stroke-width=".35"/>' +
+        '<text x="' + mx + '" y="' + (my + 1.15) + '" font-size="3.3" text-anchor="middle" fill="#14100F">' + (k + 1) + '</text>');
+    });
+    o.push("</svg>");
+    return { svg: o.join(""), cuts: cuts.map(function (c) { return c.t; }) };
+  }
+  function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+
   function refresh() {
     var L = val("sheetL", 96, 24, 144), W = val("sheetW", 48, 12, 60), kerf = val("kerf", 0.125, 0, 0.25);
     var pr = parse($("parts").value, L, W);
@@ -554,23 +687,15 @@
     steps.push({ t: "Buy", pic: '<rect x="6" y="12" width="72" height="38"' + ply + '/><text x="42" y="35" text-anchor="middle">' + plural(n, "sheet") + '</text>', b: [
       plural(n, "sheet") + ", " + frac(W) + " x " + frac(L),
       plural(pr.parts.length, "part") + " from " + plural(p.rips.length, "strip") ] });
-    var rip = p.sheets.map(function (s, i) {
-      var ws = s.rips.map(function (r) { return frac(r.wid); }).join(", ");
-      return "Sheet " + (i + 1) + ": rip " + ws + (s.left >= 0.5 ? " (a " + frac(s.left) + " strip left over)" : "");
+    p.sheets.forEach(function (sh, i) {
+      var d = sheetDrawing(sh, p.cross, L, W, kerf);
+      steps.push({ t: "Sheet " + (i + 1) + (n > 1 ? " of " + n : "") + ", cut in this order",
+        pic: '<rect x="6" y="14" width="72" height="36"' + ply + '/><text x="42" y="37" text-anchor="middle">' + (i + 1) + '</text>',
+        fig: d.svg, cuts: d.cuts,
+        b: i === 0 ? ["Each “at” is measured from the fresh edge you just cut: set the fence or tape to it"] : [],
+        w: i === 0 ? ["A full sheet on a table saw needs support past the blade, or break it down on the floor first",
+          "Riving knife in, push stick on every narrow strip"] : [] });
     });
-    rip.push("Widest strip first, off the factory edge");
-    steps.push({ t: "Rip the strips", pic: '<rect x="6" y="10" width="72" height="44"' + ply + '/><path d="M6 25h72M6 40h72" stroke="var(--bone)" stroke-width="1.5" stroke-dasharray="4 3"/><text x="42" y="63" text-anchor="middle">rip</text>', b: rip, w: [
-      "A full sheet on a table saw needs support past the blade, or break it down on the floor first",
-      "Riving knife in, push stick on every narrow strip" ] });
-    // crosscuts: identical strips grouped
-    var groups = {};
-    p.rips.forEach(function (r) {
-      var cuts = r.pieces.map(function (q) { return frac(q.len) + (q.label ? " " + q.label : ""); }).join(" + ");
-      var k = frac(r.wid) + " strip: " + cuts + (r.left >= 6 ? " (" + frac(r.left - kerf) + " offcut)" : "");
-      groups[k] = (groups[k] || 0) + 1;
-    });
-    steps.push({ t: "Crosscut the strips", pic: '<rect x="4" y="26" width="50" height="10"' + ply + '/><rect x="58" y="26" width="22" height="10"' + ply + '/><path d="M56 18v26" stroke="var(--signal)" stroke-width="2" stroke-dasharray="3 2"/>',
-      b: Object.keys(groups).map(function (k) { return (groups[k] > 1 ? groups[k] + " × " : "") + k; }) });
     steps.push({ t: "Mark every part", pic: '<rect x="8" y="18" width="68" height="28"' + ply + '/><path d="M18 40l12-14" stroke="var(--signal)" stroke-width="3"/><text x="44" y="37">A</text>', b: [
       "Pencil the name on each part as it comes off the saw",
       "Measure from the same end every time" ] });
@@ -588,7 +713,14 @@
       var ul = document.createElement("ul");
       st.b.forEach(function (t) { var x = document.createElement("li"); x.textContent = t; ul.appendChild(x); });
       (st.w || []).forEach(function (t) { var x = document.createElement("li"); x.className = "w"; x.textContent = t; ul.appendChild(x); });
-      box.appendChild(head); box.appendChild(ul); ol.appendChild(box);
+      box.appendChild(head);
+      if (st.fig) { var fig = document.createElement("div"); fig.className = "fig"; fig.innerHTML = st.fig; box.appendChild(fig); }
+      if (st.cuts && st.cuts.length) {
+        var oc = document.createElement("ol"); oc.className = "cuts";
+        st.cuts.forEach(function (t) { var x = document.createElement("li"); x.textContent = t; oc.appendChild(x); });
+        box.appendChild(oc);
+      }
+      box.appendChild(ul); ol.appendChild(box);
     });
     $("oWarn").textContent = notes.join(" ");
     $("oWarn").hidden = !notes.length;
@@ -631,11 +763,12 @@
     var out = ["THE SHEET PLAN — " + new Date().toLocaleDateString(), ""];
     last.steps.forEach(function (st, i) {
       out.push((i + 1) + ". " + st.t.toUpperCase());
+      (st.cuts || []).forEach(function (t, k) { out.push("   " + (k + 1) + ". " + t); });
       st.b.forEach(function (t) { out.push("   - " + t); });
       (st.w || []).forEach(function (t) { out.push("   ! " + t); });
     });
     if (last.notes.length) out.push("", last.notes.join(" "));
-    out.push("", "Assumes rip-first, no grain matching, " + frac(last.kerf) + " kerf. For a nested layout: cutlistoptimizer.com");
+    out.push("", "Assumes three-stage cuts, the long side of every part with the 8-ft grain, " + frac(last.kerf) + " kerf. For a nested layout: cutlistoptimizer.com");
     var who = $("callName").value.trim(); if (who) out.push("", "Call: " + who);
     out.push("", "The Sheet Plan — @nicksdadhax");
     return out.join("\n");
@@ -654,7 +787,7 @@
       "Stock: " + frac(last.W) + " x " + frac(last.L) + " in sheets, " + frac(last.kerf) + " in kerf.",
       "Parts (qty, length x width, in):",
       last.text.split(/[\n;]+/).filter(function (s) { return s.trim(); }).map(function (s) { return "  " + s.trim(); }).join("\n"),
-      "A rip-first plan says " + plural(last.p.sheets.length, "sheet") + ".",
+      "A three-stage cut plan says " + plural(last.p.sheets.length, "sheet") + ".",
       "The project: [what it is, the plywood grade and thickness, and which faces show]",
       "",
       "Do this, in order:",

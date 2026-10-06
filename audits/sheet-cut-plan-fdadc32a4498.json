@@ -1,0 +1,28 @@
+{
+ "page": "sheet-cut-plan.html",
+ "sha": "fdadc32a4498",
+ "verdict": "PASS WITH WARNINGS",
+ "fail": [],
+ "warn": [
+  "LINE LENGTH: 33 chars/line on mobile (aim 35-45).",
+  "LONG: 8 phone screens of scroll.",
+  "DENSE: 1120 words. A free sheet nobody finishes is the same as no sheet."
+ ],
+ "stats": {
+  "viewport": "375x812",
+  "charsPerLine": 33,
+  "words": 1120,
+  "pageHeightPx": 6531,
+  "screens": 8,
+  "longestBlockWords": 20,
+  "links": 14
+ },
+ "fills": {
+  "parts": "2 sides 72 x 16; 5 shelves 34 1/2 x 16; 1 kick 34 1/2 x 3 1/2",
+  "sheetL": "96",
+  "sheetW": "48",
+  "kerf": "0.125",
+  "callName": "Sam"
+ },
+ "audited": "2026-10-06T01:21:05+00:00"
+}
