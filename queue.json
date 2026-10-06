@@ -2729,7 +2729,7 @@
     {
       "file": "ig-1005-filler-howto.mp4",
       "title": "Crooked wall? Scribe the filler.",
-      "status": "pending",
+      "status": "posted",
       "earliest": "2026-10-08",
       "caption": "Hey Dad,\n\nThe wall next to the cabinet isn't straight, so a straight filler strip leaves a gap. Here's how I scribed one to fit.\n\n1. Clamp the filler blank on the cabinet face: edge flush with the cabinet's outside, bottom at final height.\n2. Hold a scrap stick in the gap, end on the wall, and mark the cabinet. That's a story stick. No numbers to read, so you can't misread an eighth.\n3. Transfer that gap onto the blank, measured from the edge that will sit against the cabinet.\n4. Put the stick's end back on the wall at the same height and mark where it meets that line. That's your scribe.\n5. Drill a pencil hole through the stick on the scribe mark. Brace it on the bench.\n6. Ride the stick's end down the wall, square to it. The pencil copies the wall onto the blank.\n7. Check it. The gap was 1-5/8. The blank at the line read 1-5/8.\n8. Rip on the table saw just past the widest point of the line. Narrow rip, so use a push stick. Then jigsaw on the waste side. Save the line.\n9. Sand right up to the line. I back-beveled the edge a little, taking it off the back, so only the front edge has to touch the wall.\n10. Test fit, then nail it home. Keep your free hand a foot from the nail. Brads can curl out.\n\nHairline left over? Caulk and paint.\n\nFollow so your next filler fits the first time.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
       "arc_slot": "Thu 10/8 9a (replaces ig-1005-scribe)",
@@ -2742,7 +2742,10 @@
       "topic_class": "utility",
       "source_raw": "20261003_155818.mp4",
       "hypothesis": "If one complete 53s how-to with tool sound replaces the 15-18s talk cuts, then avg watch seconds and saves beat ig-1004-measure and ig-1004-fit, because people stay while hands are working.",
-      "_note": "Fresh cut (Sam r3 POST: not --recut-of). ~31s from unposted scribe raw 20261003_155818; ~19s from 162259 (fit's raw, posted as ig-1004-fit) and ~3s from 161602 (measure's raw, posted as ig-1004-measure). Silva BUILD 10/05: nailer + hand-held drill shots cut for hand position. EDL Rook scratch recut v4."
+      "_note": "Fresh cut (Sam r3 POST: not --recut-of). ~31s from unposted scribe raw 20261003_155818; ~19s from 162259 (fit's raw, posted as ig-1004-fit) and ~3s from 161602 (measure's raw, posted as ig-1004-measure). Silva BUILD 10/05: nailer + hand-held drill shots cut for hand position. EDL Rook scratch recut v4.",
+      "permalink": "https://www.instagram.com/reel/DeIdmHSlMkg/",
+      "posted_at": "2026-10-05T19:09:34-05:00",
+      "fb_page_video_id": "1112368911306390"
     },
     {
       "file": "ig-1005-scribe.mp4",
