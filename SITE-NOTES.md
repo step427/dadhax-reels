@@ -555,3 +555,40 @@ embeds can't load inside a claude.ai artifact preview, and they make an outside 
 Every clip passed the address gate on the render (frames, audio, captions). Nothing
 from the contractor dispute goes on this page. Already-published videos stay up (Nick,
 10/05); the gate applies to new cuts. Clip recipe: Rook CAPABILITY-INDEX, site-clip row.
+
+## Tool 11 — The Sheet Plan (built 2026-10-04 by `dadhax-weekly-tool`, ships Tue 10/6)
+
+`sheet-cut-plan.html`. Council pick 10/02 (71.1; runner-up Past Fine 67.2, banked), re-scoped
+to a one-day build. The implementation layer of `ARC-2026-10-04` ("the second trip to the
+store", easter egg **an eighth**). Parts list in (one per line or `;`-separated: qty, length x
+width, optional name; fractions like `34 1/2` parse; the longer side is taken as length, with
+the 8-ft grain), sheet size and kerf default to 96 x 48 and 1/8. Engine is rip-first: group
+parts by width, first-fit-decreasing each width's lengths into full-length strips (kerf between
+pieces), then FFD the strip widths across sheets. A near-miss pass trims one width by up to
+1/2" and reports it only if that saves a whole sheet. Output is four `.step` blocks (Buy, Rip,
+Crosscut, Mark) built the same way as Tool 10's. The textarea is prefilled with the example on
+first load so output exists before a keystroke (the Value Architect's design-against).
+
+The dek's proof line (shelf unit, 72 tall x 16 deep, five shelves + a kick → 3 sheets; 15 7/8
+deep → 2) was computed by the engine; if the engine changes, re-run it and fix the sentence.
+The red rail is "this page doesn't nest parts" and names cutlistoptimizer.com, the free tool
+Nick's own reels recommend (give-first means pointing at the better tool).
+
+Story beat is Nick's own words only: `ig-diy-cutlist` ("I wasted a lot of plywood learning this
+the other way. The free tool is better at it than I am"), `ig-yt-cutplan` (pencil and grid
+paper, the stock you already have, then the cut list), `ig-0908-waste` ("every board you don't
+waste is one you don't buy"), `ig-yt-sheet` (break a sheet down on the floor; "a good third
+thing"). Links only, never embeds.
+
+**Launch reel (S7 path 1):** re-cut posted `ig-yt-cutplan.mp4` "Plan the cuts before you buy
+wood" (source_raw `yt:c7Wh-xcTYhA`) under a catalog prefix, the way cleatwall re-cut cleat101,
+with the shelf-unit numbers in the caption and the one link
+`https://step427.github.io/dadhax-reels/sheet-cut-plan.html`. This is the council's test of
+the deep link on a non-cleat theme (falsifier in `BRIEF-2026-10-02.md`).
+
+**Audit fills (Tool 11):** `--fill "parts=2 sides 72 x 16; 5 shelves 34 1/2 x 16; 1 kick 34 1/2 x 3 1/2" sheetL=96 sheetW=48 kerf=0.125 callName=Sam` — every input the page needs set before its real output exists on screen. Never a real person's name or a sensitive number.
+→ PASS WITH WARNINGS (LONG/DENSE only), 1013 words / 5781px expanded, Tool 10 parity
+(984 / 5636). `intro_audit.py` PASS, 381 words before the ask, you-density 0.047.
+
+Chain: 10 → **11** → 04. Toolbox card 11 live, 12 "in the shop", index "Eleven free tools" +
+"New this week" → 11, titleblocks 07–11 read "of 11" (01–06 unchanged, as at the 10 ship).

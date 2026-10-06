@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Tool 11. Built 2026-10-04 by the dadhax-weekly-tool routine off the cut-planning reels
+     (ig-yt-cutplan, ig-diy-cutlist, ig-yt-sheet, ig-0908-waste); council pick 2026-10-02. -->
+<title>The Sheet Plan — @nicksdadhax</title>
+<meta name="description" content="Type your parts list. Get how many sheets of plywood to buy, which strips to rip off each sheet, and every crosscut, with the blade's kerf counted. Free, no gate.">
+
+<style>
+  /* @nicksdadhax — dark field-instrument identity. Same tokens as tools 01-07.
+     SIGNAL YELLOW = your input / the action. WARN RED = the honest rail —
+     here that's "this page doesn't nest parts." */
+  :root {
+    --carbon:   #0F0E0B;
+    --panel:    #17150F;
+    --panel-up: #1E1B14;
+    --hair:     #302B21;
+    --bone:     #F4F0E6;
+    --graphite: #8F887A;
+    --signal:   #FFC629;
+    --signal-d: #C8930F;
+    --warn:     #E8502C;
+    --ply:      #B8935A;
+
+    --mono: ui-monospace, "SF Mono", SFMono-Regular, "Cascadia Mono",
+            "Roboto Mono", Menlo, Consolas, "Courier New", monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+            "Helvetica Neue", Arial, sans-serif;
+
+    --gutter: clamp(18px, 5vw, 40px);
+    --maxw: 660px;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--carbon);
+    color: var(--bone);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-text-size-adjust: 100%;
+    background-image:
+      repeating-linear-gradient(to right,  rgba(242,237,231,.035) 0 1px, transparent 1px 28px),
+      repeating-linear-gradient(to bottom, rgba(242,237,231,.035) 0 1px, transparent 1px 28px);
+  }
+
+  .sheet { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter) 96px; }
+
+  header { padding: 34px 0 8px; }
+  .protocol {
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: .17em;
+    text-transform: uppercase; color: var(--graphite);
+  }
+  .protocol b { color: var(--signal); font-weight: 700; }
+  h1 {
+    font-family: var(--mono); font-weight: 700;
+    font-size: clamp(28px, 8vw, 48px); line-height: 1.04;
+    letter-spacing: -.03em; text-transform: uppercase;
+    margin: 12px 0 0; text-wrap: balance;
+  }
+  h1 .of { color: var(--signal); }
+  .dek { margin: 14px 0 0; max-width: 46ch; color: #CFC9BB; font-size: 17px; }
+  .dek em { color: var(--bone); font-style: normal; border-bottom: 1.5px solid var(--signal-d); }
+
+  .rules {
+    margin: 20px 0 0; padding: 11px 0 0; border-top: 1px solid var(--hair);
+    font-family: var(--mono); font-size: 12.5px; letter-spacing: .04em;
+    color: var(--graphite); text-transform: uppercase;
+  }
+  .rules span { color: var(--bone); }
+
+  .privacy {
+    margin: 18px 0 0; padding: 13px 15px; font-size: 14.5px; line-height: 1.5;
+    color: #CFC9BB; background: var(--panel); border-left: 3px solid var(--signal);
+  }
+  .privacy b { color: var(--bone); }
+
+  .story { margin-top: 24px; padding: 15px 16px; background: var(--panel);
+    border: 1px solid var(--hair); }
+  .story p { margin: 0 0 10px; font-size: 15.5px; line-height: 1.55; color: #CFC9BB; }
+  .story p:last-child { margin-bottom: 0; }
+  .story p b { color: var(--bone); }
+  .story a { color: var(--signal); font-weight: 700; text-decoration: none; }
+  .story a:hover { text-decoration: underline; }
+  .zone { display: flex; gap: 10px; margin: 0 0 8px; }
+  .zone button { flex: 1 1 0; min-height: 48px; padding: 10px 8px; border-radius: 0; cursor: pointer;
+    font-family: var(--mono); font-size: 12.5px; letter-spacing: .06em; text-transform: uppercase;
+    font-weight: 700; background: transparent; color: var(--bone); border: 1.5px solid #453E2C; }
+  .zone button[aria-pressed="true"] { background: var(--signal); color: #14100F; border-color: var(--signal); }
+  .zone button:focus-visible { outline: 2px solid var(--bone); outline-offset: 2px; }
+  .seed .hint { margin: 0 0 16px; }
+
+  .whys { margin-top: 26px; border: 1px solid var(--hair); }
+  .why { padding: 14px 15px; border-bottom: 1px solid var(--hair); }
+  .why:last-child { border-bottom: 0; }
+  .why .tag { display: block; font-family: var(--mono); font-size: 12.5px; font-weight: 700;
+    letter-spacing: .08em; text-transform: uppercase; margin-bottom: 5px; color: var(--signal); }
+  .why p { margin: 0; font-size: 15px; line-height: 1.5; color: #CFC9BB; }
+  .why p b { color: var(--bone); }
+
+  .redline-note {
+    margin: 14px 0 0; padding: 9px 12px;
+    border-left: 2.5px solid var(--warn);
+    background: #20130E; /* rgba(232,80,44,.08) on --carbon, solid so contrast is measurable */
+    font-size: 14.5px; line-height: 1.45; color: #E7DCD6;
+  }
+  .redline-note b { color: var(--warn); font-family: var(--mono);
+    font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase;
+    display: block; margin-bottom: 3px; }
+
+  .block { margin-top: 30px; }
+  .lbl {
+    display: block; font-family: var(--mono); font-size: 11.5px;
+    letter-spacing: .13em; text-transform: uppercase; color: var(--graphite);
+    margin-bottom: 8px;
+  }
+  h2.part {
+    font-family: var(--mono); font-size: 12px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--signal); margin: 34px 0 4px; font-weight: 700;
+    padding-top: 20px; border-top: 1px solid var(--hair);
+  }
+  .partdek { margin: 0 0 14px; font-size: 15px; color: #CFC9BB; line-height: 1.5; }
+  .partdek b { color: var(--bone); }
+
+  .seed {
+    border: 1.5px solid var(--signal); background: var(--panel);
+    padding: 16px 16px 14px;
+  }
+  .seed .lbl { color: var(--signal); margin-top: 0; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; }
+  @media (max-width: 380px) { .grid2 { grid-template-columns: 1fr; } }
+  input[type=text], input[type=number] {
+    display: block; width: 100%;
+    background: transparent; border: 0; border-bottom: 1.5px solid #453E2C;
+    color: var(--bone); font-family: var(--mono); font-size: 18px;
+    line-height: 1.5; padding: 4px 0 8px; border-radius: 0;
+    font-variant-numeric: tabular-nums; -moz-appearance: textfield;
+  }
+  input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  input::placeholder { color: #6B6455; font-family: var(--sans); font-size: 15px; }
+  input:focus, textarea:focus { outline: 0; border-bottom-color: var(--signal); }
+  textarea { display: block; width: 100%; resize: vertical; background: transparent; border: 0;
+    border-bottom: 1.5px solid #453E2C; color: var(--bone); font-family: var(--mono); font-size: 16px;
+    line-height: 1.6; padding: 4px 0 8px; border-radius: 0; }
+  .redline-note a { color: var(--signal); font-weight: 700; }
+  .seed .lbl + input { margin-bottom: 14px; }
+  .unit { font-family: var(--mono); font-size: 11px; color: var(--graphite); letter-spacing: .08em; }
+
+  .hint { margin: 6px 0 0; font-size: 13.5px; color: var(--graphite); line-height: 1.45; }
+
+  /* result rows double as a picker */
+  .rows { border: 1px solid var(--hair); margin-top: 14px; }
+  .rows[hidden] { display: none; }
+  .row { display: flex; gap: 13px; align-items: flex-start; width: 100%; text-align: left;
+    padding: 13px 15px; border: 0; border-bottom: 1px solid var(--hair); min-height: 44px;
+    background: transparent; color: var(--bone); font: inherit; cursor: pointer; }
+  .row:last-child { border-bottom: 0; }
+  .row:hover { background: var(--panel); }
+  .row:focus-visible { outline: 2px solid var(--bone); outline-offset: -2px; }
+  .row .dot { flex: 0 0 auto; width: 22px; height: 22px; margin-top: 2px; border-radius: 50%;
+    border: 1.5px solid #453E2C; background: var(--panel); }
+  .row[aria-pressed="true"] .dot { background: var(--signal); border-color: var(--signal);
+    box-shadow: inset 0 0 0 5px var(--panel); }
+  .row b { display: block; font-family: var(--mono); font-size: 15.5px; letter-spacing: -.01em;
+    font-variant-numeric: tabular-nums; }
+  .row span.s { display: block; font-size: 14px; line-height: 1.45; color: #CFC9BB; margin-top: 3px; }
+  .row span.s i { font-style: normal; color: var(--warn); }
+  .row span.s u { text-decoration: none; color: var(--signal); }
+
+  .empty { margin-top: 14px; padding: 13px 15px; border: 1px dashed var(--hair);
+    font-size: 14.5px; color: #CFC9BB; line-height: 1.5; }
+  .empty[hidden] { display: none; }
+
+  /* the composed run */
+  .spec { margin-top: 22px; padding: 18px 16px; background: var(--panel-up);
+    border: 2px solid var(--signal); }
+  .spec[hidden] { display: none; }
+  .spec .lbl { color: var(--signal); }
+  .spec p { margin: 0 0 8px; font-size: 16.5px; line-height: 1.5; color: var(--bone); }
+  .spec p:last-of-type { margin-bottom: 0; }
+  .spec .fine { margin-top: 10px; font-size: 14px; color: #CFC9BB; }
+  .spec ul { margin: 8px 0 0; padding: 0 0 0 18px; }
+  .spec li { font-family: var(--mono); font-size: 13.5px; line-height: 1.6; color: var(--bone); }
+  .spec li i { font-style: normal; color: var(--graphite); }
+  .steps { margin: 6px 0 0; }
+  .step { padding: 10px 0 8px; border-top: 1px solid var(--hair); }
+  .step .head { display: flex; gap: 12px; align-items: center; margin: 0 0 6px; }
+  .step .pic { flex: 0 0 72px; }
+  .step .pic svg { display: block; width: 72px; height: auto; }
+  .step .pic text { font-family: var(--mono); font-weight: 700; font-size: 10px; fill: var(--signal); }
+  .step h3 { margin: 0; font-family: var(--mono); font-size: 14px; letter-spacing: .05em;
+    text-transform: uppercase; color: var(--signal); }
+  .step ul { margin: 0; padding: 0 0 0 18px; }
+  .step ul li { font-family: var(--sans); font-size: 14.5px; line-height: 1.4; color: var(--bone); }
+  .step ul li.w { color: #E7DCD6; list-style: "! "; }
+  .step ul li.w::marker { color: var(--warn); font-family: var(--mono); font-weight: 700; }
+
+  .callbox { margin-top: 28px; padding: 18px 16px 16px; background: var(--panel-up);
+    border: 2px dashed var(--signal-d); }
+  .callbox .lbl { color: var(--signal); }
+  .callbox .means { margin: 10px 0 14px; font-size: 15px; color: #CFC9BB; line-height: 1.5; }
+  .callbox .means b { color: var(--bone); }
+  .callbox input[type=text] { font-family: var(--sans); font-size: 17px; }
+
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+  .actions button {
+    font-family: var(--mono); font-size: 12.5px; letter-spacing: .1em;
+    text-transform: uppercase; font-weight: 700; min-height: 48px;
+    padding: 13px 18px; border-radius: 0; cursor: pointer;
+    background: var(--signal); color: #14100F; border: 1.5px solid var(--signal);
+  }
+  .actions button.ghost { background: transparent; color: var(--bone); border-color: #453E2C; }
+  .actions button:hover { filter: brightness(1.1); }
+  .actions button.ghost:hover { border-color: var(--signal); color: var(--signal); filter: none; }
+  .actions button:focus-visible { outline: 2px solid var(--bone); outline-offset: 2px; }
+
+  .said {
+    margin-top: 14px; font-family: var(--mono); font-size: 12px;
+    letter-spacing: .06em; text-transform: uppercase; color: var(--signal);
+    min-height: 1em;
+  }
+
+  .titleblock {
+    margin-top: 44px; border: 1px solid var(--hair);
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(108px, 1fr));
+  }
+  .tb { padding: 11px 13px; border-right: 1px solid var(--hair); }
+  .tb:last-child { border-right: 0; }
+  .tb dt {
+    font-family: var(--mono); font-size: 10px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--graphite); margin: 0 0 4px;
+  }
+  .tb dd {
+    margin: 0; font-family: var(--mono); font-size: 13px; font-weight: 700;
+    color: var(--bone); font-variant-numeric: tabular-nums;
+  }
+  .tb dd.red { color: var(--signal); }
+
+  .cta { margin-top: 18px; font-size: 15px; color: #CFC9BB; line-height: 1.5; }
+  .cta b { color: var(--bone); }
+  .cta a { color: var(--signal); font-weight: 700; text-decoration: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+
+  @media print {
+    @page { size: letter; margin: .5in .55in; }
+    :root {
+      --carbon: #fff; --panel: #fff; --panel-up: #FFF8E2;
+      --hair: #C9C2BC; --bone: #14100F; --graphite: #5E5651;
+      --signal: #7A5B00; --signal-d: #7A5B00; --warn: #B93A18; --ply: #E4D2A8;
+    }
+    body { background-image: none; font-size: 10.5pt; }
+    .sheet { max-width: none; padding: 0; }
+    .actions, .said, .nav, .tail, .cta, .privacy { display: none; }
+    .spec[hidden] { display: block !important; }
+    input { border-bottom-color: #9AA0A8; min-height: .42in; }
+    .redline-note { background: none; }
+    h1 { font-size: 26pt; }
+  }
+</style>
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+
+<div class="sheet">
+
+  <nav class="nav">
+    <div class="navtop">
+      <a class="brand" href="index.html">@nicksdadhax</a>
+      <span class="meta">Tool 11 · free · no gate</span>
+    </div>
+    <div class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="toolbox.html" aria-current="true"><svg class="tbx" width="15" height="13" viewBox="0 0 16 14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><g class="lid"><path d="M5.5 4.5v-.75a2.5 2.5 0 0 1 5 0v.75"/><rect x="1" y="4.5" width="14" height="2.5" rx=".5"/></g><rect x="1" y="7" width="14" height="6" rx=".5"/></svg>The Toolbox</a>
+      <a href="log.html">The Flip</a>
+      <a href="houses.html">I have a house</a>
+    </div>
+  </nav>
+
+  <header>
+    <div class="protocol">Sheet protocol <b>·</b> rip first <b>·</b> an eighth for the blade</div>
+    <h1>The sheet <span class="of">plan</span></h1>
+    <p class="dek">You've got a project and a list of parts. You're standing in the lumber
+      aisle doing math on your phone, and you're not sure if it's two sheets or three.</p>
+    <p class="dek">Guess low and you're back at the store Saturday afternoon for one more
+      sheet. Guess high and a hundred-dollar sheet leans on your garage wall for a year.</p>
+    <p class="dek"><em>Type your parts and you get the plan</em>: how many sheets to buy,
+      which strips to rip off each one, and where every crosscut goes. A garage shelf unit,
+      72 tall and 16 deep with five shelves and a kick: <b>three sheets. Make it 15 7/8 deep
+      and it's two.</b> The blade's eighth is what costs you the third.</p>
+    <p class="privacy"><b>Nothing you type here leaves your device.</b> No account, no
+      server, no analytics. Your numbers live in this browser tab and are erased when
+      you close it. "Start over" wipes them now.</p>
+  </header>
+
+  <div class="story">
+    <span class="lbl">Why this one exists</span>
+    <p><b>I wasted a lot of plywood learning this the other way.</b> Now every project
+      starts the same: pencil and grid paper, the measurements, the stock I already have,
+      then the cut list. For the full layout I use a free optimizer, and it's better at it
+      than I am. This page is the five-minute version you can run in the aisle: the sheet
+      count and the rip order. <b>Every board you don't waste is one you don't buy.</b></p>
+  </div>
+
+  <div class="story">
+    <span class="lbl">See it in the shop</span>
+    <p><b>Planning the cuts:</b>
+      <a href="https://www.instagram.com/reel/DdXrI0Mkv8P/">Instagram</a>,
+      <a href="https://www.facebook.com/reel/1876333097082161">Facebook</a>.
+      <b>Breaking down a sheet on the floor,</b> no table saw:
+      <a href="https://www.instagram.com/reel/DdehY-slCPU/">Instagram</a>,
+      <a href="https://www.facebook.com/reel/2379657445775404">Facebook</a>.</p>
+  </div>
+
+  <div class="whys" aria-label="How the plan works">
+    <div class="why">
+      <span class="tag">Rip first</span>
+      <p>Every part rides a full-length strip as wide as the part. <b>Rip the strips, then
+        crosscut them.</b> Fewer fence moves, and the long cut is the easy one to get straight.</p>
+    </div>
+    <div class="why">
+      <span class="tag">The blade's eighth</span>
+      <p>Three 16-inch strips are 48 inches. A sheet is 48 inches. <b>The two cuts between
+        them eat a quarter inch,</b> and the third strip comes up short. The page counts
+        every kerf.</p>
+    </div>
+  </div>
+
+  <h2 class="part">Part 1 &mdash; Your parts</h2>
+  <p class="partdek">One part per line: <b>how many, length, width,</b> and a name if you
+    want it. Fractions are fine. The longer side runs with the 8-foot grain.</p>
+
+  <div class="block seed">
+    <label class="lbl" for="parts">Parts list <span class="unit">qty &middot; length x width &middot; inches</span></label>
+    <textarea id="parts" rows="5" spellcheck="false" autocapitalize="off"
+      placeholder="2 sides 72 x 16"></textarea>
+    <p class="hint">Filled with the shelf unit so you can see it work. Clear it and type yours,
+      or paste a list. A semicolon works as a new line.</p>
+  </div>
+
+  <h2 class="part">Part 2 &mdash; The stock</h2>
+  <p class="partdek">A full 4x8 sheet and a 1/8 blade unless you change them.
+    <b>Measure your sheet</b> if you're cutting it close.</p>
+
+  <div class="block seed">
+    <div class="grid2">
+      <div>
+        <label class="lbl" for="sheetL">Sheet length <span class="unit">in</span></label>
+        <input type="number" id="sheetL" inputmode="decimal" step="0.125" min="24" max="144" placeholder="96">
+      </div>
+      <div>
+        <label class="lbl" for="sheetW">Sheet width <span class="unit">in</span></label>
+        <input type="number" id="sheetW" inputmode="decimal" step="0.125" min="12" max="60" placeholder="48">
+      </div>
+    </div>
+    <label class="lbl" for="kerf">Blade kerf <span class="unit">in &middot; most blades 1/8</span></label>
+    <input type="number" id="kerf" inputmode="decimal" step="0.0625" min="0" max="0.25" placeholder="0.125">
+  </div>
+
+  <h2 class="part">Part 3 &mdash; Your plan</h2>
+
+  <div class="empty" id="empty">Type at least one part above and the plan appears here.</div>
+
+  <div class="spec" id="spec" hidden>
+    <span class="lbl">Your sheets, step by step</span>
+    <div class="steps" id="oSteps"></div>
+    <p class="fine" id="oWarn"></p>
+  </div>
+
+  <div class="redline-note">
+    <b>this page doesn't nest parts</b>
+    It rips first and never mixes widths on one strip, so it can overcount by a sheet.
+    For a true layout, put the same list into
+    <a href="https://www.cutlistoptimizer.com/">cutlistoptimizer.com</a>, free.
+  </div>
+
+  <div class="callbox">
+    <span class="lbl">The boulder question</span>
+    <p class="means">Most problems are who-you-know. <b>Name one person who'd hold the
+      far end of the sheet.</b> Breaking down plywood is a good third thing: one of you
+      on each end, and you talk while you work.</p>
+    <input type="text" id="callName" placeholder="a name. not 'a guy from work' — a name.">
+    <p class="means" style="margin:12px 0 0"><b>Now make the call</b> &mdash; ask:
+      &ldquo;got an hour Saturday? I'll buy lunch.&rdquo;</p>
+  </div>
+
+  <div class="actions">
+    <button id="promptBtn" type="button">Copy a prompt for your AI</button>
+    <button id="copyBtn" class="ghost" type="button">Copy the plan</button>
+    <button id="printBtn" class="ghost" type="button">Print it</button>
+    <button id="resetBtn" class="ghost" type="button">Start over</button>
+  </div>
+  <div class="said" id="said" role="status" aria-live="polite"></div>
+
+  <dl class="titleblock">
+    <div class="tb"><dt>Protocol</dt><dd>SHEET</dd></div>
+    <div class="tb"><dt>Tool</dt><dd>11 of 11</dd></div>
+    <div class="tb"><dt>Sheets</dt><dd class="red" id="count">0</dd></div>
+    <div class="tb"><dt>By</dt><dd class="red">@nicksdadhax</dd></div>
+  </dl>
+
+  <!--TAIL-->
+  <div class="tail">
+  <a class="tail-next" href="fact-testable-fantasy.html">
+    <span class="k">Read next</span>
+    <b>Tool 04 &mdash; Fact / Testable / Fantasy</b>
+    <span class="s">The plan saved you the second trip. Here's the two-question filter
+      for what to do with the afternoon, before it goes to the wrong idea.</span>
+  </a>
+  <section class="buyhouses">
+    <h2>Also &mdash; I buy houses</h2>
+    <p><b>Washington or Dakota County, Minnesota.</b> Off-market, or straight from the
+      owner &mdash; I'm the buyer, not a middleman passing it along. Woodbury, Cottage
+      Grove, Hastings, Stillwater, Eagan, Inver Grove Heights, Lakeville.</p>
+    <p>If that's you, or you know somebody quietly thinking about selling, I'll lay out
+      your options &mdash; <b>all of them, including the ones I don't make a dime on.</b>
+      Nothing to sign, no walkthrough unless you ask.</p>
+    <div class="ctas">
+      <a href="houses.html"><b>I have a house</b><span>Or I know someone who does</span></a>
+    </div>
+  </section>
+
+  <section class="optin" id="next">
+    <h2>What I ask</h2>
+    <p class="plain">That was free and nothing here sits behind an email. If it was
+      useful, here's the whole exchange: <b>send it to one or two people who'd use it
+      too.</b> That's it. I'm trusting you with it, you pass it on.</p>
+    <p class="plain">Want the next one before anyone else? I'm building an interest
+      list &mdash; no selling, no sequence, your address goes nowhere.
+      <a href="index.html#next">Exactly what that means, in plain words.</a></p>
+    <p class="fine">The list itself isn't open yet &mdash; I'm still setting it up, and
+      I'd rather say that than put up a box that doesn't work. The ask above stands
+      either way, and it's the one that matters. If you want to tell me what to build
+      next, my DMs are open.</p>
+    <div class="ctas">
+      <a href="https://www.instagram.com/nicksdadhax/"><b>Tell me what to build next</b><span>DM @nicksdadhax</span></a>
+    </div>
+  </section>
+  </div>
+  <!--/TAIL-->
+
+  <p class="cta">Free. This tool asks you for nothing &mdash; no gate, no email, no
+    analytics. When the project's built, <b>DM me a picture</b>.</p>
+
+</div>
+
+<script>
+(function () {
+  "use strict";
+  // ---- the engine: pure, so it can be checked outside the page ----
+  // Rip-first: group parts by width, pack each width's lengths into full-length strips
+  // (first-fit-decreasing, a kerf between pieces), then pack the strips across sheets.
+  // Same pack() idea as Tool 10. No 2-D nesting, no mixed widths on one strip.
+  var EXAMPLE = "2 sides 72 x 16\n5 shelves 34 1/2 x 16\n1 kick 34 1/2 x 3 1/2";
+  function r16(x) { return Math.round(x * 16) / 16; }
+  function packItems(items, cap, kerf, size) {
+    var bins = [];
+    items.slice().sort(function (a, b) { return size(b) - size(a); }).forEach(function (it) {
+      var s = size(it);
+      for (var i = 0; i < bins.length; i++) if (bins[i].used + kerf + s <= cap + 1e-9) { bins[i].used += kerf + s; bins[i].items.push(it); return; }
+      bins.push({ used: s, items: [it] });
+    });
+    return bins;
+  }
+  function num(t) {   // "34 1/2", "34-1/2", "1/2", "34.5"
+    var m = t.match(/^(\d+(?:\.\d+)?)(?:[\s-]+(\d+)\/(\d+))?$/) || t.match(/^()(\d+)\/(\d+)$/);
+    if (!m) return NaN;
+    var v = m[1] ? parseFloat(m[1]) : 0;
+    if (m[2]) v += parseInt(m[2], 10) / parseInt(m[3], 10);
+    return v;
+  }
+  function parse(text, L, W) {
+    var parts = [], bad = [];
+    String(text || "").split(/[\n;]+/).forEach(function (line) {
+      line = line.trim(); if (!line) return;
+      var toks = line.match(/\d+(?:\.\d+)?(?:[\s-]+\d+\/\d+)?|\d+\/\d+/g) || [];
+      var ns = toks.map(num).filter(isFinite);
+      var label = line.replace(/\d+(?:\.\d+)?(?:[\s-]+\d+\/\d+)?|\d+\/\d+/g, " ").replace(/(^|\s)[x×*@](?=\s|$)|[",]|\bin\b/gi, " ").replace(/\s+/g, " ").trim();
+      var q = 1, a, b;
+      if (ns.length >= 3) { q = Math.round(ns[0]); a = ns[1]; b = ns[2]; }
+      else if (ns.length === 2) { a = ns[0]; b = ns[1]; }
+      else { bad.push(line + ": needs a length and a width"); return; }
+      var len = r16(Math.max(a, b)), wid = r16(Math.min(a, b));
+      if (q < 1 || q > 200) { bad.push(line + ": quantity 1 to 200"); return; }
+      if (wid <= 0) { bad.push(line + ": a size is zero"); return; }
+      if (len > L + 1e-9) { bad.push(line + ": longer than the sheet"); return; }
+      if (wid > W + 1e-9) { bad.push(line + ": wider than the sheet"); return; }
+      for (var i = 0; i < q; i++) parts.push({ len: len, wid: wid, label: label });
+    });
+    return { parts: parts, bad: bad };
+  }
+  function plan(parts, L, W, kerf) {
+    var byW = {};
+    parts.forEach(function (p) { (byW[p.wid] = byW[p.wid] || []).push(p); });
+    var rips = [];
+    Object.keys(byW).forEach(function (w) {
+      packItems(byW[w], L, kerf, function (p) { return p.len; }).forEach(function (b) {
+        rips.push({ wid: +w, pieces: b.items, left: L - b.used });
+      });
+    });
+    var sheets = packItems(rips, W, kerf, function (r) { return r.wid; }).map(function (b) {
+      return { rips: b.items, left: W - b.used - (b.used < W - 1e-9 ? kerf : 0) };
+    });
+    return { rips: rips, sheets: sheets };
+  }
+  // the near miss: can trimming one width by up to 1/2 in save a whole sheet?
+  function nearMiss(parts, L, W, kerf, n) {
+    var widths = parts.map(function (p) { return p.wid; }).filter(function (w, i, a) { return a.indexOf(w) === i; });
+    var best = null;
+    widths.forEach(function (w) {
+      var k = Math.floor((W + kerf) / (w + kerf) + 1e-9);
+      var w2 = Math.floor((W - k * kerf) / (k + 1) * 16 + 1e-9) / 16;
+      if (w2 <= 0 || w - w2 > 0.5 + 1e-9) return;
+      var p2 = parts.map(function (p) { return p.wid === w ? { len: p.len, wid: w2, label: p.label } : p; });
+      var m = plan(p2, L, W, kerf).sheets.length;
+      if (m < n && (!best || m < best.sheets)) best = { from: w, to: w2, sheets: m };
+    });
+    return best;
+  }
+
+  var KEY = "ndh-sheetplan-v1";
+  var $ = function (id) { return document.getElementById(id); };
+  var inputs = ["parts", "sheetL", "sheetW", "kerf", "callName"].map($);
+  var said = $("said"), spec = $("spec"), empty = $("empty"), count = $("count");
+  var last = null;
+
+  function val(id, dflt, lo, hi) { var v = parseFloat($(id).value); return isFinite(v) && v >= lo && v <= hi ? v : dflt; }
+  function frac(x) {
+    var whole = Math.floor(x + 1e-9), r = Math.round((x - whole) * 16);
+    if (r === 16) { whole += 1; r = 0; }
+    if (r === 0) return String(whole);
+    var n = r, d = 16; while (n % 2 === 0) { n /= 2; d /= 2; }
+    return (whole ? whole + " " : "") + n + "/" + d;
+  }
+  function plural(k, word) { return k + " " + word + (k === 1 ? "" : "s"); }
+
+  function refresh() {
+    var L = val("sheetL", 96, 24, 144), W = val("sheetW", 48, 12, 60), kerf = val("kerf", 0.125, 0, 0.25);
+    var pr = parse($("parts").value, L, W);
+    if (!pr.parts.length) {
+      spec.hidden = true; empty.hidden = false; count.textContent = "0"; last = null;
+      empty.textContent = pr.bad.length ? "Check these lines: " + pr.bad.join(" · ") : "Type at least one part above and the plan appears here.";
+      save(); return;
+    }
+    var p = plan(pr.parts, L, W, kerf), n = p.sheets.length;
+    var ink = ' stroke="var(--bone)" stroke-width="2"', ply = ' fill="var(--ply)"' + ink;
+    var steps = [];
+    steps.push({ t: "Buy", pic: '<rect x="6" y="12" width="72" height="38"' + ply + '/><text x="42" y="35" text-anchor="middle">' + plural(n, "sheet") + '</text>', b: [
+      plural(n, "sheet") + ", " + frac(W) + " x " + frac(L),
+      plural(pr.parts.length, "part") + " from " + plural(p.rips.length, "strip") ] });
+    var rip = p.sheets.map(function (s, i) {
+      var ws = s.rips.map(function (r) { return frac(r.wid); }).join(", ");
+      return "Sheet " + (i + 1) + ": rip " + ws + (s.left >= 0.5 ? " (a " + frac(s.left) + " strip left over)" : "");
+    });
+    rip.push("Widest strip first, off the factory edge");
+    steps.push({ t: "Rip the strips", pic: '<rect x="6" y="10" width="72" height="44"' + ply + '/><path d="M6 25h72M6 40h72" stroke="var(--bone)" stroke-width="1.5" stroke-dasharray="4 3"/><text x="42" y="63" text-anchor="middle">rip</text>', b: rip, w: [
+      "A full sheet on a table saw needs support past the blade, or break it down on the floor first",
+      "Riving knife in, push stick on every narrow strip" ] });
+    // crosscuts: identical strips grouped
+    var groups = {};
+    p.rips.forEach(function (r) {
+      var cuts = r.pieces.map(function (q) { return frac(q.len) + (q.label ? " " + q.label : ""); }).join(" + ");
+      var k = frac(r.wid) + " strip: " + cuts + (r.left >= 6 ? " (" + frac(r.left - kerf) + " offcut)" : "");
+      groups[k] = (groups[k] || 0) + 1;
+    });
+    steps.push({ t: "Crosscut the strips", pic: '<rect x="4" y="26" width="50" height="10"' + ply + '/><rect x="58" y="26" width="22" height="10"' + ply + '/><path d="M56 18v26" stroke="var(--signal)" stroke-width="2" stroke-dasharray="3 2"/>',
+      b: Object.keys(groups).map(function (k) { return (groups[k] > 1 ? groups[k] + " × " : "") + k; }) });
+    steps.push({ t: "Mark every part", pic: '<rect x="8" y="18" width="68" height="28"' + ply + '/><path d="M18 40l12-14" stroke="var(--signal)" stroke-width="3"/><text x="44" y="37">A</text>', b: [
+      "Pencil the name on each part as it comes off the saw",
+      "Measure from the same end every time" ] });
+    var nm = nearMiss(pr.parts, L, W, kerf, n);
+    var notes = pr.bad.length ? ["Skipped: " + pr.bad.join(" · ")] : [];
+    if (nm) notes.push("Near miss: make the " + frac(nm.from) + " parts " + frac(nm.to) + " and it's " + plural(nm.sheets, "sheet") + ".");
+    last = { L: L, W: W, kerf: kerf, parts: pr.parts, p: p, steps: steps, notes: notes, text: $("parts").value };
+    var ol = $("oSteps"); ol.textContent = "";
+    steps.forEach(function (st, i) {
+      var box = document.createElement("div"), head = document.createElement("div"), pic = document.createElement("span");
+      box.className = "step"; head.className = "head";
+      pic.className = "pic"; pic.innerHTML = '<svg viewBox="0 0 84 66" aria-hidden="true">' + st.pic + "</svg>";
+      var h = document.createElement("h3"); h.textContent = (i + 1) + ". " + st.t;
+      head.appendChild(pic); head.appendChild(h);
+      var ul = document.createElement("ul");
+      st.b.forEach(function (t) { var x = document.createElement("li"); x.textContent = t; ul.appendChild(x); });
+      (st.w || []).forEach(function (t) { var x = document.createElement("li"); x.className = "w"; x.textContent = t; ul.appendChild(x); });
+      box.appendChild(head); box.appendChild(ul); ol.appendChild(box);
+    });
+    $("oWarn").textContent = notes.join(" ");
+    $("oWarn").hidden = !notes.length;
+    count.textContent = String(n);
+    spec.hidden = false; empty.hidden = true;
+    save();
+  }
+
+  function save() {
+    try {
+      var d = {};
+      inputs.forEach(function (el) { d[el.id] = el.value; });
+      // sessionStorage, NOT localStorage: same promise as every tool on the site.
+      sessionStorage.setItem(KEY, JSON.stringify(d));
+    } catch (e) {}
+  }
+  function load() {
+    var d = null;
+    try { d = JSON.parse(sessionStorage.getItem(KEY) || "null"); } catch (e) {}
+    if (d) inputs.forEach(function (el) { if (d[el.id]) el.value = d[el.id]; });
+    else $("parts").value = EXAMPLE;   // output on screen before a keystroke
+  }
+
+  inputs.forEach(function (el) { el.addEventListener("input", refresh); });
+  $("printBtn").addEventListener("click", function () { window.print(); });
+
+  function copyText(text, okMsg) {
+    function fallback() {
+      var t = document.createElement("textarea"); t.value = text;
+      t.style.position = "fixed"; t.style.opacity = "0"; document.body.appendChild(t); t.select();
+      try { document.execCommand("copy"); } catch (e) {} document.body.removeChild(t);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () { said.textContent = okMsg; },
+        function () { fallback(); said.textContent = okMsg; });
+    } else { fallback(); said.textContent = okMsg; }
+  }
+  function planText() {
+    if (!last) return null;
+    var out = ["THE SHEET PLAN — " + new Date().toLocaleDateString(), ""];
+    last.steps.forEach(function (st, i) {
+      out.push((i + 1) + ". " + st.t.toUpperCase());
+      st.b.forEach(function (t) { out.push("   - " + t); });
+      (st.w || []).forEach(function (t) { out.push("   ! " + t); });
+    });
+    if (last.notes.length) out.push("", last.notes.join(" "));
+    out.push("", "Assumes rip-first, no grain matching, " + frac(last.kerf) + " kerf. For a nested layout: cutlistoptimizer.com");
+    var who = $("callName").value.trim(); if (who) out.push("", "Call: " + who);
+    out.push("", "The Sheet Plan — @nicksdadhax");
+    return out.join("\n");
+  }
+  $("copyBtn").addEventListener("click", function () {
+    var t = planText(); if (!t) { said.textContent = "Type a part first."; return; }
+    copyText(t, "Copied — take it to the store.");
+  });
+  $("promptBtn").addEventListener("click", function () {
+    if (!last) { said.textContent = "Type a part first — the prompt is built from it."; return; }
+    var text = [
+      "You are a master carpenter checking a first-timer's plywood cut plan before they buy.",
+      "Blunt, specific, no hype. If a number below can't be right, say so. Never invent a",
+      "product or a price; tell me what to check at the store instead.",
+      "",
+      "Stock: " + frac(last.W) + " x " + frac(last.L) + " in sheets, " + frac(last.kerf) + " in kerf.",
+      "Parts (qty, length x width, in):",
+      last.text.split(/[\n;]+/).filter(function (s) { return s.trim(); }).map(function (s) { return "  " + s.trim(); }).join("\n"),
+      "A rip-first plan says " + plural(last.p.sheets.length, "sheet") + ".",
+      "The project: [what it is, the plywood grade and thickness, and which faces show]",
+      "",
+      "Do this, in order:",
+      "1. Find the parts whose grain direction matters and tell me which way each should run.",
+      "2. Lay the parts out on the sheets by hand and tell me if you can beat that sheet count.",
+      "3. Tell me which cut to make first on each sheet with [name your saw], and how to",
+      "   support a full sheet safely.",
+      "4. Name the one dimension I'm most likely to get wrong, and how to check it before I cut.",
+      "",
+      "Keep the whole thing under one page.",
+      "",
+      "(Built with The Sheet Plan — @nicksdadhax)"
+    ].join("\n");
+    copyText(text, "Prompt copied — paste it into the AI you already use.");
+  });
+  $("resetBtn").addEventListener("click", function () {
+    inputs.forEach(function (el) { el.value = ""; });
+    try { sessionStorage.removeItem(KEY); } catch (e) {}
+    refresh(); said.textContent = "Cleared. Type your parts."; window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  load(); refresh();
+  window.__sheetPlan = { parse: parse, plan: plan, nearMiss: nearMiss };   // for the engine check
+})();
+</script>
+
+</body>
+</html>
