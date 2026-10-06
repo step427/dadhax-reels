@@ -123,7 +123,8 @@ carries its own copy of the icon CSS in its style block.
 ## Files
 
 - `site.css` — shared chrome only (nav, tail, optin, CTA row). Every page keeps its
-  own `<style>` and its own `:root`, including the light-mode flip. Additive on
+  own `<style>` and its own `:root` (dark-only: log.html's light-mode flip was removed
+  10/05 after it turned the page white in previews and on light phones). Additive on
   purpose: one copy of the shared parts instead of four that drift.
 - `index.html` — landing page **and** catalog. It is a homepage, correctly: multiple
   visitor intents. The single-CTA discipline applies to the optin block, not the page.
@@ -542,3 +543,15 @@ below for whoever wants it.
 - **log.html is generated.** `Rook/_tools/reels/build_log.py` rewrites it 3x a day,
   so the same block has to live in the builder or the next rebuild wipes it. The
   patch is in Rook `captures/` (2026-10-05).
+
+## The Flip — One Old House story page (live 2026-10-05)
+
+The nav label "The Log" became **"The Flip"** on 14 pages; the URL stays `log.html`.
+`build_log.py` now carries the story: `STORY_LIVE = True` (the 3x-daily rebuild
+regenerates it), `--draft DIR` renders a preview that never pushes, and chapter clips
+are `file:NAME.mp4|label` entries that play on click and render only if the mp4 sits
+beside the page. All four chapter clips + the headliner are self-hosted (YouTube
+embeds can't load inside a claude.ai artifact preview, and they make an outside call).
+Every clip passed the address gate on the render (frames, audio, captions). Nothing
+from the contractor dispute goes on this page. Already-published videos stay up (Nick,
+10/05); the gate applies to new cuts. Clip recipe: Rook CAPABILITY-INDEX, site-clip row.
