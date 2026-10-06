@@ -235,8 +235,12 @@ def plan(pending, start, days, skip=0):
     renders this, so a board that disagrees with the publisher is no longer
     possible by construction -- it did disagree through 8/13-8/15, which is how
     three straight reposts reached Instagram without the board ever showing it.
+
+    Sorts by topic here, as claim_next does: callers pass raw queue order, and
+    skipping the sort put talk first on the board while utility posted first
+    (10/05: a filler how-to "slotted Thu 9a" posted Mon 7p).
     """
-    left, out = list(pending), []
+    left, out = _by_topic(pending), []
     for d in range(days):
         day = start + timedelta(days=d)
         olds = 0
