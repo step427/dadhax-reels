@@ -2513,7 +2513,7 @@
     {
       "file": "ig-diy-dirtyblade.mp4",
       "title": "Your blade isn't dull. It's dirty.",
-      "status": "pending",
+      "status": "posted",
       "earliest": "2026-10-02",
       "caption": "Hey Dad,\n\nI was cutting red oak and it started smoking. I figured the blade was dull.\n\nNine times out of ten it's buildup on the teeth.\n\nUnplug the saw or pull the battery. Safety glasses on, a wire wheel throws bristles. All you need is a drill and a wire brush. Run it in reverse on one side, hitting the teeth at an angle so the blade spins through. Keep your free hand off the blade. Forward on the other side.\n\nThis gets it about 90 percent. There's still some gunk on the inside.\n\nTwo minutes, before the first cut. Straight rip or a 45.\n\nFollow before you buy a blade you don't need.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
       "arc_slot": "Fri 10/2 6p",
@@ -2527,7 +2527,10 @@
       "source_raw": "20260907_112354.mp4",
       "cover_ms": 1000,
       "recut_of": "ig-0908-blade.mp4",
-      "kind": "old"
+      "kind": "old",
+      "permalink": "https://www.instagram.com/reel/DeFPZPGAdbe/",
+      "posted_at": "2026-10-04T13:08:01-05:00",
+      "fb_page_video_id": "1398720375302087"
     },
     {
       "file": "ig-0930-spacing.mp4",
@@ -2606,7 +2609,7 @@
     {
       "file": "ig-1003-fingers.mp4",
       "title": "Wait for the stop before you lift",
-      "status": "pending",
+      "status": "posted",
       "earliest": "2026-10-03",
       "caption": "Hey Dad,\n\nThe scariest second on a miter saw comes after the cut.\n\nOnce the blade is through, it sits right between the two loose pieces. Lift it while it's still spinning and the teeth can catch the cutoff and throw it.\n\nSo one rule: let go of the trigger, hold the blade down, and wait until it has completely stopped. Not slowing. Stopped. Then lift.\n\nLess moving parts equals more fingers on your hand.\n\nFollow so your saw rules come before your scars.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
       "arc_slot": "Sat 10/3 1p",
@@ -2621,7 +2624,10 @@
       "hypothesis": "If the thesis line opens and closes the reel at 17s instead of landing at 34s of 42s, then retention beats the parent, because the parent lost viewers before the payoff.",
       "cover_ms": 500,
       "recut_of": "ig-0817-fingers.mp4",
-      "kind": "old"
+      "kind": "old",
+      "permalink": "https://www.instagram.com/reel/DeILJXcjbgo/",
+      "posted_at": "2026-10-05T16:28:21-05:00",
+      "fb_page_video_id": "1775303367063072"
     },
     {
       "file": "ig-1003-blade.mp4",
@@ -2642,6 +2648,223 @@
       "permalink": "https://www.instagram.com/reel/DeEYIkhifbj/",
       "posted_at": "2026-10-04T05:04:53-05:00",
       "fb_page_video_id": "3065174953814871"
+    },
+    {
+      "file": "ig-1004-measure.mp4",
+      "title": "Measure the widest part",
+      "status": "posted",
+      "earliest": "2026-10-05",
+      "caption": "Hey Dad,\n\nFiller strip for a built-in. Walls are rarely straight, so I measured the gap in more than one spot: 1 3/4 at the wall, 1 13/16 at the widest part.\n\nI ripped to the wider number. That sixteenth is wiggle room. Then the jigsaw and the sander sneak it down until it fits. You can always take more off. You can't put it back.\n\nDon't trust the fence scale. Measure from the fence to a tooth that leans toward it. The blade takes about an eighth, and that eighth comes out of the waste side, not your strip.\n\nUnder about 2 inches between blade and fence, a push stick does the pushing, not your fingers.\n\nFollow so the next project is one trip to the store.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "Mon 10/5 6p",
+      "pix": "P",
+      "value_forms": [
+        "entertainment",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-10-04",
+      "topic_class": "utility",
+      "source_raw": "20261003_161602.mp4",
+      "cover_ms": 0,
+      "permalink": "https://www.instagram.com/reel/DeGFgQvD4nq/",
+      "posted_at": "2026-10-04T21:00:35-05:00",
+      "fb_page_video_id": "2318409432265918"
+    },
+    {
+      "file": "ig-1004-fit.mp4",
+      "title": "I cheated the angle. It still fit.",
+      "status": "posted",
+      "earliest": "2026-10-05",
+      "caption": "Hey Dad,\n\nThe filler strip went in snug. The edge angle? I cheated it a little with the sander. Carpenters call that a back-bevel, and it's legit: only the front edge has to touch the wall.\n\nThen I got a little carried away with the nailer.\n\nSnug is the goal. Cut it a sixteenth fat and sand to fit. An eighth fat is a plane job, not a sander job. Then slow down on the nails, and keep your other hand out of the nail's path.\n\nI make the mistakes on camera. Follow so you don't have to.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "Wed 10/7 9a",
+      "pix": "I",
+      "value_forms": [
+        "entertainment",
+        "idea"
+      ],
+      "sam_verdict": "POST 2026-10-04",
+      "topic_class": "utility",
+      "source_raw": "20261003_162259.mp4",
+      "cover_ms": 0,
+      "permalink": "https://www.instagram.com/reel/DeHCJp-F18K/",
+      "posted_at": "2026-10-05T05:50:35-05:00",
+      "fb_page_video_id": "2173642046908920"
+    },
+    {
+      "file": "ig-1004-waste.mp4",
+      "title": "Rip 2.5 inches. Get two hangers.",
+      "status": "pending",
+      "earliest": "2026-10-05",
+      "caption": "Hey Dad,\n\nMaking French cleat hangers. Rip an inch-and-a-half strip, tilt the blade to 45, and you get one hanger. The offcut is scrap. A whole 45, gone.\n\nStart at 2 1/2 inches instead and split it down the middle at 45. Same board, two identical hangers. The waste drops from a whole 45 to the kerf and a trim pass.\n\nThe blade takes about an eighth. The extra inch is slop, for the blade and for me not being a perfect woodworker.\n\nEvery board you don't waste is one you don't buy.\n\nFollow so your next board makes two, not one.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "OFF-ARC cover",
+      "pix": "P",
+      "value_forms": [
+        "idea",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-10-04",
+      "topic_class": "utility",
+      "source_raw": "20260907_120012.mp4",
+      "hypothesis": "If the 'lost a whole 45' consequence opens and the reel ends at 14.4s instead of 37.7s, then watch ratio beats the parent's 21%, because the parent's 8.1s average watch ended before the 2.5-inch fix was stated.",
+      "cover_ms": 0,
+      "recut_of": "ig-0908-waste.mp4",
+      "kind": "old"
+    },
+    {
+      "file": "ig-1005-drawer.mp4",
+      "title": "Soft close slammed? Check the rail.",
+      "status": "hold",
+      "earliest": "2026-10-06",
+      "caption": "Hey Dad,\n\nSoft-close drawer slammed shut instead of easing in. I'd shut it too hard and the rail popped over the little soft-close catch.\n\nBefore you order new slides, find that catch and pop the rail back over it. Took a little wiggling, and the soft close came right back.\n\nFollow before you pay someone to fix it.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "OFF-ARC cover",
+      "pix": "P",
+      "value_forms": [
+        "entertainment",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-10-05",
+      "topic_class": "utility",
+      "source_raw": "PXL_20261004_230510131.mp4",
+      "_hold": "2026-10-05 Nick: swap. Superseded by ig-1004-laundry3 (same raw PXL_20261004_230510131, posts in series order after laundry parts 1-2). Never post."
+    },
+    {
+      "file": "ig-1005-filler-howto.mp4",
+      "title": "Crooked wall? Scribe the filler.",
+      "status": "posted",
+      "earliest": "2026-10-08",
+      "caption": "Hey Dad,\n\nThe wall next to the cabinet isn't straight, so a straight filler strip leaves a gap. Here's how I scribed one to fit.\n\n1. Clamp the filler blank on the cabinet face: edge flush with the cabinet's outside, bottom at final height.\n2. Hold a scrap stick in the gap, end on the wall, and mark the cabinet. That's a story stick. No numbers to read, so you can't misread an eighth.\n3. Transfer that gap onto the blank, measured from the edge that will sit against the cabinet.\n4. Put the stick's end back on the wall at the same height and mark where it meets that line. That's your scribe.\n5. Drill a pencil hole through the stick on the scribe mark. Brace it on the bench.\n6. Ride the stick's end down the wall, square to it. The pencil copies the wall onto the blank.\n7. Check it. The gap was 1-5/8. The blank at the line read 1-5/8.\n8. Rip on the table saw just past the widest point of the line. Narrow rip, so use a push stick. Then jigsaw on the waste side. Save the line.\n9. Sand right up to the line. I back-beveled the edge a little, taking it off the back, so only the front edge has to touch the wall.\n10. Test fit, then nail it home. Keep your free hand a foot from the nail. Brads can curl out.\n\nHairline left over? Caulk and paint.\n\nFollow so your next filler fits the first time.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "Thu 10/8 9a (replaces ig-1005-scribe)",
+      "pix": "P",
+      "value_forms": [
+        "implementation",
+        "entertainment"
+      ],
+      "sam_verdict": "POST 2026-10-05",
+      "topic_class": "utility",
+      "source_raw": "20261003_155818.mp4",
+      "hypothesis": "If one complete 53s how-to with tool sound replaces the 15-18s talk cuts, then avg watch seconds and saves beat ig-1004-measure and ig-1004-fit, because people stay while hands are working.",
+      "_note": "Fresh cut (Sam r3 POST: not --recut-of). ~31s from unposted scribe raw 20261003_155818; ~19s from 162259 (fit's raw, posted as ig-1004-fit) and ~3s from 161602 (measure's raw, posted as ig-1004-measure). Silva BUILD 10/05: nailer + hand-held drill shots cut for hand position. EDL Rook scratch recut v4.",
+      "permalink": "https://www.instagram.com/reel/DeIdmHSlMkg/",
+      "posted_at": "2026-10-05T19:09:34-05:00",
+      "fb_page_video_id": "1112368911306390"
+    },
+    {
+      "file": "ig-1005-scribe.mp4",
+      "title": "Wavy wall? Scribe it.",
+      "status": "hold",
+      "earliest": "2026-10-08",
+      "caption": "Hey Dad,\n\nFiller strip against a wall that isn't plumb. Skip the tape. Mark the gap right on a scrap stick. Now it's a story stick, a custom measuring stick. No numbers to read, so you can't misread an eighth.\n\nTransfer the gap to the filler. Drill a hole in a scrap block for your pencil, let the block's edge ride the wall, and the pencil draws the wall's wobble onto the board.\n\nCut on the waste side and save the line. Sand right up to it.\n\nGap where I checked: an inch and five eighths. The piece at that same spot: an inch and five eighths.\n\nFollow so your next filler fits the first time.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "Thu 10/8 9a (fresh fill of catalog row)",
+      "pix": "P",
+      "value_forms": [
+        "idea",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-10-05",
+      "topic_class": "utility",
+      "source_raw": "20261003_155818.mp4",
+      "_note": "2026-10-05 superseded by ig-1005-filler-howto (Nick: 'not much how-to'; one complete how-to from the same raw). Never post."
+    },
+    {
+      "file": "ig-1004-laundry.mp4",
+      "title": "Measured Sept 6. First box up today.",
+      "status": "posted",
+      "earliest": "2026-10-08",
+      "caption": "Hey Dad,\n\nThe cabinet adventure continues. The mudroom cabinets are in, so now it's the laundry room.\n\nSept 6, before we bought a thing, we measured the room and drew it on graph paper. Ceiling came in at 96 5/8.\n\nSept 12, that sketch turned into a plan, cabinet by cabinet.\n\nToday the first upper box went up.\n\nMeasure it, draw it, then buy it.\n\nFollow to see it finished.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "Thu 10/8 6p",
+      "pix": "I",
+      "value_forms": [
+        "entertainment",
+        "idea"
+      ],
+      "sam_verdict": "POST 2026-10-04",
+      "topic_class": "utility",
+      "kind": "new",
+      "source_raw": "PXL_20261004_211502402.mp4",
+      "source_raws": [
+        "PXL_20261004_211502402.mp4",
+        "PXL_20261004_211454873.jpg",
+        "_INBOX/Laundry/photos/20260906_184459.jpg",
+        "_INBOX/Laundry/photos/20260906_184604.jpg",
+        "_INBOX/Laundry/laundry-pack-print.html (Wall D elevation)"
+      ],
+      "nav_safe": true,
+      "cover_ms": 0,
+      "cut_by": "cloud session 2026-10-04 (Rook captures/2026-10-04-laundry-cabinets-reel.md); part 1 of the laundry build series, long-form assembles at the reveal",
+      "_note": "Nick pulled the 9/6 measuring photos from _INBOX/Laundry on camera ('pull pictures from when we originally took the measurements'); only that folder was opened, every frame screened: no kids, no names, no addresses.",
+      "permalink": "https://www.instagram.com/reel/DeJmgxHAeu_/",
+      "posted_at": "2026-10-06T05:46:44-05:00",
+      "fb_page_video_id": "1599835035254071"
+    },
+    {
+      "file": "ig-1004-laundry2.mp4",
+      "title": "Same doorway. Sept 6 vs. today.",
+      "status": "pending",
+      "earliest": "2026-10-11",
+      "caption": "Hey Dad,\n\nSame doorway, three times.\n\nSept 6: wire shelf, ironing board, laundry basket.\n4 PM today: cleared out, first box up.\n5 PM: both uppers in, hang rod between them.\n\nThen I opened a drawer. That doesn't sound good. A little touch-up, and it goes on the list.\n\nWant a real before and after of your own project? Stand in the doorway, phone at chest height, and shoot from that same spot every time.\n\nFollow to see how it ends.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "Sun 10/11 6p",
+      "pix": "X",
+      "value_forms": [
+        "entertainment",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-10-04",
+      "topic_class": "utility",
+      "kind": "new",
+      "source_raw": "PXL_20261004_221633716.mp4",
+      "source_raws": [
+        "PXL_20261004_221633716.mp4",
+        "PXL_20261004_221604692.mp4",
+        "PXL_20261004_221543376.MP.jpg",
+        "PXL_20261004_211442542.MP.jpg",
+        "_INBOX/Laundry/photos/20260906_184459.jpg"
+      ],
+      "nav_safe": true,
+      "cover_ms": 0,
+      "cut_by": "cloud session 2026-10-04 (Rook captures/2026-10-04-laundry-cabinets-reel.md); part 2 of the laundry build series",
+      "_note": "Mostly-visual cut: a synthesized major-key bed (make_bed variant, C-G-Am-F at 100 BPM) carries the stills and pan, ducked under the drawer and Nick's one line. Hallway frames at raw 22.2-23.8 (a bedroom through the door) are excluded on purpose."
+    },
+    {
+      "file": "ig-1004-laundry3.mp4",
+      "title": "Slammed it testing the soft-close.",
+      "status": "pending",
+      "earliest": "2026-10-12",
+      "caption": "Hey Dad,\n\nRemember the drawer? \"That doesn't sound good.\"\n\nI slammed it testing the soft-close. The rail popped over that little gizmo it rides on. Popped it back over, a little wiggling, and the soft-close works again.\n\nIf a soft-close drawer suddenly sounds wrong, don't force it. Pull it out and look at the rail before you call it broken.\n\nAnd testing a soft-close? A gentle push is all it needs.\n\nFollow for the countertop.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "next arc, after Sun 10/11 6p (part 3 follows part 2)",
+      "pix": "I",
+      "value_forms": [
+        "entertainment",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-10-04",
+      "topic_class": "utility",
+      "kind": "new",
+      "source_raw": "PXL_20261004_230510131.mp4",
+      "source_raws": [
+        "PXL_20261004_230510131.mp4",
+        "PXL_20261004_230605885.mp4"
+      ],
+      "nav_safe": true,
+      "cover_ms": 0,
+      "cut_by": "cloud session 2026-10-04 (Rook captures/2026-10-04-laundry-cabinets-reel.md); part 3 of the laundry build series, pays off part 2's drawer",
+      "_note": "Kids rule (Nick 2026-10-04): his daughter's voice ('That's what I said!', confirmed by three Whisper models on the isolated span) and her torso/legs (raw 40.90-42.52) are kept; no face or head in any frame (checked every frame at 15fps). Raw 37.4-37.8 (back of her head walking in) and Nick's 'That's what she said' (39.1-40.5) are cut.",
+      "_swap": "2026-10-05 Nick: swap. Part 3 posts after Part 2; ig-1005-drawer (same raw) held so the footage runs once."
+    },
+    {
+      "file": "ig-1006-filler-howto.mp4",
+      "title": "Crooked wall? Scribe the filler. (10 numbered steps)",
+      "status": "pending",
+      "earliest": "2026-10-08",
+      "caption": "Hey Dad,\n\nThe wall next to the cabinet isn't straight, so a straight filler strip leaves a gap. Here's how I scribed one to fit.\n\n1. Clamp the filler blank on the cabinet face: edge flush with the cabinet's outside, bottom at final height.\n2. Hold a scrap stick in the gap, end on the wall, and mark the cabinet. That's a story stick. No numbers to read, so you can't misread an eighth.\n3. Transfer that gap onto the blank, measured from the edge that will sit against the cabinet.\n4. Put the stick's end back on the wall at the same height and mark where it meets that line. That's your scribe.\n5. Drill a pencil hole through the stick on the scribe mark. Brace it on the bench.\n6. Ride the stick's end down the wall, square to it. The pencil copies the wall onto the blank.\n7. Check it. The gap was 1-5/8. The blank at the line read 1-5/8.\n8. Rip on the table saw just past the widest point of the line. Narrow rip, so use a push stick. Then jigsaw on the waste side. Save the line.\n9. Sand right up to the line. I back-beveled the edge a little, taking it off the back, so only the front edge has to touch the wall.\n10. Test fit, then nail it home. Keep your free hand a foot from the nail. Brads can curl out.\n\nHairline left over? Caulk and paint makes it what it ain't.\n\nSave this for your next trim job so you don't lose an hour scrolling to find it again. Send it to a DIYer who needs it. Better yet, teach it to one. If you can teach it, you've got it.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "OFF-ARC cover: matched pair with ig-1005-filler-howto (posted 10/5 7:09p); queued after the laundry series",
+      "pix": "P",
+      "value_forms": [
+        "implementation",
+        "entertainment"
+      ],
+      "topic_class": "utility",
+      "source_raw": "20261003_155818.mp4",
+      "hypothesis": "Package comparison vs ig-1005-filler-howto (53.5s, hook-first, 7 of 10 steps on camera, follow CTA). This cut changes several things at once (joke cold open, all 10 steps numbered with a chime, save/send close, 84s), so it tests the PACKAGE, not one lever: if avg watch seconds and saves+shares per reach beat the parent, the package wins; the next pair isolates the cold open.",
+      "_note": "2026-10-06 cloud session. Nick on the posted ig-1005-filler-howto: it never showed transferring the measurement to the piece / where the scribe hole goes, or the piece clamped flush to the cabinet. This is the posted cut UNCHANGED plus two inserts from the same raw (155818): A at 0:04.3-0:14.7 (75.82-79.75 'clamp it to this little cabinet jut-out', 83.68-87.40 'flush to the outside of the cabinet and the very bottom here', 130.60-133.30 hand on the edge + 'check and flush') and B at 0:18.5-0:30.7 (voice 276.65-281.10 'now we're transferring that measurement to the piece' over the marking shot 292.00-296.45; 301.00-305.62 'have this touch the wall'; 307.10-310.15 'mark where we want our scribe'). Seams are picture cuts in quiet audio (posted 4.333, 8.167). Same caption as the parent (its 10 steps now all on camera). 10/06 rev 2 (Nick: \"Caulk and paint makes it what it ain't is the quote. And it's funny.\"): the parent's closer started at 'caulk and paint' and cut his setup; added raw 420.00-422.86 'What it ain't, we'll fill in with' (same continuous shot, posted picture cut 47.533) + top label \"Caulk and paint makes it what it ain't.\" through 'pronounce that L'. Now 78.9s. 10/06 rev 3 (Nick: rev 2 \"much much better\"; \"number and label the steps to match the steps in the caption\"): step chips 1/10..10/10 under the karaoke band (black box, number in clay), titles from the caption (CLAMP IT FLUSH, MARK THE GAP, TRANSFER THE GAP, MARK THE SCRIBE, DRILL A PENCIL HOLE, RIDE THE WALL, CHECK IT, RIP THEN JIGSAW, SAND TO THE LINE, TEST FIT + NAIL), each switching on a picture cut. Overrides reel-loop 3a rule 11 'no step numbers' for this format, on Nick's direct ask. HOLD because: (1) the parent is live -- Nick decides delete-and-replace vs keep both; (2) no sam/silva agents in the cloud, so the 22s of new footage has no Sam/Silva verdict (parent footage carries the parent's Sam r3 POST + Silva BUILD 10/05). Release = Nick says post it, or the laptop loop runs Sam+Silva on 0:04-0:31 and sets sam_verdict + status pending. 79s > 60s: TEST-LOG row owed (reel-loop 3a rule 6). Build script + EDL: Rook captures/_tools/filler-howto-v2/. 10/06 rev 4 (Nick): CTA cards replace the old 'NO TAPE MATH / Follow' card -- SAVE THIS (for your next trim job; don't lose an hour finding it again) then SEND IT TO A DIYER (better yet, teach it; if you can teach it, you've got it); caption CTA rewritten to match. Synthesized plastic brick-snap click (placeholder; brick_click.py) on each step chip and card, peak ~-7 dBFS -- NEEDS EARS. Chips/cards/labels now use a static wght-700 instance of the brand font (the toolkit TTF is variable; libass drew Regular). 79.0s. RELEASED to pending by Nick 10/06: no deletes -- 'we just get a better cut and then we get more data points.' No Sam/Silva pass (cloud); reel_gate will warn sam_verdict missing. 10/06 rev 5 (Nick): caulk joke moved to the FRONT as a cold open (raw 155818 420.00-428.35, saying label top + 'CROOKED WALL? / SCRIBE THE FILLER' box bottom), then 'Hey Dad'; chips read 'STEP 1' then bare numbers; ending is 'Not too bad' -> 'Thanks, Dad' (posted 52.833-53.5) -> 5s hold on the finished filler (raw 162259 750.5-755.5) with the save/send cards. Step sound = placeholder B (toy xylophone climbing a note per step) until Nick picks A-F from the sound menu (brick click retired: 'doesn't sound like a Lego'). Step-10 chip now ends at the 'not too bad' cut (it sat on his mouth). 84.2s. 10/06 FINAL sound: Nick picked F -- his own brad-nailer pop (raw 162259 727.18) on every step chip and card, peak ~-6.5 dBFS ('that of the nail gun, that should be the sound'). Standing rule from Nick: every how-to's step cue is pulled from that video's own footage -- custom per video, self-reinforcing. 10/06 pop level fix (Nick: 'I can hardly hear the brad nailer... legit 100% volume from the original video'): the pop had been highpassed + loudnormed and mixed to peak -6.5 dBFS, its body ~5 dB over his voice. Now the raw burst untouched, peak -1 dBFS, 50ms RMS -6.4 = ~11 dB over his voice (in the raw it sits well above his voice too). 10/06 Nick: cut 'check and flush' (raw 130.60-133.30, -2.7s) and the pop was 'STILL waaay too quiet': a 50ms pop at -1 dBFS peak only matched his loud speech over the ~400ms ears integrate. Now raw pop +20 dB into a fast limiter (peak -1 dBFS, 400ms energy -6.6 vs voice p90 -14.5) + his voice ducked ~9 dB for 0.2s under each pop (sidechaincompress). Also skipped 3 posted frames (130-132) that still carried 'FILLER PIECE.' into step 2. 81.3s. 10/06 Nick: pop 'still too quiet... my gut says increase it by at least 50% more' + asked for a volume button. Queued now at his gut setting: punch 30 (raw pop +30 dB into a -1 dBFS limiter), voice dip 15 dB (exact envelope: instant drop, 0.12s hold, 0.08s exp recovery), single pop. Nail Pop Lab page (claude.ai artifact Lj7dSCKFtPUunwF4WKaYtW) lets him dial punch/dip/single-double and save to its db (settings/nailer); rebuild with PUNCH/DIP/STYLE env to match. 10/06 Nick SAVED in the Nail Pop Lab (2026-10-06T06:17Z): punch 40, dip 5, single. Rebuilt to match: pops peak -0.6..-0.9 dBFS, 400ms energy -3.6..-4.4. FINAL."
     }
   ]
 }
