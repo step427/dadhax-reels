@@ -2931,6 +2931,156 @@
       "topic_class": "meta",
       "source_raw": "PXL_20261007_133657821.mp4",
       "cover_ms": 0
+    },
+    {
+      "file": "ig-1007-frankl.mp4",
+      "kind": "new",
+      "status": "pending",
+      "earliest": "2026-10-07",
+      "title": "One book: Man's Search for Meaning",
+      "caption": "Hey Dad,\n\nA book that really brings it home: no matter what, you always have the power to control yourself.\n\nViktor Frankl's Man's Search for Meaning.\n\nThe bit that reinforced it for me was a woman in the Nazi camps. From what I understand, Frankl noticed that no matter what was going on, she stayed peaceful and grateful.\n\nHow did she do that? Outside her window she could see a tree. She was grateful, in the middle of all of it, to still witness nature taking place.\n\nI'm butchering it.\n\nBut no one ever has control of what's in here. Only you do.\n\nSave this for the day you forget it.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "cover_ms": 12500,
+      "topic_class": "talk",
+      "source_raw": "PXL_20261007_140119860.mp4",
+      "arc_slot": "OFF-ARC: fresh talk fill (fresh lane dry 10/09); ARC 10/04 is shop utility",
+      "pix": "X",
+      "value_forms": [
+        "entertainment",
+        "idea"
+      ],
+      "sam_verdict": "POST 2026-10-07",
+      "cut_by": "cloud session 2026-10-07 (Rook captures/2026-10-07-books-reels-drop.md)",
+      "nav_safe": true,
+      "hypothesis": "Reading series ep 1 (one book, one story, one takeaway, real cover at 11.6s). If avg watch carries past the hold beat (\"a woman in the Nazi camps\", 13.7s) better than the talk median, the series earns a recurring slot; ep 2 is ig-1007-vagus.",
+      "_note": "Real covers cropped from Nick's own 9:07a screenshot (no avatar, prices or ads). Maps voice at raw 33.7-36.9 excluded. \"I am butchering that\" hedge kept; paraphrase checked against the book. Sam: r1 FIX, r2 FIX, r3 POST (cloud review subagent, CUT-RULES + SAM-PLAYBOOK rubric)."
+    },
+    {
+      "file": "ig-1007-forgive.mp4",
+      "kind": "new",
+      "status": "pending",
+      "earliest": "2026-10-07",
+      "title": "Forgiveness is a selfish action",
+      "caption": "Hey Dad,\n\nForgiveness is a selfish action.\n\nHolding on to anger and hate and resentment is like drinking poison. Do you want that running through your bloodstream? Through your neurons?\n\nWhy we forgive isn't to make the other person feel at peace. It's to let ourselves feel that peace. To take the thing we've been holding on to and finally let it go.\n\nKnow someone still holding on? Send this to them.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "cover_ms": 100,
+      "topic_class": "talk",
+      "source_raw": "PXL_20261007_140119860.mp4",
+      "arc_slot": "OFF-ARC: fresh talk fill (fresh lane dry 10/09); ARC 10/04 is shop utility",
+      "pix": "I",
+      "value_forms": [
+        "idea",
+        "entertainment"
+      ],
+      "sam_verdict": "POST 2026-10-07",
+      "cut_by": "cloud session 2026-10-07 (Rook captures/2026-10-07-books-reels-drop.md)",
+      "nav_safe": true,
+      "_note": "Supersedes the laptop loop's STAGED ig-1007-forgive (same raw, same spans 143-198): do not queue that one. Sam r1 FIX applied (dead air, frame one, closer), r2 below. Sam: r1 FIX, r2 POST (cloud review subagent, CUT-RULES + SAM-PLAYBOOK rubric)."
+    },
+    {
+      "file": "ig-1007-vagus.mp4",
+      "kind": "new",
+      "status": "pending",
+      "earliest": "2026-10-07",
+      "title": "Ever feel stuck in your head?",
+      "caption": "Hey Dad,\n\nYou ever feel like you're just in your head?\n\nFor me, I go into a robotic zone. Staring straight ahead, totally out of it, glazed-over eyes. A thousand thoughts running through my mind, and everything else in my body is still.\n\nI'm a physical therapist. The book I'm reading right now is Healing Through the Vagus Nerve. A lot of really good, practical tools you can use today, and a lot of it has to do with connecting your body back to your mind.\n\nWhat does your robotic zone look like? Tell me in the comments.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "cover_ms": 21500,
+      "topic_class": "talk",
+      "source_raw": "PXL_20261007_135507593.mp4",
+      "arc_slot": "OFF-ARC: fresh talk fill (fresh lane dry 10/09); ARC 10/04 is shop utility",
+      "pix": "I",
+      "value_forms": [
+        "idea",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-10-07",
+      "cut_by": "cloud session 2026-10-07 (Rook captures/2026-10-07-books-reels-drop.md)",
+      "nav_safe": true,
+      "hypothesis": "Reading series ep 2: compare avg watch and saves with ig-1007-frankl (ep 1).",
+      "_note": "Real cover cropped from Nick's 8:54a Audible screenshot. Spoken \"Hey Dad\" open. \"Nine times out of ten\" (unverified) excluded. Sam: r1 FIX, r2 FIX, r3 POST (cloud review subagent, CUT-RULES + SAM-PLAYBOOK rubric)."
+    },
+    {
+      "file": "ig-1007-pushups.mp4",
+      "kind": "new",
+      "status": "pending",
+      "earliest": "2026-10-07",
+      "title": "100 push-ups by January 1st",
+      "caption": "Hey Dad,\n\nI woke up this morning feeling off, with a lot of doubt. Then I realized I have every tool in my arsenal right now to correct that.\n\nHow? A couple deep breaths, yes. But as simple as it is, doing push-ups until exhaustion is the easiest way for me to re-ground my body with my nervous system.\n\nLittle win: I'm up to 33 push-ups before I fail. I used to be able to do 100.\n\nJanuary 1st, you got it here on camera: 100 push-ups. I want to know I have the power to ground myself.\n\nHold me to it. Follow and see if I make it.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "cover_ms": 22500,
+      "topic_class": "talk",
+      "source_raw": "PXL_20261007_135507593.mp4",
+      "arc_slot": "OFF-ARC: fresh talk fill (fresh lane dry 10/09); ARC 10/04 is shop utility",
+      "pix": "X",
+      "value_forms": [
+        "entertainment",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-10-07",
+      "cut_by": "cloud session 2026-10-07 (Rook captures/2026-10-07-books-reels-drop.md)",
+      "nav_safe": true,
+      "hypothesis": "If a dated public commitment (33 push-ups today, 100 by Jan 1) is the hook and the follow reason is the outcome, then follows per reach beat the talk median, because the only way to see the ending is to follow.",
+      "_note": "Public commitment: 100 push-ups by 2027-01-01 (86 days from 10/7) (Rook capture open loop). Three Google Maps spans in this raw excluded (~58-72, ~285-287); editor note \"Claude, cut out the GPS\" not used. Sam: r2 FIX, r3 FIX (one switch), fixed as prescribed (cloud review subagent, CUT-RULES + SAM-PLAYBOOK rubric)."
+    },
+    {
+      "file": "ig-1007-200books.mp4",
+      "kind": "new",
+      "status": "pending",
+      "earliest": "2026-10-07",
+      "title": "~200 books, same core lesson",
+      "caption": "Hey Dad,\n\nOver the last two years or so, trying to dig into my own search for meaning and my own purpose, I've read something like 200 books.\n\nThe funny thing is, almost every one has the same core lesson. Same or similar, across all of them.\n\nWhat I'm finding to be the pattern: it's not a complicated world. When you boil everything down, it is not a complicated world. We make it complicated.\n\nSave this for the day it feels complicated.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "cover_ms": 0,
+      "topic_class": "talk",
+      "source_raw": "PXL_20261007_140119860.mp4",
+      "arc_slot": "OFF-ARC: fresh talk fill (fresh lane dry 10/09); ARC 10/04 is shop utility",
+      "pix": "I",
+      "value_forms": [
+        "idea",
+        "entertainment"
+      ],
+      "sam_verdict": "POST 2026-10-07",
+      "cut_by": "cloud session 2026-10-07 (Rook captures/2026-10-07-books-reels-drop.md)",
+      "nav_safe": true,
+      "_note": "\"like over 200 books\" is his own hedge; hook says \"~200\". Coach-name span 284-311 not used. Sam: r1 FIX, r2 FIX, r3 POST (cloud review subagent, CUT-RULES + SAM-PLAYBOOK rubric)."
+    },
+    {
+      "file": "ig-1006-action.mp4",
+      "kind": "new",
+      "status": "pending",
+      "earliest": "2026-10-07",
+      "title": "The idea's gone unless you act",
+      "caption": "Hey Dad,\n\nThere's this euphoric feeling I've been getting lately. Things are coming together, I get it, it all melds really well. And then, all of a sudden, it's gone.\n\nThe big part: when that's happening, to make it real, actual action needs to be taken. Some kind of thumbprint or mark on the world that says, hey, this is moving.\n\nWhat's your thumbprint today? Comment the one thing you'll do.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "cover_ms": 100,
+      "topic_class": "talk",
+      "source_raw": "PXL_20261006_190437696.mp4",
+      "arc_slot": "OFF-ARC: fresh talk fill (fresh lane dry 10/09); ARC 10/04 is shop utility",
+      "pix": "I",
+      "value_forms": [
+        "idea",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-10-07",
+      "cut_by": "cloud session 2026-10-07 (Rook captures/2026-10-07-books-reels-drop.md)",
+      "nav_safe": true,
+      "_note": "Span 453.95-498.85 only; laptop listed it as \"still minable\". The caregiver ask from this raw (and the laptop's staged ig-1007-familycare) waits on Nick's yes. Sam: r1 FIX, r2 FIX, r3 POST (cloud review subagent, CUT-RULES + SAM-PLAYBOOK rubric)."
+    },
+    {
+      "file": "ig-1007-power.mp4",
+      "kind": "new",
+      "status": "pending",
+      "earliest": "2026-10-07",
+      "title": "Blaming them gives away your power",
+      "caption": "Hey Dad,\n\nThe second you start saying \"I think this and feel this because of them,\" you're giving away your power.\n\nIt's good to acknowledge we're human. The outside world does have an impact on us.\n\nBut what's really helped me is taking the outside world as just data points, so you can grow here.\n\nFollow so the next reframe finds you.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "cover_ms": 100,
+      "topic_class": "talk",
+      "source_raw": "PXL_20261007_140119860.mp4",
+      "arc_slot": "OFF-ARC: fresh talk fill (fresh lane dry 10/09); ARC 10/04 is shop utility",
+      "pix": "I",
+      "value_forms": [
+        "idea",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-10-07",
+      "cut_by": "cloud session 2026-10-07 (Rook captures/2026-10-07-books-reels-drop.md)",
+      "nav_safe": true,
+      "_note": "Span 92.4-121.6; laptop listed \"outside world as data points\" as still minable. Keep >=1 slot from ig-1007-frankl (same thesis). Sam: r1 FIX, r2 POST (cloud review subagent, CUT-RULES + SAM-PLAYBOOK rubric)."
     }
   ]
 }
