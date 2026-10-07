@@ -2879,7 +2879,7 @@
     {
       "file": "ig-1006-woodfiller.mp4",
       "title": "Wood filler you can't buy",
-      "status": "pending",
+      "status": "posted",
       "earliest": "2026-10-08",
       "caption": "Hey Dad,\n\nWood filler you can't buy in a store: wood glue plus the sawdust off the project you're filling.\n\n1. Save the dust.\n2. Blender for extra fine dust.\n3. Baker's sifter so only the finest dust gets through. That's what fills the smallest gaps.\n4. Glue in the gap, dust on top. Pat, push, rub it in.\n5. Cardboard placemat underneath so you can pour the extra back.\n6. Let it dry, then sand it flush.\n\nThe color matches because it IS the board. Every cut, the blade turns about an eighth of an inch into dust. That eighth is your filler.\n\nSave this for the next gap you fill.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
       "arc_slot": "Thu 10/8 9a",
@@ -2894,7 +2894,10 @@
       "hypothesis": "If the color-match result opens the reel and the YouTube outro is cut (48.8s -> 34.1s), then avg watch seconds beat the parent, because the parent held its payoff until ~41s, past where most viewers leave (~9s).",
       "cover_ms": 500,
       "recut_of": "ig-diy-woodfiller.mp4",
-      "kind": "old"
+      "kind": "old",
+      "permalink": "https://www.instagram.com/reel/DeNKWBEk5kB/",
+      "posted_at": "2026-10-07T14:57:37-05:00",
+      "fb_page_video_id": "3304524579936267"
     },
     {
       "file": "ig-1007-miterfence.mp4",
