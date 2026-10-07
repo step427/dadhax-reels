@@ -2832,7 +2832,7 @@
     {
       "file": "ig-1004-laundry3.mp4",
       "title": "Slammed it testing the soft-close.",
-      "status": "pending",
+      "status": "posted",
       "earliest": "2026-10-12",
       "caption": "Hey Dad,\n\nRemember the drawer? \"That doesn't sound good.\"\n\nI slammed it testing the soft-close. The rail popped over that little gizmo it rides on. Popped it back over, a little wiggling, and the soft-close works again.\n\nIf a soft-close drawer suddenly sounds wrong, don't force it. Pull it out and look at the rail before you call it broken.\n\nAnd testing a soft-close? A gentle push is all it needs.\n\nFollow for the countertop.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
       "arc_slot": "next arc, after Sun 10/11 6p (part 3 follows part 2)",
@@ -2853,7 +2853,10 @@
       "cover_ms": 0,
       "cut_by": "cloud session 2026-10-04 (Rook captures/2026-10-04-laundry-cabinets-reel.md); part 3 of the laundry build series, pays off part 2's drawer",
       "_note": "Kids rule (Nick 2026-10-04): his daughter's voice ('That's what I said!', confirmed by three Whisper models on the isolated span) and her torso/legs (raw 40.90-42.52) are kept; no face or head in any frame (checked every frame at 15fps). Raw 37.4-37.8 (back of her head walking in) and Nick's 'That's what she said' (39.1-40.5) are cut.",
-      "_swap": "2026-10-05 Nick: swap. Part 3 posts after Part 2; ig-1005-drawer (same raw) held so the footage runs once."
+      "_swap": "2026-10-05 Nick: swap. Part 3 posts after Part 2; ig-1005-drawer (same raw) held so the footage runs once.",
+      "permalink": "https://www.instagram.com/reel/DeMJ82PD_d1/",
+      "posted_at": "2026-10-07T05:34:51-05:00",
+      "fb_page_video_id": "2168663920523446"
     },
     {
       "file": "ig-1006-filler-howto.mp4",
