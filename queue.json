@@ -2914,6 +2914,23 @@
       "hypothesis": "If the break-it hook opens and the reel is cut 54.1s -> ~25s, retention clears 50% (awt >= 12.5s) against the parent's 36.6%, at >= the parent's reach (1,316).",
       "recut_of": "ig-diy-miterfence.mp4",
       "kind": "old"
+    },
+    {
+      "file": "ig-1007-post.mp4",
+      "title": "Not in the mood to post? Me neither.",
+      "status": "pending",
+      "earliest": "2026-10-07",
+      "caption": "Hey Dad,\n\nDo I feel like making a video? Absolutely not.\n\nBut I got a system set up where I don't even have to think about it. It edits, it posts, it does the captions. The lowest pain I have is just hitting record.\n\nIf you want to grow, spiritually or in business, why would you not post? It's free. All you've got to do is be willing to embarrass yourself while you get better.\n\nEmbarrassing now. Follow and watch me get better.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "OFF-ARC cover",
+      "pix": "I",
+      "value_forms": [
+        "idea",
+        "entertainment"
+      ],
+      "sam_verdict": "POST 2026-10-07",
+      "topic_class": "meta",
+      "source_raw": "PXL_20261007_133657821.mp4",
+      "cover_ms": 0
     }
   ]
 }
