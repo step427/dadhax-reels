@@ -9,7 +9,7 @@ _Written by `publisher/craft_report.py` on **2026-10-07** from **187** posted re
 1. **duration** — **LEVER** — favour **under 20s**, 36 pts over over 70s; views agree. under 20s 49% (n=71) · 20-35s 31% (n=46) · 35-50s 25% (n=35) · 50-70s 19% (n=24) · over 70s 13% (n=11). Retention falls at EVERY step longer: cut to the number, not the material.
 2. **topic** — **LEVER** — favour **utility**, 15 pts over talk; views agree. utility 43% (n=94) · meta 28% (n=10) · talk 28% (n=83)
 3. **fresh/catalog** — **LEVER** — favour **back-catalog**, 13 pts over fresh; views agree. back-catalog 44% (n=59) · fresh 31% (n=128)
-4. **cover** — **NO LEVER** — 4 pts is noise; spend no effort here. custom cover 36% (n=101) · default cover 33% (n=86)
+4. **cover** — **LEVER** — favour **custom cover**, 5 pts over default cover; ⚠️ views DISAGREE — check CRAFT.md before leaning on this. custom cover 38% (n=101) · default cover 33% (n=86)
 5. **collab** — **TOO THIN** — not enough posts on both sides to act on. collab 36% (n=6, thin) · solo 35% (n=181)
 
 **Standing exception — hands-and-tools how-tos run 35-60s** (Nick, 2026-10-05). The duration lever above is % watched; for utility, watch seconds grow with length. Rules: Rook `_Skills/reel-loop.md` §3a.
