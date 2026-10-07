@@ -616,3 +616,16 @@ The cut list is the added length. Record: `audits/sheet-cut-plan-a83a997a8696.js
 **The Rook-side copy of that record is not in `Rook/_tools/web/audits/`** (cloud sessions write
 only `captures/` there). The laptop must re-run `audit_headless.py` or copy the record from
 here before `ship_gate.py` will pass it.
+
+## 10/6 06:00: the queue-board prune wiped the story videos (fixed upstream)
+
+`queue_board.py`'s `prune_posted()` deleted **every root `.mp4` not pending in the
+queue**. The story page's five self-hosted clips (`one-old-house*.mp4`) aren't queue
+items at all, so the 06:00 run pruned them along with held `ig-1005-drawer.mp4`.
+Each was archived in `archive-posted/` on the laptop. `build_log.py`, finding no
+files, then dropped every video from the live page. The fix is in
+`Rook/captures/2026-10-06-queue_board-prune-fix.patch`: prune only files whose queue
+rows are **all** `posted`, the same rule as `publisher/publish.py`. Anything not in
+the queue is a site asset and is never touched. **Rule for any future self-hosted
+page video:** it's safe at the repo root only because it never appears in
+`queue.json`.
