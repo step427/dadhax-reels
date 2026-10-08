@@ -2908,7 +2908,7 @@
     {
       "file": "ig-1007-miterfence.mp4",
       "title": "Bent miter fence? Cut it in two.",
-      "status": "pending",
+      "status": "posted",
       "earliest": "2026-10-07",
       "caption": "Hey Dad,\n\nThe fence on my cheap miter saw was one single piece, and it was bowed in. For a long time I could not get it square.\n\nI tried straightening it with heat. It cracked. Don't copy that part. Cast aluminum cracks with no warning. But the crack showed me the fix: two halves, and now the fence is square.\n\nTry this first: loosen the fence bolts, clean under them, and shim. If it still won't square, cut it on purpose (it likely ends your warranty, and you can't undo it).\n\nUnplug the saw and take the fence off. Make sure each half still has two bolts holding it. Clamp it in a vise and cut through the arch behind the blade with an angle grinder and a cutoff wheel made for aluminum, at a slight angle. Wear a face shield and file the edges smooth.\n\nBolt it back on and square each half to the blade. Then lay a straightedge across both halves so they line up with each other.\n\nSend this to whoever's fighting a cheap fence.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
       "arc_slot": "OFF-ARC cover",
@@ -2922,7 +2922,10 @@
       "source_raw": "yt:sg5aPiN6SuE",
       "hypothesis": "If the break-it hook opens and the reel is cut 54.1s -> ~25s, retention clears 50% (awt >= 12.5s) against the parent's 36.6%, at >= the parent's reach (1,316).",
       "recut_of": "ig-diy-miterfence.mp4",
-      "kind": "old"
+      "kind": "old",
+      "permalink": "https://www.instagram.com/reel/DePuzv5jZtf/",
+      "posted_at": "2026-10-08T14:54:37-05:00",
+      "fb_page_video_id": "1661384262070105"
     },
     {
       "file": "ig-1007-post.mp4",
