@@ -3093,6 +3093,22 @@
       "cut_by": "cloud session 2026-10-07 (Rook captures/2026-10-07-books-reels-drop.md)",
       "nav_safe": true,
       "_note": "Span 92.4-121.6; laptop listed \"outside world as data points\" as still minable. Keep >=1 slot from ig-1007-frankl (same thesis). Sam: r1 FIX, r2 POST (cloud review subagent, CUT-RULES + SAM-PLAYBOOK rubric)."
+    },
+    {
+      "file": "ig-yt-trimmer.mp4",
+      "title": "Restring a DeWalt trimmer",
+      "status": "pending",
+      "earliest": "2026-10-08",
+      "caption": "Hey Dad,\n\nRestringing a DeWalt DCST920 string trimmer, start to finish.\n\nPull the battery first. Then, looking at the bottom of the head, unlock it by turning clockwise and lock it counterclockwise (follow the arrow on your head if it has one). Don't push down while you turn it. Pushing down is the bump that feeds out more line.\n\nThis trimmer takes 0.080\" line (it's printed on the label). About 20 feet fills my spool. Hook the end in the hole, start on the channel closest to the top, and wind it on snug in the direction the spool shows. Bend a little hook in the tail with pliers, set the spool in the holder, feed the line through, and lock it until you hear the click.\n\nTest it outside on grass, glasses on, nobody close.\n\nSave this for the next time the line runs out.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "OFF-ARC cover",
+      "pix": "P",
+      "value_forms": [
+        "implementation",
+        "entertainment"
+      ],
+      "sam_verdict": "POST 2026-10-08",
+      "topic_class": "utility",
+      "source_raw": "yt:-dRF-r21pno"
     }
   ]
 }
