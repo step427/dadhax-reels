@@ -2555,7 +2555,7 @@
     {
       "file": "ig-1002-observe.mp4",
       "title": "Watch the habit before you fight it",
-      "status": "pending",
+      "status": "posted",
       "earliest": "2026-10-02",
       "caption": "Hey Dad,\n\nGrowth starts with noticing.\n\nGot a habit you're trying to move away from? Maybe today you don't fight it. You just watch it.\n\nNotice what's going on inside you, and how you feel, around that habit. That's the whole assignment for today.\n\nFollow for one thing to notice tomorrow.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
       "arc_slot": "OFF-ARC cover",
@@ -2567,7 +2567,10 @@
       "sam_verdict": "POST 2026-10-02",
       "topic_class": "talk",
       "source_raw": "20261001_165426.mp4",
-      "cover_ms": 200
+      "cover_ms": 200,
+      "permalink": "https://www.instagram.com/reel/DeOxIt-jWCE/",
+      "posted_at": "2026-10-08T05:55:42-05:00",
+      "fb_page_video_id": "1381628580377087"
     },
     {
       "file": "ig-1002-cold.mp4",
