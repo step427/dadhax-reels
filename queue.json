@@ -2575,7 +2575,7 @@
     {
       "file": "ig-1002-cold.mp4",
       "title": "Today you or tomorrow you",
-      "status": "pending",
+      "status": "posted",
       "earliest": "2026-10-03",
       "caption": "Hey Dad,\n\nAn ice-cold shower is the last thing most of us want in the morning.\n\nThat's the point. You do it to remind yourself how strong you really are.\n\nEvery day you pick who you're serving. The today you who wants comfort, or the tomorrow you.\n\nTomorrow morning, end your shower on cold for a few seconds. Pick the tomorrow you once before breakfast.\n\nFollow so tomorrow you gets one nudge a day.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
       "arc_slot": "OFF-ARC cover",
@@ -2587,7 +2587,10 @@
       "sam_verdict": "POST 2026-10-02",
       "topic_class": "talk",
       "source_raw": "20261001_170735.mp4",
-      "cover_ms": 0
+      "cover_ms": 0,
+      "permalink": "https://www.instagram.com/reel/DeQHEE3ADBy/",
+      "posted_at": "2026-10-08T18:26:39-05:00",
+      "fb_page_video_id": "1767689747849226"
     },
     {
       "file": "ig-0930-holders.mp4",
