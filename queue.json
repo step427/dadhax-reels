@@ -2950,7 +2950,7 @@
     {
       "file": "ig-1007-frankl.mp4",
       "kind": "new",
-      "status": "pending",
+      "status": "posted",
       "earliest": "2026-10-07",
       "title": "One book: Man's Search for Meaning",
       "caption": "Hey Dad,\n\nA book that really brings it home: no matter what, you always have the power to control yourself.\n\nViktor Frankl's Man's Search for Meaning.\n\nThe bit that reinforced it for me was a woman in the Nazi camps. From what I understand, Frankl noticed that no matter what was going on, she stayed peaceful and grateful.\n\nHow did she do that? Outside her window she could see a tree. She was grateful, in the middle of all of it, to still witness nature taking place.\n\nI'm butchering it.\n\nBut no one ever has control of what's in here. Only you do.\n\nSave this for the day you forget it.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
@@ -2967,7 +2967,10 @@
       "cut_by": "cloud session 2026-10-07 (Rook captures/2026-10-07-books-reels-drop.md)",
       "nav_safe": true,
       "hypothesis": "Reading series ep 1 (one book, one story, one takeaway, real cover at 11.6s). If avg watch carries past the hold beat (\"a woman in the Nazi camps\", 13.7s) better than the talk median, the series earns a recurring slot; ep 2 is ig-1007-vagus.",
-      "_note": "Real covers cropped from Nick's own 9:07a screenshot (no avatar, prices or ads). Maps voice at raw 33.7-36.9 excluded. \"I am butchering that\" hedge kept; paraphrase checked against the book. Sam: r1 FIX, r2 FIX, r3 POST (cloud review subagent, CUT-RULES + SAM-PLAYBOOK rubric)."
+      "_note": "Real covers cropped from Nick's own 9:07a screenshot (no avatar, prices or ads). Maps voice at raw 33.7-36.9 excluded. \"I am butchering that\" hedge kept; paraphrase checked against the book. Sam: r1 FIX, r2 FIX, r3 POST (cloud review subagent, CUT-RULES + SAM-PLAYBOOK rubric).",
+      "permalink": "https://www.instagram.com/reel/DeRVv-ojiqg/",
+      "posted_at": "2026-10-09T05:54:11-05:00",
+      "fb_page_video_id": "1991390018216806"
     },
     {
       "file": "ig-1007-forgive.mp4",
