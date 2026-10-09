@@ -3134,6 +3134,25 @@
       "hypothesis": "If the reel opens on the tool already running on the mat instead of 11s of pointing and drops the YouTube end card, then avg watch % beats the parent's 46%, because the trick is on screen in second one.",
       "recut_of": "ig-diy-floormats.mp4",
       "kind": "old"
+    },
+    {
+      "file": "ig-1009-knives.mp4",
+      "title": "Wrong sharpener chipped my knives",
+      "status": "pending",
+      "earliest": "2026-10-11",
+      "caption": "Hey Dad,\n\nI chipped my own knife set with the wrong sharpener. The hilt and the tip took the worst of it.\n\nA whetstone is slowly bringing a 10-year-old set back. Soak the stone first. Start on the coarse side and work up in grit. Keep the surface wet while you work. Hold one angle and go section by section. It works on chisels too.\n\nSave this for sharpening day.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "OFF-ARC cover",
+      "pix": "P",
+      "value_forms": [
+        "implementation",
+        "idea"
+      ],
+      "sam_verdict": "POST 2026-10-09",
+      "topic_class": "utility",
+      "source_raw": "ig-diy-knives.mp4",
+      "hypothesis": "If the chipped-blade proof opens and the cut drops from 46s to 18.4s with the sharpener intro gone, then avg watch % beats the parent's 25.5%, because the parent's viewers left at 11.7s, before the whetstone work started.",
+      "recut_of": "ig-diy-knives.mp4",
+      "kind": "old"
     }
   ]
 }
