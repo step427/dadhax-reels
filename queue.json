@@ -3162,6 +3162,43 @@
       "hypothesis": "If the chipped-blade proof opens and the cut drops from 46s to 18.4s with the sharpener intro gone, then avg watch % beats the parent's 25.5%, because the parent's viewers left at 11.7s, before the whetstone work started.",
       "recut_of": "ig-diy-knives.mp4",
       "kind": "old"
+    },
+    {
+      "file": "ig-1010-straps.mp4",
+      "title": "Strap bin to coil in 10 seconds",
+      "status": "pending",
+      "earliest": "2026-10-10",
+      "caption": "Hey Dad,\n\nRatchet straps don't have to live as one big knot in a bin.\n\n1. Coil the strap around your hand.\n2. One wrap around the coil with the tail.\n3. Tuck the tail under the wrap.\n\nTen seconds now beats five minutes of untangling on Saturday.\n\nSend this to the dad whose straps live in a knot.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "OFF-ARC cover (Sun 10/11 9a catalog-utility type, off theme)",
+      "pix": "P",
+      "value_forms": [
+        "implementation",
+        "idea"
+      ],
+      "sam_verdict": "POST 2026-10-10",
+      "topic_class": "utility",
+      "source_raw": "yt:u7sOLA57AXo",
+      "hypothesis": "If the coil is on screen by second 2 and the cut drops from 57s to 12s with the untangling intro gone, then avg watch % beats the parent's 30.4%, because the parent's viewers left at 17.4s, before the coil started.",
+      "cover_ms": 2500,
+      "recut_of": "ig-diy-straps.mp4",
+      "kind": "old"
+    },
+    {
+      "file": "ig-1010-butterfly.mp4",
+      "title": "Help the person you were 5 years ago",
+      "status": "pending",
+      "earliest": "2026-10-10",
+      "caption": "Hey Dad,\n\nThe person you're best suited to help is the person you were five years ago.\n\nI forgot to hit record the first time I said that out loud. As I said it, a monarch butterfly crossed my path. If you've read The Alchemist, you know what a butterfly means: you're on your path.\n\nSo I'm going to keep going. The dad I make these for is the one I was five years ago.\n\nFollow so you don't miss the one that's for you.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "OFF-ARC cover (fresh lane dry 10/12; ARC 10/04 has no talk slot left)",
+      "pix": "X",
+      "value_forms": [
+        "entertainment",
+        "idea"
+      ],
+      "sam_verdict": "POST 2026-10-10",
+      "topic_class": "talk",
+      "source_raw": "PXL_20261009_162728289.mp4",
+      "cover_ms": 100
     }
   ]
 }
