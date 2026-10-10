@@ -2999,7 +2999,7 @@
     {
       "file": "ig-1007-vagus.mp4",
       "kind": "new",
-      "status": "pending",
+      "status": "posted",
       "earliest": "2026-10-07",
       "title": "Ever feel stuck in your head?",
       "caption": "Hey Dad,\n\nYou ever feel like you're just in your head?\n\nFor me, I go into a robotic zone. Staring straight ahead, totally out of it, glazed-over eyes. A thousand thoughts running through my mind, and everything else in my body is still.\n\nI'm a physical therapist. The book I'm reading right now is Healing Through the Vagus Nerve. A lot of really good, practical tools you can use today, and a lot of it has to do with connecting your body back to your mind.\n\nWhat does your robotic zone look like? Tell me in the comments.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
@@ -3016,7 +3016,10 @@
       "cut_by": "cloud session 2026-10-07 (Rook captures/2026-10-07-books-reels-drop.md)",
       "nav_safe": true,
       "hypothesis": "Reading series ep 2: compare avg watch and saves with ig-1007-frankl (ep 1).",
-      "_note": "Real cover cropped from Nick's 8:54a Audible screenshot. Spoken \"Hey Dad\" open. \"Nine times out of ten\" (unverified) excluded. Sam: r1 FIX, r2 FIX, r3 POST (cloud review subagent, CUT-RULES + SAM-PLAYBOOK rubric)."
+      "_note": "Real cover cropped from Nick's 8:54a Audible screenshot. Spoken \"Hey Dad\" open. \"Nine times out of ten\" (unverified) excluded. Sam: r1 FIX, r2 FIX, r3 POST (cloud review subagent, CUT-RULES + SAM-PLAYBOOK rubric).",
+      "permalink": "https://www.instagram.com/reel/DeT1NYEkqnH/",
+      "posted_at": "2026-10-10T05:07:44-05:00",
+      "fb_page_video_id": "939145302231468"
     },
     {
       "file": "ig-1007-pushups.mp4",
