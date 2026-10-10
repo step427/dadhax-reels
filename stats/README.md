@@ -37,10 +37,10 @@ The only posts whose hour the publisher actually chose — so the only ones that
 
 | Day | Posts | Median | Mean | Best |
 |---|---|---|---|---|
-| Mon | 27 | 2.0 | 3.4 | 18 |
+| Mon | 27 | 2.0 | 3.3 | 17 |
 | Tue | 27 | 1.0 | 9.3 | 166 |
 | Wed | 28 | 2.0 | 4.6 | 30 |
-| Thu | 27 | 1.0 | 2.6 | 26 |
+| Thu | 27 | 1.0 | 2.7 | 26 |
 | Fri | 32 | 1.0 | 4.6 | 38 |
 | Sat | 28 | 2.0 | 4.1 | 31 |
 | Sun | 27 | 1.0 | 3.6 | 23 |
@@ -61,7 +61,7 @@ The only posts whose hour the publisher actually chose — so the only ones that
 | back-catalog @ 09:00 | 2 | 6.0 | 6.0 | 10 |
 | back-catalog @ 12:00 | 7 | 2.0 | 8.1 | 38 |
 | back-catalog @ 13:00 | 16 | 4.0 | 8.5 | 31 |
-| back-catalog @ 14:00 | 16 | 2.0 | 17.1 | 166 |
+| back-catalog @ 14:00 | 16 | 2.0 | 17.2 | 166 |
 | back-catalog @ 15:00 | 4 | 2.5 | 4.2 | 11 |
 | back-catalog @ 16:00 | 3 | 0.0 | 2.3 | 7 |
 | back-catalog @ 18:00 | 5 | 2.0 | 2.0 | 5 |
@@ -107,7 +107,7 @@ Mostly Nick posting by hand at whatever hour he was free, going back to 2024. Us
 | 11:00 | 22 | 0.0 | 0.9 | 5 |
 | 12:00 | 43 | 1.0 | 4.1 | 72 |
 | 13:00 | 41 | 1.0 | 3.7 | 31 |
-| 14:00 | 51 | 0.0 | 6.2 | 166 |
+| 14:00 | 51 | 0.0 | 6.3 | 166 |
 | 15:00 | 48 | 0.0 | 1.2 | 12 |
 | 16:00 | 40 | 1.0 | 1.6 | 20 |
 | 17:00 | 54 | 0.5 | 1.5 | 15 |
@@ -120,10 +120,10 @@ Mostly Nick posting by hand at whatever hour he was free, going back to 2024. Us
 
 | Day | Posts | Median | Mean | Best |
 |---|---|---|---|---|
-| Mon | 87 | 0.0 | 1.8 | 18 |
+| Mon | 87 | 0.0 | 1.8 | 17 |
 | Tue | 76 | 1.0 | 4.0 | 166 |
 | Wed | 93 | 1.0 | 3.0 | 50 |
-| Thu | 91 | 0.0 | 2.0 | 35 |
+| Thu | 91 | 0.0 | 2.1 | 35 |
 | Fri | 102 | 1.0 | 2.2 | 38 |
 | Sat | 119 | 0.0 | 2.4 | 72 |
 | Sun | 139 | 0.0 | 1.6 | 42 |
