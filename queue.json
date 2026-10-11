@@ -3156,7 +3156,7 @@
     {
       "file": "ig-1009-knives.mp4",
       "title": "Wrong sharpener chipped my knives",
-      "status": "pending",
+      "status": "posted",
       "earliest": "2026-10-11",
       "caption": "Hey Dad,\n\nI chipped my own knife set with the wrong sharpener. The hilt and the tip took the worst of it.\n\nA whetstone is slowly bringing a 10-year-old set back. Soak the stone first. Start on the coarse side and work up in grit. Keep the surface wet while you work. Hold one angle and go section by section. It works on chisels too.\n\nSave this for sharpening day.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
       "arc_slot": "OFF-ARC cover",
@@ -3170,7 +3170,10 @@
       "source_raw": "ig-diy-knives.mp4",
       "hypothesis": "If the chipped-blade proof opens and the cut drops from 46s to 18.4s with the sharpener intro gone, then avg watch % beats the parent's 25.5%, because the parent's viewers left at 11.7s, before the whetstone work started.",
       "recut_of": "ig-diy-knives.mp4",
-      "kind": "old"
+      "kind": "old",
+      "permalink": "https://www.instagram.com/reel/DeXVvmfDwCM/",
+      "posted_at": "2026-10-11T13:49:35-05:00",
+      "fb_page_video_id": "1147117357975023"
     },
     {
       "file": "ig-1010-straps.mp4",
