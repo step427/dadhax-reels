@@ -3225,6 +3225,57 @@
       "topic_class": "utility",
       "source_raw": "yt:y1NTbXATd7M",
       "cover_ms": 2000
+    },
+    {
+      "file": "ig-1011-poly.mp4",
+      "title": "Poly every side, bottom first",
+      "status": "pending",
+      "earliest": "2026-10-12",
+      "caption": "Hey Dad,\n\nButcher block gets poly on every side, and the bottom goes first.\n\nBottom first. Flip it. Then the top and the edges. That way any drip runs down toward the side nobody will ever see.\n\nOil-based, because this one lives in a laundry room and a mudroom. It has to take a beating.\n\n(Between coats: 220, light, with the grain.)\n\nSave this for your next countertop.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "Mon 10/12 6p",
+      "pix": "P",
+      "value_forms": [
+        "idea",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-10-11",
+      "topic_class": "utility",
+      "source_raw": "PXL_20261010_190334188.mp4",
+      "cover_ms": 2600
+    },
+    {
+      "file": "ig-1011-cleat.mp4",
+      "title": "Cleat placement: five checks before a screw",
+      "status": "pending",
+      "earliest": "2026-10-15",
+      "caption": "Hey Dad,\n\nThe cleat stops at the cabinet face so it hides under the overhang.\n\n1. Mark the countertop line off the cabinet top, not off the floor.\n2. Measure the cabinet, back to front. Mine is 24. Stop the cleat a hair shy of that.\n3. Find the studs. An outlet is a tell, not a rule. Confirm with the finder. The wire feeding that box is likely stapled to the same stud, so hit the center, not the edge, and flip the breaker while you drive.\n4. A small gap at the back end, where the cleat stops short of the corner, is fine. Nobody sees it. The cleat itself sits flat to the wall.\n5. The last stud sits where a straight screw can't reach it from the cleat, so that one goes in at 45. Go longer on that screw, and pre-drill it so the end doesn't split.\n\nScrews: #10 by 2-1/2 inch wood screws into the studs. I put four in. Two per stud is the rule, every stud the cleat crosses. No drywall anchors, ever.\n\nSend this to the dad hanging his first countertop.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "Thu 10/15 9a",
+      "pix": "P",
+      "value_forms": [
+        "implementation",
+        "idea"
+      ],
+      "sam_verdict": "POST 2026-10-11",
+      "topic_class": "utility",
+      "source_raw": "PXL_20261010_181413904.mp4",
+      "cover_ms": 10000
+    },
+    {
+      "file": "ig-1011-level.mp4",
+      "title": "Level it. If off, lean to the wall.",
+      "status": "pending",
+      "earliest": "2026-10-15",
+      "caption": "Hey Dad,\n\nCountertop on the cleat. Level it left to right. Front to back it tilts toward the wall a hair, and that's okay. Level is the goal; if you're going to miss, miss toward the wall: things roll to the wall, drawers stay shut, and the wall joint gets caulked anyway. If the span ever sags, a second cleat goes on the back wall.\n\nThe damaged face goes to the back. The tight drawer gets a shim, and the shim gets captured when the top is fastened down.\n\nLeave a hair of gap at the wall so the top can move with the seasons. Flexible caulk hides the gap and keeps laundry water out of the wall. If you screw a wood top down from below, use oversized holes so it can move. Don't glue it.\n\nBefore you buy the cabinets under it: type your wall into the free page and it prints the stock combinations that actually close, the filler widths, and the height stack.\nstep427.github.io/dadhax-reels/cabinet-run.html\n\nThanks, Dad. I love you, Dad.",
+      "arc_slot": "Thu 10/15 1p (deep link cabinet-run.html)",
+      "pix": "P",
+      "value_forms": [
+        "idea",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-10-11",
+      "topic_class": "utility",
+      "source_raw": "PXL_20261010_184045614.mp4",
+      "cover_ms": 1900
     }
   ]
 }
