@@ -3232,7 +3232,7 @@
     {
       "file": "ig-1011-poly.mp4",
       "title": "Poly every side, bottom first",
-      "status": "pending",
+      "status": "posted",
       "earliest": "2026-10-12",
       "caption": "Hey Dad,\n\nButcher block gets poly on every side, and the bottom goes first.\n\nBottom first. Flip it. Then the top and the edges. That way any drip runs down toward the side nobody will ever see.\n\nOil-based, because this one lives in a laundry room and a mudroom. It has to take a beating.\n\n(Between coats: 220, light, with the grain.)\n\nSave this for your next countertop.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
       "arc_slot": "Mon 10/12 6p",
@@ -3244,7 +3244,10 @@
       "sam_verdict": "POST 2026-10-11",
       "topic_class": "utility",
       "source_raw": "PXL_20261010_190334188.mp4",
-      "cover_ms": 2600
+      "cover_ms": 2600,
+      "permalink": "https://www.instagram.com/reel/DeXsYGAj0id/",
+      "posted_at": "2026-10-11T17:07:21-05:00",
+      "fb_page_video_id": "2655004525324342"
     },
     {
       "file": "ig-1011-cleat.mp4",
