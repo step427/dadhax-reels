@@ -3049,7 +3049,7 @@
     {
       "file": "ig-1007-200books.mp4",
       "kind": "new",
-      "status": "pending",
+      "status": "posted",
       "earliest": "2026-10-07",
       "title": "~200 books, same core lesson",
       "caption": "Hey Dad,\n\nOver the last two years or so, trying to dig into my own search for meaning and my own purpose, I've read something like 200 books.\n\nThe funny thing is, almost every one has the same core lesson. Same or similar, across all of them.\n\nWhat I'm finding to be the pattern: it's not a complicated world. When you boil everything down, it is not a complicated world. We make it complicated.\n\nSave this for the day it feels complicated.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
@@ -3065,7 +3065,10 @@
       "sam_verdict": "POST 2026-10-07",
       "cut_by": "cloud session 2026-10-07 (Rook captures/2026-10-07-books-reels-drop.md)",
       "nav_safe": true,
-      "_note": "\"like over 200 books\" is his own hedge; hook says \"~200\". Coach-name span 284-311 not used. Sam: r1 FIX, r2 FIX, r3 POST (cloud review subagent, CUT-RULES + SAM-PLAYBOOK rubric)."
+      "_note": "\"like over 200 books\" is his own hedge; hook says \"~200\". Coach-name span 284-311 not used. Sam: r1 FIX, r2 FIX, r3 POST (cloud review subagent, CUT-RULES + SAM-PLAYBOOK rubric).",
+      "permalink": "https://www.instagram.com/reel/DeWbTTggPPE/",
+      "posted_at": "2026-10-11T05:18:53-05:00",
+      "fb_page_video_id": "1417129039858675"
     },
     {
       "file": "ig-1006-action.mp4",
