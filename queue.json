@@ -3024,7 +3024,7 @@
     {
       "file": "ig-1007-pushups.mp4",
       "kind": "new",
-      "status": "pending",
+      "status": "posted",
       "earliest": "2026-10-07",
       "title": "100 push-ups by January 1st",
       "caption": "Hey Dad,\n\nI woke up this morning feeling off, with a lot of doubt. Then I realized I have every tool in my arsenal right now to correct that.\n\nHow? A couple deep breaths, yes. But as simple as it is, doing push-ups until exhaustion is the easiest way for me to re-ground my body with my nervous system.\n\nLittle win: I'm up to 33 push-ups before I fail. I used to be able to do 100.\n\nJanuary 1st, you got it here on camera: 100 push-ups. I want to know I have the power to ground myself.\n\nHold me to it. Follow and see if I make it.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
@@ -3041,7 +3041,10 @@
       "cut_by": "cloud session 2026-10-07 (Rook captures/2026-10-07-books-reels-drop.md)",
       "nav_safe": true,
       "hypothesis": "If a dated public commitment (33 push-ups today, 100 by Jan 1) is the hook and the follow reason is the outcome, then follows per reach beat the talk median, because the only way to see the ending is to follow.",
-      "_note": "Public commitment: 100 push-ups by 2027-01-01 (86 days from 10/7) (Rook capture open loop). Three Google Maps spans in this raw excluded (~58-72, ~285-287); editor note \"Claude, cut out the GPS\" not used. Sam: r2 FIX, r3 FIX (one switch), fixed as prescribed (cloud review subagent, CUT-RULES + SAM-PLAYBOOK rubric)."
+      "_note": "Public commitment: 100 push-ups by 2027-01-01 (86 days from 10/7) (Rook capture open loop). Three Google Maps spans in this raw excluded (~58-72, ~285-287); editor note \"Claude, cut out the GPS\" not used. Sam: r2 FIX, r3 FIX (one switch), fixed as prescribed (cloud review subagent, CUT-RULES + SAM-PLAYBOOK rubric).",
+      "permalink": "https://www.instagram.com/reel/DeVhUv7DlZY/",
+      "posted_at": "2026-10-10T20:52:19-05:00",
+      "fb_page_video_id": "1018495151259481"
     },
     {
       "file": "ig-1007-200books.mp4",
