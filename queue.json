@@ -3279,6 +3279,26 @@
       "topic_class": "utility",
       "source_raw": "PXL_20261010_184045614.mp4",
       "cover_ms": 1900
+    },
+    {
+      "file": "ig-1011-heidi.mp4",
+      "kind": "new",
+      "status": "pending",
+      "earliest": "2026-10-13",
+      "title": "Heidi Pliam: partner before you syndicate",
+      "caption": "Hey Dad,\n\nRan into Heidi Pliam at a meetup in Sartell this weekend. Minnesota attorney, does multifamily, and she gets asked about raising capital all the time.\n\nHer answer surprised me: partner first. Joint ventures over syndication when you can. Keep it private. Syndication is for when the project is too big for anything else, and then you learn the law before you touch a dollar.\n\nHer offer on camera: a conversation, free, so you know where the potholes are before you hit them.\n\nSearch Heidi Pliam on here. You'll find her.\n\nThanks, Dad. I love you, Dad.",
+      "cover_ms": 1078,
+      "topic_class": "talk",
+      "source_raw": "PXL_20261011_204501597.mp4",
+      "arc_slot": "OFF-ARC cover (guest; X slot, Sun 10/18 1p or next open)",
+      "pix": "X",
+      "value_forms": [
+        "idea",
+        "entertainment"
+      ],
+      "sam_verdict": "POST 2026-10-11",
+      "cut_by": "cloud session 2026-10-11 (Rook captures/2026-10-11-heidi-pliam-partnership-reel.md)",
+      "_note": "Guest reel. Nick asked to tag Heidi; her IG handle was not found anywhere (brain, Gmail, Drive, web), so user_tags is unset. Laptop: add user_tags when Nick supplies the handle, before this posts. Sam r1 FIX (48s -> 21.6s, one ask, no class-series tease), r2 POST."
     }
   ]
 }
