@@ -3208,6 +3208,23 @@
       "topic_class": "talk",
       "source_raw": "PXL_20261009_162728289.mp4",
       "cover_ms": 100
+    },
+    {
+      "file": "ig-yt-dcs577b.mp4",
+      "title": "DeWalt worm-drive style saw, unboxed",
+      "status": "pending",
+      "earliest": "2026-10-12",
+      "caption": "Hey Dad,\n\nThe DCS577B out of the box: diamond arbor, on-board wrench, depth to 2-7/16 at 90, bevel to 53 with stops at 45 and 22.5, a rafter hook, and a brake that stops the blade when you let go.\n\nThere is one of these every day. Follow before you buy the next tool.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "Fri 10/16 6p (catalog_pick top pick, OFF-ARC)",
+      "pix": "P",
+      "value_forms": [
+        "implementation",
+        "entertainment"
+      ],
+      "sam_verdict": "POST 2026-10-11",
+      "topic_class": "utility",
+      "source_raw": "yt:y1NTbXATd7M",
+      "cover_ms": 2000
     }
   ]
 }
