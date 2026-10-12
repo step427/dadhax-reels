@@ -3178,7 +3178,7 @@
     {
       "file": "ig-1010-straps.mp4",
       "title": "Strap bin to coil in 10 seconds",
-      "status": "pending",
+      "status": "posted",
       "earliest": "2026-10-10",
       "caption": "Hey Dad,\n\nRatchet straps don't have to live as one big knot in a bin.\n\n1. Coil the strap around your hand.\n2. One wrap around the coil with the tail.\n3. Tuck the tail under the wrap.\n\nTen seconds now beats five minutes of untangling on Saturday.\n\nSend this to the dad whose straps live in a knot.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
       "arc_slot": "OFF-ARC cover (Sun 10/11 9a catalog-utility type, off theme)",
@@ -3193,7 +3193,10 @@
       "hypothesis": "If the coil is on screen by second 2 and the cut drops from 57s to 12s with the untangling intro gone, then avg watch % beats the parent's 30.4%, because the parent's viewers left at 17.4s, before the coil started.",
       "cover_ms": 2500,
       "recut_of": "ig-diy-straps.mp4",
-      "kind": "old"
+      "kind": "old",
+      "permalink": "https://www.instagram.com/reel/DeaRLgGDxd7/",
+      "posted_at": "2026-10-12T17:07:26-05:00",
+      "fb_page_video_id": "28664792893129497"
     },
     {
       "file": "ig-1010-butterfly.mp4",
@@ -3272,7 +3275,7 @@
     {
       "file": "ig-1011-level.mp4",
       "title": "Level it. If off, lean to the wall.",
-      "status": "pending",
+      "status": "posted",
       "earliest": "2026-10-15",
       "caption": "Hey Dad,\n\nCountertop on the cleat. Level it left to right. Front to back it tilts toward the wall a hair, and that's okay. Level is the goal; if you're going to miss, miss toward the wall: things roll to the wall, drawers stay shut, and the wall joint gets caulked anyway. If the span ever sags, a second cleat goes on the back wall.\n\nThe damaged face goes to the back. The tight drawer gets a shim, and the shim gets captured when the top is fastened down.\n\nLeave a hair of gap at the wall so the top can move with the seasons. Flexible caulk hides the gap and keeps laundry water out of the wall. If you screw a wood top down from below, use oversized holes so it can move. Don't glue it.\n\nBefore you buy the cabinets under it: type your wall into the free page and it prints the stock combinations that actually close, the filler widths, and the height stack.\nstep427.github.io/dadhax-reels/cabinet-run.html\n\nThanks, Dad. I love you, Dad.",
       "arc_slot": "Thu 10/15 1p (deep link cabinet-run.html)",
@@ -3284,7 +3287,10 @@
       "sam_verdict": "POST 2026-10-11",
       "topic_class": "utility",
       "source_raw": "PXL_20261010_184045614.mp4",
-      "cover_ms": 1900
+      "cover_ms": 1900,
+      "permalink": "https://www.instagram.com/reel/DeaRf80Cg_-/",
+      "posted_at": "2026-10-12T17:10:32-05:00",
+      "fb_page_video_id": "990767510682646"
     },
     {
       "file": "ig-1011-heidi.mp4",
