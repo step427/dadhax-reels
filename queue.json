@@ -3304,7 +3304,10 @@
       ],
       "sam_verdict": "POST 2026-10-11",
       "cut_by": "cloud session 2026-10-11 (Rook captures/2026-10-11-heidi-pliam-partnership-reel.md)",
-      "_note": "Guest reel. Nick asked to tag Heidi; her IG handle was not found anywhere (brain, Gmail, Drive, web), so user_tags is unset. Laptop: add user_tags when Nick supplies the handle, before this posts. Sam r1 FIX (48s -> 21.6s, one ask, no class-series tease), r2 POST."
+      "_note": "Guest reel. user_tags added 2026-10-12 from Nick (instagram.com/heidipliam). Sam r1 FIX (48s -> 21.6s, one ask, no class-series tease), r2 POST.",
+      "user_tags": [
+        "heidipliam"
+      ]
     }
   ]
 }
