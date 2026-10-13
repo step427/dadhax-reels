@@ -3073,7 +3073,7 @@
     {
       "file": "ig-1006-action.mp4",
       "kind": "new",
-      "status": "pending",
+      "status": "posted",
       "earliest": "2026-10-07",
       "title": "The idea's gone unless you act",
       "caption": "Hey Dad,\n\nThere's this euphoric feeling I've been getting lately. Things are coming together, I get it, it all melds really well. And then, all of a sudden, it's gone.\n\nThe big part: when that's happening, to make it real, actual action needs to be taken. Some kind of thumbprint or mark on the world that says, hey, this is moving.\n\nWhat's your thumbprint today? Comment the one thing you'll do.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
@@ -3089,7 +3089,10 @@
       "sam_verdict": "POST 2026-10-07",
       "cut_by": "cloud session 2026-10-07 (Rook captures/2026-10-07-books-reels-drop.md)",
       "nav_safe": true,
-      "_note": "Span 453.95-498.85 only; laptop listed it as \"still minable\". The caregiver ask from this raw (and the laptop's staged ig-1007-familycare) waits on Nick's yes. Sam: r1 FIX, r2 FIX, r3 POST (cloud review subagent, CUT-RULES + SAM-PLAYBOOK rubric)."
+      "_note": "Span 453.95-498.85 only; laptop listed it as \"still minable\". The caregiver ask from this raw (and the laptop's staged ig-1007-familycare) waits on Nick's yes. Sam: r1 FIX, r2 FIX, r3 POST (cloud review subagent, CUT-RULES + SAM-PLAYBOOK rubric).",
+      "permalink": "https://www.instagram.com/reel/DebqM-CjyON/",
+      "posted_at": "2026-10-13T06:05:22-05:00",
+      "fb_page_video_id": "1852411663557525"
     },
     {
       "file": "ig-1007-power.mp4",
