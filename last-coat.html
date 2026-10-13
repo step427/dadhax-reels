@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Tool 12. Built 2026-10-11 by the dadhax-weekly-tool routine off the finishing reels
+     (ig-yt-coats and the 10/10 laundry-countertop takes); council pick 2026-10-11. -->
+<title>The Last Coat — @nicksdadhax</title>
+<meta name="description" content="Pick the finish and the day you need it. Get a clock time for every coat, the flip, 220 between coats, and the hour it's ready to use. Free, no gate.">
+
+<style>
+  /* @nicksdadhax — dark field-instrument identity. Same tokens as tools 01-11.
+     SIGNAL YELLOW = your input / the action. WARN RED = the honest rail —
+     here that's "this page doesn't know your can." */
+  :root {
+    --carbon:   #0F0E0B;
+    --panel:    #17150F;
+    --panel-up: #1E1B14;
+    --hair:     #302B21;
+    --bone:     #F4F0E6;
+    --graphite: #8F887A;
+    --signal:   #FFC629;
+    --signal-d: #C8930F;
+    --warn:     #E8502C;
+    --ply:      #B8935A;
+
+    --mono: ui-monospace, "SF Mono", SFMono-Regular, "Cascadia Mono",
+            "Roboto Mono", Menlo, Consolas, "Courier New", monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+            "Helvetica Neue", Arial, sans-serif;
+
+    --gutter: clamp(18px, 5vw, 40px);
+    --maxw: 660px;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--carbon);
+    color: var(--bone);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-text-size-adjust: 100%;
+    background-image:
+      repeating-linear-gradient(to right,  rgba(242,237,231,.035) 0 1px, transparent 1px 28px),
+      repeating-linear-gradient(to bottom, rgba(242,237,231,.035) 0 1px, transparent 1px 28px);
+  }
+
+  .sheet { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter) 96px; }
+
+  header { padding: 34px 0 8px; }
+  .protocol {
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: .17em;
+    text-transform: uppercase; color: var(--graphite);
+  }
+  .protocol b { color: var(--signal); font-weight: 700; }
+  h1 {
+    font-family: var(--mono); font-weight: 700;
+    font-size: clamp(28px, 8vw, 48px); line-height: 1.04;
+    letter-spacing: -.03em; text-transform: uppercase;
+    margin: 12px 0 0; text-wrap: balance;
+  }
+  h1 .of { color: var(--signal); }
+  .dek { margin: 14px 0 0; max-width: 46ch; color: #CFC9BB; font-size: 17px; }
+  .dek em { color: var(--bone); font-style: normal; border-bottom: 1.5px solid var(--signal-d); }
+  .dek b { color: var(--bone); }
+
+  .privacy {
+    margin: 18px 0 0; padding: 13px 15px; font-size: 14.5px; line-height: 1.5;
+    color: #CFC9BB; background: var(--panel); border-left: 3px solid var(--signal);
+  }
+  .privacy b { color: var(--bone); }
+
+  .story { margin-top: 24px; padding: 15px 16px; background: var(--panel);
+    border: 1px solid var(--hair); }
+  .story p { margin: 0 0 10px; font-size: 15.5px; line-height: 1.55; color: #CFC9BB; }
+  .story p:last-child { margin-bottom: 0; }
+  .story p b { color: var(--bone); }
+  .story a { color: var(--signal); font-weight: 700; text-decoration: none; }
+  .story a:hover { text-decoration: underline; }
+
+  .whys { margin-top: 26px; border: 1px solid var(--hair); }
+  .why { padding: 14px 15px; border-bottom: 1px solid var(--hair); }
+  .why:last-child { border-bottom: 0; }
+  .why .tag { display: block; font-family: var(--mono); font-size: 12.5px; font-weight: 700;
+    letter-spacing: .08em; text-transform: uppercase; margin-bottom: 5px; color: var(--signal); }
+  .why p { margin: 0; font-size: 15px; line-height: 1.5; color: #CFC9BB; }
+  .why p b { color: var(--bone); }
+
+  .redline-note {
+    margin: 14px 0 0; padding: 9px 12px;
+    border-left: 2.5px solid var(--warn);
+    background: #20130E; /* rgba(232,80,44,.08) on --carbon, solid so contrast is measurable */
+    font-size: 14.5px; line-height: 1.45; color: #E7DCD6;
+  }
+  .redline-note b { color: var(--warn); font-family: var(--mono);
+    font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase;
+    display: block; margin-bottom: 3px; }
+
+  .block { margin-top: 30px; }
+  .lbl {
+    display: block; font-family: var(--mono); font-size: 11.5px;
+    letter-spacing: .13em; text-transform: uppercase; color: var(--graphite);
+    margin-bottom: 8px;
+  }
+  h2.part {
+    font-family: var(--mono); font-size: 12px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--signal); margin: 34px 0 4px; font-weight: 700;
+    padding-top: 20px; border-top: 1px solid var(--hair);
+  }
+  .partdek { margin: 0 0 14px; font-size: 15px; color: #CFC9BB; line-height: 1.5; }
+  .partdek b { color: var(--bone); }
+
+  .seed {
+    border: 1.5px solid var(--signal); background: var(--panel);
+    padding: 16px 16px 14px;
+  }
+  .seed .lbl { color: var(--signal); margin-top: 0; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; }
+  @media (max-width: 380px) { .grid2 { grid-template-columns: 1fr; } }
+  input[type=text], input[type=number], input[type=date] {
+    display: block; width: 100%;
+    background: transparent; border: 0; border-bottom: 1.5px solid #453E2C;
+    color: var(--bone); font-family: var(--mono); font-size: 18px;
+    line-height: 1.5; padding: 4px 0 8px; border-radius: 0;
+    font-variant-numeric: tabular-nums; -moz-appearance: textfield;
+  }
+  input[type=date] { color-scheme: dark; min-height: 44px; }
+  input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  input::placeholder { color: #6B6455; font-family: var(--sans); font-size: 15px; }
+  input:focus { outline: 0; border-bottom-color: var(--signal); }
+  .seed .lbl + input { margin-bottom: 14px; }
+  .unit { font-family: var(--mono); font-size: 11px; color: var(--graphite); letter-spacing: .08em; }
+  .hint { margin: 6px 0 0; font-size: 13.5px; color: var(--graphite); line-height: 1.45; }
+  .seed .hint { margin: 0 0 16px; }
+
+  .zone { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 8px; }
+  .zone button { flex: 1 1 0; min-width: 86px; min-height: 48px; padding: 10px 6px; border-radius: 0; cursor: pointer;
+    font-family: var(--mono); font-size: 12px; letter-spacing: .05em; text-transform: uppercase;
+    font-weight: 700; background: transparent; color: var(--bone); border: 1.5px solid #453E2C; }
+  .zone button[aria-pressed="true"] { background: var(--signal); color: #14100F; border-color: var(--signal); }
+  .zone button:focus-visible { outline: 2px solid var(--bone); outline-offset: 2px; }
+
+  /* the schedule */
+  .spec { margin-top: 22px; padding: 18px 16px; background: var(--panel-up);
+    border: 2px solid var(--signal); }
+  .spec[hidden] { display: none; }
+  .spec .lbl { color: var(--signal); }
+  .spec p { margin: 0 0 8px; font-size: 16.5px; line-height: 1.5; color: var(--bone); }
+  .spec p b { color: var(--signal); font-family: var(--mono); }
+  .spec p.fine { margin-top: 10px; font-size: 14px; color: #CFC9BB; }
+  .spec p.no { color: #E7DCD6; border-left: 2.5px solid var(--warn); padding-left: 10px; }
+  .spec p.no b { color: var(--warn); }
+  .steps { margin: 12px 0 0; }
+  .step { padding: 10px 0 8px; border-top: 1px solid var(--hair); }
+  .step .head { display: flex; gap: 12px; align-items: center; margin: 0 0 6px; }
+  .step .pic { flex: 0 0 72px; }
+  .step .pic svg { display: block; width: 72px; height: auto; }
+  .step .pic text { font-family: var(--mono); font-weight: 700; font-size: 10px; fill: var(--signal); }
+  .step h3 { margin: 0; font-family: var(--mono); font-size: 14px; letter-spacing: .05em;
+    text-transform: uppercase; color: var(--signal); }
+  .step h3 i { font-style: normal; color: var(--bone); display: block; letter-spacing: 0; }
+  .step ul { margin: 0; padding: 0 0 0 18px; }
+  .step ul li { font-family: var(--sans); font-size: 14.5px; line-height: 1.4; color: var(--bone); }
+  .step ul li.w { color: #E7DCD6; list-style: "! "; }
+  .step ul li.w::marker { color: var(--warn); font-family: var(--mono); font-weight: 700; }
+
+  .callbox { margin-top: 28px; padding: 18px 16px 16px; background: var(--panel-up);
+    border: 2px dashed var(--signal-d); }
+  .callbox .lbl { color: var(--signal); }
+  .callbox .means { margin: 10px 0 14px; font-size: 15px; color: #CFC9BB; line-height: 1.5; }
+  .callbox .means b { color: var(--bone); }
+  .callbox input[type=text] { font-family: var(--sans); font-size: 17px; }
+
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+  .actions button {
+    font-family: var(--mono); font-size: 12.5px; letter-spacing: .1em;
+    text-transform: uppercase; font-weight: 700; min-height: 48px;
+    padding: 13px 18px; border-radius: 0; cursor: pointer;
+    background: var(--signal); color: #14100F; border: 1.5px solid var(--signal);
+  }
+  .actions button.ghost { background: transparent; color: var(--bone); border-color: #453E2C; }
+  .actions button:hover { filter: brightness(1.1); }
+  .actions button.ghost:hover { border-color: var(--signal); color: var(--signal); filter: none; }
+  .actions button:focus-visible { outline: 2px solid var(--bone); outline-offset: 2px; }
+
+  .said {
+    margin-top: 14px; font-family: var(--mono); font-size: 12px;
+    letter-spacing: .06em; text-transform: uppercase; color: var(--signal);
+    min-height: 1em;
+  }
+
+  .titleblock {
+    margin-top: 44px; border: 1px solid var(--hair);
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(108px, 1fr));
+  }
+  .tb { padding: 11px 13px; border-right: 1px solid var(--hair); }
+  .tb:last-child { border-right: 0; }
+  .tb dt {
+    font-family: var(--mono); font-size: 10px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--graphite); margin: 0 0 4px;
+  }
+  .tb dd {
+    margin: 0; font-family: var(--mono); font-size: 13px; font-weight: 700;
+    color: var(--bone); font-variant-numeric: tabular-nums;
+  }
+  .tb dd.red { color: var(--signal); }
+
+  .cta { margin-top: 18px; font-size: 15px; color: #CFC9BB; line-height: 1.5; }
+  .cta b { color: var(--bone); }
+  .cta a { color: var(--signal); font-weight: 700; text-decoration: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+
+  @media print {
+    @page { size: letter; margin: .5in .55in; }
+    :root {
+      --carbon: #fff; --panel: #fff; --panel-up: #FFF8E2;
+      --hair: #C9C2BC; --bone: #14100F; --graphite: #5E5651;
+      --signal: #7A5B00; --signal-d: #7A5B00; --warn: #B93A18; --ply: #E4D2A8;
+    }
+    body { background-image: none; font-size: 10.5pt; }
+    .sheet { max-width: none; padding: 0; }
+    .actions, .said, .nav, .tail, .cta, .privacy { display: none; }
+    .spec[hidden] { display: block !important; }
+    input { border-bottom-color: #9AA0A8; min-height: .42in; }
+    .redline-note { background: none; }
+    h1 { font-size: 26pt; }
+  }
+</style>
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+
+<div class="sheet">
+
+  <nav class="nav">
+    <div class="navtop">
+      <a class="brand" href="index.html">@nicksdadhax</a>
+      <span class="meta">Tool 12 · free · no gate</span>
+    </div>
+    <div class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="toolbox.html" aria-current="true"><svg class="tbx" width="15" height="13" viewBox="0 0 16 14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><g class="lid"><path d="M5.5 4.5v-.75a2.5 2.5 0 0 1 5 0v.75"/><rect x="1" y="4.5" width="14" height="2.5" rx=".5"/></g><rect x="1" y="7" width="14" height="6" rx=".5"/></svg>The Toolbox</a>
+      <a href="log.html">The Flip</a>
+      <a href="houses.html">I have a house</a>
+    </div>
+  </nav>
+
+  <header>
+    <div class="protocol">Finish protocol <b>·</b> bottom first <b>·</b> 220 between coats</div>
+    <h1>The last <span class="of">coat</span></h1>
+    <p class="dek">You built the thing. It's Wednesday, it has to be in use Saturday, and the can
+      says "recoat in 4 to 6 hours" like you've got nothing else going on.</p>
+    <p class="dek">So the last coat goes on tacky, and it comes out with swirl marks, drips at
+      the edges, and a soft spot that prints the first thing you set on it.
+      <b>Finishing is where a good build gets ruined.</b></p>
+    <p class="dek"><em>Pick the finish and the day you need it, and you get the clock</em>: a time
+      for every coat, the flip, 220 between them, and the hour it holds a laundry basket. A
+      countertop in oil poly, three coats a side, needed Saturday at five: <b>coat one goes on
+      Wednesday at four.</b></p>
+    <p class="privacy"><b>Nothing you type here leaves your device.</b> No account, no
+      server, no analytics. Your dates live in this browser tab and are erased when
+      you close it. "Start over" wipes them now.</p>
+  </header>
+
+  <div class="story">
+    <span class="lbl">Why this one exists</span>
+    <p><b>My shellac top took six coats, 220 between every single one, underside first.</b>
+      Sanding between coats is the whole trick: it knocks down the dust that landed while the
+      last coat dried. This weekend, a laundry-room
+      countertop: oil poly, every side, bottom first so the drips drip downward. I had company
+      coming, I'd chilled the whole tub on an AI's advice, and coat two came out with swirl
+      marks and drips at both edges. <b>What are we learning
+      here?</b> Chill the roller, not the can. And count the hours before you open it.
+      The six coats, in the shop:
+      <a href="https://www.instagram.com/reel/DdqfFw1ExMJ/">Instagram</a>,
+      <a href="https://www.facebook.com/reel/1793625645235246">Facebook</a>.</p>
+  </div>
+
+  <div class="whys" aria-label="How the schedule works">
+    <div class="why">
+      <span class="tag">The window is a floor</span>
+      <p>The can's recoat time is the <b>least</b> you wait, not a target. "Dry enough, a
+        little tacky" costs you the coat. Wait longer and nothing is lost: you're sanding
+        220 between coats either way.</p>
+    </div>
+  </div>
+
+  <h2 class="part">Part 1 &mdash; The finish</h2>
+  <p class="partdek">Tap what's in the can. Typical label numbers fill in; <b>your can wins.</b></p>
+
+  <div class="block seed">
+    <span class="lbl" id="finishLbl">Finish</span>
+    <div class="zone" role="group" aria-labelledby="finishLbl">
+      <button type="button" id="fOil" aria-pressed="true">Oil poly</button>
+      <button type="button" id="fWater" aria-pressed="false">Water poly</button>
+      <button type="button" id="fWipe" aria-pressed="false">Wipe-on</button>
+      <button type="button" id="fShellac" aria-pressed="false">Shellac</button>
+      <button type="button" id="fPaint" aria-pressed="false">Paint</button>
+    </div>
+    <p class="hint" id="finishHint"></p>
+    <div class="grid2">
+      <div>
+        <label class="lbl" for="coats">Coats <span class="unit">per side</span></label>
+        <input type="number" id="coats" inputmode="numeric" step="1" min="1" max="8" placeholder="3">
+      </div>
+      <div>
+        <label class="lbl" for="window">Recoat window <span class="unit">hours, from the can</span></label>
+        <input type="number" id="window" inputmode="decimal" step="0.5" min="0.5" max="48" placeholder="6">
+      </div>
+    </div>
+    <span class="lbl" id="sidesLbl">Sides</span>
+    <div class="zone" role="group" aria-labelledby="sidesLbl">
+      <button type="button" id="sTop" aria-pressed="false">Top only</button>
+      <button type="button" id="sAll" aria-pressed="true">Every side, bottom first</button>
+    </div>
+    <p class="hint">A countertop or a tabletop gets every side, so both faces take on moisture alike.</p>
+    <span class="lbl" id="shopLbl">Where it dries</span>
+    <div class="zone" role="group" aria-labelledby="shopLbl">
+      <button type="button" id="wWarm" aria-pressed="true">Warm and dry</button>
+      <button type="button" id="wCold" aria-pressed="false">Cold or humid garage</button>
+    </div>
+    <p class="hint">Most cans say 50 to 90&deg;F. Cold or sticky air stretches every window; the page adds
+      half again. Below the can's minimum, bring it inside: waiting won't cure it.</p>
+  </div>
+
+  <h2 class="part">Part 2 &mdash; The day you need it</h2>
+  <p class="partdek">When it has to hold a basket, a plate, a laptop. <b>Not</b> when you'd
+    like to be done.</p>
+
+  <div class="block seed">
+    <div class="grid2">
+      <div>
+        <label class="lbl" for="need">In use by <span class="unit">date</span></label>
+        <input type="date" id="need">
+      </div>
+      <div>
+        <label class="lbl" for="needHour">At <span class="unit">hour, 0&ndash;23</span></label>
+        <input type="number" id="needHour" inputmode="numeric" step="1" min="0" max="23" placeholder="17">
+      </div>
+    </div>
+    <p class="hint">Filled with next Saturday at five so you can see it work.</p>
+  </div>
+
+  <h2 class="part">Part 3 &mdash; Your schedule</h2>
+
+  <div class="spec" id="spec">
+    <span class="lbl">The clock</span>
+    <p id="oVerdict"></p>
+    <p id="oAlt" class="no" hidden></p>
+    <div class="steps" id="oSteps"></div>
+    <p class="fine" id="oAssume"></p>
+  </div>
+
+  <div class="redline-note">
+    <b>this page doesn't know your can</b>
+    The windows are typical label numbers. Your can, your shop's temperature and how thick you
+    lay it on all move them. Read the can and type its number in.
+  </div>
+
+  <div class="callbox">
+    <span class="lbl">The boulder question</span>
+    <p class="means">Most problems are who-you-know. <b>Name one person whose finish you've
+      run your hand over and wondered how.</b></p>
+    <input type="text" id="callName" placeholder="a name. not 'a guy from work' — a name.">
+    <p class="means" style="margin:12px 0 0"><b>Now make the call</b> &mdash; ask:
+      &ldquo;what do you put on, and how long between coats?&rdquo;</p>
+  </div>
+
+  <div class="actions">
+    <button id="promptBtn" type="button">Copy a prompt for your AI</button>
+    <button id="copyBtn" class="ghost" type="button">Copy the schedule</button>
+    <button id="printBtn" class="ghost" type="button">Print it</button>
+    <button id="resetBtn" class="ghost" type="button">Start over</button>
+  </div>
+  <div class="said" id="said" role="status" aria-live="polite"></div>
+
+  <dl class="titleblock">
+    <div class="tb"><dt>Protocol</dt><dd>FINISH</dd></div>
+    <div class="tb"><dt>Tool</dt><dd>12 of 12</dd></div>
+    <div class="tb"><dt>Coats</dt><dd class="red" id="count">0</dd></div>
+    <div class="tb"><dt>By</dt><dd class="red">@nicksdadhax</dd></div>
+  </dl>
+
+  <!--TAIL-->
+  <div class="tail">
+  <a class="tail-next" href="fact-testable-fantasy.html">
+    <span class="k">Read next</span>
+    <b>Tool 04 &mdash; Fact / Testable / Fantasy</b>
+    <span class="s">The finish is on the clock and your hands are free. Here's the
+      two-question filter for what to do with the wait, before it goes to the wrong idea.</span>
+  </a>
+  <section class="buyhouses">
+    <h2>Also &mdash; I buy houses</h2>
+    <p><b>Washington or Dakota County, Minnesota.</b> Off-market, or straight from the
+      owner &mdash; I'm the buyer, not a middleman passing it along. Woodbury, Cottage
+      Grove, Hastings, Stillwater, Eagan, Inver Grove Heights, Lakeville.</p>
+    <p>If that's you, or you know somebody quietly thinking about selling, I'll lay out
+      your options &mdash; <b>all of them, including the ones I don't make a dime on.</b>
+      Nothing to sign, no walkthrough unless you ask.</p>
+    <div class="ctas">
+      <a href="houses.html"><b>I have a house</b><span>Or I know someone who does</span></a>
+    </div>
+  </section>
+
+  <section class="optin" id="next">
+    <h2>What I ask</h2>
+    <p class="plain">That was free and nothing here sits behind an email. If it was
+      useful, here's the whole exchange: <b>send it to one or two people who'd use it
+      too.</b> That's it. I'm trusting you with it, you pass it on.</p>
+    <p class="plain">Want the next one before anyone else? I'm building an interest
+      list &mdash; no selling, no sequence, your address goes nowhere.
+      <a href="index.html#next">Exactly what that means, in plain words.</a></p>
+    <p class="fine">The list itself isn't open yet &mdash; I'm still setting it up, and
+      I'd rather say that than put up a box that doesn't work. The ask above stands
+      either way, and it's the one that matters. If you want to tell me what to build
+      next, my DMs are open.</p>
+    <div class="ctas">
+      <a href="https://www.instagram.com/nicksdadhax/"><b>Tell me what to build next</b><span>DM @nicksdadhax</span></a>
+    </div>
+  </section>
+  </div>
+  <!--/TAIL-->
+
+  <p class="cta">Free. This tool asks you for nothing &mdash; no gate, no email, no
+    analytics. When the finish is hard, <b>DM me a picture</b>.</p>
+
+</div>
+
+<script>
+(function () {
+  "use strict";
+  // ---- the engine: pure, so it can be checked outside the page ----
+  // Typical can-label numbers. recoat = hours between coats; flip = hours before the bottom
+  // can be handled; use = hours after the last coat before light use; hard = days to full
+  // hardness. The reader's can overrides coats and recoat; the rest print as assumptions.
+  var FINISH = {
+    oil:     { name: "oil-based polyurethane", recoat: 6, coats: 3, flip: 12, use: 24, hard: 30, tool: "a foam roller or pad, thin coats", oily: true,  solvent: true,
+               hint: "Label, typically: recoat 4 to 6 h, 3 coats, hard in a month. Ambers a little." },
+    water:   { name: "water-based polyurethane", recoat: 2, coats: 3, flip: 4, use: 24, hard: 21, tool: "a synthetic brush or a foam pad, thin coats", oily: false, solvent: false,
+               hint: "Label, typically: recoat 2 h, 3 coats, hard in three weeks. Stays clear." },
+    wipe:    { name: "wipe-on polyurethane", recoat: 3, coats: 4, flip: 6, use: 24, hard: 30, tool: "a lint-free rag, wiped thin", oily: true,  solvent: true,
+               hint: "Label, typically: recoat 2 to 3 h, 4 or more thin coats, hard in a month. No brush marks." },
+    shellac: { name: "shellac", recoat: 1, coats: 3, flip: 2, use: 24, hard: 7, tool: "a natural-bristle brush, moving fast", oily: false, solvent: true,
+               hint: "Label, typically: recoat in an hour, 3 coats, hardens over a week. Not for a wet countertop." },
+    paint:   { name: "paint", recoat: 4, coats: 3, flip: 8, use: 24, hard: 30, tool: "a brush for the edges and a roller for the field", oily: false, solvent: false,
+               hint: "Label, typically: recoat 2 to 4 h, primer plus 2 coats (count the primer), hard in a month. Oil paint: the rag rule applies." }
+  };
+  var H = 3600e3;
+  function addH(d, h) { return new Date(d.getTime() + h * H); }
+  function addD(d, n) { var x = new Date(d); x.setDate(x.getDate() + n); return x; }
+  function snap(t) {   // coats land between 7 in the morning and 10 at night
+    var h = t.getHours() + t.getMinutes() / 60;
+    if (h < 7) { t = new Date(t); t.setHours(7, 0, 0, 0); }
+    else if (h > 22) { t = new Date(t); t.setDate(t.getDate() + 1); t.setHours(7, 0, 0, 0); }
+    return t;
+  }
+  function forward(S, o) {
+    var w = o.recoat * o.mult, flip = o.flip * o.mult, coats = [], t = snap(S);
+    for (var s = 0; s < o.sides; s++) for (var k = 0; k < o.coats; k++) {
+      if (k > 0) t = snap(addH(t, w));
+      else if (s > 0) t = snap(addH(t, flip));
+      coats.push({ side: s, k: k, at: t });
+    }
+    var last = coats[coats.length - 1].at;
+    return { coats: coats, flipAt: o.sides > 1 ? addH(coats[o.coats - 1].at, flip) : null,
+             use: addH(last, o.use * o.mult), hard: addD(last, o.hard) };
+  }
+  function latest(o) {   // the latest coat-one that still has it in use by o.need
+    var guess = (o.sides * o.coats - 1) * o.recoat * o.mult + (o.sides > 1 ? (o.flip - o.recoat) * o.mult : 0) + o.use * o.mult;
+    var S = addH(o.need, -guess), p = null;
+    for (var i = 0; i < 400; i++) { p = forward(S, o); if (p.use.getTime() <= o.need.getTime() + 1) break; S = addH(S, -1); }
+    return p;
+  }
+  function plan(o) {
+    var p = latest(o), now = o.now, fits = p.coats[0].at.getTime() >= now.getTime() - 15 * 60e3;
+    var alts = [];
+    if (!fits) {
+      for (var c = o.coats - 1; c >= 1; c--) {
+        var q = latest(Object.assign({}, o, { coats: c }));
+        if (q.coats[0].at.getTime() >= now.getTime() - 15 * 60e3) { alts.push({ kind: "coats", coats: c, at: q.coats[0].at }); break; }
+      }
+      alts.push({ kind: "date", use: forward(now, o).use });
+    }
+    return { p: p, fits: fits, alts: alts };
+  }
+
+  var KEY = "ndh-lastcoat-v1";
+  var $ = function (id) { return document.getElementById(id); };
+  var inputs = ["coats", "window", "need", "needHour", "callName"].map($);
+  var said = $("said"), count = $("count");
+  var state = { finish: "oil", sides: 2, cold: false };
+  var last = null;
+  var DAY = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  function val(id, dflt, lo, hi) { var v = parseFloat($(id).value); return isFinite(v) && v >= lo && v <= hi ? v : dflt; }
+  function clock(d) {
+    var h = d.getHours(), m = d.getMinutes(), ap = h >= 12 ? "pm" : "am"; h = h % 12 || 12;
+    return h + ":" + (m < 10 ? "0" : "") + m + " " + ap;
+  }
+  function when(d) { return DAY[d.getDay()] + " " + (d.getMonth() + 1) + "/" + d.getDate() + ", " + clock(d); }
+  function day(d) { return DAY[d.getDay()] + " " + (d.getMonth() + 1) + "/" + d.getDate(); }
+  function pad(n) { return (n < 10 ? "0" : "") + n; }
+  function iso(d) { return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate()); }
+  function nextSaturday() { var d = new Date(); d.setHours(17, 0, 0, 0); d.setDate(d.getDate() + ((6 - d.getDay() + 7) % 7 || 7)); return d; }
+  function needDate() {
+    var m = String($("need").value || "").match(/^(\d{4})-(\d{2})-(\d{2})$/), hr = val("needHour", 17, 0, 23);
+    if (!m) { var s = nextSaturday(); s.setHours(hr, 0, 0, 0); return s; }
+    return new Date(+m[1], +m[2] - 1, +m[3], hr, 0, 0, 0);
+  }
+  function plural(k, word) { return k + " " + word + (k === 1 ? "" : "s"); }
+
+  function setZone(ids, on) { ids.forEach(function (id) { $(id).setAttribute("aria-pressed", id === on ? "true" : "false"); }); }
+  var FIN_BTN = { fOil: "oil", fWater: "water", fWipe: "wipe", fShellac: "shellac", fPaint: "paint" };
+  Object.keys(FIN_BTN).forEach(function (id) {
+    $(id).addEventListener("click", function () {
+      state.finish = FIN_BTN[id]; setZone(Object.keys(FIN_BTN), id);
+      $("coats").value = ""; $("window").value = "";   // the can's typical numbers win over what was typed for another finish
+      refresh();
+    });
+  });
+  $("sTop").addEventListener("click", function () { state.sides = 1; setZone(["sTop", "sAll"], "sTop"); refresh(); });
+  $("sAll").addEventListener("click", function () { state.sides = 2; setZone(["sTop", "sAll"], "sAll"); refresh(); });
+  $("wWarm").addEventListener("click", function () { state.cold = false; setZone(["wWarm", "wCold"], "wWarm"); refresh(); });
+  $("wCold").addEventListener("click", function () { state.cold = true; setZone(["wWarm", "wCold"], "wCold"); refresh(); });
+
+  var ink = ' stroke="var(--bone)" stroke-width="2"', ply = ' fill="var(--ply)"' + ink;
+  var PIC = {
+    can:   '<rect x="24" y="14" width="36" height="42"' + ply + '/><rect x="30" y="8" width="24" height="6"' + ink + ' fill="none"/><text x="42" y="40" text-anchor="middle">CAN</text>',
+    sand:  '<rect x="8" y="34" width="68" height="22"' + ply + '/><rect x="22" y="14" width="40" height="14"' + ink + ' fill="var(--signal)"/><text x="42" y="25" text-anchor="middle" fill="#14100F">220</text>',
+    coat:  '<rect x="8" y="32" width="68" height="24"' + ply + '/><rect x="14" y="10" width="30" height="12" rx="6"' + ink + ' fill="var(--signal)"/><path d="M44 16h22v14"' + ink + ' fill="none"/>',
+    flip:  '<rect x="8" y="40" width="68" height="16"' + ply + '/><path d="M20 30a22 22 0 0 1 44 0"' + ink + ' fill="none"/><path d="M60 22l6 10-12 1z" fill="var(--signal)"/>',
+    use:   '<rect x="8" y="40" width="68" height="16"' + ply + '/><rect x="26" y="16" width="32" height="22"' + ink + ' fill="none"/><path d="M26 24h32"' + ink + '/>',
+    hard:  '<rect x="8" y="40" width="68" height="16"' + ply + '/><circle cx="42" cy="22" r="13"' + ink + ' fill="none"/><path d="M42 13v9l6 4"' + ink + ' fill="none"/>'
+  };
+
+  function refresh() {
+    var f = FINISH[state.finish];
+    $("finishHint").textContent = f.hint;
+    $("coats").placeholder = String(f.coats); $("window").placeholder = String(f.recoat);
+    var o = { coats: Math.round(val("coats", f.coats, 1, 8)), recoat: val("window", f.recoat, 0.5, 48), sides: state.sides,
+              flip: f.flip, use: f.use, hard: f.hard, mult: state.cold ? 1.5 : 1, need: needDate(), now: new Date() };
+    var r = plan(o), p = r.p, total = o.coats * o.sides;
+    var sideName = function (s) { return o.sides > 1 ? (s === 0 ? "bottom" : "top and edges") : "top"; };
+
+    $("oVerdict").innerHTML = (r.fits ? "Coat one goes on by <b>" + esc(when(p.coats[0].at)) + "</b>. "
+                                       : "To be in use by " + esc(when(o.need)) + ", coat one had to go on by <b>" + esc(when(p.coats[0].at)) + "</b>. ")
+      + esc(plural(total, "coat")) + " of " + esc(f.name) + (o.sides > 1 ? ", both sides" : "") + ", in use " + esc(when(p.use))
+      + ", hard " + esc(day(p.hard)) + ".";
+    var alt = $("oAlt");
+    if (r.fits) { alt.hidden = true; alt.textContent = ""; }
+    else {
+      var parts = ["<b>That doesn't fit.</b> The window doesn't shrink, so pick a trade:"];
+      r.alts.forEach(function (a) {
+        if (a.kind === "coats") parts.push(" " + plural(a.coats, "coat") + " a side fits if coat one goes on by " + esc(when(a.at)) + ".");
+        else parts.push(" Keep every coat and it's in use " + esc(when(a.use)) + ".");
+      });
+      parts.push(" Or use it before it's hard, and know it may print.");
+      alt.innerHTML = parts.join(""); alt.hidden = false;
+    }
+
+    var steps = [];
+    steps.push({ t: "Gather", pic: PIC.can, b: [
+      "The can, " + f.tool + ", 220 paper, a vacuum, a clean rag, cheap tape, gloves. Stir it, never shake it. Roll tape over a new roller to pull the fuzz" ],
+      w: f.oily ? ["Rags from an oil finish heat up on their own and can catch fire. Lay them flat outside, one layer, till stiff, or in a bucket of water. Never balled in a can"] : [] });
+    steps.push({ t: "Prep", when: "before coat 1", pic: PIC.sand, b: [
+      "Sand to 220 with the grain, vacuum, wipe. No fan on a wet coat: still air, less dust" + (o.sides > 1 ? ". Up on blocks, bottom up" : "") ],
+      w: f.solvent ? ["Open a door. Nothing with a pilot light or a flame in the room"] : [] });
+    p.coats.forEach(function (c, i) {
+      var isLast = i === p.coats.length - 1, b = [];
+      if (i === 0) b.push("Thin, with the grain, light at the edges. Between coats wrap the roller tight (water-based can go in the fridge): the roller, not the can");
+      else if (o.sides > 1 && c.side === 1 && c.k === 0) b.push("Top first, then the edges, so the drips run down and off");
+      else if (i === 1) b.push("220, light, with the grain. Wipe. Then the coat. Same for every coat after it");
+      if (isLast) b.push("The one you want to rush: don't. Nothing gets sanded after it");
+      steps.push({ t: "Coat " + (c.k + 1) + " of " + o.coats + ", " + sideName(c.side), when: when(c.at), pic: PIC.coat, b: b,
+        w: i === 0 ? ["Thick coats trap solvent and stay soft. Two thin beats one thick"] : [] });
+      if (o.sides > 1 && c.side === 0 && c.k === o.coats - 1)
+        steps.push({ t: "Flip", when: when(p.flipAt), pic: PIC.flip, b: [
+          "Dry enough to handle, not hard. Onto clean blocks, bottom down. Bottom-coat drips on the edges: shave flush with a sharp blade, then 220" ] });
+    });
+    steps.push({ t: "Set a basket on it", when: when(p.use), pic: PIC.use, b: [
+      "Dry to the touch is not cured. Light things, no dragging, nothing wet left sitting" ] });
+    steps.push({ t: "Hard", when: day(p.hard), pic: PIC.hard, b: [
+      "Slide the heavy stuff. Until today, lift it" ] });
+
+    var ol = $("oSteps"); ol.textContent = "";
+    steps.forEach(function (st, i) {
+      var box = document.createElement("div"), head = document.createElement("div"), pic = document.createElement("span");
+      box.className = "step"; head.className = "head";
+      pic.className = "pic"; pic.innerHTML = '<svg viewBox="0 0 84 66" aria-hidden="true">' + st.pic + "</svg>";
+      var h = document.createElement("h3"); h.textContent = (i + 1) + ". " + st.t;
+      if (st.when) { var w = document.createElement("i"); w.textContent = st.when; h.appendChild(w); }
+      head.appendChild(pic); head.appendChild(h);
+      var ul = document.createElement("ul");
+      st.b.forEach(function (t) { var x = document.createElement("li"); x.textContent = t; ul.appendChild(x); });
+      (st.w || []).forEach(function (t) { var x = document.createElement("li"); x.className = "w"; x.textContent = t; ul.appendChild(x); });
+      box.appendChild(head); box.appendChild(ul); ol.appendChild(box);
+    });
+    var assume = "Assumes " + o.recoat + " h between coats" + (state.cold ? " times 1.5 for the cold" : "") + ", " + (f.flip * o.mult) + " h before the flip, "
+      + (f.use * o.mult) + " h to light use, " + f.hard + " days to hard, coats between 7 am and 10 pm. Your can wins.";
+    $("oAssume").textContent = assume;
+    count.textContent = String(total);
+    last = { o: o, f: f, p: p, r: r, steps: steps, assume: assume };
+    save();
+  }
+  function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+
+  function save() {
+    try {
+      var d = { finish: state.finish, sides: state.sides, cold: state.cold };
+      inputs.forEach(function (el) { d[el.id] = el.value; });
+      // sessionStorage, NOT localStorage: same promise as every tool on the site.
+      sessionStorage.setItem(KEY, JSON.stringify(d));
+    } catch (e) {}
+  }
+  function load() {
+    var d = null;
+    try { d = JSON.parse(sessionStorage.getItem(KEY) || "null"); } catch (e) {}
+    if (d) {
+      inputs.forEach(function (el) { if (d[el.id]) el.value = d[el.id]; });
+      if (FINISH[d.finish]) { state.finish = d.finish; setZone(Object.keys(FIN_BTN), Object.keys(FIN_BTN).filter(function (k) { return FIN_BTN[k] === d.finish; })[0]); }
+      state.sides = d.sides === 1 ? 1 : 2; setZone(["sTop", "sAll"], state.sides === 1 ? "sTop" : "sAll");
+      state.cold = !!d.cold; setZone(["wWarm", "wCold"], state.cold ? "wCold" : "wWarm");
+    }
+    if (!$("need").value) $("need").value = iso(nextSaturday());   // output on screen before a keystroke
+  }
+
+  inputs.forEach(function (el) { el.addEventListener("input", refresh); el.addEventListener("change", refresh); });
+  $("printBtn").addEventListener("click", function () { window.print(); });
+
+  function copyText(text, okMsg) {
+    function fallback() {
+      var t = document.createElement("textarea"); t.value = text;
+      t.style.position = "fixed"; t.style.opacity = "0"; document.body.appendChild(t); t.select();
+      try { document.execCommand("copy"); } catch (e) {} document.body.removeChild(t);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () { said.textContent = okMsg; },
+        function () { fallback(); said.textContent = okMsg; });
+    } else { fallback(); said.textContent = okMsg; }
+  }
+  function planText() {
+    if (!last) return null;
+    var out = ["THE LAST COAT — " + new Date().toLocaleDateString(), "", $("oVerdict").textContent];
+    if (!last.r.fits) out.push($("oAlt").textContent);
+    out.push("");
+    last.steps.forEach(function (st, i) {
+      out.push((i + 1) + ". " + st.t.toUpperCase() + (st.when ? " — " + st.when : ""));
+      st.b.forEach(function (t) { out.push("   - " + t); });
+      (st.w || []).forEach(function (t) { out.push("   ! " + t); });
+    });
+    out.push("", last.assume);
+    var who = $("callName").value.trim(); if (who) out.push("", "Call: " + who);
+    out.push("", "The Last Coat — @nicksdadhax");
+    return out.join("\n");
+  }
+  $("copyBtn").addEventListener("click", function () {
+    var t = planText(); if (!t) { said.textContent = "Pick a finish first."; return; }
+    copyText(t, "Copied — tape it to the can.");
+  });
+  $("promptBtn").addEventListener("click", function () {
+    if (!last) { said.textContent = "Pick a finish first — the prompt is built from it."; return; }
+    var o = last.o, f = last.f;
+    var text = [
+      "You are a furniture finisher checking a first-timer's schedule before they open the can.",
+      "Blunt, specific, no hype. Never invent a product or a number; if you don't know, say what",
+      "to read on the label instead.",
+      "",
+      "Finish: " + f.name + ", " + o.coats + " coats per side" + (o.sides > 1 ? ", both sides, bottom first" : ", top only") + ".",
+      "Recoat window I'm using: " + o.recoat + " hours" + (o.mult > 1 ? " (times 1.5, cold or humid shop)" : "") + ".",
+      "It has to be in use by " + when(o.need) + ". Coat one is scheduled " + when(last.p.coats[0].at) + ".",
+      "The piece: [what it is, the wood, what will sit on it]",
+      "What my can says: [paste the dry, recoat and cure lines from the label]",
+      "Where it dries: [temperature, humidity, dust]",
+      "",
+      "Do this, in order:",
+      "1. Compare my window to the can's and tell me which number to use.",
+      "2. Tell me the one thing most likely to ruin the last coat in my setup, and how to avoid it.",
+      "3. Name the applicator you'd use for this finish on this piece, and how thin a coat is.",
+      "4. Tell me when it's safe to set the first thing on it, and when it's safe to drag something across it.",
+      "",
+      "Keep the whole thing under one page.",
+      "",
+      "(Built with The Last Coat — @nicksdadhax)"
+    ].join("\n");
+    copyText(text, "Prompt copied — paste it into the AI you already use.");
+  });
+  $("resetBtn").addEventListener("click", function () {
+    inputs.forEach(function (el) { el.value = ""; });
+    state = { finish: "oil", sides: 2, cold: false };
+    setZone(Object.keys(FIN_BTN), "fOil"); setZone(["sTop", "sAll"], "sAll"); setZone(["wWarm", "wCold"], "wWarm");
+    try { sessionStorage.removeItem(KEY); } catch (e) {}
+    $("need").value = iso(nextSaturday());
+    refresh(); said.textContent = "Cleared. Pick your finish."; window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  load(); refresh();
+  window.__lastCoat = { plan: plan, forward: forward, latest: latest, FINISH: FINISH };   // for the engine check
+})();
+</script>
+
+</body>
+</html>
