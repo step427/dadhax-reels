@@ -3354,6 +3354,40 @@
       "topic_class": "utility",
       "source_raw": "PXL_20261010_192328531.mp4",
       "cover_ms": 1000
+    },
+    {
+      "file": "ig-1013-pb.mp4",
+      "title": "Pre-drill the pressboard: four steps before a screw",
+      "status": "pending",
+      "earliest": "2026-10-16",
+      "caption": "Hey Dad,\n\nPressboard trim busts if you look at it wrong. Pre-drill every screw.\n\n1. Pre-drill. The glued-up stuff splits the second a screw bites without a hole.\n2. Start the hole with a punch so the bit doesn't walk. Mine came in a bit kit for about $10.\n3. The end screw has to go in at 45 to reach the stud. Start it straight, then tip the drill over.\n4. Countersink so the head sits flush. Overkill, maybe, but you own one.\n\n(The top this cleat holds got 220 between coats. Light, with the grain.)\n\nSend this to the dad screwing trim into pressboard this weekend.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "Fri 10/16 9a",
+      "pix": "P",
+      "value_forms": [
+        "implementation",
+        "idea"
+      ],
+      "sam_verdict": "POST 2026-10-13",
+      "topic_class": "utility",
+      "source_raw": "PXL_20261010_181918849.mp4",
+      "cover_ms": 3700
+    },
+    {
+      "file": "ig-yt-mower.mp4",
+      "title": "The mower that folds: battery mower, out of the box",
+      "status": "pending",
+      "earliest": "2026-10-14",
+      "caption": "Hey Dad,\n\nFirst battery mower in the garage. What comes out of the box, in one look:\n\nOne-touch folding handle. Two 20V 10Ah batteries. Dual blade. Power drive. Single-lever deck height. Mulch plug, side chute, or the bagger.\n\nNo gas can and no pull cord, and the handle folds in one touch when you're done.\n\n(The countertop got 220 between coats this week. The mower got its handle folded.)\n\nFollow and the next one finds you.\n\nThanks, Dad. I love you, Dad.",
+      "arc_slot": "Fri 10/16 6p (catalog_pick top pick)",
+      "pix": "P",
+      "value_forms": [
+        "entertainment",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-10-13",
+      "topic_class": "utility",
+      "source_raw": "yt:cJxewMCpnhg",
+      "cover_ms": 1000
     }
   ]
 }
