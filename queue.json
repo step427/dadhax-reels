@@ -3360,7 +3360,7 @@
       "title": "Pre-drill the pressboard: four steps before a screw",
       "status": "pending",
       "earliest": "2026-10-16",
-      "caption": "Hey Dad,\n\nPressboard trim busts if you look at it wrong. Pre-drill every screw.\n\n1. Pre-drill. The glued-up stuff splits the second a screw bites without a hole.\n2. Start the hole with a punch so the bit doesn't walk. Mine came in a bit kit for about $10.\n3. The end screw has to go in at 45 to reach the stud. Start it straight, then tip the drill over.\n4. Countersink so the head sits flush. Overkill, maybe, but you own one.\n\n(The top this cleat holds got 220 between coats. Light, with the grain.)\n\nSend this to the dad screwing trim into pressboard this weekend.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "caption": "Hey Dad,\n\nPressboard trim busts if you look at it wrong. Pre-drill every screw.\n\n1. Pre-drill. The glued-up stuff splits the second a screw bites without a hole.\n2. Start the hole with a punch so the bit doesn't walk. Mine came in a bit kit for about $10.\n3. The end screw has to go in at 45 to reach the stud. Start it straight, then tip the drill over. Aim for the middle of the stud, not its edge.\n4. Countersink so the head sits flush, or the face crowns around the screw.\n\n(The top this cleat holds got 220 between coats. Light, with the grain.)\n\nSend this to the dad screwing trim into pressboard this weekend.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels\n",
       "arc_slot": "Fri 10/16 9a",
       "pix": "P",
       "value_forms": [
@@ -3370,7 +3370,8 @@
       "sam_verdict": "POST 2026-10-13",
       "topic_class": "utility",
       "source_raw": "PXL_20261010_181918849.mp4",
-      "cover_ms": 3700
+      "cover_ms": 3700,
+      "_note": "silva 10/13 FIX (caption): countersink is trade standard on pressboard, aim for the stud's middle; applied after queue."
     },
     {
       "file": "ig-yt-mower.mp4",
@@ -3388,6 +3389,23 @@
       "topic_class": "utility",
       "source_raw": "yt:cJxewMCpnhg",
       "cover_ms": 1000
+    },
+    {
+      "file": "ig-1013-tape.mp4",
+      "title": "Painter's tape on the roller, before the poly",
+      "status": "pending",
+      "earliest": "2026-10-14",
+      "caption": "Hey Dad,\n\nPainter's tape has a job on a finish before it ever makes a line.\n\n1. Wrap the roller in tape and peel it off, like a lint roller. The fuzz ends up on the tape instead of in your poly.\n2. Buy the cheap off-brand roll for this. You don't need a crisp edge. You need sticky, and easy to pull.\n3. Save the expensive tape for paint lines, where the edge is the whole point.\n\n(Between coats: 220, light, with the grain.)\n\nSave this for your next roller job.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "Wed 10/14 1p",
+      "pix": "P",
+      "value_forms": [
+        "implementation",
+        "idea"
+      ],
+      "sam_verdict": "POST 2026-10-13",
+      "topic_class": "utility",
+      "source_raw": "PXL_20261010_193446874.mp4",
+      "cover_ms": 0
     }
   ]
 }
