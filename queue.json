@@ -3418,6 +3418,40 @@
       "topic_class": "utility",
       "source_raw": "PXL_20261010_193446874.mp4",
       "cover_ms": 0
+    },
+    {
+      "file": "ig-yt-hose.mp4",
+      "title": "The hose that puts itself away: Vevor automatic reel",
+      "status": "pending",
+      "earliest": "2026-10-15",
+      "caption": "Hey Dad,\n\nThe hose that puts itself away. Vevor hose and automatic reel, set up beside the house.\n\nWalk it out across the yard, and the reel winds it back in.\n\nThere's one of these every day. Follow so you're getting them.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "Sat 10/17 1p catalog (catalog_pick top pick)",
+      "pix": "P",
+      "value_forms": [
+        "implementation",
+        "entertainment"
+      ],
+      "sam_verdict": "POST 2026-10-14",
+      "topic_class": "utility",
+      "source_raw": "yt:BNrr2N1dpVo",
+      "cover_ms": 1000
+    },
+    {
+      "file": "ig-yt-bora.mp4",
+      "title": "Bora Speedhorse XT: 30-36 in, 2x4 arms, folds flat",
+      "status": "pending",
+      "earliest": "2026-10-15",
+      "caption": "Hey Dad,\n\nBora Speedhorse XT, out of the box.\n\nThe legs adjust from 30 to 36 inches, and the top takes 2x4 supports, so you can lay 2x4s across a pair for a work table. Then each one folds flat.\n\nSave this before you buy sawhorses.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "Sun 10/18 9a catalog",
+      "pix": "P",
+      "value_forms": [
+        "implementation",
+        "idea"
+      ],
+      "sam_verdict": "POST 2026-10-14",
+      "topic_class": "utility",
+      "source_raw": "yt:PeKAGjtz57o",
+      "cover_ms": 500
     }
   ]
 }
