@@ -3533,6 +3533,70 @@
       "topic_class": "utility",
       "source_raw": "PXL_20261011_152836988.mp4",
       "cover_ms": 0
+    },
+    {
+      "file": "ig-1015-template.mp4",
+      "kind": "new",
+      "status": "pending",
+      "earliest": "2026-10-16",
+      "title": "Tape or laser? Use the tape as the template",
+      "caption": "Hey Dad,\n\nMy laser said 50 9/16. My tape said 50 1/4. Same opening, two answers, 5/16 apart.\n\nSo I didn't use either number. I made the tape itself the template.\n\n1. Lock the tape in the gap. My 1/2\" spacer stands in for the cover panel that goes on the other side. Run the tape across to the spacer and lock it.\n2. Carry the locked tape to the panel, hook on the edge, and mark where the back of the case lands. Nothing to read, nothing to add.\n3. Square the line across.\n4. Foam under the whole panel, so the cut can't close and pinch the blade.\n5. Tape on the cut line, fresh blade. My saw's shoe sits 1 1/2\" off the blade, so the guide clamps 1 1/2\" off the line. Measure yours. Cut, then pull the tape.\n6. Test fit. Mine went in tight.\n\nCut to the laser number and this panel is 5/16 too long.\n\nSave this for your next cover panel. Send it to the DIYer who does tape math in his head.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "cover_ms": 0,
+      "topic_class": "utility",
+      "source_raw": "PXL_20261014_142235242.mp4",
+      "arc_slot": "OFF-ARC cover",
+      "pix": "P",
+      "value_forms": [
+        "implementation",
+        "idea"
+      ],
+      "sam_verdict": "POST 2026-10-15",
+      "cut_by": "cloud session 2026-10-15 (Rook captures/2026-10-15-mudroom-cabinet-reels.md); spec captures/_tools/cloud-cut/edls/ig-1015-template.spec.json",
+      "nav_safe": true,
+      "_note": "Mudroom cover panel how-to, 59.1s, 6 chips + nail-gun pop, save/send over result hold. Reviewed by Ralston/Hormozi lenses + silva (caption FIX applied: 1 1/2in guide offset, mark where the CASE ends, laser line reworded) + Sam (POST r3). Kid on camera at raw ~112-116s is outside every span. A/B alt hook: 5/16 APART. TRUST WHICH? / Neither. The tape is the template."
+    },
+    {
+      "file": "ig-1015-doors.mp4",
+      "kind": "new",
+      "status": "pending",
+      "earliest": "2026-10-16",
+      "title": "Hung the doors early so it looked like progress",
+      "caption": "Hey Dad,\n\nI hung these doors last weekend, before the cabinet was ready. I got antsy and wanted something that looked finished, so it would feel like progress.\n\nNow they come off and go back on every time I need inside.\n\nLooking finished and being finished are two different jobs. Boxes and panels first. Doors last.\n\nThe one good part: these hinges clip on. Hook the peg, click, click. No tools.\n\nFollow for the rest of this mudroom build. It's not done yet.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "cover_ms": 0,
+      "topic_class": "talk",
+      "source_raw": "PXL_20261014_142235242.mp4",
+      "arc_slot": "OFF-ARC cover (theme-adjacent: looks finished is not finished)",
+      "pix": "I",
+      "value_forms": [
+        "entertainment",
+        "idea"
+      ],
+      "sam_verdict": "POST 2026-10-15",
+      "cut_by": "cloud session 2026-10-15 (Rook captures/2026-10-15-mudroom-cabinet-reels.md); spec captures/_tools/cloud-cut/edls/ig-1015-doors.spec.json",
+      "nav_safe": true,
+      "_note": "Confession + clip-hinge demo + door-shuts-on-camera gag, 21.4s. Hold beat = hinge demo 10.3-17.4 (Sam). Karaoke reads LAST WEEKEND (2 of 4 models; RMS shows 2nd syllable). Follow band: THE MUDROOM BUILD. silva BUILD."
+    },
+    {
+      "file": "ig-1015-fingertips.mp4",
+      "kind": "new",
+      "status": "pending",
+      "earliest": "2026-10-17",
+      "title": "A PT's final fit check: trust your fingertips",
+      "caption": "Hey Dad,\n\nThe tape says it's even. Your eye says it's even. Put your hand on it anyway.\n\nI'm a physical therapist, about 10 years studying the nervous system. One thing from my neuro rehab course stuck with me: your fingertips are ridiculously good at feeling a difference. When one face sits proud of the other, you'll feel it before you see it. (The research backs this up. People can feel a ledge a few microns tall by sliding a fingertip across it. A 32nd of an inch is about 800 microns.)\n\nSo the last check on a fit is a feel.\n\nTrust your body. I teach that to people every day. It's sending you data. Most of us just don't listen.\n\nI post the one I wish somebody had told me. Every day. Follow, it's free.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "cover_ms": 0,
+      "topic_class": "talk",
+      "source_raw": "PXL_20261014_144546446.mp4",
+      "arc_slot": "OFF-ARC cover",
+      "pix": "X",
+      "value_forms": [
+        "idea",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-10-15",
+      "cut_by": "cloud session 2026-10-15 (Rook captures/2026-10-15-mudroom-cabinet-reels.md); spec captures/_tools/cloud-cut/edls/ig-1015-fingertips.spec.json",
+      "nav_safe": true,
+      "hypothesis": "If a reel leads with Nick's PT credential applied to his own build, then its saves+shares per view beat the talk median, because no other DIY account can make it (Ralston lens: 'this is Nick's lane').",
+      "_note": "24.4s. Cut as unverifiable/false: '90% accuracy', 'more accurate than measuring instruments'. Eyes-closed demo cut (position sense, visibly missed; silva + Hormozi lens). Fact-checked 10/15: fingertip step threshold ~1.35-2 um (Seoul Tech), 1/32in = ~794 um. Kids' names/audio in this raw sit at ~21:50-35:30, outside every span."
     }
   ]
 }
