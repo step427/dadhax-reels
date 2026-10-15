@@ -119,7 +119,7 @@ Mostly Nick posting by hand at whatever hour he was free, going back to 2024. Us
 | 20:00 | 57 | 0.0 | 1.2 | 16 |
 | 21:00 | 24 | 0.0 | 2.8 | 33 |
 | 22:00 | 19 | 1.0 | 2.9 | 42 |
-| 23:00 | 13 | 2.0 | 4.3 | 35 |
+| 23:00 | 13 | 2.0 | 4.4 | 35 |
 
 | Day | Posts | Median | Mean | Best |
 |---|---|---|---|---|

@@ -6,10 +6,10 @@ _Written by `publisher/craft_report.py` on **2026-10-15** from **211** posted re
 
 ## Levers, biggest first
 
-1. **duration** — **LEVER** — favour **under 20s**, 36 pts over over 70s; views agree. under 20s 49% (n=79) · 20-35s 31% (n=54) · 35-50s 26% (n=42) · 50-70s 19% (n=24) · over 70s 13% (n=12). Retention falls at EVERY step longer: cut to the number, not the material.
-2. **topic** — **LEVER** — favour **utility**, 15 pts over talk; views agree. utility 44% (n=110) · meta 29% (n=10) · talk 28% (n=91)
-3. **fresh/catalog** — **LEVER** — favour **back-catalog**, 12 pts over fresh; views agree. back-catalog 44% (n=67) · fresh 32% (n=144)
-4. **cover** — **NO LEVER** — 3 pts is noise; spend no effort here. custom cover 37% (n=120) · default cover 33% (n=91)
+1. **duration** — **LEVER** — favour **under 20s**, 36 pts over over 70s; views agree. under 20s 49% (n=79) · 20-35s 31% (n=54) · 35-50s 27% (n=42) · 50-70s 19% (n=24) · over 70s 13% (n=12). Retention falls at EVERY step longer: cut to the number, not the material.
+2. **topic** — **LEVER** — favour **utility**, 16 pts over talk; views agree. utility 44% (n=110) · meta 29% (n=10) · talk 28% (n=91)
+3. **fresh/catalog** — **LEVER** — favour **back-catalog**, 12 pts over fresh; views agree. back-catalog 44% (n=67) · fresh 31% (n=144)
+4. **cover** — **NO LEVER** — 4 pts is noise; spend no effort here. custom cover 38% (n=120) · default cover 33% (n=91)
 5. **collab** — **TOO THIN** — not enough posts on both sides to act on. collab 37% (n=6, thin) · solo 35% (n=205)
 
 **Standing exception — hands-and-tools how-tos run 35-60s** (Nick, 2026-10-05). The duration lever above is % watched; for utility, watch seconds grow with length. Rules: Rook `_Skills/reel-loop.md` §3a.
