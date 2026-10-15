@@ -348,6 +348,23 @@ def claim_next(q, prefer_old):
     run used to leave an item wedged in 'staging' until a timeout reclaimed it).
     """
     pending = _by_topic([i for i in q["items"] if i.get("status") == "pending"])
+    # BUILD-QUEUE #24(f): once reel_gate.ENFORCE is flipped, a row missing a
+    # gate field is skipped and named in the run log. If NO pending row passes,
+    # post anyway and say so -- a gap costs the three-a-day contract, a
+    # fieldless reel only costs a count.
+    import reel_gate
+    if reel_gate.ENFORCE:
+        passing = []
+        for i in pending:
+            fails = reel_gate.check_row(i)
+            if fails:
+                log(f"REEL GATE skip {i['file']}: " + "; ".join(fails))
+            else:
+                passing.append(i)
+        if passing:
+            pending = passing
+        elif pending:
+            log("REEL GATE: no pending row passes -- posting anyway, never a gap")
     for item in pending:
         if is_old(item) == prefer_old:
             return item
