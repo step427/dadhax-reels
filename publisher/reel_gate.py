@@ -14,9 +14,9 @@ and the publisher is that point -- it runs on GitHub with no session.
     value_forms   exactly 2 of entertainment / idea / implementation
     sam_verdict   "POST YYYY-MM-DD" -- a recorded director verdict
 
-ROLLOUT: WARN-ONLY. publish.py --status prints a count and posts regardless,
-same rollout as the topic-mix check. Flipping the publisher to skip-and-report
-is a separate, deliberate change (ENFORCE below), not a date that trips on its
+ROLLOUT: ENFORCED since 2026-10-16 (warn-only 9/16-10/15). claim_next skips a
+failing row and logs REEL GATE skip; if no pending row passes it posts anyway.
+The flip was a deliberate change (ENFORCE below), not a date that trips on its
 own -- a gate that silently empties the queue breaks three-a-day, which is the
 one thing that does not get traded.
 
@@ -33,7 +33,7 @@ import sys
 from datetime import date
 from pathlib import Path
 
-ENFORCE = False          # flip only on purpose; publish.py stays warn-only until then
+ENFORCE = True           # flipped 2026-10-16 (BUILD-QUEUE #24f): cover 3.0d, 9 of 9 pass; False = warn-only again
 ARC_MAX_AGE_DAYS = 8
 PIX = {"P", "I", "X"}
 VALUE_FORMS = {"entertainment", "idea", "implementation"}
