@@ -3546,7 +3546,7 @@
     {
       "file": "ig-1015-template.mp4",
       "kind": "new",
-      "status": "pending",
+      "status": "posted",
       "earliest": "2026-10-16",
       "title": "Tape or laser? Use the tape as the template",
       "caption": "Hey Dad,\n\nMy laser said 50 9/16. My tape said 50 1/4. Same opening, two answers, 5/16 apart.\n\nSo I didn't use either number. I made the tape itself the template.\n\n1. Lock the tape in the gap. My 1/2\" spacer stands in for the cover panel that goes on the other side. Run the tape across to the spacer and lock it.\n2. Carry the locked tape to the panel, hook on the edge, and mark where the back of the case lands. Nothing to read, nothing to add.\n3. Square the line across.\n4. Foam under the whole panel, so the cut can't close and pinch the blade.\n5. Tape on the cut line, fresh blade. My saw's shoe sits 1 1/2\" off the blade, so the guide clamps 1 1/2\" off the line. Measure yours. Cut, then pull the tape.\n6. Test fit. Mine went in tight.\n\nCut to the laser number and this panel is 5/16 too long.\n\nSave this for your next cover panel. Send it to the DIYer who does tape math in his head.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
@@ -3562,7 +3562,10 @@
       "sam_verdict": "POST 2026-10-15",
       "cut_by": "cloud session 2026-10-15 (Rook captures/2026-10-15-mudroom-cabinet-reels.md); spec captures/_tools/cloud-cut/edls/ig-1015-template.spec.json",
       "nav_safe": true,
-      "_note": "Mudroom cover panel how-to, 59.1s, 6 chips + nail-gun pop, save/send over result hold. Reviewed by Ralston/Hormozi lenses + silva (caption FIX applied: 1 1/2in guide offset, mark where the CASE ends, laser line reworded) + Sam (POST r3). Kid on camera at raw ~112-116s is outside every span. A/B alt hook: 5/16 APART. TRUST WHICH? / Neither. The tape is the template."
+      "_note": "Mudroom cover panel how-to, 59.1s, 6 chips + nail-gun pop, save/send over result hold. Reviewed by Ralston/Hormozi lenses + silva (caption FIX applied: 1 1/2in guide offset, mark where the CASE ends, laser line reworded) + Sam (POST r3). Kid on camera at raw ~112-116s is outside every span. A/B alt hook: 5/16 APART. TRUST WHICH? / Neither. The tape is the template.",
+      "permalink": "https://www.instagram.com/reel/Dek6Q5VDSsb/",
+      "posted_at": "2026-10-16T20:19:07-05:00",
+      "fb_page_video_id": "2561136447731466"
     },
     {
       "file": "ig-1015-doors.mp4",
