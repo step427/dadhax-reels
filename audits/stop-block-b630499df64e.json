@@ -1,0 +1,21 @@
+{
+ "page": "stop-block.html",
+ "sha": "b630499df64e",
+ "verdict": "PASS WITH WARNINGS",
+ "fail": [],
+ "warn": [
+  "LONG: 7.7 phone screens of scroll.",
+  "DENSE: 1086 words. A free sheet nobody finishes is the same as no sheet."
+ ],
+ "stats": {
+  "viewport": "375x812",
+  "charsPerLine": 35,
+  "words": 1086,
+  "pageHeightPx": 6274,
+  "screens": 7.7,
+  "longestBlockWords": 0,
+  "links": 9
+ },
+ "fills": {},
+ "audited": "2026-10-18T12:50:17+00:00"
+}
