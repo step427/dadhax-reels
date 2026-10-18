@@ -3702,6 +3702,38 @@
       "sam_verdict": "POST 2026-10-18",
       "topic_class": "utility",
       "source_raw": "yt:wBxfr25Ni9g"
+    },
+    {
+      "file": "ig-1018-measure.mp4",
+      "title": "Same wall, four numbers: shoot it again until it repeats",
+      "status": "pending",
+      "earliest": "2026-10-19",
+      "caption": "Hey Dad,\n\nSame wall, same laser, and I still got four different numbers.\n\nSame basement wall, almost 49 feet long: 591, then 583-1/16, then 587-3/16. I double-checked the laser's setting, put its back flat against the wall, and it settled on 584 and change, three times running.\n\nThat's the number. Shoot it again until it repeats. When it won't, average it.\n\n(Toilet center to a side wall needs 15 inches. Get the long wall right first.)\n\nSave this for the day you draw your floor plan.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "Mon 10/19 6p",
+      "pix": "P",
+      "value_forms": [
+        "entertainment",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-10-18",
+      "topic_class": "utility",
+      "source_raw": "PXL_20261016_171613288.mp4"
+    },
+    {
+      "file": "ig-1018-xy.mp4",
+      "title": "Two numbers for every pipe: pin the toilet stack before you frame",
+      "status": "pending",
+      "earliest": "2026-10-21",
+      "caption": "Hey Dad,\n\nYou can't move a pipe in the slab without a jackhammer, so pin it down before you draw a single wall.\n\nEvery fixed point gets two numbers: center of the pipe to one wall, and center of the pipe to the wall running the other way. That's X and Y on your sketch.\n\nMy toilet stack: 19-3/4 to the under-stairs wall, 146-5/16 to the gym wall. Most codes want at least 15 inches from toilet center to the finished wall. Mine reads 19-3/4 to bare concrete, so framing and drywall have to fit in that 4-3/4.\n\nSend this to the dad framing his basement.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "Wed 10/21 9a",
+      "pix": "P",
+      "value_forms": [
+        "idea",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-10-18",
+      "topic_class": "utility",
+      "source_raw": "PXL_20261016_192240906.mp4"
     }
   ]
 }
