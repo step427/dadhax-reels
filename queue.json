@@ -3670,7 +3670,7 @@
     {
       "file": "ig-1016-basement-drawers.mp4",
       "title": "Hidden drawers in the dead space under the stairs (concept, nothing built)",
-      "status": "pending",
+      "status": "posted",
       "earliest": "2026-10-17",
       "caption": "Hey Dad,\n\nThe space under our basement stairs is the classic dead zone. It's clunky to reach into, and everything behind the shelf is wasted.\n\nSo I asked Claude to put drawers into the stair wall, made to look like the wainscoting, and they push to open. The space back there turns into storage you can actually reach.\n\nIt's a first pass on a 3D model of our basement. Nothing's built yet.\n\nShare this with the guy who has a junk pile under his stairs.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
       "arc_slot": "RUSH 2026-10-16 off-arc",
@@ -3682,7 +3682,10 @@
       "sam_verdict": "POST 2026-10-16",
       "topic_class": "utility",
       "source_raw": "PXL_20261016_205104504.mp4",
-      "hypothesis": "Concept render, nothing built: does a utility idea shown only in a 3D model hold like built-utility reels?"
+      "hypothesis": "Concept render, nothing built: does a utility idea shown only in a 3D model hold like built-utility reels?",
+      "permalink": "https://www.instagram.com/reel/DeoPTU-jvUL/",
+      "posted_at": "2026-10-18T03:20:22-05:00",
+      "fb_page_video_id": "28702280576095760"
     }
   ]
 }
