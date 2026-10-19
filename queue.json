@@ -3788,7 +3788,7 @@
       "title": "Bump-out or one straight wall? Decide it on paper",
       "status": "hold",
       "earliest": "2026-10-24",
-      "caption": "Hey Dad,\n\nYou can argue a wall on paper for free. Once it's framed, it costs you.\n\nMy sketch has a little bump-out on the bathroom wall. I like it, it gives the room some texture. I'm also questioning whether one straight wall is simpler. That's a three-quarter bath somewhere around 10 or 12 by 6-1/2, and I'd rather keep it small but comfortable.\n\nDraw both versions. Pick before the first stud goes up.\n\n(Whichever wall wins, the toilet still needs 15 inches from center to the side wall.)\n\nFollow for the rest of this basement, drawn before it's framed.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "caption": "Hey Dad,\n\nYou can argue a wall on paper for free. Once it's framed, it costs you.\n\nMy sketch has a little bump-out on the bathroom wall. I like it, it gives the room some texture. I'm also questioning whether one straight wall is simpler. My first guess was a three-quarter bath around 10 or 12 by 6-1/2. The plan came out closer to 11-1/2 by 4-1/2, and I'd rather keep it small but comfortable. The model kept the bump-out: the bath runs about 27 inches past the bedroom wall.\n\nDraw both versions. Pick before the first stud goes up.\n\n(Whichever wall wins, the toilet still needs 15 inches from center to the side wall.)\n\nThe overhead is the 3D model. Nothing's built yet.\n\nRun both versions through The Fit Check before you pick: step427.github.io/dadhax-reels/fit-check.html\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
       "arc_slot": "Sat 10/24 9a",
       "pix": "P",
       "value_forms": [
@@ -3798,7 +3798,7 @@
       "sam_verdict": "POST 2026-10-19",
       "topic_class": "utility",
       "source_raw": "PXL_20261016_174712269.mp4",
-      "_note": "10/19: HOLD. 3D-payoff recut pending Sam confirm; new ask points at fit-check.html, which ships Tue 10/20. Flip to pending only with the new file + caption and the page live."
+      "_note": "10/19: HOLD. Swapped to the 3D-payoff cut (overhead, IN THE MODEL: THE BUMP-OUT) + Fit Check ask (Sam r3 wording, applied verbatim). Flip to pending once step427.github.io/dadhax-reels/fit-check.html loads (ships Tue 10/20)."
     },
     {
       "file": "ig-1019-edges.mp4",
@@ -3815,6 +3815,112 @@
       "sam_verdict": "POST 2026-10-19",
       "topic_class": "utility",
       "source_raw": "PXL_20261010_173705897.mp4"
+    },
+    {
+      "file": "ig-1019-thirds.mp4",
+      "title": "Split a board in thirds, no math: tilt the tape to a number 3 divides",
+      "status": "pending",
+      "earliest": "2026-10-20",
+      "caption": "Hey Dad,\n\nYou can split a board into equal thirds without doing the math.\n\nMy butcher block offcut was 16-3/8 wide. Try dividing that by three in your head. Instead, lay the tape across the board at an angle until a number that divides by 3 lands on the far edge. I used 18. Mark at 6 and 12. Those marks are your thirds.\n\nTilted, the tape hook only touches the board at one corner. Use that same side of the tape for everything: the 18 on the far edge and your 6 and 12 marks.\n\nI mark with a little V: one line along the tape, one across it. The point where they meet is the mark.\n\nThe blade eats a little at every cut, so I set my fence a little short of the mark, at 5-3/8.\n\nSave this for the next board you split.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "Thu 10/22 6p",
+      "pix": "P",
+      "value_forms": [
+        "idea",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-10-19",
+      "topic_class": "utility",
+      "source_raw": "PXL_20261019_164919710.mp4"
+    },
+    {
+      "file": "ig-1019-pencil.mp4",
+      "title": "Drill sharpener died? Put the pencil in the chuck",
+      "status": "pending",
+      "earliest": "2026-10-20",
+      "caption": "Hey Dad,\n\nYou don't need the drill attachment to sharpen a pencil with a drill. Mine has failed me more than once.\n\nFlip it around. Chuck the pencil in the drill, hold a small hand sharpener, and give it a few spins. You get more control, and it gets you there a little quicker. The tip still broke on me, so go easy. I finish the last couple of turns by hand because I like a super sharp point.\n\nI think mine's an old makeup pencil sharpener. I like those better than a regular one.\n\nSend this to the dad whose drill sharpener died.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "Fri 10/23 6p",
+      "pix": "P",
+      "value_forms": [
+        "implementation",
+        "entertainment"
+      ],
+      "sam_verdict": "POST 2026-10-19",
+      "topic_class": "utility",
+      "source_raw": "PXL_20261019_164618281.mp4"
+    },
+    {
+      "file": "ig-1019-groom.mp4",
+      "title": "Why I shave in the garage (and no more 'I didn't hear you')",
+      "status": "hold",
+      "earliest": "2026-10-20",
+      "caption": "Hey Dad,\n\nYou can shave in the garage and clean up with the leaf blower. That's my whole reason.\n\nThen the nose trimmer. Turn it on and it clips the hair close. Works on ear hair too.\n\nNow I have no excuse when I say I didn't hear you.\n\nSend this to the dad who \"didn't hear you.\"\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "OFF-ARC talk (HOLD: TALK-HEAVY)",
+      "pix": "I",
+      "value_forms": [
+        "entertainment",
+        "idea"
+      ],
+      "sam_verdict": "POST 2026-10-19",
+      "topic_class": "talk",
+      "source_raw": "PXL_20261019_172913720.mp4",
+      "_note": "10/19: HOLD for TALK-HEAVY (Sam r3 POST). Flip to pending when talk+meta is under half of pending, or on Nick's yes."
+    },
+    {
+      "file": "ig-1019-water.mp4",
+      "title": "Life is like trying to hold water",
+      "status": "hold",
+      "earliest": "2026-10-20",
+      "caption": "Hey Dad,\n\nI've been listening to a book on Alan Watts on my drive, and it keeps coming back to wu wei. The way I'm taking it: don't fight the friction, know that things flow. Water doesn't keep beating its head against the same wall. It flows around, and it's stronger for it.\n\nHere's the line I keep coming back to: life is like trying to hold water. Squeeze and it slips out. Open your hand and it still might slip by, and that's okay. You still get time to admire it and move on.\n\nName one thing you're squeezing too tight this week.\n\nFollow for the books I'm still chewing on.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "OFF-ARC talk (HOLD: TALK-HEAVY)",
+      "pix": "I",
+      "value_forms": [
+        "idea",
+        "entertainment"
+      ],
+      "sam_verdict": "POST 2026-10-19",
+      "topic_class": "talk",
+      "source_raw": "PXL_20261019_171533234.mp4",
+      "_note": "10/19: HOLD for TALK-HEAVY (Sam r3 POST). Flip to pending when talk+meta is under half of pending, or on Nick's yes."
+    },
+    {
+      "file": "ig-1019-xy3d.mp4",
+      "title": "Two numbers for every pipe, then the 3D model (recut of ig-1018-xy)",
+      "status": "hold",
+      "earliest": "2026-10-26",
+      "caption": "Hey Dad,\n\nYou can't move a pipe in the slab, so pin it down before you draw a single wall.\n\nEvery pipe gets two numbers: center of the pipe to one wall, and center to the wall running the other way. My toilet drain is 19-3/4 to the wall behind it and 146-5/16 to the gym wall. That's X and Y.\n\nTwo tape numbers put the toilet on the plan. I gave Claude those and every wall I measured, and the 3D model put the toilet right on the drain. Nothing's built yet.\n\nThe useful part: that 19-3/4 is to bare concrete behind the toilet. Rough-in is measured from the finished wall to the center of the drain, so foam, studs and drywall come off the top, 4-1/2 to 6 inches depending on the foam. That puts mine somewhere around 13-3/4 to 15-1/4, not a standard 12 either way. So the wall gets decided first, then I measure again from the finished face and buy the toilet to that number. (The 15-inch rule is different: toilet center to the side wall or the shower glass.)\n\nSend this to the dad about to buy his basement toilet.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "RECUT catalog (HOLD to 10/26+: protect the parent's 7-day read)",
+      "pix": "X",
+      "value_forms": [
+        "idea",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-10-19",
+      "topic_class": "utility",
+      "source_raw": "PXL_20261016_192240906.mp4",
+      "hypothesis": "If the pipe measurements end on the 3D model they became (Nick 10/19: turn this into this), then saves + sends per 1k reach beat the parent, because the payoff gives a reason to keep it",
+      "recut_of": "ig-1018-xy.mp4",
+      "kind": "old",
+      "_note": "10/19: HOLD to Mon 10/26+ (Sam: protect the parent ig-1018-xy 7-day read; the recut shares 16s of footage). Matched pair: same EDL, 3D payoff added."
+    },
+    {
+      "file": "ig-1019-furnace3d.mp4",
+      "title": "Leave room for the furnace swap, with the 3D payoff (recut of ig-1019-furnace)",
+      "status": "hold",
+      "earliest": "2026-10-26",
+      "caption": "Hey Dad,\n\nYou'll replace that furnace someday, so don't wall it in like you won't.\n\nMy basement plan keeps a big opening on the utility room: framed in a little on each side, then sliding barn doors made to look like built-in shelves. Day to day it reads as a wall. The day the furnace dies, the doors slide and the HVAC crew has a wide, open path.\n\nAsk your HVAC tech two things before you frame that wall: how much room a swap needs, and whether your furnace and water heater are sealed-combustion. If either one burns room air, a closed-off utility room needs combustion-air openings sized by code. The gaps around a barn door don't count.\n\nLoaded shelf-doors get heavy, more than a lot of barn-door kits are rated for. Weigh one loaded, buy hardware rated past that, and hang the track on framing that carries down to the floor. Not on drywall, and not on floor trusses without the truss maker's OK.\n\n(Same idea in the bathroom: a toilet needs 15 inches from its center to the side wall. Plan clearances on paper first.)\n\nThe shelf-door shots are the 3D model. Nothing's built yet.\n\nShow this to your HVAC tech before you frame.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "RECUT catalog (HOLD to 10/26+: protect the parent's 7-day read)",
+      "pix": "X",
+      "value_forms": [
+        "implementation",
+        "idea"
+      ],
+      "sam_verdict": "POST 2026-10-19",
+      "topic_class": "utility",
+      "source_raw": "PXL_20261016_185757458.mp4",
+      "hypothesis": "If the same furnace-access cut ends on the 3D model (doors slide open, FURNACE labelled) instead of the real room, then saves + sends per 1k reach beat the parent, because Nick's 10/19 note says the payoff is the value",
+      "recut_of": "ig-1019-furnace.mp4",
+      "kind": "old",
+      "_note": "10/19: HOLD to Mon 10/26+. Parent ig-1019-furnace (v1, no 3D) posted 10/19 17:28 before the swap; this is the 3D-payoff version. Clean A/B on Nick's note."
     }
   ]
 }
