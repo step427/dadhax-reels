@@ -712,7 +712,7 @@ Nick's own words only: raws `PXL_20261016_171613288` (laser walk; 591 → 583 �
 shower?"); the dek's "15½ inches from the shower glass. That clears 15 by half an inch" is the toilet-to-glass
 side clearance on his plan (Build-Packs\Basement\_PICKUP.md, Silva fix 10/17). FIXED 10/19 (Sam): the dek used to
 compare his 19¾ to the 15 rule, but 19¾ (`192240906`) is drain to the wall BEHIND the toilet, the rough-in
-(about 14 after foam, studs and drywall), not the side clearance. Never compare 19¾ to 15. Links only (posted `ig-1016-basement-drawers`). The HVAC-room lesson traces to a
+(13-3/4 to 15-1/4 depending on the foam, so the toilet is bought after the wall is decided), not the side clearance. Never compare 19¾ to 15. Links only (posted `ig-1016-basement-drawers`). The HVAC-room lesson traces to a
 family member and is not on the page. No address, no family.
 
 **Launch reel (S7 path 3):** sub-20s cut of `PXL_20261016_174712269` (0:54 radon vent "captured inside
