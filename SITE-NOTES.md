@@ -709,19 +709,20 @@ Sources, numbers verified 10/18 against ICC/IPC text quotes and county egress ha
 for R304/R305; the page prints the edition and "your building department wins"). Story beat is
 Nick's own words only: raws `PXL_20261016_171613288` (laser walk; 591 → 583 → 587 → 584⅝ averaged),
 `174712269` ("I don't know what's standard here"), `185757458` ("three feet, what's a normal
-shower?"); the dek's "19¾ inches to the wall today; whether that clears 15 depends on where the finished
-wall lands" is his drain-to-wall measurement from `192240906` (silva: to concrete it could finish
-near 14, so the page never claims it passes). Links only (posted `ig-1016-basement-drawers`). The HVAC-room lesson traces to a
+shower?"); the dek's "15½ inches from the shower glass. That clears 15 by half an inch" is the toilet-to-glass
+side clearance on his plan (Build-Packs\Basement\_PICKUP.md, Silva fix 10/17). FIXED 10/19 (Sam): the dek used to
+compare his 19¾ to the 15 rule, but 19¾ (`192240906`) is drain to the wall BEHIND the toilet, the rough-in
+(about 14 after foam, studs and drywall), not the side clearance. Never compare 19¾ to 15. Links only (posted `ig-1016-basement-drawers`). The HVAC-room lesson traces to a
 family member and is not on the page. No address, no family.
 
 **Launch reel (S7 path 3):** sub-20s cut of `PXL_20261016_174712269` (0:54 radon vent "captured inside
 the wall of the shower" → 1:47 "I don't know what's standard here") + `185757458` 4:35 "three feet,
-what's a normal shower?", caption carries the 19¾ / 15 numbers and the one link
+what's a normal shower?", caption carries the 15½ / 15 numbers (side clearance; never 19¾, which is the rough-in) and the one link
 `https://step427.github.io/dadhax-reels/fit-check.html`. Path 1 fallback if the cut stalls at Sam:
 STORY re-cut of posted `ig-1016-basement-drawers.mp4` with the deep link. Queue it in the same push as
 the merge.
 
-**Audit fills (Tool 13):** `--fill tSide=19.75 tFront=24 shW=36 shD=48 shFront=30 bedW=12 bedL=17 egW=28 egH=24 egSill=40 ceil=90 beam=80 hall=42 callName=Sam` — every input the page needs set before its real output exists on screen. Never a real person's name or a sensitive number.
+**Audit fills (Tool 13):** `--fill tSide=15.5 tFront=24 shW=36 shD=48 shFront=30 bedW=12 bedL=17 egW=28 egH=24 egSill=40 ceil=90 beam=80 hall=42 callName=Sam` — every input the page needs set before its real output exists on screen. Never a real person's name or a sensitive number.
 → PASS WITH WARNINGS (LONG/DENSE only), 1132 words / 6974px, 8.6 screens, Tool 12 parity (1228 /
 6887). `intro_audit.py` PASS after the dek was rewritten to "your" (first pass opened without
 addressing the reader).

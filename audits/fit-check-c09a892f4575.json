@@ -1,0 +1,36 @@
+{
+ "page": "fit-check.html",
+ "sha": "c09a892f4575",
+ "verdict": "PASS WITH WARNINGS",
+ "fail": [],
+ "warn": [
+  "LONG: 8.6 phone screens of scroll.",
+  "DENSE: 1132 words. A free sheet nobody finishes is the same as no sheet."
+ ],
+ "stats": {
+  "viewport": "375x812",
+  "charsPerLine": 35,
+  "words": 1132,
+  "pageHeightPx": 6974,
+  "screens": 8.6,
+  "longestBlockWords": 16,
+  "links": 11
+ },
+ "fills": {
+  "tSide": "15.5",
+  "tFront": "24",
+  "shW": "36",
+  "shD": "48",
+  "shFront": "30",
+  "bedW": "12",
+  "bedL": "17",
+  "egW": "28",
+  "egH": "24",
+  "egSill": "40",
+  "ceil": "90",
+  "beam": "80",
+  "hall": "42",
+  "callName": "Sam"
+ },
+ "audited": "2026-10-19T20:51:22+00:00"
+}
