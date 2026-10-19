@@ -3771,7 +3771,7 @@
       "title": "Line the wall up with the pipe: the leftover strip is a closet",
       "status": "pending",
       "earliest": "2026-10-22",
-      "caption": "Hey Dad,\n\nYou can't move the pipe, so let the pipe tell you where the wall goes.\n\nIn my basement plan, the back wall of the bathroom lines up with the pipe that's already there. Everything on the other side of that line becomes a closet for the bedroom. Walk-in or bi-fold, still deciding, but the bedroom gets bigger either way. People like walk-in closets, even small ones.\n\nFind your fixed points first, then draw the walls to them.\n\n(Toilet center to the side wall: 15 inches minimum in most codes.)\n\nSave this for the day you draw your floor plan.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "caption": "Hey Dad,\n\nYou can't move the pipe, so let the pipe tell you where the wall goes.\n\nIn my basement plan, the back wall of the bathroom lines up with the pipe that's already there. Everything on the other side of that line becomes a closet for the bedroom. On camera I leaned walk-in. In the model I swapped it for a 2-foot reach-in with bifolds, and the bedroom still got bigger.\n\nFind your fixed points first, then draw the walls to them.\n\n(Toilet center to the side wall: 15 inches minimum in most codes.)\n\nThe closet shot is the 3D model. Nothing's built yet.\n\nSave this before you frame. Line the wall up with the pipe.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
       "arc_slot": "Thu 10/22 9a",
       "pix": "P",
       "value_forms": [
@@ -3780,12 +3780,13 @@
       ],
       "sam_verdict": "POST 2026-10-19",
       "topic_class": "utility",
-      "source_raw": "PXL_20261016_174712269.mp4"
+      "source_raw": "PXL_20261016_174712269.mp4",
+      "_note": "10/19 r3: swapped to the 3D-payoff cut (bifolds in the model, LATER: SWAPPED FOR BIFOLDS) per Nick on-camera note \"turn this into this, then show the 3D mock-up\"; caption closer rotated (was word for word ig-1018-measure)."
     },
     {
       "file": "ig-1019-bumpout.mp4",
       "title": "Bump-out or one straight wall? Decide it on paper",
-      "status": "pending",
+      "status": "hold",
       "earliest": "2026-10-24",
       "caption": "Hey Dad,\n\nYou can argue a wall on paper for free. Once it's framed, it costs you.\n\nMy sketch has a little bump-out on the bathroom wall. I like it, it gives the room some texture. I'm also questioning whether one straight wall is simpler. That's a three-quarter bath somewhere around 10 or 12 by 6-1/2, and I'd rather keep it small but comfortable.\n\nDraw both versions. Pick before the first stud goes up.\n\n(Whichever wall wins, the toilet still needs 15 inches from center to the side wall.)\n\nFollow for the rest of this basement, drawn before it's framed.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
       "arc_slot": "Sat 10/24 9a",
@@ -3796,7 +3797,8 @@
       ],
       "sam_verdict": "POST 2026-10-19",
       "topic_class": "utility",
-      "source_raw": "PXL_20261016_174712269.mp4"
+      "source_raw": "PXL_20261016_174712269.mp4",
+      "_note": "10/19: HOLD. 3D-payoff recut pending Sam confirm; new ask points at fit-check.html, which ships Tue 10/20. Flip to pending only with the new file + caption and the page live."
     },
     {
       "file": "ig-1019-edges.mp4",
