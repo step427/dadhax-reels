@@ -3743,6 +3743,54 @@
       "permalink": "https://www.instagram.com/reel/Deq6saRl5HW/",
       "posted_at": "2026-10-19T04:18:02-05:00",
       "fb_page_video_id": "1106098658569088"
+    },
+    {
+      "file": "ig-1019-furnace.mp4",
+      "title": "Leave room for the furnace swap: a wall that opens wide",
+      "status": "pending",
+      "earliest": "2026-10-21",
+      "caption": "Hey Dad,\n\nYou'll replace that furnace someday, so don't wall it in like you won't.\n\nMy basement plan keeps a big opening on the utility room: framed in a little on each side, then sliding barn doors made to look like built-in shelves. Day to day it reads as a wall. The day the furnace dies, the doors slide and the HVAC crew has a wide, open path.\n\nAsk your HVAC tech how much room a swap needs before you frame that wall, not after.\n\n(Same rule for the bathroom: 15 inches from toilet center to the side wall. Plan the clearances on paper first.)\n\nSend this to the dad finishing his basement.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "Wed 10/21 6p",
+      "pix": "P",
+      "value_forms": [
+        "implementation",
+        "idea"
+      ],
+      "sam_verdict": "POST 2026-10-19",
+      "topic_class": "utility",
+      "source_raw": "PXL_20261016_185757458.mp4"
+    },
+    {
+      "file": "ig-1019-pipewall.mp4",
+      "title": "Line the wall up with the pipe: the leftover strip is a closet",
+      "status": "pending",
+      "earliest": "2026-10-22",
+      "caption": "Hey Dad,\n\nYou can't move the pipe, so let the pipe tell you where the wall goes.\n\nIn my basement plan, the back wall of the bathroom lines up with the pipe that's already there. Everything on the other side of that line becomes a closet for the bedroom. Walk-in or bi-fold, still deciding, but the bedroom gets bigger either way. People like walk-in closets, even small ones.\n\nFind your fixed points first, then draw the walls to them.\n\n(Toilet center to the side wall: 15 inches minimum in most codes.)\n\nSave this for the day you draw your floor plan.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "Thu 10/22 9a",
+      "pix": "P",
+      "value_forms": [
+        "implementation",
+        "idea"
+      ],
+      "sam_verdict": "POST 2026-10-19",
+      "topic_class": "utility",
+      "source_raw": "PXL_20261016_174712269.mp4"
+    },
+    {
+      "file": "ig-1019-bumpout.mp4",
+      "title": "Bump-out or one straight wall? Decide it on paper",
+      "status": "pending",
+      "earliest": "2026-10-24",
+      "caption": "Hey Dad,\n\nYou can argue a wall on paper for free. Once it's framed, it costs you.\n\nMy sketch has a little bump-out on the bathroom wall. I like it, it gives the room some texture. I'm also questioning whether one straight wall is simpler. That's a three-quarter bath somewhere around 10 or 12 by 6-1/2, and I'd rather keep it small but comfortable.\n\nDraw both versions. Pick before the first stud goes up.\n\n(Whichever wall wins, the toilet still needs 15 inches from center to the side wall.)\n\nFollow for the rest of this basement, drawn before it's framed.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "Sat 10/24 9a",
+      "pix": "P",
+      "value_forms": [
+        "implementation",
+        "idea"
+      ],
+      "sam_verdict": "POST 2026-10-19",
+      "topic_class": "utility",
+      "source_raw": "PXL_20261016_174712269.mp4"
     }
   ]
 }
