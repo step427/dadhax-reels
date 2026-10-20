@@ -3928,7 +3928,7 @@
     {
       "file": "ig-1020-level.mp4",
       "title": "Level it. If off, lean to the wall. (re-cut, 15.6s)",
-      "status": "pending",
+      "status": "posted",
       "earliest": "2026-10-20",
       "caption": "Hey Dad,\n\nYou can get a countertop dead level left to right and still have it tip front to back. Level is the goal. If you're going to miss, miss toward the wall.\n\nThings roll to the wall, not off the front. If the span ever sags, a second cleat goes on the back wall.\n\nCabinets going under it next? Type your wall into the free page. It prints the stock runs that actually close, the filler widths, and the height stack.\nstep427.github.io/dadhax-reels/cabinet-run.html\n\nThanks, Dad. I love you, Dad.",
       "arc_slot": "OFF-ARC cover",
@@ -3942,7 +3942,10 @@
       "source_raw": "PXL_20261010_184045614.mp4",
       "hypothesis": "If the thesis opens cold and the damage + drawer asides go (39.9s -> 15.6s), then avg watch % beats the under-20s utility median (48%, n=87), not just the parent's 39.8%, because the cut no longer has a dead span at the parent's 15.9s leave point.",
       "recut_of": "ig-1011-level.mp4",
-      "kind": "old"
+      "kind": "old",
+      "permalink": "https://www.instagram.com/reel/DeuebrqD_GF/",
+      "posted_at": "2026-10-20T13:28:05-05:00",
+      "fb_page_video_id": "1100727262844782"
     }
   ]
 }
