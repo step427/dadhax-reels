@@ -3787,23 +3787,6 @@
       "fb_page_video_id": "1902555584050712"
     },
     {
-      "file": "ig-1019-bumpout.mp4",
-      "title": "Bump-out or one straight wall? Decide it on paper",
-      "status": "hold",
-      "earliest": "2026-10-24",
-      "caption": "Hey Dad,\n\nYou can argue a wall on paper for free. Once it's framed, it costs you.\n\nMy sketch has a little bump-out on the bathroom wall. I like it, it gives the room some texture. I'm also questioning whether one straight wall is simpler. My first guess was a three-quarter bath around 10 or 12 by 6-1/2. The plan came out closer to 11-1/2 by 4-1/2, and I'd rather keep it small but comfortable. The model kept the bump-out: the bath runs about 27 inches past the bedroom wall.\n\nDraw both versions. Pick before the first stud goes up.\n\n(Whichever wall wins, the toilet still needs 15 inches from center to the side wall.)\n\nThe overhead is the 3D model. Nothing's built yet.\n\nRun both versions through The Fit Check before you pick: step427.github.io/dadhax-reels/fit-check.html\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
-      "arc_slot": "Sat 10/24 9a",
-      "pix": "P",
-      "value_forms": [
-        "implementation",
-        "idea"
-      ],
-      "sam_verdict": "POST 2026-10-19",
-      "topic_class": "utility",
-      "source_raw": "PXL_20261016_174712269.mp4",
-      "_note": "10/19: HOLD. Swapped to the 3D-payoff cut (overhead, IN THE MODEL: THE BUMP-OUT) + Fit Check ask (Sam r3 wording, applied verbatim). Flip to pending once step427.github.io/dadhax-reels/fit-check.html loads (ships Tue 10/20)."
-    },
-    {
       "file": "ig-1019-edges.mp4",
       "title": "Take the sharp off a butcher block edge: fine grit, no pressure",
       "status": "pending",
@@ -3818,6 +3801,23 @@
       "sam_verdict": "POST 2026-10-19",
       "topic_class": "utility",
       "source_raw": "PXL_20261010_173705897.mp4"
+    },
+    {
+      "file": "ig-1019-bumpout.mp4",
+      "title": "Bump-out or one straight wall? Decide it on paper",
+      "status": "pending",
+      "earliest": "2026-10-20",
+      "caption": "Hey Dad,\n\nYou can argue a wall on paper for free. Once it's framed, it costs you.\n\nMy sketch has a little bump-out on the bathroom wall. I like it, it gives the room some texture. I'm also questioning whether one straight wall is simpler. My first guess was a three-quarter bath around 10 or 12 by 6-1/2. The plan came out closer to 11-1/2 by 4-1/2, and I'd rather keep it small but comfortable. The model kept the bump-out: the bath runs about 27 inches past the bedroom wall.\n\nDraw both versions. Pick before the first stud goes up.\n\n(Whichever wall wins, the toilet still needs 15 inches from center to the side wall.)\n\nThe overhead is the 3D model. Nothing's built yet.\n\nI didn't know what was standard here either. New today, free: The Fit Check. Type both versions in and it marks each line against the common code minimums, with your margin: step427.github.io/dadhax-reels/fit-check.html\n\nThanks, Dad. I love you, Dad.",
+      "arc_slot": "Tue 10/20 1p (LAUNCH REEL Tool 13 — The Fit Check)",
+      "pix": "P",
+      "value_forms": [
+        "implementation",
+        "idea"
+      ],
+      "sam_verdict": "POST 2026-10-20",
+      "topic_class": "utility",
+      "source_raw": "PXL_20261016_174712269.mp4",
+      "_note": "10/19: HOLD. Swapped to the 3D-payoff cut (overhead, IN THE MODEL: THE BUMP-OUT) + Fit Check ask (Sam r3 wording, applied verbatim). Flip to pending once step427.github.io/dadhax-reels/fit-check.html loads (ships Tue 10/20). 10/20: LAUNCH REEL Tool 13 (S7 path 2: pending-on-theme cut, caption rewritten). Sam FIX->POST 2026-10-20 (ask line says what the tool does; one link). Placed right after ig-1019-edges so 9a takes edges and 1p takes this (utility sorts first)."
     },
     {
       "file": "ig-1019-thirds.mp4",
