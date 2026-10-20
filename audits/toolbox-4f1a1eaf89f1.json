@@ -1,0 +1,20 @@
+{
+ "page": "toolbox.html",
+ "sha": "4f1a1eaf89f1",
+ "verdict": "PASS WITH WARNINGS",
+ "fail": [],
+ "warn": [
+  "LONG: 5.7 phone screens of scroll."
+ ],
+ "stats": {
+  "viewport": "375x812",
+  "charsPerLine": 35,
+  "words": 739,
+  "pageHeightPx": 4631,
+  "screens": 5.7,
+  "longestBlockWords": 0,
+  "links": 21
+ },
+ "fills": {},
+ "audited": "2026-10-20T12:40:59+00:00"
+}

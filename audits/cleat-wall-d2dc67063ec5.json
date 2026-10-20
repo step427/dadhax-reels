@@ -1,0 +1,21 @@
+{
+ "page": "cleat-wall.html",
+ "sha": "d2dc67063ec5",
+ "verdict": "PASS WITH WARNINGS",
+ "fail": [],
+ "warn": [
+  "LONG: 6.6 phone screens of scroll.",
+  "DENSE: 932 words. A free sheet nobody finishes is the same as no sheet."
+ ],
+ "stats": {
+  "viewport": "375x812",
+  "charsPerLine": 35,
+  "words": 932,
+  "pageHeightPx": 5387,
+  "screens": 6.6,
+  "longestBlockWords": 0,
+  "links": 14
+ },
+ "fills": {},
+ "audited": "2026-10-20T12:40:48+00:00"
+}

@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Tool 13. Built 2026-10-18 by the dadhax-weekly-tool routine off the 10/16 basement
+     takes (laser walk, bed/bath layout, drain X/Y); council pick 2026-10-18. -->
+<title>The Fit Check — @nicksdadhax</title>
+<meta name="description" content="Type the sizes off your basement sketch. Each one is checked against the common code minimums, with the inches to spare or the inches you're short, before the first stud. Free, no gate.">
+
+<style>
+  /* @nicksdadhax — dark field-instrument identity. Same tokens as tools 01-12.
+     SIGNAL YELLOW = your input / the action. WARN RED = the honest rail —
+     here that's "this page isn't your inspector." */
+  :root {
+    --carbon:   #0F0E0B;
+    --panel:    #17150F;
+    --panel-up: #1E1B14;
+    --hair:     #302B21;
+    --bone:     #F4F0E6;
+    --graphite: #8F887A;
+    --signal:   #FFC629;
+    --signal-d: #C8930F;
+    --warn:     #E8502C;
+    --ply:      #B8935A;
+
+    --mono: ui-monospace, "SF Mono", SFMono-Regular, "Cascadia Mono",
+            "Roboto Mono", Menlo, Consolas, "Courier New", monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+            "Helvetica Neue", Arial, sans-serif;
+
+    --gutter: clamp(18px, 5vw, 40px);
+    --maxw: 660px;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--carbon);
+    color: var(--bone);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-text-size-adjust: 100%;
+    background-image:
+      repeating-linear-gradient(to right,  rgba(242,237,231,.035) 0 1px, transparent 1px 28px),
+      repeating-linear-gradient(to bottom, rgba(242,237,231,.035) 0 1px, transparent 1px 28px);
+  }
+
+  .sheet { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter) 96px; }
+
+  header { padding: 34px 0 8px; }
+  .protocol {
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: .17em;
+    text-transform: uppercase; color: var(--graphite);
+  }
+  .protocol b { color: var(--signal); font-weight: 700; }
+  h1 {
+    font-family: var(--mono); font-weight: 700;
+    font-size: clamp(28px, 8vw, 48px); line-height: 1.04;
+    letter-spacing: -.03em; text-transform: uppercase;
+    margin: 12px 0 0; text-wrap: balance;
+  }
+  h1 .of { color: var(--signal); }
+  .dek { margin: 14px 0 0; max-width: 46ch; color: #CFC9BB; font-size: 17px; }
+  .dek em { color: var(--bone); font-style: normal; border-bottom: 1.5px solid var(--signal-d); }
+  .dek b { color: var(--bone); }
+
+  .privacy {
+    margin: 18px 0 0; padding: 13px 15px; font-size: 14.5px; line-height: 1.5;
+    color: #CFC9BB; background: var(--panel); border-left: 3px solid var(--signal);
+  }
+  .privacy b { color: var(--bone); }
+
+  .story { margin-top: 24px; padding: 15px 16px; background: var(--panel);
+    border: 1px solid var(--hair); }
+  .story p { margin: 0 0 10px; font-size: 15.5px; line-height: 1.55; color: #CFC9BB; }
+  .story p:last-child { margin-bottom: 0; }
+  .story p b { color: var(--bone); }
+  .story a { color: var(--signal); font-weight: 700; text-decoration: none; }
+  .story a:hover { text-decoration: underline; }
+
+  .whys { margin-top: 26px; border: 1px solid var(--hair); }
+  .why { padding: 14px 15px; border-bottom: 1px solid var(--hair); }
+  .why:last-child { border-bottom: 0; }
+  .why .tag { display: block; font-family: var(--mono); font-size: 12.5px; font-weight: 700;
+    letter-spacing: .08em; text-transform: uppercase; margin-bottom: 5px; color: var(--signal); }
+  .why p { margin: 0; font-size: 15px; line-height: 1.5; color: #CFC9BB; }
+  .why p b { color: var(--bone); }
+
+  .redline-note {
+    margin: 14px 0 0; padding: 9px 12px;
+    border-left: 2.5px solid var(--warn);
+    background: #20130E; /* rgba(232,80,44,.08) on --carbon, solid so contrast is measurable */
+    font-size: 14.5px; line-height: 1.45; color: #E7DCD6;
+  }
+  .redline-note b { color: var(--warn); font-family: var(--mono);
+    font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase;
+    display: block; margin-bottom: 3px; }
+
+  .block { margin-top: 30px; }
+  .lbl {
+    display: block; font-family: var(--mono); font-size: 11.5px;
+    letter-spacing: .13em; text-transform: uppercase; color: var(--graphite);
+    margin-bottom: 8px;
+  }
+  h2.part {
+    font-family: var(--mono); font-size: 12px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--signal); margin: 34px 0 4px; font-weight: 700;
+    padding-top: 20px; border-top: 1px solid var(--hair);
+  }
+  .partdek { margin: 0 0 14px; font-size: 15px; color: #CFC9BB; line-height: 1.5; }
+  .partdek b { color: var(--bone); }
+
+  .seed {
+    border: 1.5px solid var(--signal); background: var(--panel);
+    padding: 16px 16px 14px;
+  }
+  .seed .lbl { color: var(--signal); margin-top: 0; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; }
+  @media (max-width: 380px) { .grid2 { grid-template-columns: 1fr; } }
+  input[type=text], input[type=number], input[type=date] {
+    display: block; width: 100%;
+    background: transparent; border: 0; border-bottom: 1.5px solid #453E2C;
+    color: var(--bone); font-family: var(--mono); font-size: 18px;
+    line-height: 1.5; padding: 4px 0 8px; border-radius: 0;
+    font-variant-numeric: tabular-nums; -moz-appearance: textfield;
+  }
+  input[type=date] { color-scheme: dark; min-height: 44px; }
+  input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  input::placeholder { color: #6B6455; font-family: var(--sans); font-size: 15px; }
+  input:focus { outline: 0; border-bottom-color: var(--signal); }
+  .seed .lbl + input { margin-bottom: 14px; }
+  .unit { font-family: var(--mono); font-size: 11px; color: var(--graphite); letter-spacing: .08em; }
+  .hint { margin: 6px 0 0; font-size: 13.5px; color: var(--graphite); line-height: 1.45; }
+  .seed .hint { margin: 0 0 16px; }
+
+  .zone { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 8px; }
+  .zone button { flex: 1 1 0; min-width: 86px; min-height: 48px; padding: 10px 6px; border-radius: 0; cursor: pointer;
+    font-family: var(--mono); font-size: 12px; letter-spacing: .05em; text-transform: uppercase;
+    font-weight: 700; background: transparent; color: var(--bone); border: 1.5px solid #453E2C; }
+  .zone button[aria-pressed="true"] { background: var(--signal); color: #14100F; border-color: var(--signal); }
+  .zone button:focus-visible { outline: 2px solid var(--bone); outline-offset: 2px; }
+
+  /* the schedule */
+  .spec { margin-top: 22px; padding: 18px 16px; background: var(--panel-up);
+    border: 2px solid var(--signal); }
+  .spec[hidden] { display: none; }
+  .spec .lbl { color: var(--signal); }
+  .spec p { margin: 0 0 8px; font-size: 16.5px; line-height: 1.5; color: var(--bone); }
+  .spec p b { color: var(--signal); font-family: var(--mono); }
+  .spec p.fine { margin-top: 10px; font-size: 14px; color: #CFC9BB; }
+  .spec p.no { color: #E7DCD6; border-left: 2.5px solid var(--warn); padding-left: 10px; }
+  .spec p.no b { color: var(--warn); }
+  .steps { margin: 12px 0 0; }
+  .step { padding: 10px 0 8px; border-top: 1px solid var(--hair); }
+  .step .head { display: flex; gap: 12px; align-items: center; margin: 0 0 6px; }
+  .step .pic { flex: 0 0 72px; }
+  .step .pic svg { display: block; width: 72px; height: auto; }
+  .step .pic text { font-family: var(--mono); font-weight: 700; font-size: 10px; fill: var(--signal); }
+  .step h3 { margin: 0; font-family: var(--mono); font-size: 14px; letter-spacing: .05em;
+    text-transform: uppercase; color: var(--signal); }
+  .step h3 i { font-style: normal; color: var(--bone); display: block; letter-spacing: 0; }
+  .step ul { margin: 0; padding: 0 0 0 18px; }
+  .step ul li { font-family: var(--sans); font-size: 14.5px; line-height: 1.4; color: var(--bone); }
+  .step ul li.w { color: #E7DCD6; list-style: "! "; }
+  .step ul li.w::marker { color: var(--warn); font-family: var(--mono); font-weight: 700; }
+
+  .callbox { margin-top: 28px; padding: 18px 16px 16px; background: var(--panel-up);
+    border: 2px dashed var(--signal-d); }
+  .callbox .lbl { color: var(--signal); }
+  .callbox .means { margin: 10px 0 14px; font-size: 15px; color: #CFC9BB; line-height: 1.5; }
+  .callbox .means b { color: var(--bone); }
+  .callbox input[type=text] { font-family: var(--sans); font-size: 17px; }
+
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+  .actions button {
+    font-family: var(--mono); font-size: 12.5px; letter-spacing: .1em;
+    text-transform: uppercase; font-weight: 700; min-height: 48px;
+    padding: 13px 18px; border-radius: 0; cursor: pointer;
+    background: var(--signal); color: #14100F; border: 1.5px solid var(--signal);
+  }
+  .actions button.ghost { background: transparent; color: var(--bone); border-color: #453E2C; }
+  .actions button:hover { filter: brightness(1.1); }
+  .actions button.ghost:hover { border-color: var(--signal); color: var(--signal); filter: none; }
+  .actions button:focus-visible { outline: 2px solid var(--bone); outline-offset: 2px; }
+
+  .said {
+    margin-top: 14px; font-family: var(--mono); font-size: 12px;
+    letter-spacing: .06em; text-transform: uppercase; color: var(--signal);
+    min-height: 1em;
+  }
+
+  .titleblock {
+    margin-top: 44px; border: 1px solid var(--hair);
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(108px, 1fr));
+  }
+  .tb { padding: 11px 13px; border-right: 1px solid var(--hair); }
+  .tb:last-child { border-right: 0; }
+  .tb dt {
+    font-family: var(--mono); font-size: 10px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--graphite); margin: 0 0 4px;
+  }
+  .tb dd {
+    margin: 0; font-family: var(--mono); font-size: 13px; font-weight: 700;
+    color: var(--bone); font-variant-numeric: tabular-nums;
+  }
+  .tb dd.red { color: var(--signal); }
+
+  .cta { margin-top: 18px; font-size: 15px; color: #CFC9BB; line-height: 1.5; }
+  .cta b { color: var(--bone); }
+  .cta a { color: var(--signal); font-weight: 700; text-decoration: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+
+  @media print {
+    @page { size: letter; margin: .5in .55in; }
+    :root {
+      --carbon: #fff; --panel: #fff; --panel-up: #FFF8E2;
+      --hair: #C9C2BC; --bone: #14100F; --graphite: #5E5651;
+      --signal: #7A5B00; --signal-d: #7A5B00; --warn: #B93A18; --ply: #E4D2A8;
+    }
+    body { background-image: none; font-size: 10.5pt; }
+    .sheet { max-width: none; padding: 0; }
+    .actions, .said, .nav, .tail, .cta, .privacy { display: none; }
+    .spec[hidden] { display: block !important; }
+    input { border-bottom-color: #9AA0A8; min-height: .42in; }
+    .redline-note { background: none; }
+    h1 { font-size: 26pt; }
+  }
+</style>
+
+<style>
+  /* Tool 13 additions: the check rows. */
+  .seed h3.grp { font-family: var(--mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--bone); margin: 4px 0 10px; font-weight: 700; }
+  .seed h3.grp + .grid2 { margin-bottom: 4px; }
+  .rows { margin: 12px 0 0; }
+  .row { display: grid; grid-template-columns: 74px 1fr; gap: 10px; padding: 10px 0 9px; border-top: 1px solid var(--hair); }
+  .row .mark { font-family: var(--mono); font-size: 12px; font-weight: 700; letter-spacing: .06em;
+    text-transform: uppercase; padding: 4px 0; text-align: center; align-self: start; border: 1.5px solid var(--signal); color: var(--signal); }
+  .row.short .mark { border-color: var(--warn); color: var(--warn); }
+  .row b { display: block; font-family: var(--mono); font-size: 13.5px; letter-spacing: .03em; color: var(--bone); }
+  .row span { display: block; font-size: 14.5px; line-height: 1.4; color: #CFC9BB; }
+  .row.short span.fix { color: #E7DCD6; }
+  .asks { margin: 10px 0 0; padding: 0 0 0 20px; }
+  .asks li { font-size: 14.5px; line-height: 1.45; color: var(--bone); margin-bottom: 4px; }
+</style>
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+
+<div class="sheet">
+
+  <nav class="nav">
+    <div class="navtop">
+      <a class="brand" href="index.html">@nicksdadhax</a>
+      <span class="meta">Tool 13 · free · no gate</span>
+    </div>
+    <div class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="toolbox.html" aria-current="true"><svg class="tbx" width="15" height="13" viewBox="0 0 16 14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><g class="lid"><path d="M5.5 4.5v-.75a2.5 2.5 0 0 1 5 0v.75"/><rect x="1" y="4.5" width="14" height="2.5" rx=".5"/></g><rect x="1" y="7" width="14" height="6" rx=".5"/></svg>The Toolbox</a>
+      <a href="log.html">The Flip</a>
+      <a href="houses.html">I have a house</a>
+    </div>
+  </nav>
+
+  <header>
+    <div class="protocol">Layout protocol <b>·</b> sketch first <b>·</b> 15 from center</div>
+    <h1>The fit <span class="of">check</span></h1>
+    <p class="dek">Your basement sketch looks right on paper. Then your studs go up, the inspector
+      walks in, and your toilet is two inches too close to the wall. Now you move the wall, or
+      the drain, in concrete.
+      <b>The first stud is where a bad plan gets expensive.</b></p>
+    <p class="dek"><em>Type the sizes off your sketch</em> and each one is checked against the
+      common code minimums: inches to spare, or inches short.
+      My plan puts my toilet 15&frac12; inches from the shower glass. <b>That clears 15 by half an inch.</b></p>
+    <p class="privacy"><b>Nothing you type here leaves your device.</b> No account, no
+      server, no analytics. Your numbers are erased when you close the tab.</p>
+  </header>
+
+  <div class="story">
+    <span class="lbl">Why this one exists</span>
+    <p>Nothing in my basement is framed yet. I walked it with a laser and read every wall out
+      loud to Claude. The long wall came back 591, then 583, then 584&#8541;, so I averaged it.
+      Then I stood where the bathroom goes and said it on camera: <b>"I don't know what's
+      standard here."</b> Then: "three feet, what's a normal shower?" Most of us don't know, until an inspector tells us. The AI version,
+      in the shop:
+      <a href="https://www.instagram.com/reel/DeoPTU-jvUL/">Instagram</a>,
+      <a href="https://www.facebook.com/reel/28702280576095760">Facebook</a>.</p>
+  </div>
+
+  <h2 class="part">Part 1 &mdash; The bathroom</h2>
+  <p class="partdek">Inches, off your sketch. The drain and the stack are already in the concrete,
+    so measure from them to the <b>finished</b> wall. Against concrete, foam, studs and drywall
+    bring the face in 4 to 6 inches.</p>
+
+  <div class="block seed">
+    <h3 class="grp">Toilet</h3>
+    <div class="grid2">
+      <div>
+        <label class="lbl" for="tSide">Center to side wall <span class="unit">in, tighter side</span></label>
+        <input type="number" id="tSide" inputmode="decimal" step="0.125" min="0" max="200" placeholder="15.5">
+      </div>
+      <div>
+        <label class="lbl" for="tFront">Clear in front <span class="unit">in</span></label>
+        <input type="number" id="tFront" inputmode="decimal" step="0.125" min="0" max="200" placeholder="24">
+      </div>
+    </div>
+    <h3 class="grp">Shower <span class="unit">inside the walls</span></h3>
+    <div class="grid2">
+      <div>
+        <label class="lbl" for="shW">Width <span class="unit">in</span></label>
+        <input type="number" id="shW" inputmode="decimal" step="0.125" min="0" max="200" placeholder="36">
+      </div>
+      <div>
+        <label class="lbl" for="shD">Length <span class="unit">in</span></label>
+        <input type="number" id="shD" inputmode="decimal" step="0.125" min="0" max="200" placeholder="48">
+      </div>
+    </div>
+    <label class="lbl" for="shFront">Clear in front of the opening <span class="unit">in</span></label>
+    <input type="number" id="shFront" inputmode="decimal" step="0.125" min="0" max="200" placeholder="30">
+    <p class="hint">Filled with an example so you can see it work. The 15&frac12; is my toilet to the glass.</p>
+  </div>
+
+  <h2 class="part">Part 2 &mdash; The bedroom and the hall</h2>
+
+  <div class="block seed">
+    <h3 class="grp">Bedroom <span class="unit">feet</span></h3>
+    <div class="grid2">
+      <div>
+        <label class="lbl" for="bedW">Width <span class="unit">ft</span></label>
+        <input type="number" id="bedW" inputmode="decimal" step="0.25" min="0" max="60" placeholder="12">
+      </div>
+      <div>
+        <label class="lbl" for="bedL">Length <span class="unit">ft</span></label>
+        <input type="number" id="bedL" inputmode="decimal" step="0.25" min="0" max="60" placeholder="17">
+      </div>
+    </div>
+    <h3 class="grp">Window <span class="unit">the opening you climb out, sash open</span></h3>
+    <div class="grid2">
+      <div>
+        <label class="lbl" for="egW">Clear width <span class="unit">in</span></label>
+        <input type="number" id="egW" inputmode="decimal" step="0.125" min="0" max="120" placeholder="28">
+      </div>
+      <div>
+        <label class="lbl" for="egH">Clear height <span class="unit">in</span></label>
+        <input type="number" id="egH" inputmode="decimal" step="0.125" min="0" max="120" placeholder="24">
+      </div>
+    </div>
+    <div class="grid2">
+      <div>
+        <label class="lbl" for="egSill">Floor to opening <span class="unit">in</span></label>
+        <input type="number" id="egSill" inputmode="decimal" step="0.125" min="0" max="120" placeholder="40">
+      </div>
+      <div>
+        <label class="lbl" for="hall">Hallway width <span class="unit">in</span></label>
+        <input type="number" id="hall" inputmode="decimal" step="0.125" min="0" max="200" placeholder="42">
+      </div>
+    </div>
+    <h3 class="grp">Ceiling <span class="unit">inches</span></h3>
+    <div class="grid2">
+      <div>
+        <label class="lbl" for="ceil">Finished ceiling <span class="unit">in</span></label>
+        <input type="number" id="ceil" inputmode="decimal" step="0.125" min="0" max="200" placeholder="90">
+      </div>
+      <div>
+        <label class="lbl" for="beam">Under the lowest beam or duct <span class="unit">in</span></label>
+        <input type="number" id="beam" inputmode="decimal" step="0.125" min="0" max="200" placeholder="80">
+      </div>
+    </div>
+  </div>
+
+  <h2 class="part">Part 3 &mdash; Your check</h2>
+
+  <div class="spec" id="spec">
+    <span class="lbl">The fit</span>
+    <p id="oVerdict"></p>
+    <div class="rows" id="oRows"></div>
+    <p class="fine"><b>Bring these to the building department</b> before you buy a stud:</p>
+    <ol class="asks" id="oAsks"></ol>
+    <p class="fine" id="oAssume"></p>
+  </div>
+
+  <div class="redline-note">
+    <b>this page isn't your inspector</b>
+    These are common minimums from the model residential code most U.S. towns start from.
+    Your town adopts its own edition and amends it, and a finished basement usually needs a
+    permit. Their number wins. Call before you frame. <b style="display:inline;margin:0">Not checked here:</b> smoke and CO
+    alarms, the window well and its ladder, a walled-in furnace or water heater, electrical and gas.
+  </div>
+
+  <div class="callbox">
+    <span class="lbl">The boulder question</span>
+    <p class="means">Most problems are who-you-know. <b>Name one person in your town who has
+      finished a basement.</b></p>
+    <input type="text" id="callName" placeholder="a name. not 'a guy from work' — a name.">
+    <p class="means" style="margin:12px 0 0"><b>Now make the call</b> &mdash; ask:
+      &ldquo;did you pull a permit, and what did the inspector flag?&rdquo;</p>
+  </div>
+
+  <div class="actions">
+    <button id="promptBtn" type="button">Copy a prompt for your AI</button>
+    <button id="copyBtn" class="ghost" type="button">Copy the check</button>
+    <button id="printBtn" class="ghost" type="button">Print it</button>
+    <button id="resetBtn" class="ghost" type="button">Start over</button>
+  </div>
+  <div class="said" id="said" role="status" aria-live="polite"></div>
+
+  <dl class="titleblock">
+    <div class="tb"><dt>Protocol</dt><dd>LAYOUT</dd></div>
+    <div class="tb"><dt>Tool</dt><dd>13 of 13</dd></div>
+    <div class="tb"><dt>Short</dt><dd class="red" id="count">0</dd></div>
+    <div class="tb"><dt>By</dt><dd class="red">@nicksdadhax</dd></div>
+  </dl>
+
+  <!--TAIL-->
+  <div class="tail">
+  <a class="tail-next" href="fact-testable-fantasy.html">
+    <span class="k">Read next</span>
+    <b>Tool 04 &mdash; Fact / Testable / Fantasy</b>
+    <span class="s">The plan fits on paper and the next step is a phone call. Here's the
+      two-question filter for the ideas that show up while you wait on the permit.</span>
+  </a>
+  <section class="buyhouses">
+    <h2>Also &mdash; I buy houses</h2>
+    <p><b>Washington or Dakota County, Minnesota.</b> Off-market, or straight from the
+      owner &mdash; I'm the buyer, not a middleman passing it along. Woodbury, Cottage
+      Grove, Hastings, Stillwater, Eagan, Inver Grove Heights, Lakeville.</p>
+    <p>If that's you, or you know somebody quietly thinking about selling, I'll lay out
+      your options &mdash; <b>all of them, including the ones I don't make a dime on.</b>
+      Nothing to sign, no walkthrough unless you ask.</p>
+    <div class="ctas">
+      <a href="houses.html"><b>I have a house</b><span>Or I know someone who does</span></a>
+    </div>
+  </section>
+
+  <section class="optin" id="next">
+    <h2>What I ask</h2>
+    <p class="plain">That was free and nothing here sits behind an email. If it was
+      useful, here's the whole exchange: <b>send it to one or two people who'd use it
+      too.</b> That's it. I'm trusting you with it, you pass it on.</p>
+    <p class="plain">Want the next one before anyone else? I'm building an interest
+      list &mdash; no selling, no sequence, your address goes nowhere.
+      <a href="index.html#next">Exactly what that means, in plain words.</a></p>
+    <p class="fine">The list itself isn't open yet &mdash; I'm still setting it up, and
+      I'd rather say that than put up a box that doesn't work. The ask above stands
+      either way, and it's the one that matters. If you want to tell me what to build
+      next, my DMs are open.</p>
+    <div class="ctas">
+      <a href="https://www.instagram.com/nicksdadhax/"><b>Tell me what to build next</b><span>DM @nicksdadhax</span></a>
+    </div>
+  </section>
+  </div>
+  <!--/TAIL-->
+
+  <p class="cta">Free. This tool asks you for nothing &mdash; no gate, no email, no
+    analytics. When the walls go up, <b>DM me a picture</b>.</p>
+</div>
+<script>
+(function () {
+  "use strict";
+  // ---- the engine: pure, so it can be checked outside the page ----
+  // Common minimums from the 2021 International Residential Code (R304, R305, R307/P2705,
+  // P2708, R310, R311.6). Towns adopt an edition and amend it; the page prints that.
+  var RULES = [
+    { id: "tSide",   name: "Toilet: center to side wall", min: 15, u: "in",
+      fix: "Slide the wall, or the vanity, over. Moving a drain in a slab means cutting concrete" },
+    { id: "tFront",  name: "Toilet: clear in front",      min: 21, u: "in",
+      fix: "Swing the door out, or turn the toilet around the same drain. The new back wall sits at its rough-in, usually 12 inches from drain center" },
+    { id: "shMin",   name: "Shower: narrowest side",      min: 30, u: "in",
+      fix: "Widen to 30 inside the finished walls, after tile and backer. Thirty-six feels normal" },
+    { id: "shArea",  name: "Shower: floor area",          min: 900, u: "sq in",
+      fix: "Width times length has to reach 900. A 30 by 30 just makes it" },
+    { id: "shFront", name: "Shower: clear in front",      min: 24, u: "in",
+      fix: "Move the vanity or the toilet off the opening" },
+    { id: "bedArea", name: "Bedroom: floor area",         min: 70, u: "sq ft",
+      fix: "Move a wall. Renaming it an office doesn't help: any habitable room needs 70 square feet" },
+    { id: "bedMin",  name: "Bedroom: narrowest side",     min: 7,  u: "ft",
+      fix: "Move the short wall out, or turn the closet so it isn't eating the narrow side" },
+    { id: "egW",     name: "Window: clear width",         min: 20, u: "in",
+      fix: "Measure the opening with the sash open, not the glass. A casement gives the most opening for its size" },
+    { id: "egH",     name: "Window: clear height",        min: 24, u: "in",
+      fix: "Measure the opening with the sash open, not the glass. A slider or double-hung loses about half" },
+    { id: "egArea",  name: "Window: clear opening",       min: 820.8, u: "sq in",
+      fix: "5.7 square feet is the general minimum; some codes allow 5.0 below grade. 20 by 24 meets both side minimums and fails either one" },
+    { id: "egSill",  name: "Window: floor to opening",    max: 44, u: "in",
+      fix: "Lowering the opening means cutting the foundation: permit, often an engineer, before anyone saws. Some towns accept a permanent platform; ask first" },
+    { id: "ceil",    name: "Ceiling: finished height",    min: 84, u: "in",
+      fix: "Seven feet. Thick flooring and a drywall ceiling both eat into it" },
+    { id: "beam",    name: "Ceiling: under a beam or duct", min: 76, u: "in",
+      fix: "Six foot four under beams and ducts in a basement. Reroute a duct before you box it" },
+    { id: "hall",    name: "Hallway: width",              min: 36, u: "in",
+      fix: "Thirty-six, finished. Drywall both sides takes about an inch" }
+  ];
+  function check(v) {
+    var have = {
+      tSide: v.tSide, tFront: v.tFront,
+      shMin: Math.min(v.shW, v.shD), shArea: v.shW * v.shD, shFront: v.shFront,
+      bedArea: v.bedW * v.bedL, bedMin: Math.min(v.bedW, v.bedL),
+      egW: v.egW, egH: v.egH, egArea: v.egW * v.egH, egSill: v.egSill,
+      ceil: v.ceil, beam: v.beam, hall: v.hall
+    };
+    return RULES.map(function (r) {
+      var h = have[r.id], gap = r.max != null ? r.max - h : h - r.min;
+      return { r: r, have: h, gap: gap, ok: gap >= 0 };
+    });
+  }
+  var KEY = "ndh-fitcheck-v1";
+  var $ = function (id) { return document.getElementById(id); };
+  var FIELDS = ["tSide", "tFront", "shW", "shD", "shFront", "bedW", "bedL",
+                "egW", "egH", "egSill", "ceil", "beam", "hall"];
+  var inputs = FIELDS.concat(["callName"]).map($);
+  var said = $("said"), count = $("count"), last = null;
+  function val(id) {   // blank or junk falls back to the example in the placeholder
+    var el = $(id), v = parseFloat(el.value), d = parseFloat(el.placeholder);
+    return isFinite(v) && v >= 0 && v <= parseFloat(el.max) ? v : d;
+  }
+  function num(x) {    // inches to eighths, feet to quarters, areas whole
+    var r = Math.round(x * 8) / 8, w = Math.floor(r), f = Math.round((r - w) * 8);
+    var FR = ["", "⅛", "¼", "⅜", "½", "⅝", "¾", "⅞"];
+    return (w || !f ? String(w) : "") + FR[f];
+  }
+  function amt(x, u) { return (u.indexOf("sq") === 0 ? String(Math.round(x)) : num(x)) + " " + u; }
+  function refresh() {
+    var v = {}; FIELDS.forEach(function (id) { v[id] = val(id); });
+    var rows = check(v), short = rows.filter(function (x) { return !x.ok; });
+    $("oVerdict").innerHTML = short.length
+      ? "<b>" + short.length + " of " + rows.length + "</b> lines come up short. Fix them on paper, where it costs an eraser."
+      : "<b>All " + rows.length + "</b> lines clear the common minimums. Now take it to the people whose number wins.";
+    var box = $("oRows"); box.textContent = "";
+    rows.forEach(function (x) {
+      var d = document.createElement("div"), m = document.createElement("span"), t = document.createElement("div");
+      d.className = "row" + (x.ok ? "" : " short");
+      m.className = "mark"; m.textContent = x.ok ? "Clears" : "Short";
+      var b = document.createElement("b"); b.textContent = x.r.name;
+      var s = document.createElement("span");
+      var lim = x.r.max != null ? "at most " + amt(x.r.max, x.r.u) : "at least " + amt(x.r.min, x.r.u);
+      s.textContent = "You have " + amt(x.have, x.r.u) + "; " + lim + ". "
+        + (x.ok ? (x.gap > 0 ? amt(x.gap, x.r.u) + " to spare." : "Right on the line. Frame carefully.")
+                : amt(-x.gap, x.r.u) + (x.r.max != null ? " too high." : " short."));
+      t.appendChild(b); t.appendChild(s);
+      if (!x.ok) { var f = document.createElement("span"); f.className = "fix"; f.textContent = x.r.fix + "."; t.appendChild(f); }
+      d.appendChild(m); d.appendChild(t); box.appendChild(d);
+    });
+    var asks = [
+      "Which code edition do you enforce, and what did you amend for basements?",
+      "Do I need a permit to finish this, and which inspections come before drywall?",
+      "Is my bedroom window an egress window as built, or do I need a bigger well?"
+    ];
+    if (short.length) asks.unshift("I come up short on: " + short.map(function (x) { return x.r.name.toLowerCase(); }).join("; ") + ". What do you accept?");
+    var ol = $("oAsks"); ol.textContent = "";
+    asks.forEach(function (a) { var li = document.createElement("li"); li.textContent = a; ol.appendChild(li); });
+    $("oAssume").textContent = "Checked against common minimums in the 2021 model residential code (rooms R304, ceilings R305, fixture spacing R307, showers P2708, egress R310, halls R311.6). Your building department wins.";
+    count.textContent = String(short.length);
+    last = { v: v, rows: rows, short: short, asks: asks };
+    save();
+  }
+  function save() {
+    try {
+      var d = {}; inputs.forEach(function (el) { d[el.id] = el.value; });
+      // sessionStorage, NOT localStorage: same promise as every tool on the site.
+      sessionStorage.setItem(KEY, JSON.stringify(d));
+    } catch (e) {}
+  }
+  function load() {
+    var d = null;
+    try { d = JSON.parse(sessionStorage.getItem(KEY) || "null"); } catch (e) {}
+    if (d) inputs.forEach(function (el) { if (d[el.id]) el.value = d[el.id]; });
+  }
+  inputs.forEach(function (el) { el.addEventListener("input", refresh); el.addEventListener("change", refresh); });
+  $("printBtn").addEventListener("click", function () { window.print(); });
+  function copyText(text, okMsg) {
+    function fallback() {
+      var t = document.createElement("textarea"); t.value = text;
+      t.style.position = "fixed"; t.style.opacity = "0"; document.body.appendChild(t); t.select();
+      try { document.execCommand("copy"); } catch (e) {} document.body.removeChild(t);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () { said.textContent = okMsg; },
+        function () { fallback(); said.textContent = okMsg; });
+    } else { fallback(); said.textContent = okMsg; }
+  }
+  function checkText() {
+    var out = ["THE FIT CHECK — " + new Date().toLocaleDateString(), "", $("oVerdict").textContent, ""];
+    last.rows.forEach(function (x) {
+      out.push((x.ok ? "[clears] " : "[SHORT]  ") + x.r.name + ": " + amt(x.have, x.r.u)
+        + (x.ok ? "" : " — " + x.r.fix));
+    });
+    out.push("", "Ask the building department:");
+    last.asks.forEach(function (a, i) { out.push((i + 1) + ". " + a); });
+    var who = $("callName").value.trim(); if (who) out.push("", "Call: " + who);
+    out.push("", $("oAssume").textContent, "", "The Fit Check — @nicksdadhax");
+    return out.join("\n");
+  }
+  $("copyBtn").addEventListener("click", function () { copyText(checkText(), "Copied — tape it to the sketch."); });
+  $("promptBtn").addEventListener("click", function () {
+    var v = last.v;
+    var text = [
+      "You are a residential plans examiner looking at a homeowner's basement sketch before framing.",
+      "Blunt, specific, no hype. Never invent a code section or a number; if it depends on my town,",
+      "say what to ask the building department instead.",
+      "",
+      "My numbers (finished surfaces): toilet center " + num(v.tSide) + " in to the side wall, " + num(v.tFront) + " in clear in front;",
+      "shower " + num(v.shW) + " x " + num(v.shD) + " in inside, " + num(v.shFront) + " in in front;",
+      "bedroom " + num(v.bedW) + " x " + num(v.bedL) + " ft; window clear opening " + num(v.egW) + " x " + num(v.egH) + " in, bottom " + num(v.egSill) + " in off the floor;",
+      "ceiling " + num(v.ceil) + " in, " + num(v.beam) + " in under the lowest beam or duct; hall " + num(v.hall) + " in.",
+      "Lines that came up short against common minimums: " + (last.short.length ? last.short.map(function (x) { return x.r.name; }).join("; ") : "none") + ".",
+      "My town and state: [fill in]",
+      "Where the drain, toilet stack and window are, to two walls each: [fill in]",
+      "",
+      "Do this, in order:",
+      "1. For each short line, give me the cheapest fix on paper, and say if it means cutting the slab.",
+      "2. Name anything my list doesn't cover that an inspector checks in a basement bedroom and bath.",
+      "3. Write the three questions I should ask my building department, in plain words.",
+      "",
+      "Keep the whole thing under one page.",
+      "",
+      "(Built with The Fit Check — @nicksdadhax)"
+    ].join("\n");
+    copyText(text, "Prompt copied — paste it into the AI you already use.");
+  });
+  $("resetBtn").addEventListener("click", function () {
+    inputs.forEach(function (el) { el.value = ""; });
+    try { sessionStorage.removeItem(KEY); } catch (e) {}
+    refresh(); said.textContent = "Cleared. Back to the example."; window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+  load(); refresh();
+  window.__fitCheck = { check: check, RULES: RULES };   // for the engine check
+})();
+</script>
+</body>
+</html>

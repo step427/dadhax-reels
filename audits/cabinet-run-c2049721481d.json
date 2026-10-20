@@ -1,0 +1,20 @@
+{
+ "page": "cabinet-run.html",
+ "sha": "c2049721481d",
+ "verdict": "PASS WITH WARNINGS",
+ "fail": [],
+ "warn": [
+  "LONG: 6.5 phone screens of scroll."
+ ],
+ "stats": {
+  "viewport": "375x812",
+  "charsPerLine": 35,
+  "words": 869,
+  "pageHeightPx": 5273,
+  "screens": 6.5,
+  "longestBlockWords": 0,
+  "links": 9
+ },
+ "fills": {},
+ "audited": "2026-10-20T12:40:46+00:00"
+}
