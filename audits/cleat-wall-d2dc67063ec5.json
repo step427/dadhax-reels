@@ -4,28 +4,18 @@
  "verdict": "PASS WITH WARNINGS",
  "fail": [],
  "warn": [
-  "LONG: 8.5 phone screens of scroll.",
-  "DENSE: 1245 words. A free sheet nobody finishes is the same as no sheet."
+  "LONG: 6.6 phone screens of scroll.",
+  "DENSE: 932 words. A free sheet nobody finishes is the same as no sheet."
  ],
  "stats": {
   "viewport": "375x812",
   "charsPerLine": 35,
-  "words": 1245,
-  "pageHeightPx": 6894,
-  "screens": 8.5,
-  "longestBlockWords": 19,
+  "words": 932,
+  "pageHeightPx": 5387,
+  "screens": 6.6,
+  "longestBlockWords": 0,
   "links": 14
  },
- "fills": {
-  "wall": "120",
-  "bottom": "18",
-  "bench": "36",
-  "ceiling": "96",
-  "oc": "16",
-  "first": "16",
-  "height": "3",
-  "hang": "30",
-  "callName": "Sam"
- },
- "audited": "2026-10-18T12:53:24+00:00"
+ "fills": {},
+ "audited": "2026-10-20T12:40:48+00:00"
 }
