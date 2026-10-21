@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bonus page, not a numbered tool (the weekly routine owns the numbers). Staged 2026-10-16
+     on branch robo-run; the flip is Nick's. One file: canvas rectangles + Web Audio blips,
+     no images, no libraries, no network. -->
+<title>Robo Run — @nicksdadhax</title>
+<meta name="description" content="A three-level robot game with an ending, no ads and nothing to buy, plus a prompt to build your own with your kid. Free, no gate.">
+
+<style>
+  /* @nicksdadhax — same dark field-instrument tokens as the tools.
+     SIGNAL YELLOW = the one action (Start). The game's sky is its own world. */
+  :root {
+    --carbon:   #0F0E0B;
+    --panel:    #17150F;
+    --panel-up: #1E1B14;
+    --hair:     #302B21;
+    --bone:     #F4F0E6;
+    --graphite: #8F887A;
+    --signal:   #FFC629;
+    --signal-d: #C8930F;
+    --warn:     #E8502C;
+
+    --mono: ui-monospace, "SF Mono", SFMono-Regular, "Cascadia Mono",
+            "Roboto Mono", Menlo, Consolas, "Courier New", monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+            "Helvetica Neue", Arial, sans-serif;
+
+    --gutter: clamp(18px, 5vw, 40px);
+    --maxw: 660px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--carbon); color: var(--bone);
+    font-family: var(--sans); font-size: 17px; line-height: 1.55;
+    -webkit-text-size-adjust: 100%;
+    background-image:
+      repeating-linear-gradient(to right,  rgba(242,237,231,.035) 0 1px, transparent 1px 28px),
+      repeating-linear-gradient(to bottom, rgba(242,237,231,.035) 0 1px, transparent 1px 28px);
+  }
+  .sheet { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter) 96px; }
+  header { padding: 34px 0 8px; }
+  .protocol { font-family: var(--mono); font-size: 11.5px; letter-spacing: .17em;
+    text-transform: uppercase; color: var(--graphite); }
+  .protocol b { color: var(--signal); font-weight: 700; }
+  h1 { font-family: var(--mono); font-weight: 700; font-size: clamp(28px, 8vw, 48px);
+    line-height: 1.04; letter-spacing: -.03em; text-transform: uppercase; margin: 12px 0 0; }
+  h1 .of { color: var(--signal); }
+  .dek { margin: 14px 0 0; max-width: 46ch; color: #CFC9BB; font-size: 17px; }
+  .dek b { color: var(--bone); }
+  .privacy { margin: 18px 0 0; padding: 13px 15px; font-size: 14.5px; line-height: 1.5;
+    color: #CFC9BB; background: var(--panel); border-left: 3px solid var(--signal); }
+  .privacy b { color: var(--bone); }
+  .story { margin-top: 24px; padding: 15px 16px; background: var(--panel); border: 1px solid var(--hair); }
+  .story p { margin: 0 0 10px; font-size: 15.5px; line-height: 1.55; color: #CFC9BB; }
+  .story p:last-child { margin-bottom: 0; }
+  .story p b { color: var(--bone); }
+  .story a { color: var(--signal); font-weight: 700; text-decoration: none; }
+  .story a:hover { text-decoration: underline; }
+
+  /* the game */
+  .game { margin-top: 22px; background: #1d241c; border: 1px solid var(--hair); padding: 10px;
+    -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+  #cv { display: block; width: 100%; aspect-ratio: 16 / 9; background: #9fd3ea; cursor: pointer; }
+  #cv:focus-visible { outline: 2px solid var(--signal); outline-offset: 2px; }
+  .gbar { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; padding-top: 10px; }
+  .gbar button { min-height: 48px; padding: 12px 18px; border-radius: 0; cursor: pointer;
+    font-family: var(--mono); font-size: 12.5px; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; }
+  .gbar #go { background: var(--signal); color: #14100F; border: 1.5px solid var(--signal); }
+  .gbar #snd, .gbar #fs { background: transparent; color: var(--bone); border: 1.5px solid #453E2C; }
+  .gbar button:focus-visible { outline: 2px solid var(--bone); outline-offset: 2px; }
+  .keys { flex: 1 1 200px; font-size: 14px; color: #CFC9BB; line-height: 1.4; }
+  .pad { display: none; grid-template-columns: 2fr 1fr; gap: 10px; padding-top: 10px; }
+  .dpad { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-areas: ". u ." "l d r"; gap: 6px; }
+  .dpad [data-k=up] { grid-area: u; } .dpad [data-k=left] { grid-area: l; } .dpad [data-k=down] { grid-area: d; } .dpad [data-k=right] { grid-area: r; }
+  .pad button { min-height: 52px; border: 1.5px solid #453E2C; border-radius: 0; background: #283026;
+    color: var(--bone); font: 700 20px/1 var(--mono); touch-action: none; }
+  .pad button.act { font-size: 15px; letter-spacing: .1em; background: #33402f; }
+  @media (pointer: coarse) { .pad { display: grid; } .keys { display: none; } }
+  /* full screen: the game box fills the screen. On a phone held sideways the arrows sit left of
+     the picture and Jump sits right, so thumbs never cover the game. */
+  .game:fullscreen, .game.big { position: fixed; inset: 0; z-index: 50; margin: 0; border: 0; padding: 8px; overflow: auto;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .game:fullscreen > :not(.sr), .game.big > :not(.sr) { width: min(100%, calc((100vh - 150px) * 16 / 9)); width: min(100%, calc((100dvh - 150px) * 16 / 9)); }
+  @media (pointer: coarse) and (orientation: landscape) {
+    .game:fullscreen, .game.big { display: grid; grid-template-columns: 1fr auto 1fr; grid-template-rows: 1fr auto;
+      grid-template-areas: "dp cv act" "bar bar bar"; gap: 8px; align-items: center; }
+    .game:fullscreen > :not(.sr), .game.big > :not(.sr) { width: auto; }
+    .game:fullscreen #cv, .game.big #cv { grid-area: cv; width: auto; height: calc(100vh - 92px); height: calc(100dvh - 92px); }
+    .game:fullscreen .pad, .game.big .pad { display: contents; }
+    .game:fullscreen .dpad, .game.big .dpad { grid-area: dp; }
+    .game:fullscreen .act, .game.big .act { grid-area: act; min-height: 96px; }
+    .game:fullscreen .gbar, .game.big .gbar { grid-area: bar; padding-top: 0; justify-content: center; }
+  }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  /* build one */
+  h2.part { font-family: var(--mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--signal); margin: 34px 0 4px; font-weight: 700; padding-top: 20px; border-top: 1px solid var(--hair); }
+  .partdek { margin: 0 0 14px; font-size: 15px; color: #CFC9BB; line-height: 1.5; }
+  .partdek b { color: var(--bone); }
+  .prompt { margin: 0; padding: 14px 15px; background: var(--panel-up); border: 1.5px dashed var(--signal-d);
+    font-family: var(--mono); font-size: 13.5px; line-height: 1.55; color: var(--bone); white-space: pre-wrap; }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+  .actions button { min-height: 48px; padding: 13px 18px; border-radius: 0; cursor: pointer;
+    font-family: var(--mono); font-size: 12.5px; letter-spacing: .1em; text-transform: uppercase; font-weight: 700;
+    background: transparent; color: var(--bone); border: 1.5px solid #453E2C; }
+  .actions button:hover { border-color: var(--signal); color: var(--signal); }
+  .actions button:focus-visible { outline: 2px solid var(--bone); outline-offset: 2px; }
+  .said { margin-top: 10px; font-family: var(--mono); font-size: 12px; letter-spacing: .06em;
+    text-transform: uppercase; color: var(--signal); min-height: 1em; }
+
+  .titleblock { margin-top: 44px; border: 1px solid var(--hair);
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(108px, 1fr)); }
+  .tb { padding: 11px 13px; border-right: 1px solid var(--hair); }
+  .tb:last-child { border-right: 0; }
+  .tb dt { font-family: var(--mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--graphite); margin: 0 0 4px; }
+  .tb dd { margin: 0; font-family: var(--mono); font-size: 13px; font-weight: 700; color: var(--bone); }
+  .tb dd.red { color: var(--signal); }
+  .cta { margin-top: 18px; font-size: 15px; color: #CFC9BB; line-height: 1.5; }
+  .cta b { color: var(--bone); }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<div class="sheet">
+
+  <nav class="nav">
+    <div class="navtop">
+      <a class="brand" href="index.html">@nicksdadhax</a>
+      <span class="meta">Bonus · free · no gate</span>
+    </div>
+    <div class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="toolbox.html" aria-current="true"><svg class="tbx" width="15" height="13" viewBox="0 0 16 14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><g class="lid"><path d="M5.5 4.5v-.75a2.5 2.5 0 0 1 5 0v.75"/><rect x="1" y="4.5" width="14" height="2.5" rx=".5"/></g><rect x="1" y="7" width="14" height="6" rx=".5"/></svg>The Toolbox</a>
+      <a href="log.html">The Flip</a>
+      <a href="houses.html">I have a house</a>
+    </div>
+  </nav>
+
+  <header>
+    <div class="protocol">Break room <b>·</b> run, kick, race <b>·</b> then it ends</div>
+    <h1>Robo <span class="of">Run</span></h1>
+    <p class="dek">A lot of the free games on your kid's tablet are built to keep them
+      playing: a video ad that cuts into the round, a cartoon character nudging them to buy coins.</p>
+    <p class="dek">This one has three short levels (a run, a soccer match and a kart race),
+      then it says THE END. It has no ads, nothing to buy and no sign-up. <b>You can build one like it with your kid tonight.</b></p>
+  </header>
+
+  <section class="game" aria-label="Robo Run game">
+    <canvas id="cv" width="480" height="270" tabindex="0" role="img"
+      aria-label="Robo Run: a small robot runs and jumps, plays top-down soccer against a dust-bunny team, then races bunny karts. It collects nuts and hunts for hidden bolts."></canvas>
+    <div class="gbar">
+      <button id="go" type="button">Start</button>
+      <button id="snd" type="button" aria-pressed="true">Sound on</button>
+      <button id="fs" type="button" aria-pressed="false">Full screen</button>
+      <span class="keys" id="keys">&larr; &rarr; or A&nbsp;D to run &middot; Space to jump &middot; stomp a dust bunny for a big bounce (hold Space for more)</span>
+    </div>
+    <div class="pad">
+      <div class="dpad">
+        <button type="button" data-k="up" aria-label="Up">&#9650;</button>
+        <button type="button" data-k="left" aria-label="Left">&#9664;</button>
+        <button type="button" data-k="down" aria-label="Down">&#9660;</button>
+        <button type="button" data-k="right" aria-label="Right">&#9654;</button>
+      </div>
+      <button type="button" data-k="jump" class="act" aria-label="Jump">Jump</button>
+    </div>
+    <p class="sr" id="say" role="status" aria-live="polite"></p>
+  </section>
+
+  <p class="privacy">Nothing on this page watches your kid play. Once it loads, it makes
+    no outside calls, runs no ads or analytics, and saves nothing. The robot is drawn with
+    rectangles, and your browser makes every beep on the spot.</p>
+
+  <div class="story">
+    <p>We made this on a tangent while mocking up our basement remodel. I was building a
+      3D walk-through of the plan with an AI, and the laptop on the desk in it opened a
+      tiny game. I'm a physical therapist and I don't write code. <b>The AI wrote every
+      line.</b></p>
+    <p>When I asked whether the game could live on this site, it got three levels and a
+      start button. After my playtests, level two became soccer and level three a kart race.
+      The whole game sits in one file, and the prompt below asks an AI for the same kind of
+      file, built around your kid's ideas.</p>
+    <p>Want to see the basement? Follow the build on my
+      <a href="https://www.instagram.com/nicksdadhax/">Instagram</a> and
+      <a href="https://www.youtube.com/@nicksdadhax">YouTube</a>.</p>
+  </div>
+
+  <h2 class="part">Build one with your kid</h2>
+  <p class="partdek">Open whatever AI chat you already use and paste this in. Let your kid
+    answer its questions. Some AI chats can run the game right in the chat window. If
+    yours can't, save the answer on a computer as <b>game.html</b> and open it in a browser.</p>
+  <pre class="prompt" id="prompt">My kid and I want to build a tiny video game together tonight, and neither of us knows how to code. My kid is [your kid's age] years old.
+
+Step 1: Ask my kid three questions, one at a time, and wait for each answer. Who is the hero? What does the hero collect? What does the hero have to dodge?
+
+Step 2: Write the whole game as ONE html file we can save and open in a web browser. No images, no libraries, nothing loaded from the internet: draw everything with simple shapes on a canvas. Arrow keys and space to play, plus big on-screen buttons so it works on a phone. Three short levels, then a THE END screen. Keep the code short and simple.
+
+Step 3: After the code, show us one number we can change ourselves, like how high the hero jumps, and quote the exact line it's on.
+
+A good answer is one block of code that starts with &lt;!DOCTYPE html&gt;, ends with &lt;/html&gt;, and works the first time we open it. If it doesn't, we'll paste the error back to you.</pre>
+  <div class="actions"><button type="button" id="copy">Copy the prompt</button></div>
+  <div class="said" id="said" role="status" aria-live="polite"></div>
+
+  <dl class="titleblock">
+    <div class="tb"><dt>Protocol</dt><dd>PLAY</dd></div>
+    <div class="tb"><dt>Levels</dt><dd>3</dd></div>
+    <div class="tb"><dt>Ads</dt><dd class="red">0</dd></div>
+    <div class="tb"><dt>By</dt><dd class="red">@nicksdadhax</dd></div>
+  </dl>
+
+  <!--TAIL-->
+  <div class="tail">
+  <a class="tail-next" href="start-with-ai.html">
+    <span class="k">Read next</span>
+    <b>Tool 03 &mdash; Start With AI</b>
+    <span class="s">If that prompt was your first real AI chat, Tool 03 picks one
+      subscription and gives you eight focus steps for the next thirty days.</span>
+  </a>
+  <section class="buyhouses">
+    <h2>Also &mdash; I buy houses</h2>
+    <p><b>Washington or Dakota County, Minnesota.</b> Off-market, or straight from the
+      owner &mdash; I'm the buyer, not a middleman passing it along. Woodbury, Cottage
+      Grove, Hastings, Stillwater, Eagan, Inver Grove Heights, Lakeville.</p>
+    <p>If that's you, or you know somebody quietly thinking about selling, I'll lay out
+      your options &mdash; <b>all of them, including the ones I don't make a dime on.</b>
+      Nothing to sign, no walkthrough unless you ask.</p>
+    <div class="ctas">
+      <a href="houses.html"><b>I have a house</b><span>Or I know someone who does</span></a>
+    </div>
+  </section>
+
+  <section class="optin" id="next">
+    <h2>What I ask</h2>
+    <p class="plain">That was free and nothing here sits behind an email. If it was
+      useful, here's the whole exchange: <b>send it to one or two people who'd use it
+      too.</b> That's it. I'm trusting you with it, you pass it on.</p>
+    <p class="plain">Want the next one before anyone else? I'm building an interest
+      list &mdash; no selling, no sequence, your address goes nowhere.
+      <a href="index.html#next">Exactly what that means, in plain words.</a></p>
+    <p class="fine">The list itself isn't open yet &mdash; I'm still setting it up, and
+      I'd rather say that than put up a box that doesn't work. The ask above stands
+      either way, and it's the one that matters. If you want to tell me what to build
+      next, my DMs are open.</p>
+    <div class="ctas">
+      <a href="https://www.instagram.com/nicksdadhax/"><b>Tell me what to build next</b><span>DM @nicksdadhax</span></a>
+    </div>
+  </section>
+  </div>
+  <!--/TAIL-->
+
+  <p class="cta">Free. This page asks you for nothing: no gate, no email, no
+    analytics. If your kid builds one, <b>DM me a screenshot</b>.</p>
+
+</div>
+
+<script>
+"use strict";
+// ---------- ROBO RUN: canvas shapes + Web Audio, no assets ----------
+// Level 1 is a run, level 2 is top-down soccer, level 3 is a kart race seen from behind the kart (Nick's notes after his playtests).
+// Nuts are the pickups. Every level hides 5 bolts; find all 5 for a star.
+const W = 480, H = 270, T = 18, GY = 234, PW = 14, PH = 22;
+// Level 1: ground [from, to) in tiles · blocks [tile, tiles tall], 2 wide · plats [tile, tiles up, tiles wide]
+//   buns = dust-bunny patrols [from, to) · nuts / bolts [tile, tiles up] · speed = bunny px/s.
+// Level 2: nuts / bolts are [x, y] on the pitch.
+// Level 3: things sit on the course as [share of the lap, units right of the centre line, height].
+const LEVELS = [
+  { kind: 'run', name: 'THE YARD', tip: 'Run right. Stomp a bunny for a big bounce.', end: 132, speed: 40,
+    ground: [[0, 30], [33, 58], [62, 90], [93, 140]],
+    blocks: [[14, 2], [22, 3], [46, 2], [70, 3], [78, 2], [104, 3], [112, 2]],
+    plats: [[36, 3, 5], [65, 5, 4], [96, 3, 6], [118, 3, 4]],                 // the 5-up one: bounce off a bunny, or jump left off the block at 70
+    buns: [[17, 21], [38, 43], [49, 56], [63, 68], [73, 77], [82, 89], [94, 102], [107, 111], [120, 128]],
+    nuts: [[10, 3], [11, 3], [12, 3], [37, 5], [38, 5], [39, 5], [52, 6], [53, 6], [66, 7], [67, 7], [97, 5], [98, 5], [99, 5], [115, 2], [116, 2]],
+    bolts: [[0, 4], [67, 9], [85, 8], [105, 6], [128, 7]] },
+  { kind: 'soccer', name: 'SOCCER', tip: 'First to 2 goals wins. Space kicks.', goals: 2,
+    nuts: [[120, 80], [160, 80], [200, 80], [280, 214], [320, 214], [360, 214], [100, 204], [140, 204], [340, 92], [380, 92], [240, 62], [240, 232]],
+    bolts: [[20, 147], [40, 46], [440, 250], [460, 135], [240, 42]] },       // one in your own net, one in theirs
+  { kind: 'race', name: 'KART RACE', tip: '2 laps. Grab toolboxes. Beat the bunny karts!', laps: 2,
+    boosts: [[0.06, 0], [0.36, -12], [0.62, 12], [0.86, 0]],
+    ramps: [[0.255, 0], [0.71, 0]],
+    boxes: [0.18, 0.5, 0.82].flatMap(f => [[f, -16], [f, 0], [f, 16]]),
+    buns: [[0.22, 10], [0.48, -12], [0.74, 8]],
+    nuts: [...Array.from({ length: 16 }, (_, j) => [(j + 0.5) / 16, j % 2 ? -12 : 12]),
+      [0.262, 0, 14], [0.267, 0, 20], [0.272, 0, 24], [0.717, 0, 14], [0.722, 0, 20], [0.727, 0, 24]],   // the last six hang in the air past the ramps
+    bolts: [[0.97, 0], [0.3, 60], [0.55, -60], [0.68, 24], [0.9, 70]] },
+];
+const ALL_NUTS = LEVELS.reduce((n, l) => n + l.nuts.length, 0), ALL_BOLTS = LEVELS.reduce((n, l) => n + l.bolts.length, 0);
+const cv = document.getElementById('cv'), g = cv.getContext('2d');
+const goBtn = document.getElementById('go'), sndBtn = document.getElementById('snd'), sayEl = document.getElementById('say');
+const keysEl = document.getElementById('keys'), actBtn = document.querySelector('.pad .act');
+const touch = matchMedia('(pointer: coarse)').matches;
+const hit = (x, y, w, h, r) => x < r[0] + r[2] && x + w > r[0] && y < r[1] + r[3] && y + h > r[1];
+const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+let state = 'title', lvl = 0, L, solids, p, k = {}, msg = '', msg2 = '', msgT = 0, raf = 0, last = 0, readyAt = 0;
+let total = { nuts: 0, bolts: 0, stars: 0, time: 0 };
+
+// ---------- sound: tiny Web Audio blips, made on the spot ----------
+let actx = null, soundOn = true;
+function ac() {
+  if (!soundOn) return null;
+  try { actx = actx || new (window.AudioContext || window.webkitAudioContext)(); } catch (e) { return null; }
+  if (actx.state === 'suspended') actx.resume();
+  return actx;
+}
+function chirp(f0, f1, dur, gain, type = 'square', when = 0) {
+  const a = ac(); if (!a) return; const t = a.currentTime + when, o = a.createOscillator(), v = a.createGain(); o.type = type;
+  o.frequency.setValueAtTime(f0, t); o.frequency.exponentialRampToValueAtTime(f1, t + dur); v.gain.setValueAtTime(gain, t); v.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+  o.connect(v).connect(a.destination); o.start(t); o.stop(t + dur + 0.02);
+}
+
+// ---------- sprites ----------
+function drawBot(x, y, s, t) {                           // 14 x 22 at scale s; t moves the legs
+  const R = (c, a, b, w, h) => { g.fillStyle = c; g.fillRect(Math.round(x + a * s), Math.round(y + b * s), Math.ceil(w * s), Math.ceil(h * s)); }, q = Math.round(Math.sin(t) * 1.5);
+  R('#3a3d3a', 3, 17 + Math.max(0, q), 3, 5 - Math.max(0, q)); R('#3a3d3a', 8, 17 + Math.max(0, -q), 3, 5 - Math.max(0, -q));   // legs
+  R('#dfe4e7', 1, 9, 12, 8); R('#7d8c70', 4, 10, 6, 5); R('#6ff3ff', 6, 11, 2, 2);                       // body, sage plate, core
+  R('#dfe4e7', 2, 2, 10, 7); R('#6ff3ff', 4, 4, 2, 2); R('#6ff3ff', 8, 4, 2, 2); R('#3a3d3a', 5, 7, 4, 1);  // head, eyes, grille
+  R('#3a3d3a', 6.5, 0, 1, 2); R('#ff7a3d', 6, -1, 2, 1.5);                                                 // antenna
+}
+function drawBun(x, d, dead, y = GY - 12) {              // 14 x 12 dust bunny: ears, cotton tail; stomped = a pile of dust
+  const e = d > 0 ? 2 : 0;
+  if (dead) { g.fillStyle = '#a5a5a0'; g.fillRect(x, y + 9, 14, 3); g.fillRect(x + 3, y + 7, 8, 2); g.fillStyle = '#8e8e8a'; g.fillRect(x + 5, y + 6, 3, 1); g.fillRect(x + 2, y + 10, 2, 1); g.fillRect(x + 10, y + 9, 2, 1); return; }
+  g.fillStyle = '#8e8e8a'; g.fillRect(x + 1, y + 2, 12, 9); g.fillRect(x + 3, y, 8, 12);
+  g.fillRect(x + 3 + e, y - 6, 3, 7); g.fillRect(x + 8 + e, y - 6, 3, 7);                                     // ears
+  g.fillStyle = '#e8a0a8'; g.fillRect(x + 4 + e, y - 5, 1, 4); g.fillRect(x + 9 + e, y - 5, 1, 4);
+  g.fillStyle = '#fff'; g.fillRect(d > 0 ? x - 2 : x + 13, y + 6, 3, 3);                                        // tail
+  g.fillRect(x + 3 + e, y + 3, 3, 3); g.fillRect(x + 8 + e, y + 3, 3, 3);
+  g.fillStyle = '#1d241c'; g.fillRect(x + 4 + e, y + 4, 1, 1); g.fillRect(x + 9 + e, y + 4, 1, 1);
+}
+function drawNut(cx, cy) {                               // hex nut: the everyday pickup
+  g.fillStyle = '#e3b341'; g.beginPath();
+  for (let i = 0; i < 6; i++) g.lineTo(cx + 6 * Math.cos(i * Math.PI / 3), cy + 6 * Math.sin(i * Math.PI / 3));
+  g.closePath(); g.fill(); g.fillStyle = '#8a6a1f'; g.beginPath(); g.arc(cx, cy, 2.3, 0, Math.PI * 2); g.fill();
+}
+function drawBolt(cx, cy, tw) {                          // the hidden bolt: hex head, threaded shaft, a glint
+  g.fillStyle = '#c9d1d6'; g.fillRect(cx - 5, cy - 7, 10, 4); g.fillRect(cx - 2, cy - 3, 4, 10);
+  g.fillStyle = '#7d878d'; g.fillRect(cx - 5, cy - 4, 10, 1); for (let i = 0; i < 4; i++) g.fillRect(cx - 2, cy - 1 + i * 2, 4, 1);
+  if (tw % 1 < 0.5) { g.fillStyle = '#fff'; g.fillRect(cx + 3, cy - 10, 2, 2); }
+}
+function drawKartRear(rival, lean = 0, flame = false, shadow = true) {   // seen from behind; origin = bottom centre, about 24 x 27
+  const l = Math.round(lean * 2);
+  if (shadow) { g.fillStyle = 'rgba(0, 0, 0, 0.25)'; g.fillRect(-12, -2, 24, 3); }
+  if (flame) { g.fillStyle = '#ffc629'; g.fillRect(-6, -5, 4, 5); g.fillRect(2, -5, 4, 5); g.fillStyle = '#ff7a3d'; g.fillRect(-5, -2, 2, 3); g.fillRect(3, -2, 2, 3); }
+  g.fillStyle = '#2b2e2b'; g.fillRect(-12, -8, 6, 7); g.fillRect(6, -8, 6, 7);                              // rear wheels
+  g.fillStyle = rival ? '#ff7a3d' : '#7d8c70'; g.fillRect(-8, -11, 16, 8);                                   // body
+  g.fillStyle = rival ? '#c85a26' : '#5f7656'; g.fillRect(-8, -5, 16, 2); g.fillRect(-5, -14, 10, 3);        // bumper, seat back
+  if (rival) { g.fillStyle = '#8e8e8a'; g.fillRect(-4 + l, -21, 8, 8); g.fillRect(-4 + l, -27, 3, 7); g.fillRect(1 + l, -27, 3, 7); g.fillStyle = '#fff'; g.fillRect(-1 + l, -15, 3, 3); }   // a dust bunny, ears up
+  else { g.fillStyle = '#dfe4e7'; g.fillRect(-5 + l, -23, 10, 10); g.fillStyle = '#3a3d3a'; g.fillRect(-1 + l, -26, 1, 3); g.fillStyle = '#ff7a3d'; g.fillRect(-1.5 + l, -27.5, 2.5, 1.5); }   // the robot's head from behind
+}
+// the race's tools (origin = bottom centre): a toolbox is the item box, the wrench is thrown, the spring launches, duct tape trips
+function drawBall(x, y, r, rot) {                       // a black pentagon in the middle, five more round the edge, white seams between; rot rolls it
+  const pent = (cx, cy, sz, a0) => { g.beginPath(); for (let i = 0; i < 5; i++) { const a = a0 + i * 2 * Math.PI / 5; g.lineTo(cx + Math.cos(a) * sz, cy + Math.sin(a) * sz); } g.closePath(); g.fill(); };
+  g.save(); g.translate(x, y); g.beginPath(); g.arc(0, 0, r, 0, Math.PI * 2); g.fillStyle = '#fff'; g.fill(); g.clip();
+  g.strokeStyle = '#9a9a94'; g.lineWidth = r * 0.1;
+  for (let i = 0; i < 5; i++) { const a = rot + i * 2 * Math.PI / 5; g.beginPath(); g.moveTo(Math.cos(a) * r * 0.36, Math.sin(a) * r * 0.36); g.lineTo(Math.cos(a) * r, Math.sin(a) * r); g.stroke(); }
+  g.fillStyle = '#1d241c'; pent(0, 0, r * 0.36, rot);
+  for (let i = 0; i < 5; i++) { const a = rot + (i + 0.5) * 2 * Math.PI / 5; pent(Math.cos(a) * r * 1.02, Math.sin(a) * r * 1.02, r * 0.28, a + Math.PI); }
+  g.restore(); g.strokeStyle = 'rgba(29, 36, 28, 0.6)'; g.lineWidth = 0.5; g.beginPath(); g.arc(x, y, r, 0, Math.PI * 2); g.stroke();
+}
+function drawToolbox(bob) {
+  g.fillStyle = 'rgba(0, 0, 0, 0.2)'; g.fillRect(-8, -1, 16, 2);
+  g.fillStyle = '#d9473a'; g.fillRect(-8, -14 + bob, 16, 10); g.fillStyle = '#b5372c'; g.fillRect(-8, -14 + bob, 16, 3);
+  g.fillStyle = '#3a3d3a'; g.fillRect(-4, -17 + bob, 8, 2); g.fillRect(-4, -17 + bob, 2, 4); g.fillRect(2, -17 + bob, 2, 4);
+  g.fillStyle = '#ffc629'; g.fillRect(-1, -10 + bob, 3, 3);
+}
+const TOOL = {
+  wrench: () => { g.fillStyle = '#c9d1d6'; g.fillRect(-1.5, -16, 3, 12); g.fillRect(-4, -19, 3, 5); g.fillRect(1, -19, 3, 5); g.fillRect(-3, -5, 6, 4); },
+  spring: () => { g.strokeStyle = '#c9d1d6'; g.lineWidth = 2; g.beginPath(); for (let i = 0; i <= 6; i++) g.lineTo(i % 2 ? 5 : -5, -3 - i * 2.6); g.stroke(); g.fillStyle = '#9aa6ad'; g.fillRect(-6, -3, 12, 2); g.fillRect(-6, -20, 12, 2); },
+  tape: () => { g.fillStyle = '#9aa6ad'; g.beginPath(); g.arc(0, -9, 8, 0, Math.PI * 2); g.fill(); g.fillStyle = '#5f5f5a'; g.beginPath(); g.arc(0, -9, 3.5, 0, Math.PI * 2); g.fill(); },
+  vac: () => { g.fillStyle = '#2b2e2b'; g.fillRect(-7, -3, 3, 3); g.fillRect(2, -3, 3, 3); g.fillStyle = '#ffc629'; g.fillRect(-7, -15, 12, 12); g.fillStyle = '#3a3d3a'; g.fillRect(-8, -18, 14, 3);
+    g.strokeStyle = '#3a3d3a'; g.lineWidth = 2; g.beginPath(); g.moveTo(4, -16); g.quadraticCurveTo(12, -22, 9, -6); g.stroke(); g.fillStyle = '#9aa6ad'; g.fillRect(6, -6, 7, 3); },
+};
+const TOOL_NAME = { wrench: 'WRENCH! Throw it at a kart.', spring: 'SPRING! A burst of speed.', tape: 'DUCT TAPE! Drop it behind you.', vac: 'SHOP VAC! Sucks up the dust bunnies.' };
+function drawFx() { for (const f of p.fx) { const s = 3 + (0.5 - f.t) * 12; g.fillStyle = `rgba(190, 190, 184, ${Math.min(1, f.t * 2.2)})`; g.fillRect(f.x - s / 2, f.y - s / 2, s, s); } }
+function backdrop(cam) {
+  const sky = g.createLinearGradient(0, 0, 0, H); sky.addColorStop(0, '#9fd3ea'); sky.addColorStop(1, '#e8f5fa'); g.fillStyle = sky; g.fillRect(0, 0, W, H);
+  g.fillStyle = '#fff'; for (let i = 0; i < 12; i++) { const cx = ((i * 230 - cam * 0.2) % 2760 + 2760) % 2760 - 100, cy = 30 + (i * 37) % 60; g.fillRect(cx, cy, 44, 10); g.fillRect(cx + 10, cy - 8, 24, 8); }
+  g.fillStyle = '#a9c39b'; for (let i = 0; i < 14; i++) { const hx = ((i * 260 - cam * 0.45) % 3640 + 3640) % 3640 - 200; g.beginPath(); g.arc(hx, GY + 10, 90 + (i % 3) * 30, Math.PI, 0); g.fill(); }
+}
+function banner(big, ...small) {                         // dark card in the middle of the screen
+  g.fillStyle = 'rgba(29, 36, 28, 0.82)'; g.fillRect(60, 70, W - 120, 46 + small.length * 20);
+  g.fillStyle = '#f4f6f1'; g.textAlign = 'center'; g.font = 'bold 24px monospace'; g.fillText(big, W / 2, 104);
+  g.font = '13px monospace'; small.forEach((s, i) => g.fillText(s, W / 2, 128 + i * 20));
+}
+function drawTitle() {
+  backdrop(0);
+  g.fillStyle = '#9b7653'; g.fillRect(0, GY, W, H - GY); g.fillStyle = '#6f9a5a'; g.fillRect(0, GY, W, 5);
+  drawBot(64, GY - 44, 2, 0); drawBun(W - 90, -1, false); [150, 168, 186].forEach(x => drawNut(x, GY - 40)); drawBolt(214, GY - 36, 0);
+  g.fillStyle = '#1d241c'; g.textAlign = 'center'; g.font = 'bold 40px monospace'; g.fillText('ROBO RUN', W / 2 + 20, 60);
+  g.font = '13px monospace'; g.fillText('A run, a soccer match, a kart race.', W / 2 + 20, 86);
+  g.fillText('Grab the nuts. Find the 5 hidden bolts.', W / 2 + 20, 104);
+  g.fillText(touch ? 'Arrows move. The big button acts.' : 'ARROWS move. SPACE jumps, kicks, brakes.', W / 2 + 20, 122);
+  g.fillText('Stomp a bunny for a big bounce.', W / 2 + 20, 140);
+  g.font = 'bold 15px monospace'; g.fillText(touch ? 'TAP TO START' : 'CLICK OR PRESS ENTER TO START', W / 2 + 20, 166);
+}
+
+// ---------- level 1: the run ----------
+const camX = () => Math.max(0, Math.min(L.end * T + 80 - W, p.x - W * 0.35));
+function drawRun() {
+  const cam = camX(), tw = p.time * 1.6;
+  backdrop(cam);
+  g.save(); g.translate(-Math.round(cam), 0);
+  for (const [a, b] of L.ground) { g.fillStyle = '#9b7653'; g.fillRect(a * T, GY, (b - a) * T, H - GY); g.fillStyle = '#6f9a5a'; g.fillRect(a * T, GY, (b - a) * T, 5); }
+  for (const [x, h] of L.blocks) { g.fillStyle = '#7d8c70'; g.fillRect(x * T, GY - h * T, 2 * T, h * T); g.fillStyle = '#5f7656'; g.fillRect(x * T - 2, GY - h * T, 2 * T + 4, 8); }
+  for (const [x, y, w] of L.plats) { g.fillStyle = '#c9a577'; g.fillRect(x * T, GY - y * T, w * T, 8); g.fillStyle = '#a07f55'; for (let i = 0; i < w; i++) g.fillRect(x * T + i * T, GY - y * T, 1, 8); }
+  p.np.forEach(([x, y], i) => { if (!p.nuts.has(i)) drawNut(x, y); });
+  p.bp.forEach(([x, y], i) => { if (!p.bolts.has(i)) drawBolt(x, y, tw + i * 0.37); });
+  for (const b of p.bun) drawBun(b.x, b.d, b.dead);
+  const END = L.end * T; g.fillStyle = '#5f5f5a'; g.fillRect(END + 20, GY - 120, 3, 120); g.fillStyle = '#7d8c70'; g.fillRect(END + 23, GY - 120, 22, 14);   // flag
+  drawFx();
+  g.save(); if (p.face < 0) { g.translate(p.x * 2 + PW, 0); g.scale(-1, 1); } drawBot(p.x, p.y, 1, p.on ? p.t : 1); g.restore();
+  g.restore();
+}
+function respawn() {                                     // after an ouch: back to the start; nuts and bolts stay picked up
+  Object.assign(p, { x: 30, y: GY - PH, vy: 0, vx: 0, face: 1, on: false,
+    bun: L.buns.map(([a, b]) => ({ x: a * T, a: a * T, b: b * T - 14, d: 1, dead: false })) });
+}
+function die() { chirp(440, 110, 0.5, 0.08); msg = 'Ouch. Try again.'; msg2 = ''; msgT = 1.6; respawn(); }
+function poof(x, y) { for (let i = 0; i < 10; i++) p.fx.push({ x, y, vx: Math.cos(i * 0.63) * (40 + i * 5), vy: Math.sin(i * 0.63) * 30 - 35, t: 0.5 }); }
+function stepRun(dt) {
+  p.time += dt; const cam = camX(), jump = k.jump || k.up;
+  p.vx = ((k.right ? 1 : 0) - (k.left ? 1 : 0)) * 150; if (p.vx) { p.face = Math.sign(p.vx); p.t += dt * 14; }
+  if (jump && p.on) { p.vy = -440; p.on = false; chirp(520, 900, 0.12, 0.05); }
+  p.vy = Math.min(p.vy + 1300 * dt, 700);
+  p.x = Math.max(0, p.x + p.vx * dt);
+  for (const r of solids) if (hit(p.x, p.y, PW, PH, r)) p.x = p.vx > 0 ? r[0] - PW : r[0] + r[2];
+  const was = p.y + PH; p.y += p.vy * dt; p.on = false;   // was = feet last frame, for the stomp test
+  for (const r of solids) if (hit(p.x, p.y, PW, PH, r)) { if (p.vy > 0) { p.y = r[1] - PH; p.on = true; } else p.y = r[1] + r[3]; p.vy = 0; }
+  if (p.y > H) return die();
+  for (const b of p.bun) {
+    if (b.dead) { if (b.x + 14 < cam - 8 || b.x > cam + W + 8) b.dead = false; continue; }   // a squashed bunny comes back once it's off screen
+    b.x += b.d * L.speed * dt; if (b.x < b.a || b.x > b.b) { b.d *= -1; b.x = Math.max(b.a, Math.min(b.b, b.x)); }
+    if (!hit(p.x, p.y, PW, PH, [b.x, GY - 12, 14, 12])) continue;
+    // stomp = feet were above its head last frame. Not p.vy: a slow frame can land you on the ground (vy = 0) in the same step
+    if (was <= GY - 6) { b.dead = true; poof(b.x + 7, GY - 8); p.vy = jump ? -640 : -560; p.on = false; chirp(260, 820, 0.22, 0.09); }   // big bounce, hold jump for more
+    else return die();
+  }
+  pick(p.x + 7, p.y + 11, 12, 16);
+  if (p.x > L.end * T) win();                            // past the flag
+}
+
+// ---------- level 2: top-down soccer. The robot defends the left net, the bunnies defend the right ----------
+const F = { x0: 30, x1: 450, y0: 36, y1: 258, cy: 147, mouth: 26, depth: 16, br: 4 };
+const inMouth = y => Math.abs(y - F.cy) < F.mouth - 4;
+function keepIn(o) {                                     // the pitch, plus the inside of either net
+  const pocket = o.x < F.x0 || o.x > F.x1;
+  o.y = pocket ? clamp(o.y, F.cy - F.mouth + 6, F.cy + F.mouth - 2) : clamp(o.y, F.y0 + 6, F.y1 - 2);
+  o.x = inMouth(o.y) ? clamp(o.x, F.x0 - F.depth + 6, F.x1 + F.depth - 6) : clamp(o.x, F.x0 + 6, F.x1 - 6);
+}
+function kickoff() {
+  Object.assign(p, { x: 190, y: F.cy, vx: 0, vy: 0, dir: [1, 0], ax: 0, ay: 0, stuck: 0, has: false, tackled: 0, ball: { x: 240, y: F.cy - 2, z: 0, vx: 0, vy: 0, vz: 0 },
+    team: [{ x: 300, y: 118, hx: 300, hy: 118, spd: 48, cd: 0, d: -1 }, { x: 330, y: 180, hx: 345, hy: 176, spd: 42, cd: 0, d: -1, back: true }],
+    keeper: { x: F.x1 - 30, y: F.cy, ty: F.cy, cd: 0, d: -1 } });   // out from the net, so the corners are open
+}
+function goal(robot) {
+  p.score[robot ? 0 : 1]++; p.pause = 1.8; const [a, b] = p.score;
+  if (robot) [523, 784, 1047].forEach((f, i) => chirp(f, f, 0.16, 0.06, 'square', i * 0.1)); else chirp(330, 110, 0.5, 0.08, 'triangle');
+  msg = robot ? 'GOAL!' : 'The bunnies scored.'; msg2 = b >= L.goals ? `Bunnies win ${b}-${a}. Rematch!` : a >= L.goals ? '' : `Robot ${a}  -  ${b} Bunnies`; msgT = 1.8;
+}
+function stepSoccer(dt) {
+  if (p.pause > 0) { p.pause -= dt; if (p.pause <= 0) { if (p.score[0] >= L.goals) return win(); if (p.score[1] >= L.goals) p.score = [0, 0]; kickoff(); } return; }
+  p.time += dt;
+  const mx = (k.right ? 1 : 0) - (k.left ? 1 : 0), my = (k.down ? 1 : 0) - (k.up ? 1 : 0), m = Math.hypot(mx, my) || 1;
+  p.vx = mx / m * 125; p.vy = my / m * 125; if (mx || my) { p.dir = [mx / m, my / m]; p.t += dt * 14; }
+  p.x += p.vx * dt; p.y += p.vy * dt; keepIn(p);
+  const b = p.ball, kp = p.keeper;
+  for (const n of p.team) {                              // one bunny chases the ball; the other hangs back until it crosses halfway
+    n.cd -= dt; const chase = !n.back || b.x > 300, tx = chase ? b.x : n.hx, ty = chase ? b.y : n.hy, d = Math.hypot(tx - n.x, ty - n.y);
+    if (d > 2) { n.x += (tx - n.x) / d * n.spd * dt; n.y += (ty - n.y) / d * n.spd * dt; n.d = tx < n.x ? -1 : 1; }
+    keepIn(n);
+  }
+  kp.cd -= dt; kp.ty += (b.y - kp.ty) * Math.min(1, dt * 2);   // the keeper reads the ball late, then slides across
+  kp.y += clamp(clamp(kp.ty, F.cy - F.mouth + 4, F.cy + F.mouth - 4) - kp.y, -55 * dt, 55 * dt);
+  for (const n of [...p.team, kp]) { const d = Math.hypot(p.x - n.x, p.y - n.y); if (d < 12) { p.x += (p.x - n.x) / (d || 1) * (12 - d); p.y += (p.y - n.y) / (d || 1) * (12 - d); keepIn(p); } }   // bump, no harm
+  p.tackled -= dt;
+  for (const n of [...p.team, kp]) {                      // a bunny that meets you head-on pops the ball loose; you shield it from behind
+    const ex = n.x - p.x, ey = n.y - p.y;
+    if (!p.has || n.cd > 0 || Math.hypot(ex, ey) > 15 || (n !== kp && ex * p.dir[0] + ey * p.dir[1] < 0)) continue;   // the keeper grabs it from any side
+    const sd = Math.random() < 0.5 ? 1 : -1;
+    if (n === kp) { b.vx = -190; b.vy = sd * 60; b.vz = 90; } else { b.vx = -p.dir[1] * sd * 110; b.vy = p.dir[0] * sd * 110; b.vz = 30; }   // keeper clears it; a bunny pops it out to one side
+    p.has = false; p.tackled = 0.6; n.cd = 2.5; chirp(220, 110, 0.12, 0.08);   // and the bunny's dizzy for a moment
+  }
+  const dd = Math.hypot(b.x - p.x, b.y - p.y + 3);       // dribble: run into the ball and it sticks to your feet
+  p.has = p.tackled <= 0 && b.z < 8 && dd < (p.has ? 16 : 12) && (p.has || p.vx !== 0 || p.vy !== 0);
+  if (p.has) {                                           // the ball at your feet stays on the pitch (it used to poke past the end line in a corner and snap into the net)
+    b.x = p.x + p.dir[0] * 9; b.y = clamp(p.y - 3 + p.dir[1] * 9, F.y0 + F.br, F.y1 - F.br); b.vx = p.vx; b.vy = p.vy;
+    if (!inMouth(b.y)) b.x = clamp(b.x, F.x0 + F.br, F.x1 - F.br);
+  }
+  // the ball: rolls, bounces off the lines, slows on the grass
+  b.rot = (b.rot || 0) + Math.hypot(b.vx, b.vy) * dt / 5.5 * (b.vx < 0 ? -1 : 1);   // it rolls
+  b.vz -= 520 * dt; b.z += b.vz * dt; if (b.z <= 0) { b.z = 0; b.vz = b.vz < -70 ? -b.vz * 0.45 : 0; const f = Math.exp(-1.3 * dt); b.vx *= f; b.vy *= f; }
+  const wasIn = b.x >= F.x0 && b.x <= F.x1; b.x += b.vx * dt; b.y += b.vy * dt;
+  if (wasIn && (b.x < F.x0 + F.br || b.x > F.x1 - F.br) && !(inMouth(b.y) && b.z < 16)) { b.x = clamp(b.x, F.x0 + F.br, F.x1 - F.br); b.vx *= -0.7; }   // end lines, posts, over the bar (checked from where it was, so a fast shot can't skip through)
+  if (b.x < F.x0 || b.x > F.x1) b.y = clamp(b.y, F.cy - F.mouth + F.br, F.cy + F.mouth - F.br);   // inside a net
+  else if (b.y < F.y0 + F.br || b.y > F.y1 - F.br) { b.y = clamp(b.y, F.y0 + F.br, F.y1 - F.br); b.vy *= -0.7; }   // touchlines
+  b.x = clamp(b.x, F.x0 - F.depth + F.br, F.x1 + F.depth - F.br);
+  const edge = b.y < F.y0 + 14 || b.y > F.y1 - 14 || (!inMouth(b.y) && (b.x < F.x0 + 14 || b.x > F.x1 - 14));
+  if (!edge || Math.hypot(b.x - p.ax, b.y - p.ay) > 10) { p.ax = b.x; p.ay = b.y; p.stuck = 0; }   // pinned on a wall for over a second? throw-in
+  else if ((p.stuck += dt) > 1.2) { b.x = clamp(b.x, F.x0 + 40, F.x1 - 40); b.y = clamp(b.y, F.y0 + 34, F.y1 - 34); b.vx = b.vy = b.vz = 0; p.stuck = 0; msg = 'Throw-in'; msg2 = ''; msgT = 0.9; chirp(600, 600, 0.08, 0.05); }
+  if (b.x < F.x0 - 6) return goal(false);
+  if (b.x > F.x1 + 6) return goal(true);
+  const near = (o, r) => b.z < 12 && Math.hypot(b.x - o.x, b.y - (o.y - 3)) < r;
+  if (k.jump && !p.kicked && near(p, 17)) {             // Space kicks the way you face...
+    let [dx, dy] = p.dir;
+    if (dx > 0.3 && b.x > F.x1 - 130) {                  // ...and a shot at their net from close in goes for the corner the keeper isn't covering
+      const ty = (kp.y > F.cy ? F.cy - 16 : F.cy + 16) + (Math.random() - 0.5) * 10, ax = F.x1 + 8 - b.x, ay = ty - b.y, al = Math.hypot(ax, ay);
+      dx = ax / al; dy = ay / al;
+    }
+    b.vx = dx * 360; b.vy = dy * 360; b.vz = 110; p.kicked = true; p.has = false; p.tackled = 0.25; chirp(180, 420, 0.08, 0.09, 'triangle');
+  }
+  if (!k.jump) p.kicked = false;
+  for (const n of p.team) if (!p.has && n.cd <= 0 && near(n, 10)) {   // bunnies dribble with short touches and only shoot from close in
+    const close = b.x - F.x0 < 130, a = Math.atan2(F.cy - b.y, F.x0 - 10 - b.x) + (Math.random() - 0.5) * (close ? 1.0 : 0.6), sp = close ? 150 : 100;
+    b.vx = Math.cos(a) * sp; b.vy = Math.sin(a) * sp; b.vz = close ? 40 : 0; n.cd = 0.5; chirp(150, 110, 0.08, 0.06); }
+  if (!p.has && kp.cd <= 0 && near(kp, 12)) { const a = Math.PI + (Math.random() - 0.5) * 1.2; b.vx = Math.cos(a) * 230; b.vy = Math.sin(a) * 230; b.vz = 120; kp.cd = 0.7; chirp(150, 110, 0.08, 0.06); }
+  pick(p.x, p.y - 8, 12, 14);
+}
+function drawSoccer() {
+  for (let i = 0; i < 12; i++) { g.fillStyle = i % 2 ? '#6f9a5a' : '#79a463'; g.fillRect(i * 40, 0, 40, H); }   // mowed stripes
+  g.strokeStyle = '#f4f6f1'; g.lineWidth = 2; g.strokeRect(F.x0, F.y0, F.x1 - F.x0, F.y1 - F.y0);
+  g.beginPath(); g.moveTo(240, F.y0); g.lineTo(240, F.y1); g.stroke(); g.beginPath(); g.arc(240, F.cy, 30, 0, Math.PI * 2); g.stroke();
+  g.strokeRect(F.x0, F.cy - 55, 56, 110); g.strokeRect(F.x1 - 56, F.cy - 55, 56, 110); g.fillStyle = '#f4f6f1'; g.fillRect(238, F.cy - 2, 4, 4);
+  for (const [gx, dir] of [[F.x0, -1], [F.x1, 1]]) {    // the two nets
+    const x = dir < 0 ? gx - F.depth : gx; g.fillStyle = 'rgba(29, 36, 28, 0.35)'; g.fillRect(x, F.cy - F.mouth, F.depth, F.mouth * 2);
+    g.strokeStyle = 'rgba(244, 246, 241, 0.55)'; g.lineWidth = 1;
+    for (let i = 4; i < F.depth; i += 4) { g.beginPath(); g.moveTo(x + i, F.cy - F.mouth); g.lineTo(x + i, F.cy + F.mouth); g.stroke(); }
+    for (let j = -F.mouth + 6; j < F.mouth; j += 6) { g.beginPath(); g.moveTo(x, F.cy + j); g.lineTo(x + F.depth, F.cy + j); g.stroke(); }
+    g.fillStyle = '#f4f6f1'; g.fillRect(x, F.cy - F.mouth - 1, F.depth, 3); g.fillRect(x, F.cy + F.mouth - 2, F.depth, 3); g.fillRect(dir < 0 ? x : x + F.depth - 3, F.cy - F.mouth, 3, F.mouth * 2);
+    g.fillRect(gx - 3, F.cy - F.mouth - 3, 5, 5); g.fillRect(gx - 3, F.cy + F.mouth - 3, 5, 5);   // posts
+  }
+  const tw = p.time * 1.6;
+  p.np.forEach(([x, y], i) => { if (!p.nuts.has(i)) drawNut(x, y); });
+  p.bp.forEach(([x, y], i) => { if (!p.bolts.has(i)) drawBolt(x, y, tw + i * 0.37); });
+  const b = p.ball, list = [[p.y, () => { g.save(); if (p.dir[0] < 0) { g.translate(p.x * 2, 0); g.scale(-1, 1); } drawBot(p.x - 7, p.y - 22, 1, p.vx || p.vy ? p.t : 0); g.restore(); }],
+    ...p.team.map(n => [n.y, () => drawBun(n.x - 7, n.d, false, n.y - 12)]),
+    [p.keeper.y, () => { drawBun(p.keeper.x - 7, -1, false, p.keeper.y - 12); g.fillStyle = '#ff7a3d'; g.fillRect(p.keeper.x - 5, p.keeper.y - 11, 10, 2); }],   // the keeper's orange band
+    [b.y, () => { g.fillStyle = 'rgba(0, 0, 0, 0.25)'; g.fillRect(b.x - 5, b.y - 1, 10, 2); drawBall(b.x, b.y - 5 - b.z, 5.5, b.rot || 0); }]];
+  list.sort((u, v) => u[0] - v[0]).forEach(([, f]) => f());
+}
+
+// ---------- level 3: the kart race. Our own take on the old "Mode 7" trick: the course is a flat map,
+// and every screen row below the horizon samples it at the distance that row sees, from a camera behind the kart ----------
+const RM = 1024, FOCAL = 200, CAM_H = 26, CAM_BACK = 40, HZ = 86, ROAD = 30, WALL = 90, U = 0.42;   // U = world units per sprite pixel
+const COURSE = [[180, 880], [420, 900], [660, 880], [860, 820], [920, 680], [860, 560], [720, 540], [640, 470], [700, 380], [850, 340], [910, 220],
+  [820, 110], [640, 100], [520, 180], [560, 300], [460, 380], [330, 330], [240, 220], [130, 260], [100, 420], [190, 560], [120, 700], [130, 820]];
+const ORD = ['1st', '2nd', '3rd', '4th'];
+const off = document.createElement('canvas'); off.width = W; off.height = H;
+const og = off.getContext('2d'), img = og.createImageData(W, H), buf = new Uint32Array(img.data.buffer);
+let course = null;                                       // built the first time the race loads
+function at(s) {                                         // point + direction on the centre line, s units past the finish line
+  const { pts, cum, len } = course; s = ((s % len) + len) % len;
+  let lo = 0, hi = pts.length; while (hi - lo > 1) { const mid = (lo + hi) >> 1; if (cum[mid] <= s) lo = mid; else hi = mid; }
+  const a = pts[lo], b = pts[(lo + 1) % pts.length], d = cum[lo + 1] - cum[lo], t = (s - cum[lo]) / d;
+  return { x: a[0] + (b[0] - a[0]) * t, y: a[1] + (b[1] - a[1]) * t, tx: (b[0] - a[0]) / d, ty: (b[1] - a[1]) / d };
+}
+const side = (s, lat) => { const c = at(s); return [c.x - c.ty * lat, c.y + c.tx * lat]; };   // lat > 0 = right of the centre line
+function nearest(x, y, from) {                           // where a point is on the course: s along it, lat off it (from < 0 = search it all)
+  const { pts, cum } = course, n = pts.length, all = from < 0; let best = 0, bd = Infinity;
+  for (let j = all ? 0 : -24; j <= (all ? n - 1 : 24); j++) { const i = ((all ? 0 : from) + j + n) % n, d = (pts[i][0] - x) ** 2 + (pts[i][1] - y) ** 2; if (d < bd) { bd = d; best = i; } }
+  const a = pts[best], b = pts[(best + 1) % n], sl = cum[best + 1] - cum[best], tx = (b[0] - a[0]) / sl, ty = (b[1] - a[1]) / sl;
+  return { i: best, s: cum[best] + Math.max(-sl, Math.min(sl, (x - a[0]) * tx + (y - a[1]) * ty)), lat: -(x - a[0]) * ty + (y - a[1]) * tx };
+}
+function buildCourse() {
+  const P = COURSE, n = P.length, pts = [];
+  for (let i = 0; i < n; i++) {                          // a smooth curve through the corners (Catmull-Rom)
+    const [a, b, c, d] = [P[(i + n - 1) % n], P[i], P[(i + 1) % n], P[(i + 2) % n]];
+    for (let j = 0; j < 12; j++) {
+      const t = j / 12, cr = (p0, p1, p2, p3) => 0.5 * (2 * p1 + (p2 - p0) * t + (2 * p0 - 5 * p1 + 4 * p2 - p3) * t * t + (3 * p1 - p0 - 3 * p2 + p3) * t * t * t);
+      pts.push([cr(a[0], b[0], c[0], d[0]), cr(a[1], b[1], c[1], d[1])]);
+    }
+  }
+  const cum = [0]; for (let i = 1; i <= pts.length; i++) { const a = pts[i - 1], b = pts[i % pts.length]; cum.push(cum[i - 1] + Math.hypot(b[0] - a[0], b[1] - a[1])); }
+  course = { pts, cum, len: cum[pts.length] };
+  const mc = document.createElement('canvas'); mc.width = mc.height = RM; const m = mc.getContext('2d');
+  for (let y = 0; y < RM; y += 32) for (let x = 0; x < RM; x += 32) { m.fillStyle = ((x + y) / 32) % 2 ? '#6f9a5a' : '#7ba765'; m.fillRect(x, y, 32, 32); }   // checkered grass: it's what makes speed visible
+  const path = () => { m.beginPath(); pts.forEach(([x, y], i) => (i ? m.lineTo(x, y) : m.moveTo(x, y))); m.closePath(); };
+  m.lineJoin = 'round'; path(); m.lineWidth = ROAD * 2 + 10; m.strokeStyle = '#f4f0e6'; m.stroke();
+  m.setLineDash([12, 12]); m.strokeStyle = '#d9473a'; m.stroke();                                       // red-and-white curb
+  m.setLineDash([]); m.lineWidth = ROAD * 2; m.strokeStyle = '#5f5f5a'; m.stroke();                       // asphalt
+  m.setLineDash([14, 18]); m.lineWidth = 2; m.strokeStyle = '#8a8a84'; m.stroke(); m.setLineDash([]);
+  const mark = (s, lat, fn) => { const c = at(s); m.save(); m.translate(c.x - c.ty * lat, c.y + c.tx * lat); m.rotate(Math.atan2(c.ty, c.tx)); fn(); m.restore(); };
+  mark(0, 0, () => { for (let i = -ROAD; i < ROAD; i += 6) for (let r = 0; r < 2; r++) { m.fillStyle = ((i + ROAD) / 6 + r) % 2 ? '#1d241c' : '#f4f0e6'; m.fillRect(r * 6 - 6, i, 6, 6); } });   // finish line
+  for (const [f, lat] of LEVELS[2].boosts) mark(f * course.len, lat, () => {                              // boost arrows
+    m.fillStyle = '#f2b134'; m.fillRect(-16, -11, 32, 22); m.fillStyle = '#c8930f';
+    for (const o of [-10, 2]) { m.beginPath(); m.moveTo(o, -8); m.lineTo(o + 8, 0); m.lineTo(o, 8); m.lineTo(o + 3, 0); m.closePath(); m.fill(); }
+  });
+  course.px = new Uint32Array(m.getImageData(0, 0, RM, RM).data.buffer); course.grass = course.px[0];
+  const mm = document.createElement('canvas'); mm.width = mm.height = 72; const q = mm.getContext('2d'); q.scale(72 / RM, 72 / RM);   // the minimap
+  q.beginPath(); pts.forEach(([x, y], i) => (i ? q.lineTo(x, y) : q.moveTo(x, y))); q.closePath(); q.lineJoin = 'round';
+  q.lineWidth = 44; q.strokeStyle = 'rgba(29, 36, 28, 0.55)'; q.stroke(); q.lineWidth = 24; q.strokeStyle = '#e8e4da'; q.stroke();
+  course.mini = mm;
+}
+const rampHop = s => { for (const [f] of L.ramps) { const d = ((s - f * course.len) % course.len + course.len) % course.len; if (d < 120) return 24 * Math.sin(Math.PI * d / 120); } return 0; };
+function useTool() {
+  if (p.item === 'wrench') { p.shots.push({ x: p.x, y: p.y, a: p.a, t: 1.4, r: 0 }); chirp(900, 300, 0.25, 0.06, 'sawtooth'); }
+  else if (p.item === 'spring') { p.boost = 1.3; p.vh = Math.max(p.vh, 70); chirp(200, 900, 0.3, 0.08, 'triangle'); }
+  else if (p.item === 'vac') {                          // the shop vac: every dust bunny on the track, gone for 10 s, and the bunny kart in the lead spins out
+    for (const b of p.rb) b.dead = 10;
+    const lead = p.riv.filter(r => !r.done).sort((u, v) => v.prog - u.prog)[0]; if (lead) { lead.spin = 1.8; lead.puff = 0.8; }
+    p.vac = 0.7; chirp(120, 900, 0.6, 0.07, 'sawtooth'); chirp(900, 300, 0.4, 0.05, 'sawtooth', 0.5); msg = 'VACUUMED!'; msg2 = 'Every dust bunny on the track, and the leader spins.'; msgT = 1.6;
+  }
+  else { p.traps.push({ x: p.x - Math.cos(p.a) * 12, y: p.y - Math.sin(p.a) * 12, age: 0 }); p.toss = 0.5; chirp(300, 200, 0.12, 0.06); msg = 'TAPE DOWN!'; msg2 = 'A bunny kart that hits it spins out.'; msgT = 1.2; }
+  p.item = null;
+}
+function stepRace(dt) {
+  if (p.wait > 0) { p.wait -= dt; if (p.wait <= 0) chirp(523, 1047, 0.3, 0.07); return; }
+  p.time += dt;
+  const here = nearest(p.x, p.y, p.idx), road = Math.abs(here.lat) <= ROAD, air = p.h > 0;
+  p.st += (((k.right ? 1 : 0) - (k.left ? 1 : 0)) - p.st) * Math.min(1, dt * 8);     // steering eases in, so a tap isn't a jerk
+  p.boost -= dt; p.sticky -= dt; p.toss -= dt; p.vac -= dt;
+  if (k.up && !p.upHeld && p.item) useTool(); p.upHeld = !!k.up;                        // up arrow uses your tool
+  if (p.spin > 0) { p.spin -= dt; p.v *= Math.exp(-4 * dt); }
+  else {
+    p.a += p.st * 2.1 * dt * clamp(p.v / 60, -1, 1);                                    // backing up steers like a car
+    const top = p.sticky > 0 ? 45 : p.boost > 0 ? 215 : road || air ? 150 : 70;       // the grass is slow; so is your own tape
+    if (k.down) p.v = p.v > 0.5 ? Math.max(0, p.v - 300 * dt) : Math.max(-55, p.v - 70 * dt);   // tap = brake, hold = back up
+    else if (k.jump) p.v = p.v > 0 ? Math.max(0, p.v - 300 * dt) : Math.min(0, p.v + 300 * dt);  // Space = brake
+    else p.v = p.v < top ? Math.min(top, p.v + (p.v < 0 ? 220 : 110) * dt) : Math.max(top, p.v - 220 * dt);
+  }
+  p.x += Math.cos(p.a) * p.v * dt; p.y += Math.sin(p.a) * p.v * dt;
+  if (air || p.vh > 0) { p.vh -= 300 * dt; p.h += p.vh * dt; if (p.h <= 0) { p.h = 0; p.vh = 0; chirp(160, 90, 0.12, 0.08); } }
+  const n = nearest(p.x, p.y, here.i); p.idx = n.i;
+  if (Math.abs(n.lat) > WALL) { const c = at(n.s), back = (Math.abs(n.lat) - WALL) * Math.sign(n.lat); p.x += c.ty * back; p.y -= c.tx * back; p.v *= 0.6; }   // an invisible fence past the grass
+  let ds = n.s - p.s; if (ds < -course.len / 2) ds += course.len; if (ds > course.len / 2) ds -= course.len; p.prog += ds; p.s = n.s;
+  const dist = (o, x, y) => Math.hypot(o.x - x, o.y - y);
+  for (const [f, lat] of L.boosts) { const [bx, by] = side(f * course.len, lat); if (p.h < 4 && Math.hypot(p.x - bx, p.y - by) < 14 && p.boost < 0.5) { p.boost = 1.1; chirp(400, 1200, 0.25, 0.06, 'sawtooth'); } }
+  for (const [f, lat] of L.ramps) { const [rx, ry] = side(f * course.len, lat); if (p.h === 0 && p.v > 60 && Math.hypot(p.x - rx, p.y - ry) < 18) { p.vh = 120; chirp(220, 660, 0.2, 0.07, 'triangle'); } }
+  for (const bx of p.ib) {                               // toolboxes: break one, get a random tool (if your hands are free)
+    bx.t -= dt; if (bx.t > 0 || p.h > 10 || dist(bx, p.x, p.y) > 11) continue;
+    bx.t = 3; chirp(700, 1000, 0.1, 0.06);
+    if (!p.item) { p.item = ['wrench', 'wrench', 'spring', 'spring', 'tape', 'vac'][Math.floor(Math.random() * 6)]; msg = TOOL_NAME[p.item].split('!')[0] + '!'; msg2 = TOOL_NAME[p.item].split('! ')[1] + (touch ? ' (▲)' : ' (↑)'); msgT = 1.6; }
+  }
+  for (const w of p.shots) {                             // a thrown wrench curves a little toward the nearest kart ahead and spins out the first one it hits
+    const aim = p.riv.filter(r => r.spin <= 0).map(r => ({ r, d: dist(r, w.x, w.y), a: Math.atan2(r.y - w.y, r.x - w.x) }))
+      .filter(o => o.d < 170 && Math.abs(((o.a - w.a + 3 * Math.PI) % (2 * Math.PI)) - Math.PI) < 1).sort((u, v) => u.d - v.d)[0];
+    if (aim) w.a += clamp(((aim.a - w.a + 3 * Math.PI) % (2 * Math.PI)) - Math.PI, -2.6 * dt, 2.6 * dt);
+    w.x += Math.cos(w.a) * 320 * dt; w.y += Math.sin(w.a) * 320 * dt; w.t -= dt; w.r += dt * 20;
+    for (const r of p.riv) if (w.t > 0 && r.spin <= 0 && dist(r, w.x, w.y) < 12) { r.spin = 1.6; r.puff = 0.6; w.t = 0; chirp(500, 120, 0.3, 0.08); msg = 'HIT!'; msg2 = ''; msgT = 0.9; }
+    for (const b of p.rb) if (w.t > 0 && b.dead <= 0 && dist(b, w.x, w.y) < 10) { b.dead = 5; w.t = 0; chirp(300, 90, 0.2, 0.06); }
+  }
+  p.shots = p.shots.filter(w => w.t > 0);
+  for (const t of p.traps) {                             // duct tape: whoever drives over it spins (you too, if you back into it)
+    t.age += dt;
+    for (const r of p.riv) if (!t.used && r.spin <= 0 && dist(r, t.x, t.y) < 10) { r.spin = 1.4; r.puff = 0.6; t.used = true; chirp(400, 150, 0.25, 0.07); msg = 'TAPED!'; msg2 = ''; msgT = 0.9; }
+    if (!t.used && t.age > 0.6 && p.h < 4 && dist(t, p.x, p.y) < 9) { p.sticky = 1; t.used = true; chirp(200, 120, 0.3, 0.08); msg = 'STUCK!'; msg2 = 'That was your own tape.'; msgT = 1; }   // your own tape slows you down
+  }
+  p.traps = p.traps.filter(t => !t.used);
+  for (const r of p.riv) {                               // bunny karts ride the centre line; a little rubber band keeps it a race
+    r.puff -= dt; if (r.spin > 0) r.spin -= dt;
+    else if (!r.done) { const gap = r.prog - p.prog; r.prog += r.base * (gap > 300 ? 0.88 : gap < -300 ? 1.1 : 1) * (1 + 0.05 * Math.sin(p.time * 0.8 + r.lat)) * dt; if (r.prog >= L.laps * course.len) r.done = true; }
+    [r.x, r.y] = side(r.prog, r.lat); r.h = rampHop(r.prog);
+    const d = dist(r, p.x, p.y); if (d < 9 && Math.abs(r.h - p.h) < 8) { p.v *= 0.85; p.x += (p.x - r.x) / (d || 1) * 2; p.y += (p.y - r.y) / (d || 1) * 2; }   // bump
+  }
+  for (const b of p.rb) {                                // hit a dust bunny and you spin out (or jump right over it)
+    if (b.dead > 0) { b.dead -= dt; continue; }
+    if (p.spin <= 0 && p.h < 6 && dist(b, p.x, p.y) < 8) { b.dead = 5; p.spin = 0.9; chirp(300, 90, 0.3, 0.09); }
+  }
+  pick(p.x, p.y, 9, 9, p.h);
+  p.place = 1 + p.riv.filter(r => r.prog > p.prog).length;
+  if (p.prog >= L.laps * course.len) { p.place = 1 + p.riv.filter(r => r.done).length; win(); }
+}
+function drawRace() {
+  const c = Math.cos(p.a), s = Math.sin(p.a), cx = p.x - c * CAM_BACK, cy = p.y - s * CAM_BACK, px = course.px, grass = course.grass;
+  for (let y = HZ + 1; y < H; y++) {                     // the ground, one row at a time
+    const z = CAM_H * FOCAL / (y - HZ), st = z / FOCAL, dx = -s * st, dy = c * st;
+    let wx = cx + c * z - dx * W / 2, wy = cy + s * z - dy * W / 2;
+    for (let x = 0, o = y * W; x < W; x++, wx += dx, wy += dy) { const ix = wx | 0, iy = wy | 0; buf[o + x] = ix >= 0 && iy >= 0 && ix < RM && iy < RM ? px[iy * RM + ix] : grass; }
+  }
+  og.putImageData(img, 0, 0, 0, HZ + 1, W, H - HZ - 1);
+  g.imageSmoothingEnabled = false; g.drawImage(off, 0, HZ + 1, W, H - HZ - 1, 0, HZ + 1, W, H - HZ - 1);
+  const sky = g.createLinearGradient(0, 0, 0, HZ); sky.addColorStop(0, '#9fd3ea'); sky.addColorStop(1, '#e8f5fa'); g.fillStyle = sky; g.fillRect(0, 0, W, HZ + 1);
+  const turn = -p.a * FOCAL;                             // the hills and clouds slide as you turn
+  g.save(); g.beginPath(); g.rect(0, 0, W, HZ + 1); g.clip();
+  g.fillStyle = '#fff'; for (let i = 0; i < 6; i++) { const x = ((turn * 0.5 + i * 170) % 1020 + 1020) % 1020 - 100; g.fillRect(x, 18 + (i * 23) % 40, 44, 10); g.fillRect(x + 10, 10 + (i * 23) % 40, 24, 8); }
+  g.fillStyle = '#a9c39b'; for (let i = -1; i < 4; i++) { g.beginPath(); g.arc(((turn % 240) + 240) % 240 + i * 240, HZ + 34, 66 + (i & 1) * 22, Math.PI, 0); g.fill(); }
+  g.restore();
+  const haze = g.createLinearGradient(0, HZ, 0, HZ + 24); haze.addColorStop(0, 'rgba(232, 245, 250, 0.95)'); haze.addColorStop(1, 'rgba(232, 245, 250, 0)'); g.fillStyle = haze; g.fillRect(0, HZ, W, 24);
+  const proj = (x, y, h = 0) => { const ex = x - cx, ey = y - cy, f = ex * c + ey * s; if (f < 20) return null; const k = FOCAL / f; return { sx: W / 2 + (-ex * s + ey * c) * k, sy: HZ + (CAM_H - h) * k, k, f }; };   // f = distance ahead of the camera
+  const poly = (pts, col) => { g.fillStyle = col; g.beginPath(); pts.forEach((q, i) => (i ? g.lineTo(q.sx, q.sy) : g.moveTo(q.sx, q.sy))); g.closePath(); g.fill(); };
+  for (const [f, lat] of L.ramps) {                      // each ramp is a wedge: deck rising 12 units over 36, wooden sides, a yellow-and-black lip
+    const q = at(f * course.len), pt = (ds, dl) => [q.x + q.tx * ds - q.ty * (lat + dl), q.y + q.ty * ds + q.tx * (lat + dl)];
+    const fOf = ds => { const [x, y] = pt(ds, 0); return (x - cx) * c + (y - cy) * s; }, fN = fOf(-18), fF = fOf(18);
+    if (fF < 21 || fN > 700) continue;                   // behind the camera, or too far off to matter
+    const d0 = fN < 21 ? -18 + (21 - fN) / (fF - fN) * 36 : -18, hAt = ds => (ds + 18) / 36 * 12, P = (ds, dl, h) => proj(...pt(ds, dl), h);   // clip the near end at the camera instead of popping the ramp away
+    const nl = P(d0, -18, hAt(d0)), nr = P(d0, 18, hAt(d0)), gl = P(d0, -18, 0), gr = P(d0, 18, 0), fl = P(18, -18, 0), fr = P(18, 18, 0), tl = P(18, -18, 12), tr = P(18, 18, 12);
+    if (![nl, nr, gl, gr, fl, fr, tl, tr].every(Boolean)) continue;
+    poly([gl, fl, tl, nl], '#7a5a36'); poly([gr, fr, tr, nr], '#7a5a36');   // sides
+    poly([nl, nr, tr, tl], '#c9a577');                                     // deck
+    g.strokeStyle = '#a07f55'; g.lineWidth = 1;
+    for (let ds = -12; ds < 15; ds += 6) { if (ds <= d0) continue; const a = P(ds, -18, hAt(ds)), b = P(ds, 18, hAt(ds)); if (!a || !b) continue; g.beginPath(); g.moveTo(a.sx, a.sy); g.lineTo(b.sx, b.sy); g.stroke(); }   // planks
+    for (let i = 0; i < 6; i++) { const lip = [P(15, -18 + i * 6, hAt(15)), P(15, -12 + i * 6, hAt(15)), P(18, -12 + i * 6, 12), P(18, -18 + i * 6, 12)]; if (lip.every(Boolean)) poly(lip, i % 2 ? '#1d241c' : '#ffc629'); }   // the lip
+  }
+  const spr = [], tw = p.time;
+  p.np.forEach(([x, y, h], i) => { if (!p.nuts.has(i)) spr.push([x, y, h || 0, () => drawNut(0, -14)]); });
+  p.bp.forEach(([x, y], i) => { if (!p.bolts.has(i)) spr.push([x, y, 0, () => drawBolt(0, -16, tw * 1.6 + i * 0.37)]); });
+  for (const bx of p.ib) if (bx.t <= 0) spr.push([bx.x, bx.y, 0, () => drawToolbox(Math.sin(tw * 4 + bx.x) * 1.5)]);
+  for (const b of p.rb) spr.push([b.x, b.y, 0, () => drawBun(-7, 1, b.dead > 0, -12)]);
+  for (const t of p.traps) spr.push([t.x, t.y, 0, TOOL.tape]);
+  for (const w of p.shots) spr.push([w.x, w.y, 4, () => { g.rotate(w.r); g.translate(0, 10); TOOL.wrench(); }]);
+  const puff = t => { g.fillStyle = `rgba(190, 190, 184, ${Math.min(1, t * 2)})`; for (let i = 0; i < 8; i++) { const a = i * 0.785, d = 10 + (0.6 - t) * 30; g.fillRect(Math.cos(a) * d - 3, -12 + Math.sin(a) * d * 0.6 - 3, 6, 6); } };
+  for (const r of p.riv) spr.push([r.x, r.y, r.h, () => { if (r.puff > 0) puff(r.puff); if (r.spin > 0) { g.translate(0, -12); g.rotate(r.spin * 9); g.translate(0, 12); } drawKartRear(true, 0, false, !r.h); }]);
+  const near = [], one = ({ o, q }) => { const z = q.k * U; g.save(); g.translate(q.sx, q.sy); g.scale(z, z); o[3](); g.restore(); };
+  spr.map(o => ({ o, q: proj(o[0], o[1], o[2]) })).filter(e => e.q && e.q.sx > -60 && e.q.sx < W + 60).sort((a, b) => b.q.f - a.q.f).forEach(e => (e.q.f < CAM_BACK ? near.push(e) : one(e)));
+  const z = FOCAL / CAM_BACK * U, ky = h => HZ + (CAM_H - h) * FOCAL / CAM_BACK, kx = W / 2 + p.st * 6;
+  if (p.h > 0) { g.fillStyle = 'rgba(0, 0, 0, 0.25)'; g.fillRect(kx - 12 * z, ky(0) - 2 * z, 24 * z, 3 * z); }   // the shadow stays on the road
+  g.save(); g.translate(kx, ky(p.h)); g.scale(z, z); if (p.spin > 0) { g.translate(0, -12); g.rotate(p.spin * 9); g.translate(0, 12); } drawKartRear(false, p.st, p.boost > 0, !p.h); g.restore();
+  near.forEach(one);                                     // anything between the camera and your kart goes in front of it
+  if (p.vac > 0) { g.strokeStyle = `rgba(190, 190, 184, ${p.vac})`; g.lineWidth = 3; for (let i = 0; i < 10; i++) { const a = i * 0.628 + p.vac * 4, r = 40 + p.vac * 220; g.beginPath(); g.moveTo(kx + Math.cos(a) * r, ky(p.h) - 20 + Math.sin(a) * r * 0.6); g.lineTo(kx + Math.cos(a) * (r - 30), ky(p.h) - 20 + Math.sin(a) * (r - 30) * 0.6); g.stroke(); } }
+  if (p.toss > 0) { const t = 1 - p.toss / 0.5; g.save(); g.translate(kx, ky(p.h) - 20 * z - Math.sin(Math.PI * t) * 26 * z + t * 18 * z); g.scale(z * (1 - t * 0.5), z * (1 - t * 0.5)); TOOL.tape(); g.restore(); }   // the tape goes up over your shoulder and lands behind you
+  g.imageSmoothingEnabled = true; g.globalAlpha = 0.92; g.drawImage(course.mini, W - 80, 4); g.globalAlpha = 1;
+  const dot = (x, y, col) => { g.fillStyle = col; g.fillRect(W - 80 + x * 72 / RM - 2, 4 + y * 72 / RM - 2, 4, 4); };
+  for (const t of p.traps) dot(t.x, t.y, '#9aa6ad'); for (const r of p.riv) dot(r.x, r.y, '#ff7a3d'); dot(p.x, p.y, '#1d241c');
+  g.fillStyle = 'rgba(29, 36, 28, 0.55)'; g.fillRect(10, 26, 30, 30); g.strokeStyle = '#f4f6f1'; g.lineWidth = 1; g.strokeRect(10.5, 26.5, 29, 29);   // your tool
+  if (p.item) { g.save(); g.translate(25, 52); TOOL[p.item](); g.restore(); g.fillStyle = '#1d241c'; g.font = 'bold 12px monospace'; g.textAlign = 'left'; g.fillText(touch ? '▲ use' : '↑ use', 46, 46); }
+}
+
+// ---------- every level ----------
+function draw() {
+  if (state === 'title') return drawTitle();
+  ({ run: drawRun, soccer: drawSoccer, race: drawRace })[L.kind]();
+  const items = `NUTS ${p.nuts.size}/${p.np.length}  BOLTS ${p.bolts.size}/${p.bp.length}  TIME ${p.time.toFixed(1)}`;
+  g.textAlign = 'left'; g.font = 'bold 13px monospace';
+  if (L.kind === 'soccer') { g.fillStyle = 'rgba(29, 36, 28, 0.6)'; g.fillRect(0, 0, W, 28); g.fillStyle = '#f4f6f1'; g.fillText(`ROBOT ${p.score[0]}-${p.score[1]} BUNNIES  ${items}`, 10, 18); }
+  else { g.fillStyle = '#1d241c'; g.fillText(L.kind === 'race' ? `LAP ${clamp(Math.floor(p.prog / course.len) + 1, 1, L.laps)}/${L.laps}  ${ORD[p.place - 1].toUpperCase()}  ${items}` : `LEVEL 1/${LEVELS.length}  ${items}`, 10, 18); }
+  const star = p.bolts.size === p.bp.length ? '  ★' : '', next = touch ? 'Tap' : 'Enter';
+  if (state === 'clear') banner(L.kind === 'soccer' ? `YOU WIN ${p.score[0]}-${p.score[1]}!` : `LEVEL ${lvl + 1} CLEAR!`, `${p.nuts.size}/${p.np.length} nuts  ${p.bolts.size}/${p.bp.length} bolts${star}`, `${next} for the next level`);
+  else if (state === 'end') banner('THE END', `${ORD[p.place - 1]} place${p.place === 1 ? '!' : '.'}  ${total.nuts}/${ALL_NUTS} nuts  ${total.bolts}/${ALL_BOLTS} bolts`, `${total.stars ? '★'.repeat(total.stars) + '  ' : ''}${next} to play again`);
+  else if (L.kind === 'race' && p.wait > 0) banner(`LEVEL ${lvl + 1}: ${L.name}`, L.tip, touch ? '◀ ▶ steer  ▲ tool  ▼ brake / back up' : '← → steer  ↑ tool  ↓ brake / back up', `Go in ${Math.ceil(p.wait)}...`);
+  else if (msgT > 0) { g.textAlign = 'center'; g.font = 'bold 18px monospace'; g.fillStyle = L.kind === 'run' ? '#1d241c' : '#f4f6f1'; g.fillText(msg, W / 2, 110); g.font = '13px monospace'; if (msg2) g.fillText(msg2, W / 2, 130); }
+}
+const HINT = {
+  run: '← → or A D to run · Space or ↑ to jump · stomp a dust bunny for a big bounce (hold jump for more)',
+  soccer: 'Arrows or W A S D run anywhere · run into the ball and it sticks to your feet · Space kicks it the way you face · a bunny that meets you head-on steals it · first to 2 goals',
+  race: '← → steer · ↑ uses your tool · ↓ brakes, hold it to back up · Space brakes · drive through toolboxes for tools',
+};
+function load(i) {
+  lvl = i; L = LEVELS[i];
+  solids = L.kind !== 'run' ? [] : [...L.ground.map(([a, b]) => [a * T, GY, (b - a) * T, 80]), ...L.blocks.map(([x, h]) => [x * T, GY - h * T, 2 * T, h * T]), ...L.plats.map(([x, y, w]) => [x * T, GY - y * T, w * T, 8])];
+  if (L.kind === 'race' && !course) buildCourse();
+  const pt = { run: ([x, y]) => [x * T + 9, GY - y * T + 9], soccer: ([x, y]) => [x, y], race: ([f, lat, h]) => [...side(f * course.len, lat), h || 0] }[L.kind];
+  p = { time: 0, t: 0, face: 1, nuts: new Set(), bolts: new Set(), fx: [], np: L.nuts.map(pt), bp: L.bolts.map(pt), place: 0 };
+  if (L.kind === 'race') {                               // on the grid, 30 units behind the line; three bunny karts beside and behind
+    const s0 = course.len - 30, c = at(s0), [sx, sy] = side(s0, -10), n0 = nearest(sx, sy, -1);
+    Object.assign(p, { x: sx, y: sy, a: Math.atan2(c.ty, c.tx), v: 0, st: 0, spin: 0, boost: 0, h: 0, vh: 0, idx: n0.i, s: n0.s, prog: n0.s - course.len, wait: 3, place: 1,
+      item: null, upHeld: false, shots: [], traps: [], sticky: 0, toss: 0, vac: 0,
+      ib: L.boxes.map(([f, lat]) => { const [x, y] = side(f * course.len, lat); return { x, y, t: 0 }; }),
+      riv: [[-44, 12, 124], [-60, -10, 131], [-60, 12, 138]].map(([pr, lat, base]) => ({ prog: pr, lat, base, done: false, spin: 0, puff: 0, h: 0, x: 0, y: 0 })),
+      rb: L.buns.map(([f, lat]) => { const [x, y] = side(f * course.len, lat); return { x, y, dead: 0 }; }) });
+    for (const r of p.riv) [r.x, r.y] = side(r.prog, r.lat);
+  } else if (L.kind === 'soccer') { Object.assign(p, { score: [0, 0], pause: 0, kicked: false }); kickoff(); }
+  else respawn();
+  msg = `LEVEL ${i + 1}: ${L.name}`; msg2 = L.tip; msgT = 2.2; sayEl.textContent = `Level ${i + 1}: ${L.name}. ${L.tip}`;
+  keysEl.textContent = HINT[L.kind];
+  actBtn.textContent = actBtn.ariaLabel = { run: 'Jump', soccer: 'Kick', race: 'Brake' }[L.kind];
+}
+function pick(cx, cy, rx, ry, ch = 0) {                  // nuts chirp; a bolt plays a little run; all 5 bolts = a star
+  p.np.forEach(([x, y, h], i) => { if (!p.nuts.has(i) && Math.abs(cx - x) < rx && Math.abs(cy - y) < ry && Math.abs(ch - (h || 0)) < 10) { p.nuts.add(i); chirp(988, 1319, 0.08, 0.05); } });
+  p.bp.forEach(([x, y], i) => {
+    if (p.bolts.has(i) || Math.abs(cx - x) >= rx || Math.abs(cy - y) >= ry || ch > 10) return;
+    p.bolts.add(i); [784, 988, 1175, 1568].forEach((f, j) => chirp(f, f, 0.1, 0.05, 'triangle', j * 0.07));
+    msg = p.bolts.size === p.bp.length ? `ALL ${p.bp.length} BOLTS!` : `BOLT ${p.bolts.size} OF ${p.bp.length}`; msg2 = p.bolts.size === p.bp.length ? 'Gold star for this level.' : ''; msgT = 1.6;
+  });
+}
+function win() {
+  total.nuts += p.nuts.size; total.bolts += p.bolts.size; total.time += p.time; if (p.bolts.size === p.bp.length) total.stars++;
+  readyAt = performance.now() + 700; [523, 659, 784, 1047].forEach((f, i) => chirp(f, f, 0.18, 0.06, 'square', i * 0.12));
+  state = lvl < LEVELS.length - 1 ? 'clear' : 'end'; ui();
+}
+function step(dt) {
+  p.fx = p.fx.filter(f => (f.t -= dt) > 0); for (const f of p.fx) { f.x += f.vx * dt; f.y += f.vy * dt; }
+  msgT -= dt; ({ run: stepRun, soccer: stepSoccer, race: stepRace })[L.kind](dt);
+}
+function frame(ts) {
+  const dt = Math.min(0.033, Math.max(0, (ts - last) / 1000)); last = ts;
+  step(dt); draw(); if (state === 'play') raf = requestAnimationFrame(frame);
+}
+function play() {
+  state = 'play'; k = {}; ui(); cv.focus({ preventScroll: true });
+  cancelAnimationFrame(raf); last = performance.now(); raf = requestAnimationFrame(frame);
+}
+function go() {                                          // Start / Next level / Play again
+  if (state === 'play' || performance.now() < readyAt) return;
+  if (state === 'clear') load(lvl + 1); else { total = { nuts: 0, bolts: 0, stars: 0, time: 0 }; load(0); }
+  play();
+}
+function ui() {
+  goBtn.textContent = { title: 'Start', play: 'Restart level', clear: 'Next level', end: 'Play again' }[state];
+  if (state === 'clear') sayEl.textContent = `Level ${lvl + 1} clear. ${p.nuts.size} of ${p.np.length} nuts, ${p.bolts.size} of ${p.bp.length} bolts.`;
+  if (state === 'end') sayEl.textContent = `The end. ${['First', 'Second', 'Third', 'Fourth'][p.place - 1]} place. ${total.nuts} of ${ALL_NUTS} nuts, ${total.bolts} of ${ALL_BOLTS} bolts.`;
+}
+
+// ---------- controls ----------
+const KEYS = { arrowleft: 'left', a: 'left', arrowright: 'right', d: 'right', arrowup: 'up', w: 'up', arrowdown: 'down', s: 'down', ' ': 'jump' };
+addEventListener('keydown', e => {
+  if (e.key === 'Escape' && gameEl.classList.contains('big')) return fsExit();
+  if (state === 'play') { const n = KEYS[e.key.toLowerCase()]; if (n) { k[n] = true; e.preventDefault(); } return; }
+  if (document.activeElement === cv && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); go(); }
+});
+addEventListener('keyup', e => { const n = KEYS[e.key.toLowerCase()]; if (n) k[n] = false; });
+addEventListener('blur', () => { k = {}; });             // alt-tab never leaves the robot running
+cv.addEventListener('pointerdown', () => { if (state !== 'play') go(); });
+goBtn.addEventListener('click', () => { if (state === 'play') { load(lvl); play(); } else go(); });
+sndBtn.addEventListener('click', () => {
+  soundOn = !soundOn; sndBtn.setAttribute('aria-pressed', soundOn); sndBtn.textContent = soundOn ? 'Sound on' : 'Sound off';
+  if (soundOn) chirp(660, 990, 0.1, 0.05);
+});
+for (const b of document.querySelectorAll('.pad button')) {
+  const n = b.dataset.k;
+  b.addEventListener('pointerdown', e => { e.preventDefault(); if (state !== 'play') { if (n === 'jump') go(); return; } k[n] = true; });
+  for (const ev of ['pointerup', 'pointerleave', 'pointercancel']) b.addEventListener(ev, () => { k[n] = false; });
+  b.addEventListener('contextmenu', e => e.preventDefault());
+}
+// ---------- full screen (iPhone Safari can't full-screen a page element, so there the box fills the window instead) ----------
+const gameEl = document.querySelector('.game'), fsBtn = document.getElementById('fs');
+const fsEl = () => document.fullscreenElement || document.webkitFullscreenElement;
+function fsSync() {
+  const on = !!fsEl() || gameEl.classList.contains('big');
+  fsBtn.textContent = on ? 'Exit full screen' : 'Full screen'; fsBtn.setAttribute('aria-pressed', on);
+  document.body.style.overflow = gameEl.classList.contains('big') ? 'hidden' : ''; fit();
+}
+function fsExit() { if (fsEl()) (document.exitFullscreen || document.webkitExitFullscreen).call(document); gameEl.classList.remove('big'); fsSync(); }
+fsBtn.addEventListener('click', () => {
+  if (fsEl() || gameEl.classList.contains('big')) fsExit();
+  else {
+    const req = gameEl.requestFullscreen || gameEl.webkitRequestFullscreen, big = () => { gameEl.classList.add('big'); fsSync(); };
+    const sideways = () => { try { screen.orientation.lock('landscape').catch(() => {}); } catch (e) {} };   // Android turns the game sideways
+    try { if (req) { Promise.resolve(req.call(gameEl)).then(sideways, big); setTimeout(() => { if (!fsEl()) big(); }, 700); } else big(); } catch (e) { big(); }   // no answer = fill the window
+  }
+  cv.focus({ preventScroll: true });
+});
+for (const ev of ['fullscreenchange', 'webkitfullscreenchange']) document.addEventListener(ev, fsSync);
+function fit() {                                         // whole-number scale keeps every rectangle crisp
+  const s = Math.max(1, Math.ceil(cv.clientWidth * (window.devicePixelRatio || 1) / W));
+  if (cv.width !== W * s) { cv.width = W * s; cv.height = H * s; }
+  g.setTransform(s, 0, 0, s, 0, 0);
+  if (state !== 'play') draw();
+}
+addEventListener('resize', fit);
+fit();
+
+// ---------- copy the prompt ----------
+document.getElementById('copy').addEventListener('click', () => {
+  const said = document.getElementById('said'), text = document.getElementById('prompt').textContent;
+  const done = () => { said.textContent = 'Copied. Paste it into your AI chat.'; };
+  if (navigator.clipboard) navigator.clipboard.writeText(text).then(done, () => { said.textContent = 'Copy blocked. Press and hold the prompt to copy it.'; });
+  else said.textContent = 'Press and hold the prompt to copy it.';
+});
+</script>
+</body>
+</html>

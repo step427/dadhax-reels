@@ -556,6 +556,24 @@ Every clip passed the address gate on the render (frames, audio, captions). Noth
 from the contractor dispute goes on this page. Already-published videos stay up (Nick,
 10/05); the gate applies to new cuts. Clip recipe: Rook CAPABILITY-INDEX, site-clip row.
 
+## Robo Run — bonus page, not a numbered tool (staged 2026-10-16, ships Tue 10/20)
+
+`robo-run.html` plus one line on `toolbox.html` (below the collector note, clear of the weekly card
+flip). A three-level game: a side-scrolling run, top-down soccer against a dust-bunny team, and a
+behind-the-kart race drawn with our own Mode-7-style renderer (no code, ROM or art from any
+commercial game, by design). Nuts are the pickups; five hidden bolts per level, a star for all five.
+It is NOT in the Tool NN sequence: no number, no titleblock "of NN", no read-next chain change, and
+the weekly routine's toolbox count and watchdog ignore it.
+
+Story is Nick's: built on a tangent while mocking up his basement remodel with an AI; the page links
+his Instagram and YouTube profiles for the build. The private 3D model is never linked. Closer is a
+copyable "build one with your kid" prompt (tested on a small model: its game ran first try).
+Privacy contract holds: no network calls after load, no storage.
+
+Audit fills: none (no inputs). `intro_audit.py` warns "words before the first input" only because the
+page has no input; the game sits ~60 words down. Ship: a one-time routine (`robo-run-tuesday-ship`)
+merges `robo-run` after the Tuesday tool ship, re-auditing `toolbox.html` against that morning's main.
+
 ## Tool 11 — The Sheet Plan (built 2026-10-04 by `dadhax-weekly-tool`, ships Tue 10/6)
 
 `sheet-cut-plan.html`. Council pick 10/02 (71.1; runner-up Past Fine 67.2, banked), re-scoped
