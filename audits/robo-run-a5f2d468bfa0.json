@@ -1,0 +1,18 @@
+{
+ "page": "robo-run.html",
+ "sha": "a5f2d468bfa0",
+ "verdict": "PASS",
+ "fail": [],
+ "warn": [],
+ "stats": {
+  "viewport": "375x812",
+  "charsPerLine": 35,
+  "words": 805,
+  "pageHeightPx": 4134,
+  "screens": 5.1,
+  "longestBlockWords": 0,
+  "links": 11
+ },
+ "fills": {},
+ "audited": "2026-10-21T16:37:11+00:00"
+}
