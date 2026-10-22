@@ -3978,6 +3978,23 @@
       "permalink": "https://www.instagram.com/reel/DeymeaYiGdN/",
       "posted_at": "2026-10-22T03:55:38-05:00",
       "fb_page_video_id": "1604835458113178"
+    },
+    {
+      "file": "ig-1022-toothpick.mp4",
+      "title": "Stripped drawer screw? Toothpicks + glue, then drive it by hand",
+      "status": "pending",
+      "earliest": "2026-10-22",
+      "caption": "Hey Dad,\n\nYou can fix a drawer screw that just spins in its hole with a couple of toothpicks and a little wood glue. No new hardware.\n\n1. Find the stripped hole. Pull the drawer and check the runner screws. The one that spins and never bites is your problem.\n2. Glue and toothpicks in. Put a little wood glue on a couple of toothpicks and push them into the hole until it's packed tight.\n3. Trim them flush. Cut the toothpicks off level with the panel with a utility knife.\n4. Drive the screw by hand. A hand screwdriver, not the drill, so you don't strip the fresh wood all over again. Stop when it's snug.\n\nThis dresser is solid pine. If yours is particleboard, toothpicks are a weaker fix.\n\nI didn't wait for the glue to dry. The drawer went right back in, and the glue sets up in there on its own.\n\nSave this for the next loose drawer.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "OFF-ARC cover",
+      "pix": "P",
+      "value_forms": [
+        "implementation",
+        "idea"
+      ],
+      "sam_verdict": "POST 2026-10-22",
+      "topic_class": "utility",
+      "source_raw": "PXL_20261017_185750275.mp4",
+      "cover_ms": 300
     }
   ]
 }
