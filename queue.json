@@ -3120,7 +3120,7 @@
     {
       "file": "ig-1007-power.mp4",
       "kind": "new",
-      "status": "pending",
+      "status": "posted",
       "earliest": "2026-10-07",
       "title": "Blaming them gives away your power",
       "caption": "Hey Dad,\n\nThe second you start saying \"I think this and feel this because of them,\" you're giving away your power.\n\nIt's good to acknowledge we're human. The outside world does have an impact on us.\n\nBut what's really helped me is taking the outside world as just data points, so you can grow here.\n\nFollow so the next reframe finds you.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
@@ -3136,7 +3136,10 @@
       "sam_verdict": "POST 2026-10-07",
       "cut_by": "cloud session 2026-10-07 (Rook captures/2026-10-07-books-reels-drop.md)",
       "nav_safe": true,
-      "_note": "Span 92.4-121.6; laptop listed \"outside world as data points\" as still minable. Keep >=1 slot from ig-1007-frankl (same thesis). Sam: r1 FIX, r2 POST (cloud review subagent, CUT-RULES + SAM-PLAYBOOK rubric)."
+      "_note": "Span 92.4-121.6; laptop listed \"outside world as data points\" as still minable. Keep >=1 slot from ig-1007-frankl (same thesis). Sam: r1 FIX, r2 POST (cloud review subagent, CUT-RULES + SAM-PLAYBOOK rubric).",
+      "permalink": "https://www.instagram.com/reel/De0YXMOkldC/",
+      "posted_at": "2026-10-22T20:30:28-05:00",
+      "fb_page_video_id": "1138410969124737"
     },
     {
       "file": "ig-yt-trimmer.mp4",
