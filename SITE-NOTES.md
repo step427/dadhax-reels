@@ -691,7 +691,7 @@ caption (three coats a side, Saturday at five → Wednesday at four) and the one
 Tool 11's launch reel never reached the queue (BUILD-QUEUE #70): this one goes in the same push as
 the merge, and the Tuesday journal line names the queue row.
 
-**Audit fills (Tool 12):** `--fill coats=3 window=6 need=<a date 4+ days out> needHour=17 callName=Sam` — every input the page needs set before its real output exists on screen. Never a real person's name or a sensitive number. A past `need` date renders the overdue branch and audits 7046px FAIL (10/20).
+**Audit fills (Tool 12):** `--fill coats=3 window=6 need=+5d needHour=17 callName=Sam` — every input the page needs set before its real output exists on screen. Never a real person's name or a sensitive number. A past `need` date renders the overdue branch and audits 7046px FAIL (10/20); `+5d` resolves to today+5 so it never rots.
 → PASS WITH WARNINGS (LONG/DENSE only), 1235 words / 6910px expanded, 8.5 screens, Tool 10 parity
 (1245 / 6894 today). First audit was 1450 / 7688, a TOO LONG FAIL; trimmed by folding the
 repeat-coat bullets into one "same for every coat after it" line, cutting the second why-item and the
