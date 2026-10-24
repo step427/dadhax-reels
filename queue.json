@@ -2956,7 +2956,7 @@
     {
       "file": "ig-1007-post.mp4",
       "title": "Not in the mood to post? Me neither.",
-      "status": "pending",
+      "status": "posted",
       "earliest": "2026-10-07",
       "caption": "Hey Dad,\n\nDo I feel like making a video? Absolutely not.\n\nBut I got a system set up where I don't even have to think about it. It edits, it posts, it does the captions. The lowest pain I have is just hitting record.\n\nIf you want to grow, spiritually or in business, why would you not post? It's free. All you've got to do is be willing to embarrass yourself while you get better.\n\nEmbarrassing now. Follow and watch me get better.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
       "arc_slot": "OFF-ARC cover",
@@ -2968,7 +2968,10 @@
       "sam_verdict": "POST 2026-10-07",
       "topic_class": "meta",
       "source_raw": "PXL_20261007_133657821.mp4",
-      "cover_ms": 0
+      "cover_ms": 0,
+      "permalink": "https://www.instagram.com/reel/De4qSYBgvNb/",
+      "posted_at": "2026-10-24T12:24:07-05:00",
+      "fb_page_video_id": "4840475522869081"
     },
     {
       "file": "ig-1007-frankl.mp4",
