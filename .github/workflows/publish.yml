@@ -1,28 +1,33 @@
 name: Publish next reel
 
-# Three slots a day, in UTC because that is all cron speaks here.
-# 14:00 / 18:00 / 23:00 UTC = 9am / 1pm / 6pm Central while CDT is in effect.
-# When the US falls back on 2026-11-01 these land an hour early (8am/12pm/5pm);
-# bump each to 15/19/00 then, or leave it -- the script reads Central time itself,
-# so the slot logic stays correct either way, only the clock time shifts.
+# Hourly, and the SCRIPT decides when to post -- not the cron.
 #
-# GitHub's scheduler is best-effort and can run several minutes late under load.
-# That is fine: nothing here is time-critical to the minute.
-# The 03:00 UTC run is the safety net: that is 10pm Central the SAME day, and
-# the script targets the full three by then. If both earlier slots died, this
-# one puts the day right. Three a day is the contract; the clock times are only
-# how we spread them out.
+# publish.py posts one reel once each slot's Central clock time has passed
+# (9am, 1pm, 6pm -- SLOTS in publish.py) and does nothing on every other run.
+# So whichever hourly run lands first after 9am posts the morning reel, and the
+# rest of the hour's runs find the day on target and exit in seconds. The
+# script reads Central time itself, so DST (2026-11-01) needs no edit here.
 #
-# Minutes are deliberately odd. On the hour is the most contended slot on the
+# Why not three fixed crons any more (changed 2026-10-05): GitHub's scheduler
+# is best-effort, and through late Sept / early Oct it ran every slot 3-7 HOURS
+# late, not minutes. Each cron fired once and landed wherever it landed:
+#   - the 10pm "safety net" (03:41 UTC) arrived ~5am the NEXT day, posted that
+#     day's morning reel at 4-6am, and could no longer rescue anything;
+#   - on 10/05 a run went missing outright, and the day's third post rode on
+#     a single remaining run with ~3h of slack before midnight.
+# Every day still made three, but on one thread. Hourly runs turn a late or
+# dropped run from a missed slot into a delay of an hour.
+#
+# Cost: ~24 short runs a day. This repo is public, so Actions minutes are free,
+# and a run with nothing owed commits nothing.
+#
+# Minute is deliberately odd. On the hour is the most contended slot on the
 # whole platform, and GitHub does not merely DELAY a congested schedule -- under
 # enough load it DROPS the run entirely. Observed here 2026-08-14: the 18:00 run
 # was still unqueued 21 minutes later. Odd minutes sit off the stampede.
 on:
   schedule:
-    - cron: "7 14 * * *"
-    - cron: "23 18 * * *"
-    - cron: "11 23 * * *"
-    - cron: "41 3 * * *"
+    - cron: "17 * * * *"
   workflow_dispatch:
     inputs:
       dry_run:

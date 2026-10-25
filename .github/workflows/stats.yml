@@ -1,7 +1,8 @@
 name: Snapshot Instagram stats
 
-# Once a day at 05:13 UTC = 12:13am Central, after the 10pm safety-net run has
-# had its say, so the snapshot covers a complete posting day.
+# Once a day at 05:13 UTC = 12:13am Central, after the posting day has closed
+# (the hourly publisher's last chance at a day is its last run before midnight
+# Central), so the snapshot covers a complete posting day.
 #
 # Deliberately SEPARATE from publish.yml. Stats are nice to have; posting is the
 # contract. A broken stats run must never be able to fail a posting slot, and
