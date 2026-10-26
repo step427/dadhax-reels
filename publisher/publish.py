@@ -473,6 +473,13 @@ def publish_one(item, q, c, dry_run):
     a crash between the two surfaces can never re-post the reel to Instagram.
     """
     log(f"staging {item['file']}")
+    # Nick's 9/24 keyword-ask test (ask_test.py), OFF until he says go. A bug in
+    # it must never cost a post: on any error the caption goes out as queued.
+    try:
+        import ask_test
+        ask_test.apply(item, q["items"], topic_class, log)
+    except Exception as e:
+        log(f"ASK TEST skipped on {item['file']}: {type(e).__name__}: {e}")
     try:
         link = publish_ig(item, RAW_BASE + item["file"],
                           c["META_ACCESS_TOKEN"], c["IG_USER_ID"], dry_run)
