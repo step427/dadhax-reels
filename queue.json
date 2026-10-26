@@ -4038,6 +4038,22 @@
       "sam_verdict": "POST 2026-10-26",
       "topic_class": "utility",
       "source_raw": "PXL_20261011_135425046.mp4"
+    },
+    {
+      "file": "ig-yt-crook.mp4",
+      "title": "Crooked board? Hot glue it to a level and rip it straight",
+      "status": "pending",
+      "earliest": "2026-10-26",
+      "caption": "Hey Dad,\n\nGot a crooked board? Borrow something straight.\n\n1. Hot glue the crooked board to a long level.\n2. Run the level along the table saw fence and rip the far edge.\n3. Pop the level off the glue.\n4. Check the new edge against the level.\n\nMine checked straight against the level. A saw rip can still leave a little wave, so sand it before a glue-up.\n\nThis fixes a board bowed along its edge. If it's cupped or twisted and rocks on the saw, don't rip it this way.\n\nRiving knife in. Keep your hands six inches from the blade, keep a hand on the level, and finish the cut with a push stick. Let the blade stop before you reach for the strip.\n\nSave this for the next crooked board.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "OFF-ARC cover (catalog; no ARC for week of 10/25)",
+      "pix": "P",
+      "value_forms": [
+        "idea",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-10-26",
+      "topic_class": "utility",
+      "source_raw": "yt:LeHuGFD3TRg"
     }
   ]
 }
