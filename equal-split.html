@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Tool 14. Built 2026-10-27 by the dadhax-weekly-tool routine off the 10/19 butcher
+     block takes (tape tilt to 18, fence at 5-3/8, three shelves); council pick 2026-10-27. -->
+<title>The Equal Split — @nicksdadhax</title>
+<meta name="description" content="Type a board's width and how many equal pieces you want. Get the fence setting with the blade counted, the tape-tilt marks, and what is left over. Free, no gate.">
+
+<style>
+  /* @nicksdadhax — dark field-instrument identity. Same tokens as tools 01-13.
+     SIGNAL YELLOW = your input / the action. WARN RED = the honest rail —
+     here that's "this page doesn't know your saw." */
+  :root {
+    --carbon:   #0F0E0B;
+    --panel:    #17150F;
+    --panel-up: #1E1B14;
+    --hair:     #302B21;
+    --bone:     #F4F0E6;
+    --graphite: #8F887A;
+    --signal:   #FFC629;
+    --signal-d: #C8930F;
+    --warn:     #E8502C;
+    --ply:      #B8935A;
+
+    --mono: ui-monospace, "SF Mono", SFMono-Regular, "Cascadia Mono",
+            "Roboto Mono", Menlo, Consolas, "Courier New", monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+            "Helvetica Neue", Arial, sans-serif;
+
+    --gutter: clamp(18px, 5vw, 40px);
+    --maxw: 660px;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--carbon);
+    color: var(--bone);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-text-size-adjust: 100%;
+    background-image:
+      repeating-linear-gradient(to right,  rgba(242,237,231,.035) 0 1px, transparent 1px 28px),
+      repeating-linear-gradient(to bottom, rgba(242,237,231,.035) 0 1px, transparent 1px 28px);
+  }
+
+  .sheet { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter) 96px; }
+
+  header { padding: 34px 0 8px; }
+  .protocol {
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: .17em;
+    text-transform: uppercase; color: var(--graphite);
+  }
+  .protocol b { color: var(--signal); font-weight: 700; }
+  h1 {
+    font-family: var(--mono); font-weight: 700;
+    font-size: clamp(28px, 8vw, 48px); line-height: 1.04;
+    letter-spacing: -.03em; text-transform: uppercase;
+    margin: 12px 0 0; text-wrap: balance;
+  }
+  h1 .of { color: var(--signal); }
+  .dek { margin: 14px 0 0; max-width: 46ch; color: #CFC9BB; font-size: 17px; }
+  .dek em { color: var(--bone); font-style: normal; border-bottom: 1.5px solid var(--signal-d); }
+  .dek b { color: var(--bone); }
+
+  .privacy {
+    margin: 18px 0 0; padding: 13px 15px; font-size: 14.5px; line-height: 1.5;
+    color: #CFC9BB; background: var(--panel); border-left: 3px solid var(--signal);
+  }
+  .privacy b { color: var(--bone); }
+
+  .story { margin-top: 24px; padding: 15px 16px; background: var(--panel);
+    border: 1px solid var(--hair); }
+  .story p { margin: 0 0 10px; font-size: 15.5px; line-height: 1.55; color: #CFC9BB; }
+  .story p:last-child { margin-bottom: 0; }
+  .story p b { color: var(--bone); }
+  .story a { color: var(--signal); font-weight: 700; text-decoration: none; }
+  .story a:hover { text-decoration: underline; }
+
+  .whys { margin-top: 26px; border: 1px solid var(--hair); }
+  .why { padding: 14px 15px; border-bottom: 1px solid var(--hair); }
+  .why:last-child { border-bottom: 0; }
+  .why .tag { display: block; font-family: var(--mono); font-size: 12.5px; font-weight: 700;
+    letter-spacing: .08em; text-transform: uppercase; margin-bottom: 5px; color: var(--signal); }
+  .why p { margin: 0; font-size: 15px; line-height: 1.5; color: #CFC9BB; }
+  .why p b { color: var(--bone); }
+
+  .redline-note {
+    margin: 14px 0 0; padding: 9px 12px;
+    border-left: 2.5px solid var(--warn);
+    background: #20130E; /* rgba(232,80,44,.08) on --carbon, solid so contrast is measurable */
+    font-size: 14.5px; line-height: 1.45; color: #E7DCD6;
+  }
+  .redline-note b { color: var(--warn); font-family: var(--mono);
+    font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase;
+    display: block; margin-bottom: 3px; }
+
+  .block { margin-top: 30px; }
+  .lbl {
+    display: block; font-family: var(--mono); font-size: 11.5px;
+    letter-spacing: .13em; text-transform: uppercase; color: var(--graphite);
+    margin-bottom: 8px;
+  }
+  h2.part {
+    font-family: var(--mono); font-size: 12px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--signal); margin: 34px 0 4px; font-weight: 700;
+    padding-top: 20px; border-top: 1px solid var(--hair);
+  }
+  .partdek { margin: 0 0 14px; font-size: 15px; color: #CFC9BB; line-height: 1.5; }
+  .partdek b { color: var(--bone); }
+
+  .seed {
+    border: 1.5px solid var(--signal); background: var(--panel);
+    padding: 16px 16px 14px;
+  }
+  .seed .lbl { color: var(--signal); margin-top: 0; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; }
+  @media (max-width: 380px) { .grid2 { grid-template-columns: 1fr; } }
+  input[type=text], input[type=number], input[type=date] {
+    display: block; width: 100%;
+    background: transparent; border: 0; border-bottom: 1.5px solid #453E2C;
+    color: var(--bone); font-family: var(--mono); font-size: 18px;
+    line-height: 1.5; padding: 4px 0 8px; border-radius: 0;
+    font-variant-numeric: tabular-nums; -moz-appearance: textfield;
+  }
+  input[type=date] { color-scheme: dark; min-height: 44px; }
+  input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  input::placeholder { color: #6B6455; font-family: var(--sans); font-size: 15px; }
+  input:focus { outline: 0; border-bottom-color: var(--signal); }
+  .seed .lbl + input { margin-bottom: 14px; }
+  .unit { font-family: var(--mono); font-size: 11px; color: var(--graphite); letter-spacing: .08em; }
+  .hint { margin: 6px 0 0; font-size: 13.5px; color: var(--graphite); line-height: 1.45; }
+  .seed .hint { margin: 0 0 16px; }
+
+  .zone { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 8px; }
+  .zone button { flex: 1 1 0; min-width: 86px; min-height: 48px; padding: 10px 6px; border-radius: 0; cursor: pointer;
+    font-family: var(--mono); font-size: 12px; letter-spacing: .05em; text-transform: uppercase;
+    font-weight: 700; background: transparent; color: var(--bone); border: 1.5px solid #453E2C; }
+  .zone button[aria-pressed="true"] { background: var(--signal); color: #14100F; border-color: var(--signal); }
+  .zone button:focus-visible { outline: 2px solid var(--bone); outline-offset: 2px; }
+
+  /* the schedule */
+  .spec { margin-top: 22px; padding: 18px 16px; background: var(--panel-up);
+    border: 2px solid var(--signal); }
+  .spec[hidden] { display: none; }
+  .spec .lbl { color: var(--signal); }
+  .spec p { margin: 0 0 8px; font-size: 16.5px; line-height: 1.5; color: var(--bone); }
+  .spec p b { color: var(--signal); font-family: var(--mono); }
+  .spec p.fine { margin-top: 10px; font-size: 14px; color: #CFC9BB; }
+  .spec p.no { color: #E7DCD6; border-left: 2.5px solid var(--warn); padding-left: 10px; }
+  .spec p.no b { color: var(--warn); }
+  .steps { margin: 12px 0 0; }
+  .step { padding: 10px 0 8px; border-top: 1px solid var(--hair); }
+  .step .head { display: flex; gap: 12px; align-items: center; margin: 0 0 6px; }
+  .step .pic { flex: 0 0 72px; }
+  .step .pic svg { display: block; width: 72px; height: auto; }
+  .step .pic text { font-family: var(--mono); font-weight: 700; font-size: 10px; fill: var(--signal); }
+  .step h3 { margin: 0; font-family: var(--mono); font-size: 14px; letter-spacing: .05em;
+    text-transform: uppercase; color: var(--signal); }
+  .step h3 i { font-style: normal; color: var(--bone); display: block; letter-spacing: 0; }
+  .step ul { margin: 0; padding: 0 0 0 18px; }
+  .step ul li { font-family: var(--sans); font-size: 14.5px; line-height: 1.4; color: var(--bone); }
+  .step ul li.w { color: #E7DCD6; list-style: "! "; }
+  .step ul li.w::marker { color: var(--warn); font-family: var(--mono); font-weight: 700; }
+
+  .callbox { margin-top: 28px; padding: 18px 16px 16px; background: var(--panel-up);
+    border: 2px dashed var(--signal-d); }
+  .callbox .lbl { color: var(--signal); }
+  .callbox .means { margin: 10px 0 14px; font-size: 15px; color: #CFC9BB; line-height: 1.5; }
+  .callbox .means b { color: var(--bone); }
+  .callbox input[type=text] { font-family: var(--sans); font-size: 17px; }
+
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+  .actions button {
+    font-family: var(--mono); font-size: 12.5px; letter-spacing: .1em;
+    text-transform: uppercase; font-weight: 700; min-height: 48px;
+    padding: 13px 18px; border-radius: 0; cursor: pointer;
+    background: var(--signal); color: #14100F; border: 1.5px solid var(--signal);
+  }
+  .actions button.ghost { background: transparent; color: var(--bone); border-color: #453E2C; }
+  .actions button:hover { filter: brightness(1.1); }
+  .actions button.ghost:hover { border-color: var(--signal); color: var(--signal); filter: none; }
+  .actions button:focus-visible { outline: 2px solid var(--bone); outline-offset: 2px; }
+
+  .said {
+    margin-top: 14px; font-family: var(--mono); font-size: 12px;
+    letter-spacing: .06em; text-transform: uppercase; color: var(--signal);
+    min-height: 1em;
+  }
+
+  .titleblock {
+    margin-top: 44px; border: 1px solid var(--hair);
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(108px, 1fr));
+  }
+  .tb { padding: 11px 13px; border-right: 1px solid var(--hair); }
+  .tb:last-child { border-right: 0; }
+  .tb dt {
+    font-family: var(--mono); font-size: 10px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--graphite); margin: 0 0 4px;
+  }
+  .tb dd {
+    margin: 0; font-family: var(--mono); font-size: 13px; font-weight: 700;
+    color: var(--bone); font-variant-numeric: tabular-nums;
+  }
+  .tb dd.red { color: var(--signal); }
+
+  .cta { margin-top: 18px; font-size: 15px; color: #CFC9BB; line-height: 1.5; }
+  .cta b { color: var(--bone); }
+  .cta a { color: var(--signal); font-weight: 700; text-decoration: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+
+  @media print {
+    @page { size: letter; margin: .5in .55in; }
+    :root {
+      --carbon: #fff; --panel: #fff; --panel-up: #FFF8E2;
+      --hair: #C9C2BC; --bone: #14100F; --graphite: #5E5651;
+      --signal: #7A5B00; --signal-d: #7A5B00; --warn: #B93A18; --ply: #E4D2A8;
+    }
+    body { background-image: none; font-size: 10.5pt; }
+    .sheet { max-width: none; padding: 0; }
+    .actions, .said, .nav, .tail, .cta, .privacy { display: none; }
+    .spec[hidden] { display: block !important; }
+    input { border-bottom-color: #9AA0A8; min-height: .42in; }
+    .redline-note { background: none; }
+    h1 { font-size: 26pt; }
+  }
+</style>
+
+<style>
+  /* Tool 14 additions: the board drawing and the cut rows. */
+  .board { margin: 14px 0 4px; }
+  .board svg { display: block; width: 100%; height: auto; }
+  .board text { font-family: var(--mono); font-size: 11px; font-weight: 700; fill: var(--bone); }
+  .board .k { fill: var(--warn); }
+  .rows { margin: 12px 0 0; }
+  .row { display: grid; grid-template-columns: 1fr auto; gap: 10px; padding: 9px 0 8px; border-top: 1px solid var(--hair); }
+  .row b { font-family: var(--mono); font-size: 13.5px; letter-spacing: .03em; color: var(--bone); font-weight: 700; }
+  .row span { font-family: var(--mono); font-size: 15px; color: var(--signal); font-weight: 700; text-align: right; }
+  .row.w b, .row.w span { color: var(--warn); }
+</style>
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+
+<div class="sheet">
+
+  <nav class="nav">
+    <div class="navtop">
+      <a class="brand" href="index.html">@nicksdadhax</a>
+      <span class="meta">Tool 14 · free · no gate</span>
+    </div>
+    <div class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="toolbox.html" aria-current="true"><svg class="tbx" width="15" height="13" viewBox="0 0 16 14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><g class="lid"><path d="M5.5 4.5v-.75a2.5 2.5 0 0 1 5 0v.75"/><rect x="1" y="4.5" width="14" height="2.5" rx=".5"/></g><rect x="1" y="7" width="14" height="6" rx=".5"/></svg>The Toolbox</a>
+      <a href="log.html">The Flip</a>
+      <a href="houses.html">I have a house</a>
+    </div>
+  </nav>
+
+  <header>
+    <div class="protocol">Cut protocol <b>·</b> count the blade <b>·</b> 5-3/8</div>
+    <h1>The equal <span class="of">split</span></h1>
+    <p class="dek">You want three equal pieces out of one board, and the board is 16-3/8 wide.
+      Divide it straight, cut on your lines, and the blade eats an eighth at every cut. Your
+      middle piece comes out short, and you find out when your shelves don't match.
+      <b>The blade is the part your math forgot.</b></p>
+    <p class="dek"><em>Type your board's width and how many pieces</em>. You get the fence
+      setting with the blade counted, and the tape trick for when your phone is in the house.
+      My offcut: 16-3/8, three shelves, an 1/8 blade. <b>Fence at 5-3/8. Three equal shelves.</b></p>
+    <p class="privacy"><b>Nothing you type here leaves your device.</b> No account, no
+      server, no analytics. Your numbers are erased when you close the tab.</p>
+  </header>
+
+  <div class="story">
+    <span class="lbl">Why this one exists</span>
+    <p>The laundry room left me a butcher block offcut and I wanted three floating shelves out
+      of it. On camera I said it out loud: <b>"I'm not very good at math."</b> So I didn't do any.
+      I tilted the tape until 18 landed on the far edge, because "you bring it to a number that's
+      easily divisible by three," and marked 6 and 12. Then I set the fence a hair short, at
+      5-3/8, because "I'd rather go short." Fresh blade, one pass a shelf: "right on the money."
+      This page does the same thing, with the blade counted on purpose:
+      <a href="https://www.instagram.com/reel/DexD95CDtpb/">Instagram</a>,
+      <a href="https://www.facebook.com/reel/1457568842972608">Facebook</a>.</p>
+  </div>
+
+  <h2 class="part">Part 1 &mdash; Your board</h2>
+  <p class="partdek">Measure the face you're splitting, edge to edge. Decimals are fine:
+    16-3/8 is <b>16.375</b>, 3/32 is <b>0.094</b>.</p>
+
+  <div class="block seed">
+    <div class="grid2">
+      <div>
+        <label class="lbl" for="width">Board width <span class="unit">in</span></label>
+        <input type="number" id="width" inputmode="decimal" step="0.0625" min="0" max="120" placeholder="16.375">
+      </div>
+      <div>
+        <label class="lbl" for="pieces">How many pieces</label>
+        <input type="number" id="pieces" inputmode="numeric" step="1" min="2" max="40" placeholder="3">
+      </div>
+    </div>
+    <div class="grid2">
+      <div>
+        <label class="lbl" for="kerf">Blade kerf <span class="unit">in</span></label>
+        <input type="number" id="kerf" inputmode="decimal" step="0.03125" min="0" max="0.5" placeholder="0.125">
+      </div>
+      <div>
+        <label class="lbl" for="trim">Bad edge to trim first <span class="unit">in, 0 if none</span></label>
+        <input type="number" id="trim" inputmode="decimal" step="0.0625" min="0" max="12" placeholder="0">
+      </div>
+    </div>
+    <p class="hint">Filled with my offcut so you can see it work. A full-kerf blade is about 1/8,
+      a thin-kerf about 3/32. Not sure? Cut a scrap and measure the slot.</p>
+  </div>
+
+  <h2 class="part">Part 2 &mdash; Your cut</h2>
+
+  <div class="spec" id="spec">
+    <span class="lbl">The split</span>
+    <p id="oVerdict"></p>
+    <div class="board" id="oBoard" aria-hidden="true"></div>
+    <div class="rows" id="oRows"></div>
+    <p class="fine" id="oTape"></p>
+    <p class="fine no" id="oLines"></p>
+    <p class="fine" id="oAssume"></p>
+  </div>
+
+  <div class="redline-note">
+    <b>this page doesn't know your saw</b>
+    Rip against a fence or a clamped guide, never freehand. Riving knife or splitter on, push
+    stick on any rip under 6" (every rip in the example), and stand out of line with the blade.
+    Measure your own blade's kerf. With a clamped guide, add your saw's base offset. Your saw's
+    manual wins.
+  </div>
+
+  <div class="callbox">
+    <span class="lbl">The boulder question</span>
+    <p class="means">Most problems are who-you-know. <b>Name one person with a table saw
+      you could borrow an hour on.</b></p>
+    <input type="text" id="callName" placeholder="a name. not 'a guy from work' — a name.">
+    <p class="means" style="margin:12px 0 0"><b>Now make the call</b> &mdash; ask:
+      &ldquo;can I bring a board over Saturday?&rdquo;</p>
+  </div>
+
+  <div class="actions">
+    <button id="copyBtn" type="button">Copy the cut list</button>
+    <button id="promptBtn" class="ghost" type="button">Copy a prompt for your AI</button>
+    <button id="printBtn" class="ghost" type="button">Print it</button>
+    <button id="resetBtn" class="ghost" type="button">Start over</button>
+  </div>
+  <div class="said" id="said" role="status" aria-live="polite"></div>
+
+  <dl class="titleblock">
+    <div class="tb"><dt>Protocol</dt><dd>CUT</dd></div>
+    <div class="tb"><dt>Tool</dt><dd>14 of 14</dd></div>
+    <div class="tb"><dt>Fence</dt><dd class="red" id="count">5-3/8</dd></div>
+    <div class="tb"><dt>By</dt><dd class="red">@nicksdadhax</dd></div>
+  </dl>
+
+  <!--TAIL-->
+  <div class="tail">
+  <a class="tail-next" href="fact-testable-fantasy.html">
+    <span class="k">Read next</span>
+    <b>Tool 04 &mdash; Fact / Testable / Fantasy</b>
+    <span class="s">The shelves are cut and you're already planning the next build. Here's the
+      two-question filter for which of those ideas gets your Saturday.</span>
+  </a>
+  <section class="buyhouses">
+    <h2>Also &mdash; I buy houses</h2>
+    <p><b>Washington or Dakota County, Minnesota.</b> Off-market, or straight from the
+      owner &mdash; I'm the buyer, not a middleman passing it along. Woodbury, Cottage
+      Grove, Hastings, Stillwater, Eagan, Inver Grove Heights, Lakeville.</p>
+    <p>If that's you, or you know somebody quietly thinking about selling, I'll lay out
+      your options &mdash; <b>all of them, including the ones I don't make a dime on.</b>
+      Nothing to sign, no walkthrough unless you ask.</p>
+    <div class="ctas">
+      <a href="houses.html"><b>I have a house</b><span>Or I know someone who does</span></a>
+    </div>
+  </section>
+
+  <section class="optin" id="next">
+    <h2>What I ask</h2>
+    <p class="plain">That was free and nothing here sits behind an email. If it was
+      useful, here's the whole exchange: <b>send it to one or two people who'd use it
+      too.</b> That's it. I'm trusting you with it, you pass it on.</p>
+    <p class="plain">Want the next one before anyone else? I'm building an interest
+      list &mdash; no selling, no sequence, your address goes nowhere.
+      <a href="index.html#next">Exactly what that means, in plain words.</a></p>
+    <p class="fine">The list itself isn't open yet &mdash; I'm still setting it up, and
+      I'd rather say that than put up a box that doesn't work. The ask above stands
+      either way, and it's the one that matters. If you want to tell me what to build
+      next, my DMs are open.</p>
+    <div class="ctas">
+      <a href="https://www.instagram.com/nicksdadhax/"><b>Tell me what to build next</b><span>DM @nicksdadhax</span></a>
+    </div>
+  </section>
+  </div>
+  <!--/TAIL-->
+
+  <p class="cta">Free. This tool asks you for nothing &mdash; no gate, no email, no
+    analytics. When the shelves go up, <b>DM me a picture</b>.</p>
+</div>
+<script>
+(function () {
+  "use strict";
+  // ---- the engine: pure, so it can be checked outside the page ----
+  // n pieces from one board = n - 1 rips, each eating one kerf. A bad edge costs its
+  // width plus one more kerf. Every rip is taken at the same fence setting, so the
+  // last piece is whatever is left: equal when the fence is exact.
+  function split(w, n, k, t) {
+    var usable = w - (t > 0 ? t + k : 0);
+    var cuts = n - 1 + (t > 0 ? 1 : 0);
+    var piece = (usable - (n - 1) * k) / n;
+    var fence = Math.floor(piece * 16 + 1e-9) / 16;          // round DOWN: "I'd rather go short"
+    var last = usable - (n - 1) * (fence + k);
+    var step = Math.ceil(usable / n - 1e-9), tilt = step * n;  // tape number n divides into whole inches
+    if (tilt <= usable + 1e-9) { step += 1; tilt = step * n; } // it has to reach past the edge to tilt
+    var straight = usable / n;                               // the divide that forgets the blade
+    return { usable: usable, cuts: cuts, piece: piece, fence: fence, last: last,
+             eaten: cuts * k, step: step, tilt: tilt,
+             lineEnd: straight - k / 2, lineMid: straight - k, ok: piece > 0 };
+  }
+  var KEY = "ndh-equalsplit-v1";
+  var $ = function (id) { return document.getElementById(id); };
+  var FIELDS = ["width", "pieces", "kerf", "trim"];
+  var inputs = FIELDS.concat(["callName"]).map($);
+  var said = $("said"), last = null;
+  function val(id) {   // blank or junk falls back to the example in the placeholder
+    var el = $(id), v = parseFloat(el.value), d = parseFloat(el.placeholder);
+    var ok = isFinite(v) && v >= parseFloat(el.min) && v <= parseFloat(el.max);
+    if (id === "pieces") return ok ? Math.round(v) : d;
+    return ok ? v : d;
+  }
+  function frac(x, res) {   // to the nearest 1/16 (or 1/res), written the way a tape reads: 5-3/8
+    res = res || 16;
+    var s = Math.round(x * res), w = Math.floor(s / res), f = s % res, d = res;
+    while (f && f % 2 === 0) { f /= 2; d /= 2; }
+    return f ? (w ? w + "-" : "") + f + "/" + d : String(w);
+  }
+  function drawBoard(v, r) {
+    var W = 320, H = 46, sx = W / v.width, x = 0, svg = [];
+    svg.push('<svg viewBox="0 0 ' + W + ' ' + (H + 18) + '" xmlns="http://www.w3.org/2000/svg">');
+    function rect(w, fill, label, cls) {
+      svg.push('<rect x="' + x.toFixed(2) + '" y="0" width="' + Math.max(w * sx, 0.8).toFixed(2) + '" height="' + H + '" fill="' + fill + '"/>');
+      if (label) svg.push('<text x="' + (x + w * sx / 2).toFixed(2) + '" y="' + (H + 14) + '" text-anchor="middle"' + (cls ? ' class="' + cls + '"' : "") + '>' + label + '</text>');
+      x += w * sx;
+    }
+    if (v.trim > 0) { rect(v.trim, "#453E2C", ""); rect(v.kerf, "#E8502C", ""); }
+    for (var i = 0; i < v.pieces; i++) {
+      rect(i === v.pieces - 1 ? r.last : r.fence, "#B8935A", v.pieces <= 8 ? frac(i === v.pieces - 1 ? r.last : r.fence) : "");
+      if (i < v.pieces - 1) rect(v.kerf, "#E8502C", "");
+    }
+    svg.push("</svg>");
+    return svg.join("");
+  }
+  function refresh() {
+    var v = {}; FIELDS.forEach(function (id) { v[id] = val(id); });
+    var r = split(v.width, v.pieces, v.kerf, v.trim);
+    var rows = $("oRows"); rows.textContent = "";
+    if (!r.ok) {
+      $("oVerdict").innerHTML = "<b>That many won't fit.</b> " + v.pieces + " pieces need " + r.cuts
+        + " cuts, and the blade alone eats " + frac(r.eaten, 32) + " of your " + frac(r.usable) + ". Fewer pieces, or a wider board.";
+      $("oBoard").textContent = ""; $("oTape").textContent = ""; $("oLines").textContent = "";
+      $("count").textContent = "—"; last = { v: v, r: r }; save(); return;
+    }
+    $("oVerdict").innerHTML = "Set the fence at <b>" + frac(r.fence) + "</b>. "
+      + v.pieces + " pieces, " + r.cuts + (r.cuts === 1 ? " cut." : " cuts.");
+    $("oBoard").innerHTML = drawBoard(v, r);
+    var list = [
+      ["Each rip, fence to nearest tooth", frac(r.fence)],
+      ["The last piece (what's left)", frac(r.last)],
+      ["The blade eats", r.cuts + " × " + frac(v.kerf, 32) + " = " + frac(r.eaten, 32)]
+    ];
+    if (v.trim > 0) list.unshift(["Trim the bad edge first", frac(v.trim) + " + one kerf"]);
+    if (r.last - r.fence >= 1 / 32) list.push(["Last one runs wide; trim it by", frac(r.last - r.fence), "w"]);
+    list.forEach(function (a) {
+      var d = document.createElement("div"), b = document.createElement("b"), s = document.createElement("span");
+      d.className = "row" + (a[2] ? " " + a[2] : ""); b.textContent = a[0]; s.textContent = a[1];
+      d.appendChild(b); d.appendChild(s); rows.appendChild(d);
+    });
+    var marks = []; for (var i = 1; i < v.pieces; i++) marks.push(r.step * i);
+    $("oTape").innerHTML = "<b>No phone at the saw?</b> Tilt the tape across the board until <b>"
+      + r.tilt + "</b> lands on the far edge, hook on the near one. Mark a little V at <b>"
+      + marks.join(", ") + "</b>. Those are your equal parts. They don't count the blade: your fence sits about "
+      + frac(r.usable / v.pieces - r.fence, 32) + " short of the first mark.";
+    $("oLines").innerHTML = "<b>Cut on the lines</b> and the blade takes half a kerf from each side: the end pieces come out about "
+      + frac(r.lineEnd) + (v.pieces > 2 ? ", the middle ones " + frac(r.lineMid) : "") + ". Cut to the fence number, not the line.";
+    $("oAssume").textContent = "Every rip taken at the same fence setting, fence rounded down to the sixteenth (so every piece fits; the extra lands on the last one, and long is trimmable, short isn't), "
+      + frac(v.kerf, 32) + " kerf. Measure your blade; your saw wins.";
+    $("count").textContent = frac(r.fence);
+    last = { v: v, r: r, marks: marks };
+    save();
+  }
+  function save() {
+    try {
+      var d = {}; inputs.forEach(function (el) { d[el.id] = el.value; });
+      // sessionStorage, NOT localStorage: same promise as every tool on the site.
+      sessionStorage.setItem(KEY, JSON.stringify(d));
+    } catch (e) {}
+  }
+  function load() {
+    var d = null;
+    try { d = JSON.parse(sessionStorage.getItem(KEY) || "null"); } catch (e) {}
+    if (d) inputs.forEach(function (el) { if (d[el.id]) el.value = d[el.id]; });
+  }
+  inputs.forEach(function (el) { el.addEventListener("input", refresh); el.addEventListener("change", refresh); });
+  $("printBtn").addEventListener("click", function () { window.print(); });
+  function copyText(text, okMsg) {
+    function fallback() {
+      var t = document.createElement("textarea"); t.value = text;
+      t.style.position = "fixed"; t.style.opacity = "0"; document.body.appendChild(t); t.select();
+      try { document.execCommand("copy"); } catch (e) {} document.body.removeChild(t);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () { said.textContent = okMsg; },
+        function () { fallback(); said.textContent = okMsg; });
+    } else { fallback(); said.textContent = okMsg; }
+  }
+  function cutText() {
+    var out = ["THE EQUAL SPLIT — " + new Date().toLocaleDateString(), "", $("oVerdict").textContent, ""];
+    if (last.r.ok) {
+      Array.prototype.forEach.call(document.querySelectorAll("#oRows .row"), function (d) {
+        out.push(d.querySelector("b").textContent + ": " + d.querySelector("span").textContent);
+      });
+      out.push("", $("oTape").textContent, $("oLines").textContent);
+    }
+    var who = $("callName").value.trim(); if (who) out.push("", "Call: " + who);
+    out.push("", $("oAssume").textContent, "", "The Equal Split — @nicksdadhax");
+    return out.join("\n");
+  }
+  $("copyBtn").addEventListener("click", function () { copyText(cutText(), "Copied — tape it to the saw."); });
+  $("promptBtn").addEventListener("click", function () {
+    var v = last.v, r = last.r;
+    var text = [
+      "You are a finish carpenter helping me split one board into equal pieces. Blunt, specific,",
+      "no hype. If something depends on my saw, say what to check instead of guessing.",
+      "",
+      "My board: " + frac(v.width) + " in wide, " + v.pieces + " equal pieces, blade kerf " + frac(v.kerf, 32) + " in"
+        + (v.trim > 0 ? ", trimming a " + frac(v.trim) + " in bad edge first" : "") + ".",
+      r.ok ? "A calculator gave me: fence at " + frac(r.fence) + " in, last piece " + frac(r.last) + " in." : "A calculator says that many pieces won't fit.",
+      "My saw (table saw / track saw / circular saw + guide): [fill in]",
+      "What the pieces are for, and how long they are: [fill in]",
+      "",
+      "Do this, in order:",
+      "1. Check the math and tell me the order to make the cuts so the narrowest rip is the safest one.",
+      "2. Tell me how to test the fence setting on a scrap before I cut the good board.",
+      "3. Name the one mistake people make on this cut with my saw, and how to avoid it.",
+      "",
+      "Keep it under half a page.",
+      "",
+      "(Built with The Equal Split — @nicksdadhax)"
+    ].join("\n");
+    copyText(text, "Prompt copied — paste it into the AI you already use.");
+  });
+  $("resetBtn").addEventListener("click", function () {
+    inputs.forEach(function (el) { el.value = ""; });
+    try { sessionStorage.removeItem(KEY); } catch (e) {}
+    refresh(); said.textContent = "Cleared. Back to the example."; window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+  load(); refresh();
+  window.__equalSplit = { split: split, frac: frac };   // for the engine check
+})();
+</script>
+</body>
+</html>

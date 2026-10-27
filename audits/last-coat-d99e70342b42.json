@@ -1,0 +1,27 @@
+{
+ "page": "last-coat.html",
+ "sha": "d99e70342b42",
+ "verdict": "PASS WITH WARNINGS",
+ "fail": [],
+ "warn": [
+  "LONG: 8.5 phone screens of scroll.",
+  "DENSE: 1228 words. A free sheet nobody finishes is the same as no sheet."
+ ],
+ "stats": {
+  "viewport": "375x812",
+  "charsPerLine": 35,
+  "words": 1228,
+  "pageHeightPx": 6887,
+  "screens": 8.5,
+  "longestBlockWords": 34,
+  "links": 11
+ },
+ "fills": {
+  "coats": "3",
+  "window": "6",
+  "need": "2026-11-01",
+  "needHour": "17",
+  "callName": "Sam"
+ },
+ "audited": "2026-10-27T12:48:54+00:00"
+}
