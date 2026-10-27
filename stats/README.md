@@ -17,7 +17,7 @@ The only posts whose hour the publisher actually chose — so the only ones that
 | 01:00 | 1 | 0.0 | 0.0 | 0 |
 | 02:00 | 1 | 0.0 | 0.0 | 0 |
 | 03:00 | 31 | 0.0 | 1.5 | 18 |
-| 04:00 | 9 | 1.0 | 1.1 | 3 |
+| 04:00 | 9 | 1.0 | 1.2 | 3 |
 | 05:00 | 15 | 1.0 | 1.9 | 15 |
 | 06:00 | 2 | 0.0 | 0.0 | 0 |
 | 09:00 | 16 | 2.0 | 5.1 | 26 |
@@ -58,7 +58,7 @@ The only posts whose hour the publisher actually chose — so the only ones that
 | Bucket | Posts | Median | Mean | Best |
 |---|---|---|---|---|
 | back-catalog @ 03:00 | 3 | 0.0 | 0.7 | 2 |
-| back-catalog @ 04:00 | 3 | 2.0 | 1.7 | 3 |
+| back-catalog @ 04:00 | 3 | 2.0 | 2.0 | 3 |
 | back-catalog @ 09:00 | 2 | 6.0 | 6.0 | 10 |
 | back-catalog @ 12:00 | 10 | 2.0 | 6.1 | 39 |
 | back-catalog @ 13:00 | 21 | 3.0 | 6.7 | 31 |
@@ -100,7 +100,7 @@ Mostly Nick posting by hand at whatever hour he was free, going back to 2024. Us
 | 01:00 | 5 | 0.0 | 0.4 | 2 |
 | 02:00 | 5 | 0.0 | 0.2 | 1 |
 | 03:00 | 33 | 0.0 | 1.5 | 18 |
-| 04:00 | 9 | 1.0 | 1.1 | 3 |
+| 04:00 | 9 | 1.0 | 1.2 | 3 |
 | 05:00 | 26 | 1.0 | 3.2 | 50 |
 | 06:00 | 18 | 0.0 | 0.4 | 3 |
 | 07:00 | 17 | 1.0 | 0.6 | 3 |
