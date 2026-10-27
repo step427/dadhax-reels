@@ -333,8 +333,9 @@
 
   <div class="redline-note">
     <b>this page doesn't know your saw</b>
-    Rip against a fence or a clamped guide, never freehand, and use a push stick once the
-    piece gets narrow. Measure your own blade's kerf before you trust the number. Your saw's
+    Rip against a fence or a clamped guide, never freehand. Riving knife or splitter on, push
+    stick on any rip under 6" (every rip in the example), and stand out of line with the blade.
+    Measure your own blade's kerf. With a clamped guide, add your saw's base offset. Your saw's
     manual wins.
   </div>
 
@@ -418,8 +419,8 @@
     var piece = (usable - (n - 1) * k) / n;
     var fence = Math.floor(piece * 16 + 1e-9) / 16;          // round DOWN: "I'd rather go short"
     var last = usable - (n - 1) * (fence + k);
-    var step = Math.ceil(w / n - 1e-9), tilt = step * n;     // tape number n divides into whole inches
-    if (tilt <= w + 1e-9) { step += 1; tilt = step * n; }    // it has to reach past the edge to tilt
+    var step = Math.ceil(usable / n - 1e-9), tilt = step * n;  // tape number n divides into whole inches
+    if (tilt <= usable + 1e-9) { step += 1; tilt = step * n; } // it has to reach past the edge to tilt
     var straight = usable / n;                               // the divide that forgets the blade
     return { usable: usable, cuts: cuts, piece: piece, fence: fence, last: last,
              eaten: cuts * k, step: step, tilt: tilt,
@@ -436,8 +437,9 @@
     if (id === "pieces") return ok ? Math.round(v) : d;
     return ok ? v : d;
   }
-  function frac(x) {   // to the nearest 1/16, written the way a tape reads: 5-3/8
-    var s = Math.round(x * 16), w = Math.floor(s / 16), f = s % 16, d = 16;
+  function frac(x, res) {   // to the nearest 1/16 (or 1/res), written the way a tape reads: 5-3/8
+    res = res || 16;
+    var s = Math.round(x * res), w = Math.floor(s / res), f = s % res, d = res;
     while (f && f % 2 === 0) { f /= 2; d /= 2; }
     return f ? (w ? w + "-" : "") + f + "/" + d : String(w);
   }
@@ -463,7 +465,7 @@
     var rows = $("oRows"); rows.textContent = "";
     if (!r.ok) {
       $("oVerdict").innerHTML = "<b>That many won't fit.</b> " + v.pieces + " pieces need " + r.cuts
-        + " cuts, and the blade alone eats " + frac(r.eaten) + " of your " + frac(r.usable) + ". Fewer pieces, or a wider board.";
+        + " cuts, and the blade alone eats " + frac(r.eaten, 32) + " of your " + frac(r.usable) + ". Fewer pieces, or a wider board.";
       $("oBoard").textContent = ""; $("oTape").textContent = ""; $("oLines").textContent = "";
       $("count").textContent = "—"; last = { v: v, r: r }; save(); return;
     }
@@ -471,9 +473,9 @@
       + v.pieces + " pieces, " + r.cuts + (r.cuts === 1 ? " cut." : " cuts.");
     $("oBoard").innerHTML = drawBoard(v, r);
     var list = [
-      ["Each rip, fence to blade", frac(r.fence)],
+      ["Each rip, fence to nearest tooth", frac(r.fence)],
       ["The last piece (what's left)", frac(r.last)],
-      ["The blade eats", r.cuts + " × " + frac(v.kerf) + " = " + frac(r.eaten)]
+      ["The blade eats", r.cuts + " × " + frac(v.kerf, 32) + " = " + frac(r.eaten, 32)]
     ];
     if (v.trim > 0) list.unshift(["Trim the bad edge first", frac(v.trim) + " + one kerf"]);
     if (r.last - r.fence >= 1 / 32) list.push(["Last one runs wide; trim it by", frac(r.last - r.fence), "w"]);
@@ -485,11 +487,12 @@
     var marks = []; for (var i = 1; i < v.pieces; i++) marks.push(r.step * i);
     $("oTape").innerHTML = "<b>No phone at the saw?</b> Tilt the tape across the board until <b>"
       + r.tilt + "</b> lands on the far edge, hook on the near one. Mark a little V at <b>"
-      + marks.join(", ") + "</b>. Those are your equal parts, to check the fence against.";
+      + marks.join(", ") + "</b>. Those are your equal parts. They don't count the blade: your fence sits about "
+      + frac(r.usable / v.pieces - r.fence, 32) + " short of the first mark.";
     $("oLines").innerHTML = "<b>Cut on the lines</b> and the blade takes half a kerf from each side: the end pieces come out about "
       + frac(r.lineEnd) + (v.pieces > 2 ? ", the middle ones " + frac(r.lineMid) : "") + ". Cut to the fence number, not the line.";
-    $("oAssume").textContent = "Every rip taken at the same fence setting, fence rounded down to the sixteenth (short is trimmable, long isn't), "
-      + frac(v.kerf) + " kerf. Measure your blade; your saw wins.";
+    $("oAssume").textContent = "Every rip taken at the same fence setting, fence rounded down to the sixteenth (so every piece fits; the extra lands on the last one, and long is trimmable, short isn't), "
+      + frac(v.kerf, 32) + " kerf. Measure your blade; your saw wins.";
     $("count").textContent = frac(r.fence);
     last = { v: v, r: r, marks: marks };
     save();
@@ -538,7 +541,7 @@
       "You are a finish carpenter helping me split one board into equal pieces. Blunt, specific,",
       "no hype. If something depends on my saw, say what to check instead of guessing.",
       "",
-      "My board: " + frac(v.width) + " in wide, " + v.pieces + " equal pieces, blade kerf " + frac(v.kerf) + " in"
+      "My board: " + frac(v.width) + " in wide, " + v.pieces + " equal pieces, blade kerf " + frac(v.kerf, 32) + " in"
         + (v.trim > 0 ? ", trimming a " + frac(v.trim) + " in bad edge first" : "") + ".",
       r.ok ? "A calculator gave me: fence at " + frac(r.fence) + " in, last piece " + frac(r.last) + " in." : "A calculator says that many pieces won't fit.",
       "My saw (table saw / track saw / circular saw + guide): [fill in]",

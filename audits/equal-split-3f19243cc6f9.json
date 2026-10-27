@@ -1,17 +1,17 @@
 {
  "page": "equal-split.html",
- "sha": "1fc93832cbd1",
+ "sha": "3f19243cc6f9",
  "verdict": "PASS WITH WARNINGS",
  "fail": [],
  "warn": [
-  "LONG: 5.8 phone screens of scroll."
+  "LONG: 5.9 phone screens of scroll."
  ],
  "stats": {
   "viewport": "375x812",
   "charsPerLine": 35,
-  "words": 828,
-  "pageHeightPx": 4720,
-  "screens": 5.8,
+  "words": 870,
+  "pageHeightPx": 4823,
+  "screens": 5.9,
   "longestBlockWords": 0,
   "links": 11
  },
@@ -22,5 +22,5 @@
   "trim": "0",
   "callName": "Sam"
  },
- "audited": "2026-10-27T12:47:33+00:00"
+ "audited": "2026-10-27T12:51:12+00:00"
 }

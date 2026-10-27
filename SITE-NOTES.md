@@ -776,12 +776,19 @@ very good at math", "a number that's easily divisible by three", tilt to 18, mar
 go short", fence 5-3/8) and raw `PXL_20261019_170651420` ("three equal shelves", "right on the money").
 Never "zero waste" (capture fact-check). Links only, never embeds. No family, no address.
 
+`silva` 10/27: FIX, all five applied: the rounding reason was backwards (long is trimmable, short
+isn't; rounding down makes every piece fit and puts the extra on the last one); the tape marks now say
+they don't count the blade ("your fence sits about 3/32 short of the first mark") and use the board
+after the trim; kerf prints in 32nds (3/32 used to round to 1/8); the red rail names the riving knife,
+a push stick under 6", standing out of line, and the guide's base offset; the row reads "fence to
+nearest tooth".
+
 **Launch reel (S7 path 3):** sub-20s cut of `PXL_20261019_170651420` (the payoff take), caption carries
 16-3/8 / three / 5-3/8 and the one link `https://step427.github.io/dadhax-reels/equal-split.html`.
 Path 1 (repost `ig-1019-thirds`) was inside its 7-day read until 10/28; it is the ARC's Fri 10/30 9a repost.
 
 **Audit fills (Tool 14):** `--fill width=16.375 pieces=3 kerf=0.125 trim=0 callName=Sam` — every input the page needs set before its real output exists on screen. Date inputs take `+Nd` (resolves to today+N, never rots). Never a real person's name or a sensitive number.
-→ PASS WITH WARNINGS (LONG only), 828 words / 4720px, 5.8 screens: shorter than Tool 13 (1132 / 6974)
+→ PASS WITH WARNINGS (LONG only), 870 words / 4823px, 5.9 screens (after the silva fixes): shorter than Tool 13 (1132 / 6974)
 because it is one short form. `intro_audit.py` PASS, 268 words before the ask, you-density 0.060.
 
 Chain: 13 → **14** → 04. Toolbox card 14 live, 15 "in the shop", index "Fourteen free tools" + "New this
