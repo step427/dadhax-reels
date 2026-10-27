@@ -4117,6 +4117,22 @@
       "hypothesis": "If the reel opens on the problem shot and runs 27s instead of 40.6s, then avg watch % beats the 20-35s bucket median of 33% (n=68), with the parent's 43% as a second bar, because the parent spent its first 4s on a selfie hello.",
       "recut_of": "ig-1022-toothpick.mp4",
       "kind": "old"
+    },
+    {
+      "file": "ig-1027-goshort.mp4",
+      "title": "Go short on the fence: the blade eats an eighth",
+      "status": "pending",
+      "earliest": "2026-10-29",
+      "caption": "Hey Dad,\n\nYou can measure perfectly and still come up short if you forget the blade.\n\nMy square said each third of this 16-3/8 board landed between 5-3/8 and 5-1/2. I set the fence at 5-3/8. Every cut eats about an eighth, so two cuts take a quarter inch off the board: 16-3/8 minus 1/4 is 16-1/8, and 16-1/8 divided by 3 is 5-3/8 with a 1/8-inch blade. A thinner blade leaves a sliver.\n\nSet the fence a hair short and the last piece takes whatever's left. Set it long and the last piece comes up short.\n\nOne dad hack a day. Follow so you stop losing the next one.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels/equal-split.html",
+      "arc_slot": "Thu 10/29 9a",
+      "pix": "P",
+      "value_forms": [
+        "idea",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-10-27",
+      "topic_class": "utility",
+      "source_raw": "PXL_20261019_164919710.mp4"
     }
   ]
 }
