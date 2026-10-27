@@ -4082,6 +4082,41 @@
       "sam_verdict": "POST 2026-10-27",
       "topic_class": "utility",
       "source_raw": "PXL_20261019_170651420.mp4"
+    },
+    {
+      "file": "ig-1027-tapewrong.mp4",
+      "title": "You can read the tape wrong even after you tilt it",
+      "status": "pending",
+      "earliest": "2026-10-28",
+      "caption": "Hey Dad,\n\nYou can tilt the tape to the perfect number and still read it off the wrong side. I did.\n\nThe board was 16-3/8 wide and I wanted three equal shelves. The trick: angle the tape across the board until the far edge lands on a number three splits clean. 18 works, so the marks go at 6 and 12.\n\nWhere I messed up: the tape's hook was catching the board on one side, and I lined up 18 on the other. The 18 has to land on the same side the hook is touching. Check the hook before you read the number.\n\nThe marks came out just under 5-1/2. I set the fence at 5-3/8 to leave room for the blade.\n\nYou'll forget this by Thursday. Follow and you won't have to remember it.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels/equal-split.html",
+      "arc_slot": "Wed 10/28 9a",
+      "pix": "P",
+      "value_forms": [
+        "entertainment",
+        "idea"
+      ],
+      "sam_verdict": "POST 2026-10-27",
+      "topic_class": "utility",
+      "source_raw": "PXL_20261019_164919710.mp4"
+    },
+    {
+      "file": "ig-1027-toothpick.mp4",
+      "title": "Stripped drawer screw: toothpicks + glue (re-cut)",
+      "status": "pending",
+      "earliest": "2026-10-28",
+      "caption": "Hey Dad,\n\nYou can fix a drawer screw that just spins in its hole with a couple of toothpicks and a little wood glue. No new hardware.\n\n1. Find the stripped hole. The screw that spins and never bites is your problem.\n2. Glue the toothpicks and push them in until the hole is packed tight.\n3. Trim them flush with a utility knife.\n4. Drive the screw by hand, not the drill, so you don't strip the fresh wood again. Stop when it's snug.\n\nThis dresser is solid pine. In particleboard, toothpicks are a weaker fix.\n\nNo need to wait on the glue. It sets up in there while the drawer is back in use.\n\nI post the fix I wish somebody had told me, every day. Follow and it's free.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "Wed 10/28 1p",
+      "pix": "P",
+      "value_forms": [
+        "idea",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-10-27",
+      "topic_class": "utility",
+      "source_raw": "PXL_20261017_185750275.mp4",
+      "hypothesis": "If the reel opens on the problem shot and runs 27s instead of 40.6s, then avg watch % beats the 20-35s bucket median of 33% (n=68), with the parent's 43% as a second bar, because the parent spent its first 4s on a selfie hello.",
+      "recut_of": "ig-1022-toothpick.mp4",
+      "kind": "old"
     }
   ]
 }
