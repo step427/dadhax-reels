@@ -4164,6 +4164,28 @@
       "hypothesis": "If the story re-cut runs 31s with the pencil-in-chuck on screen at 8.0s, its watch % beats the 20-35s bucket median (33%, n=69, CUT-RULES 2026-10-28), because the dead spin time and the makeup-sharpener tangent are gone.",
       "recut_of": "ig-1019-pencil.mp4",
       "kind": "old"
+    },
+    {
+      "file": "ig-1028-chisel.mp4",
+      "title": "The work works on you: the David block (Elite call)",
+      "status": "pending",
+      "earliest": "2026-10-28",
+      "caption": "Hey Dad,\n\n\"The work does more work on you than you do on it.\"\n\nMy coach Dan Martell keeps saying it on our Elite calls. The value is the journey, not the destination. The work shapes you into the person you need to be to hit the goals you set.\n\nMichelangelo's David started as a block two other sculptors gave up on. It sat outside for about 25 years before a 26-year-old picked up the chisel.\n\nWho's more famous today, the statue or the man who carved it?\n\n@danmartell @jenwhitneyburton\n\nStill in the block too? Follow along and we'll chisel together.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "Wed 10/28 6p OFF-ARC (Elite engagement post; slot reopened 10/27)",
+      "pix": "X",
+      "value_forms": [
+        "idea",
+        "entertainment"
+      ],
+      "sam_verdict": "POST 2026-10-28",
+      "topic_class": "talk",
+      "source_raw": "Elite call screenshot 2026-10-28 1:40p",
+      "hypothesis": "If a 33s black text-card story reel that opens on the Elite call frame (Nick + Dan, both tagged) posts at 6p, it clears 5 likes, which talk reels do about 7% of the time, because the tags and the David payoff carry it past a plain quote card.",
+      "user_tags": [
+        "danmartell",
+        "jenwhitneyburton"
+      ],
+      "cover_ms": 0
     }
   ]
 }
