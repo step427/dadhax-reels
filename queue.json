@@ -4149,7 +4149,7 @@
     {
       "file": "ig-1028-pencil.mp4",
       "title": "Drill sharpener died? Flip it around (re-cut)",
-      "status": "pending",
+      "status": "posted",
       "earliest": "2026-10-28",
       "caption": "Hey Dad,\n\nYour drill's pencil sharpener attachment quit on you? Mine failed more than once. You don't need it.\n\nFlip it around. Chuck the pencil in the drill, hold a small hand sharpener still, and give it short spins. You get more control. Go easy, because the tip can still snap (mine did). I finish the last couple of turns by hand for a super sharp point.\n\nYou'll forget this by the next time you need it. Follow and you won't have to remember it.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
       "arc_slot": "Sun 11/1 9a catalog (Utility)",
@@ -4163,7 +4163,10 @@
       "source_raw": "PXL_20261019_164618281.mp4",
       "hypothesis": "If the story re-cut runs 31s with the pencil-in-chuck on screen at 8.0s, its watch % beats the 20-35s bucket median (33%, n=69, CUT-RULES 2026-10-28), because the dead spin time and the makeup-sharpener tangent are gone.",
       "recut_of": "ig-1019-pencil.mp4",
-      "kind": "old"
+      "kind": "old",
+      "permalink": "https://www.instagram.com/reel/DfEyMjBDr2I/",
+      "posted_at": "2026-10-29T05:24:01-05:00",
+      "fb_page_video_id": "2018752775475687"
     },
     {
       "file": "ig-1028-chisel.mp4",
