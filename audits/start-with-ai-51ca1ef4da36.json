@@ -1,0 +1,21 @@
+{
+ "page": "start-with-ai.html",
+ "sha": "51ca1ef4da36",
+ "verdict": "PASS WITH WARNINGS",
+ "fail": [],
+ "warn": [
+  "LONG: 6.1 phone screens of scroll.",
+  "DENSE: 913 words. A free sheet nobody finishes is the same as no sheet."
+ ],
+ "stats": {
+  "viewport": "375x812",
+  "charsPerLine": 35,
+  "words": 913,
+  "pageHeightPx": 4922,
+  "screens": 6.1,
+  "longestBlockWords": 59,
+  "links": 10
+ },
+ "fills": {},
+ "audited": "2026-10-29T13:37:28+00:00"
+}
