@@ -4265,6 +4265,38 @@
       "sam_verdict": "POST 2026-10-31",
       "topic_class": "utility",
       "source_raw": "yt:xq10CUrAmnA"
+    },
+    {
+      "file": "ig-yt-pizzaice.mp4",
+      "title": "Reheat pizza on a griddle with one ice cube",
+      "status": "pending",
+      "earliest": "2026-10-31",
+      "caption": "Hey Dad,\n\nYou can get melty cheese and a crisp crust out of leftover pizza without the microwave.\n\nGriddle on the stove, slices down, one ice cube right next to them, lid on. The steam takes care of the cheese and the griddle takes care of the crust.\n\nNext box of leftovers, you won't remember where you saw this. Follow and you won't have to.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "OFF-ARC cover",
+      "pix": "P",
+      "value_forms": [
+        "entertainment",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-10-31",
+      "topic_class": "utility",
+      "source_raw": "yt:BLNUzRKE-98"
+    },
+    {
+      "file": "ig-yt-nutwedge.mp4",
+      "title": "Open a stuck pistachio with an empty shell",
+      "status": "pending",
+      "earliest": "2026-10-31",
+      "caption": "Hey Dad,\n\nYou can open the pistachio that won't open with the shell of the last one you ate.\n\nSlip the tip of an empty half shell into the crack, give it a twist, and it pops.\n\nNext bag of pistachios, you won't remember where you saw this. Follow and you won't have to.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "OFF-ARC cover",
+      "pix": "P",
+      "value_forms": [
+        "entertainment",
+        "idea"
+      ],
+      "sam_verdict": "POST 2026-10-31",
+      "topic_class": "utility",
+      "source_raw": "yt:ywVE8wo9OgU"
     }
   ]
 }
