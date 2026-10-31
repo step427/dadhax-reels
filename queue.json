@@ -4249,6 +4249,22 @@
       "permalink": "https://www.instagram.com/reel/DfIUUCtEx_h/",
       "posted_at": "2026-10-30T14:19:53-05:00",
       "fb_page_video_id": "1143847475266772"
+    },
+    {
+      "file": "ig-yt-planersled.mp4",
+      "title": "Planer sled for boards under 12 inches",
+      "status": "pending",
+      "earliest": "2026-10-31",
+      "caption": "Hey Dad,\n\nThe DW735 manual says never plane anything shorter than 12 inches, because a short piece can get thrown. A sled is the workaround I use. Your shop, your call.\n\n3/4\" melamine is the sled. Butt the pieces tight, end to end, so there's always wood under both feed rollers. A small bead of hot glue along the edges holds them down. Measure the sled, then add: .75 sled + .75 finished piece = 1.5. Mark that on the gauge, because the turret stop only goes up to 1-1/4. Creep down in light passes and stand off to the side, never in line with the sled. Break the glue and lift the pieces off. The sled gets reused.\n\nNext pile of offcuts, you won't remember where you saw this. Follow and you won't have to.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "OFF-ARC cover",
+      "pix": "P",
+      "value_forms": [
+        "idea",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-10-31",
+      "topic_class": "utility",
+      "source_raw": "yt:xq10CUrAmnA"
     }
   ]
 }
