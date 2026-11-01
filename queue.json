@@ -4325,6 +4325,54 @@
       "permalink": "https://www.instagram.com/reel/DfMjRMQCNfS/",
       "posted_at": "2026-11-01T04:47:32-06:00",
       "fb_page_video_id": "1160709293058997"
+    },
+    {
+      "file": "ig-yt-brushfix.mp4",
+      "title": "Restore a stiff paint brush with hair conditioner",
+      "status": "pending",
+      "earliest": "2026-11-01",
+      "caption": "Hey Dad,\n\nYou can fix a stiff old paint brush before you throw it out.\n\n1. Wash it with Dawn and run a paint brush comb through it.\n2. Apply hair conditioner. Who knew?\n3. Work it in.\n4. Air dry.\n\nLike new. Silky.\n\nNext time a brush goes stiff, you won't remember where you saw this. Follow and you won't have to.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "Mon 11/2 9a",
+      "pix": "P",
+      "value_forms": [
+        "idea",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-11-01",
+      "topic_class": "utility",
+      "source_raw": "yt:u6oKEngkBSM"
+    },
+    {
+      "file": "ig-yt-lemonfix.mp4",
+      "title": "Stop prepped food browning with lemon juice",
+      "status": "pending",
+      "earliest": "2026-11-01",
+      "caption": "Hey Dad,\n\nYou can fix prepped food going brown before you get to it. A few drops of lemon juice is all it takes.\n\nThese are uncooked sweet potatoes, 1 week old, fresh as day 1. Keep them covered in the fridge.\n\nNext meal prep, you won't remember where you saw this. Follow and you won't have to.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "Mon 11/2 1p",
+      "pix": "P",
+      "value_forms": [
+        "idea",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-11-01",
+      "topic_class": "utility",
+      "source_raw": "yt:t2gB3Hqo-aM"
+    },
+    {
+      "file": "ig-yt-eggsoak.mp4",
+      "title": "Fix eggs that won't peel: water, then roll",
+      "status": "pending",
+      "earliest": "2026-11-01",
+      "caption": "Hey Dad,\n\nYou can fix hard-boiled eggs that won't peel, even after they've dried out.\n\nMine sat in the fridge 2-3 days and peeling was taking way too long. So I submerged those same eggs in water for 24 hours. Keep them in the fridge while they soak. A lot easier, but it still took a chunk out.\n\nLast egg: crack the shell all over, then a gentle roll.\n\nNext batch of eggs, you won't remember where you saw this. Follow and you won't have to.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "Tue 11/3 9a",
+      "pix": "P",
+      "value_forms": [
+        "idea",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-11-01",
+      "topic_class": "utility",
+      "source_raw": "yt:VxyiciCgCxI"
     }
   ]
 }
