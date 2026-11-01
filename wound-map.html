@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Tool 15. Built 2026-11-01 by the dadhax-weekly-tool routine off Nick's 10/28 call and the
+     10/30 20 Questions takes; council pick 2026-11-01. Not a diagnosis; the off-ramp stays above the output. -->
+<title>The Wound Map — @nicksdadhax</title>
+<meta name="description" content="Tap the voice you keep hearing and how you protect it. Get what you've been chasing, what it could turn into, and one thing to do this week. Free, no gate, not a diagnosis.">
+
+<style>
+  /* @nicksdadhax — dark field-instrument identity. Same tokens as tools 01-14.
+     SIGNAL YELLOW = your input / the action. WARN RED = the honest rail —
+     here that's "this page isn't a diagnosis." */
+  :root {
+    --carbon:   #0F0E0B;
+    --panel:    #17150F;
+    --panel-up: #1E1B14;
+    --hair:     #302B21;
+    --bone:     #F4F0E6;
+    --graphite: #8F887A;
+    --signal:   #FFC629;
+    --signal-d: #C8930F;
+    --warn:     #E8502C;
+    --ply:      #B8935A;
+
+    --mono: ui-monospace, "SF Mono", SFMono-Regular, "Cascadia Mono",
+            "Roboto Mono", Menlo, Consolas, "Courier New", monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+            "Helvetica Neue", Arial, sans-serif;
+
+    --gutter: clamp(18px, 5vw, 40px);
+    --maxw: 660px;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--carbon);
+    color: var(--bone);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-text-size-adjust: 100%;
+    background-image:
+      repeating-linear-gradient(to right,  rgba(242,237,231,.035) 0 1px, transparent 1px 28px),
+      repeating-linear-gradient(to bottom, rgba(242,237,231,.035) 0 1px, transparent 1px 28px);
+  }
+
+  .sheet { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter) 96px; }
+
+  header { padding: 34px 0 8px; }
+  .protocol {
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: .17em;
+    text-transform: uppercase; color: var(--graphite);
+  }
+  .protocol b { color: var(--signal); font-weight: 700; }
+  h1 {
+    font-family: var(--mono); font-weight: 700;
+    font-size: clamp(28px, 8vw, 48px); line-height: 1.04;
+    letter-spacing: -.03em; text-transform: uppercase;
+    margin: 12px 0 0; text-wrap: balance;
+  }
+  h1 .of { color: var(--signal); }
+  .dek { margin: 14px 0 0; max-width: 46ch; color: #CFC9BB; font-size: 17px; }
+  .dek em { color: var(--bone); font-style: normal; border-bottom: 1.5px solid var(--signal-d); }
+  .dek b { color: var(--bone); }
+
+  .privacy {
+    margin: 18px 0 0; padding: 13px 15px; font-size: 14.5px; line-height: 1.5;
+    color: #CFC9BB; background: var(--panel); border-left: 3px solid var(--signal);
+  }
+  .privacy b { color: var(--bone); }
+
+  .story { margin-top: 24px; padding: 15px 16px; background: var(--panel);
+    border: 1px solid var(--hair); }
+  .story p { margin: 0 0 10px; font-size: 15.5px; line-height: 1.55; color: #CFC9BB; }
+  .story p:last-child { margin-bottom: 0; }
+  .story p b { color: var(--bone); }
+  .story a { color: var(--signal); font-weight: 700; text-decoration: none; }
+  .story a:hover { text-decoration: underline; }
+
+  .whys { margin-top: 26px; border: 1px solid var(--hair); }
+  .why { padding: 14px 15px; border-bottom: 1px solid var(--hair); }
+  .why:last-child { border-bottom: 0; }
+  .why .tag { display: block; font-family: var(--mono); font-size: 12.5px; font-weight: 700;
+    letter-spacing: .08em; text-transform: uppercase; margin-bottom: 5px; color: var(--signal); }
+  .why p { margin: 0; font-size: 15px; line-height: 1.5; color: #CFC9BB; }
+  .why p b { color: var(--bone); }
+
+  .redline-note {
+    margin: 14px 0 0; padding: 9px 12px;
+    border-left: 2.5px solid var(--warn);
+    background: #20130E; /* rgba(232,80,44,.08) on --carbon, solid so contrast is measurable */
+    font-size: 14.5px; line-height: 1.45; color: #E7DCD6;
+  }
+  .redline-note b { color: var(--warn); font-family: var(--mono);
+    font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase;
+    display: block; margin-bottom: 3px; }
+
+  .block { margin-top: 30px; }
+  .lbl {
+    display: block; font-family: var(--mono); font-size: 11.5px;
+    letter-spacing: .13em; text-transform: uppercase; color: var(--graphite);
+    margin-bottom: 8px;
+  }
+  h2.part {
+    font-family: var(--mono); font-size: 12px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--signal); margin: 34px 0 4px; font-weight: 700;
+    padding-top: 20px; border-top: 1px solid var(--hair);
+  }
+  .partdek { margin: 0 0 14px; font-size: 15px; color: #CFC9BB; line-height: 1.5; }
+  .partdek b { color: var(--bone); }
+
+  .seed {
+    border: 1.5px solid var(--signal); background: var(--panel);
+    padding: 16px 16px 14px;
+  }
+  .seed .lbl { color: var(--signal); margin-top: 0; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; }
+  @media (max-width: 380px) { .grid2 { grid-template-columns: 1fr; } }
+  input[type=text], input[type=number], input[type=date] {
+    display: block; width: 100%;
+    background: transparent; border: 0; border-bottom: 1.5px solid #453E2C;
+    color: var(--bone); font-family: var(--mono); font-size: 18px;
+    line-height: 1.5; padding: 4px 0 8px; border-radius: 0;
+    font-variant-numeric: tabular-nums; -moz-appearance: textfield;
+  }
+  input[type=date] { color-scheme: dark; min-height: 44px; }
+  input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  input::placeholder { color: #6B6455; font-family: var(--sans); font-size: 15px; }
+  input:focus { outline: 0; border-bottom-color: var(--signal); }
+  .seed .lbl + input { margin-bottom: 14px; }
+  .unit { font-family: var(--mono); font-size: 11px; color: var(--graphite); letter-spacing: .08em; }
+  .hint { margin: 6px 0 0; font-size: 13.5px; color: var(--graphite); line-height: 1.45; }
+  .seed .hint { margin: 0 0 16px; }
+
+  .zone { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 8px; }
+  .zone button { flex: 1 1 0; min-width: 86px; min-height: 48px; padding: 10px 6px; border-radius: 0; cursor: pointer;
+    font-family: var(--mono); font-size: 12px; letter-spacing: .05em; text-transform: uppercase;
+    font-weight: 700; background: transparent; color: var(--bone); border: 1.5px solid #453E2C; }
+  .zone button[aria-pressed="true"] { background: var(--signal); color: #14100F; border-color: var(--signal); }
+  .zone button:focus-visible { outline: 2px solid var(--bone); outline-offset: 2px; }
+
+  /* the schedule */
+  .spec { margin-top: 22px; padding: 18px 16px; background: var(--panel-up);
+    border: 2px solid var(--signal); }
+  .spec[hidden] { display: none; }
+  .spec .lbl { color: var(--signal); }
+  .spec p { margin: 0 0 8px; font-size: 16.5px; line-height: 1.5; color: var(--bone); }
+  .spec p b { color: var(--signal); font-family: var(--mono); }
+  .spec p.fine { margin-top: 10px; font-size: 14px; color: #CFC9BB; }
+  .spec p.no { color: #E7DCD6; border-left: 2.5px solid var(--warn); padding-left: 10px; }
+  .spec p.no b { color: var(--warn); }
+  .steps { margin: 12px 0 0; }
+  .step { padding: 10px 0 8px; border-top: 1px solid var(--hair); }
+  .step .head { display: flex; gap: 12px; align-items: center; margin: 0 0 6px; }
+  .step .pic { flex: 0 0 72px; }
+  .step .pic svg { display: block; width: 72px; height: auto; }
+  .step .pic text { font-family: var(--mono); font-weight: 700; font-size: 10px; fill: var(--signal); }
+  .step h3 { margin: 0; font-family: var(--mono); font-size: 14px; letter-spacing: .05em;
+    text-transform: uppercase; color: var(--signal); }
+  .step h3 i { font-style: normal; color: var(--bone); display: block; letter-spacing: 0; }
+  .step ul { margin: 0; padding: 0 0 0 18px; }
+  .step ul li { font-family: var(--sans); font-size: 14.5px; line-height: 1.4; color: var(--bone); }
+  .step ul li.w { color: #E7DCD6; list-style: "! "; }
+  .step ul li.w::marker { color: var(--warn); font-family: var(--mono); font-weight: 700; }
+
+  .callbox { margin-top: 28px; padding: 18px 16px 16px; background: var(--panel-up);
+    border: 2px dashed var(--signal-d); }
+  .callbox .lbl { color: var(--signal); }
+  .callbox .means { margin: 10px 0 14px; font-size: 15px; color: #CFC9BB; line-height: 1.5; }
+  .callbox .means b { color: var(--bone); }
+  .callbox input[type=text] { font-family: var(--sans); font-size: 17px; }
+
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+  .actions button {
+    font-family: var(--mono); font-size: 12.5px; letter-spacing: .1em;
+    text-transform: uppercase; font-weight: 700; min-height: 48px;
+    padding: 13px 18px; border-radius: 0; cursor: pointer;
+    background: var(--signal); color: #14100F; border: 1.5px solid var(--signal);
+  }
+  .actions button.ghost { background: transparent; color: var(--bone); border-color: #453E2C; }
+  .actions button:hover { filter: brightness(1.1); }
+  .actions button.ghost:hover { border-color: var(--signal); color: var(--signal); filter: none; }
+  .actions button:focus-visible { outline: 2px solid var(--bone); outline-offset: 2px; }
+
+  .said {
+    margin-top: 14px; font-family: var(--mono); font-size: 12px;
+    letter-spacing: .06em; text-transform: uppercase; color: var(--signal);
+    min-height: 1em;
+  }
+
+  .titleblock {
+    margin-top: 44px; border: 1px solid var(--hair);
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(108px, 1fr));
+  }
+  .tb { padding: 11px 13px; border-right: 1px solid var(--hair); }
+  .tb:last-child { border-right: 0; }
+  .tb dt {
+    font-family: var(--mono); font-size: 10px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--graphite); margin: 0 0 4px;
+  }
+  .tb dd {
+    margin: 0; font-family: var(--mono); font-size: 13px; font-weight: 700;
+    color: var(--bone); font-variant-numeric: tabular-nums;
+  }
+  .tb dd.red { color: var(--signal); }
+
+  .cta { margin-top: 18px; font-size: 15px; color: #CFC9BB; line-height: 1.5; }
+  .cta b { color: var(--bone); }
+  .cta a { color: var(--signal); font-weight: 700; text-decoration: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+
+  @media print {
+    @page { size: letter; margin: .5in .55in; }
+    :root {
+      --carbon: #fff; --panel: #fff; --panel-up: #FFF8E2;
+      --hair: #C9C2BC; --bone: #14100F; --graphite: #5E5651;
+      --signal: #7A5B00; --signal-d: #7A5B00; --warn: #B93A18; --ply: #E4D2A8;
+    }
+    body { background-image: none; font-size: 10.5pt; }
+    .sheet { max-width: none; padding: 0; }
+    .actions, .said, .nav, .tail, .cta, .privacy { display: none; }
+    .spec[hidden] { display: block !important; }
+    input { border-bottom-color: #9AA0A8; min-height: .42in; }
+    .redline-note { background: none; }
+    h1 { font-size: 26pt; }
+  }
+</style>
+<style>
+  /* Tool 15 additions: tap lists, never typing (the 10/30 council's design-against). */
+  .voices { display: grid; grid-template-columns: 1fr; gap: 8px; margin: 0 0 8px; }
+  .voices button { min-height: 48px; padding: 10px 12px; border-radius: 0; cursor: pointer; text-align: left;
+    font-family: var(--sans); font-size: 16px; line-height: 1.3; background: transparent;
+    color: var(--bone); border: 1.5px solid #453E2C; }
+  .voices button span { display: block; font-family: var(--mono); font-size: 11.5px; letter-spacing: .06em;
+    text-transform: uppercase; color: #CFC9BB; margin-top: 2px; }
+  .voices button[aria-pressed="true"] { background: var(--signal); color: #14100F; border-color: var(--signal); }
+  .voices button[aria-pressed="true"] span { color: #14100F; }
+  .voices button:focus-visible { outline: 2px solid var(--bone); outline-offset: 2px; }
+  .rows { margin: 12px 0 0; }
+  .row { padding: 9px 0 8px; border-top: 1px solid var(--hair); }
+  .row b { display: block; font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--signal); font-weight: 700; margin-bottom: 2px; }
+  .row span { font-size: 15.5px; line-height: 1.4; color: var(--bone); }
+  .spec p.act { margin: 12px 0 8px; padding: 12px; border: 1.5px solid var(--signal); font-size: 16.5px; }
+  .redline-note a { color: var(--bone); font-weight: 700; }
+  .story p a, .fine a { color: var(--signal); }
+</style>
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+
+<div class="sheet">
+
+  <nav class="nav">
+    <div class="navtop">
+      <a class="brand" href="index.html">@nicksdadhax</a>
+      <span class="meta">Tool 15 · free · no gate</span>
+    </div>
+    <div class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="toolbox.html" aria-current="true"><svg class="tbx" width="15" height="13" viewBox="0 0 16 14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><g class="lid"><path d="M5.5 4.5v-.75a2.5 2.5 0 0 1 5 0v.75"/><rect x="1" y="4.5" width="14" height="2.5" rx=".5"/></g><rect x="1" y="7" width="14" height="6" rx=".5"/></svg>The Toolbox</a>
+      <a href="log.html">The Flip</a>
+      <a href="houses.html">I have a house</a>
+    </div>
+  </nav>
+
+  <header>
+    <div class="protocol">Know thyself <b>·</b> not a diagnosis <b>·</b> what are you fixing?</div>
+    <h1>The wound <span class="of">map</span></h1>
+    <p class="dek">You keep landing in the same spot: the same fight, or the same week where you're fixing
+      everything and nobody asked. You try harder and it comes back. The move that kept you safe
+      a long time ago is still running, and now it costs you.</p>
+    <p class="dek"><em>Tap the voice you know. Tap how you protect it.</em> Under a minute, nothing
+      to type. You walk out with what you've been chasing, what it could turn into, and one thing
+      to do by next week. 11 voices, 3 moves. Mine is already filled in below:
+      <b>"I am not enough," and I went invisible.</b></p>
+    <p class="privacy"><b>Nothing you tap here leaves your device.</b> No account, no
+      server, no analytics. Your picks are erased when you close the tab.</p>
+  </header>
+
+  <div class="redline-note">
+    <b>this page isn't a diagnosis</b>
+    I'm a physical therapist, not your therapist. This is a map I pulled together from other
+    people's work. Nobody has tested it as a measure, and it can't tell you who you are. If a row
+    brings up something heavy, stop here and talk to someone licensed. In crisis or thinking about
+    hurting yourself? In the US, call or text <a href="tel:988">988</a>, any hour. In danger right
+    now, call 911.
+  </div>
+
+  <div class="story">
+    <span class="lbl">Why this one exists</span>
+    <p>I let an AI ask me 20 hard questions on camera. In my hardest season, what emotion did I
+      live in? <b>"My worthiness. Am I worthy of this?"</b> Then I tried to name the feeling and
+      couldn't. Naming emotions, I said, is "oddly just very hard," and I asked it for a list. So
+      this page is a list.</p>
+    <p>As a kid: "I had to become invisible." Grown: "Often I am told I am too much," and in one low
+      chapter "I tried to be little. It was not fun." Then the shop: "Maybe that's why DIY dad stuff
+      is so appealing to me, because I'm fixing something." What I do about it is a line I'd already
+      posted. The person you're best suited to help is the person you were five years ago:
+      <a href="https://www.instagram.com/reel/De1KrDlDWrZ/">Instagram</a>,
+      <a href="https://www.facebook.com/reel/1679530203587755">Facebook</a>.</p>
+  </div>
+
+  <h2 class="part">Part 1 &mdash; The voice</h2>
+  <p class="partdek">Which one have you heard the most? Go with the first that stings. You can change it.</p>
+  <div class="voices" id="voices" role="group" aria-label="The voice you've heard"></div>
+
+  <h2 class="part">Part 2 &mdash; How you protect it</h2>
+  <p class="partdek">When that voice shows up, what do you do? Most of us do all three. Tap your first move.</p>
+  <div class="voices" id="moves" role="group" aria-label="How you protect it"></div>
+
+  <h2 class="part">Part 3 &mdash; Your map</h2>
+
+  <div class="spec" id="spec">
+    <span class="lbl" id="oLabel">Your map</span>
+    <p id="oVerdict"></p>
+    <div class="rows" id="oRows"></div>
+    <p class="act" id="oAct"></p>
+    <p class="fine" id="oFork"></p>
+    <p class="fine" id="oLimit"></p>
+  </div>
+
+  <div class="callbox">
+    <span class="lbl">The boulder question</span>
+    <p class="means">Most problems are who-you-know. <b>Name one person who has seen you at your
+      worst and stayed.</b></p>
+    <input type="text" id="callName" placeholder="a name. not 'a guy from work' — a name.">
+    <p class="means" style="margin:12px 0 0"><b>Now make the call.</b> You don't owe them the
+      map. Ask: &ldquo;when do you see me go quiet, push, or try to fix it?&rdquo;</p>
+  </div>
+
+  <div class="actions">
+    <button id="copyBtn" type="button">Copy my map</button>
+    <button id="promptBtn" class="ghost" type="button">Copy a prompt for your AI</button>
+    <button id="printBtn" class="ghost" type="button">Print it</button>
+    <button id="resetBtn" class="ghost" type="button">Start over</button>
+  </div>
+  <div class="said" id="said" role="status" aria-live="polite"></div>
+
+  <p class="cta">Where this comes from: three directions of protecting,
+    <a href="https://en.wikipedia.org/wiki/Karen_Horney">Karen Horney</a> and
+    <a href="https://schematherapysociety.org/Coping-Styles">schema therapy's coping styles</a>;
+    the need turned outward, <a href="https://en.wikipedia.org/wiki/Alfred_Adler">Alfred Adler</a>
+    and <a href="https://doi.org/10.1037/a0014223">altruism born of suffering</a>; purpose from
+    gifts too, <a href="https://doi.org/10.1177/0956797614568318">McAdams and Guo</a>. The grid
+    itself is my synthesis.</p>
+
+  <dl class="titleblock">
+    <div class="tb"><dt>Protocol</dt><dd>KNOW</dd></div>
+    <div class="tb"><dt>Tool</dt><dd>15 of 15</dd></div>
+    <div class="tb"><dt>Need</dt><dd class="red" id="count">Worth</dd></div>
+    <div class="tb"><dt>By</dt><dd class="red">@nicksdadhax</dd></div>
+  </dl>
+
+  <!--TAIL-->
+  <div class="tail">
+  <a class="tail-next" href="7-layers-of-why.html">
+    <span class="k">Read next</span>
+    <b>Tool 01 &mdash; The 7 Layers of Why</b>
+    <span class="s">You've got the voice on paper. Now ask why seven times and see what's under the
+      thing you say you want.</span>
+  </a>
+  <section class="optin" id="next">
+    <h2>What I ask</h2>
+    <p class="plain">That was free and nothing here sits behind an email. If it was
+      useful, here's the whole exchange: <b>send it to one or two people who'd use it
+      too.</b> That's it. I'm trusting you with it, you pass it on.</p>
+    <p class="plain">Want the next one before anyone else? I'm building an interest
+      list &mdash; no selling, no sequence, your address goes nowhere.
+      <a href="index.html#next">Exactly what that means, in plain words.</a></p>
+    <p class="fine">The list itself isn't open yet &mdash; I'm still setting it up, and
+      I'd rather say that than put up a box that doesn't work. The ask above stands
+      either way, and it's the one that matters. If you want to tell me what to build
+      next, my DMs are open.</p>
+    <div class="ctas">
+      <a href="https://www.instagram.com/nicksdadhax/"><b>Tell me what to build next</b><span>DM @nicksdadhax</span></a>
+    </div>
+  </section>
+  </div>
+  <!--/TAIL-->
+
+  <p class="cta">Free. This tool asks you for nothing: no gate, no email, no
+    analytics. When you've done the one thing, <b>DM me how it went</b>. Keep the map.</p>
+</div>
+<script>
+(function () {
+  "use strict";
+  // ---- the map: 11 voices x 3 moves. Every line reads as a voice you've heard, never who you are. ----
+  // looks = [toward, against, away]
+  var W = [
+    { voice: "I am not enough.", tag: "Worth", alarm: "shame", need: "worth",
+      looks: ["People-pleasing, over-apologizing, can't say no", "Perfectionism, overwork, proving it", "Going invisible, not trying, deflecting praise"],
+      shadow: "Status chasing, burnout", purpose: "Build other people's confidence",
+      act: "Tell one person the specific thing they did well." },
+    { voice: "People leave.", tag: "Connection", alarm: "anxiety", need: "secure connection",
+      looks: ["Reassurance-seeking, checking the phone, clinging", "Anger at lateness, testing loyalty", "Leaving first, keeping one foot out"],
+      shadow: "Possessiveness", purpose: "Be the steady one",
+      act: "Be where you said you'd be, on time, for one person who counts on it." },
+    { voice: "I don't belong.", tag: "Belonging", alarm: "loneliness", need: "belonging",
+      looks: ["Mirroring the group, over-reading texts", "Rejecting others first, cynicism", "Not asking for the help, skipping the event"],
+      shadow: "People-pleasing", purpose: "Connect; make people feel seen",
+      act: "Invite the person at the edge of the room to something." },
+    { voice: "No one notices what I need.", tag: "Attunement", alarm: "emptiness", need: "attunement",
+      looks: ["Fixing everybody's problem, never yours", "Impatience with other people's needs", "\"I'm fine,\" won't ask for help"],
+      shadow: "Care that erases you", purpose: "Notice; attune; care",
+      act: "Ask one person how they're actually doing, then listen. Don't fix it." },
+    { voice: "People will hurt me.", tag: "Trust", alarm: "distrust", need: "trust",
+      looks: ["Appeasing, trusting the wrong people again", "Control, checking up, can't delegate", "Secrecy, always keeping an exit"],
+      shadow: "Suspicion", purpose: "Be trustworthy; protect",
+      act: "Make one small promise and keep it with no reminder." },
+    { voice: "The world isn't safe.", tag: "Safety", alarm: "fear", need: "safety",
+      looks: ["Clinging to a protector", "Aggression, over-preparing, hoarding", "Scanning the room, freezing, bracing your body"],
+      shadow: "Always on alert", purpose: "Protect; build safe places",
+      act: "Make one place or one person a little safer, and leave it at one." },
+    { voice: "Nothing I do matters.", tag: "Agency", alarm: "powerlessness", need: "agency",
+      looks: ["Waiting to be rescued", "Micromanaging, fixing it for them", "Giving up early, \"what's the point\""],
+      shadow: "Domination, or rescuing", purpose: "Empower; teach control",
+      act: "Teach someone to do one thing you usually do for them." },
+    { voice: "My needs don't count.", tag: "Voice", alarm: "resentment", need: "autonomy and voice",
+      looks: ["Yes-saying, losing your own preferences", "Passive aggression, sudden blowups", "Quiet withdrawal, a hidden life"],
+      shadow: "Disappearing, or rebelling", purpose: "Give people their voice",
+      act: "Ask someone what they want, and do that. Then say one thing you want." },
+    { voice: "This is wrong, and no one fixed it.", tag: "Fairness", alarm: "anger", need: "fairness and dignity",
+      looks: ["Over-giving to prove you're fair", "Scorekeeping, grudges, crusades", "Cynicism, opting out"],
+      shadow: "Revenge, rigidity", purpose: "Reform; make it right",
+      act: "Fix one small unfair thing within reach. No speech." },
+    { voice: "It's gone.", tag: "Continuity", alarm: "grief", need: "continuity",
+      looks: ["Holding on, overprotecting", "Anger that it happened at all", "Numbness, not getting attached again"],
+      shadow: "Can't let go", purpose: "Preserve; pass it on",
+      act: "Tell one person the story of what's gone." },
+    { voice: "None of it matters.", tag: "Meaning", alarm: "despair", need: "meaning",
+      looks: ["Borrowing other people's purposes", "Cynicism", "Busyness, scrolling, shiny objects"],
+      shadow: "Distraction, excess", purpose: "Teach; help others find their why",
+      act: "Teach one person one thing you know." }
+  ];
+  var M = [
+    { name: "Toward", say: "I please, fix, say yes", how: "Do it and ask for nothing back." },
+    { name: "Against", say: "I push, prove, control", how: "Do it without keeping score or correcting anyone." },
+    { name: "Away", say: "I go quiet, stay busy, vanish", how: "Do it in person, out loud, not by text." }
+  ];
+  function mapOf(w, m) {
+    var a = W[w], b = M[m];
+    return { voice: a.voice, alarm: a.alarm, need: a.need, tag: a.tag, move: b.name,
+             looks: a.looks[m], shadow: a.shadow, purpose: a.purpose, act: a.act, how: b.how };
+  }
+  var KEY = "ndh-woundmap-v1", EXW = 0, EXM = 2;   // the example on load is Nick's own: worth + away
+  var $ = function (id) { return document.getElementById(id); };
+  var said = $("said"), sel = { w: EXW, m: EXM, touched: false };
+  function byDate() {
+    return new Date(Date.now() + 7 * 864e5).toLocaleDateString(undefined, { weekday: "short", month: "short", day: "numeric" });
+  }
+  function buildList(host, items, label, onPick) {
+    items.forEach(function (it, i) {
+      var b = document.createElement("button"), s = document.createElement("span");
+      b.type = "button"; b.textContent = label(it)[0]; s.textContent = label(it)[1]; b.appendChild(s);
+      b.addEventListener("click", function () { onPick(i); });
+      host.appendChild(b);
+    });
+  }
+  buildList($("voices"), W, function (x) { return ["“" + x.voice + "”", x.tag]; }, function (i) { sel.w = i; sel.touched = true; refresh(); });
+  buildList($("moves"), M, function (x) { return [x.name, x.say]; }, function (i) { sel.m = i; sel.touched = true; refresh(); });
+  function press(host, i) {
+    Array.prototype.forEach.call(host.children, function (b, n) { b.setAttribute("aria-pressed", n === i ? "true" : "false"); });
+  }
+  function refresh() {
+    press($("voices"), sel.w); press($("moves"), sel.m);
+    var r = mapOf(sel.w, sel.m), rows = $("oRows");
+    $("oLabel").textContent = sel.touched ? "Your map" : "The example: mine. Tap yours above.";
+    $("oVerdict").innerHTML = "A voice you've heard: <b></b> It's something you hear. It isn't who you are.";
+    $("oVerdict").querySelector("b").textContent = "“" + r.voice + "”";
+    rows.textContent = "";
+    [["The alarm, and the need under it", r.alarm + "; " + r.need],
+     ["Moving " + r.move.toLowerCase() + " can look like", r.looks],
+     ["Chase it back for yourself (the shadow)", r.shadow],
+     ["Give it to someone else (the purpose)", r.purpose]].forEach(function (a) {
+      var d = document.createElement("div"), b = document.createElement("b"), s = document.createElement("span");
+      d.className = "row"; b.textContent = a[0]; s.textContent = a[1];
+      d.appendChild(b); d.appendChild(s); rows.appendChild(d);
+    });
+    $("oAct").innerHTML = "<b></b> <span></span>";
+    $("oAct").querySelector("b").textContent = "One thing, by " + byDate() + ":";
+    $("oAct").querySelector("span").textContent = r.act + " " + r.how;
+    $("oFork").textContent = "The fork: are you giving it away, or still trying to win it back? If you help people, here's the test: does this make them need you less over time?";
+    $("oLimit").textContent = "The hurt was real and you didn't need it. Purpose gets built afterward, and it comes from gifts too. If none of this fits, close the tab; you're not missing anything.";
+    $("count").textContent = r.tag;
+    save();
+  }
+  function save() {
+    try {
+      // sessionStorage, NOT localStorage: same promise as every tool on the site.
+      sessionStorage.setItem(KEY, JSON.stringify({ w: sel.w, m: sel.m, touched: sel.touched, callName: $("callName").value }));
+    } catch (e) {}
+  }
+  function load() {
+    var d = null;
+    try { d = JSON.parse(sessionStorage.getItem(KEY) || "null"); } catch (e) {}
+    if (!d) return;
+    if (W[d.w]) sel.w = d.w;
+    if (M[d.m]) sel.m = d.m;
+    sel.touched = !!d.touched;
+    if (d.callName) $("callName").value = d.callName;
+  }
+  $("callName").addEventListener("input", save);
+  $("printBtn").addEventListener("click", function () { window.print(); });
+  function copyText(text, okMsg) {
+    function fallback() {
+      var t = document.createElement("textarea"); t.value = text;
+      t.style.position = "fixed"; t.style.opacity = "0"; document.body.appendChild(t); t.select();
+      try { document.execCommand("copy"); } catch (e) {} document.body.removeChild(t);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () { said.textContent = okMsg; },
+        function () { fallback(); said.textContent = okMsg; });
+    } else { fallback(); said.textContent = okMsg; }
+  }
+  function mapText() {
+    var r = mapOf(sel.w, sel.m), out = ["THE WOUND MAP — " + new Date().toLocaleDateString(), "",
+      "A voice I've heard: \"" + r.voice + "\"", "Under it: " + r.alarm + "; the need is " + r.need + ".",
+      "My first move: " + r.move + ". " + r.looks + ".",
+      "Chasing it back: " + r.shadow + ".", "Giving it away: " + r.purpose + ".", "",
+      "One thing, by " + byDate() + ": " + r.act + " " + r.how];
+    var who = $("callName").value.trim(); if (who) out.push("", "Call: " + who);
+    out.push("", "Not a diagnosis. In crisis in the US: call or text 988.", "", "The Wound Map — @nicksdadhax");
+    return out.join("\n");
+  }
+  $("copyBtn").addEventListener("click", function () { copyText(mapText(), "Copied. Put it where you'll see it."); });
+  $("promptBtn").addEventListener("click", function () {
+    var r = mapOf(sel.w, sel.m);
+    var text = [
+      "Be a calm, curious listener. You are not my therapist. Don't diagnose me, label me or tell me why",
+      "I am the way I am. Ask one question at a time and wait for my answer. No pep talks.",
+      "If I say anything about hurting myself or not being safe, stop the exercise and point me to 988",
+      "(US call or text) or local emergency services.",
+      "",
+      "A voice I hear: \"" + r.voice + "\" When it shows up, my first move is " + r.move.toLowerCase() + ": " + r.looks.toLowerCase() + ".",
+      "",
+      "Do this, in order:",
+      "1. Ask me when I last heard that voice this week, and what I did next.",
+      "2. Ask what that move has protected me from, and what it costs me now.",
+      "3. Ask where I'm chasing the need back (" + r.shadow.toLowerCase() + ") and where I'm giving it away (" + r.purpose.toLowerCase() + ").",
+      "4. Help me make this one action specific, with a person and a day: " + r.act + " " + r.how,
+      "",
+      "Stop after step 4. Keep each reply under five sentences.",
+      "",
+      "(Built with The Wound Map — @nicksdadhax)"
+    ].join("\n");
+    copyText(text, "Prompt copied. Paste it into the AI you already use.");
+  });
+  $("resetBtn").addEventListener("click", function () {
+    sel = { w: EXW, m: EXM, touched: false }; $("callName").value = "";
+    try { sessionStorage.removeItem(KEY); } catch (e) {}
+    refresh(); said.textContent = "Cleared. Back to the example."; window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+  load(); refresh();
+  window.__woundMap = { mapOf: mapOf, W: W, M: M };   // for the engine check
+})();
+</script>
+</body>
+</html>
