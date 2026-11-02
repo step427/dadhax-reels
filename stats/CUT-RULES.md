@@ -8,7 +8,7 @@ _Written by `publisher/craft_report.py` on **2026-11-02** from **261** posted re
 
 1. **duration** — **LEVER** — favour **under 20s**, 33 pts over over 70s; views agree. under 20s 47% (n=103) · 20-35s 33% (n=73) · 35-50s 27% (n=46) · 50-70s 20% (n=27) · over 70s 13% (n=12). Retention falls at EVERY step longer: cut to the number, not the material.
 2. **topic** — **LEVER** — favour **utility**, 15 pts over talk; views agree. utility 44% (n=151) · meta 34% (n=11) · talk 28% (n=99)
-3. **fresh/catalog** — **LEVER** — favour **back-catalog**, 9 pts over fresh; views agree. back-catalog 44% (n=88) · fresh 34% (n=173)
+3. **fresh/catalog** — **LEVER** — favour **back-catalog**, 9 pts over fresh; views agree. back-catalog 44% (n=88) · fresh 35% (n=173)
 4. **cover** — **NO LEVER** — 1 pts is noise; spend no effort here. default cover 37% (n=126) · custom cover 36% (n=135)
 5. **collab** — **TOO THIN** — not enough posts on both sides to act on. solo 37% (n=255) · collab 36% (n=6, thin)
 

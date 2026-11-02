@@ -23,7 +23,7 @@ _Share of the reel actually watched. This is the hook test._
 | fresh/catalog | n | median | mean | best |
 |---|---|---|---|---|
 | back-catalog | 88 | 44% | 46% | 100% |
-| fresh | 173 | 34% | 35% | 88% |
+| fresh | 173 | 35% | 35% | 88% |
 
 | cover | n | median | mean | best |
 |---|---|---|---|---|
@@ -39,13 +39,13 @@ _Share of the reel actually watched. This is the hook test._
 
 | topic | n | median | mean | best |
 |---|---|---|---|---|
-| utility | 151 | 425.0 | 1233.9 | 37265.0 |
+| utility | 151 | 425.0 | 1235.6 | 37267.0 |
 | meta | 11 | 167.0 | 176.1 | 289.0 |
 | talk | 99 | 137.0 | 179.4 | 1777.0 |
 
 | duration | n | median | mean | best |
 |---|---|---|---|---|
-| under 20s | 103 | 252.0 | 1139.3 | 37265.0 |
+| under 20s | 103 | 252.0 | 1141.9 | 37267.0 |
 | 35-50s | 46 | 177.0 | 486.8 | 2944.0 |
 | 50-70s | 27 | 174.0 | 463.2 | 2699.0 |
 | 20-35s | 73 | 158.0 | 678.9 | 12350.0 |
@@ -53,48 +53,48 @@ _Share of the reel actually watched. This is the hook test._
 
 | fresh/catalog | n | median | mean | best |
 |---|---|---|---|---|
-| back-catalog | 88 | 328.0 | 1383.8 | 37265.0 |
+| back-catalog | 88 | 335.0 | 1386.8 | 37267.0 |
 | fresh | 173 | 166.0 | 486.9 | 4770.0 |
 
 | cover | n | median | mean | best |
 |---|---|---|---|---|
-| default cover | 126 | 247.5 | 727.9 | 12350.0 |
-| custom cover | 135 | 176.0 | 846.6 | 37265.0 |
+| default cover | 126 | 247.5 | 730.0 | 12350.0 |
+| custom cover | 135 | 176.0 | 846.6 | 37267.0 |
 
 | collab | n | median | mean | best |
 |---|---|---|---|---|
-| solo | 255 | 206.0 | 797.8 | 37265.0 |
+| solo | 255 | 206.0 | 798.9 | 37267.0 |
 | collab | 6 | 193.5 | 427.5 | 1560.0 |
 
 ## By reach
 
 | topic | n | median | mean | best |
 |---|---|---|---|---|
-| utility | 151 | 360.0 | 940.1 | 25594.0 |
-| meta | 11 | 133.0 | 142.0 | 219.0 |
-| talk | 99 | 119.0 | 147.3 | 1295.0 |
+| utility | 151 | 360.0 | 941.5 | 25595.0 |
+| meta | 11 | 133.0 | 142.1 | 219.0 |
+| talk | 99 | 119.0 | 148.4 | 1295.0 |
 
 | duration | n | median | mean | best |
 |---|---|---|---|---|
-| under 20s | 103 | 211.0 | 844.7 | 25594.0 |
+| under 20s | 103 | 214.0 | 846.8 | 25595.0 |
 | 50-70s | 27 | 154.0 | 375.4 | 2079.0 |
 | 35-50s | 46 | 146.5 | 403.4 | 2542.0 |
 | 20-35s | 73 | 140.0 | 532.1 | 9033.0 |
-| over 70s | 12 | 131.0 | 297.0 | 2302.0 |
+| over 70s | 12 | 131.0 | 306.1 | 2302.0 |
 
 | fresh/catalog | n | median | mean | best |
 |---|---|---|---|---|
-| back-catalog | 88 | 260.5 | 1035.0 | 25594.0 |
-| fresh | 173 | 140.0 | 387.4 | 3618.0 |
+| back-catalog | 88 | 274.0 | 1037.4 | 25595.0 |
+| fresh | 173 | 140.0 | 388.1 | 3618.0 |
 
 | cover | n | median | mean | best |
 |---|---|---|---|---|
-| default cover | 126 | 205.5 | 573.3 | 9033.0 |
-| custom cover | 135 | 154.0 | 636.0 | 25594.0 |
+| default cover | 126 | 206.5 | 575.9 | 9033.0 |
+| custom cover | 135 | 154.0 | 636.1 | 25595.0 |
 
 | collab | n | median | mean | best |
 |---|---|---|---|---|
-| solo | 255 | 166.0 | 611.9 | 25594.0 |
+| solo | 255 | 166.0 | 613.2 | 25595.0 |
 | collab | 6 | 156.0 | 344.8 | 1282.0 |
 
 ## By saves
