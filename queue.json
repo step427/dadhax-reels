@@ -4430,6 +4430,26 @@
       "sam_verdict": "POST 2026-11-02",
       "topic_class": "utility",
       "source_raw": "yt:sdVuUSrlNiU"
+    },
+    {
+      "file": "ig-1102-mission.mp4",
+      "title": "Dan Martell was a troubled kid. Now he shows up for kids like him.",
+      "status": "pending",
+      "earliest": "2026-11-02",
+      "caption": "Hey Dad,\n\nWhy am I posting about this? Two reasons.\n\nOne: the year's almost over. If you're looking at your taxes and deciding where to give before December 31, this mission is worth your money. You get a tax receipt, through Myriad USA in the US or from the foundation in Canada. What it saves you depends on your return, so ask your tax person.\n\nTwo: Dan's my coach, and I gave $500 myself. I had a credit sitting on a card, and the universe made it pretty clear where that money should go.\n\nHere's why I picked this one. @danmartell was a troubled kid. He came out of a broken home and went through jail and addiction. Then someone showed up for him.\n\nToday he and Renée Warren are on a mission for the kids still waiting for someone to just show up for them. They gave $100,000 to BGC Okanagan's Prevent Youth Homelessness campaign (photo: BGC Okanagan). The Martell Legacy Foundation funds mentorship, community and mental health support around Kelowna, including Kings Club, free mentorship for Kelowna youth.\n\nIf someone showed up for you when it counted, you know why this matters. Join them: danmartell.com/donate\n\nThanks, Dad. I love you, Dad.",
+      "arc_slot": "RUSH 2026-11-02 off-arc",
+      "pix": "X",
+      "value_forms": [
+        "idea",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-11-02",
+      "topic_class": "talk",
+      "source_raw": "danmartell.com/kingsclub + bgco.ca public photos 2026-11-02",
+      "user_tags": [
+        "danmartell"
+      ],
+      "cover_ms": 1000
     }
   ]
 }
