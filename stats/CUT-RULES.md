@@ -1,16 +1,16 @@
 # CUT RULES — read before you cut. Generated; never hand-edit.
 
-_Written by `publisher/craft_report.py` on **2026-11-04** from **267** posted reels (median retention = share of the reel actually watched). Rewritten every run, so a hand edit dies at the next one — change the data or the code. Full tables: `CRAFT.md`. **Where this file and SAM-PLAYBOOK.md disagree, this file wins.**_
+_Written by `publisher/craft_report.py` on **2026-11-05** from **270** posted reels (median retention = share of the reel actually watched). Rewritten every run, so a hand edit dies at the next one — change the data or the code. Full tables: `CRAFT.md`. **Where this file and SAM-PLAYBOOK.md disagree, this file wins.**_
 
 **Stale check:** if that date is more than 8 days old, say so in the delivery, then run `python publisher/stats.py && python publisher/craft_report.py` and COMMIT both files — an uncommitted re-run is erased by the next checkout (the n=100 run was, 9/08).
 
 ## Levers, biggest first
 
-1. **duration** — **LEVER** — favour **under 20s**, 33 pts over over 70s; views agree. under 20s 46% (n=108) · 20-35s 33% (n=74) · 35-50s 27% (n=46) · 50-70s 20% (n=27) · over 70s 13% (n=12). Retention falls at EVERY step longer: cut to the number, not the material.
-2. **topic** — **LEVER** — favour **utility**, 15 pts over talk; views agree. utility 43% (n=156) · meta 34% (n=11) · talk 28% (n=100)
-3. **fresh/catalog** — **LEVER** — favour **back-catalog**, 8 pts over fresh; views agree. back-catalog 42% (n=93) · fresh 35% (n=174)
-4. **cover** — **NO LEVER** — 0 pts is noise; spend no effort here. default cover 37% (n=131) · custom cover 36% (n=136)
-5. **collab** — **TOO THIN** — not enough posts on both sides to act on. solo 37% (n=261) · collab 36% (n=6, thin)
+1. **duration** — **LEVER** — favour **under 20s**, 33 pts over over 70s; views agree. under 20s 46% (n=111) · 20-35s 33% (n=74) · 35-50s 27% (n=46) · 50-70s 20% (n=27) · over 70s 13% (n=12). Retention falls at EVERY step longer: cut to the number, not the material.
+2. **topic** — **LEVER** — favour **utility**, 15 pts over talk; views agree. utility 43% (n=159) · meta 34% (n=11) · talk 28% (n=100)
+3. **fresh/catalog** — **LEVER** — favour **back-catalog**, 8 pts over fresh; views agree. back-catalog 42% (n=96) · fresh 35% (n=174)
+4. **cover** — **NO LEVER** — 0 pts is noise; spend no effort here. default cover 37% (n=133) · custom cover 36% (n=137)
+5. **collab** — **TOO THIN** — not enough posts on both sides to act on. solo 37% (n=264) · collab 36% (n=6, thin)
 
 **Standing exception — hands-and-tools how-tos run 35-60s** (Nick, 2026-10-05). The duration lever above is % watched; for utility, watch seconds grow with length. Rules: Rook `_Skills/reel-loop.md` §3a.
 
