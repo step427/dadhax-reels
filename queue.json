@@ -4602,7 +4602,7 @@
     {
       "file": "ig-1105-iam.mp4",
       "title": "Two words you get to finish: I am",
-      "status": "pending",
+      "status": "posted",
       "earliest": "2026-11-05",
       "caption": "Hey Dad,\n\nTwo words, that's all it takes to change your life: I am. The fix is choosing how that sentence ends.\n\nWe're already living in an identity. Once you're conscious and aware of it, you get to choose how it ends.\n\nMine: \"I am a forever student.\" Say yours out loud today.\n\nI post the ones I wish somebody had told me. Follow for the next one.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
       "arc_slot": "Fri 11/6 6p",
@@ -4613,7 +4613,10 @@
       ],
       "sam_verdict": "POST 2026-11-05",
       "topic_class": "talk",
-      "source_raw": "PXL_20261104_153318950.mp4"
+      "source_raw": "PXL_20261104_153318950.mp4",
+      "permalink": "https://www.instagram.com/reel/DfYPNyeF0qg/",
+      "posted_at": "2026-11-05T17:43:12-06:00",
+      "fb_page_video_id": "1601873604499214"
     }
   ]
 }
