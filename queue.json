@@ -4654,6 +4654,23 @@
       "topic_class": "utility",
       "source_raw": "yt:olS7LxyneXw",
       "cover_ms": 500
+    },
+    {
+      "file": "ig-yt-chargerbox.mp4",
+      "title": "Fix the charger on your bench: box it, hang it",
+      "status": "pending",
+      "earliest": "2026-11-06",
+      "caption": "Hey Dad,\n\nYou can fix the charger taking up room on your bench.\n\nBuild a small box out of 3/4\" plywood and hang it on a 3/4\" French cleat. A power strip goes inside, behind a removable back plate. The chargers plug into that strip, so nothing sits loose on the bench. Leave the back open so the strip isn't sealed in. Plug the strip straight into a wall outlet, and keep it to chargers.\n\nMine's sized to my DeWalt charger. Measure yours first. My sketch and cut list are on screen for a second if you want to pause it.\n\nFollow so you've got the next one when you need it.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "Sat 11/7 6p",
+      "pix": "P",
+      "value_forms": [
+        "idea",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-11-06",
+      "topic_class": "utility",
+      "source_raw": "yt:wJ_KsBODX4o",
+      "cover_ms": 500
     }
   ]
 }
