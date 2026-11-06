@@ -4637,6 +4637,23 @@
       "topic_class": "utility",
       "source_raw": "yt:jHAma26cYiA",
       "cover_ms": 500
+    },
+    {
+      "file": "ig-yt-phoneclamp.mp4",
+      "title": "Fix the shot with no tripod: clamp + magnet",
+      "status": "pending",
+      "earliest": "2026-11-06",
+      "caption": "Hey Dad,\n\nYou can fix the shot nobody's around to hold the phone for.\n\nNo tripod needed. A spring clamp with a magnet on it grabs a pole. My phone case has a metal ring on the back, so it sticks right to the magnet, at most any angle. Move the clamp up or down the pole for the height.\n\nCheck it holds before you walk away from it.\n\nFollow so you've got the next one when you need it.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "Sat 11/7 9a",
+      "pix": "P",
+      "value_forms": [
+        "idea",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-11-06",
+      "topic_class": "utility",
+      "source_raw": "yt:olS7LxyneXw",
+      "cover_ms": 500
     }
   ]
 }
