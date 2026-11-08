@@ -15,6 +15,12 @@
   "longestBlockWords": 0,
   "links": 11
  },
- "fills": {},
- "audited": "2026-11-08T13:45:28+00:00"
+ "fills": {
+  "width": "16.375",
+  "pieces": "3",
+  "kerf": "0.125",
+  "trim": "0",
+  "callName": "Sam"
+ },
+ "audited": "2026-11-08T13:46:57+00:00"
 }

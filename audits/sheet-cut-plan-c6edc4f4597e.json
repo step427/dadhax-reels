@@ -16,6 +16,12 @@
   "longestBlockWords": 20,
   "links": 14
  },
- "fills": {},
- "audited": "2026-11-08T13:45:33+00:00"
+ "fills": {
+  "parts": "2 sides 72 x 16; 5 shelves 34 1/2 x 16; 1 kick 34 1/2 x 3 1/2",
+  "sheetL": "96",
+  "sheetW": "48",
+  "kerf": "0.125",
+  "callName": "Sam"
+ },
+ "audited": "2026-11-08T13:46:51+00:00"
 }
