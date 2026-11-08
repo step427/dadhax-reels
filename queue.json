@@ -4684,7 +4684,7 @@
     {
       "file": "ig-1108-ketchup.mp4",
       "title": "Lost the ketchup? Your brain hid it",
-      "status": "pending",
+      "status": "posted",
       "earliest": "2026-11-09",
       "caption": "Hey Dad,\n\n\"Honey, where's the ketchup?\" It's right in front of you.\n\nYour eyes saw it. Your brain filtered it out, because you had a thousand other things on your mind. (That filter is the reticular activating system. This is my simple version.)\n\nWe don't experience life. We experience the life we focus on.\n\nSo pick your focus on a good day. If something matters to you, then choose it on purpose before a busy day chooses for you.\n\nFollow so this one sticks.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
       "arc_slot": "Mon 11/9 1p",
@@ -4695,7 +4695,10 @@
       ],
       "sam_verdict": "POST 2026-11-08",
       "topic_class": "talk",
-      "source_raw": "PXL_20261106_141548552.mp4"
+      "source_raw": "PXL_20261106_141548552.mp4",
+      "permalink": "https://www.instagram.com/reel/Dffb3ILFe2h/",
+      "posted_at": "2026-11-08T12:48:19-06:00",
+      "fb_page_video_id": "1066041786459461"
     },
     {
       "file": "ig-1108-people.mp4",
@@ -4716,7 +4719,7 @@
     {
       "file": "ig-yt-bookdoors.mp4",
       "title": "Shelves or doors? Why not both",
-      "status": "pending",
+      "status": "posted",
       "earliest": "2026-11-09",
       "caption": "Hey Dad,\n\nBookshelves or doors? We did both.\n\nTwo bookshelf doors on a barn-door track, hung across an arched opening. Open, they're shelves on the wall. Slide them shut and the room closes off.\n\nIf a doorway stays open most of the time, then let the doors earn their keep as shelves.\n\nFollow so you've got this for your next build.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
       "arc_slot": "Mon 11/9 9a",
@@ -4727,7 +4730,10 @@
       ],
       "sam_verdict": "POST 2026-11-08",
       "topic_class": "utility",
-      "source_raw": "yt:lb2zMndKVmE"
+      "source_raw": "yt:lb2zMndKVmE",
+      "permalink": "https://www.instagram.com/reel/DffcQ5bD1da/",
+      "posted_at": "2026-11-08T12:51:48-06:00",
+      "fb_page_video_id": "29106599322325449"
     }
   ]
 }
