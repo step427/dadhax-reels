@@ -1,0 +1,21 @@
+{
+ "page": "sheet-cut-plan.html",
+ "sha": "c6edc4f4597e",
+ "verdict": "PASS WITH WARNINGS",
+ "fail": [],
+ "warn": [
+  "LONG: 8 phone screens of scroll.",
+  "DENSE: 1126 words. A free sheet nobody finishes is the same as no sheet."
+ ],
+ "stats": {
+  "viewport": "375x812",
+  "charsPerLine": 35,
+  "words": 1126,
+  "pageHeightPx": 6504,
+  "screens": 8,
+  "longestBlockWords": 20,
+  "links": 14
+ },
+ "fills": {},
+ "audited": "2026-11-08T13:45:33+00:00"
+}

@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Tool 16. Built 2026-11-08 by the dadhax-weekly-tool routine off Nick's 11/04 take and resiliency
+     research; council pick 2026-11-08. A wellness card, not a crisis plan; the 988 line stays above the output and on the card. -->
+<title>The If-Then Card — @nicksdadhax</title>
+<meta name="description" content="Tap your warning lights, your hard moments and what resets you. Get a 3x5 if-then card with your floor, two people and when to call a pro. Free, no gate, not a crisis plan.">
+
+<style>
+  /* @nicksdadhax — dark field-instrument identity. Same tokens as tools 01-15.
+     SIGNAL YELLOW = your input / the action. WARN RED = the honest rail —
+     here that's "this card isn't a crisis plan." */
+  :root {
+    --carbon:   #0F0E0B;
+    --panel:    #17150F;
+    --panel-up: #1E1B14;
+    --hair:     #302B21;
+    --bone:     #F4F0E6;
+    --graphite: #8F887A;
+    --signal:   #FFC629;
+    --signal-d: #C8930F;
+    --warn:     #E8502C;
+    --ply:      #B8935A;
+
+    --mono: ui-monospace, "SF Mono", SFMono-Regular, "Cascadia Mono",
+            "Roboto Mono", Menlo, Consolas, "Courier New", monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+            "Helvetica Neue", Arial, sans-serif;
+
+    --gutter: clamp(18px, 5vw, 40px);
+    --maxw: 660px;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--carbon);
+    color: var(--bone);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-text-size-adjust: 100%;
+    background-image:
+      repeating-linear-gradient(to right,  rgba(242,237,231,.035) 0 1px, transparent 1px 28px),
+      repeating-linear-gradient(to bottom, rgba(242,237,231,.035) 0 1px, transparent 1px 28px);
+  }
+
+  .sheet { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter) 96px; }
+
+  header { padding: 34px 0 8px; }
+  .protocol {
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: .17em;
+    text-transform: uppercase; color: var(--graphite);
+  }
+  .protocol b { color: var(--signal); font-weight: 700; }
+  h1 {
+    font-family: var(--mono); font-weight: 700;
+    font-size: clamp(28px, 8vw, 48px); line-height: 1.04;
+    letter-spacing: -.03em; text-transform: uppercase;
+    margin: 12px 0 0; text-wrap: balance;
+  }
+  h1 .of { color: var(--signal); }
+  .dek { margin: 14px 0 0; max-width: 46ch; color: #CFC9BB; font-size: 17px; }
+  .dek em { color: var(--bone); font-style: normal; border-bottom: 1.5px solid var(--signal-d); }
+  .dek b { color: var(--bone); }
+
+  .privacy {
+    margin: 18px 0 0; padding: 13px 15px; font-size: 14.5px; line-height: 1.5;
+    color: #CFC9BB; background: var(--panel); border-left: 3px solid var(--signal);
+  }
+  .privacy b { color: var(--bone); }
+
+  .story { margin-top: 24px; padding: 15px 16px; background: var(--panel);
+    border: 1px solid var(--hair); }
+  .story p { margin: 0 0 10px; font-size: 15.5px; line-height: 1.55; color: #CFC9BB; }
+  .story p:last-child { margin-bottom: 0; }
+  .story p b { color: var(--bone); }
+  .story a { color: var(--signal); font-weight: 700; text-decoration: none; }
+  .story a:hover { text-decoration: underline; }
+
+  .whys { margin-top: 26px; border: 1px solid var(--hair); }
+  .why { padding: 14px 15px; border-bottom: 1px solid var(--hair); }
+  .why:last-child { border-bottom: 0; }
+  .why .tag { display: block; font-family: var(--mono); font-size: 12.5px; font-weight: 700;
+    letter-spacing: .08em; text-transform: uppercase; margin-bottom: 5px; color: var(--signal); }
+  .why p { margin: 0; font-size: 15px; line-height: 1.5; color: #CFC9BB; }
+  .why p b { color: var(--bone); }
+
+  .redline-note {
+    margin: 14px 0 0; padding: 9px 12px;
+    border-left: 2.5px solid var(--warn);
+    background: #20130E; /* rgba(232,80,44,.08) on --carbon, solid so contrast is measurable */
+    font-size: 14.5px; line-height: 1.45; color: #E7DCD6;
+  }
+  .redline-note b { color: var(--warn); font-family: var(--mono);
+    font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase;
+    display: block; margin-bottom: 3px; }
+
+  .block { margin-top: 30px; }
+  .lbl {
+    display: block; font-family: var(--mono); font-size: 11.5px;
+    letter-spacing: .13em; text-transform: uppercase; color: var(--graphite);
+    margin-bottom: 8px;
+  }
+  h2.part {
+    font-family: var(--mono); font-size: 12px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--signal); margin: 34px 0 4px; font-weight: 700;
+    padding-top: 20px; border-top: 1px solid var(--hair);
+  }
+  .partdek { margin: 0 0 14px; font-size: 15px; color: #CFC9BB; line-height: 1.5; }
+  .partdek b { color: var(--bone); }
+
+  .seed {
+    border: 1.5px solid var(--signal); background: var(--panel);
+    padding: 16px 16px 14px;
+  }
+  .seed .lbl { color: var(--signal); margin-top: 0; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; }
+  @media (max-width: 380px) { .grid2 { grid-template-columns: 1fr; } }
+  input[type=text], input[type=number], input[type=date] {
+    display: block; width: 100%;
+    background: transparent; border: 0; border-bottom: 1.5px solid #453E2C;
+    color: var(--bone); font-family: var(--mono); font-size: 18px;
+    line-height: 1.5; padding: 4px 0 8px; border-radius: 0;
+    font-variant-numeric: tabular-nums; -moz-appearance: textfield;
+  }
+  input[type=date] { color-scheme: dark; min-height: 44px; }
+  input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  input::placeholder { color: #6B6455; font-family: var(--sans); font-size: 15px; }
+  input:focus { outline: 0; border-bottom-color: var(--signal); }
+  .seed .lbl + input { margin-bottom: 14px; }
+  .unit { font-family: var(--mono); font-size: 11px; color: var(--graphite); letter-spacing: .08em; }
+  .hint { margin: 6px 0 0; font-size: 13.5px; color: var(--graphite); line-height: 1.45; }
+  .seed .hint { margin: 0 0 16px; }
+
+  .zone { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 8px; }
+  .zone button { flex: 1 1 0; min-width: 86px; min-height: 48px; padding: 10px 6px; border-radius: 0; cursor: pointer;
+    font-family: var(--mono); font-size: 12px; letter-spacing: .05em; text-transform: uppercase;
+    font-weight: 700; background: transparent; color: var(--bone); border: 1.5px solid #453E2C; }
+  .zone button[aria-pressed="true"] { background: var(--signal); color: #14100F; border-color: var(--signal); }
+  .zone button:focus-visible { outline: 2px solid var(--bone); outline-offset: 2px; }
+
+  /* the schedule */
+  .spec { margin-top: 22px; padding: 18px 16px; background: var(--panel-up);
+    border: 2px solid var(--signal); }
+  .spec[hidden] { display: none; }
+  .spec .lbl { color: var(--signal); }
+  .spec p { margin: 0 0 8px; font-size: 16.5px; line-height: 1.5; color: var(--bone); }
+  .spec p b { color: var(--signal); font-family: var(--mono); }
+  .spec p.fine { margin-top: 10px; font-size: 14px; color: #CFC9BB; }
+  .spec p.no { color: #E7DCD6; border-left: 2.5px solid var(--warn); padding-left: 10px; }
+  .spec p.no b { color: var(--warn); }
+  .steps { margin: 12px 0 0; }
+  .step { padding: 10px 0 8px; border-top: 1px solid var(--hair); }
+  .step .head { display: flex; gap: 12px; align-items: center; margin: 0 0 6px; }
+  .step .pic { flex: 0 0 72px; }
+  .step .pic svg { display: block; width: 72px; height: auto; }
+  .step .pic text { font-family: var(--mono); font-weight: 700; font-size: 10px; fill: var(--signal); }
+  .step h3 { margin: 0; font-family: var(--mono); font-size: 14px; letter-spacing: .05em;
+    text-transform: uppercase; color: var(--signal); }
+  .step h3 i { font-style: normal; color: var(--bone); display: block; letter-spacing: 0; }
+  .step ul { margin: 0; padding: 0 0 0 18px; }
+  .step ul li { font-family: var(--sans); font-size: 14.5px; line-height: 1.4; color: var(--bone); }
+  .step ul li.w { color: #E7DCD6; list-style: "! "; }
+  .step ul li.w::marker { color: var(--warn); font-family: var(--mono); font-weight: 700; }
+
+  .callbox { margin-top: 28px; padding: 18px 16px 16px; background: var(--panel-up);
+    border: 2px dashed var(--signal-d); }
+  .callbox .lbl { color: var(--signal); }
+  .callbox .means { margin: 10px 0 14px; font-size: 15px; color: #CFC9BB; line-height: 1.5; }
+  .callbox .means b { color: var(--bone); }
+  .callbox input[type=text] { font-family: var(--sans); font-size: 17px; }
+
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+  .actions button {
+    font-family: var(--mono); font-size: 12.5px; letter-spacing: .1em;
+    text-transform: uppercase; font-weight: 700; min-height: 48px;
+    padding: 13px 18px; border-radius: 0; cursor: pointer;
+    background: var(--signal); color: #14100F; border: 1.5px solid var(--signal);
+  }
+  .actions button.ghost { background: transparent; color: var(--bone); border-color: #453E2C; }
+  .actions button:hover { filter: brightness(1.1); }
+  .actions button.ghost:hover { border-color: var(--signal); color: var(--signal); filter: none; }
+  .actions button:focus-visible { outline: 2px solid var(--bone); outline-offset: 2px; }
+
+  .said {
+    margin-top: 14px; font-family: var(--mono); font-size: 12px;
+    letter-spacing: .06em; text-transform: uppercase; color: var(--signal);
+    min-height: 1em;
+  }
+
+  .titleblock {
+    margin-top: 44px; border: 1px solid var(--hair);
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(108px, 1fr));
+  }
+  .tb { padding: 11px 13px; border-right: 1px solid var(--hair); }
+  .tb:last-child { border-right: 0; }
+  .tb dt {
+    font-family: var(--mono); font-size: 10px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--graphite); margin: 0 0 4px;
+  }
+  .tb dd {
+    margin: 0; font-family: var(--mono); font-size: 13px; font-weight: 700;
+    color: var(--bone); font-variant-numeric: tabular-nums;
+  }
+  .tb dd.red { color: var(--signal); }
+
+  .cta { margin-top: 18px; font-size: 15px; color: #CFC9BB; line-height: 1.5; }
+  .cta b { color: var(--bone); }
+  .cta a { color: var(--signal); font-weight: 700; text-decoration: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+
+  @media print {
+    @page { size: letter; margin: .5in .55in; }
+    :root {
+      --carbon: #fff; --panel: #fff; --panel-up: #FFF8E2;
+      --hair: #C9C2BC; --bone: #14100F; --graphite: #5E5651;
+      --signal: #7A5B00; --signal-d: #7A5B00; --warn: #B93A18; --ply: #E4D2A8;
+    }
+    body { background-image: none; font-size: 10.5pt; }
+    .sheet { max-width: none; padding: 0; }
+    .actions, .said, .nav, .tail, .cta, .privacy { display: none; }
+    .spec[hidden] { display: block !important; }
+    input { border-bottom-color: #9AA0A8; min-height: .42in; }
+    .redline-note { background: none; }
+    h1 { font-size: 26pt; }
+  }
+</style>
+<style>
+  /* Tool 16 additions: taps for the lights and moments, one select per "then". */
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 8px; }
+  .chips button { min-height: 48px; padding: 10px 12px; border-radius: 0; cursor: pointer; text-align: left;
+    font-family: var(--sans); font-size: 15.5px; line-height: 1.25; background: transparent;
+    color: var(--bone); border: 1.5px solid #453E2C; flex: 1 1 140px; }
+  .chips button[aria-pressed="true"] { background: var(--signal); color: #14100F; border-color: var(--signal); }
+  .chips button:focus-visible { outline: 2px solid var(--bone); outline-offset: 2px; }
+  .ifthen { margin: 0 0 10px; padding: 10px 0 4px; border-top: 1px solid var(--hair); }
+  .ifthen label { display: block; font-family: var(--mono); font-size: 12px; letter-spacing: .06em;
+    text-transform: uppercase; color: var(--signal); margin-bottom: 6px; font-weight: 700; }
+  select { display: block; width: 100%; min-height: 48px; background: var(--panel); color: var(--bone);
+    border: 1.5px solid #453E2C; border-radius: 0; font-family: var(--sans); font-size: 16px; padding: 8px 10px; }
+  select:focus { outline: 2px solid var(--signal); outline-offset: 1px; }
+  .rows { margin: 12px 0 0; }
+  .row { padding: 9px 0 8px; border-top: 1px solid var(--hair); }
+  .row b { display: block; font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--signal); font-weight: 700; margin-bottom: 2px; }
+  .row span { display: block; font-size: 15.5px; line-height: 1.4; color: var(--bone); }
+  .row.trip span { color: #E7DCD6; }
+  .redline-note a { color: var(--bone); font-weight: 700; }
+  .story p a, .fine a { color: var(--signal); }
+  .callbox input + .lbl { margin-top: 14px; }
+  @media print {
+    .chips, .ifthen, h2.part, .partdek, .story, .callbox, .redline-note, header .dek { display: none; }
+    .spec { border: 1.5px solid #14100F; max-width: 5in; padding: .2in; }
+  }
+</style>
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+
+<div class="sheet">
+
+  <nav class="nav">
+    <div class="navtop">
+      <a class="brand" href="index.html">@nicksdadhax</a>
+      <span class="meta">Tool 16 · free · no gate</span>
+    </div>
+    <div class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="toolbox.html" aria-current="true"><svg class="tbx" width="15" height="13" viewBox="0 0 16 14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><g class="lid"><path d="M5.5 4.5v-.75a2.5 2.5 0 0 1 5 0v.75"/><rect x="1" y="4.5" width="14" height="2.5" rx=".5"/></g><rect x="1" y="7" width="14" height="6" rx=".5"/></svg>The Toolbox</a>
+      <a href="log.html">The Flip</a>
+      <a href="houses.html">I have a house</a>
+    </div>
+  </nav>
+
+  <header>
+    <div class="protocol">Know thyself <b>·</b> not a crisis plan <b>·</b> make it on a good day</div>
+    <h1>The if-then <span class="of">card</span></h1>
+    <p class="dek">Hard days come. Your jaw is tight, you're short with everybody, or you go blank,
+      and that's the exact moment you have to decide what to do. So you don't decide. The scroll
+      decides, or the fuse does.</p>
+    <p class="dek">The fix is to <em>decide on a decent day, in if-then form</em>. Across 94 tests,
+      plans written as "if this happens, then I'll do that" had a medium-to-large effect on people
+      actually following through. Tap your warning lights, your hard moments and what resets you.
+      You walk out with <b>a 3x5 card</b>: your if-thens, your floor, two people and when to call a
+      pro. Mine is already filled in below: <b>if my jaw clenches, then 10 push-ups.</b></p>
+    <p class="privacy"><b>Nothing you tap or type here leaves your device.</b> No account, no
+      server, no analytics. Your card is erased when you close the tab, so print it or copy it.</p>
+  </header>
+
+  <div class="redline-note">
+    <b>this card isn't a crisis plan</b>
+    I'm a physical therapist, not your therapist. This is a card for ordinary hard days. Two weeks
+    of bad sleep or dread is a doctor visit, not a card. Thinking about hurting yourself? In the US,
+    call or text <a href="tel:988">988</a>, any hour. In danger right now, call 911.
+  </div>
+
+  <div class="story">
+    <span class="lbl">Why this one exists</span>
+    <p>My takeaway from a neuroscientist's podcast interview: <b>"have a resiliency plan.
+      Hard days come, hard moments come."</b> So I made mine. Robot mode, for me, is a clenched jaw
+      and going blank.</p>
+    <p>I made the plan on a decent day, ready for a hard one. If my jaw clenches, then 10 push-ups.
+      It gets me back into my body instead of floating out in outer space. On camera I offered to
+      send my plan to anyone who asked. This page is the version you don't have to ask for:
+      <a href="https://www.instagram.com/reel/DfX86SeihcE/">Instagram</a>,
+      <a href="https://www.facebook.com/reel/1189295763768477">Facebook</a>.</p>
+  </div>
+
+  <h2 class="part">Part 1 &mdash; Your warning lights</h2>
+  <p class="partdek">How does your body tell you it's a hard day, before your head admits it? Tap every one you know.</p>
+  <div class="chips" id="lights" role="group" aria-label="Your warning lights"></div>
+
+  <h2 class="part">Part 2 &mdash; Your hard moments</h2>
+  <p class="partdek">Which moments knock you over? <b>Pick up to three.</b> One plan per moment beats one plan for everything.</p>
+  <div class="chips" id="moments" role="group" aria-label="Your hard moments"></div>
+
+  <h2 class="part">Part 3 &mdash; If this, then that</h2>
+  <p class="partdek">For each moment, pick the reset that works for <b>you</b>. Small and physical beats big and noble.</p>
+  <div id="thens"></div>
+
+  <h2 class="part">Part 4 &mdash; Your floor</h2>
+  <p class="partdek">The least you'll do on your worst day. Two is plenty.</p>
+  <div class="chips" id="floor" role="group" aria-label="Your floor"></div>
+
+  <div class="callbox">
+    <span class="lbl">The boulder question: your two people</span>
+    <p class="means">One person is a single point of failure. <b>Name two people you can tell when the
+      lights come on.</b></p>
+    <input type="text" id="callName" placeholder="a name. not 'a guy from work' — a name.">
+    <span class="lbl">And a second</span>
+    <input type="text" id="callName2" placeholder="a second name">
+    <p class="means" style="margin:12px 0 0"><b>Now make the call.</b> Ask: &ldquo;when you see me
+      go quiet or short, can I come to you? You don't have to fix anything.&rdquo;</p>
+  </div>
+
+  <h2 class="part">Part 5 &mdash; Your card</h2>
+  <div class="spec" id="spec">
+    <span class="lbl" id="oLabel">Your card</span>
+    <div class="rows" id="oRows"></div>
+    <p class="fine" id="oReview"></p>
+  </div>
+
+  <div class="actions">
+    <button id="copyBtn" type="button">Copy my card</button>
+    <button id="promptBtn" class="ghost" type="button">Copy a prompt for your AI</button>
+    <button id="printBtn" class="ghost" type="button">Print it</button>
+    <button id="resetBtn" class="ghost" type="button">Start over</button>
+  </div>
+  <div class="said" id="said" role="status" aria-live="polite"></div>
+
+  <p class="cta">Where this comes from: if-then planning,
+    <a href="https://doi.org/10.1016/S0065-2601(06)38002-1">Gollwitzer and Sheeran, 2006</a> (94 tests);
+    warning signs and a daily floor, <a href="https://www.wellnessrecoveryactionplan.com/what-is-wrap/">WRAP</a>;
+    people and a when-to-get-help line,
+    <a href="https://www.apa.org/topics/resilience/building-your-resilience">the APA on resilience</a>.
+    The menu and the card layout are my synthesis. Cross out what doesn't help you.</p>
+
+  <dl class="titleblock">
+    <div class="tb"><dt>Protocol</dt><dd>KNOW</dd></div>
+    <div class="tb"><dt>Tool</dt><dd>16 of 16</dd></div>
+    <div class="tb"><dt>If-thens</dt><dd class="red" id="count">1</dd></div>
+    <div class="tb"><dt>By</dt><dd class="red">@nicksdadhax</dd></div>
+  </dl>
+
+  <!--TAIL-->
+  <div class="tail">
+  <a class="tail-next" href="7-layers-of-why.html">
+    <span class="k">Read next</span>
+    <b>Tool 01 &mdash; The 7 Layers of Why</b>
+    <span class="s">Your card says what you'll do on a hard day. Now ask why seven times and find
+      what the good days are for.</span>
+  </a>
+  <section class="optin" id="next">
+    <h2>What I ask</h2>
+    <p class="plain">That was free and nothing here sits behind an email. If it was
+      useful, here's the whole exchange: <b>send it to one or two people who'd use it
+      too.</b> That's it. I'm trusting you with it, you pass it on.</p>
+    <p class="plain">Want the next one before anyone else? I'm building an interest
+      list &mdash; no selling, no sequence, your address goes nowhere.
+      <a href="index.html#next">Exactly what that means, in plain words.</a></p>
+    <p class="fine">The list itself isn't open yet &mdash; I'm still setting it up, and
+      I'd rather say that than put up a box that doesn't work. The ask above stands
+      either way, and it's the one that matters. If you want to tell me what to build
+      next, my DMs are open.</p>
+    <div class="ctas">
+      <a href="https://www.instagram.com/nicksdadhax/"><b>Tell me what to build next</b><span>DM @nicksdadhax</span></a>
+    </div>
+  </section>
+  </div>
+  <!--/TAIL-->
+
+  <p class="cta">Free. This tool asks you for nothing: no gate, no email, no
+    analytics. When you've used the card once, <b>DM me how it went</b>. Keep the card.</p>
+</div>
+<script>
+(function () {
+  "use strict";
+  var LIGHTS = ["Jaw clenched", "Shoulders up", "Short fuse", "Going blank (robot mode)", "Can't sleep",
+    "Endless scrolling", "The shiny-object pull", "Neck or back ache", "Sunday-night dread", "The \"I failed\" voice"];
+  // each moment carries the reset it defaults to (index into R)
+  var MOMENTS = [
+    { m: "My jaw clenches", i: "my jaw clenches", r: 1 }, { m: "Money doubt", i: "money doubt hits", r: 6 },
+    { m: "I broke my own rule", i: "I break my own rule", r: 8 }, { m: "A long work day", i: "a work day runs long", r: 0 },
+    { m: "A hard conversation", i: "a conversation goes hard", r: 0 }, { m: "Too much on the list", i: "the list is too much", r: 3 },
+    { m: "A bad night's sleep", i: "I slept badly", r: 7 }, { m: "Somebody let me down", i: "somebody lets me down", r: 2 }];
+  var R = [
+    "3 slow sighs: two breaths in, one long breath out",
+    "10 push-ups, stopping short of failure",
+    "a 10-minute walk outside, no phone",
+    "a brain dump on paper, then close it",
+    "text one of my people",
+    "water and a real meal",
+    "hand it off: write it down, then set it down (or pray it)",
+    "lights out on time tonight, no catching up",
+    "log it, then do the next rep"];
+  var FLOOR = ["Lights out on time", "10 minutes of movement", "One real conversation", "Eat a real meal", "Outside once"];
+  var KEY = "ndh-ifthen-v1", MAXM = 3;
+  var EX = { lights: [0, 3], moments: [0], thens: { 0: 1 }, floor: [0, 1] };   // the example on load is Nick's own public line
+  var $ = function (id) { return document.getElementById(id); };
+  var said = $("said");
+  var sel = clone(EX); sel.touched = false;
+  function clone(o) { return JSON.parse(JSON.stringify(o)); }
+  function chips(host, items, key, max) {
+    items.forEach(function (t, i) {
+      var b = document.createElement("button"); b.type = "button";
+      b.textContent = typeof t === "string" ? t : t.m;
+      b.addEventListener("click", function () {
+        var a = sel[key], at = a.indexOf(i);
+        if (at >= 0) a.splice(at, 1);
+        else { if (max && a.length >= max) { said.textContent = "Three is the cap. Untap one first."; return; } a.push(i); }
+        sel.touched = true; refresh();
+      });
+      host.appendChild(b);
+    });
+  }
+  chips($("lights"), LIGHTS, "lights"); chips($("moments"), MOMENTS, "moments", MAXM); chips($("floor"), FLOOR, "floor");
+  function press(host, arr) {
+    Array.prototype.forEach.call(host.children, function (b, n) { b.setAttribute("aria-pressed", arr.indexOf(n) >= 0 ? "true" : "false"); });
+  }
+  function thenOf(mi) { var v = sel.thens[mi]; return (v === undefined || !R[v]) ? MOMENTS[mi].r : v; }
+  function drawThens() {
+    var host = $("thens"); host.textContent = "";
+    if (!sel.moments.length) { var p = document.createElement("p"); p.className = "hint"; p.textContent = "Tap a hard moment in Part 2 first."; host.appendChild(p); return; }
+    sel.moments.forEach(function (mi, k) {
+      var d = document.createElement("div"), l = document.createElement("label"), s = document.createElement("select");
+      d.className = "ifthen"; s.id = "then" + k; l.htmlFor = s.id; l.textContent = "If " + MOMENTS[mi].i + ", then";
+      R.forEach(function (t, i) { var o = document.createElement("option"); o.value = i; o.textContent = t; s.appendChild(o); });
+      s.value = thenOf(mi);
+      s.addEventListener("change", function () { sel.thens[mi] = +s.value; sel.touched = true; drawCard(); save(); });
+      d.appendChild(l); d.appendChild(s); host.appendChild(d);
+    });
+  }
+  function firstMonday() {
+    var d = new Date(); d.setDate(1); d.setMonth(d.getMonth() + 1);
+    while (d.getDay() !== 1) d.setDate(d.getDate() + 1);
+    return d.toLocaleDateString(undefined, { weekday: "short", month: "short", day: "numeric" });
+  }
+  function people() {
+    return [$("callName").value.trim(), $("callName2").value.trim()].filter(Boolean);
+  }
+  function lines() {
+    var ppl = people();
+    return [
+      ["Warning lights", sel.lights.length ? sel.lights.map(function (i) { return LIGHTS[i]; }).join(" · ") : "Tap yours in Part 1."],
+      ["If → then", sel.moments.length ? sel.moments.map(function (mi) { return "If " + MOMENTS[mi].i + " → " + R[thenOf(mi)] + "."; }).join("\n") : "Tap a moment in Part 2."],
+      ["My floor", sel.floor.length ? sel.floor.map(function (i) { return FLOOR[i]; }).join(" · ") : "Tap two in Part 4."],
+      ["My people", ppl.length ? ppl.join(" · ") + (ppl.length < 2 ? " · (name a second)" : "") : "Two names, in the box above."],
+      ["Tripwire", "Two weeks of bad sleep or dread → tell one of my people and call my doctor. Thoughts of not being safe → call or text 988 (US)."]];
+  }
+  function drawCard() {
+    var rows = $("oRows"); rows.textContent = "";
+    lines().forEach(function (a, n) {
+      var d = document.createElement("div"), b = document.createElement("b");
+      d.className = "row" + (n === 4 ? " trip" : ""); b.textContent = a[0]; d.appendChild(b);
+      a[1].split("\n").forEach(function (t) { var s = document.createElement("span"); s.textContent = t; d.appendChild(s); });
+      rows.appendChild(d);
+    });
+    $("oLabel").textContent = sel.touched ? "Your card" : "The example: mine. Tap yours above.";
+    $("oReview").textContent = "Review it " + firstMonday() + ", five minutes: cross out what didn't help, add what did. A card nobody reads is decoration.";
+    $("count").textContent = String(sel.moments.length);
+  }
+  function refresh() {
+    press($("lights"), sel.lights); press($("moments"), sel.moments); press($("floor"), sel.floor);
+    drawThens(); drawCard(); save();
+  }
+  function save() {
+    try {
+      // sessionStorage, NOT localStorage: same promise as every tool on the site.
+      sessionStorage.setItem(KEY, JSON.stringify({ sel: sel, a: $("callName").value, b: $("callName2").value }));
+    } catch (e) {}
+  }
+  function load() {
+    var d = null;
+    try { d = JSON.parse(sessionStorage.getItem(KEY) || "null"); } catch (e) {}
+    if (!d || !d.sel) return;
+    function ok(a, n) { return Array.isArray(a) ? a.filter(function (i) { return i >= 0 && i < n; }) : []; }
+    sel.lights = ok(d.sel.lights, LIGHTS.length); sel.moments = ok(d.sel.moments, MOMENTS.length).slice(0, MAXM);
+    sel.floor = ok(d.sel.floor, FLOOR.length); sel.thens = d.sel.thens || {}; sel.touched = !!d.sel.touched;
+    $("callName").value = d.a || ""; $("callName2").value = d.b || "";
+  }
+  $("callName").addEventListener("input", function () { drawCard(); save(); });
+  $("callName2").addEventListener("input", function () { drawCard(); save(); });
+  $("printBtn").addEventListener("click", function () { window.print(); });
+  function copyText(text, okMsg) {
+    function fallback() {
+      var t = document.createElement("textarea"); t.value = text;
+      t.style.position = "fixed"; t.style.opacity = "0"; document.body.appendChild(t); t.select();
+      try { document.execCommand("copy"); } catch (e) {} document.body.removeChild(t);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () { said.textContent = okMsg; },
+        function () { fallback(); said.textContent = okMsg; });
+    } else { fallback(); said.textContent = okMsg; }
+  }
+  function cardText() {
+    var out = ["MY IF-THEN CARD — " + new Date().toLocaleDateString(), ""];
+    lines().forEach(function (a) { out.push(a[0].toUpperCase() + ":", a[1], ""); });
+    out.push("Review: " + firstMonday() + ", 5 minutes.", "", "The If-Then Card — @nicksdadhax");
+    return out.join("\n");
+  }
+  $("copyBtn").addEventListener("click", function () { copyText(cardText(), "Copied. Put it on your lock screen."); });
+  $("promptBtn").addEventListener("click", function () {
+    var text = [
+      "Help me sharpen a hard-day plan. You are not my therapist: don't diagnose me or explain why I am",
+      "the way I am. Ask one question at a time and wait for my answer. No pep talks, no affirmations.",
+      "If I say anything about hurting myself or not being safe, stop and point me to 988 (US call or",
+      "text) or local emergency services.",
+      "",
+      "Here is my card:",
+      cardText(),
+      "",
+      "Do this, in order:",
+      "1. For each if-then, ask me what the first ten seconds of that moment actually look like, and",
+      "   tighten the 'if' so I'd notice it.",
+      "2. Ask whether each 'then' is small enough to do while I'm upset. Shrink any that aren't.",
+      "3. Ask which line I'd skip first, and help me make it easier instead of stricter.",
+      "4. Help me write the exact words I'll say to my two people.",
+      "",
+      "Stop after step 4. Keep each reply under five sentences."
+    ].join("\n");
+    copyText(text, "Prompt copied. Paste it into the AI you already use.");
+  });
+  $("resetBtn").addEventListener("click", function () {
+    sel = clone(EX); sel.touched = false; $("callName").value = ""; $("callName2").value = "";
+    try { sessionStorage.removeItem(KEY); } catch (e) {}
+    refresh(); said.textContent = "Cleared. Back to the example."; window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+  load(); refresh();
+  window.__ifThen = { lines: lines, R: R, MOMENTS: MOMENTS };   // for the engine check
+})();
+</script>
+</body>
+</html>

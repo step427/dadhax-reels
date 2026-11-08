@@ -1,0 +1,21 @@
+{
+ "page": "wound-map.html",
+ "sha": "c5a48a9dd173",
+ "verdict": "PASS WITH WARNINGS",
+ "fail": [],
+ "warn": [
+  "LONG: 6.6 phone screens of scroll.",
+  "DENSE: 938 words. A free sheet nobody finishes is the same as no sheet."
+ ],
+ "stats": {
+  "viewport": "375x812",
+  "charsPerLine": 35,
+  "words": 938,
+  "pageHeightPx": 5382,
+  "screens": 6.6,
+  "longestBlockWords": 0,
+  "links": 15
+ },
+ "fills": {},
+ "audited": "2026-11-08T13:45:22+00:00"
+}

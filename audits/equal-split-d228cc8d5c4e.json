@@ -1,0 +1,20 @@
+{
+ "page": "equal-split.html",
+ "sha": "d228cc8d5c4e",
+ "verdict": "PASS WITH WARNINGS",
+ "fail": [],
+ "warn": [
+  "LONG: 5.9 phone screens of scroll."
+ ],
+ "stats": {
+  "viewport": "375x812",
+  "charsPerLine": 35,
+  "words": 872,
+  "pageHeightPx": 4823,
+  "screens": 5.9,
+  "longestBlockWords": 0,
+  "links": 11
+ },
+ "fills": {},
+ "audited": "2026-11-08T13:45:28+00:00"
+}

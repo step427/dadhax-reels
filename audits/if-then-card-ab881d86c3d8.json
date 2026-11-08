@@ -1,0 +1,25 @@
+{
+ "page": "if-then-card.html",
+ "sha": "ab881d86c3d8",
+ "verdict": "PASS WITH WARNINGS",
+ "fail": [],
+ "warn": [
+  "LONG: 6.6 phone screens of scroll.",
+  "DENSE: 969 words. A free sheet nobody finishes is the same as no sheet."
+ ],
+ "stats": {
+  "viewport": "375x812",
+  "charsPerLine": 35,
+  "words": 969,
+  "pageHeightPx": 5321,
+  "screens": 6.6,
+  "longestBlockWords": 0,
+  "links": 13
+ },
+ "fills": {
+  "callName": "Sam",
+  "callName2": "Pat",
+  "then0": "2"
+ },
+ "audited": "2026-11-08T13:46:06+00:00"
+}
