@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Launch Partner | NicksDadHax</title>
+<meta name="description" content="AI systems for local trades and health-care founders. Your website, follow-up and posting built for you, so you get your evenings back. Built by Nick Stephens, DPT and real estate investor.">
+<meta name="theme-color" content="#0F0E0B">
+<link rel="canonical" href="https://nicksdadhax.com/launch/">
+<meta property="og:title" content="Launch Partner | NicksDadHax">
+<meta property="og:description" content="AI systems for trades and health-care founders in Washington County, MN. Coffee's on me. So is the book.">
+<meta property="og:image" content="https://nicksdadhax.com/launch/vsl-poster.jpg">
+<meta property="og:url" content="https://nicksdadhax.com/launch/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230F0E0B'/%3E%3Cpath d='M8 22V10h4l4 7 4-7h4v12' stroke='%23FFC629' stroke-width='2.5' fill='none'/%3E%3C/svg%3E">
+<style>
+  :root {
+    --carbon:#0F0E0B; --panel:#17150F; --panel-up:#1E1B14; --hair:#302B21; --bone:#F4F0E6; --graphite:#8F887A; --signal:#FFC629; --signal-d:#C8930F; --soft:#cfc8b8;
+    --mono: ui-monospace,"SF Mono",SFMono-Regular,"Cascadia Mono","Roboto Mono",Menlo,Consolas,monospace;
+    --sans: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--carbon); color: var(--bone); font: 400 17px/1.6 var(--sans); -webkit-font-smoothing: antialiased; }
+  a { color: inherit; }
+  h1, h2, h3 { margin: 0; line-height: 1.08; letter-spacing: -.02em; text-wrap: balance; }
+  h1 { font-size: clamp(2.4rem, 6vw, 4.2rem); font-weight: 800; }
+  h2 { font-size: clamp(1.9rem, 4.2vw, 2.9rem); font-weight: 800; }
+  h3 { font-size: 1.25rem; font-weight: 700; }
+  p { margin: .8rem 0 0; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+  section { padding: 64px 0; border-top: 1px solid var(--hair); }
+  .tag { font: 600 .74rem/1 var(--mono); letter-spacing: .16em; text-transform: uppercase; color: var(--signal); }
+  .muted { color: var(--graphite); }
+  .lead { font-size: 1.15rem; color: var(--soft); max-width: 38rem; }
+  :focus-visible { outline: 3px solid var(--signal); outline-offset: 3px; }
+
+  /* Yellow grammar: ONE solid yellow block per page = the call button. Everything else is outline or mono. */
+  .btn { display: inline-block; border: 1px solid var(--bone); border-radius: 6px; background: transparent; color: var(--bone); font: 600 .9rem/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; padding: 1rem 1.3rem; text-decoration: none; cursor: pointer; }
+  .btn:hover { background: var(--panel-up); }
+  .btn.primary { background: var(--signal); border-color: var(--signal); color: var(--carbon); }
+  .btn.primary:hover { background: var(--signal-d); }
+
+  .draft { display: inline-block; margin-top: .8rem; border-left: 3px solid #e8a33d; background: #2a2010; color: #f0c98a; font: 500 .8rem/1.45 var(--mono); padding: .5rem .7rem; }
+  .draft-strip { background: #2a2010; color: #f0c98a; text-align: center; font: 500 .8rem/1.4 var(--mono); padding: .5rem 1rem; }
+
+  header { border-bottom: 1px solid var(--hair); }
+  header .wrap { display: flex; justify-content: space-between; align-items: center; height: 64px; }
+  .logo { display: inline-block; padding: 14px 0; font: 700 1rem/1 var(--mono); letter-spacing: .04em; text-decoration: none; }
+  .logo span { color: var(--signal); }
+  header nav a { font: 500 .8rem var(--mono); text-transform: uppercase; letter-spacing: .08em; color: var(--graphite); text-decoration: none; margin-left: 1.4rem; }
+  header nav a:hover { color: var(--bone); }
+  @media (max-width: 700px) { header nav { display: none; } section { padding: 48px 0; } }
+
+  .hero { padding: 56px 0 72px; border-top: 0; }
+  .hero-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 48px; align-items: center; }
+  .vsl { position: relative; border-radius: 14px; overflow: hidden; border: 1px solid var(--hair); background: #000; aspect-ratio: 9/16; max-height: 640px; margin-left: auto; }
+  .vsl video { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .vsl-cap { font: 500 .82rem var(--mono); color: var(--graphite); margin-top: .6rem; text-align: right; }
+  @media (max-width: 860px) { .hero-grid { grid-template-columns: 1fr; gap: 24px; } .vsl { max-height: 440px; margin: 0 auto; } .vsl-cap { text-align: center; } .door p { display: none; } .tier:not(.best) ul, .tier:not(.best) .sub, #packages .chips { display: none; } }
+  .ig { display: inline-flex; align-items: center; gap: .45rem; font: 600 .82rem var(--mono); color: var(--bone); text-decoration: none; border: 1px solid var(--hair); border-radius: 999px; padding: .45rem .8rem; }
+  .ig:hover { border-color: var(--graphite); }
+  details { border-bottom: 1px solid var(--hair); padding: 1rem 0; }
+  summary { cursor: pointer; font-weight: 700; font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; gap: 1rem; }
+  summary::after { content: "+"; font-family: var(--mono); color: var(--graphite); }
+  details[open] summary::after { content: "-"; }
+  details p { color: var(--soft); max-width: 44rem; }
+  .doors { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 2.2rem; max-width: 720px; }
+  .door { text-align: left; background: var(--panel); border: 1px solid var(--hair); border-radius: 10px; padding: 1.2rem 1.2rem 1.3rem; color: var(--bone); font: inherit; cursor: pointer; transition: border-color .2s, background .2s; }
+  .door:hover { border-color: var(--graphite); }
+  .door[aria-pressed="true"] { border-color: var(--bone); background: var(--panel-up); }
+  .door .tag { color: var(--graphite); }
+  .door[aria-pressed="true"] .tag { color: var(--signal); }
+  .door h3 { margin-top: .5rem; }
+  .door p { font-size: .92rem; color: var(--graphite); margin-top: .35rem; }
+  @media (max-width: 560px) { .doors { grid-template-columns: 1fr; } }
+
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+  @media (max-width: 860px) { .two { grid-template-columns: 1fr; gap: 28px; } }
+  .shift { list-style: none; padding: 0; margin: 0; display: grid; gap: .6rem; }
+  .shift li { background: var(--panel); border: 1px solid var(--hair); border-radius: 8px; padding: .8rem 1rem; font: 500 .95rem/1.4 var(--mono); color: var(--soft); }
+  .shift li b { color: var(--bone); font-weight: 600; }
+
+  /* Calculator */
+  .calc { background: var(--panel); border: 1px solid var(--hair); border-radius: 12px; padding: 1.6rem; }
+  .row { display: grid; grid-template-columns: 1fr 4.5rem; gap: .4rem 1rem; align-items: center; padding: .7rem 0; border-bottom: 1px dashed var(--hair); }
+  .row label { font-size: .95rem; }
+  .row output { font: 600 .95rem var(--mono); text-align: right; color: var(--bone); }
+  .row input[type=range] { grid-column: 1 / -1; width: 100%; accent-color: var(--bone); }
+  .rate { display: flex; align-items: center; gap: .6rem; margin-top: 1rem; font-size: .95rem; }
+  .rate input { width: 6rem; background: var(--carbon); color: var(--bone); border: 1px solid var(--hair); border-radius: 6px; padding: .55rem .7rem; font: 600 1rem var(--mono); }
+  .result { margin-top: 1.4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .stat { background: var(--carbon); border: 1px solid var(--hair); border-radius: 10px; padding: 1rem; }
+  .stat b { display: block; font: 800 2.2rem/1 var(--sans); letter-spacing: -.02em; }
+  .stat span { font: 500 .78rem var(--mono); color: var(--graphite); text-transform: uppercase; letter-spacing: .08em; }
+
+  /* Story */
+  .quote { border-left: 2px solid var(--signal); padding: .2rem 0 .2rem 1.1rem; margin: 1.2rem 0 0; font: 500 1.15rem/1.5 var(--mono); color: var(--bone); }
+  .proof { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 2rem; }
+  .proof div { padding: .8rem !important; }
+  .proof div { background: var(--panel); border: 1px solid var(--hair); border-radius: 10px; padding: 1.1rem; }
+  .proof b { display: block; font: 800 1.9rem/1 var(--sans); }
+  .proof span { font-size: .85rem; color: var(--graphite); }
+  @media (max-width: 700px) { .proof b { font-size: 1.4rem !important; } }
+
+  /* Steps */
+  .steps { counter-reset: s; list-style: none; padding: 0; margin: 2rem 0 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .steps li { counter-increment: s; background: var(--panel); border: 1px solid var(--hair); border-radius: 10px; padding: 1.2rem; }
+  .steps li::before { content: "0" counter(s); display: block; font: 600 .8rem var(--mono); color: var(--signal); margin-bottom: .6rem; }
+  .steps p { font-size: .92rem; color: var(--graphite); margin-top: .4rem; }
+  @media (max-width: 860px) { .steps { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 480px) { .steps { grid-template-columns: 1fr; } }
+
+  /* Pricing */
+  .tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 2.2rem; align-items: stretch; }
+  .tier { display: flex; flex-direction: column; background: var(--panel); border: 1px solid var(--hair); border-radius: 12px; padding: 1.6rem; position: relative; }
+  .tier.best { border-color: var(--bone); background: var(--panel-up); }
+  .tier .flag { position: absolute; top: -11px; left: 1.2rem; background: var(--carbon); border: 1px solid var(--bone); border-radius: 4px; font: 600 .68rem var(--mono); letter-spacing: .12em; text-transform: uppercase; padding: .25rem .5rem; }
+  .tier ul { list-style: none; padding: 0; margin: 1rem 0 1.2rem; display: grid; gap: .45rem; font-size: .95rem; color: var(--soft); }
+  .tier li::before { content: "+ "; color: var(--graphite); font-family: var(--mono); }
+  .price { margin-top: auto; font: 800 2.4rem/1 var(--sans); letter-spacing: -.02em; }
+  .price small { font: 500 .85rem var(--mono); color: var(--graphite); letter-spacing: 0; }
+  .tier .sub { font: 500 .82rem var(--mono); color: var(--graphite); margin-top: .4rem; }
+  @media (max-width: 860px) { .tiers { grid-template-columns: 1fr; } .tier.best { order: -1; } }
+  .chips { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.6rem; padding: 0; list-style: none; }
+  .chips li { border: 1px solid var(--hair); border-radius: 999px; padding: .4rem .8rem; font: 500 .82rem var(--mono); color: var(--soft); }
+
+  .founding { margin-top: 2rem; background: var(--panel); border: 1px dashed var(--graphite); border-radius: 12px; padding: 1.4rem 1.6rem; }
+
+  /* Health-care guardrail */
+  .guard { background: var(--panel); border: 1px solid var(--hair); border-radius: 12px; padding: 1.4rem 1.6rem; margin-top: 1.6rem; }
+
+  /* Form */
+  form, .sent { background: var(--panel); border: 1px solid var(--hair); border-radius: 12px; padding: 1.6rem; }
+  form label { display: block; font: 500 .8rem var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--graphite); margin-top: 1rem; }
+  form input, form select, form textarea { width: 100%; margin-top: .35rem; background: var(--carbon); color: var(--bone); border: 1px solid var(--hair); border-radius: 8px; padding: .8rem .9rem; font: 400 1rem var(--sans); }
+  form textarea { min-height: 64px; resize: vertical; }
+  form input:focus, form select:focus, form textarea:focus { outline: 2px solid var(--bone); border-color: transparent; }
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 0 12px; }
+  @media (max-width: 560px) { .pair { grid-template-columns: 1fr; } }
+  .err { color: #ff8a7a; font-size: .9rem; margin-top: .8rem; }
+  .hp { position: absolute; left: -9999px; }
+  pre.out { white-space: pre-wrap; background: var(--carbon); border: 1px dashed #e8a33d; color: #f0c98a; border-radius: 8px; padding: .8rem; font: .8rem/1.5 var(--mono); }
+
+  footer { border-top: 1px solid var(--hair); padding: 40px 0 60px; font: 500 .82rem/1.7 var(--mono); color: var(--graphite); }
+  footer a { color: var(--soft); }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="../">NICKS<span>DAD</span>HAX / launch partner</a>
+    <nav aria-label="Main"><a href="../toolbox.html">Free tools</a><a href="#week">Your week</a><a href="#story">Why me</a><a href="#packages">Packages</a><a href="#talk">Talk</a></nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO: reader is the hero. Negative force = the second shift. -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+      <p class="tag">AI systems for local founders · Washington County, MN</p>
+      <h1>You started a business to do the work.<br><span class="muted">Not the second shift.</span></h1>
+      <p class="lead">The posting, the follow-up texts, the website, the reminders. I build the systems that run them, so you get your evenings back. Plain English, built for you, and you own every login.</p>
+      <p style="margin-top:1.2rem"><a class="ig" href="https://www.instagram.com/nicksdadhax/" target="_blank" rel="noopener">@nicksdadhax · watch me build it in public</a></p>
+      <div class="doors" role="group" aria-label="What do you run?">
+        <button class="door" type="button" data-door="trades" aria-pressed="true"><span class="tag">I run a trade</span><h3>Builders, lawn, snow, sprinklers, remodelers</h3><p>The calls you miss on a roof are jobs someone else books.</p></button>
+        <button class="door" type="button" data-door="health" aria-pressed="false"><span class="tag">I run a practice</span><h3>Clinics, PTs, NPs, chiropractors, wellness</h3><p>You trained for patients, not for Instagram.</p></button>
+      </div>
+      </div>
+      <div>
+        <div class="vsl"><video controls playsinline preload="metadata" poster="vsl-poster.jpg" aria-label="Nick's story: I was the bottleneck. 1 minute 49 seconds, captioned."><source src="vsl.mp4" type="video/mp4"></video></div>
+        <p class="vsl-cap">1:49 · my story, in my words · captioned</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAIN + INSTRUMENT: the buyback calculator -->
+  <section id="week">
+    <div class="wrap two">
+      <div>
+        <p class="tag">The second shift</p>
+        <h2 id="painTitle">The work after the work.</h2>
+        <p class="lead" id="painLead"></p>
+      </div>
+      <div class="calc" aria-labelledby="calcTitle">
+        <p class="tag" id="calcTitle">Buy back your week</p>
+        <p class="muted" style="margin-top:.4rem;font-size:.92rem">Slide each one to the hours you spend in a normal week.</p>
+        <div id="rows"></div>
+        <div class="rate"><label for="rate">What's one hour of your time worth?</label><span>$</span><input id="rate" type="number" inputmode="numeric" min="10" max="1000" value="75"></div>
+        <div class="result" aria-live="polite">
+          <div class="stat"><b id="hrs">0</b><span>hours you spend a year</span></div>
+          <div class="stat"><b id="usd">$0</b><span>what those hours are worth</span></div>
+        </div>
+        <p class="muted" style="font-size:.85rem;margin-top:1rem">Your own estimate of where your time goes today. It isn't a promise of hours saved. On the call we pick which of these to take off your plate first.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GUIDE: Nick's story, in his own words -->
+  <section id="story">
+    <div class="wrap two">
+      <div>
+        <p class="tag">Why me</p>
+        <h2>I'm a home care physical therapist who invests in real estate. Time is the thing I never have.</h2>
+        <p class="lead">I was inconsistent with posting. Not lazy. Nobody wants to be glued to their phone, the guy who whips it out instead of being present.</p>
+        <p class="lead">So I built a posting machine that does it for me, and it still grows.</p>
+        <p class="quote">"Anytime I get an idea, one to two minutes, I drop it in a shared folder. My AI edits, posts and tags. It kept posting while I was completely off grid."</p>
+        <p class="lead">Why me: 12 months in a founder coaching program built on the book <i>Buy Back Your Time</i>, learning these systems, then running them in my own businesses. I treat patients and I hire contractors, so I build what I'd want from both sides of the counter.</p>
+        <p class="lead"><b>The point isn't more work.</b> It's the hours back for the roles nobody can hire out: the parent at the game, the spouse at dinner, the neighbor who shows up.</p>
+        <div class="guard" style="margin-top:1.4rem">
+          <p class="tag">No gatekeeping</p>
+          <p style="margin-top:.5rem">Want my posting machine, prompt and all? DM me <b>MACHINE</b> on Instagram and I'll send it right over. You don't even need to talk to me.</p>
+          <a class="btn" href="https://ig.me/m/nicksdadhax" target="_blank" rel="noopener" style="margin-top:1rem">DM @nicksdadhax</a>
+        </div>
+      </div>
+      <div>
+        <div class="proof" style="margin-top:0">
+          <div><b>3</b><span>reels a day, hands-off</span></div>
+          <div><b>15</b><span>free tools, no gate</span></div>
+          <div><b>1 day</b><span>to build a clinic site + video</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PACKAGES: best value center on desktop, first on phones -->
+  <section id="packages">
+    <div class="wrap">
+      <p class="tag">Packages</p>
+      <h2>Pick where to start.</h2>
+      <p class="lead">Fixed prices, written scope, no surprise bills. Software is billed to you at cost, in your name.</p>
+      <div class="tiers">
+        <div class="tier">
+          <p class="tag" style="color:var(--graphite)">Start here</p>
+          <h3>Launch Blueprint</h3>
+          <ul><li>90-minute time audit</li><li>Your tool stack, picked for you</li><li>A written 30-day plan</li></ul>
+          <p class="price">$750 <small>one time</small></p>
+          <a class="btn" href="#talk" style="margin-top:1.2rem;text-align:center">Ask about it</a>
+        </div>
+        <div class="tier best">
+          <span class="flag">Best value</span>
+          <p class="tag">Built for you</p>
+          <h3>Launch Kit</h3>
+          <ul><li>Website + domain, live in days</li><li>Lead form that lands in your phone</li><li>The posting machine, set up and running</li></ul>
+          <p class="price">$2,500 <small>one time</small></p>
+          <p class="sub">A freelance site alone runs $1,500 to $5,000</p>
+          <a class="btn" href="#talk" style="margin-top:1.2rem;text-align:center">Ask about it</a>
+        </div>
+        <div class="tier">
+          <p class="tag" style="color:var(--graphite)">Keep it running</p>
+          <h3>Launch Partner</h3>
+          <ul><li>Up to 3 hours of changes a month</li><li>One 60-minute working call</li><li>One new workflow automated each month</li></ul>
+          <p class="price">$450<small>/mo</small></p>
+          <p class="sub">6-month term · $2,700 total · your website built at cost when you sign on</p>
+          <p class="sub" style="color:var(--soft)">Not more software. A person: setup, coaching and one accountable neighbor.</p>
+          <a class="btn" href="#talk" style="margin-top:1.2rem;text-align:center">Ask about it</a>
+        </div>
+      </div>
+      <ul class="chips"><li>Add-on: Automation Sprint $750</li><li>Add-on: Content Day $600</li><li>Just a call a month: Office Hours $150/mo</li><li>Coming: Founders Table group coaching</li></ul>
+      <div class="founding">
+        <p class="tag">Founding clients</p>
+        <h3 style="margin-top:.5rem">The first five businesses get 50% off for 12 months.</h3>
+        <p class="muted">In return: once it's working, a 60-second video about what changed. You keep the rate whatever you say.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HEALTH-CARE GUARDRAIL (shown for the practice door) -->
+  <section id="guardSec" hidden>
+    <div class="wrap">
+      <p class="tag">For health-care founders</p>
+      <h2>I never touch your patient data.</h2>
+      <div class="guard">
+        <p style="margin-top:0">I build the marketing side: website, founding list, social posting, emails to people who aren't patients yet. Your clinical tools (EHR, scribe, patient texting) come from vendors that sign a HIPAA business associate agreement, and I set them up on a screen-share while you're logged in. Rule we put on the wall: no patient information in any AI tool without a BAA.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- OBJECTIONS, answered before the ask -->
+  <section id="faq">
+    <div class="wrap" style="max-width:860px">
+      <p class="tag">Straight answers</p>
+      <h2>What people ask me first.</h2>
+      <div style="margin-top:1.4rem">
+        <details><summary>I'm not a tech person.</summary><p>Good. You don't need to be. I build it, I explain it in plain English, and your jobs are small: film a short clip, approve posts, answer the leads it hands you.</p></details>
+        <details><summary>What if I want out?</summary><p>Every account is in your name from day one: domain, website, email, social. Cancel with 30 days' notice and you keep all of it.</p></details>
+        <details><summary>Is it safe for a health-care practice?</summary><p>I only build the marketing side. Patient data stays in tools that sign a HIPAA business associate agreement, and I set those up on a screen-share while you're logged in.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALL TO ACTION: the one solid yellow button on the page -->
+  <section id="talk">
+    <div class="wrap two">
+      <div>
+        <p class="tag">Talk</p>
+        <h2>Coffee's on me. So is the book.</h2>
+        <p class="lead">Thirty minutes, free, in Washington County. You leave with the first thing to automate and a copy of <i>Buy Back Your Time</i>.</p>
+        <p class="muted" style="font-size:.9rem">Mondays and Fridays. Not local? We'll meet by video and I'll send the audiobook.</p>
+      </div>
+      <div>
+        <form id="talkForm" novalidate>
+          <div class="pair">
+            <div><label for="nm">Your name</label><input id="nm" name="name" type="text" autocomplete="name" required></div>
+            <div><label for="biz">Business</label><input id="biz" name="business" type="text" autocomplete="organization" required></div>
+          </div>
+          <label for="kind">What you run</label>
+          <select id="kind" name="kind"><option value="trades">A trade</option><option value="health">A practice</option><option value="other">Something else</option></select>
+          <label for="drain">What eats your week?</label>
+          <textarea id="drain" name="drain" placeholder="Answering leads at night, posting, the website..."></textarea>
+          <div class="pair">
+            <div><label for="em">Email</label><input id="em" name="email" type="email" autocomplete="email" required></div>
+            <div><label for="ph">Phone (optional)</label><input id="ph" name="phone" type="tel" autocomplete="tel"></div>
+          </div>
+          <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <p class="muted" style="font-size:.82rem;margin-top:1rem">Health-care folks: please don't include patient details.</p>
+          <p class="err" id="err" role="alert" hidden></p>
+          <button class="btn primary" type="submit" style="width:100%;margin-top:1rem">Book my free consult + book</button>
+        </form>
+        <div class="sent" id="sent" tabindex="-1" hidden>
+          <p class="tag">Got it</p>
+          <h3 style="margin-top:.5rem" id="sentTitle">Thanks.</h3>
+          <p class="muted">I'll text or email within one business day to set a time.</p>
+          <pre class="out" id="out"></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p style="margin:0">NicksDadHax · Nick Stephens, DPT · Cottage Grove, MN · <a href="https://www.instagram.com/nicksdadhax/" target="_blank" rel="noopener">@nicksdadhax</a></p>
+    <p style="margin:.2rem 0 0">Free tools, no gate, one a week: <a href="https://step427.github.io/dadhax-reels/toolbox.html">the toolbox</a></p>
+    <p style="margin:.2rem 0 0">Not legal, tax or medical advice. Results depend on your business and how much you use the system.</p>
+  </div>
+</footer>
+
+<script>
+  var DOORS = {
+    trades: {
+      title: 'The work after the work.',
+      lead: 'You spend the day on the job, then the night on your phone. Every unanswered call is a job someone else books.',
+      list: ['<b>9 pm:</b> texting back the leads you missed on the roof', '<b>Sunday:</b> trying to post the job you finished Thursday', '<b>Always:</b> the quote you meant to send'],
+      jobs: 'Snap the finished job, approve posts, call back the leads the system hands you.',
+      rows: [['Posting jobs to social', 3], ['Texting back leads and following up on quotes', 4], ['Scheduling and reminders', 2], ['Writing estimates and invoices', 3], ['Website and Google profile', 1]]
+    },
+    health: {
+      title: 'Charting at home was bad enough.',
+      lead: 'You trained for patients, not for Instagram, booking emails and no-show calls. The business side quietly takes your evenings.',
+      list: ['<b>After clinic:</b> answering "do you have openings?" messages', '<b>Weekend:</b> the post you swore you\'d write', '<b>Monday:</b> calling the no-shows from last week'],
+      jobs: 'Film one short education clip a week, approve posts, see the new patients the system books.',
+      rows: [['Social posts and patient education', 3], ['Answering inquiries and booking', 3], ['Reminders and no-show follow-up', 2], ['Intake paperwork and forms', 2], ['Website and Google profile', 1]]
+    }
+  };
+  var door = 'trades', rows = document.getElementById('rows'), rate = document.getElementById('rate');
+  function calc() {
+    var h = 0; rows.querySelectorAll('input').forEach(function (i) { h += +i.value; i.parentNode.querySelector('output').textContent = i.value + ' h'; });
+    var yr = h * 50, r = Math.max(0, Math.min(1000, +rate.value || 0));
+    document.getElementById('hrs').textContent = yr.toLocaleString();
+    document.getElementById('usd').textContent = '$' + (yr * r).toLocaleString();
+  }
+  function setDoor(d) {
+    door = d; var D = DOORS[d];
+    document.querySelectorAll('.door').forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.door === d ? 'true' : 'false'); });
+    document.getElementById('painTitle').textContent = D.title;
+    document.getElementById('painLead').textContent = D.lead;
+    
+    document.getElementById('jobs').textContent = D.jobs;
+    rows.innerHTML = D.rows.map(function (r, i) {
+      return '<div class="row"><label for="r' + i + '">' + r[0] + '</label><output for="r' + i + '"></output><input id="r' + i + '" type="range" min="0" max="10" step="1" value="' + r[1] + '"></div>';
+    }).join('');
+    document.getElementById('guardSec').hidden = d !== 'health';
+    document.getElementById('kind').value = d;
+    calc();
+  }
+  document.querySelectorAll('.door').forEach(function (b) { b.addEventListener('click', function () { setDoor(b.dataset.door); document.getElementById('week').scrollIntoView(); }); });
+  rows.addEventListener('input', calc); rate.addEventListener('input', calc);
+  setDoor('trades');
+
+  // Booking form. Empty webhook = draft mode: nothing leaves the page.
+  var WEBHOOK = 'https://script.google.com/macros/s/AKfycbzzI0CNMYQmPlhqw5fIgYgqzxS4rWI1-4dvrXQWmDCaM8tA_AkHS3MkGex3VSRAmX6h/exec';
+  var form = document.getElementById('talkForm'), err = document.getElementById('err');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var f = form.elements, email = f.email.value.trim();
+    var msg = !f.name.value.trim() ? 'Please add your name.' : !f.business.value.trim() ? 'What\'s the business called?'
+      : !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? 'Please check your email.' : '';
+    if (msg) { err.textContent = msg; err.hidden = false; return; }
+    var hrs = document.getElementById('hrs').textContent;
+    var lead = { name: f.name.value.trim(), business: f.business.value.trim(), kind: f.kind.value, drain: f.drain.value.trim(), email: email, phone: f.phone.value.trim(), calculator_hours_per_year: hrs, sent: new Date().toISOString() };
+    function done() {
+      document.getElementById('sentTitle').textContent = 'Thanks, ' + lead.name.split(' ')[0] + '.';
+      var out = document.getElementById('out');
+      out.hidden = !!WEBHOOK; out.textContent = 'DRAFT MODE: nothing was sent. Nick would receive:\n' + JSON.stringify(lead, null, 2);
+      form.hidden = true; document.getElementById('sent').hidden = false; document.getElementById('sent').focus();
+    }
+    if (f.company.value || !WEBHOOK) { done(); return; }
+    lead.form = 'launch-partner';
+    // text/plain = no CORS preflight; Apps Script answers {ok:true}
+    fetch(WEBHOOK, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(lead) })
+      .then(function (r) { return r.json(); }).then(function (j) { if (!j.ok) throw 0; done(); })
+      .catch(function () { err.textContent = 'That didn\'t go through. Text me instead.'; err.hidden = false; });
+  });
+  form.addEventListener('input', function () { err.hidden = true; });
+</script>
+</body>
+</html>
