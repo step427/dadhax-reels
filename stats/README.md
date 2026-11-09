@@ -41,7 +41,7 @@ The only posts whose hour the publisher actually chose — so the only ones that
 | Mon | 39 | 1.0 | 2.4 | 16 |
 | Tue | 39 | 1.0 | 6.6 | 168 |
 | Wed | 40 | 1.0 | 3.7 | 31 |
-| Thu | 38 | 1.0 | 2.5 | 26 |
+| Thu | 38 | 1.0 | 2.6 | 26 |
 | Fri | 43 | 1.0 | 3.8 | 40 |
 | Sat | 39 | 1.0 | 3.3 | 31 |
 | Sun | 41 | 1.0 | 3.0 | 23 |
