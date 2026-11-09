@@ -4737,6 +4737,38 @@
       "permalink": "https://www.instagram.com/reel/DffcQ5bD1da/",
       "posted_at": "2026-11-08T12:51:48-06:00",
       "fb_page_video_id": "29106599322325449"
+    },
+    {
+      "file": "ig-1109-student.mp4",
+      "title": "It doesn't get better without reflection",
+      "status": "pending",
+      "earliest": "2026-11-09",
+      "caption": "Hey Dad,\n\nIt doesn't get better without reflection.\n\nI am a forever student. The best way to exercise that identity of being a student is to apply, execute, fail, repeat.\n\nThe reiteration doesn't happen without reflection.\n\nIf a rep didn't go the way you wanted, then name one thing you'd change before you take the next one.\n\nOne dad hack a day. Follow so you stop losing the next one.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "Wed 11/11 1p",
+      "pix": "I",
+      "value_forms": [
+        "idea",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-11-09",
+      "topic_class": "talk",
+      "source_raw": "PXL_20261104_153318950.mp4"
+    },
+    {
+      "file": "ig-1109-tired.mp4",
+      "title": "Tired and a dad. Both true.",
+      "status": "pending",
+      "earliest": "2026-11-09",
+      "caption": "Hey Dad,\n\nI'm a tired dad. That's true.\n\nBut at the same time, I'm a dad, and I accept and I receive all that comes with that, because there's a lot of joy even with the fatigue.\n\nTwo words, \"I am,\" and you choose how the sentence ends. If the tired version shows up first, then finish the sentence with the true one too.\n\nOne dad hack a day. Follow so you stop losing the next one.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "Sat 11/14 1p",
+      "pix": "I",
+      "value_forms": [
+        "entertainment",
+        "idea"
+      ],
+      "sam_verdict": "POST 2026-11-09",
+      "topic_class": "talk",
+      "source_raw": "PXL_20261104_153318950.mp4"
     }
   ]
 }
