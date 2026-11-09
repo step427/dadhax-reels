@@ -371,7 +371,7 @@
     document.getElementById('painTitle').textContent = D.title;
     document.getElementById('painLead').textContent = D.lead;
     
-    document.getElementById('jobs').textContent = D.jobs;
+    var jobs = document.getElementById('jobs'); if (jobs) jobs.textContent = D.jobs;
     rows.innerHTML = D.rows.map(function (r, i) {
       return '<div class="row"><label for="r' + i + '">' + r[0] + '</label><output for="r' + i + '"></output><input id="r' + i + '" type="range" min="0" max="10" step="1" value="' + r[1] + '"></div>';
     }).join('');
