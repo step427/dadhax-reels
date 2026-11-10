@@ -4798,7 +4798,7 @@
     {
       "file": "ig-yt-onetouch.mp4",
       "title": "One-touch reheat: stop typing 1-0-0-Start",
-      "status": "pending",
+      "status": "posted",
       "earliest": "2026-11-10",
       "caption": "Hey Dad,\n\nYou don't have to type 1, 0, 0, Start to warm up leftovers.\n\nOn a lot of microwaves the number pad doubles as a quick start. On mine, I press 2, give it a second, and it comes up 2:00 and starts counting down.\n\nNot every model does it, so check your microwave's manual. If yours does, then reheat is one press from now on.\n\nFollow so you've got the next one when you need it.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
       "arc_slot": "Tue 11/10 9a",
@@ -4809,7 +4809,10 @@
       ],
       "sam_verdict": "POST 2026-11-10",
       "topic_class": "utility",
-      "source_raw": "yt:bvn2woSVemc"
+      "source_raw": "yt:bvn2woSVemc",
+      "permalink": "https://www.instagram.com/reel/DfkzFAtFISP/",
+      "posted_at": "2026-11-10T14:47:30-06:00",
+      "fb_page_video_id": "978678191979536"
     }
   ]
 }
