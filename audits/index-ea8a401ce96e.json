@@ -1,0 +1,18 @@
+{
+ "page": "index.html",
+ "sha": "ea8a401ce96e",
+ "verdict": "PASS",
+ "fail": [],
+ "warn": [],
+ "stats": {
+  "viewport": "375x812",
+  "charsPerLine": 34,
+  "words": 487,
+  "pageHeightPx": 2625,
+  "screens": 3.2,
+  "longestBlockWords": 14,
+  "links": 12
+ },
+ "fills": {},
+ "audited": "2026-11-08T13:45:21+00:00"
+}
