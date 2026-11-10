@@ -820,6 +820,8 @@ Story beat is Nick's own words only: posted `ig-1105-rplan` "Robot mode? My if-t
 
 **Launch reel (S7 plan, path 3):** path 1 repost of `ig-1105-rplan` is inside its 7-day read until 11/12 (it is the ARC's Fri 11/13 1p repost). So: a sub-20s cut of `PXL_20261104_144803655` 107–169s ("if you share your problems, people want to help") = the card's "my people" row; transpose=2; never the 317–345s DM offer; the quoted coach stays unnamed. One link `https://step427.github.io/dadhax-reels/if-then-card.html`.
 
+**Launch reel (as shipped, 11/10):** S7 was already satisfied: `ig-1108-people.mp4` (raw `PXL_20261104_144803655`, Sam POST 11/08, arc_slot "Tue 11/10 first open") posted 2026-11-08 20:39 because `publish.py` ignores `earliest`, so it ran ~35h ahead of the ship and pointed at a 404 until the deploy landed. The ship-day cut `ig-1110-people` was Sam KILL (duplicate) and was not queued. The 11/10 ship deploy (29865b7) failed on GitHub's side ("No artifacts named github-pages"); this commit re-triggers it.
+
 **Audit fills (Tool 16):** `--fill callName=Sam callName2=Pat then0=2` — every input the page needs set before its real output exists on screen. Date inputs take `+Nd` (resolves to today+N, never rots). Never a real person's name or a sensitive number.
 The light, moment and floor pickers are buttons, not fillable; the worked example renders the full card on load. → PASS WITH WARNINGS (LONG/DENSE only), 969 words / 5321px, 6.6 screens: Tool 15 parity (937 / 6.6). `intro_audit.py` PASS WITH WARNINGS, you-density 0.069; it warns "no concrete number before the first input" although the dek carries 94 tests and 10 push-ups (its number pattern misses them; the proof is also the worked example).
 
