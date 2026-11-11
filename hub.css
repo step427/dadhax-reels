@@ -92,7 +92,7 @@ b, strong { color:var(--bone); }
 .kit a.btn { display:inline-flex; align-items:center; min-height:44px; padding:0 14px; border:1px solid var(--signal);
   color:var(--bone); text-decoration:none; font-family:var(--mono); font-size:13px; text-transform:uppercase; letter-spacing:.06em; }
 .kit a.btn:hover, .kit a.btn:focus-visible { background:var(--panel-up); }
-.kit .soon { font-family:var(--mono); font-size:12.5px; color:var(--graphite); }
+.kit .soon { font-family:var(--mono); font-size:13.5px; color:var(--graphite); }
 
 /* the signup: the hub's one solid-yellow block is its button */
 .join { border:1px solid var(--hair); background:var(--panel); padding:18px 16px; margin:34px 0 0; }

@@ -1,0 +1,18 @@
+{
+ "page": "kits.html",
+ "sha": "9b291dfc051a",
+ "verdict": "PASS",
+ "fail": [],
+ "warn": [],
+ "stats": {
+  "viewport": "375x812",
+  "charsPerLine": 34,
+  "words": 310,
+  "pageHeightPx": 2181,
+  "screens": 2.7,
+  "longestBlockWords": 0,
+  "links": 12
+ },
+ "fills": {},
+ "audited": "2026-11-11T22:08:30+00:00"
+}

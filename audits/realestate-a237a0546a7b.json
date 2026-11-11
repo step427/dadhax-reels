@@ -1,0 +1,18 @@
+{
+ "page": "realestate.html",
+ "sha": "a237a0546a7b",
+ "verdict": "PASS",
+ "fail": [],
+ "warn": [],
+ "stats": {
+  "viewport": "375x812",
+  "charsPerLine": 34,
+  "words": 360,
+  "pageHeightPx": 2442,
+  "screens": 3,
+  "longestBlockWords": 0,
+  "links": 14
+ },
+ "fills": {},
+ "audited": "2026-11-11T22:08:29+00:00"
+}

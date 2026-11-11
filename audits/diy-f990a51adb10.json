@@ -1,0 +1,18 @@
+{
+ "page": "diy.html",
+ "sha": "f990a51adb10",
+ "verdict": "PASS",
+ "fail": [],
+ "warn": [],
+ "stats": {
+  "viewport": "375x812",
+  "charsPerLine": 34,
+  "words": 509,
+  "pageHeightPx": 2691,
+  "screens": 3.3,
+  "longestBlockWords": 14,
+  "links": 17
+ },
+ "fills": {},
+ "audited": "2026-11-11T22:08:26+00:00"
+}
