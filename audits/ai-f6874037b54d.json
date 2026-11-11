@@ -1,0 +1,18 @@
+{
+ "page": "ai.html",
+ "sha": "f6874037b54d",
+ "verdict": "PASS",
+ "fail": [],
+ "warn": [],
+ "stats": {
+  "viewport": "375x812",
+  "charsPerLine": 34,
+  "words": 552,
+  "pageHeightPx": 3336,
+  "screens": 4.1,
+  "longestBlockWords": 43,
+  "links": 13
+ },
+ "fills": {},
+ "audited": "2026-11-11T22:08:27+00:00"
+}

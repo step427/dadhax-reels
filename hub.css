@@ -1,0 +1,121 @@
+/* hub.css: the front door and the three lane pages (2026-11-11).
+ * Same dark field-instrument identity as every other page; site.css still owns the
+ * nav, signup and CTA rows. Yellow grammar holds: ONE solid yellow block per page
+ * (the primary action), thin yellow for labels, never yellow paragraphs.
+ * Video slots (.vslot) stay hidden until Nick records them; add ?slots to the URL
+ * to see where they go. Nothing here loads anything from another site. */
+:root {
+  --carbon:#0F0E0B; --panel:#17150F; --panel-up:#1E1B14; --hair:#302B21;
+  --bone:#F4F0E6; --graphite:#8F887A; --signal:#FFC629; --signal-d:#C8930F;
+  --mono: ui-monospace,"SF Mono",SFMono-Regular,"Cascadia Mono","Roboto Mono",Menlo,Consolas,monospace;
+  --sans: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+* { box-sizing:border-box; }
+body { margin:0; background:var(--carbon); color:var(--bone); font:17px/1.55 var(--sans);
+  background-image:
+    repeating-linear-gradient(to right,  rgba(242,237,231,.035) 0 1px, transparent 1px 28px),
+    repeating-linear-gradient(to bottom, rgba(242,237,231,.035) 0 1px, transparent 1px 28px); }
+.sheet { max-width:660px; margin:0 auto; padding:0 clamp(18px,5vw,40px) 80px; }
+a { color:var(--signal); }
+.protocol { font-family:var(--mono); font-size:11.5px; letter-spacing:.17em; text-transform:uppercase; color:var(--graphite); }
+.protocol b { color:var(--signal); }
+h1 { font-family:var(--mono); font-weight:700; font-size:clamp(28px,7vw,42px); line-height:1.06;
+  letter-spacing:-.03em; text-transform:uppercase; margin:12px 0 0; }
+h1 .of { color:var(--signal); display:block; }
+h2 { font-family:var(--mono); font-size:13px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--signal); margin:34px 0 12px; font-weight:700; }
+.dek { margin:16px 0 0; max-width:50ch; color:#CFC9BB; font-size:17.5px; }
+p { margin:0 0 13px; }
+.muted { color:var(--graphite); }
+b, strong { color:var(--bone); }
+
+/* hero with the face, like a business card handed across the table */
+.hello { display:grid; grid-template-columns:112px 1fr; gap:18px; align-items:center; margin:30px 0 0; }
+.hello img { width:112px; height:112px; border-radius:50%; object-fit:cover;
+  border:3px solid var(--signal); background:var(--panel); }
+.hello .who { font-family:var(--mono); font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--graphite); line-height:1.6; }
+.hello .who b { color:var(--bone); display:block; font-size:15px; letter-spacing:.06em; }
+@media (max-width:420px) { .hello { grid-template-columns:84px 1fr; gap:14px; } .hello img { width:84px; height:84px; } }
+
+/* the three doors: panels, never solid yellow (solid yellow belongs to the signup) */
+.tiles { display:grid; gap:12px; margin:8px 0 0; }
+.tile { display:block; text-decoration:none; color:var(--bone); background:var(--panel);
+  border:1px solid var(--hair); border-left:3px solid var(--signal); padding:16px 16px 14px; }
+.tile:hover, .tile:focus-visible { border-color:var(--signal); background:var(--panel-up); }
+.tile .k { display:block; font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--signal); margin-bottom:4px; }
+.tile .t { display:block; font-family:var(--mono); font-weight:700; font-size:20px; text-transform:uppercase; letter-spacing:-.01em; }
+.tile .s { display:block; color:#CFC9BB; font-size:15px; margin-top:5px; }
+.tile .now { display:block; color:var(--graphite); font-size:13.5px; margin-top:8px; font-family:var(--mono); }
+.tile .now::before { content:"Now: "; color:var(--signal); }
+
+/* lists of links inside a lane */
+.rows { border:1px solid var(--hair); margin:0 0 6px; }
+.rows a { display:grid; grid-template-columns:1fr auto; gap:10px; align-items:center; padding:13px 15px; min-height:44px;
+  border-bottom:1px solid var(--hair); text-decoration:none; color:var(--bone); background:var(--panel); }
+.rows a:last-child { border-bottom:0; }
+.rows a:hover, .rows a:focus-visible { background:var(--panel-up); }
+.rows a span { display:block; color:var(--graphite); font-size:14px; margin-top:2px; }
+.rows a i { font-style:normal; font-family:var(--mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--signal); white-space:nowrap; }
+
+.note { padding:13px 15px; font-size:15.5px; color:#CFC9BB; background:var(--panel); border-left:3px solid var(--signal); margin:0 0 13px; }
+.beats { list-style:none; padding:0; margin:0 0 6px; }
+.beats li { display:grid; grid-template-columns:96px 1fr; gap:10px; padding:10px 0; border-top:1px solid var(--hair); font-size:15.5px; color:#CFC9BB; }
+.beats li b.k { font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--signal); padding-top:3px; }
+
+/* packages (the AI lane) */
+.pk { display:grid; gap:10px; }
+.pk .p { border:1px solid var(--hair); background:var(--panel); padding:14px 15px; }
+.pk .p.best { border-color:var(--signal); }
+.pk .p .k { font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--graphite); }
+.pk .p.best .k { color:var(--signal); }
+.pk .p h3 { margin:3px 0 4px; font-family:var(--mono); font-size:18px; text-transform:uppercase; letter-spacing:-.01em; }
+.pk .p .price { font-family:var(--mono); font-weight:700; font-size:22px; color:var(--bone); }
+.pk .p .price small { font-size:12px; color:var(--graphite); font-weight:400; }
+.pk .p p { margin:4px 0 0; font-size:14.5px; color:#CFC9BB; }
+
+/* the one primary action */
+.go { display:block; margin:22px 0 0; text-decoration:none; color:#14100F; background:var(--signal);
+  border:2px solid var(--signal); padding:18px; font-family:var(--mono); font-weight:700; font-size:19px; text-transform:uppercase; }
+.go:hover, .go:focus-visible { background:var(--signal-d); border-color:var(--signal-d); }
+.go span { display:block; font-family:var(--sans); font-weight:400; text-transform:none; font-size:14px; color:#4A3B08; margin-top:3px; }
+.alt { display:block; margin:10px 0 0; padding:14px 16px; border:1px solid var(--hair); color:var(--bone); text-decoration:none; background:var(--panel); min-height:44px; }
+.alt:hover, .alt:focus-visible { border-color:var(--signal); }
+
+/* kits shelf */
+.shelf { display:grid; gap:12px; }
+.kit { border:1px solid var(--hair); background:var(--panel); padding:15px; }
+.kit .tag { display:inline-block; font-family:var(--mono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase;
+  padding:3px 7px; border:1px solid var(--hair); color:var(--graphite); }
+.kit .tag.free { color:var(--signal); border-color:var(--signal); }
+.kit h3 { margin:8px 0 4px; font-family:var(--mono); font-size:18px; text-transform:uppercase; letter-spacing:-.01em; }
+.kit p { margin:0 0 10px; font-size:15px; color:#CFC9BB; }
+.kit a.btn { display:inline-flex; align-items:center; min-height:44px; padding:0 14px; border:1px solid var(--signal);
+  color:var(--bone); text-decoration:none; font-family:var(--mono); font-size:13px; text-transform:uppercase; letter-spacing:.06em; }
+.kit a.btn:hover, .kit a.btn:focus-visible { background:var(--panel-up); }
+.kit .soon { font-family:var(--mono); font-size:13.5px; color:var(--graphite); }
+
+/* the signup: the hub's one solid-yellow block is its button */
+.join { border:1px solid var(--hair); background:var(--panel); padding:18px 16px; margin:34px 0 0; }
+.join h2 { margin-top:0; }
+.join label { display:block; font-size:13px; color:var(--graphite); margin:10px 0 4px; font-family:var(--mono); letter-spacing:.06em; text-transform:uppercase; }
+.join input[type=text], .join input[type=email] { width:100%; min-height:46px; padding:10px 12px; font:16px var(--sans);
+  background:var(--carbon); color:var(--bone); border:1px solid var(--hair); }
+.join input:focus-visible { outline:2px solid var(--signal); outline-offset:-2px; }
+.join .two { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+@media (max-width:420px) { .join .two { grid-template-columns:1fr; } }
+.join .lanes { display:grid; gap:6px; margin-top:6px; }
+.join .chk { display:flex; gap:10px; align-items:flex-start; font-size:15px; color:#CFC9BB; text-transform:none; letter-spacing:0; font-family:var(--sans); margin:0; min-height:32px; }
+.join .chk input { width:20px; height:20px; margin-top:2px; accent-color:var(--signal); flex:none; }
+.join button { margin-top:14px; width:100%; min-height:52px; border:0; background:var(--signal); color:#14100F;
+  font:700 17px var(--mono); text-transform:uppercase; letter-spacing:.04em; cursor:pointer; }
+.join button:hover { background:var(--signal-d); }
+.join .fine { font-size:13px; color:var(--graphite); margin:10px 0 0; }
+.join .msg { margin:10px 0 0; font-size:15px; }
+.hp { position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
+
+.vslot { display:none; border:1px dashed var(--signal); padding:14px; margin:16px 0; color:var(--graphite); font-family:var(--mono); font-size:13px; }
+body.slots .vslot { display:block; }
+
+footer { margin-top:40px; padding-top:14px; border-top:1px solid var(--hair); color:var(--graphite); font-size:14px; font-family:var(--mono); letter-spacing:.04em; }
+footer p { margin:0 0 8px; }
+footer a { color:var(--signal); font-weight:700; text-decoration:none; }

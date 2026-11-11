@@ -3,79 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DadHax — make the life of a dad more powerful</title>
-<meta name="description" content="Free tools for dads — no gate, no email, one a week. Make the trivial easy, then spend what you save on the hard work that makes a life: the kids, the marriage, the thing you keep thinking over.">
-<style>
-  /* @nicksdadhax — dark field-instrument identity. */
-  :root {
-    --carbon:#0F0E0B; --panel:#17150F; --panel-up:#1E1B14; --hair:#302B21;
-    --bone:#F4F0E6; --graphite:#8F887A; --signal:#FFC629; --signal-d:#C8930F;
-    --mono: ui-monospace,"SF Mono",SFMono-Regular,"Cascadia Mono","Roboto Mono",Menlo,Consolas,monospace;
-    --sans: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-  }
-  * { box-sizing:border-box; }
-  body {
-    margin:0; background:var(--carbon); color:var(--bone); font:17px/1.55 var(--sans);
-    background-image:
-      repeating-linear-gradient(to right,  rgba(242,237,231,.035) 0 1px, transparent 1px 28px),
-      repeating-linear-gradient(to bottom, rgba(242,237,231,.035) 0 1px, transparent 1px 28px);
-  }
-  .sheet { max-width:660px; margin:0 auto; padding:0 clamp(18px,5vw,40px) 80px; }
-
-  header { padding:34px 0 8px; }
-  .protocol { font-family:var(--mono); font-size:11.5px; letter-spacing:.17em;
-    text-transform:uppercase; color:var(--graphite); }
-  .protocol b { color:var(--signal); }
-  h1 { font-family:var(--mono); font-weight:700; font-size:clamp(29px,7.6vw,46px); line-height:1.06;
-       letter-spacing:-.03em; text-transform:uppercase; margin:12px 0 0; }
-  h1 .of { color:var(--signal); display:block; }
-  .dek { margin:16px 0 0; max-width:47ch; color:#CFC9BB; font-size:17.5px; }
-
-  /* the turn — easy was never the point. One yellow moment only: the thesis. */
-  .turn { margin:26px 0 0; }
-  .turn p { margin:0 0 13px; }
-  .turn b { color:var(--bone); }
-  .turn b.k { color:var(--signal); }
-
-  .lanes { margin:22px 0 0; border:1px solid var(--hair); }
-  .lane { padding:14px 15px; border-bottom:1px solid var(--hair); font-size:15.5px;
-    line-height:1.55; color:#CFC9BB; }
-  .lane:last-child { border-bottom:0; }
-  .lane .tag { display:block; font-family:var(--mono); font-size:12px; font-weight:700;
-    letter-spacing:.1em; text-transform:uppercase; color:var(--signal); margin-bottom:5px; }
-  .lane b { color:var(--bone); }
-
-  /* guide */
-  .guide { margin:22px 0 0; padding:13px 15px; font-size:15.5px; line-height:1.55;
-    color:#CFC9BB; background:var(--panel); border-left:3px solid var(--signal); }
-  .guide b { color:var(--bone); }
-
-  /* plan */
-  .plan { margin:24px 0 0; padding:0; list-style:none; }
-  .plan li { display:grid; grid-template-columns:30px 1fr; gap:0 10px; align-items:baseline;
-    margin-bottom:8px; font-size:15.5px; color:#CFC9BB; }
-  .plan li b { color:var(--bone); }
-  .plan .n { font-family:var(--mono); font-weight:700; color:var(--signal); font-size:15px; }
-
-  /* the door — the one CTA, and the one place solid yellow lives on this page.
-     Matches the primary-button grammar the site already speaks (gate, optin). */
-  .door { display:block; margin:28px 0 0; text-decoration:none; color:#14100F;
-    background:var(--signal); border:2px solid var(--signal);
-    padding:20px 18px; }
-  .door:hover, .door:focus-visible { background:var(--signal-d); border-color:var(--signal-d); }
-  .door .row { display:flex; align-items:center; gap:16px; }
-  .door .tbx { width:44px; height:38px; flex:none; }
-  .door .big { display:block; font-family:var(--mono); font-weight:700; font-size:21px;
-    letter-spacing:-.01em; text-transform:uppercase; color:#14100F; }
-  .door .sub { display:block; color:#4A3B08; font-size:14px; margin-top:3px; }
-  .newline { margin:12px 0 0; font-size:14.5px; color:var(--graphite); }
-  .newline a { color:var(--signal); text-decoration:none; }
-
-  footer { margin-top:40px; padding-top:14px; border-top:1px solid var(--hair);
-    color:var(--graphite); font-size:14px; font-family:var(--mono); letter-spacing:.04em; }
-  footer p { margin:0 0 8px; }
-  footer a { color:var(--signal); font-weight:700; text-decoration:none; }
-</style>
+<title>Nick Stephens — @nicksdadhax</title>
+<meta name="description" content="A dad building out loud: garage builds, AI that gives you hours back, and real estate on the way to financial freedom. Free tools, no gate.">
+<link rel="stylesheet" href="hub.css">
 <link rel="stylesheet" href="site.css">
 </head>
 <body>
@@ -84,95 +14,89 @@
   <nav class="nav">
     <div class="navtop">
       <a class="brand" href="index.html">@nicksdadhax</a>
-      <span class="meta">Free tools · no gate · one a week</span>
+      <span class="meta">Free tools · no gate</span>
     </div>
     <div class="navlinks">
       <a href="index.html" aria-current="page">Home</a>
-      <a href="toolbox.html"><svg class="tbx" width="15" height="13" viewBox="0 0 16 14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><g class="lid"><path d="M5.5 4.5v-.75a2.5 2.5 0 0 1 5 0v.75"/><rect x="1" y="4.5" width="14" height="2.5" rx=".5"/></g><rect x="1" y="7" width="14" height="6" rx=".5"/></svg>The Toolbox</a>
-      <a href="log.html">The Flip</a>
-      <a href="houses.html">I have a house</a>
+      <a href="diy.html">DIY</a>
+      <a href="ai.html">AI</a>
+      <a href="realestate.html">Real estate</a>
+      <a href="kits.html">Kits</a>
     </div>
   </nav>
 
+  <div class="hello">
+    <img src="nick.jpg" alt="Nick Stephens, smiling, in a ball cap" width="112" height="112">
+    <div class="who"><b>Nick Stephens</b>Dad · physical therapist · first-time investor · Cottage Grove, MN</div>
+  </div>
+
   <header>
-    <div class="protocol">Free tools <b>·</b> no email to read them <b>·</b> one a week</div>
-    <h1>You're doing fine<span class="of">That's the part that's confusing</span></h1>
-    <p class="dek">The job is steady. The kids are healthy. You'd say you're grateful
-      and you'd mean it. And still — somewhere between the driveway and the kitchen
-      there's a weight you can't name, and it's been there long enough that you
-      stopped trying to name it.</p>
+    <h1>Here's me.<span class="of">Here's what I'm working on.</span></h1>
+    <p class="dek">You've got more in you than your calendar allows. Same here. So I build in
+      the open: the garage projects, the AI that gives me hours back, the houses. Everything
+      that works lands on this site, free, so it costs you less than it cost me.</p>
   </header>
 
-  <div class="turn">
-    <p>I started DadHax to make a dad's life <i>easier</i>. Hacks, shortcuts, the claw
-      of a hammer carrying a full sheet of plywood one-handed.</p>
-    <p>Then it clicked why those matter: <b>the good parts of a dad's life are supposed
-      to be heavy.</b> The marriage. The kids. The block you live on. The thing you
-      keep "thinking over." That work is hard because it's the work that counts —
-      an easier life was never the goal. <b class="k">A more powerful one is.</b></p>
+  <!-- VIDEO SLOT 1: 60-second hello, Nick to camera. Recorded later; never placeholder footage. -->
+  <div class="vslot">Video slot: 60-second hello (Nick records)</div>
+
+  <h2>Pick what you're building</h2>
+  <div class="tiles">
+    <a class="tile" href="diy.html">
+      <span class="k">01 · DIY dad stuff</span>
+      <span class="t">Build it this weekend</span>
+      <span class="s">Garage builds and shop math, turned into free tools that hand you a cut list instead of a headache.</span>
+      <span class="now">The Cleat Wall, plus 16 free tools</span>
+    </a>
+    <a class="tile" href="ai.html">
+      <span class="k">02 · AI for life, business and beyond</span>
+      <span class="t">Get your hours back</span>
+      <span class="s">How I use AI to run the work after the work, at home and in business, and how I set it up for small business owners.</span>
+      <span class="now">My posting machine runs 3 reels a day, hands-off</span>
+    </a>
+    <a class="tile" href="realestate.html">
+      <span class="k">03 · Real estate &amp; financial freedom</span>
+      <span class="t">Buy your time back</span>
+      <span class="s">My first flip with the numbers left in, and what I'm learning about property as a way to own your time.</span>
+      <span class="now">One Old House, start to finish</span>
+    </a>
   </div>
+  <p class="muted" style="margin-top:12px;font-size:15px">Want the build plans to print and take to the garage? <a href="kits.html">The kits shelf →</a></p>
 
-  <div class="lanes">
-    <div class="lane">
-      <span class="tag">Lane one — make the trivial easy</span>
-      The bag becomes the bowl and nobody does dishes tonight — more minutes at the
-      table. <b>The stuff that doesn't matter should cost you nothing</b> — that's
-      what the everyday hacks are for.
+  <section class="join" id="next">
+    <h2>Get what I build next</h2>
+    <p>One email when something new is worth your time: a tool, a kit, a lesson I paid for so you don't have to.
+      The tools stay free and ungated either way. This list is the only thing on the site that asks for anything.</p>
+
+    <div id="pending">
+      <p class="fine">The list opens soon, and I'd rather say so than put up a box that doesn't work.
+        Until then, DM me and I'll send you the next one myself.</p>
+      <div class="ctas"><a href="https://www.instagram.com/nicksdadhax/"><b>Tell me what to build next</b><span>DM @nicksdadhax</span></a></div>
     </div>
-    <div class="lane">
-      <span class="tag">Lane two — spend it where it's hard</span>
-      Every hour lane one buys back goes to the work that compounds: <b>the dad, the
-      husband, the useful man, the guy your block is glad lives there.</b> The tools
-      in the toolbox are built for that lane.
-    </div>
-  </div>
 
-  <div class="guide">
-    <b>I'm Nick.</b> Physical therapist for ten years, first flip under contract, a dad
-    sorting it out loud. Everything here is free and ungated because it's just what I
-    needed somebody to have written down five years ago.
-  </div>
-
-  <ul class="plan">
-    <li><span class="n">1.</span><span><b>Open the toolbox.</b> Pick the tool that names your stuck point.</span></li>
-    <li><span class="n">2.</span><span><b>Give it ten minutes.</b> Every tool ends with a step you can take tonight.</span></li>
-    <li><span class="n">3.</span><span><b>Spend what it frees on the heavy stuff.</b> That's the whole system.</span></li>
-  </ul>
-
-  <a class="door" href="toolbox.html" id="doorcta">
-    <span class="row">
-      <svg class="tbx" viewBox="0 0 16 14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.2"><g class="lid"><path d="M5.5 4.5v-.75a2.5 2.5 0 0 1 5 0v.75"/><rect x="1" y="4.5" width="14" height="2.5" rx=".5"/></g><rect x="1" y="7" width="14" height="6" rx=".5"/></svg>
-      <span>
-        <span class="big">Open the Toolbox</span>
-        <span class="sub">Sixteen free tools · a new one every week</span>
-      </span>
-    </span>
-  </a>
-  <p class="newline">New this week: <a href="if-then-card.html">The If-Then Card →</a>
-    &nbsp;·&nbsp; and 17 is <a href="toolbox.html">in the shop</a>.</p>
-
-  <section class="optin" id="next">
-    <h2>What I ask</h2>
-    <p class="plain">Nothing here costs money and nothing sits behind an email. If you
-      want to call something the price, it's this: <b>when one of these is useful, send
-      it to one or two people who'd use it too.</b> That's the whole exchange.</p>
-    <p class="fine">An email list is coming &mdash; not open yet, and I'd rather say so
-      than put up a box that doesn't work. Until then, DM me and I'll send you the next
-      one myself.</p>
-    <div class="ctas">
-      <a href="https://www.instagram.com/nicksdadhax/"><b>Tell me what to build next</b><span>DM @nicksdadhax</span></a>
-    </div>
+    <form id="joinForm" novalidate hidden>
+      <div class="two">
+        <div><label for="fn">First name</label><input id="fn" name="fname" type="text" autocomplete="given-name" required></div>
+        <div><label for="em">Email</label><input id="em" name="email" type="email" autocomplete="email" required></div>
+      </div>
+      <label>What you're building (pick any)</label>
+      <div class="lanes">
+        <label class="chk"><input type="checkbox" name="lane" value="diy"> DIY and garage builds</label>
+        <label class="chk"><input type="checkbox" name="lane" value="ai"> AI for life and business</label>
+        <label class="chk"><input type="checkbox" name="lane" value="realestate"> Real estate and financial freedom</label>
+      </div>
+      <div class="hp" aria-hidden="true"><label for="hw_check">Leave empty</label><input id="hw_check" name="hw_check" type="text" tabindex="-1" autocomplete="off"></div>
+      <label class="chk" style="margin-top:12px"><input type="checkbox" id="ok" required> Yes, email me when something new is up. Unsubscribe anytime.</label>
+      <button type="submit">Send me the next one</button>
+      <p class="msg" id="msg" aria-live="polite"></p>
+    </form>
   </section>
 
   <footer>
     <p>Own a house in Washington or Dakota County, MN and need it gone?
-      <a href="houses.html">I buy houses</a> &mdash; and I'll tell you if you
-      shouldn't sell me yours.</p>
-    <p>A new tool every week. From <a href="https://www.instagram.com/nicksdadhax/">@nicksdadhax</a>
-      &mdash; sorting it out loud so it actually gets done. Hand-built, nothing tracking you:
-      <a href="https://github.com/step427/dadhax-reels">view source</a>.</p>
+      <a href="houses.html">I buy houses</a> &mdash; and I'll tell you if you shouldn't sell me yours.</p>
+    <p>Hand-built, nothing tracking you: <a href="https://github.com/step427/dadhax-reels">view source</a>.</p>
   </footer>
-
 </div>
 <script>
 /* Old deep links pointed at homepage sections that are real pages now. */
@@ -180,12 +104,33 @@
   if (location.hash === '#tools') location.replace('toolbox.html');
   if (location.hash === '#houses') location.replace('houses.html');
 })();
-/* The toolbox lid opens when the door scrolls into view. No network, no storage. */
-(function(){var s=document.getElementById('doorcta');
-if(!s||!('IntersectionObserver'in window))return;
-var o=new IntersectionObserver(function(es){es.forEach(function(e){
-if(e.isIntersecting){s.classList.add('open');o.disconnect();}});},{threshold:.9});
-o.observe(s);})();
+if (/[?&]slots\b/.test(location.search)) document.body.classList.add('slots');
+/* The list. LIST_LIVE flips to true once the 'dadhax' form exists in Nick's form script
+   (one entry + a sheet; see the hand-over memo). Until then the honest DM block shows.
+   ?list in the URL shows the form for testing. */
+(function(){
+  var LIST_LIVE = false;
+  var WEBHOOK = 'https://script.google.com/macros/s/AKfycbzzI0CNMYQmPlhqw5fIgYgqzxS4rWI1-4dvrXQWmDCaM8tA_AkHS3MkGex3VSRAmX6h/exec';
+  var f = document.getElementById('joinForm'), m = document.getElementById('msg');
+  if (!(LIST_LIVE || /[?&]list\b/.test(location.search))) return;
+  document.getElementById('pending').hidden = true; f.hidden = false;
+  f.addEventListener('submit', function(e){
+    e.preventDefault();
+    if (f.hw_check.value) { m.textContent = "You're on the list."; return; }
+    var name = f.fname.value.trim(), email = f.email.value.trim();
+    if (!name) { m.textContent = 'Add your first name.'; f.fname.focus(); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { m.textContent = 'That email looks off. Check it?'; f.email.focus(); return; }
+    if (!document.getElementById('ok').checked) { m.textContent = 'Tick the box so I know it is okay to email you.'; return; }
+    var lanes = [].map.call(f.querySelectorAll('input[name=lane]:checked'), function(x){ return x.value; }).join(', ');
+    var btn = f.querySelector('button'); btn.disabled = true; m.textContent = 'Sending...';
+    fetch(WEBHOOK, { method:'POST', headers:{ 'Content-Type':'text/plain;charset=utf-8' },
+      body: JSON.stringify({ form:'dadhax', name:name, email:email, lanes:lanes, consent:true, joined:new Date().toISOString(), source:'hub' }) })
+      .then(function(r){ return r.json(); })
+      .then(function(j){ if (!j.ok) throw 0; f.reset(); m.textContent = "You're on the list. The next one comes to you first."; })
+      .catch(function(){ m.textContent = "That didn't go through. DM me @nicksdadhax and I'll add you."; })
+      .finally(function(){ btn.disabled = false; });
+  });
+})();
 </script>
 </body>
 </html>
