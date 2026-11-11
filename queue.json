@@ -4817,7 +4817,7 @@
     {
       "file": "ig-1111-god.mp4",
       "title": "Ball it up, hand it off",
-      "status": "pending",
+      "status": "posted",
       "earliest": "2026-11-11",
       "caption": "Hey Dad,\n\nI'm stealing this one. When I'm feeling that stress, that anxiety, that weight in my chest, I take it, I ball it up, and I give it to God.\n\nSome people choose to call it God. Some call it universal law. Some call it neuroscience. I'm in the camp that calls it neuroscience. I'm exploring the spiritual side.\n\nIf you feel you have a lack of control over it, then you can take it and you can give it away.\n\nI post the one I wish somebody had told me. Follow so you get the next one.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
       "arc_slot": "Thu 11/12 1p",
@@ -4828,12 +4828,15 @@
       ],
       "sam_verdict": "POST 2026-11-11",
       "topic_class": "talk",
-      "source_raw": "PXL_20261104_144803655.mp4"
+      "source_raw": "PXL_20261104_144803655.mp4",
+      "permalink": "https://www.instagram.com/reel/DfnbmatjFDv/",
+      "posted_at": "2026-11-11T15:20:03-06:00",
+      "fb_page_video_id": "2395014971233548"
     },
     {
       "file": "ig-yt-cheating.mp4",
       "title": "It's got to be hard? That's a lie",
-      "status": "pending",
+      "status": "posted",
       "earliest": "2026-11-11",
       "caption": "Hey Dad,\n\nThere was a part of me that just screamed, that's cheating. It's got to be hard. Otherwise, it doesn't count.\n\nBut that's a lie.\n\nAnd if we think we are anything but human, then that's where maybe your work needs to start. We're all human. Have compassion. You've got to accept yourself first.\n\nYou'll forget this by the weekend. Follow and you won't have to remember it.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
       "arc_slot": "OFF-ARC cover",
@@ -4844,7 +4847,10 @@
       ],
       "sam_verdict": "POST 2026-11-11",
       "topic_class": "talk",
-      "source_raw": "yt:eVGBL8iE6cY"
+      "source_raw": "yt:eVGBL8iE6cY",
+      "permalink": "https://www.instagram.com/reel/Dfnb7ElDEiW/",
+      "posted_at": "2026-11-11T15:22:47-06:00",
+      "fb_page_video_id": "1137333805318746"
     }
   ]
 }
