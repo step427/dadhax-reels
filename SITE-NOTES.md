@@ -826,3 +826,15 @@ Story beat is Nick's own words only: posted `ig-1105-rplan` "Robot mode? My if-t
 The light, moment and floor pickers are buttons, not fillable; the worked example renders the full card on load. → PASS WITH WARNINGS (LONG/DENSE only), 969 words / 5321px, 6.6 screens: Tool 15 parity (937 / 6.6). `intro_audit.py` PASS WITH WARNINGS, you-density 0.069; it warns "no concrete number before the first input" although the dek carries 94 tests and 10 push-ups (its number pattern misses them; the proof is also the worked example).
 
 Chain: 15 → **16** → 01. Toolbox card 16 live, 17 "in the shop", index "Sixteen free tools" + "New this week" → 16, titleblocks 07–16 read "of 16". `log.html` untouched (generated).
+
+## The hub revamp (shipped 2026-11-11, Nick: "Ship it")
+
+nicksdadhax.com now opens on **Nick's face** (`nick.jpg`, cropped from Drive `07_Content/DADHAX-PROFILE-PIC.jpg`), "Here's me. Here's what I'm working on.", and **three lane tiles**: DIY (`diy.html`), AI (`ai.html`), Real estate (`realestate.html`), plus the kits shelf (`kits.html`). Shared styles in `hub.css` (same tokens and yellow grammar; site.css still owns nav and CTA rows).
+
+- `diy.html` is the old homepage story, word for word. The `#tools`/`#houses` hash redirects moved to the new `index.html`.
+- `ai.html` shows the Launch page's published prices only (Blueprint $750, Kit $2,500, Partner $450/mo) and closes on Nick's buy-back-your-time line; its one yellow button goes to `launch/#packages`. The welcome box on the top tier is a slot: no price, book not named.
+- Every lane has a **free starter kit** slot and a **what's coming** slot. None of those kits exist yet; the cards say "coming soon". Never mark one open until the file is real.
+- **The list:** `index.html` posts to the Website Forms Apps Script as `form:'dadhax'`, gated by `LIST_LIVE=false` until that entry exists. `?list` shows the form for testing. `?slots` on any hub page shows the hidden video slots.
+- Kit checkout structure and the welcome-box pressure test: `OneDrive/Desktop/Claude_Code/dadhax-hub/KIT-CHECKOUT-MEMO.md` (not in this public repo).
+- **Owed:** the 16 tool pages, toolbox, log and houses still carry the old four-chip nav. Their Home chip now opens the hub, but a sweep to the five-lane nav is due.
+- Audit 2026-11-11: all five PASS (`audits/*-<sha>.json`). `index.html` was audited collapsed because the form is hidden while the list is off; re-audit with `--fill` once `LIST_LIVE` flips.
