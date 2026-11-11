@@ -3,18 +3,148 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AI for life, business and beyond — @nicksdadhax</title>
-<meta name="description" content="How Nick uses AI to get hours back at home and at work, free to copy, and the packages for small business owners who want it built for them.">
-<link rel="stylesheet" href="hub.css">
+<title>AI for small business owners — @nicksdadhax</title>
+<meta name="description" content="Nick Stephens sets up AI around how your business already runs: the posts, the follow-ups, the website, the leads. Fixed prices, everything in your name. Or copy his setup free.">
+<style>
+  /* Light pilot (2026-11-11, Nick: the dark grid page was "hard to digest... blocky... grid lines are noise").
+     Benchmarked against the AI-service pages Nick follows: warm paper, generous space, one display serif,
+     one accent, real face on screen, outcome-first lists, one repeated call to action.
+     Tokens are named like the rest of the site so site.css's nav renders light on its own. */
+  :root {
+    --carbon:#FBF8F2; --panel:#FFFFFF; --panel-up:#F4EFE4; --hair:#E6DED0;
+    --bone:#1D1B17; --graphite:#6A6458; --signal:#FFC629; --signal-d:#E3AA0B; --ink2:#3B372F;
+    --serif:"Iowan Old Style","Palatino Linotype","Book Antiqua",Palatino,Georgia,serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    --mono:ui-monospace,"SF Mono","Cascadia Mono",Menlo,Consolas,monospace;
+  }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { margin:0; background:var(--carbon); color:var(--bone); font:18px/1.6 var(--sans); }
+  .wrap { max-width:1060px; margin:0 auto; padding:0 clamp(18px,5vw,40px); }
+  .narrow { max-width:680px; }
+  a { color:var(--bone); }
+  mark { background:linear-gradient(transparent 58%, var(--signal) 58%); color:inherit; padding:0 .06em; }
+  .eyebrow { font:600 12.5px/1.2 var(--sans); letter-spacing:.16em; text-transform:uppercase; color:var(--graphite); margin:0 0 14px; }
+  h1, h2, h3 { font-family:var(--serif); font-weight:600; letter-spacing:-.015em; color:var(--bone); margin:0; }
+  h1 { font-size:clamp(40px,7.4vw,74px); line-height:1.02; }
+  h2 { font-size:clamp(30px,4.8vw,46px); line-height:1.08; margin-bottom:14px; }
+  h3 { font-size:22px; line-height:1.2; }
+  p { margin:0 0 14px; }
+  .lead { font-size:clamp(18px,2.2vw,21px); color:var(--ink2); max-width:36em; }
+  section { padding:clamp(34px,9vw,104px) 0; }
+  section + section { border-top:1px solid var(--hair); }
+
+  /* nav: site.css draws the chips; this keeps the light bar tidy */
+  .navbar { border-bottom:1px solid var(--hair); background:var(--carbon); }
+  .navbar .nav { border:0; margin:0; padding:10px 0; max-width:1060px; margin:0 auto; padding-left:clamp(18px,5vw,40px); padding-right:clamp(18px,5vw,40px); }
+  .navbar .navtop { margin-bottom:8px; }
+  .navlinks a { background:#fff; }
+
+  /* buttons: dark is the action, yellow only underlines words */
+  .btn { display:inline-flex; align-items:center; justify-content:center; min-height:52px; padding:0 24px; border-radius:999px;
+    background:var(--bone); color:#fff; text-decoration:none; font:600 16px var(--sans); }
+  .btn:hover, .btn:focus-visible { background:#3a362e; }
+  .btn.ghost { background:transparent; color:var(--bone); box-shadow:inset 0 0 0 1.5px var(--bone); }
+  .btn.ghost:hover { background:var(--panel-up); }
+  .row { display:flex; flex-wrap:wrap; gap:12px; align-items:center; }
+
+  /* hero */
+  .hero { display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr); gap:clamp(28px,5vw,64px); align-items:center; padding-top:clamp(40px,7vw,80px); }
+  .hero .lead { margin-top:22px; }
+  .byline { display:flex; align-items:center; gap:12px; margin:0 0 18px; font-size:14.5px; color:var(--graphite); line-height:1.3; }
+  .byline img { width:44px; height:44px; border-radius:50%; object-fit:cover; flex:none; }
+  .byline b { display:block; color:var(--bone); font-size:15.5px; }
+  .hero .row { margin-top:28px; }
+  .hero .note { font-size:14px; color:var(--graphite); margin-top:14px; }
+  .vid { position:relative; border-radius:22px; overflow:hidden; background:#000; aspect-ratio:9/16; max-height:620px; box-shadow:0 24px 60px rgba(40,30,10,.18); }
+  .vid video { width:100%; height:100%; object-fit:cover; display:block; }
+  .vid .cap { position:absolute; left:14px; bottom:14px; right:14px; color:#fff; font-size:14px; text-shadow:0 1px 6px rgba(0,0,0,.6); }
+  @media (max-width:820px) { .hero { grid-template-columns:1fr; } .vid { max-width:200px; margin:0 auto; } }
+
+  /* proof strip */
+  .proof { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(16px,3vw,40px); padding:34px 0 0; }
+  .proof b { display:block; font:600 clamp(30px,4.4vw,42px)/1 var(--serif); color:var(--bone); }
+  .proof span { display:block; color:var(--graphite); font-size:15px; margin-top:8px; }
+  @media (max-width:560px) { .proof { grid-template-columns:1fr; gap:10px; padding-top:24px; } .proof div { display:grid; grid-template-columns:86px 1fr; gap:10px; align-items:center; } .proof b { font-size:26px; } .proof span { margin:0; font-size:15px; line-height:1.4; } }
+
+  /* the jobs list: outcome first, hairlines not boxes */
+  .jobs { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); column-gap:clamp(24px,5vw,64px); margin-top:30px; }
+  .job { padding:20px 0; border-top:1px solid var(--hair); }
+  .job h3 { font-size:21px; margin-bottom:6px; }
+  .job p { margin:0; color:var(--ink2); font-size:16.5px; }
+  @media (max-width:700px) { .jobs { grid-template-columns:1fr; } }
+
+  /* steps */
+  .steps { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(18px,3vw,36px); margin-top:30px; counter-reset:s; }
+  .step { counter-increment:s; }
+  .step::before { content:counter(s); display:inline-grid; place-items:center; width:40px; height:40px; border-radius:50%;
+    background:var(--signal); color:var(--bone); font:600 18px var(--serif); margin-bottom:14px; }
+  .step p { color:var(--ink2); font-size:16.5px; margin-top:8px; }
+  @media (max-width:760px) { .steps { grid-template-columns:1fr; gap:14px; } .step { display:grid; grid-template-columns:40px 1fr; column-gap:14px; } .step::before { margin:0; grid-row:span 2; } .step p { margin:2px 0 0; } }
+
+  /* packages */
+  .tiers { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; margin-top:32px; align-items:stretch; }
+  .tier { background:var(--panel); border:1px solid var(--hair); border-radius:20px; padding:26px 24px; display:flex; flex-direction:column; }
+  .tier.best { border:2px solid var(--bone); box-shadow:0 18px 44px rgba(40,30,10,.10); }
+  .tier .k { font:600 12px var(--sans); letter-spacing:.14em; text-transform:uppercase; color:var(--graphite); }
+  .tier h3 { margin:8px 0 10px; font-size:26px; }
+  .tier ul { margin:0 0 18px; padding-left:18px; color:var(--ink2); font-size:16px; }
+  .tier li { margin:6px 0; }
+  .price { margin-top:auto; font:600 38px/1 var(--serif); }
+  .price small { font:400 14px var(--sans); color:var(--graphite); }
+  .tier .sub { font-size:14px; color:var(--graphite); margin:8px 0 0; }
+  .box { margin-top:14px; padding-top:14px; border-top:1px dashed var(--hair); font-size:14.5px; color:var(--ink2); }
+  .box b { color:var(--bone); }
+  .addons { margin-top:18px; color:var(--graphite); font-size:15px; }
+  @media (max-width:860px) { .tiers { grid-template-columns:1fr; } .tier.best { order:-1; } }
+
+  /* about */
+  .about { display:grid; grid-template-columns:200px minmax(0,1fr); gap:clamp(22px,4vw,48px); align-items:start; }
+  .about img { width:200px; height:200px; border-radius:50%; object-fit:cover; }
+  .quote { font:italic 500 clamp(21px,2.6vw,26px)/1.4 var(--serif); color:var(--bone); border-left:3px solid var(--signal); padding-left:18px; margin:18px 0; }
+  @media (max-width:640px) { .about { grid-template-columns:1fr; gap:16px; } .about img { width:96px; height:96px; } }
+
+  /* free path */
+  .free { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; margin-top:26px; }
+  .free a { display:block; text-decoration:none; background:var(--panel); border:1px solid var(--hair); border-radius:16px; padding:20px; color:var(--bone); }
+  .free a:hover, .free a:focus-visible { border-color:var(--bone); }
+  .free b { font:600 19px var(--serif); display:block; margin-bottom:6px; }
+  .free span { color:var(--ink2); font-size:15.5px; }
+  @media (max-width:760px) { .free { grid-template-columns:1fr; } }
+
+  /* faq */
+  details { border-top:1px solid var(--hair); padding:18px 0; }
+  details:last-of-type { border-bottom:1px solid var(--hair); }
+  summary { cursor:pointer; font:600 20px var(--serif); list-style:none; display:flex; justify-content:space-between; gap:16px; min-height:44px; align-items:center; }
+  summary::after { content:"+"; font:400 26px var(--sans); color:var(--graphite); }
+  details[open] summary::after { content:"–"; }
+  details p { color:var(--ink2); margin:10px 0 0; }
+
+  /* close */
+  .close { text-align:center; }
+  .close .lead { margin:0 auto 26px; }
+  .close .row { justify-content:center; }
+
+  footer { padding:28px 0 90px; color:var(--graphite); font-size:14.5px; border-top:1px solid var(--hair); }
+  footer a { color:var(--bone); }
+
+  /* the bar that follows you on phones, like the pages Nick benchmarked */
+  .stick { position:fixed; left:0; right:0; bottom:0; z-index:6; display:none; gap:10px; padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+    background:rgba(251,248,242,.96); border-top:1px solid var(--hair); backdrop-filter:blur(6px); }
+  .stick .btn { flex:1; min-height:48px; font-size:15px; padding:0 12px; }
+  @media (max-width:820px) { .stick { display:flex; } }
+  .vslot { display:none; border:1px dashed var(--graphite); padding:14px; border-radius:12px; color:var(--graphite); font-size:14px; margin:16px 0; }
+  body.slots .vslot { display:block; }
+</style>
 <link rel="stylesheet" href="site.css">
 </head>
 <body>
-<div class="sheet">
 
+<div class="navbar">
   <nav class="nav">
     <div class="navtop">
-      <a class="brand" href="index.html">@nicksdadhax</a>
-      <span class="meta">Lane two · AI</span>
+      <a class="brand" href="index.html" style="color:var(--bone)">@nicksdadhax</a>
+      <span class="meta">AI for small business owners</span>
     </div>
     <div class="navlinks">
       <a href="index.html">Home</a>
@@ -24,68 +154,153 @@
       <a href="kits.html">Kits</a>
     </div>
   </nav>
+</div>
 
-  <header style="padding-top:26px">
-    <div class="protocol">AI <b>·</b> for life, business and beyond</div>
-    <h1>The work after the work<span class="of">is eating your evenings</span></h1>
-    <p class="dek">The emails, the posts, the follow-ups, the website you keep meaning to fix. None of it is why
-      you started, and all of it comes out of dinner and weekends. AI can take a real share of it,
-      if somebody sets it up around how you actually work.</p>
-  </header>
-
-  <ul class="beats" style="margin-top:22px">
-    <li><b class="k">The cost</b><span>Every hour of admin is an hour you don't get back: at the game, at the table, in the shop.</span></li>
-    <li><b class="k">What I did</b><span>I was inconsistent with posting, so I built a machine that does it. I drop a 1–2 minute idea in a folder; AI edits, posts and tags. <b>It posts 3 reels a day</b> and kept going while I was off grid.</span></li>
-    <li><b class="k">What you get</b><span>The same thinking, free below, or built for you if you'd rather buy the time.</span></li>
-  </ul>
-
-  <!-- VIDEO SLOT (AI): 90 seconds, Nick shows the posting machine end to end. Recorded later. -->
-  <div class="vslot">Video slot: the posting machine, start to finish (Nick records)</div>
-
-  <h2>Build it yourself, free</h2>
-  <div class="rows">
-    <a href="start-with-ai.html"><div>Start With AI: 8 focus steps<span>What to do with one $20/month subscription, in order, and what to ignore for thirty days.</span></div><i>Free tool</i></a>
-    <a href="https://ig.me/m/nicksdadhax"><div>My posting machine, prompt and all<span>DM me MACHINE on Instagram and I'll send it. You don't have to talk to me.</span></div><i>Free</i></a>
-    <a href="https://www.instagram.com/nicksdadhax/"><div>Follow along<span>I share what works for me as I build it, so you can copy it.</span></div><i>@nicksdadhax</i></a>
+<main>
+  <div class="wrap">
+    <div class="hero">
+      <div>
+        <p class="byline"><img src="nick.jpg" alt="" width="44" height="44"><span><b>Nick Stephens</b>AI setup for small business owners</span></p>
+        <h1>Get your <mark>evenings</mark> back.</h1>
+        <p class="lead">You started a business to do the work, not the second shift: the posts, the follow-ups,
+          the leads that come in at 9 pm. I set up AI around how your business already runs, so that work
+          happens without you, and everything stays in your name.</p>
+        <div class="row">
+          <a class="btn" href="launch/#talk">Book a free 30-minute call</a>
+          <a class="btn ghost" href="#packages">See the packages</a>
+        </div>
+        <p class="note">Fixed prices. No contracts you can't leave. Or copy my setup free, further down.</p>
+      </div>
+      <div class="vid">
+        <video src="launch/vsl.mp4" poster="launch/vsl-poster.jpg" controls playsinline preload="none" aria-label="Nick explains why he built his own AI posting machine"></video>
+      </div>
+    </div>
+    <div class="proof">
+      <div><b>285+</b><span>reels posted by my own machine since August, hands-off</span></div>
+      <div><b>16</b><span>free tools built and published here</span></div>
+      <div><b>1 day</b><span>to build a clinic's site and launch video</span></div>
+    </div>
   </div>
 
-  <h2>Your free starter kit</h2>
-  <div class="kit">
-    <span class="tag">Coming soon</span>
-    <h3>The one-page AI quickstart card</h3>
-    <p>Print it, tape it by the desk: which AI to open for what, the three prompts I use most, and the one rule about private information.</p>
-    <span class="soon"><a href="index.html#next">Get on the list</a> and it comes to you first.</span>
-  </div>
+  <section id="work">
+    <div class="wrap">
+      <p class="eyebrow">The work after the work</p>
+      <h2>What we hand off first</h2>
+      <p class="lead">Start with whatever eats your week. Most owners pick one or two of these.</p>
+      <div class="jobs">
+        <div class="job"><h3>Getting found</h3><p>A site that works on a phone, a Google profile that's current, and posts that go out without you writing each one.</p></div>
+        <div class="job"><h3>Leads at 9 pm</h3><p>Every form, call and message lands on your phone in one place and gets a reply in minutes, not tomorrow.</p></div>
+        <div class="job"><h3>Content</h3><p>Record one short clip. AI cuts it, captions it and posts it all week. That's the machine I run on my own account.</p></div>
+        <div class="job"><h3>Follow-up and reviews</h3><p>Quotes and reminders go out on time, and happy customers get asked for a review while they're happiest.</p></div>
+      </div>
+    </div>
+  </section>
 
-  <h2>Or build it with me</h2>
-  <p class="muted" style="font-size:15.5px">For small business owners: the trades, health care, anyone running a business
-    from their phone at 9 pm. Fixed prices, written scope, software billed to you at cost, in your name.</p>
-  <div class="pk">
-    <div class="p"><span class="k">Start here</span><h3>Launch Blueprint</h3><span class="price">$750 <small>one time</small></span>
-      <p>A 90-minute time audit, your tool stack picked for you, and a written 30-day plan.</p></div>
-    <div class="p best"><span class="k">Best value · built for you</span><h3>Launch Kit</h3><span class="price">$2,500 <small>one time</small></span>
-      <p>Website and domain live in days, a lead form that lands in your phone, and the posting machine set up and running.</p></div>
-    <div class="p"><span class="k">Keep it running</span><h3>Launch Partner</h3><span class="price">$450<small>/mo · 6-month term</small></span>
-      <p>Up to 3 hours of changes a month, one 60-minute working call, and one new workflow automated each month.</p>
-      <!-- WELCOME BOX SLOT: not final. No price shown until Nick decides contents and cost (see KIT-CHECKOUT-MEMO.md). -->
-      <p style="margin-top:10px;padding-top:10px;border-top:1px solid var(--hair)"><b>In the works: a welcome box.</b> A copy of the book that shaped this program,
-        a phone tripod and clip mic for recording once and posting all week, and a printed quickstart card, mailed to you when you sign on.</p></div>
-  </div>
-  <p class="muted" style="font-size:14px;margin-top:10px">Also: Automation Sprint $750 · Content Day $600 · Office Hours $150/mo.
-    The first five businesses get 50% off for 12 months.</p>
+  <section id="how">
+    <div class="wrap">
+      <p class="eyebrow">How it works</p>
+      <h2>Three steps, plain English</h2>
+      <div class="steps">
+        <div class="step"><h3>We find the drain</h3><p>90 minutes on your week: what to hand off, what to leave alone.</p></div>
+        <div class="step"><h3>I build it</h3><p>In your accounts, in your name. You approve before it goes live.</p></div>
+        <div class="step"><h3>It runs</h3><p>A monthly call, a new workflow each month, and a person to text.</p></div>
+      </div>
+    </div>
+  </section>
 
-  <h2>The only thing you can't make more of</h2>
-  <div class="note">Time is the one thing nobody makes more of, and none of us knows when ours runs out.
-    So here are your two honest options. <b>Keep following along</b>: I'll keep sharing what works,
-    and you can build every piece of it yourself. Or, if you already know you want it built,
-    <b>the best day to get it done is today.</b></div>
+  <section id="packages">
+    <div class="wrap">
+      <p class="eyebrow">Packages</p>
+      <h2>Pick where to start</h2>
+      <p class="lead">Fixed prices, written scope, no surprise bills. Software is billed to you at cost, in your name.</p>
+      <div class="tiers">
+        <div class="tier">
+          <span class="k">Start here</span><h3>Launch Blueprint</h3>
+          <ul><li>90-minute time audit</li><li>Your tool stack, picked for you</li><li>A written 30-day plan</li></ul>
+          <p class="price">$750 <small>one time</small></p>
+          <a class="btn ghost" href="launch/#talk" style="margin-top:16px">Ask about the Blueprint</a>
+        </div>
+        <div class="tier best">
+          <span class="k">Best value · built for you</span><h3>Launch Kit</h3>
+          <ul><li>Website and domain, live in days</li><li>A lead form that lands on your phone</li><li>The posting machine, set up and running</li></ul>
+          <p class="price">$2,500 <small>one time</small></p>
+          <p class="sub">A freelance website alone runs $1,500 to $5,000.</p>
+          <a class="btn" href="launch/#talk" style="margin-top:16px">Ask about the Kit</a>
+        </div>
+        <div class="tier">
+          <span class="k">Keep it running</span><h3>Launch Partner</h3>
+          <ul><li>Up to 3 hours of changes a month</li><li>One 60-minute working call</li><li>One new workflow automated each month</li></ul>
+          <p class="price">$450 <small>/ month · 6-month term</small></p>
+          <!-- WELCOME BOX SLOT: not final, no price until Nick decides (KIT-CHECKOUT-MEMO.md). -->
+          <p class="box"><b>In the works: a welcome box.</b> The book that shaped this program, a phone tripod and clip mic
+            for recording once and posting all week, and a printed quickstart card, mailed when you sign on.</p>
+          <a class="btn ghost" href="launch/#talk" style="margin-top:16px">Ask about the Partner plan</a>
+        </div>
+      </div>
+      <p class="addons">Also: Automation Sprint $750 · Content Day $600 · Office Hours $150/mo. The first five businesses get 50% off for 12 months.</p>
+    </div>
+  </section>
 
-  <a class="go" href="launch/#packages">Get it done today<span>See the packages and book a free 30-minute call</span></a>
-  <a class="alt" href="index.html#next">Not yet? Get the next free one first →</a>
+  <section id="about">
+    <div class="wrap">
+      <div class="about">
+        <img src="nick.jpg" alt="Nick Stephens" width="200" height="200">
+        <div class="narrow">
+          <p class="eyebrow">Who's building it</p>
+          <h2>Time is the thing I never have.</h2>
+          <p class="lead">I'm a dad and a home care PT. I was inconsistent with posting, not lazy. I didn't want to be glued to my phone instead of present, so I built a machine that does it for me.</p>
+          <p class="quote">"Any time I get an idea, I drop a one- or two-minute clip in a folder. AI edits it, posts it and tags it.
+            It kept posting while I was completely off grid."</p>
+          <p class="lead">A year in a founder coaching program taught me to buy back my time. I treat patients and hire contractors, so I build what I'd want from both sides.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <footer>
-    <p>Hand-built, nothing tracking you: <a href="https://github.com/step427/dadhax-reels">view source</a>.</p>
-  </footer>
+  <section id="free">
+    <div class="wrap">
+      <p class="eyebrow">Rather build it yourself?</p>
+      <h2>Copy my setup, free</h2>
+      <p class="lead">No catch. If you like doing it yourself, start here and keep following along.</p>
+      <div class="free">
+        <a href="start-with-ai.html"><b>Start With AI</b><span>Eight focus steps for one $20/month subscription, in order, and what to ignore for 30 days.</span></a>
+        <a href="https://ig.me/m/nicksdadhax"><b>My posting machine</b><span>DM me MACHINE on Instagram and I'll send it, prompt and all. You don't have to talk to me.</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap narrow">
+      <p class="eyebrow">Straight answers</p>
+      <h2>What people ask me first</h2>
+      <details><summary>I'm not a tech person.</summary><p>Good. You don't need to be. I build it and explain it in plain English. Your jobs are small: film a short clip, approve posts, answer the leads it hands you.</p></details>
+      <details><summary>What if I want out?</summary><p>Every account is in your name from day one: domain, website, email, social. Cancel with 30 days' notice and you keep all of it.</p></details>
+      <details><summary>Is it safe for a health-care practice?</summary><p>I only build the marketing side. Patient data stays in tools that sign a HIPAA business associate agreement, and I set those up on a screen share while you're logged in.</p></details>
+    </div>
+  </section>
+
+  <section class="close">
+    <div class="wrap narrow">
+      <p class="eyebrow">The only thing you can't make more of</p>
+      <h2>You can't make more time.</h2>
+      <p class="lead">None of us knows when ours runs out. So you have two honest options. Keep following along, and build every
+        piece yourself with what I share. Or, if you already know you want it done, <mark>the best day to get it done is today.</mark></p>
+      <div class="row">
+        <a class="btn" href="launch/#talk">Book a free 30-minute call</a>
+        <a class="btn ghost" href="index.html#next">Get the next free one first</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">Nick Stephens · Cottage Grove, MN · <a href="https://www.instagram.com/nicksdadhax/">@nicksdadhax</a> ·
+    Hand-built, nothing tracking you: <a href="https://github.com/step427/dadhax-reels">view source</a>.</div>
+</footer>
+
+<div class="stick" aria-label="Quick actions">
+  <a class="btn ghost" href="#packages">Packages</a>
+  <a class="btn" href="launch/#talk">Book a call</a>
 </div>
 <script>if (/[?&]slots\b/.test(location.search)) document.body.classList.add('slots');</script>
 </body>
