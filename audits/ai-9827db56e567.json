@@ -1,0 +1,20 @@
+{
+ "page": "ai.html",
+ "sha": "9827db56e567",
+ "verdict": "PASS WITH WARNINGS",
+ "fail": [],
+ "warn": [
+  "LONG: 8.5 phone screens of scroll."
+ ],
+ "stats": {
+  "viewport": "375x812",
+  "charsPerLine": 42,
+  "words": 754,
+  "pageHeightPx": 6881,
+  "screens": 8.5,
+  "longestBlockWords": 8,
+  "links": 17
+ },
+ "fills": {},
+ "audited": "2026-11-11T22:20:13+00:00"
+}
