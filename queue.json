@@ -4851,6 +4851,25 @@
       "permalink": "https://www.instagram.com/reel/Dfnb7ElDEiW/",
       "posted_at": "2026-11-11T15:22:47-06:00",
       "fb_page_video_id": "1137333805318746"
+    },
+    {
+      "file": "ig-1112-rplan2.mp4",
+      "title": "Robot mode? Do this: my if-then",
+      "status": "pending",
+      "earliest": "2026-11-12",
+      "caption": "Hey Dad,\n\nYou know your robot mode. Jaw tight, short answers, somewhere else while the people you love are right there.\n\nWhen you're in a decent moment, you're more likely to pull yourself out of a hard one if you have a plan in place. Mine: if I feel my jaw clench, then I will do 10 push-ups. It'll allow me some presence to get back into my body.\n\nWrite yours before the hard day shows up. I built a free card for it: pick your warning lights, your resets, and two people, then print it for your wallet. The link is in my bio.\nstep427.github.io/dadhax-reels/if-then-card.html\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "Fri 11/13 1p",
+      "pix": "P",
+      "value_forms": [
+        "idea",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-11-12",
+      "topic_class": "talk",
+      "source_raw": "PXL_20261104_144803655.mp4",
+      "hypothesis": "If the re-cut opens cold on the jaw-clench if-then and runs 9.97s instead of 17.3s, then avg watch % beats the parent's 30.7% AND avg watch stays at or above the parent's 5.3s, because the parent lost viewers in the preamble before the specific fix.",
+      "recut_of": "ig-1105-rplan.mp4",
+      "kind": "old"
     }
   ]
 }
