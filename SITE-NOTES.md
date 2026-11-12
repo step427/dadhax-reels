@@ -838,3 +838,15 @@ nicksdadhax.com now opens on **Nick's face** (`nick.jpg`, cropped from Drive `07
 - Kit checkout structure and the welcome-box pressure test: `OneDrive/Desktop/Claude_Code/dadhax-hub/KIT-CHECKOUT-MEMO.md` (not in this public repo).
 - **Owed:** the 16 tool pages, toolbox, log and houses still carry the old four-chip nav. Their Home chip now opens the hub, but a sweep to the five-lane nav is due.
 - Audit 2026-11-11: all five PASS (`audits/*-<sha>.json`). `index.html` was audited collapsed because the form is hidden while the list is off; re-audit with `--fill` once `LIST_LIVE` flips.
+
+## The light direction (AI page shipped 2026-11-11, Nick: "Ship it")
+Nick found the dark, grid-lined, all-caps-mono look hard to read ("so blocky... more noise").
+Benchmarked 9 AI-service pages (memo: Claude_Code/dadhax-hub/research/ai-page-benchmark.md); 8 of 9 are light.
+- ai.html carries its own inline light tokens (warm paper #FBF8F2, ink #1D1B17, serif headlines,
+  mono only for small labels). It does NOT use hub.css. Yellow #FFC629 = the highlighter on one
+  hero word + numbered step circles; buttons are dark pills.
+- Order: face + promise + video, proof line (real counts only: reels from queue.json, tools, Christie's site),
+  what we hand off, three steps, priced packages each with a button, story, free path, FAQ, close.
+- Phone: sticky "Packages / Book a call" bar under 820px.
+- Length: 6881px, right under the 7000px audit cap. Adding a section means cutting one.
+- Next: index, diy, realestate, kits move to the same light tokens (pull them into hub.css when they do).
