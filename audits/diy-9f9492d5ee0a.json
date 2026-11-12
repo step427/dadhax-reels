@@ -1,0 +1,21 @@
+{
+ "page": "diy.html",
+ "sha": "9f9492d5ee0a",
+ "verdict": "PASS WITH WARNINGS",
+ "fail": [],
+ "warn": [
+  "LINE LENGTH: 33 chars/line on mobile (aim 35-45).",
+  "LONG: 5.8 phone screens of scroll."
+ ],
+ "stats": {
+  "viewport": "375x812",
+  "charsPerLine": 33,
+  "words": 574,
+  "pageHeightPx": 4746,
+  "screens": 5.8,
+  "longestBlockWords": 26,
+  "links": 18
+ },
+ "fills": {},
+ "audited": "2026-11-12T02:30:49+00:00"
+}

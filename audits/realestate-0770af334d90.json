@@ -1,0 +1,21 @@
+{
+ "page": "realestate.html",
+ "sha": "0770af334d90",
+ "verdict": "PASS WITH WARNINGS",
+ "fail": [],
+ "warn": [
+  "LINE LENGTH: 33 chars/line on mobile (aim 35-45).",
+  "LONG: 6.1 phone screens of scroll."
+ ],
+ "stats": {
+  "viewport": "375x812",
+  "charsPerLine": 33,
+  "words": 522,
+  "pageHeightPx": 4988,
+  "screens": 6.1,
+  "longestBlockWords": 7,
+  "links": 24
+ },
+ "fills": {},
+ "audited": "2026-11-12T02:30:51+00:00"
+}

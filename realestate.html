@@ -4,9 +4,67 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Real estate and financial freedom — @nicksdadhax</title>
-<meta name="description" content="Nick's first flip with the numbers left in, the tools he uses to decide, and what he's learning about owning your time through property.">
+<meta name="description" content="Nick's first flip with the numbers left in, the tools he uses to decide, and what he's learning about owning your time through property. One house so far, and he says so.">
 <link rel="stylesheet" href="hub.css">
 <link rel="stylesheet" href="site.css">
+<style>
+  /* Real estate lane (2026-11-11). Family: hub.css paper, ink, serif, pills.
+     Its own thing: old-house brick for money out, a contractor's-notebook ledger, a stamp.
+     Benchmark: Claude_Code/dadhax-hub/research/realestate-page-benchmark.md. The pages it studied
+     show totals and testimonials; this one shows one real deal, in the log's own words. */
+  :root { --lane:#9A3B26; --rule:#E6DFD0; }
+  .status { display:flex; flex-wrap:wrap; gap:6px 18px; margin:18px 0 0; padding:0; list-style:none; font-size:15.5px; color:var(--ink2); }
+  .status li b { font-family:var(--serif); font-size:19px; }
+  .status li.no b { color:var(--lane); }
+  .hero-cta { display:flex; flex-wrap:wrap; gap:10px 18px; align-items:center; margin-top:24px; }
+  .hero-cta .btn { flex-direction:row; }
+  .hero-cta a.quiet { min-height:44px; display:inline-flex; align-items:center; font-size:16px; }
+
+  /* the deal card: ruled notebook paper, figures in mono, one stamp */
+  .deal { display:grid; grid-template-columns:minmax(0,1fr) 190px; gap:22px; align-items:start;
+    background:var(--panel); border:1px solid var(--hair); border-radius:20px; padding:22px; margin-top:8px; position:relative; }
+  .ledger { width:100%; border-collapse:collapse; font-size:16px; }
+  .ledger caption { text-align:left; font:600 22px var(--serif); margin-bottom:8px; }
+  .ledger th, .ledger td { text-align:left; padding:11px 0; border-bottom:1px solid var(--rule); vertical-align:top; }
+  .ledger th { font:600 12px var(--sans); letter-spacing:.12em; text-transform:uppercase; color:var(--graphite); width:38%; padding-right:12px; padding-top:14px; }
+  .ledger td { font:500 16.5px/1.4 var(--mono); font-variant-numeric:tabular-nums; color:var(--bone); }
+  .ledger td.out { color:var(--lane); }
+  .ledger td small { display:block; font:400 14px/1.45 var(--sans); color:var(--graphite); margin-top:3px; }
+  .stamp { display:inline-block; margin-top:16px; padding:6px 12px; border:2px solid var(--lane); border-radius:6px; color:var(--lane);
+    font:700 13px var(--mono); letter-spacing:.1em; text-transform:uppercase; transform:rotate(-2deg); }
+  .deal figure { margin:0; }
+  .deal video { width:100%; height:auto; border-radius:14px; background:#000; display:block; aspect-ratio:9/16; object-fit:cover; }
+  .deal figcaption { font-size:14px; color:var(--graphite); margin-top:8px; line-height:1.4; }
+  @media (max-width:620px) { .deal { grid-template-columns:1fr; padding:18px; } .deal figure { max-width:200px; margin:0 auto; order:-1; } }
+
+  /* the eight chapters, numbered like a job folder */
+  .chapters { list-style:none; counter-reset:c; padding:0; margin:0; columns:2 280px; column-gap:32px; }
+  .chapters li { counter-increment:c; break-inside:avoid; border-top:1px solid var(--hair); }
+  .chapters a { display:grid; grid-template-columns:34px 1fr; align-items:center; min-height:48px; padding:8px 0; text-decoration:none; color:var(--bone); font:600 17.5px/1.3 var(--serif); }
+  .chapters a::before { content:counter(c,decimal-leading-zero); font:600 13px var(--mono); color:var(--lane); }
+  .chapters a:hover span, .chapters a:focus-visible span { text-decoration:underline; text-underline-offset:4px; }
+
+  /* the money map: three buckets */
+  .buckets { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin:18px 0 6px; }
+  .buckets div { background:var(--panel); border:1px solid var(--hair); border-radius:16px; padding:16px; }
+  .buckets b { display:block; font:600 21px var(--serif); }
+  .buckets span { font-size:15px; color:var(--ink2); }
+  @media (max-width:560px) { .buckets { grid-template-columns:1fr; gap:8px; } .buckets div { display:grid; grid-template-columns:96px 1fr; gap:10px; align-items:baseline; padding:12px 16px; } }
+  .soon-tag { display:inline-block; font:600 11.5px var(--sans); letter-spacing:.12em; text-transform:uppercase; padding:4px 10px; border-radius:999px; background:var(--panel-up); color:var(--graphite); }
+
+  /* camps: two sides, honest about which one he's in */
+  .camps { display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:14px; }
+  .camps h3 { font-size:20px; margin-bottom:6px; }
+  .camps p { font-size:16px; color:var(--ink2); margin:0; }
+  @media (max-width:560px) { .camps { grid-template-columns:1fr; gap:14px; } }
+
+  /* the seller card: a different job, so a different card */
+  .sell { margin-top:52px; background:var(--bone); color:#F4F0E6; border-radius:22px; padding:24px 22px; }
+  .sell h2 { color:#fff; margin:0 0 8px; font-size:clamp(24px,4.4vw,32px); }
+  .sell p { color:#D9D3C6; margin-bottom:16px; }
+  .sell a { display:inline-flex; align-items:center; min-height:48px; padding:0 22px; border-radius:999px; background:#fff; color:var(--bone); text-decoration:none; font-weight:600; }
+  .fine { font-size:14px; color:var(--graphite); margin-top:22px; }
+</style>
 </head>
 <body>
 <div class="sheet">
@@ -14,7 +72,7 @@
   <nav class="nav">
     <div class="navtop">
       <a class="brand" href="index.html">@nicksdadhax</a>
-      <span class="meta">Lane three · real estate</span>
+      <span class="meta">Real estate · learned in public</span>
     </div>
     <div class="navlinks">
       <a href="index.html">Home</a>
@@ -25,49 +83,99 @@
     </div>
   </nav>
 
-  <header style="padding-top:26px">
-    <div class="protocol">Real estate <b>·</b> financial freedom</div>
-    <h1>Freedom is time<span class="of">you don't have to ask for</span></h1>
-    <p class="dek">A paycheck buys groceries. It doesn't buy back your Tuesday. If you're starting to look at
-      property as the way out, you'll make expensive mistakes on your first one. I made mine in public,
-      with the numbers left in, so yours can cost less.</p>
+  <header style="padding-top:30px">
+    <p class="protocol">Real estate <b>·</b> financial freedom</p>
+    <h1>Freedom is <mark>time</mark><span class="of">you don't have to ask for.</span></h1>
+    <p class="dek">A paycheck buys groceries. It doesn't buy back your Tuesday. If property is starting to look like
+      the way out, your first one will teach you with your own money. Mine did, in public, with the numbers left in,
+      so yours can cost less.</p>
+    <ul class="status" aria-label="Where I actually am">
+      <li>Houses bought as an investor: <b>1</b></li>
+      <li>Sold: <b>0</b></li>
+      <li class="no">Financially free: <b>not yet</b></li>
+    </ul>
+    <div class="hero-cta">
+      <a class="btn" href="index.html#next">Get the money map</a>
+      <a class="quiet" href="log.html">Read the whole story →</a>
+    </div>
   </header>
 
-  <!-- VIDEO SLOT (real estate): walk-through of One Old House, before and after. Recorded later. -->
-  <div class="vslot">Video slot: One Old House walk-through (Nick records)</div>
-
-  <h2>Start with my first flip</h2>
-  <div class="rows">
-    <a href="log.html"><div>One Old House, start to finish<span>A 1908 house bought in the 130s. About six months late, the buyer walked, and I still own it. Eight short chapters, each with what it cost me.</span></div><i>The story</i></a>
+  <h2>One old house, by the numbers</h2>
+  <div class="deal">
+    <table class="ledger">
+      <caption>A 1908 house, bought as my first investment</caption>
+      <tr><th scope="row">Bought</th><td>in the 130s</td></tr>
+      <tr><th scope="row">All in</th><td>mid-260s</td></tr>
+      <tr><th scope="row">Appraised</th><td>290</td></tr>
+      <tr><th scope="row">Schedule</th><td class="out">~6 months late<small>The contractor and I settled on three months.</small></td></tr>
+      <tr><th scope="row">What late cost</th><td class="out">close to five figures<small>Carrying costs and interest, by my math.</small></td></tr>
+      <tr><th scope="row">On paper</th><td>about $25,000<small>None of it arrived as a check.</small></td></tr>
+      <tr><th scope="row">Now</th><td>refinanced, leased<small>The buyer walked. I kept it.</small></td></tr>
+    </table>
+    <figure>
+      <video controls playsinline preload="none" poster="one-old-house.jpg" width="720" height="1280"
+        aria-label="The whole first house, too far gone to finished, in 39 seconds">
+        <source src="one-old-house.mp4" type="video/mp4">
+        <a href="one-old-house.mp4">Watch the 39-second version</a>
+      </video>
+      <figcaption>Too far gone to finished, in 39 seconds.</figcaption>
+    </figure>
+    <span class="stamp">Buyer walked · still own it</span>
   </div>
 
-  <h2>Your free starter kit</h2>
-  <div class="kit">
-    <span class="tag">Coming soon</span>
-    <h3>The money map</h3>
-    <p>One page, three buckets for every dollar that comes in: <b>live on it, grow it, give it</b> (I give 15%).
-      Plus the one debt rule I hold myself to: borrow only when the asset's cash flow covers the payment with room to spare, and keep reserves.</p>
-    <span class="soon"><a href="index.html#next">Get on the list</a> and it comes to you first.</span>
+  <!-- PHOTO SLOT (real estate): before/after pair from the same angle, Nick's own photos. -->
+  <div class="vslot">Photo slot: before and after, same angle (Nick's photos)</div>
+
+  <h2>The story, in eight short chapters</h2>
+  <ol class="chapters">
+    <li><a href="log.html"><span>It started with $3,000</span></a></li>
+    <li><a href="log.html"><span>Day one</span></a></li>
+    <li><a href="log.html"><span>Later than anybody told me</span></a></li>
+    <li><a href="log.html"><span>"Look what I did"</span></a></li>
+    <li><a href="log.html"><span>Bookshelves or doors</span></a></li>
+    <li><a href="log.html"><span>"I shouldn't be swinging a hammer." Yet.</span></a></li>
+    <li><a href="log.html"><span>I hope a family gets it</span></a></li>
+    <li><a href="log.html"><span>Done, and what it actually cost</span></a></li>
+  </ol>
+
+  <h2>Your free starter kit: the money map</h2>
+  <span class="soon-tag">Coming soon</span>
+  <p style="margin-top:12px">One page, three buckets for every dollar that comes in.</p>
+  <div class="buckets">
+    <div><b>Live on it</b><span>The bills, the groceries, the life.</span></div>
+    <div><b>Grow it</b><span>What goes to work: reserves first, then property.</span></div>
+    <div><b>Give it</b><span>I give 15%. Pick your number and write it down.</span></div>
   </div>
+  <p class="note">Plus the one debt rule I hold myself to: borrow only when the asset's cash flow covers the payment
+    with room to spare, and keep reserves.</p>
+  <a class="btn" href="index.html#next" style="margin-top:6px">Get the money map</a>
 
   <h2>Tools I use to decide</h2>
   <div class="rows">
-    <a href="fact-testable-fantasy.html"><div>Fact / Testable / Fantasy<span>Sort any deal idea into do-it-today, file-it, or parked-with-a-price-tag.</span></div><i>Free tool</i></a>
-    <a href="decision-forcer.html"><div>The Decision Forcer<span>Does this decision deserve any more of your life? Sets the date you stop thinking about it.</span></div><i>Free tool</i></a>
-    <a href="side-gig-llc.html"><div>Why your side gig wants an LLC<span>A real container for the thing you keep almost starting. Ask your accountant and attorney where it counts.</span></div><i>Free tool</i></a>
+    <a href="fact-testable-fantasy.html"><div>Fact / Testable / Fantasy<span>Sort any deal idea into do-it-today, file-it, or parked-with-a-price-tag.</span></div><i>Free</i></a>
+    <a href="decision-forcer.html"><div>The Decision Forcer<span>Does this decision deserve any more of your life? Sets the date you stop thinking about it.</span></div><i>Free</i></a>
+    <a href="side-gig-llc.html"><div>Why your side gig wants an LLC<span>A real container for the thing you keep almost starting. Ask your accountant and attorney where it counts.</span></div><i>Free</i></a>
   </div>
 
-  <h2>Own a house you need gone?</h2>
-  <div class="note">I buy houses in Washington and Dakota County, MN, and I'll tell you straight if you shouldn't sell yours to me.
-    <a href="houses.html" style="display:inline-flex;align-items:center;min-height:44px;margin-top:4px">I have a house →</a></div>
+  <h2>Learning in public</h2>
+  <p>Financial freedom basics, from someone one house in. Skeptical? Good. Here's the argument I'm working through:</p>
+  <div class="camps">
+    <div><h3>The no-debt camp</h3><p>Pay cash, sleep fine, grow slower. Nothing to lose but time.</p></div>
+    <div><h3>The leverage camp</h3><p>Borrow to buy more, grow faster. Works until the cash flow doesn't.</p></div>
+  </div>
+  <p class="note" style="margin-top:18px">What I'm actually doing, and what it costs when I get it wrong, lands here as I learn it.
+    Not "how I got free." I'm not there yet, and I'll say so.</p>
 
-  <h2>What's coming</h2>
-  <div class="note">Financial freedom basics, learned in public: the no-debt camp vs. the leverage camp, what I'm actually doing as a
-    first-time investor, and what it costs when I get it wrong. Not "how I got free." I'm not there yet, and I'll say so.</div>
+  <section class="sell" aria-label="For homeowners">
+    <h2>Own a house you need gone?</h2>
+    <p>I buy houses in Washington and Dakota County, MN, and I'll tell you straight if you shouldn't sell yours to me.</p>
+    <a href="houses.html">I have a house →</a>
+  </section>
 
-  <p class="muted" style="font-size:14px;margin-top:18px">Nothing on this page is financial, legal or tax advice. It's one investor's notes, honest about the misses.</p>
+  <p class="fine">Nothing on this page is financial, legal or tax advice, and no results are promised. My numbers are mine,
+    not a forecast for yours.</p>
 
-  <a class="go" href="index.html#next">Get the next lesson first<span>One email when there's something worth your time</span></a>
+  <a class="go" href="index.html#next">Get the money map<span>One email when it's ready, and the next lesson after it</span></a>
 
   <footer>
     <p>Hand-built, nothing tracking you: <a href="https://github.com/step427/dadhax-reels">view source</a>.</p>
