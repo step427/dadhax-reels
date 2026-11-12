@@ -850,3 +850,11 @@ Benchmarked 9 AI-service pages (memo: Claude_Code/dadhax-hub/research/ai-page-be
 - Phone: sticky "Packages / Book a call" bar under 820px.
 - Length: 6881px, right under the 7000px audit cap. Adding a section means cutting one.
 - Next: index, diy, realestate, kits move to the same light tokens (pull them into hub.css when they do).
+
+## Light lanes (shipped 2026-11-12, Nick: "Ship it")
+hub.css now carries the light tokens (paper, ink, serif, dark pills); index, diy, realestate and kits use it. ai.html keeps its inline copy.
+- Each lane gets one accent color, used narrowly: DIY = chalk-line blue #2B5C8A on measurements only; real estate = old-house brick on money that went out; AI = the yellow highlighter. Front-page tiles carry the three colors.
+- DIY: real garage frames from the 9/07 cleat takes (diy-hero/hanger/sketch.jpg), tape-measure rules between sections, graph paper on plan cards, kraft on kit cards, "My shop rules" (3 PT rules). Benchmark: Claude_Code/dadhax-hub/research/diy-page-benchmark.md.
+- Real estate: One Old House deal card in the log's own wording (bought in the 130s, all-in mid-260s, appraised 290, "Buyer walked · still own it"). No income claims, no "invest with me" (FTC). Benchmark: realestate-page-benchmark.md.
+- Hidden until shot: house before/after photos, cleat-wall tour video (`?slots` shows them).
+- Audit 2026-11-12: ship_gate 5 of 5 clear; index still audited collapsed (list off).
