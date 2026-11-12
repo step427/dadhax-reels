@@ -1,18 +1,20 @@
 {
  "page": "kits.html",
  "sha": "9b291dfc051a",
- "verdict": "PASS",
+ "verdict": "PASS WITH WARNINGS",
  "fail": [],
- "warn": [],
+ "warn": [
+  "LINE LENGTH: 33 chars/line on mobile (aim 35-45)."
+ ],
  "stats": {
   "viewport": "375x812",
-  "charsPerLine": 34,
+  "charsPerLine": 33,
   "words": 310,
-  "pageHeightPx": 2181,
-  "screens": 2.7,
+  "pageHeightPx": 2370,
+  "screens": 2.9,
   "longestBlockWords": 0,
   "links": 12
  },
  "fills": {},
- "audited": "2026-11-11T22:08:30+00:00"
+ "audited": "2026-11-12T02:30:54+00:00"
 }
