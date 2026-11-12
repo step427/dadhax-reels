@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Show me your vision: @nicksdadhax</title>
+<meta name="description" content="Five questions and a few pictures. Nick builds the website you already see in your head instead of guessing at it.">
+<style>
+  /* Vision intake (2026-11-12, Nick: "the website ultimately just becomes a public vision board").
+     Same light tokens as ai.html. Five questions, one required. Pictures are shrunk on the phone before sending. */
+  :root {
+    --carbon:#FBF8F2; --panel:#FFFFFF; --panel-up:#F4EFE4; --hair:#E6DED0;
+    --bone:#1D1B17; --graphite:#6A6458; --signal:#FFC629; --ink2:#3B372F; --bad:#A3271B;
+    --serif:"Iowan Old Style","Palatino Linotype","Book Antiqua",Palatino,Georgia,serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--carbon); color:var(--bone); font:18px/1.6 var(--sans); }
+  .wrap { max-width:720px; margin:0 auto; padding:0 clamp(16px,5vw,40px); }
+  a { color:var(--bone); }
+  mark { background:linear-gradient(transparent 58%, var(--signal) 58%); color:inherit; padding:0 .06em; }
+  .eyebrow { font:600 12.5px/1.2 var(--sans); letter-spacing:.16em; text-transform:uppercase; color:var(--graphite); margin:0 0 14px; }
+  h1, h2 { font-family:var(--serif); font-weight:600; letter-spacing:-.015em; margin:0; }
+  h1 { font-size:clamp(38px,7vw,64px); line-height:1.04; }
+  h2 { font-size:clamp(24px,3.6vw,30px); line-height:1.15; margin-bottom:6px; }
+  p { margin:0 0 14px; }
+  .lead { font-size:clamp(18px,2.2vw,21px); color:var(--ink2); }
+  .navbar { border-bottom:1px solid var(--hair); background:var(--carbon); }
+  .navbar .nav { border:0; margin:0 auto; max-width:1060px; padding:10px clamp(16px,5vw,40px); }
+  .navbar .navtop { margin-bottom:8px; }
+  .navlinks a { background:#fff; border-radius:999px; }
+  .hero { padding:clamp(36px,7vw,72px) 0 10px; }
+  .byline { display:flex; align-items:center; gap:12px; margin:0 0 18px; font-size:14.5px; color:var(--graphite); line-height:1.3; }
+  .byline img { width:44px; height:44px; border-radius:50%; object-fit:cover; flex:none; }
+  .byline b { display:block; color:var(--bone); font-size:15.5px; }
+  .story { border-left:3px solid var(--signal); padding-left:16px; color:var(--ink2); font-size:17px; margin:22px 0 0; }
+
+  form { margin:28px 0 0; }
+  .q { padding:26px 0; border-top:1px solid var(--hair); }
+  .q .n { font:600 12.5px var(--sans); letter-spacing:.14em; text-transform:uppercase; color:var(--graphite); }
+  .hint { color:var(--graphite); font-size:15.5px; margin:4px 0 12px; }
+  label.f { display:block; font-weight:600; font-size:15.5px; margin:12px 0 6px; }
+  input[type=text], input[type=email], input[type=tel], textarea {
+    width:100%; font:17px/1.45 var(--sans); color:var(--bone); background:var(--panel);
+    border:1.5px solid var(--hair); border-radius:12px; padding:12px 14px; min-height:48px; }
+  textarea { min-height:120px; resize:vertical; }
+  input:focus, textarea:focus { outline:2px solid var(--bone); outline-offset:1px; border-color:var(--bone); }
+  .chips { display:flex; flex-wrap:wrap; gap:8px; margin:6px 0 4px; }
+  .chips label { position:relative; }
+  .chips input { position:absolute; opacity:0; width:1px; height:1px; }
+  .chips span { display:inline-flex; align-items:center; min-height:44px; padding:0 16px; border-radius:999px; background:#fff;
+    border:1.5px solid var(--hair); font-size:15.5px; cursor:pointer; user-select:none; }
+  .chips input:checked + span { background:var(--bone); color:#fff; border-color:var(--bone); }
+  .chips input:focus-visible + span { outline:2px solid var(--bone); outline-offset:2px; }
+  .drop { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; min-height:120px; padding:18px;
+    border:2px dashed var(--graphite); border-radius:16px; background:var(--panel); text-align:center; cursor:pointer; }
+  .drop b { font:600 18px var(--serif); }
+  .drop small { color:var(--graphite); font-size:14.5px; }
+  .drop.over { background:var(--panel-up); }
+  #pics { display:grid; grid-template-columns:repeat(auto-fill,minmax(96px,1fr)); gap:10px; margin-top:12px; }
+  #pics figure { margin:0; position:relative; }
+  #pics img { width:100%; aspect-ratio:1; object-fit:cover; border-radius:10px; display:block; border:1px solid var(--hair); }
+  #pics button { position:absolute; top:4px; right:4px; width:44px; height:44px; border-radius:50%; border:0; background:rgba(29,27,23,.82); color:#fff; font-size:20px; cursor:pointer; }
+  .prompt { margin-top:14px; background:var(--panel-up); border-radius:12px; padding:14px 16px; font-size:15.5px; color:var(--ink2); }
+  .prompt summary { cursor:pointer; font-weight:600; color:var(--bone); min-height:44px; display:flex; align-items:center; }
+  .prompt pre { white-space:pre-wrap; font:15px/1.5 var(--sans); background:#fff; border:1px solid var(--hair); border-radius:10px; padding:12px; margin:8px 0; }
+  .two { display:grid; grid-template-columns:1fr 1fr; gap:0 14px; }
+  @media (max-width:560px) { .two { grid-template-columns:1fr; } }
+  .btn { display:inline-flex; align-items:center; justify-content:center; min-height:52px; padding:0 26px; border-radius:999px; border:0;
+    background:var(--bone); color:#fff; text-decoration:none; font:600 16px var(--sans); cursor:pointer; }
+  .btn.ghost { background:transparent; color:var(--bone); box-shadow:inset 0 0 0 1.5px var(--bone); }
+  .btn[disabled] { opacity:.6; cursor:wait; }
+  .err { color:var(--bad); font-weight:600; font-size:15.5px; margin:12px 0 0; }
+  .privacy { color:var(--graphite); font-size:14.5px; margin-top:16px; }
+  .hp { position:absolute; left:-9999px; }
+  #sent { padding:30px 0 10px; }
+  #sent ol { padding-left:22px; color:var(--ink2); }
+  #out { white-space:pre-wrap; font:13.5px/1.4 ui-monospace,Menlo,Consolas,monospace; background:#fff; border:1px dashed var(--graphite); padding:12px; border-radius:10px; }
+  footer { padding:28px 0 60px; color:var(--graphite); font-size:14.5px; border-top:1px solid var(--hair); margin-top:40px; }
+</style>
+<link rel="stylesheet" href="../site.css">
+</head>
+<body>
+
+<div class="navbar">
+  <nav class="nav">
+    <div class="navtop">
+      <a class="brand" href="../index.html" style="color:var(--bone)">@nicksdadhax</a>
+      <span class="meta">AI for small business owners</span>
+    </div>
+    <div class="navlinks">
+      <a href="../index.html">Home</a>
+      <a href="../diy.html">DIY</a>
+      <a href="../ai.html">AI</a>
+      <a href="../realestate.html">Real estate</a>
+      <a href="../kits.html">Kits</a>
+    </div>
+  </nav>
+</div>
+
+<main class="wrap">
+  <div class="hero">
+    <p class="byline"><img src="../nick.jpg" alt="" width="44" height="44"><span><b>Nick Stephens</b>Before I build anything</span></p>
+    <h1>Your website is a <mark>public vision board.</mark></h1>
+    <p class="lead">Most small-business sites are somebody else's guess: a template, stock photos, words that could belong to anyone.
+      You already see yours in your head. Five questions and a few pictures, and I build from what you see instead of what I assume.</p>
+    <p class="story">A nurse practitioner opening her own clinic sent me a few lines on why she was doing it and one AI picture
+      of the clinic she pictured. That was enough to build a site that felt like hers on the first pass.</p>
+  </div>
+
+  <form id="vision" novalidate>
+    <div class="q">
+      <p class="n">1 of 5 · the only one that's required</p>
+      <h2><label for="why">Why does your business exist?</label></h2>
+      <p class="hint">The real reason. What happened that made you start it? Easiest way: tap the mic on your phone's keyboard and just talk.</p>
+      <textarea id="why" name="why" maxlength="2000" required></textarea>
+    </div>
+
+    <div class="q">
+      <p class="n">2 of 5</p>
+      <h2><label for="who">Who do you serve, and what are they stuck on when they find you?</label></h2>
+      <p class="hint">Picture your best customer the day they go looking for you. What's going on in their life?</p>
+      <textarea id="who" name="who" maxlength="2000"></textarea>
+    </div>
+
+    <div class="q">
+      <p class="n">3 of 5</p>
+      <h2><label for="feel">When someone lands on your site, what should they feel?</label></h2>
+      <p class="hint">Three words is plenty. If there's a website you love (any business, any industry), paste the link and say what you love about it.</p>
+      <textarea id="feel" name="feel" maxlength="2000" style="min-height:96px"></textarea>
+    </div>
+
+    <div class="q">
+      <p class="n">4 of 5 · optional</p>
+      <h2 id="showLabel">Show me what you see.</h2>
+      <p class="hint">Screenshots of sites you like, an AI picture of your vision, photos of your space or your work, your logo. Up to 6.</p>
+      <label class="drop" id="drop" for="files" aria-describedby="showLabel">
+        <b>Add pictures</b><small>Tap to pick from your phone, or drag them here</small>
+      </label>
+      <input id="files" type="file" accept="image/*" multiple hidden>
+      <div id="pics" aria-live="polite"></div>
+      <p class="err" id="picErr" hidden></p>
+      <details class="prompt">
+        <summary>No picture yet? Make one in two minutes</summary>
+        <p>Paste this into ChatGPT or Gemini, fill in the brackets, and upload what it makes:</p>
+        <pre id="aiPrompt">Make a realistic photo of [my business: a home care agency / a clinic / a shop] on its best day, the way I picture it a year from now. The feeling should be [three words]. Show [the space, the people, the work]. No text or logos in the image.</pre>
+        <button type="button" class="btn ghost" id="copyPrompt">Copy the prompt</button>
+      </details>
+    </div>
+
+    <div class="q">
+      <p class="n">5 of 5</p>
+      <h2>When a new customer finds you, what should they do first?</h2>
+      <div class="chips" role="group" aria-label="First move">
+        <label><input type="checkbox" name="first_move" value="Call"><span>Call</span></label>
+        <label><input type="checkbox" name="first_move" value="Text"><span>Text</span></label>
+        <label><input type="checkbox" name="first_move" value="Book a time"><span>Book a time</span></label>
+        <label><input type="checkbox" name="first_move" value="Fill out a form"><span>Fill out a form</span></label>
+        <label><input type="checkbox" name="first_move" value="Buy online"><span>Buy online</span></label>
+        <label><input type="checkbox" name="first_move" value="Join a waitlist"><span>Join a waitlist</span></label>
+      </div>
+      <p class="hint" style="margin-top:14px">And where do they find you today?</p>
+      <div class="chips" role="group" aria-label="Where customers find you">
+        <label><input type="checkbox" name="found_by" value="Word of mouth"><span>Word of mouth</span></label>
+        <label><input type="checkbox" name="found_by" value="Google"><span>Google</span></label>
+        <label><input type="checkbox" name="found_by" value="Facebook"><span>Facebook</span></label>
+        <label><input type="checkbox" name="found_by" value="Instagram"><span>Instagram</span></label>
+        <label><input type="checkbox" name="found_by" value="Referral partners"><span>Referral partners</span></label>
+        <label><input type="checkbox" name="found_by" value="Ads"><span>Ads</span></label>
+        <label><input type="checkbox" name="found_by" value="Not yet"><span>Not yet</span></label>
+      </div>
+    </div>
+
+    <div class="q">
+      <h2>Where do I send your first look?</h2>
+      <div class="two">
+        <div><label class="f" for="name">Your name</label><input id="name" name="name" type="text" autocomplete="name" maxlength="120"></div>
+        <div><label class="f" for="business">Business name</label><input id="business" name="business" type="text" autocomplete="organization" maxlength="160"></div>
+        <div><label class="f" for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" maxlength="160"></div>
+        <div><label class="f" for="phone">Or a cell for texts</label><input id="phone" name="phone" type="tel" autocomplete="tel" maxlength="30"></div>
+      </div>
+      <label class="f" for="site">Your current website or Instagram (if you have one)</label>
+      <input id="site" name="site" type="text" inputmode="url" maxlength="300">
+      <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <p class="err" id="err" role="alert" hidden></p>
+      <p style="margin-top:20px"><button class="btn" id="go" type="submit">Send it to Nick</button></p>
+      <p class="privacy">This goes to me and nobody else. Your answers sit in my private spreadsheet and your pictures in my email.
+        Nothing is sold or shared, and if you ask, I delete it. Health and care businesses: please leave out any patient or client details.</p>
+    </div>
+  </form>
+
+  <div id="sent" hidden tabindex="-1">
+    <h2 id="sentTitle">Got it.</h2>
+    <p class="lead">Here's what happens next:</p>
+    <ol>
+      <li>I read every answer and look at every picture.</li>
+      <li>I reach out with a couple of questions, or with a first look at your site.</li>
+      <li>You tell me what's off, and we fix it until it looks like what you see.</li>
+    </ol>
+    <pre id="out" hidden></pre>
+    <p><a class="btn ghost" href="../ai.html">See how I set up AI for small businesses</a></p>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">Nick Stephens · Cottage Grove, MN · <a href="https://www.instagram.com/nicksdadhax/">@nicksdadhax</a> ·
+    Hand-built, nothing tracking you: <a href="https://github.com/step427/dadhax-reels">view source</a>.</div>
+</footer>
+
+<script>
+(function () {
+  // Empty WEBHOOK = draft mode: nothing leaves the page and the payload is shown instead.
+  var WEBHOOK = 'https://script.google.com/macros/s/AKfycbzzI0CNMYQmPlhqw5fIgYgqzxS4rWI1-4dvrXQWmDCaM8tA_AkHS3MkGex3VSRAmX6h/exec';
+  var MAX = 6, EDGE = 1600, pics = [];   // pics: {name, data(base64 jpeg), url}
+  var form = document.getElementById('vision'), err = document.getElementById('err'), picErr = document.getElementById('picErr');
+  var input = document.getElementById('files'), drop = document.getElementById('drop'), grid = document.getElementById('pics');
+
+  // Shrink every picture to a JPEG no wider than 1600px on the phone, so a 6-photo send stays small.
+  function shrink(file) {
+    return new Promise(function (ok, no) {
+      var img = new Image(), src = URL.createObjectURL(file);
+      img.onload = function () {
+        var s = Math.min(1, EDGE / Math.max(img.naturalWidth, img.naturalHeight));
+        var c = document.createElement('canvas');
+        c.width = Math.round(img.naturalWidth * s); c.height = Math.round(img.naturalHeight * s);
+        var g = c.getContext('2d'); g.fillStyle = '#fff'; g.fillRect(0, 0, c.width, c.height); g.drawImage(img, 0, 0, c.width, c.height);
+        URL.revokeObjectURL(src);
+        var url = c.toDataURL('image/jpeg', 0.82);
+        ok({ name: file.name.replace(/\.[^.]+$/, '').slice(0, 60) + '.jpg', data: url.split(',')[1], url: url });
+      };
+      img.onerror = function () { URL.revokeObjectURL(src); no(file.name); };
+      img.src = src;
+    });
+  }
+  function draw() {
+    grid.innerHTML = '';
+    pics.forEach(function (p, i) {
+      var fig = document.createElement('figure');
+      fig.innerHTML = '<img alt=""><button type="button" aria-label="Remove picture">&times;</button>';
+      fig.querySelector('img').src = p.url; fig.querySelector('img').alt = p.name;
+      fig.querySelector('button').onclick = function () { pics.splice(i, 1); draw(); };
+      grid.appendChild(fig);
+    });
+  }
+  function add(files) {
+    picErr.hidden = true;
+    var list = Array.prototype.slice.call(files).filter(function (f) { return /^image\//.test(f.type) || /\.(heic|heif)$/i.test(f.name); });
+    var room = MAX - pics.length;
+    if (list.length > room) { picErr.textContent = 'Up to ' + MAX + ' pictures. I kept the first ' + Math.max(room, 0) + '.'; picErr.hidden = false; list = list.slice(0, room); }
+    list.forEach(function (f) {
+      shrink(f).then(function (p) { if (pics.length < MAX) { pics.push(p); draw(); } })
+        .catch(function (n) { picErr.textContent = 'Couldn\'t open ' + n + '. A screenshot or JPG of it works.'; picErr.hidden = false; });
+    });
+  }
+  input.addEventListener('change', function () { add(input.files); input.value = ''; });
+  ['dragover', 'dragenter'].forEach(function (t) { drop.addEventListener(t, function (e) { e.preventDefault(); drop.classList.add('over'); }); });
+  ['dragleave', 'drop'].forEach(function (t) { drop.addEventListener(t, function (e) { e.preventDefault(); drop.classList.remove('over'); }); });
+  drop.addEventListener('drop', function (e) { add(e.dataTransfer.files); });
+
+  document.getElementById('copyPrompt').addEventListener('click', function () {
+    var b = this, t = document.getElementById('aiPrompt').textContent;
+    (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(function () { b.textContent = 'Copied'; }, function () { b.textContent = 'Press and hold the text to copy'; });
+  });
+
+  function picked(name) { return Array.prototype.map.call(form.querySelectorAll('input[name=' + name + ']:checked'), function (x) { return x.value; }).join(', '); }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var f = form.elements, email = f.email.value.trim(), phone = f.phone.value.trim();
+    var msg = !f.why.value.trim() ? 'Question 1 is the one I need. A sentence or two is plenty.'
+      : !f.name.value.trim() ? 'Please add your name.'
+      : !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) && phone.replace(/\D/g, '').replace(/^1(?=\d{10}$)/, '').length !== 10 ? 'Add an email or a 10-digit cell so I can reach you.' : '';
+    if (msg) { err.textContent = msg; err.hidden = false; (msg.indexOf('Question 1') === 0 ? f.why : f.name).focus(); return; }
+    var lead = { form: 'vision', sent: new Date().toISOString(), name: f.name.value.trim(), business: f.business.value.trim(),
+      email: email, phone: phone, site: f.site.value.trim(), why: f.why.value.trim(), who: f.who.value.trim(), feel: f.feel.value.trim(),
+      first_move: picked('first_move'), found_by: picked('found_by'),
+      pictures: pics.map(function (p) { return p.name; }).join(', '),
+      pictures_data: pics.map(function (p) { return { name: p.name, data: p.data }; }) };
+    function done() {
+      document.getElementById('sentTitle').textContent = 'Got it, ' + lead.name.split(' ')[0] + '.';
+      var out = document.getElementById('out');
+      if (!WEBHOOK) { out.hidden = false; out.textContent = 'DRAFT MODE: nothing was sent.\n' + JSON.stringify(Object.assign({}, lead, { pictures_data: pics.length + ' pictures' }), null, 2); }
+      form.hidden = true; var s = document.getElementById('sent'); s.hidden = false; s.focus(); s.scrollIntoView();
+    }
+    if (f.company.value || !WEBHOOK) { done(); return; }
+    var go = document.getElementById('go'); go.disabled = true; go.textContent = 'Sending...';
+    // text/plain = no CORS preflight; Apps Script answers {ok:true}
+    fetch(WEBHOOK, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(lead) })
+      .then(function (r) { return r.json(); }).then(function (j) { if (!j.ok) throw 0; done(); })
+      .catch(function () { go.disabled = false; go.textContent = 'Send it to Nick'; err.textContent = 'That didn\'t go through. Try again, or DM me on Instagram.'; err.hidden = false; });
+  });
+  form.addEventListener('input', function () { err.hidden = true; });
+})();
+</script>
+</body>
+</html>
