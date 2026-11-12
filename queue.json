@@ -4870,6 +4870,22 @@
       "hypothesis": "If the re-cut opens cold on the jaw-clench if-then and runs 9.97s instead of 17.3s, then avg watch % beats the parent's 30.7% AND avg watch stays at or above the parent's 5.3s, because the parent lost viewers in the preamble before the specific fix.",
       "recut_of": "ig-1105-rplan.mp4",
       "kind": "old"
+    },
+    {
+      "file": "ig-1112-learn.mp4",
+      "title": "Stop instructing. Start learning.",
+      "status": "pending",
+      "earliest": "2026-11-12",
+      "caption": "Hey Dad,\n\nYou walk in with the answers, and the other person quietly checks out.\n\nMy take, from the PTs and OTs I've met in my career: burnout starts when we're instructing people how to live their lives and we fail to actually connect with them on a human-to-human level. It's not our role to instruct them. It's our role to learn from them about their lives, and then they learn from us.\n\nIf you're the one with the answers today, then ask about their life first.\n\nI post the one I wish somebody had told me. Follow so you don't have to find it the hard way.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "OFF-ARC cover",
+      "pix": "I",
+      "value_forms": [
+        "idea",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-11-12",
+      "topic_class": "talk",
+      "source_raw": "PXL_20261104_153318950.mp4"
     }
   ]
 }
