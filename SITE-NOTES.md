@@ -858,3 +858,12 @@ hub.css now carries the light tokens (paper, ink, serif, dark pills); index, diy
 - Real estate: One Old House deal card in the log's own wording (bought in the 130s, all-in mid-260s, appraised 290, "Buyer walked · still own it"). No income claims, no "invest with me" (FTC). Benchmark: realestate-page-benchmark.md.
 - Hidden until shot: house before/after photos, cleat-wall tour video (`?slots` shows them).
 - Audit 2026-11-12: ship_gate 5 of 5 clear; index still audited collapsed (list off).
+
+## Legal + security check (2026-11-12, from a reel Nick flagged)
+Checklist lives in `~/.claude/skills/service-site/LEGAL-SECURITY.md`. nicksdadhax.com against it:
+- Clear: no cookies, no analytics, no third-party scripts, no live checkout, no reviews, own photos, HTTPS forced (http 301s), tools say "nothing leaves your device", form has a honeypot.
+- **Gap 1, blocks LIST_LIVE:** no privacy page. Draft at `Claude_Code/dadhax-hub/privacy-DRAFT.html`. Ship it with the list, link it in the footer and under the consent box. Every list email needs a postal address (PO box OK, CAN-SPAM).
+- **Gap 2:** PT/health tools (wound-map, neuroplasticity, toolbox, the DIY body pages) have no "education, not medical or PT advice; not a patient relationship" line. Wound-map already says "not a diagnosis".
+- **Gap 3, before kits sell:** terms + refund line at checkout. Cleat/build plans need a safety line (studs, rated loads, own risk).
+- Watch: houses.html "I buy houses". Fine as a principal buyer; get an attorney read before any assignment-model ads (Minn. Stat. 82.55).
+- Security: GitHub Pages can't set headers. Registrar/Cloudflare/GitHub need 2FA on (Nick to confirm).
