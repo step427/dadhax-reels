@@ -41,12 +41,12 @@ _Share of the reel actually watched. This is the hook test._
 |---|---|---|---|---|
 | utility | 164 | 386.0 | 1183.2 | 37356.0 |
 | meta | 11 | 170.0 | 176.5 | 289.0 |
-| talk | 110 | 136.0 | 172.9 | 1781.0 |
+| talk | 110 | 137.0 | 172.9 | 1781.0 |
 
 | duration | n | median | mean | best |
 |---|---|---|---|---|
-| under 20s | 124 | 230.0 | 1010.5 | 37356.0 |
-| 35-50s | 46 | 177.0 | 490.2 | 2995.0 |
+| under 20s | 124 | 230.0 | 1010.6 | 37356.0 |
+| 35-50s | 46 | 177.0 | 490.2 | 2997.0 |
 | 50-70s | 27 | 174.0 | 464.1 | 2703.0 |
 | 20-35s | 76 | 167.5 | 663.1 | 12477.0 |
 | over 70s | 12 | 146.5 | 351.2 | 2671.0 |
@@ -58,7 +58,7 @@ _Share of the reel actually watched. This is the hook test._
 
 | cover | n | median | mean | best |
 |---|---|---|---|---|
-| default cover | 145 | 200.0 | 668.7 | 12477.0 |
+| default cover | 145 | 200.0 | 668.8 | 12477.0 |
 | custom cover | 140 | 177.0 | 843.1 | 37356.0 |
 
 | collab | n | median | mean | best |
@@ -70,26 +70,26 @@ _Share of the reel actually watched. This is the hook test._
 
 | topic | n | median | mean | best |
 |---|---|---|---|---|
-| utility | 164 | 321.5 | 904.5 | 25662.0 |
+| utility | 164 | 321.5 | 904.6 | 25662.0 |
 | meta | 11 | 133.0 | 142.2 | 219.0 |
-| talk | 110 | 116.5 | 143.0 | 1297.0 |
+| talk | 110 | 116.5 | 143.1 | 1297.0 |
 
 | duration | n | median | mean | best |
 |---|---|---|---|---|
-| under 20s | 124 | 190.0 | 754.6 | 25662.0 |
+| under 20s | 124 | 190.0 | 754.7 | 25662.0 |
 | 50-70s | 27 | 154.0 | 376.5 | 2088.0 |
-| 35-50s | 46 | 146.5 | 406.2 | 2591.0 |
+| 35-50s | 46 | 146.5 | 406.3 | 2594.0 |
 | 20-35s | 76 | 144.0 | 520.2 | 9125.0 |
 | over 70s | 12 | 131.0 | 306.9 | 2312.0 |
 
 | fresh/catalog | n | median | mean | best |
 |---|---|---|---|---|
-| back-catalog | 103 | 247.0 | 945.9 | 25662.0 |
+| back-catalog | 103 | 247.0 | 946.0 | 25662.0 |
 | fresh | 182 | 135.5 | 374.8 | 3618.0 |
 
 | cover | n | median | mean | best |
 |---|---|---|---|---|
-| default cover | 145 | 166.0 | 529.8 | 9125.0 |
+| default cover | 145 | 166.0 | 529.9 | 9125.0 |
 | custom cover | 140 | 154.5 | 634.4 | 25662.0 |
 
 | collab | n | median | mean | best |
