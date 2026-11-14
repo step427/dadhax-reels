@@ -4972,6 +4972,26 @@
       "permalink": "https://www.instagram.com/reel/DfuCamvDHqr/",
       "posted_at": "2026-11-14T04:54:57-06:00",
       "fb_page_video_id": "3442035685978639"
+    },
+    {
+      "file": "ig-1114-cleat.mp4",
+      "title": "One 45° cut hangs 90% of my garage (re-cut)",
+      "status": "pending",
+      "earliest": "2026-11-14",
+      "caption": "Hey Dad,\n\nIf you've been following me along, you know that 90% of my garage is hanging on a French cleat, and this helps me avoid the need for a shed.\n\nRip one board at 45 degrees. Half the strip screws into the studs. The other half goes on the back of the shelf, the bin, the tool. They hook together, and you lift it off and move it whenever you want. The office shelves are on them too.\n\nIf you can make one 45° cut, then you can hang a whole wall.\n\nFree cleat wall tool: type your wall width, get your cut list. The link is in my bio.\nnicksdadhax.com/cleat-wall.html\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "Sat 11/14 9a",
+      "pix": "I",
+      "value_forms": [
+        "idea",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-11-14",
+      "topic_class": "utility",
+      "source_raw": "20260907_120012.mp4",
+      "hypothesis": "If the cut opens on the 90%-of-my-garage claim and lands on the hand moving the cleat shelves, then avg watch seconds beat the parent's 12.2s, because the claim is the curiosity gap and the move is the proof.",
+      "cover_ms": 0,
+      "recut_of": "ig-diy-cleatwall.mp4",
+      "kind": "old"
     }
   ]
 }
