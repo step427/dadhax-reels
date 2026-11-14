@@ -159,7 +159,14 @@ input[type=text],input[type=number]{width:100%;box-sizing:border-box;font:inheri
 .how{background:var(--panel);border-radius:12px;padding:12px;font-size:16px}
 .how p{margin:0}
 .coach{background:rgba(5,9,40,.55);border:1px solid rgba(214,222,255,.28);border-radius:6px;padding:10px 12px}
-.coach summary{cursor:pointer;font-weight:700;color:var(--gold);list-style-position:inside}
+.coach summary{cursor:pointer;font-weight:700;font-size:18px;list-style:none;text-align:center;padding:12px;border-radius:8px;background:var(--gold);color:#2a1700;box-shadow:0 4px 0 #9c5d00}
+.coach summary::-webkit-details-marker{display:none}
+.coach[open] summary{background:transparent;color:var(--gold);box-shadow:none;border:2px solid var(--gold)}
+.coach[open] summary::before{content:"✕ Hide the drill";}.coach[open] summary{font-size:0}.coach[open] summary::before{font-size:16px}
+.drillart{display:block;width:100%;height:auto;margin-top:10px;border-radius:8px}
+.drillart .al{font:700 11px var(--body);fill:#eef4ea;text-anchor:middle;letter-spacing:.08em}
+.drillart .ab{font:700 13px var(--body);fill:#0b1240;text-anchor:middle}
+.drillart .cap{font:600 12px var(--body);fill:#eef4ea}
 .coach dl{margin:10px 0 0;display:grid;gap:2px}
 .coach dt{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--chalk-dim);margin-top:8px}
 .coach dd{margin:0;font-size:15px}
@@ -192,8 +199,10 @@ textarea,select{width:100%;box-sizing:border-box;font:inherit;font-size:16px;pad
 .bsay.go{color:#fff;text-shadow:3px 3px 0 #000,-2px -2px 0 #d33}
 @media (prefers-reduced-motion:reduce){.bsay.on{transition:none}}
 .pk{display:flex;gap:8px;align-items:stretch}
-.pkgo{flex:1;display:flex;gap:10px;align-items:center;text-align:left;padding:10px 12px;border-radius:6px;border:2px solid #ff4d5e;background:rgba(255,77,94,.12);color:var(--chalk);min-width:0}
-.pkgo b{display:block;font-size:16px}.pkgo small{display:block;font-size:12px;color:var(--chalk-dim)}
+.pkgo{flex:1;display:flex;gap:12px;align-items:center;text-align:left;padding:14px 14px;min-height:76px;border-radius:10px;border:2px solid #ff4d5e;background:linear-gradient(180deg,rgba(255,77,94,.32),rgba(255,77,94,.16));color:var(--chalk);min-width:0;box-shadow:0 4px 0 #8f2632;cursor:pointer}
+.pkgo:active{transform:translateY(3px);box-shadow:0 1px 0 #8f2632}
+.pkgo b{display:block;font-size:19px;text-transform:uppercase;letter-spacing:.04em}.pkgo small{display:block;font-size:13px;color:var(--chalk)}
+.pkgo .pkarr{margin-left:auto;font-size:22px;color:#ff8a95}
 .pkmin{display:flex;flex-direction:column;justify-content:center;gap:2px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--chalk-dim)}
 .pkmin select{width:auto;padding:8px;font-size:16px}
 .pkmsg{margin:0;font-size:13px;color:var(--chalk-dim)}.pkmsg a{color:var(--gold)}
@@ -205,8 +214,16 @@ textarea,select{width:100%;box-sizing:border-box;font:inherit;font-size:16px;pad
 #pocket .pdrill{font-family:var(--display);font-size:22px;color:#7c8a82}
 #pocket .ptime{font-family:var(--display);font-size:20px;color:#6f7d75}
 #pocket .pstats{display:flex;gap:28px}#pocket .pstats b{display:block;font-family:var(--display);font-size:34px;color:#6f7d75}
-#pocket .pheard{max-width:90%;font-size:14px;min-height:2.6em;color:#4a554f}
-#pkHold{margin-top:14px;width:200px;height:64px;border-radius:32px;border:2px solid #3a443e;background:#0c0f0d;color:#6b776f;font-weight:700;position:relative;overflow:hidden}
+#pocket .pheard{max-width:90%;font-size:15px;min-height:2.6em;color:#7d8a83}
+#pocket .pfix{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:10px;width:min(100%,380px);margin-top:6px}
+#pocket .pf{position:relative;overflow:hidden;min-height:92px;border-radius:14px;background:#0c0f0d;font-family:var(--display);font-size:19px;font-weight:700;letter-spacing:.03em;touch-action:none}
+#pocket .pf i{position:absolute;left:0;bottom:0;height:100%;width:0;opacity:.35}
+#pocket .pf span{position:relative}
+#pocket .pf.c{border:3px solid #b8922a;color:#d9b03f}#pocket .pf.c i{background:#b8922a}
+#pocket .pf.d{border:3px solid #a8404b;color:#d5626e}#pocket .pf.d i{background:#a8404b}
+#pocket .pf.u{border:3px solid #56625b;color:#a3b0a8}#pocket .pf.u i{background:#56625b}
+#pocket .pfhint{font-size:13px;color:#5f6b64;max-width:92%}
+#pkHold{margin-top:10px;width:220px;height:60px;border-radius:30px;border:2px solid #5a6660;background:#0c0f0d;color:#a3b0a8;font-weight:700;font-size:16px;position:relative;overflow:hidden}
 #pkHold i{position:absolute;left:0;top:0;bottom:0;width:0;background:#3a1d22}#pkHold span{position:relative}
 #pocket .ppaste{font-size:12px;color:#3f4a44}
 #post{position:fixed;inset:0;z-index:96;background:radial-gradient(120% 80% at 50% 30%,#1a2466,#05081c 70%);overflow-y:auto;padding:calc(14px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) calc(16px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
@@ -454,8 +471,14 @@ body.gp-fs{overflow:hidden}body.gp-fs .tabs{display:none}
   <div class="pdrill" id="pkDrill"></div><div class="ptime" id="pkTime">0:00</div>
   <div class="pbig" id="pkRow">0</div><div class="plbl">in a row</div>
   <div class="pstats"><div><b id="pkC">0</b>catches</div><div><b id="pkD">0</b>drops</div></div>
-  <div class="pheard" id="pkHeard">Just play. Cheer the catches, groan the misses.</div>
-  <button id="pkHold" type="button"><i id="pkHoldBar"></i><span>Hold to stop</span></button>
+  <div class="pheard" id="pkHeard">Say “catch” or “drop” after each rep. It beeps when it counts.</div>
+  <div class="pfix">
+    <button type="button" class="pf c" data-fix="c"><i></i><span>＋ CATCH</span></button>
+    <button type="button" class="pf d" data-fix="d"><i></i><span>＋ DROP</span></button>
+    <button type="button" class="pf u" data-fix="u"><i></i><span>↶ UNDO</span></button>
+  </div>
+  <div class="pfhint">Missed one? Press and hold a button for half a second. You can also say “undo.”</div>
+  <button id="pkHold" type="button"><i id="pkHoldBar"></i><span>■ Hold to stop</span></button>
   <a href="#" class="ppaste" id="pkPaste">Have a transcript instead? Paste it</a>
 </div>
 <div class="sheet" id="rec" hidden>
@@ -493,16 +516,16 @@ body.gp-fs{overflow:hidden}body.gp-fs .tabs{display:none}
   <div class="sheet-in">
     <div class="sheet-head">
       <div><div class="stg" id="sStage"></div><h2 id="sName"></h2></div>
-      <button class="btn" id="sUndo" type="button">Undo</button>
+      <button class="btn" id="sUndo" type="button">↶ Undo</button>
     </div>
     <div class="battle"><canvas id="bCan" aria-label="Drive: every catch gains 10 yards"></canvas><div class="bnames"><span id="bP">PLAYER 1</span><span id="bO">PRACTICE DEFENDER</span></div><div class="bsay" id="bSay" hidden></div></div>
-    <div class="pk"><button class="pkgo" id="pkStart" type="button"><span class="recdot"></span><span><b>Pocket mode</b><small>Hit start, phone in your pocket, and just play. Talk like normal: “Nice catch!” or “Oh, you dropped it.” Pause after each rep. Your last word counts. Counting out loud works too.</small></span></button>
+    <div class="pk"><button class="pkgo" id="pkStart" type="button"><span class="recdot"></span><span><b>Start pocket mode</b><small>Phone in your pocket. Say “catch” or “drop” after each rep.</small></span><span class="pkarr" aria-hidden="true">▶</span></button>
       <label class="pkmin" for="pkMin">Session <select id="pkMin"><option>10</option><option selected>15</option><option>20</option><option>30</option><option>45</option></select> min</label></div>
     <p class="pkmsg" id="pkMsg"></p>
     <div class="pkrev" id="pkRev" hidden><p class="pkmsg">Phone got one wrong? Tap that rep to flip it.</p><div class="reps" id="pkReps"></div></div>
     <div class="pkreplay" id="pkReplay" hidden><button class="btn go" id="pkPlay" type="button">▶ Watch the replay</button><span><b id="pkReplayN">0</b> plays with his real audio <span id="pkNow"></span></span></div>
     <p class="saythis" id="sSay"></p><p class="cue" id="sCue"></p><p id="sHow" hidden></p>
-    <details class="coach" id="sCoach"><summary>How to coach it · watch a video</summary><div id="sCoachBody"></div></details>
+    <details class="coach" id="sCoach"><summary>▶ Show me the drill</summary><div id="sCoachBody"></div></details>
     <div class="counters">
       <div class="ctr"><span class="num" id="sCatches">0</span><small>Catches</small></div>
       <div class="ctr hot"><span class="num" id="sRow">0</span><small>In a row</small></div>
@@ -1029,12 +1052,70 @@ var VIEWS=["home","train","play","log","locker"];
 function show(v){VIEWS.forEach(function(x){$("view-"+x).hidden=x!==v});document.querySelectorAll(".tab").forEach(function(t){t.classList.toggle("on",t.dataset.v===v);t.setAttribute("aria-current",t.dataset.v===v?"page":"false")});window.scrollTo(0,0)}
 document.querySelectorAll(".tab").forEach(function(t){t.addEventListener("click",function(){show(t.dataset.v)})});
 
+
+/* ---------- drill cartoons (11/14: replaces the YouTube links, which didn't land on the right clip) ----------
+   Looping SVG, no files, no network. Gold = you (the coach), blue = the kid. */
+var GOLD="#ffc83d",BLUE="#4f8dff";
+function vis(a,b,d){return '<animate attributeName="opacity" dur="'+d+'s" repeatCount="indefinite" calcMode="discrete" values="0;1;0" keyTimes="0;'+a+';'+b+'"/>'}
+function mv(path,a,b,d,rot){return '<animateMotion dur="'+d+'s" repeatCount="indefinite" path="'+path+'" keyPoints="0;0;1;1" keyTimes="0;'+a+';'+b+';1" calcMode="linear"'+(rot?' rotate="auto"':'')+'/>'}
+var BALL='<ellipse rx="7" ry="4.3" fill="#8b4a1f" stroke="#f4efe6" stroke-width="1.3"/><line x1="-2.5" y1="0" x2="2.5" y2="0" stroke="#f4efe6" stroke-width="1.2"/>';
+function ball(path,a,b,d,hold){return '<g opacity="0">'+BALL+mv(path,a,b,d,true)+vis(a,Math.min(.99,b+(hold||.12)),d)+'</g>'}
+function thing(shape,path,a,b,d){return '<g opacity="0">'+shape+mv(path,a,b,d)+vis(a,Math.min(.99,b+.05),d)+'</g>'}
+function dot(x,y,c,l){return '<circle cx="'+x+'" cy="'+y+'" r="11" fill="'+c+'" stroke="#0b1a13" stroke-width="2"/><text x="'+x+'" y="'+(y+27)+'" class="al">'+l+'</text>'}
+function bub(x,y,t,a,b,d,bg){var w=t.length*8+18;return '<g opacity="0"><rect x="'+(x-w/2)+'" y="'+(y-15)+'" width="'+w+'" height="23" rx="7" fill="'+(bg||"#fff")+'"/><text x="'+x+'" y="'+(y+2)+'" class="ab">'+t+'</text>'+vis(a,b,d)+'</g>'}
+function star(x,y,a,b,d){return bub(x,y,"CATCH!",a,b,d,"#49e08a")}
+function cap(t){return '<text x="10" y="18" class="cap">'+t+'</text>'}
+var FIELD='<rect width="320" height="180" rx="8" fill="#1d5e34"/><rect x="40" width="40" height="180" fill="#21683a"/><rect x="120" width="40" height="180" fill="#21683a"/><rect x="200" width="40" height="180" fill="#21683a"/><rect x="280" width="40" height="180" fill="#21683a"/>';
+var SKY='<rect width="320" height="180" rx="8" fill="#13285e"/><rect y="150" width="320" height="30" fill="#1d5e34"/>';
+function stick(c,l){return '<circle cx="0" cy="-54" r="9" fill="'+c+'"/><line x1="0" y1="-45" x2="0" y2="-20" stroke="'+c+'" stroke-width="5" stroke-linecap="round"/><line x1="0" y1="-20" x2="-9" y2="0" stroke="'+c+'" stroke-width="5" stroke-linecap="round"/><line x1="0" y1="-20" x2="9" y2="0" stroke="'+c+'" stroke-width="5" stroke-linecap="round"/>'+(l?'<text x="0" y="16" class="al">'+l+'</text>':'')}
+function art(inner,label){return '<svg class="drillart" viewBox="0 0 320 180" role="img" aria-label="'+esc(label)+'">'+inner+'</svg>'}
+function drillArt(k){var d=3.2,s;
+  if(k==="blind"||k==="math"||k==="color"){
+    s=FIELD+dot(60,100,GOLD,"YOU")+dot(250,100,BLUE,"KID");
+    if(k==="blind"){s=s+cap("Kid faces AWAY. Yell “TURN!” as you throw.")
+      +'<g opacity="0"><path d="M264 93 l14 7 l-14 7z" fill="#fff"/>'+vis(.001,.36,d)+'</g><g opacity="0"><path d="M236 93 l-14 7 l14 7z" fill="#fff"/>'+vis(.36,.98,d)+'</g>'
+      +bub(60,66,"TURN!",.18,.5,d)+ball("M72 96 Q155 30 237 96",.25,.62,d)+star(250,66,.63,.95,d)}
+    if(k==="math"){s=s+cap("Call a problem as you throw. Answer, THEN catch.")+bub(60,66,"6 + 3?",.1,.5,d)+bub(250,66,"9!",.38,.62,d)+ball("M72 96 Q155 30 237 96",.18,.6,d)+star(250,66,.64,.95,d)}
+    if(k==="color"){s=s+cap("Hold up a color as you throw. Kid shouts it.")+'<g opacity="0"><path d="M40 92 l8 -22 l8 22z" fill="#e03b3b" stroke="#fff" stroke-width="1.5"/>'+vis(.05,.62,d)+'</g>'+bub(250,66,"RED!",.38,.62,d)+ball("M72 96 Q155 30 237 96",.15,.58,d)+star(250,40,.62,.95,d)}
+    return art(s,DRILLS[k].name+" diagram")}
+  if(k==="distract"){
+    s=FIELD+cap("Football to the hands, socks at the belly.")+dot(60,100,GOLD,"YOU")+dot(250,100,BLUE,"KID")
+      +ball("M72 92 Q155 34 238 94",.15,.6,d)
+      +thing('<circle r="6" fill="#d8d8d8" stroke="#888"/><text y="18" class="al">socks</text>',"M72 112 L238 108",.15,.5,d)
+      +bub(160,160,"Eyes on the football",.15,.95,d,"#ffc83d")+star(250,66,.63,.95,d);
+    return art(s,"Distraction catch diagram")}
+  if(k==="clock"){d=6;var T=[[160,40,"HIGH: thumbs together"],[218,96,"WIDE: reach out"],[160,150,"LOW: pinkies together"],[102,96,"WIDE: reach out"]],w=[[.02,.16],[.27,.41],[.52,.66],[.77,.91]];
+    s=FIELD+cap("Your view. Throw to 4 spots around the body.")+'<g transform="translate(160,140)">'+stick(BLUE,"")+'</g><text x="186" y="92" class="al">KID</text>';
+    T.forEach(function(t,i){s+='<circle cx="'+t[0]+'" cy="'+t[1]+'" r="12" fill="none" stroke="#fff" stroke-dasharray="3 3" opacity=".7"/>'+ball("M160 182 L"+t[0]+" "+t[1],w[i][0],w[i][1],d,.1)+bub(160,170,t[2],w[i][1],w[i][1]+.2,d,"#ffc83d")});
+    return art(s,"Clock face diagram")}
+  if(k==="snap"){d=3.6;
+    s=FIELD+cap("Run at the cone, sit your hips, SNAP a square turn.")+'<path d="M40 140 L180 140 L180 40" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="6 5" opacity=".7"/><path d="M180 140 m-9 8 l9 -18 l9 18z" fill="#ff7a1a"/>'
+      +dot(285,52,GOLD,"YOU")+'<g>'+'<circle r="10" fill="'+BLUE+'" stroke="#0b1a13" stroke-width="2"/>'+mv("M40 140 L180 140 L180 40",0,.85,d)+'</g>'
+      +bub(255,118,"SIT • SNAP!",.36,.6,d)+ball("M273 54 L186 62",.5,.72,d)+star(180,26,.74,.98,d);
+    return art(s,"90 degree snap diagram")}
+  if(k==="tight"){d=3.4;
+    s=FIELD+'<rect x="0" y="44" width="320" height="6" fill="#fff"/><text x="300" y="36" class="al">OUT</text>'+cap("Run the line. Catch, then two feet down IN.")
+      +dot(110,150,GOLD,"YOU")+'<g><circle r="10" fill="'+BLUE+'" stroke="#0b1a13" stroke-width="2"/>'+mv("M20 66 L255 66",0,.8,d)+'</g>'
+      +ball("M120 142 Q190 80 225 68",.38,.69,d)
+      +'<g opacity="0"><ellipse cx="258" cy="58" rx="4" ry="6" fill="#fff"/><ellipse cx="270" cy="62" rx="4" ry="6" fill="#fff"/>'+vis(.8,.99,d)+'</g>'+bub(262,96,"TAP TAP",.8,.99,d,"#49e08a");
+    return art(s,"Tightrope sideline diagram")}
+  if(k==="high"){
+    s=SKY+cap("High, soft arc. Jump and catch it at the TOP.")+'<g transform="translate(50,150)">'+stick(GOLD,"")+'</g><text x="50" y="172" class="al">YOU</text>'
+      +'<g><g transform="translate(255,150)">'+stick(BLUE,"")+'<line x1="0" y1="-42" x2="-8" y2="-72" stroke="'+BLUE+'" stroke-width="5" stroke-linecap="round"/><line x1="0" y1="-42" x2="8" y2="-72" stroke="'+BLUE+'" stroke-width="5" stroke-linecap="round"/></g>'
+      +'<animateTransform attributeName="transform" type="translate" dur="'+d+'s" repeatCount="indefinite" values="0 0;0 0;0 -30;0 0;0 0" keyTimes="0;.38;.55;.75;1"/></g><text x="255" y="172" class="al">KID</text>'
+      +ball("M62 98 Q150 -40 255 48",.1,.55,d)+star(200,40,.57,.85,d);
+    return art(s,"High-point catch diagram")}
+  if(k==="run"){
+    s=FIELD+cap("Kid runs across. Throw AHEAD so they run into it.")+'<path d="M20 60 L300 60" stroke="#fff" stroke-width="2" stroke-dasharray="6 5" opacity=".6"/>'
+      +dot(150,150,GOLD,"YOU")+'<g><circle r="10" fill="'+BLUE+'" stroke="#0b1a13" stroke-width="2"/>'+mv("M20 60 L300 60",0,.95,d)+'</g>'
+      +ball("M160 140 Q205 90 226 64",.45,.73,d,.06)+bub(240,94,"1… 2… 3…",.74,.98,d,"#49e08a");
+    return art(s,"Catch on the run diagram")}
+  return ""}
 /* ---------- session ---------- */
 var SES=null;
 function bossFor(k){var s=STAGES.filter(function(x){return x.boss.drill===k&&stageOpen(x)})[0];if(s)return s.boss;if(k==="run")return RUNBOSS;return null}
 function renderCoach(k){var C=COACH[k],b=$("sCoachBody");$("sCoach").open=false;if(!C){b.innerHTML="";return}
-  var links='<a class="vid" href="'+YT+encodeURIComponent(C.q)+'" target="_blank" rel="noopener">▶ Watch examples on YouTube</a>'+(C.v?'<a class="vid" href="'+C.v.url+'" target="_blank" rel="noopener">▶ '+esc(C.v.label)+"</a>":"");
-  b.innerHTML='<p style="margin:10px 0 0">'+esc(DRILLS[k].how)+'</p><div class="vids">'+links+'</div><dl><dt>Set up</dt><dd>'+esc(C.setup)+'</dd><dt>What you say</dt><dd>'+esc(C.say)+'</dd><dt>What good looks like</dt><dd>'+esc(C.good)+'</dd><dt>Common mistake</dt><dd>'+esc(C.miss)+'</dd><dt>Too hard? Make it easier</dt><dd>'+esc(C.easier)+'</dd></dl><p class="dadtip">Every drill: 5–10 big steps apart, soft throws, 10–15 minutes, cheer the effort more than the catch.</p>'}
+  b.innerHTML=drillArt(k)+'<p style="margin:10px 0 0">'+esc(DRILLS[k].how)+'</p><dl><dt>Set up</dt><dd>'+esc(C.setup)+'</dd><dt>What you say</dt><dd>'+esc(C.say)+'</dd><dt>What good looks like</dt><dd>'+esc(C.good)+'</dd><dt>Common mistake</dt><dd>'+esc(C.miss)+'</dd><dt>Too hard? Make it easier</dt><dd>'+esc(C.easier)+'</dd></dl><p class="dadtip">Every drill: 5–10 big steps apart, soft throws, 10–15 minutes, cheer the effort more than the catch.</p>'}
 function openSession(k){
   var D=DRILLS[k];SES={k:k,c:0,d:0,row:0,best:0,xp:0,hist:[],boss:false,xp0:S.xp,t0:Date.now(),sw:0,srow:0,swap:false,r0:ratings(),p0:S.plays};
   $("sStage").textContent=D.stage?STAGES[D.stage-1].name+" · "+STAGES[D.stage-1].title:"The Run";
@@ -1185,7 +1266,31 @@ var NEG=["didn't","not","don't"];
 var FILLER=["good","great","but","you","it","that","was","the","ball","eyes","hands","again","okay","ready","go","throw","turn","come","on","and","so","now","more","watch","look","keep","try","i","we","alright","hey","buddy","man","oh","no","ah","well","just","get","here","high","low","hold","run","your","ok"];
 var PHR={};CATCH_W.forEach(function(p){PHR[p]="C"});DROP_W.forEach(function(p){PHR[p]="D"});CHEERS.forEach(function(p){PHR[p]="c"});GROANS.forEach(function(p){PHR[p]="d"});NEG.forEach(function(p){PHR[p]="n"});PHR["undo"]="u";PHR["scratch that"]="u";
 var GRAMMAR=Object.keys(PHR).concat(FILLER).concat(Object.keys(NUMS)).filter(function(w,i,a){return a.indexOf(w)===i}).concat(["[unk]"]);
-var SETTLE_MS=1300;
+var SETTLE_MS=500;
+// FAST LANE (11/14 field test: "really large delay"): score a clear "catch"/"drop" from the live partial transcript
+// ~0.2 s after it is heard, instead of waiting for silence + settle. Outdoors the silence never comes, so the wait got long.
+var FAST_MS=200;
+function strongHits(words){var out=[];for(var i=0;i<words.length;i++){var hit=null,len=0;
+    for(var L=3;L>=1&&!hit;L--){if(i+L>words.length)continue;var ph=words.slice(i,i+L).join(" ");if(PHR[ph]==="C"||PHR[ph]==="D"){hit=ph;len=L}}
+    if(!hit)continue;var t=PHR[hit];if(t==="C"){for(var j=Math.max(0,i-2);j<i;j++)if(PHR[words[j]]==="n")t="D"}
+    out.push({type:t,txt:hit});i+=len-1}
+  return out}
+function pkNow(){return Math.max(0,(performance.now()-PK.t0)/1000-.3)}
+function onPartial(txt){if(!PK.running)return;var ws=(txt||"").split(/\s+/).filter(function(w){return w&&w!=="[unk]"});
+  if(ws.length)$("pkHeard").textContent="Hearing “"+ws.join(" ")+"”";
+  var hits=strongHits(ws);if(hits.length<=PK.uttDone)return;
+  PK.fastHits=hits;PK.fastTxt=ws.join(" ");clearTimeout(PK.fastT);PK.fastT=setTimeout(fireFast,FAST_MS)}
+function fireFast(){var hits=PK.fastHits||[],t=pkNow();clearTimeout(PK.fastT);PK.fastT=null;
+  for(var i=PK.uttDone;i<hits.length;i++){if(hits[i].type==="C")pkCatch(t);else pkDrop(t)}
+  if(hits.length>PK.uttDone){var last=hits[hits.length-1];$("pkHeard").textContent="Heard “"+(PK.fastTxt||last.txt)+"” → "+(last.type==="C"?"CATCH":"DROP")}
+  PK.uttDone=Math.max(PK.uttDone,hits.length);pkCounts()}
+function onFinal(r){var ws=r.result||[],done=PK.uttDone,pend=PK.fastT!=null;clearTimeout(PK.fastT);PK.fastT=null;PK.fastHits=null;PK.uttDone=0;
+  if(!done&&!pend){handleWords(ws);return}
+  // the fast lane already owned this burst: only add reps the partial missed, and honor "undo"
+  var names=ws.filter(function(w){return w.word!=="[unk]"&&!(w.conf!=null&&w.conf<.5)}).map(function(w){return w.word});
+  var hits=strongHits(names),t=pkNow();for(var i=done;i<hits.length;i++){if(hits[i].type==="C")pkCatch(t);else pkDrop(t)}
+  var txt=" "+names.join(" ")+" ";if(/ undo | scratch that /.test(txt)&&PK.events.length){PK.events.pop();$("sUndo").click();beep2(500,500);$("pkHeard").textContent="Heard “undo” → took the last one back"}
+  pkCounts()}
 function handleWords(ws){if(!PK.running)return;
   for(var i=0;i<ws.length;i++){var w=ws[i],nx=ws[i+1];if(w.word==="[unk]"||(w.conf!=null&&w.conf<.5))continue;
     if(NUMS[w.word]!=null){var n=NUMS[w.word];if(n>=20&&nx&&NUMS[nx.word]!=null&&NUMS[nx.word]<10&&nx.start-w.end<.7){n+=NUMS[nx.word];i++}settle();heardNumber(n,w.start);continue}
@@ -1238,11 +1343,12 @@ async function pocketStart(){
     PK.stream=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true,autoGainControl:true,channelCount:1}});
     PK.ac=new (window.AudioContext||window.webkitAudioContext)();
     PK.rec=new model.KaldiRecognizer(PK.ac.sampleRate,JSON.stringify(GRAMMAR));PK.rec.setWords(true);
-    PK.rec.on("result",function(m){var r=m.result||{};if(r.text)$("pkHeard").textContent="Heard: “"+r.text.replace(/\[unk\]/g,"…").trim()+"”";handleWords(r.result||[])});
-    PK.node=PK.ac.createScriptProcessor(4096,1,1);PK.node.onaudioprocess=function(e){try{PK.rec.acceptWaveform(e.inputBuffer)}catch(_){}};
+    PK.rec.on("result",function(m){var r=m.result||{};if(r.text&&!PK.uttDone)$("pkHeard").textContent="Heard: “"+r.text.replace(/\[unk\]/g,"…").trim()+"”";onFinal(r)});
+    PK.rec.on("partialresult",function(m){var r=m.result||{};onPartial(r.partial)});
+    PK.node=PK.ac.createScriptProcessor(2048,1,1);PK.node.onaudioprocess=function(e){try{PK.rec.acceptWaveform(e.inputBuffer)}catch(_){}};
     var src=PK.ac.createMediaStreamSource(PK.stream);src.connect(PK.node);PK.node.connect(PK.ac.destination);
     PK.chunks=[];PK.mr=new MediaRecorder(PK.stream);PK.mr.ondataavailable=function(e){if(e.data&&e.data.size)PK.chunks.push(e.data)};PK.mr.start(1000);
-    PK.events=[];PK.pend=[];PK.base=snapNow();PK.histLen=SES.hist.length;PK.running=true;PK.t0=performance.now();PK.warned=false;PK.buf=null;$("pkReplay").hidden=true;$("pkRev").hidden=true;
+    PK.events=[];PK.pend=[];PK.uttDone=0;PK.fastT=null;PK.fastHits=null;PK.base=snapNow();PK.histLen=SES.hist.length;PK.running=true;PK.t0=performance.now();PK.warned=false;PK.buf=null;$("pkReplay").hidden=true;$("pkRev").hidden=true;
     try{if("wakeLock" in navigator)PK.wake=await navigator.wakeLock.request("screen")}catch(e){}
     $("pocket").hidden=false;$("pkDrill").textContent=DRILLS[SES.k].name;pkTick();PK.timer=setInterval(pkTick,1000);beep2(500,900);pkStatus("")
   }catch(e){pkStatus(e&&e.name==="NotAllowedError"?"The microphone was blocked. Allow it for this site in your browser settings, then try again.":"Pocket mode couldn't start ("+(e&&e.message||"error")+"). The CATCH and DROP buttons still work.");pocketCleanup()}
@@ -1254,7 +1360,7 @@ function pkTick(){var el=(performance.now()-PK.t0)/1000;$("pkTime").textContent=
   if(el>=45*60)pocketStop()}
 function pocketCleanup(){try{PK.node&&PK.node.disconnect()}catch(e){}try{PK.rec&&PK.rec.remove()}catch(e){}try{PK.stream&&PK.stream.getTracks().forEach(function(t){t.stop()})}catch(e){}
   try{PK.ac&&PK.ac.close()}catch(e){}try{PK.wake&&PK.wake.release()}catch(e){}PK.node=PK.rec=PK.stream=PK.ac=PK.wake=null;clearInterval(PK.timer)}
-async function pocketStop(){if(!PK.running)return;settle();PK.running=false;PK.minsUsed=fmtT((performance.now()-PK.t0)/1000);beep2(800,400);
+async function pocketStop(){if(!PK.running)return;if(PK.fastT)fireFast();settle();PK.running=false;PK.minsUsed=fmtT((performance.now()-PK.t0)/1000);beep2(800,400);
   var mr=PK.mr,done=new Promise(function(ok){mr.onstop=ok});try{mr.stop()}catch(e){}await Promise.race([done,new Promise(function(ok){setTimeout(ok,2500)})]);
   pocketCleanup();$("pocket").hidden=true;
   var blob=new Blob(PK.chunks,{type:mr.mimeType||"audio/webm"});PK.chunks=[];
@@ -1277,6 +1383,18 @@ var hT=null,hS=0;function hTick(){var p=Math.min(1,(Date.now()-hS)/2000);$("pkHo
 function hEnd(){cancelAnimationFrame(hT);$("pkHoldBar").style.width="0"}
 $("pkHold").addEventListener("pointerdown",function(e){e.preventDefault();hS=Date.now();hTick()});["pointerup","pointerleave","pointercancel"].forEach(function(n){$("pkHold").addEventListener(n,hEnd)});
 $("pocket").addEventListener("contextmenu",function(e){e.preventDefault()});
+// pocket-safe fixes: a half-second hold fires once, so a brush in the pocket does nothing
+document.querySelectorAll("#pocket .pf").forEach(function(b){var t=null,s=0,bar=b.querySelector("i");
+  function end(){cancelAnimationFrame(t);t=null;bar.style.width="0"}
+  function go(){var p=Math.min(1,(Date.now()-s)/500);bar.style.width=(p*100)+"%";if(p>=1){end();fix(b.dataset.fix);return}t=requestAnimationFrame(go)}
+  b.addEventListener("pointerdown",function(e){e.preventDefault();if(!PK.running)return;s=Date.now();go()});
+  ["pointerup","pointerleave","pointercancel"].forEach(function(n){b.addEventListener(n,end)})});
+function fix(k){if(!PK.running)return;var t=pkNow();
+  if(k==="c"){pkCatch(t);$("pkHeard").textContent="Added a catch (button)"}
+  else if(k==="d"){pkDrop(t);$("pkHeard").textContent="Added a drop (button)"}
+  else if(PK.events.length){PK.events.pop();$("sUndo").click();beep2(500,500);$("pkHeard").textContent="Took the last one back"}
+  else $("pkHeard").textContent="Nothing to undo yet";
+  try{navigator.vibrate&&navigator.vibrate(60)}catch(e){}pkCounts()}
 document.addEventListener("visibilitychange",async function(){if(PK.running&&document.visibilityState==="visible"){try{PK.wake=await navigator.wakeLock.request("screen")}catch(e){}}});
 try{var pm=localStorage.getItem("gp-min");if(pm)$("pkMin").value=pm}catch(e){}
 $("pkPaste").addEventListener("click",function(e){e.preventDefault();openRec()});
