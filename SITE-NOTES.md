@@ -827,6 +827,19 @@ The light, moment and floor pickers are buttons, not fillable; the worked exampl
 
 Chain: 15 → **16** → 01. Toolbox card 16 live, 17 "in the shop", index "Sixteen free tools" + "New this week" → 16, titleblocks 07–16 read "of 16". `log.html` untouched (generated).
 
+## Tool 17 — Gridiron Power-Up (built 2026-11-15 by `dadhax-weekly-tool`, ships Tue 11/17)
+
+`gridiron/` (its own full-screen app, live and hidden since 11/09; source `OneDrive/Desktop/Claude_Code/gridiron-power-up/`, design notes `GAME-DESIGN.md`). **Pinned by Nick 11/09, not a council pick.** The implementation layer of `ARC-2026-11-15` ("It's caught, not taught", easter egg the word **catch**). No titleblock or tail inside the app, on purpose: it is not a sheet page. This branch only: toolbox card 17 (18 "in the shop"), `noindex` removed from `gridiron/index.html`, `gridiron/` added to `sitemap.xml`, and the `.sync` line 12px → 13px (audit TINY TEXT floor; same change committed in the source folder).
+
+Privacy as built (GAME-DESIGN.md): everything stays on the phone, the offline listener never sends audio, no child's name or photo in the code, kids type their own player name. GAME-DESIGN.md also says going public "needs a children's-privacy attorney first (COPPA)"; Nick's 11/09 pin overrides the hidden status, and the attorney read is flagged for him in the 11/15 journal line.
+
+**Launch reel (S7 plan):** no Gridiron footage exists and a kid on camera is cut by default. Path 1 candidate is a catalog re-cut of posted `ig-0906-caught` (raw `20260813_153610`, "Stop teaching. Start being worth catching.") with one link `https://step427.github.io/dadhax-reels/gridiron/`; if Sam won't POST it, ship with no reel and journal it.
+
+**Audit fills (Tool 17):** `--fill nameIn=Rookie numIn=7` — every input the page needs set before its real output exists on screen. Date inputs take `+Nd` (resolves to today+N, never rots). Never a real person's name or a sensitive number.
+→ PASS (205 words, one screen; it is an app). The audit record lands in `Rook/_tools/web/audits/` because `gridiron/` has no `audits/` folder; ship_gate reads that fallback.
+
+Chain: 16 → **17** (the app has no tail, so the chain ends here until Tool 18 links back to 01). Toolbox card 17 live, 18 "in the shop", diy "Seventeen free tools" + newest → Gridiron, index lane tile "17 free tools", titleblocks 07–16 read "of 17". `log.html` untouched (generated). Unmerged `origin/ccr-03dc237b-hzbjjz` (11/14) carries newer Gridiron work (faster pocket listener, hold-to-fix buttons, drill cartoons) that is NOT on this branch.
+
 ## The hub revamp (shipped 2026-11-11, Nick: "Ship it")
 
 nicksdadhax.com now opens on **Nick's face** (`nick.jpg`, cropped from Drive `07_Content/DADHAX-PROFILE-PIC.jpg`), "Here's me. Here's what I'm working on.", and **three lane tiles**: DIY (`diy.html`), AI (`ai.html`), Real estate (`realestate.html`), plus the kits shelf (`kits.html`). Shared styles in `hub.css` (same tokens and yellow grammar; site.css still owns nav and CTA rows).

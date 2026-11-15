@@ -1,0 +1,24 @@
+{
+ "page": "equal-split.html",
+ "sha": "051d26769112",
+ "verdict": "PASS WITH WARNINGS",
+ "fail": [],
+ "warn": [
+  "LONG: 5.9 phone screens of scroll."
+ ],
+ "stats": {
+  "viewport": "375x812",
+  "charsPerLine": 35,
+  "words": 872,
+  "pageHeightPx": 4823,
+  "screens": 5.9,
+  "longestBlockWords": 0,
+  "links": 11
+ },
+ "fills": {
+  "callName": "Sam",
+  "callName2": "Pat",
+  "then0": "2"
+ },
+ "audited": "2026-11-15T13:42:55+00:00"
+}
