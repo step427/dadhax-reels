@@ -4995,6 +4995,25 @@
       "permalink": "https://www.instagram.com/reel/Dfu6uHBDxuO/",
       "posted_at": "2026-11-14T13:06:39-06:00",
       "fb_page_video_id": "2252095832380157"
+    },
+    {
+      "file": "ig-1115-bagbowl.mp4",
+      "title": "Your snack bag is the bowl",
+      "status": "pending",
+      "earliest": "2026-11-16",
+      "caption": "Hey Dad,\n\nNo bowl, no problem, no dishes after.\n\nRoll the bag down on itself and it stands up on its own to catch the snacks. That's it. That's the whole hack.\n\nI post the one I wish somebody had told me. Follow, it's free.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: step427.github.io/dadhax-reels",
+      "arc_slot": "Mon 11/16 9a",
+      "pix": "P",
+      "value_forms": [
+        "implementation",
+        "entertainment"
+      ],
+      "sam_verdict": "POST 2026-11-15",
+      "topic_class": "utility",
+      "source_raw": "yt:tjN_Uye246A",
+      "hypothesis": "If the standing bowl (sticks in the open top) opens the reel and both burned YouTube cards are cut (13.7s -> 11.8s), then the re-cut beats the parent on BOTH % watched (>67%) and avg watch seconds (>=9.2s), because the parent spent 2.5s on a title card and buried the payoff under a like-and-subscribe card.",
+      "recut_of": "ig-diy-bagbowl.mp4",
+      "kind": "old"
     }
   ]
 }
