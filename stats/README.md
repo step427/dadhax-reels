@@ -23,7 +23,7 @@ The only posts whose hour the publisher actually chose — so the only ones that
 | 09:00 | 16 | 2.0 | 5.1 | 26 |
 | 11:00 | 2 | 1.0 | 1.0 | 2 |
 | 12:00 | 29 | 1.0 | 3.7 | 42 |
-| 13:00 | 32 | 3.0 | 7.2 | 69 |
+| 13:00 | 32 | 3.0 | 7.2 | 70 |
 | 14:00 | 34 | 1.0 | 9.2 | 170 |
 | 15:00 | 12 | 0.5 | 2.1 | 11 |
 | 16:00 | 6 | 1.5 | 2.3 | 7 |
@@ -43,7 +43,7 @@ The only posts whose hour the publisher actually chose — so the only ones that
 | Wed | 42 | 1.0 | 3.5 | 31 |
 | Thu | 40 | 1.0 | 2.5 | 26 |
 | Fri | 46 | 1.0 | 4.0 | 42 |
-| Sat | 41 | 1.0 | 4.9 | 69 |
+| Sat | 41 | 1.0 | 4.9 | 70 |
 | Sun | 42 | 1.0 | 3.0 | 23 |
 
 ### Fresh vs back-catalog
@@ -62,7 +62,7 @@ The only posts whose hour the publisher actually chose — so the only ones that
 | back-catalog @ 05:00 | 6 | 0.5 | 1.3 | 4 |
 | back-catalog @ 09:00 | 2 | 6.0 | 6.0 | 10 |
 | back-catalog @ 12:00 | 12 | 2.0 | 6.0 | 42 |
-| back-catalog @ 13:00 | 25 | 3.0 | 8.6 | 69 |
+| back-catalog @ 13:00 | 25 | 3.0 | 8.6 | 70 |
 | back-catalog @ 14:00 | 27 | 1.0 | 11.2 | 170 |
 | back-catalog @ 15:00 | 7 | 1.0 | 2.4 | 11 |
 | back-catalog @ 16:00 | 3 | 0.0 | 2.3 | 7 |
@@ -112,7 +112,7 @@ Mostly Nick posting by hand at whatever hour he was free, going back to 2024. Us
 | 10:00 | 34 | 0.0 | 0.7 | 5 |
 | 11:00 | 22 | 0.0 | 0.9 | 5 |
 | 12:00 | 52 | 1.0 | 3.8 | 72 |
-| 13:00 | 54 | 1.0 | 4.5 | 69 |
+| 13:00 | 54 | 1.0 | 4.5 | 70 |
 | 14:00 | 65 | 0.0 | 5.3 | 170 |
 | 15:00 | 55 | 0.0 | 1.2 | 12 |
 | 16:00 | 41 | 1.0 | 1.6 | 20 |
@@ -140,7 +140,7 @@ Mostly Nick posting by hand at whatever hour he was free, going back to 2024. Us
 |---|---|---|---|---|
 | 2026-09-29 14:22 | 170 | 6 | back-catalog | https://www.instagram.com/reel/Dd4f9HOlWhe/ |
 | 2025-11-22 12:47 | 72 | 0 | hand-posted | https://www.instagram.com/reel/DRXot5Bjzbn/ |
-| 2026-11-14 13:06 | 69 | 1 | back-catalog | https://www.instagram.com/reel/Dfu6uHBDxuO/ |
+| 2026-11-14 13:06 | 70 | 1 | back-catalog | https://www.instagram.com/reel/Dfu6uHBDxuO/ |
 | 2025-08-06 05:28 | 50 | 0 | hand-posted | https://www.instagram.com/reel/DNAppmhgQfr/ |
 | 2026-08-28 12:29 | 42 | 0 | back-catalog | https://www.instagram.com/reel/Dcl5mWqksgL/ |
 | 2025-03-16 22:44 | 42 | 0 | hand-posted | https://www.instagram.com/reel/DHR_-19AZnk/ |
