@@ -5071,6 +5071,25 @@
       "sam_verdict": "POST 2026-11-16",
       "topic_class": "utility",
       "source_raw": "20260929_194345.mp4"
+    },
+    {
+      "file": "ig-1116-holders.mp4",
+      "title": "2 cleat holders that skip the shed",
+      "status": "pending",
+      "earliest": "2026-11-17",
+      "caption": "Hey Dad,\n\nYou don't need twenty different holders to start a cleat wall. The two I use most are about as basic as it gets.\n\nAn angle bracket. A wall hanger with two nails.\n\nYard tools sit on the bracket. Levels and guides hang on the nails.\n\nPut the stop on the bracket before you load it, so the weight pushes into the wall instead of prying off.\n\nMake those two first. A 45 cleat on the back of each, angle down, and a stop on the bottom, and they hook onto any slat.\n\nA French cleat system has helped me avoid getting a shed.\n\nShort on floor space? Follow for the next wall setup.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: nicksdadhax.com",
+      "arc_slot": "OFF-ARC cover",
+      "pix": "I",
+      "value_forms": [
+        "idea",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-11-16",
+      "topic_class": "utility",
+      "source_raw": "20260929_194702.mp4",
+      "hypothesis": "If his never-posted shed line opens over the full cleat wall instead of the talking-head intro (new line AND his face removed, 17.4s -> 17.3s, same holders footage), then at the 7-day read % watched > 58% AND avg watch > 10.1s, because the parent's first 5s had no stakes.",
+      "recut_of": "ig-0930-holders.mp4",
+      "kind": "old"
     }
   ]
 }
