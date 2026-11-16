@@ -5017,6 +5017,25 @@
       "permalink": "https://www.instagram.com/reel/Dfxj1tagad4/",
       "posted_at": "2026-11-15T13:44:25-06:00",
       "fb_page_video_id": "1788541805775250"
+    },
+    {
+      "file": "ig-1116-zipties.mp4",
+      "title": "Your zip-tie bag is the dispenser",
+      "status": "pending",
+      "earliest": "2026-11-16",
+      "caption": "Hey Dad,\n\nYour zip ties, straight out of the bag, no digging.\n\nThe bag they come in IS the dispenser. Hang it on the tool wall and pull them like tissues.\n\nStop reorganizing things that already organize themselves.\n\nFollow for the next one you already own.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: nicksdadhax.com",
+      "arc_slot": "OFF-ARC cover",
+      "pix": "P",
+      "value_forms": [
+        "implementation",
+        "entertainment"
+      ],
+      "sam_verdict": "POST 2026-11-16",
+      "topic_class": "utility",
+      "source_raw": "ig-diy-zipties.mp4",
+      "hypothesis": "If the clean pull opens and the dead middle and tail are cut (13.0s to 6.8s), then average watch % beats 48% AND average watch seconds holds at 6.3s or better, because the parent's 5.75-8.40 hang-and-reach gave viewers a spot to leave.",
+      "recut_of": "ig-diy-zipties.mp4",
+      "kind": "old"
     }
   ]
 }
