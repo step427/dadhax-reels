@@ -5036,6 +5036,25 @@
       "hypothesis": "If the clean pull opens and the dead middle and tail are cut (13.0s to 6.8s), then average watch % beats 48% AND average watch seconds holds at 6.3s or better, because the parent's 5.75-8.40 hang-and-reach gave viewers a spot to leave.",
       "recut_of": "ig-diy-zipties.mp4",
       "kind": "old"
+    },
+    {
+      "file": "ig-1116-cleatvice.mp4",
+      "title": "The vice doesn't own a bench",
+      "status": "pending",
+      "earliest": "2026-11-16",
+      "caption": "Hey Dad,\n\nYour vice doesn't own a bench. It owns a cleat.\n\nFrench cleat on the wall, a couple of clamps to lock it down when it's working hard. Full hold when you need it, wall storage when you don't.\n\nSmall shop rule: nothing gets a permanent spot on the bench until it earns one.\n\nSmall shop? Follow for the setups that free up the bench.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: nicksdadhax.com",
+      "arc_slot": "OFF-ARC cover",
+      "pix": "P",
+      "value_forms": [
+        "implementation",
+        "entertainment"
+      ],
+      "sam_verdict": "POST 2026-11-16",
+      "topic_class": "utility",
+      "source_raw": "ig-diy-cleatvice.mp4",
+      "hypothesis": "If the label-free working shot opens and the YouTube end cards are cut (15.4s -> 7.7s), then % watched beats the parent's 68% AND views hold at or above the parent's pace; avg watch seconds is expected to fall (ceiling 7.7s vs parent 10.5s), because the parent's last 2.4s were a like-and-subscribe card over his legs.",
+      "recut_of": "ig-diy-cleatvice.mp4",
+      "kind": "old"
     }
   ]
 }
