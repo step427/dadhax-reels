@@ -5055,6 +5055,22 @@
       "hypothesis": "If the label-free working shot opens and the YouTube end cards are cut (15.4s -> 7.7s), then % watched beats the parent's 68% AND views hold at or above the parent's pace; avg watch seconds is expected to fall (ceiling 7.7s vs parent 10.5s), because the parent's last 2.4s were a like-and-subscribe card over his legs.",
       "recut_of": "ig-diy-cleatvice.mp4",
       "kind": "old"
+    },
+    {
+      "file": "ig-1116-bigslats.mp4",
+      "title": "Big stuff: 12 inches, bottom to bottom",
+      "status": "pending",
+      "earliest": "2026-11-16",
+      "caption": "Hey Dad,\n\nI don't need my wall slats as tight for the big stuff.\n\nAll my clamps and stuff, these tall things: in between each slat I got them set 12 inches from bottom to bottom.\n\nFor hand tools I keep it tight: 3-inch slats, 3-inch gaps.\n\nFree cleat wall tool: type your wall width, get your cut list. The link is in my bio.\n\nThanks, Dad. I love you, Dad.\n\nnicksdadhax.com/cleat-wall.html",
+      "arc_slot": "OFF-ARC cover",
+      "pix": "I",
+      "value_forms": [
+        "idea",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-11-16",
+      "topic_class": "utility",
+      "source_raw": "20260929_194345.mp4"
     }
   ]
 }
