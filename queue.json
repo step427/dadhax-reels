@@ -5122,6 +5122,25 @@
       "cover_ms": 5885,
       "recut_of": "ig-0906-caught.mp4",
       "kind": "old"
+    },
+    {
+      "file": "ig-1117-strap.mp4",
+      "title": "Ratchet strap: tension before the first crank",
+      "status": "pending",
+      "earliest": "2026-11-17",
+      "caption": "Hey Dad,\n\nYou can keep tension on a ratchet strap before you even do your first crank.\n\nFair warning: I'm an idiot. It took me almost 40 years.\n\nFeed it in through and around. Pull the slack. Now I got another hand to crank.\n\nOne more time the answer wasn't try harder, hold tighter, be two people. It was set it up so it can't go slack.\n\nFollow for the next setup that holds itself.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: nicksdadhax.com",
+      "arc_slot": "Tue 11/17 6p OPEN catalog: Catch it early",
+      "pix": "P",
+      "value_forms": [
+        "implementation",
+        "entertainment"
+      ],
+      "sam_verdict": "POST 2026-11-17",
+      "topic_class": "utility",
+      "source_raw": "20260821_161031.mp4",
+      "hypothesis": "If the 17s static-canoe stretch and the spoken claim are cut (37.1s to 17.3s) with the claim on the hook slab, then average watch % beats 55.7% AND average watch reaches 9.6s or better, AND views reach the parent's 1,650, because the parent spent raw 6.5-24s on a still canoe.",
+      "recut_of": "ig-0821-straptension.mp4",
+      "kind": "old"
     }
   ]
 }
