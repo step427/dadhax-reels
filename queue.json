@@ -5102,6 +5102,26 @@
       "permalink": "https://www.instagram.com/reel/Df17QpQDqHc/",
       "posted_at": "2026-11-17T06:26:03-06:00",
       "fb_page_video_id": "1115364154595018"
+    },
+    {
+      "file": "ig-1117-caught.mp4",
+      "title": "It's caught, not taught (12s re-cut, Tool 17 launch)",
+      "status": "pending",
+      "earliest": "2026-11-17",
+      "caption": "Hey Dad,\n\nIt's what's caught, not taught.\n\nI can't teach anyone anything with their fingers in their ears.\n\nTool 17 is a free backyard football practice: three drills, about 15 minutes, with a \"Coach, say this\" line up front on every one. Kids type their own player name. Game plays come only from the yard: every real catch counts, and ten buys one play. Nothing leaves the phone.\n\nIt's free, no sign-up, and the link is in my bio.\n\nhttps://nicksdadhax.com/gridiron/\n\nThanks, Dad. I love you, Dad.",
+      "arc_slot": "Tue 11/17 first open",
+      "pix": "P",
+      "value_forms": [
+        "idea",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-11-17",
+      "topic_class": "talk",
+      "source_raw": "20260813_153610.mp4",
+      "hypothesis": "Under-20s re-cut of a 38s talk reel (posted 9/13) holds better; closer card carries the tool ask",
+      "cover_ms": 5885,
+      "recut_of": "ig-0906-caught.mp4",
+      "kind": "old"
     }
   ]
 }
