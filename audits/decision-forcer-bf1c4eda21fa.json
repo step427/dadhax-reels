@@ -1,0 +1,26 @@
+{
+ "page": "decision-forcer.html",
+ "sha": "bf1c4eda21fa",
+ "verdict": "PASS WITH WARNINGS",
+ "fail": [],
+ "warn": [
+  "LONG: 6.8 phone screens of scroll.",
+  "DENSE: 1042 words. A free sheet nobody finishes is the same as no sheet.",
+  "CONTRAST: rgb(232, 80, 44) on rgba(232, 80, 44, 0.08) = 1.00:1 (want 4.5:1)."
+ ],
+ "stats": {
+  "viewport": "375x812",
+  "charsPerLine": 35,
+  "words": 1042,
+  "pageHeightPx": 5539,
+  "screens": 6.8,
+  "longestBlockWords": 0,
+  "links": 9
+ },
+ "fills": {
+  "callName": "Sam",
+  "callName2": "Pat",
+  "then0": "2"
+ },
+ "audited": "2026-11-15T13:42:53+00:00"
+}

@@ -1,0 +1,25 @@
+{
+ "page": "toolbox.html",
+ "sha": "14707163955e",
+ "verdict": "PASS WITH WARNINGS",
+ "fail": [],
+ "warn": [
+  "LONG: 7 phone screens of scroll.",
+  "DENSE: 924 words. A free sheet nobody finishes is the same as no sheet."
+ ],
+ "stats": {
+  "viewport": "375x812",
+  "charsPerLine": 35,
+  "words": 924,
+  "pageHeightPx": 5707,
+  "screens": 7,
+  "longestBlockWords": 0,
+  "links": 26
+ },
+ "fills": {
+  "callName": "Sam",
+  "callName2": "Pat",
+  "then0": "2"
+ },
+ "audited": "2026-11-15T13:42:43+00:00"
+}
