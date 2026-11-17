@@ -5141,6 +5141,22 @@
       "hypothesis": "If the 17s static-canoe stretch and the spoken claim are cut (37.1s to 17.3s) with the claim on the hook slab, then average watch % beats 55.7% AND average watch reaches 9.6s or better, AND views reach the parent's 1,650, because the parent spent raw 6.5-24s on a still canoe.",
       "recut_of": "ig-0821-straptension.mp4",
       "kind": "old"
+    },
+    {
+      "file": "ig-1117-busstop.mp4",
+      "title": "Catch the lesson at the bus stop",
+      "status": "pending",
+      "earliest": "2026-11-18",
+      "caption": "Hey Dad,\n\nYou can even have a simple exchange about the weather at the bus stop be a learning opportunity.\n\nIn all honesty, that's almost every interaction, if you have the identity of: I am a forever student.\n\nTry it: next time you're stuck waiting somewhere, ask the person next to you one question and listen for the part you didn't know.\n\nFollow if you're still learning too.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: nicksdadhax.com",
+      "arc_slot": "Wed 11/18 1p: You catch the next bus. It comes back around.",
+      "pix": "I",
+      "value_forms": [
+        "idea",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-11-17",
+      "topic_class": "talk",
+      "source_raw": "PXL_20261104_153318950.mp4"
     }
   ]
 }
