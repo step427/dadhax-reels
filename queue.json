@@ -5166,6 +5166,25 @@
       "permalink": "https://www.instagram.com/reel/Df2-z02id6h/",
       "posted_at": "2026-11-17T16:16:16-06:00",
       "fb_page_video_id": "1673627681075766"
+    },
+    {
+      "file": "ig-1118-fingercot.mp4",
+      "title": "Glue on your fingers? Make this first.",
+      "status": "pending",
+      "earliest": "2026-11-18",
+      "caption": "Hey Dad,\n\nGlue on your fingers? Make this first.\n\nGlue-up tip: a finger cot, torn off a disposable glove.\n\nWrap the finger, spread the glue. No crusty rag, no glue caught under the fingernails.\n\nFollow for more shop fixes already in your kitchen drawer.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: nicksdadhax.com",
+      "arc_slot": "Wed 11/18 6p OPEN catalog: Catch it early",
+      "pix": "P",
+      "value_forms": [
+        "implementation",
+        "entertainment"
+      ],
+      "sam_verdict": "POST 2026-11-18",
+      "topic_class": "utility",
+      "source_raw": "ig-diy-fingercot.mp4",
+      "hypothesis": "If the payoff opens frame one and the reel drops from 31s to 15s, then retention beats the parent, because viewers see the result before the 9-10s they give any cut",
+      "recut_of": "ig-diy-fingercot.mp4",
+      "kind": "old"
     }
   ]
 }
