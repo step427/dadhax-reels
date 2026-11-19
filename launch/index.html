@@ -315,7 +315,7 @@
           <textarea id="drain" name="drain" placeholder="Answering leads at night, posting, the website..."></textarea>
           <div class="pair">
             <div><label for="em">Email</label><input id="em" name="email" type="email" autocomplete="email" required></div>
-            <div><label for="ph">Phone (optional)</label><input id="ph" name="phone" type="tel" autocomplete="tel"></div>
+            <div><label for="ph">Phone (I call back fast)</label><input id="ph" name="phone" type="tel" autocomplete="tel" required></div>
           </div>
           <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
           <p class="muted" style="font-size:.82rem;margin-top:1rem">Health-care folks: please don't include patient details.</p>
@@ -325,7 +325,7 @@
         <div class="sent" id="sent" tabindex="-1" hidden>
           <p class="tag">Got it</p>
           <h3 style="margin-top:.5rem" id="sentTitle">Thanks.</h3>
-          <p class="muted">I'll text or email within one business day to set a time.</p>
+          <p class="muted">I call back fast, usually the same day. Watch for a call from a 763 number.</p>
           <pre class="out" id="out"></pre>
         </div>
       </div>
@@ -383,6 +383,12 @@
   rows.addEventListener('input', calc); rate.addEventListener('input', calc);
   setDoor('trades');
 
+  // Where the lead came from: ?src= on the link wins (e.g. ?src=kit), else the page that sent them here.
+  function leadSource() {
+    var s = new URLSearchParams(location.search).get('src');
+    if (s) return s.slice(0, 60);
+    try { var r = new URL(document.referrer); return r.hostname === location.hostname ? r.pathname : r.hostname; } catch (e) { return 'direct'; }
+  }
   // Booking form. Empty webhook = draft mode: nothing leaves the page.
   var WEBHOOK = 'https://script.google.com/macros/s/AKfycbzzI0CNMYQmPlhqw5fIgYgqzxS4rWI1-4dvrXQWmDCaM8tA_AkHS3MkGex3VSRAmX6h/exec';
   var form = document.getElementById('talkForm'), err = document.getElementById('err');
@@ -390,10 +396,11 @@
     e.preventDefault();
     var f = form.elements, email = f.email.value.trim();
     var msg = !f.name.value.trim() ? 'Please add your name.' : !f.business.value.trim() ? 'What\'s the business called?'
-      : !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? 'Please check your email.' : '';
+      : !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? 'Please check your email.'
+      : f.phone.value.replace(/\D/g, '').replace(/^1(?=\d{10}$)/, '').length !== 10 ? 'Add a 10-digit phone so I can call you back.' : '';
     if (msg) { err.textContent = msg; err.hidden = false; return; }
     var hrs = document.getElementById('hrs').textContent;
-    var lead = { name: f.name.value.trim(), business: f.business.value.trim(), kind: f.kind.value, drain: f.drain.value.trim(), email: email, phone: f.phone.value.trim(), calculator_hours_per_year: hrs, sent: new Date().toISOString() };
+    var lead = { name: f.name.value.trim(), business: f.business.value.trim(), kind: f.kind.value, drain: f.drain.value.trim(), email: email, phone: f.phone.value.trim(), calculator_hours_per_year: hrs, sent: new Date().toISOString(), source: leadSource(), page: location.pathname };
     function done() {
       document.getElementById('sentTitle').textContent = 'Thanks, ' + lead.name.split(' ')[0] + '.';
       var out = document.getElementById('out');
