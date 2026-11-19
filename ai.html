@@ -304,5 +304,12 @@
   <a class="btn" href="launch/#talk">Book a call</a>
 </div>
 <script>if (/[?&]slots\b/.test(location.search)) document.body.classList.add('slots');</script>
+<script>
+/* Carry ?src= (e.g. ?src=kit from the starter kit) onto the consult links so the sheet knows where a lead came from. */
+(function(){
+  var s = new URLSearchParams(location.search).get('src'); if (!s) return;
+  document.querySelectorAll('a[href^="launch/"]').forEach(function(a){ a.href = a.getAttribute('href').replace('launch/', 'launch/?src=' + encodeURIComponent(s)); });
+})();
+</script>
 </body>
 </html>
