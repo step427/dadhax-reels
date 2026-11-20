@@ -5204,6 +5204,22 @@
       "sam_verdict": "POST 2026-11-20",
       "topic_class": "talk",
       "source_raw": "PXL_20261118_191232294.mp4"
+    },
+    {
+      "file": "ig-1119-prompt.mp4",
+      "title": "My most-used AI prompt",
+      "status": "pending",
+      "earliest": "2026-11-20",
+      "caption": "Hey Dad,\n\nMy most used and favorite AI prompt:\n\nTalk to me like an 8-year-old. Give me the next best 3 highest leverage moves I can make based on this vision: [your vision]\n\nFill in the blanks.\n\nTry it: paste in the goal you keep circling and catch the one move you've been putting off.\n\nFollow along. I'm building the airplane as I'm flying it.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: nicksdadhax.com",
+      "arc_slot": "OFF-ARC cover",
+      "pix": "P",
+      "value_forms": [
+        "idea",
+        "implementation"
+      ],
+      "sam_verdict": "POST 2026-11-20",
+      "topic_class": "talk",
+      "source_raw": "PXL_20261119_163713276.mp4"
     }
   ]
 }
