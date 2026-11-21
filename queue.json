@@ -5268,7 +5268,7 @@
     {
       "file": "ig-1121-wrd.mp4",
       "title": "Catch the lie in your own head (11s story re-cut)",
-      "status": "pending",
+      "status": "posted",
       "earliest": "2026-11-21",
       "caption": "Hey Dad,\n\nThe words running in your head matter as much as the ones you say out loud.\n\nI caught myself, in my words, in my head: \"I just can't connect with him.\" Nope, that's not true. It's challenging to connect with him.\n\nTry it: next time you hear \"I can't\" in your head, swap in \"it's challenging.\"\n\nFollow for more swaps that change the voice in your head.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: nicksdadhax.com",
       "arc_slot": "Sat 11/21 1p",
@@ -5282,7 +5282,10 @@
       "source_raw": "20260914_151752.mp4",
       "hypothesis": "If the turn lands by ~2s and the cut runs 11s instead of 19.2s, then % watched >= 60% and average watch >= 6.5s vs the parent's 52% / 10.0s, because the parent spent its first 8s on the thesis before the story.",
       "recut_of": "ig-0916-words.mp4",
-      "kind": "old"
+      "kind": "old",
+      "permalink": "https://www.instagram.com/reel/DgBF1ssGX86/",
+      "posted_at": "2026-11-21T14:30:07-06:00",
+      "fb_page_video_id": "29061221666861117"
     },
     {
       "file": "ig-1121-rit.mp4",
