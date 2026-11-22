@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Tool 18. Built 2026-11-22 by the dadhax-weekly-tool routine off Nick's 11/18 take (practices, not tricks;
+     the 5-to-1 ratio); council pick 2026-11-22. Not for unsafe relationships: the hotline rail stays above the output. -->
+<title>The Five-to-One Week — @nicksdadhax</title>
+<meta name="description" content="Pick one person and three to five small daily deposits. Get a seven-day plan and a 5-to-1 tally you tick. Free, no gate, nothing leaves your device.">
+
+<style>
+  /* @nicksdadhax — dark field-instrument identity. Same tokens as tools 01-16.
+     SIGNAL YELLOW = your input / the action. WARN RED = the honest rail —
+     here that's "not for an unsafe relationship." */
+  :root {
+    --carbon:   #0F0E0B;
+    --panel:    #17150F;
+    --panel-up: #1E1B14;
+    --hair:     #302B21;
+    --bone:     #F4F0E6;
+    --graphite: #8F887A;
+    --signal:   #FFC629;
+    --signal-d: #C8930F;
+    --warn:     #E8502C;
+    --ply:      #B8935A;
+
+    --mono: ui-monospace, "SF Mono", SFMono-Regular, "Cascadia Mono",
+            "Roboto Mono", Menlo, Consolas, "Courier New", monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+            "Helvetica Neue", Arial, sans-serif;
+
+    --gutter: clamp(18px, 5vw, 40px);
+    --maxw: 660px;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--carbon);
+    color: var(--bone);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-text-size-adjust: 100%;
+    background-image:
+      repeating-linear-gradient(to right,  rgba(242,237,231,.035) 0 1px, transparent 1px 28px),
+      repeating-linear-gradient(to bottom, rgba(242,237,231,.035) 0 1px, transparent 1px 28px);
+  }
+
+  .sheet { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter) 96px; }
+
+  header { padding: 34px 0 8px; }
+  .protocol {
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: .17em;
+    text-transform: uppercase; color: var(--graphite);
+  }
+  .protocol b { color: var(--signal); font-weight: 700; }
+  h1 {
+    font-family: var(--mono); font-weight: 700;
+    font-size: clamp(28px, 8vw, 48px); line-height: 1.04;
+    letter-spacing: -.03em; text-transform: uppercase;
+    margin: 12px 0 0; text-wrap: balance;
+  }
+  h1 .of { color: var(--signal); }
+  .dek { margin: 14px 0 0; max-width: 46ch; color: #CFC9BB; font-size: 17px; }
+  .dek em { color: var(--bone); font-style: normal; border-bottom: 1.5px solid var(--signal-d); }
+  .dek b { color: var(--bone); }
+
+  .privacy {
+    margin: 18px 0 0; padding: 13px 15px; font-size: 14.5px; line-height: 1.5;
+    color: #CFC9BB; background: var(--panel); border-left: 3px solid var(--signal);
+  }
+  .privacy b { color: var(--bone); }
+
+  .story { margin-top: 24px; padding: 15px 16px; background: var(--panel);
+    border: 1px solid var(--hair); }
+  .story p { margin: 0 0 10px; font-size: 15.5px; line-height: 1.55; color: #CFC9BB; }
+  .story p:last-child { margin-bottom: 0; }
+  .story p b { color: var(--bone); }
+  .story a { color: var(--signal); font-weight: 700; text-decoration: none; }
+  .story a:hover { text-decoration: underline; }
+
+  .whys { margin-top: 26px; border: 1px solid var(--hair); }
+  .why { padding: 14px 15px; border-bottom: 1px solid var(--hair); }
+  .why:last-child { border-bottom: 0; }
+  .why .tag { display: block; font-family: var(--mono); font-size: 12.5px; font-weight: 700;
+    letter-spacing: .08em; text-transform: uppercase; margin-bottom: 5px; color: var(--signal); }
+  .why p { margin: 0; font-size: 15px; line-height: 1.5; color: #CFC9BB; }
+  .why p b { color: var(--bone); }
+
+  .redline-note {
+    margin: 14px 0 0; padding: 9px 12px;
+    border-left: 2.5px solid var(--warn);
+    background: #20130E; /* rgba(232,80,44,.08) on --carbon, solid so contrast is measurable */
+    font-size: 14.5px; line-height: 1.45; color: #E7DCD6;
+  }
+  .redline-note b { color: var(--warn); font-family: var(--mono);
+    font-size: 11.5px; letter-spacing: .1em; text-transform: uppercase;
+    display: block; margin-bottom: 3px; }
+
+  .block { margin-top: 30px; }
+  .lbl {
+    display: block; font-family: var(--mono); font-size: 11.5px;
+    letter-spacing: .13em; text-transform: uppercase; color: var(--graphite);
+    margin-bottom: 8px;
+  }
+  h2.part {
+    font-family: var(--mono); font-size: 12px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--signal); margin: 34px 0 4px; font-weight: 700;
+    padding-top: 20px; border-top: 1px solid var(--hair);
+  }
+  .partdek { margin: 0 0 14px; font-size: 15px; color: #CFC9BB; line-height: 1.5; }
+  .partdek b { color: var(--bone); }
+
+  .seed {
+    border: 1.5px solid var(--signal); background: var(--panel);
+    padding: 16px 16px 14px;
+  }
+  .seed .lbl { color: var(--signal); margin-top: 0; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; }
+  @media (max-width: 380px) { .grid2 { grid-template-columns: 1fr; } }
+  input[type=text], input[type=number], input[type=date] {
+    display: block; width: 100%;
+    background: transparent; border: 0; border-bottom: 1.5px solid #453E2C;
+    color: var(--bone); font-family: var(--mono); font-size: 18px;
+    line-height: 1.5; padding: 4px 0 8px; border-radius: 0;
+    font-variant-numeric: tabular-nums; -moz-appearance: textfield;
+  }
+  input[type=date] { color-scheme: dark; min-height: 44px; }
+  input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  input::placeholder { color: #6B6455; font-family: var(--sans); font-size: 15px; }
+  input:focus { outline: 0; border-bottom-color: var(--signal); }
+  .seed .lbl + input { margin-bottom: 14px; }
+  .unit { font-family: var(--mono); font-size: 11px; color: var(--graphite); letter-spacing: .08em; }
+  .hint { margin: 6px 0 0; font-size: 13.5px; color: var(--graphite); line-height: 1.45; }
+  .seed .hint { margin: 0 0 16px; }
+
+  .zone { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 8px; }
+  .zone button { flex: 1 1 0; min-width: 86px; min-height: 48px; padding: 10px 6px; border-radius: 0; cursor: pointer;
+    font-family: var(--mono); font-size: 12px; letter-spacing: .05em; text-transform: uppercase;
+    font-weight: 700; background: transparent; color: var(--bone); border: 1.5px solid #453E2C; }
+  .zone button[aria-pressed="true"] { background: var(--signal); color: #14100F; border-color: var(--signal); }
+  .zone button:focus-visible { outline: 2px solid var(--bone); outline-offset: 2px; }
+
+  /* the schedule */
+  .spec { margin-top: 22px; padding: 18px 16px; background: var(--panel-up);
+    border: 2px solid var(--signal); }
+  .spec[hidden] { display: none; }
+  .spec .lbl { color: var(--signal); }
+  .spec p { margin: 0 0 8px; font-size: 16.5px; line-height: 1.5; color: var(--bone); }
+  .spec p b { color: var(--signal); font-family: var(--mono); }
+  .spec p.fine { margin-top: 10px; font-size: 14px; color: #CFC9BB; }
+  .spec p.no { color: #E7DCD6; border-left: 2.5px solid var(--warn); padding-left: 10px; }
+  .spec p.no b { color: var(--warn); }
+  .steps { margin: 12px 0 0; }
+  .step { padding: 10px 0 8px; border-top: 1px solid var(--hair); }
+  .step .head { display: flex; gap: 12px; align-items: center; margin: 0 0 6px; }
+  .step .pic { flex: 0 0 72px; }
+  .step .pic svg { display: block; width: 72px; height: auto; }
+  .step .pic text { font-family: var(--mono); font-weight: 700; font-size: 10px; fill: var(--signal); }
+  .step h3 { margin: 0; font-family: var(--mono); font-size: 14px; letter-spacing: .05em;
+    text-transform: uppercase; color: var(--signal); }
+  .step h3 i { font-style: normal; color: var(--bone); display: block; letter-spacing: 0; }
+  .step ul { margin: 0; padding: 0 0 0 18px; }
+  .step ul li { font-family: var(--sans); font-size: 14.5px; line-height: 1.4; color: var(--bone); }
+  .step ul li.w { color: #E7DCD6; list-style: "! "; }
+  .step ul li.w::marker { color: var(--warn); font-family: var(--mono); font-weight: 700; }
+
+  .callbox { margin-top: 28px; padding: 18px 16px 16px; background: var(--panel-up);
+    border: 2px dashed var(--signal-d); }
+  .callbox .lbl { color: var(--signal); }
+  .callbox .means { margin: 10px 0 14px; font-size: 15px; color: #CFC9BB; line-height: 1.5; }
+  .callbox .means b { color: var(--bone); }
+  .callbox input[type=text] { font-family: var(--sans); font-size: 17px; }
+
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+  .actions button {
+    font-family: var(--mono); font-size: 12.5px; letter-spacing: .1em;
+    text-transform: uppercase; font-weight: 700; min-height: 48px;
+    padding: 13px 18px; border-radius: 0; cursor: pointer;
+    background: var(--signal); color: #14100F; border: 1.5px solid var(--signal);
+  }
+  .actions button.ghost { background: transparent; color: var(--bone); border-color: #453E2C; }
+  .actions button:hover { filter: brightness(1.1); }
+  .actions button.ghost:hover { border-color: var(--signal); color: var(--signal); filter: none; }
+  .actions button:focus-visible { outline: 2px solid var(--bone); outline-offset: 2px; }
+
+  .said {
+    margin-top: 14px; font-family: var(--mono); font-size: 12px;
+    letter-spacing: .06em; text-transform: uppercase; color: var(--signal);
+    min-height: 1em;
+  }
+
+  .titleblock {
+    margin-top: 44px; border: 1px solid var(--hair);
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(108px, 1fr));
+  }
+  .tb { padding: 11px 13px; border-right: 1px solid var(--hair); }
+  .tb:last-child { border-right: 0; }
+  .tb dt {
+    font-family: var(--mono); font-size: 10px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--graphite); margin: 0 0 4px;
+  }
+  .tb dd {
+    margin: 0; font-family: var(--mono); font-size: 13px; font-weight: 700;
+    color: var(--bone); font-variant-numeric: tabular-nums;
+  }
+  .tb dd.red { color: var(--signal); }
+
+  .cta { margin-top: 18px; font-size: 15px; color: #CFC9BB; line-height: 1.5; }
+  .cta b { color: var(--bone); }
+  .cta a { color: var(--signal); font-weight: 700; text-decoration: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+
+  @media print {
+    @page { size: letter; margin: .5in .55in; }
+    :root {
+      --carbon: #fff; --panel: #fff; --panel-up: #FFF8E2;
+      --hair: #C9C2BC; --bone: #14100F; --graphite: #5E5651;
+      --signal: #7A5B00; --signal-d: #7A5B00; --warn: #B93A18; --ply: #E4D2A8;
+    }
+    body { background-image: none; font-size: 10.5pt; }
+    .sheet { max-width: none; padding: 0; }
+    .actions, .said, .nav, .tail, .cta, .privacy { display: none; }
+    .spec[hidden] { display: block !important; }
+    input { border-bottom-color: #9AA0A8; min-height: .42in; }
+    .redline-note { background: none; }
+    h1 { font-size: 26pt; }
+  }
+</style>
+<style>
+  /* Tool 18 additions: deposit taps, a seven-day tally you tick, a withdrawal counter per day. */
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 8px; }
+  .chips button { min-height: 48px; padding: 10px 12px; border-radius: 0; cursor: pointer; text-align: left;
+    font-family: var(--sans); font-size: 15.5px; line-height: 1.25; background: transparent;
+    color: var(--bone); border: 1.5px solid #453E2C; flex: 1 1 140px; }
+  .chips button[aria-pressed="true"] { background: var(--signal); color: #14100F; border-color: var(--signal); }
+  .chips button:focus-visible { outline: 2px solid var(--bone); outline-offset: 2px; }
+  .plan { margin: 10px 0 0; padding: 0; list-style: none; }
+  .plan li { padding: 9px 0 8px; border-top: 1px solid var(--hair); font-size: 15.5px; line-height: 1.4; }
+  .plan li b { display: block; font-family: var(--mono); font-size: 12px; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--signal); }
+  .week { margin: 14px 0 0; display: grid; gap: 6px; }
+  .day { display: grid; grid-template-columns: 52px 1fr auto; gap: 8px; align-items: center;
+    padding: 6px 0; border-top: 1px solid var(--hair); }
+  .day .dn { font-family: var(--mono); font-size: 13px; font-weight: 700; color: var(--bone); }
+  .ticks { display: flex; flex-wrap: wrap; gap: 5px; }
+  .ticks button, .wd button { min-width: 44px; min-height: 44px; border-radius: 0; cursor: pointer;
+    font-family: var(--mono); font-size: 14px; font-weight: 700; background: transparent;
+    color: var(--graphite); border: 1.5px solid #453E2C; }
+  .ticks button[aria-pressed="true"] { background: var(--signal); color: #14100F; border-color: var(--signal); }
+  .wd { display: flex; align-items: center; gap: 4px; }
+  .wd span { font-family: var(--mono); font-size: 14px; min-width: 22px; text-align: center; color: var(--warn); font-weight: 700; }
+  .ticks button:focus-visible, .wd button:focus-visible { outline: 2px solid var(--bone); outline-offset: 2px; }
+  .legend { margin: 8px 0 0; font-size: 13.5px; color: var(--graphite); }
+  .score { margin: 14px 0 0; font-family: var(--mono); font-size: 16px; font-weight: 700; color: var(--bone); }
+  .score .ok { color: var(--signal); } .score .low { color: var(--warn); }
+  .redline-note a { color: var(--bone); font-weight: 700; }
+  .story p a, .fine a { color: var(--signal); }
+  @media print {
+    .chips, h2.part, .partdek, .story, .callbox, .redline-note, header .dek, .wd button { display: none; }
+    .ticks button { color: #14100F; }
+  }
+</style>
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+
+<div class="sheet">
+
+  <nav class="nav">
+    <div class="navtop">
+      <a class="brand" href="index.html">@nicksdadhax</a>
+      <span class="meta">Tool 18 · free · no gate</span>
+    </div>
+    <div class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="toolbox.html" aria-current="true"><svg class="tbx" width="15" height="13" viewBox="0 0 16 14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><g class="lid"><path d="M5.5 4.5v-.75a2.5 2.5 0 0 1 5 0v.75"/><rect x="1" y="4.5" width="14" height="2.5" rx=".5"/></g><rect x="1" y="7" width="14" height="6" rx=".5"/></svg>The Toolbox</a>
+      <a href="log.html">The Flip</a>
+      <a href="houses.html">I have a house</a>
+    </div>
+  </nav>
+
+  <header>
+    <div class="protocol">Relationship <b>·</b> deposits, not tricks <b>·</b> bank it before you need it</div>
+    <h1>The five-to-one <span class="of">week</span></h1>
+    <p class="dek">Every one of us has had the argument where no line worked. You hunt for the
+      perfect thing to say in the moment, and the account is already empty.</p>
+    <p class="dek">The fix happens <em>before the hard conversation</em>. Couples who stay stable
+      have about <b>5 positive moments for every 1 negative</b> during conflict. Those five come
+      from small daily deposits. Pick one person, pick your deposits, and you walk out with
+      <b>a seven-day plan and a tally you tick</b>. Mine is loaded below: the five I talked about
+      on camera.</p>
+    <p class="privacy"><b>Nothing you tap or type here leaves your device.</b> No account, no
+      server, no analytics. Your week is erased when you close the tab, so print it or copy it.</p>
+  </header>
+
+  <div class="redline-note">
+    <b>not for an unsafe relationship</b>
+    I'm a physical therapist, not a counselor. This is for ordinary relationships that need more
+    deposits. If you're afraid of the person, this isn't your tool: in the US, call the National
+    Domestic Violence Hotline at <a href="tel:18007997233">1-800-799-7233</a> or text START to 88788.
+    Thinking about hurting yourself? Call or text <a href="tel:988">988</a>. In danger now, call 911.
+  </div>
+
+  <div class="story">
+    <span class="lbl">Why this one exists</span>
+    <p>I read <i>Fight Right</i> by the Gottmans. My takeaway: <b>no trick wins a conflict in the
+      moment. There are practices. That's the hard and fast rule.</b></p>
+    <p>The practices are small. A genuine 20-second hug. Hello and goodbye rituals. Genuinely
+      listening. Feeling it with them instead of feeling sorry for them. On any one day,
+      probably nothing. <b>Compounded over time, just like interest in your bank account, it
+      pays dividends.</b> I said it in four reels this week:
+      <a href="https://www.instagram.com/reel/DgAJ2-4lEki/">the 5-to-1 rule</a>,
+      <a href="https://www.instagram.com/reel/Df-5Y8MCrVu/">the 20-second hug</a>. This page is
+      the part you do.</p>
+  </div>
+
+  <h2 class="part">Part 1 &mdash; Who it's for</h2>
+  <p class="partdek">One person. A plan for everybody is a plan for nobody.</p>
+  <div class="chips" id="who" role="group" aria-label="Who it's for"></div>
+  <div class="seed" style="margin-top:12px">
+    <span class="lbl">Their first name (optional)</span>
+    <input type="text" id="personName" placeholder="a first name, or leave it blank">
+  </div>
+
+  <h2 class="part">Part 2 &mdash; Your deposits</h2>
+  <p class="partdek">Tap <b>three to five</b> you'd actually do this week. Small and genuine beats big and rare.</p>
+  <div class="chips" id="deps" role="group" aria-label="Your deposits"></div>
+
+  <h2 class="part">Part 3 &mdash; Your week</h2>
+  <div class="spec" id="spec">
+    <span class="lbl" id="oLabel">Your week</span>
+    <ul class="plan" id="oPlan"></ul>
+    <div class="week" id="oWeek"></div>
+    <p class="legend">Tap a number when you make that deposit. Tap <b>+</b> on the right when a
+      withdrawal happens: a snap, an eye-roll, the phone while they're talking.</p>
+    <p class="score" id="oScore"></p>
+    <p class="fine" id="oRepair">After a withdrawal: name it ("that came out sharp, I'm sorry"),
+      then go make the next deposit. One negative is repairable. Five deposits is the repair.</p>
+  </div>
+
+  <div class="callbox">
+    <span class="lbl">The boulder question</span>
+    <p class="means">Name one person who'd do this week with you, on their own person.
+      <b>Now make the call.</b> Ask: &ldquo;I'm trying five small deposits a day for a week. Want to
+      try it too and compare on Sunday?&rdquo;</p>
+  </div>
+
+  <div class="actions">
+    <button id="copyBtn" type="button">Copy my week</button>
+    <button id="promptBtn" class="ghost" type="button">Copy a prompt for your AI</button>
+    <button id="printBtn" class="ghost" type="button">Print it</button>
+    <button id="resetBtn" class="ghost" type="button">Start over</button>
+  </div>
+  <div class="said" id="said" role="status" aria-live="polite"></div>
+
+  <p class="cta">Where this comes from: the 5-to-1 ratio in conflict,
+    <a href="https://www.gottman.com/blog/the-magic-relationship-ratio-according-science/">The Gottman
+    Institute</a>. That research is on couples; I use it as a rule of thumb with anyone close.
+    The deposit menu and the tally are my synthesis. Cross out what doesn't fit your person.</p>
+
+  <dl class="titleblock">
+    <div class="tb"><dt>Protocol</dt><dd>RELATE</dd></div>
+    <div class="tb"><dt>Tool</dt><dd>18 of 18</dd></div>
+    <div class="tb"><dt>Ratio</dt><dd class="red" id="ratio">&mdash;</dd></div>
+    <div class="tb"><dt>By</dt><dd class="red">@nicksdadhax</dd></div>
+  </dl>
+
+  <!--TAIL-->
+  <div class="tail">
+  <a class="tail-next" href="7-layers-of-why.html">
+    <span class="k">Read next</span>
+    <b>Tool 01 &mdash; 7 Layers of Why</b>
+    <span class="s">You know who you're making deposits for. This one finds out why it matters
+      to you, seven layers down.</span>
+  </a>
+  <section class="optin" id="next">
+    <h2>What I ask</h2>
+    <p class="plain">That was free and nothing here sits behind an email. If it was
+      useful, here's the whole exchange: <b>send it to one or two people who'd use it
+      too.</b> That's it. I'm trusting you with it, you pass it on.</p>
+    <p class="plain">Want the next one before anyone else? I'm building an interest
+      list &mdash; no selling, no sequence, your address goes nowhere.
+      <a href="index.html#next">Exactly what that means, in plain words.</a></p>
+    <p class="fine">The list itself isn't open yet &mdash; I'm still setting it up, and
+      I'd rather say that than put up a box that doesn't work. The ask above stands
+      either way, and it's the one that matters. If you want to tell me what to build
+      next, my DMs are open.</p>
+    <div class="ctas">
+      <a href="https://www.instagram.com/nicksdadhax/"><b>Tell me what to build next</b><span>DM @nicksdadhax</span></a>
+    </div>
+  </section>
+  </div>
+  <!--/TAIL-->
+
+  <p class="cta">Free. This tool asks you for nothing: no gate, no email, no
+    analytics. After your week, <b>DM me your ratio</b>. Keep the tally.</p>
+</div>
+<script>
+(function () {
+  "use strict";
+  var WHO = ["My partner", "My kid", "A friend", "My mom or dad", "A brother or sister", "Someone at work"];
+  // each deposit: label, and the plain how-to that lands on the plan
+  var DEPS = [
+    { d: "Hello ritual", h: "same small greeting every time you see them again: stop, look up, say their name" },
+    { d: "Goodbye ritual", h: "same small goodbye every time you leave, never the rushed one over your shoulder" },
+    { d: "A genuine 20-second hug", h: "count to 20 before you let go; only if it's welcome and genuine" },
+    { d: "Really listen", h: "phone face down, no fixing, ask one more question than you normally would" },
+    { d: "Feel it with them", h: "when they're upset, feel it with them instead of feeling sorry for them" },
+    { d: "Validate", h: "say \"that makes sense\" before you say anything else" },
+    { d: "A specific thank-you", h: "name the exact thing they did, out loud, the same day" },
+    { d: "Ask about their thing", h: "ask about the one thing they mentioned yesterday" }];
+  var KEY = "ndh-five-to-one-v1", MAXD = 5, MIND = 3;
+  var EX = { who: -1, deps: [0, 1, 2, 3, 4] };   // the example on load: the five Nick named on camera
+  var $ = function (id) { return document.getElementById(id); };
+  var said = $("said");
+  var st = fresh();
+  function fresh() { var o = JSON.parse(JSON.stringify(EX)); o.touched = false; o.ticks = {}; o.wd = [0,0,0,0,0,0,0]; return o; }
+  function days() {
+    var out = [], d = new Date();
+    for (var i = 0; i < 7; i++) { out.push(d.toLocaleDateString(undefined, { weekday: "short" })); d.setDate(d.getDate() + 1); }
+    return out;
+  }
+  function chips(host, items, onTap) {
+    items.forEach(function (t, i) {
+      var b = document.createElement("button"); b.type = "button";
+      b.textContent = typeof t === "string" ? t : t.d;
+      b.addEventListener("click", function () { onTap(i); st.touched = true; refresh(); });
+      host.appendChild(b);
+    });
+  }
+  chips($("who"), WHO, function (i) { st.who = st.who === i ? -1 : i; });
+  chips($("deps"), DEPS, function (i) {
+    var at = st.deps.indexOf(i);
+    if (at >= 0) { if (st.deps.length <= MIND) { said.textContent = "Keep at least three."; return; } st.deps.splice(at, 1); }
+    else { if (st.deps.length >= MAXD) { said.textContent = "Five is the cap. Untap one first."; return; } st.deps.push(i); }
+    st.ticks = {};
+  });
+  function press(host, on) {
+    Array.prototype.forEach.call(host.children, function (b, n) { b.setAttribute("aria-pressed", on(n) ? "true" : "false"); });
+  }
+  function person() {
+    var n = $("personName").value.trim();
+    return n || (st.who >= 0 ? WHO[st.who].replace(/^My /, "my ").replace(/^A /, "a ").replace(/^Someone/, "someone") : "your person");
+  }
+  function totals() {
+    var dep = 0, w = 0;
+    Object.keys(st.ticks).forEach(function (k) { if (st.ticks[k]) dep++; });
+    st.wd.forEach(function (n) { w += n; });
+    return { dep: dep, wd: w };
+  }
+  function ratioText(t) {
+    if (!t.dep && !t.wd) return "—";
+    if (!t.wd) return t.dep + " : 0";
+    return (Math.round(t.dep / t.wd * 10) / 10) + " : 1";
+  }
+  function drawWeek() {
+    var plan = $("oPlan"), wk = $("oWeek"), dn = days();
+    plan.textContent = ""; wk.textContent = "";
+    st.deps.forEach(function (di, k) {
+      var li = document.createElement("li"), b = document.createElement("b");
+      b.textContent = (k + 1) + " · " + DEPS[di].d; li.appendChild(b);
+      li.appendChild(document.createTextNode(DEPS[di].h + "."));
+      plan.appendChild(li);
+    });
+    dn.forEach(function (name, day) {
+      var row = document.createElement("div"), lab = document.createElement("span"),
+          tk = document.createElement("div"), wd = document.createElement("div");
+      row.className = "day"; lab.className = "dn"; lab.textContent = name; tk.className = "ticks"; wd.className = "wd";
+      st.deps.forEach(function (di, k) {
+        var b = document.createElement("button"), id = day + "-" + k; b.type = "button";
+        b.textContent = String(k + 1); b.setAttribute("aria-label", name + ": " + DEPS[di].d);
+        b.setAttribute("aria-pressed", st.ticks[id] ? "true" : "false");
+        b.addEventListener("click", function () { st.ticks[id] = !st.ticks[id]; st.touched = true; drawWeek(); save(); });
+        tk.appendChild(b);
+      });
+      var minus = document.createElement("button"), n = document.createElement("span"), plus = document.createElement("button");
+      minus.type = plus.type = "button"; minus.textContent = "−"; plus.textContent = "+";
+      minus.setAttribute("aria-label", name + ": remove a withdrawal"); plus.setAttribute("aria-label", name + ": add a withdrawal");
+      n.textContent = String(st.wd[day]);
+      minus.addEventListener("click", function () { if (st.wd[day] > 0) st.wd[day]--; drawWeek(); save(); });
+      plus.addEventListener("click", function () { st.wd[day]++; st.touched = true; drawWeek(); save(); });
+      wd.appendChild(minus); wd.appendChild(n); wd.appendChild(plus);
+      row.appendChild(lab); row.appendChild(tk); row.appendChild(wd); wk.appendChild(row);
+    });
+    var t = totals(), sc = $("oScore"), r = ratioText(t);
+    sc.textContent = "";
+    var s1 = document.createElement("span");
+    if (!t.dep && !t.wd) { s1.textContent = "Deposits 0 · withdrawals 0. Tap your first one today."; }
+    else {
+      var ok = !t.wd || t.dep / t.wd >= 5;
+      s1.className = ok ? "ok" : "low";
+      s1.textContent = "Deposits " + t.dep + " · withdrawals " + t.wd + " · " + r + (ok ? "  on track" : "  under 5 to 1: more deposits, not a better line");
+    }
+    sc.appendChild(s1);
+    $("ratio").textContent = r;
+    $("oLabel").textContent = st.touched ? "Your week with " + person() : "The example: my five. Tap yours above.";
+  }
+  function refresh() {
+    press($("who"), function (n) { return n === st.who; });
+    press($("deps"), function (n) { return st.deps.indexOf(n) >= 0; });
+    drawWeek(); save();
+  }
+  function save() {
+    try {
+      // sessionStorage, NOT localStorage: same promise as every tool on the site.
+      sessionStorage.setItem(KEY, JSON.stringify({ st: st, n: $("personName").value }));
+    } catch (e) {}
+  }
+  function load() {
+    var d = null;
+    try { d = JSON.parse(sessionStorage.getItem(KEY) || "null"); } catch (e) {}
+    if (!d || !d.st) return;
+    var s = d.st, deps = Array.isArray(s.deps) ? s.deps.filter(function (i) { return i >= 0 && i < DEPS.length; }).slice(0, MAXD) : [];
+    if (deps.length < MIND) return;
+    st.deps = deps; st.who = (s.who >= 0 && s.who < WHO.length) ? s.who : -1; st.touched = !!s.touched;
+    st.ticks = (s.ticks && typeof s.ticks === "object") ? s.ticks : {};
+    st.wd = (Array.isArray(s.wd) && s.wd.length === 7) ? s.wd.map(function (n) { return Math.max(0, n | 0); }) : [0,0,0,0,0,0,0];
+    $("personName").value = d.n || "";
+  }
+  $("personName").addEventListener("input", function () { st.touched = true; drawWeek(); save(); });
+  $("printBtn").addEventListener("click", function () { window.print(); });
+  function copyText(text, okMsg) {
+    function fallback() {
+      var t = document.createElement("textarea"); t.value = text;
+      t.style.position = "fixed"; t.style.opacity = "0"; document.body.appendChild(t); t.select();
+      try { document.execCommand("copy"); } catch (e) {} document.body.removeChild(t);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () { said.textContent = okMsg; },
+        function () { fallback(); said.textContent = okMsg; });
+    } else { fallback(); said.textContent = okMsg; }
+  }
+  function weekText() {
+    var dn = days(), t = totals(), out = ["MY FIVE-TO-ONE WEEK — for " + person() + " — starts " + new Date().toLocaleDateString(), "", "DEPOSITS:"];
+    st.deps.forEach(function (di, k) { out.push((k + 1) + ". " + DEPS[di].d + ": " + DEPS[di].h + "."); });
+    out.push("", "TALLY (x = made it):");
+    dn.forEach(function (name, day) {
+      var marks = st.deps.map(function (di, k) { return st.ticks[day + "-" + k] ? "x" : "_"; }).join(" ");
+      out.push(name + "  " + marks + "   withdrawals: " + st.wd[day]);
+    });
+    out.push("", "Deposits " + t.dep + " · withdrawals " + t.wd + " · ratio " + ratioText(t),
+      "After a withdrawal: name it, then make the next deposit.", "", "The Five-to-One Week — @nicksdadhax");
+    return out.join("\n");
+  }
+  $("copyBtn").addEventListener("click", function () { copyText(weekText(), "Copied. Put it on the fridge or your lock screen."); });
+  $("promptBtn").addEventListener("click", function () {
+    var text = [
+      "Help me run a one-week deposit plan with one person who matters to me. You are not a",
+      "counselor: don't diagnose me, them, or the relationship. Ask one question at a time and wait",
+      "for my answer. If anything I say suggests I'm afraid of this person or not safe, stop and point",
+      "me to the National Domestic Violence Hotline (US 1-800-799-7233) or 988.",
+      "",
+      "Here is my plan:",
+      weekText(),
+      "",
+      "Do this, in order:",
+      "1. For each deposit, ask me when in a normal day it would fit, and pin it to that moment.",
+      "2. Ask which deposit would feel fake to them, and help me make it more genuine or swap it.",
+      "3. Ask what my most common withdrawal is, and help me write the exact repair words.",
+      "4. Help me pick the one deposit I'll do even on my worst day.",
+      "",
+      "Stop after step 4. Keep each reply under five sentences."
+    ].join("\n");
+    copyText(text, "Prompt copied. Paste it into the AI you already use.");
+  });
+  $("resetBtn").addEventListener("click", function () {
+    st = fresh(); $("personName").value = "";
+    try { sessionStorage.removeItem(KEY); } catch (e) {}
+    refresh(); said.textContent = "Cleared. Back to the example."; window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+  load(); refresh();
+  window.__fiveToOne = { totals: totals, ratioText: ratioText, DEPS: DEPS };   // for the engine check
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+ "page": "fit-check.html",
+ "sha": "ef21f2fad74a",
+ "verdict": "PASS WITH WARNINGS",
+ "fail": [],
+ "warn": [
+  "LONG: 8.6 phone screens of scroll.",
+  "DENSE: 1123 words. A free sheet nobody finishes is the same as no sheet."
+ ],
+ "stats": {
+  "viewport": "375x812",
+  "charsPerLine": 35,
+  "words": 1123,
+  "pageHeightPx": 6951,
+  "screens": 8.6,
+  "longestBlockWords": 16,
+  "links": 11
+ },
+ "fills": {},
+ "audited": "2026-11-22T13:46:36+00:00"
+}

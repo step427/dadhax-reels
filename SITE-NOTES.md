@@ -840,6 +840,21 @@ Privacy as built (GAME-DESIGN.md): everything stays on the phone, the offline li
 
 Chain: 16 → **17** (the app has no tail, so the chain ends here until Tool 18 links back to 01). Toolbox card 17 live, 18 "in the shop", diy "Seventeen free tools" + newest → Gridiron, index lane tile "17 free tools", titleblocks 07–16 read "of 17". `log.html` untouched (generated). Unmerged `origin/ccr-03dc237b-hzbjjz` (11/14) carries newer Gridiron work (faster pocket listener, hold-to-fix buttons, drill cartoons) that is NOT on this branch.
 
+## Tool 18 — The Five-to-One Week (built 2026-11-22 by `dadhax-weekly-tool`, ships Tue 11/24)
+
+`five-to-one.html`. Council pick 11/22 (85.4; next The 20 Questions 68.5; brief `_tools/council/briefs/BRIEF-2026-11-22.md`; gate still DISTRIBUTION with nothing built-unshipped, so the winner was built). The implementation layer of `ARC-2026-11-22` ("bank it before you need it", easter egg the word **deposit**). Pick one person (role tap + optional first name), tap three to five deposits from an eight-item menu; output is a numbered deposit plan, a seven-day tally (tap a number when you make the deposit, +/− withdrawals per day) and a live ratio ("on track" at 5:1 or better). Loads with Nick's five from the reels (hello ritual, goodbye ritual, 20-second hug, really listen, feel it with them) so the plan is on screen before a tap; the tally starts empty because Nick's own counts don't exist and are not invented.
+
+Design-against from the council dissent: the unsafe-relationship rail (DV hotline 1-800-799-7233 / text START to 88788, 988, 911) sits ABOVE the output; the copy never says five deposits are owed to anyone; relationships are generic, nothing about Nick's family or marriage; the six-second kiss from the raw is left out on purpose. The 20-second hug is not attributed to a Gottman study (the editor brief flags it as a UNC oxytocin finding). **No "I buy houses" block**, same reason as Tools 15–16.
+
+Story beat is Nick's own words only: raw `PXL_20261118_191232294` (0:55 "there are practices. That's the hard and fast rule"; 7:08 "compound it over time, just like interest in your bank account") and the posted captions of `ig-1119-ratio` ("I've read Fight Right by the Gottmans"), `ig-1119-hug`, `ig-1119-emp`, `ig-1121-rit`. Fact-check 11/22: the Gottman Institute page ("The Magic Relationship Ratio, According to Science") says the 5:1 is positive-to-negative interactions during conflict in stable, happy marriages; the page says the research is on couples and uses it as a rule of thumb. DV hotline 1.800.799.7233 and "START to 88788" verified on thehotline.org 11/22; 988 verified 11/01.
+
+**Launch reel (S7 plan, path 3):** path 1 reposts are inside their 7-day read (ratio/hug/emp posted 11/20–11/21), path 2 pending `ig-1121-rit` posts before ship day. So: a new sub-20s cut of `PXL_20261118_191232294` 0:00–0:58 (hook → "there are practices. That's the hard and fast rule"), the one span of the take not yet posted; end far before 7:56 (kid-voice flag). One link `https://step427.github.io/dadhax-reels/five-to-one.html`.
+
+**Audit fills (Tool 18):** `--fill personName=Sam` — every input the page needs set before its real output exists on screen. Date inputs take `+Nd` (resolves to today+N, never rots). Never a real person's name or a sensitive number.
+The who, deposit and tally controls are buttons, not fillable; the worked example renders the full plan and week on load. → PASS WITH WARNINGS (LONG only), 899 words / 5882px, 7.2 screens: near Tool 16 parity (969 / 6.6).
+
+Chain: 17 (no tail) → **18** → 01. Toolbox card 18 live, 19 "in the shop", diy "Eighteen free tools" + newest → Five-to-One, index lane tile "18 free tools", titleblocks 07–16 read "of 18", sitemap entry added. `log.html` untouched (generated).
+
 ## The hub revamp (shipped 2026-11-11, Nick: "Ship it")
 
 nicksdadhax.com now opens on **Nick's face** (`nick.jpg`, cropped from Drive `07_Content/DADHAX-PROFILE-PIC.jpg`), "Here's me. Here's what I'm working on.", and **three lane tiles**: DIY (`diy.html`), AI (`ai.html`), Real estate (`realestate.html`), plus the kits shelf (`kits.html`). Shared styles in `hub.css` (same tokens and yellow grammar; site.css still owns nav and CTA rows).
