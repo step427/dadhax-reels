@@ -5324,6 +5324,23 @@
       "hypothesis": "If the cut opens on a loaded wall with his never-posted 'maximal versatility' line and drops the 4s setup (17.8s to 11.4s), then % watched is at least 70% AND average watch is at least 8.0s AND saves are at least 2.5 per 1,000 views; the parent's 11.8s average watch cannot be beaten at this length.",
       "recut_of": "ig-0930-spacing.mp4",
       "kind": "old"
+    },
+    {
+      "file": "ig-1122-air.mp4",
+      "title": "Building the plane while I fly it",
+      "status": "pending",
+      "earliest": "2026-11-27",
+      "caption": "Hey Dad,\n\nI am literally building the airplane as I'm flying right now.\n\nI got a website now: nicksdadhax.com. Real estate, AI, and DIY dad stuff. In that bucket of DIY dad stuff, a big part of it is developing myself and how I show up for the people closest to me.\n\nEvery small piece I ship is a deposit.\n\nFollow for each new free tool we ship.\n\nThanks, Dad. I love you, Dad.\n\nFree tools: nicksdadhax.com",
+      "arc_slot": "Fri 11/27 1p",
+      "pix": "I",
+      "value_forms": [
+        "entertainment",
+        "idea"
+      ],
+      "sam_verdict": "POST 2026-11-22",
+      "topic_class": "meta",
+      "source_raw": "PXL_20261119_163713276.mp4",
+      "hypothesis": "If a sub-20s announcement opens on his 'building the airplane' line and carries the arc through his own 'how I show up' bridge, then % watched beats the meta median of 34% AND average watch reaches 7.0s or better."
     }
   ]
 }
