@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free Launch Audit — @nicksdadhax</title>
+<meta name="description" content="12 questions, about 3 minutes. See which part of your business is costing you the most time and customers, and the one fix to make first. Free, and your answers stay on this page unless you choose to send them.">
+<link rel="stylesheet" href="site.css">
+<style>
+  /* Free Launch Audit (2026-11-23). Value first: the score shows on this page with no email gate.
+     Sending it to Nick is optional and goes through the same live form as launch/#talk (form 'launch-partner', source 'audit').
+     Areas mirror the offer's five pieces: Front Door, Office, Map, Megaphone, Keys. */
+  :root {
+    --carbon:#FBF8F2; --panel:#FFFFFF; --panel-up:#F4EFE4; --hair:#E6DED0;
+    --bone:#1D1B17; --graphite:#6A6458; --signal:#FFC629; --signal-d:#E3AA0B; --ink2:#3B372F;
+    --good:#2F7A4A; --mid:#C58A0E; --bad:#B4432F;
+    --serif:"Iowan Old Style","Palatino Linotype","Book Antiqua",Palatino,Georgia,serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    --mono:ui-monospace,"SF Mono","Cascadia Mono",Menlo,Consolas,monospace;
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--carbon); color:var(--bone); font:18px/1.55 var(--sans); }
+  .wrap { max-width:760px; margin:0 auto; padding:0 clamp(16px,5vw,32px); }
+  h1, h2, h3 { font-family:var(--serif); font-weight:600; letter-spacing:-.015em; margin:0; }
+  h1 { font-size:clamp(36px,7vw,58px); line-height:1.04; margin:28px 0 12px; }
+  h2 { font-size:clamp(26px,4.4vw,36px); line-height:1.1; margin-bottom:10px; }
+  p { margin:0 0 12px; }
+  .eyebrow { font:600 12.5px/1.2 var(--sans); letter-spacing:.16em; text-transform:uppercase; color:var(--graphite); margin:24px 0 0; }
+  .lead { font-size:clamp(18px,2.4vw,20px); color:var(--ink2); }
+  mark { background:linear-gradient(transparent 58%, var(--signal) 58%); color:inherit; }
+  .meta { display:flex; gap:10px; flex-wrap:wrap; margin:14px 0 6px; }
+  .meta span { font:600 13px/1 var(--sans); background:var(--panel); border:1px solid var(--hair); border-radius:99px; padding:8px 12px; }
+  .bar { position:sticky; top:0; z-index:5; background:var(--carbon); padding:10px 0; border-bottom:1px solid var(--hair); }
+  .bar .track { height:8px; background:var(--panel-up); border-radius:99px; overflow:hidden; }
+  .bar .fill { height:100%; width:0; background:var(--signal-d); transition:width .25s; }
+  .bar small { display:block; margin-top:6px; font-size:13px; color:var(--graphite); }
+  .area { margin:30px 0 6px; font:700 12.5px/1 var(--sans); letter-spacing:.14em; text-transform:uppercase; color:var(--graphite); }
+  .q { background:var(--panel); border:1px solid var(--hair); border-radius:14px; padding:16px 18px; margin:10px 0; }
+  .q legend { float:left; width:100%; font-weight:600; font-size:17px; padding:0; margin-bottom:10px; }
+  .q .opts { clear:both; }
+  fieldset { border:0; margin:0; padding:0; min-width:0; }
+  .opts { display:grid; gap:8px; }
+  .opts label { display:flex; gap:10px; align-items:flex-start; border:1px solid var(--hair); border-radius:10px; padding:11px 12px; cursor:pointer; font-size:16px; min-height:44px; }
+  .opts input { margin-top:4px; accent-color:var(--bone); width:18px; height:18px; flex:none; }
+  .opts label:has(input:checked) { border-color:var(--bone); background:var(--panel-up); }
+  .btn { display:inline-block; border:0; border-radius:10px; background:var(--bone); color:#fff; font:700 17px/1 var(--sans); padding:16px 22px; cursor:pointer; text-decoration:none; min-height:48px; }
+  .btn.ghost { background:transparent; color:var(--bone); border:1.5px solid var(--bone); }
+  .btn[disabled] { opacity:.45; cursor:not-allowed; }
+  .hint { font-size:14px; color:var(--graphite); margin-top:10px; }
+  #result { display:none; }
+  #result.on { display:block; }
+  .score { display:flex; align-items:baseline; gap:12px; margin:8px 0 16px; }
+  .score b { font:600 clamp(56px,12vw,84px)/1 var(--serif); }
+  .score span { font-size:18px; color:var(--graphite); }
+  .rows { display:grid; gap:10px; margin:10px 0 22px; }
+  .row { background:var(--panel); border:1px solid var(--hair); border-radius:12px; padding:12px 14px; }
+  .row .top { display:flex; justify-content:space-between; gap:10px; font-weight:600; }
+  .row .t2 { height:10px; background:var(--panel-up); border-radius:99px; margin:8px 0 6px; overflow:hidden; }
+  .row .f2 { height:100%; border-radius:99px; }
+  .row p { font-size:15px; color:var(--ink2); margin:0; }
+  .fix { border:2px solid var(--bone); border-radius:14px; padding:16px 18px; background:var(--panel); margin:6px 0 20px; }
+  .fix h3 { font-size:22px; margin-bottom:6px; }
+  .paths { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:12px 0 26px; }
+  .path { background:var(--panel); border:1px solid var(--hair); border-radius:12px; padding:14px; display:flex; flex-direction:column; }
+  .path.pick { border:2px solid var(--signal-d); }
+  .path .k { font:700 11.5px/1 var(--sans); letter-spacing:.14em; text-transform:uppercase; color:var(--graphite); }
+  .path h3 { font-size:19px; margin:6px 0; }
+  .path p { font-size:15px; color:var(--ink2); flex:1; }
+  .path a { font-weight:700; font-size:15px; }
+  .send { background:var(--panel); border:1px solid var(--hair); border-radius:14px; padding:16px 18px; margin-bottom:30px; }
+  .send label { display:block; font-weight:600; font-size:14px; margin:10px 0 4px; }
+  .send input[type=text], .send input[type=email], .send input[type=tel] { width:100%; font:16px var(--sans); padding:12px; border:1px solid var(--hair); border-radius:10px; background:#fff; }
+  .two { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .hp { position:absolute; left:-9999px; }
+  #sendMsg { font-weight:600; margin-top:10px; }
+  footer { border-top:1px solid var(--hair); padding:22px 0 40px; font-size:14px; color:var(--graphite); }
+  @media (max-width:640px) { .paths, .two { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav class="nav"><div class="navtop"><a href="index.html">@nicksdadhax</a></div>
+    <div class="navlinks"><a href="ai.html">AI for business</a> <a href="toolbox.html">Toolbox</a> <a href="launch/#talk">Book a call</a></div></nav>
+
+  <p class="eyebrow">Free Launch Audit</p>
+  <h1>Where is your business leaking time and customers?</h1>
+  <p class="lead">12 quick questions about your business today. You'll see your score <mark>right here, no email needed</mark>, plus the one fix to make first.</p>
+  <div class="meta"><span>⏱ About 3 minutes</span><span>🔒 Answers stay on this page</span><span>✅ No email to see results</span></div>
+</div>
+
+<div class="bar"><div class="wrap"><div class="track"><div class="fill" id="fill"></div></div><small id="count">0 of 12 answered</small></div></div>
+
+<main class="wrap">
+  <form id="quiz" novalidate></form>
+  <div style="margin:22px 0 40px">
+    <button class="btn" id="go" disabled>Show my results</button>
+    <p class="hint" id="goHint">Answer all 12 to see your score.</p>
+  </div>
+
+  <section id="result" aria-live="polite">
+    <p class="eyebrow">Your results</p>
+    <div class="score"><b id="total">0</b><span>out of 100</span></div>
+    <p class="lead" id="verdict"></p>
+    <div class="rows" id="rows"></div>
+    <div class="fix"><p class="eyebrow" style="margin:0 0 6px">Fix this first</p><h3 id="fixT"></h3><p id="fixP" style="margin:0"></p></div>
+
+    <h2>Three ways to fix it</h2>
+    <div class="paths" id="paths">
+      <div class="path" data-p="diy"><span class="k">Do it yourself · free</span><h3>Copy my setup</h3><p>The free guides and tools I use, in order. Good if you like building.</p><a href="ai.html#free">Start free →</a></div>
+      <div class="path" data-p="dwy"><span class="k">Done with you</span><h3>Launch Blueprint</h3><p>90 minutes on your week, your tools picked, and a written 30-day plan.</p><a href="launch/?src=audit#talk">Ask about it →</a></div>
+      <div class="path" data-p="dfy"><span class="k">Done for you</span><h3>Launch Kit</h3><p>I build it in your accounts, in your name. You approve before it goes live.</p><a href="launch/?src=audit#talk">Ask about it →</a></div>
+    </div>
+
+    <div class="send">
+      <h3 style="font-size:21px">Want me to look at your answers?</h3>
+      <p style="font-size:16px;color:var(--ink2);margin-top:6px">Optional. Send them to me and I'll reply personally with the first three things I'd fix. No sales sequence, no spam.</p>
+      <form id="sendForm" novalidate>
+        <div class="two"><div><label for="nm">First name</label><input id="nm" name="name" type="text" autocomplete="given-name"></div>
+          <div><label for="bz">Business name</label><input id="bz" name="business" type="text" autocomplete="organization"></div></div>
+        <div class="two"><div><label for="em">Email</label><input id="em" name="email" type="email" autocomplete="email"></div>
+          <div><label for="ph">Phone <span style="font-weight:400;color:var(--graphite)">(optional)</span></label><input id="ph" name="phone" type="tel" autocomplete="tel"></div></div>
+        <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <p class="hint">Please don't include health or patient details. I only need what's above.</p>
+        <button class="btn" type="submit" style="margin-top:8px">Send to Nick</button>
+        <p id="sendMsg" role="status"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">Nick Stephens · Cottage Grove, MN · <a href="https://www.instagram.com/nicksdadhax/">@nicksdadhax</a> · Nothing tracking you here; your answers leave this page only if you tap Send.</div></footer>
+
+<script>
+(function () {
+  // 12 questions, 5 areas. Each answer scores 0, 1 or 2.
+  var AREAS = {
+    door: { name: 'Front Door', sub: 'Getting found online',
+      fix: 'Fix your Front Door', tip: 'A site that works on a phone and a current Google profile. People who can\'t find you, or can\'t act fast, go to someone else.' },
+    office: { name: 'Office', sub: 'Leads, replies and follow-up',
+      fix: 'Fix your Office', tip: 'Every form, call and message should land in one place and get an answer in minutes. Slow replies are the most common leak I see.' },
+    mega: { name: 'Megaphone', sub: 'Showing up consistently',
+      fix: 'Turn on your Megaphone', tip: 'One short clip a week can become posts all week. Consistency beats cleverness.' },
+    map: { name: 'Map', sub: 'A plan and your numbers',
+      fix: 'Draw your Map', tip: 'A one-page plan and the few numbers that matter, so every week has a clear next step.' },
+    keys: { name: 'Keys', sub: 'Owning your business, not running it all yourself',
+      fix: 'Get your Keys back', tip: 'Every account in your name, written steps for the repeat work, and AI handling the routine so you can step away.' }
+  };
+  var QS = [
+    ['door', 'If a customer searches for what you do in your town, do they find you?', ['Not that I know of', 'Sometimes, or I\'m not sure', 'Yes, near the top']],
+    ['door', 'Does your website work well on a phone, with a clear way to contact or book you?', ['No website, or it\'s hard to use on a phone', 'It\'s there but dated or clunky', 'Yes, fast and clear']],
+    ['door', 'Is your Google Business Profile (the map listing) set up and current?', ['No, or I don\'t know', 'Set up but out of date', 'Yes, photos, hours and reviews current']],
+    ['office', 'When a new lead comes in at 9 pm, how fast do they hear back?', ['The next day or later', 'Within a few hours', 'Within minutes, even after hours']],
+    ['office', 'Where do leads and messages live?', ['Scattered: texts, DMs, email, sticky notes', 'Mostly one place, some fall through', 'One place, nothing gets missed']],
+    ['office', 'After a quote or first call, does follow-up happen without you remembering?', ['Only if I remember', 'Sometimes', 'Yes, it runs on its own']],
+    ['mega', 'How often do you post or email your customers?', ['Rarely or never', 'When I have time', 'Every week, like clockwork']],
+    ['mega', 'Do happy customers get asked for a review?', ['Never', 'When I remember', 'Every time, automatically']],
+    ['map', 'Do you have a written plan for the next 12 months?', ['No', 'In my head', 'Yes, written down']],
+    ['map', 'Do you know, each month, where new customers come from and what each one is worth?', ['No idea', 'Roughly', 'Yes, I track it']],
+    ['keys', 'If you stepped away for two weeks, what happens?', ['It stops', 'It limps along', 'It keeps running']],
+    ['keys', 'Are your domain, website, email and social accounts in your name, with logins you control?', ['Not sure, or someone else has them', 'Some of them', 'All of them']]
+  ];
+  var form = document.getElementById('quiz'), cur = '';
+  QS.forEach(function (q, i) {
+    var html = '';
+    if (q[0] !== cur) { cur = q[0]; html += '<p class="area">' + AREAS[cur].name + ' · ' + AREAS[cur].sub + '</p>'; }
+    html += '<fieldset class="q"><legend>' + (i + 1) + '. ' + q[1] + '</legend><div class="opts">' +
+      q[2].map(function (o, v) { return '<label><input type="radio" name="q' + i + '" value="' + v + '"><span>' + o + '</span></label>'; }).join('') + '</div></fieldset>';
+    form.insertAdjacentHTML('beforeend', html);
+  });
+  var go = document.getElementById('go');
+  function answered() { var n = 0; for (var i = 0; i < QS.length; i++) if (form['q' + i].value !== '') n++; return n; }
+  form.addEventListener('change', function () {
+    var n = answered();
+    document.getElementById('fill').style.width = (n / QS.length * 100) + '%';
+    document.getElementById('count').textContent = n + ' of ' + QS.length + ' answered';
+    go.disabled = n < QS.length;
+    document.getElementById('goHint').textContent = n < QS.length ? 'Answer all 12 to see your score.' : 'Ready.';
+  });
+  var last = null;
+  go.addEventListener('click', function () {
+    var by = {}, tot = 0;
+    Object.keys(AREAS).forEach(function (k) { by[k] = { got: 0, max: 0 }; });
+    QS.forEach(function (q, i) { var v = +form['q' + i].value; by[q[0]].got += v; by[q[0]].max += 2; tot += v; });
+    var pct = Math.round(tot / (QS.length * 2) * 100);
+    var keys = Object.keys(AREAS), worst = keys.slice().sort(function (a, b) { return by[a].got / by[a].max - by[b].got / by[b].max; })[0];
+    document.getElementById('total').textContent = pct;
+    document.getElementById('verdict').textContent = pct >= 75 ? 'Strong foundation. Your gains now come from automating what already works.'
+      : pct >= 45 ? 'A real business with a few leaks. Fixing one area usually pays for the rest.'
+      : 'You\'re doing a lot by hand. Good news: the first fixes are the cheapest and fastest.';
+    document.getElementById('rows').innerHTML = keys.map(function (k) {
+      var p = Math.round(by[k].got / by[k].max * 100), c = p >= 75 ? 'var(--good)' : p >= 45 ? 'var(--mid)' : 'var(--bad)';
+      return '<div class="row"><div class="top"><span>' + AREAS[k].name + '</span><span>' + p + '%</span></div><div class="t2"><div class="f2" style="width:' + Math.max(p, 4) + '%;background:' + c + '"></div></div><p>' + AREAS[k].sub + '</p></div>';
+    }).join('');
+    document.getElementById('fixT').textContent = AREAS[worst].fix;
+    document.getElementById('fixP').textContent = AREAS[worst].tip;
+    var rec = pct >= 75 ? 'diy' : pct >= 45 ? 'dwy' : 'dfy';
+    document.querySelectorAll('.path').forEach(function (p) { p.classList.toggle('pick', p.dataset.p === rec); });
+    last = { pct: pct, worst: AREAS[worst].name, areas: keys.map(function (k) { return AREAS[k].name + ' ' + Math.round(by[k].got / by[k].max * 100) + '%'; }).join(', '),
+      answers: QS.map(function (q, i) { return (i + 1) + ':' + form['q' + i].value; }).join(' ') };
+    var r = document.getElementById('result'); r.classList.add('on'); r.scrollIntoView({ behavior: 'smooth' });
+  });
+
+  // Optional send: same live form as launch/#talk, tagged source 'audit'. Nick replies by hand.
+  var WEBHOOK = 'https://script.google.com/macros/s/AKfycbzzI0CNMYQmPlhqw5fIgYgqzxS4rWI1-4dvrXQWmDCaM8tA_AkHS3MkGex3VSRAmX6h/exec';
+  var sf = document.getElementById('sendForm'), sm = document.getElementById('sendMsg');
+  sf.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!last) return;
+    var f = sf.elements, email = f.email.value.trim();
+    if (f.company.value) { sm.textContent = 'Sent. I\'ll reply personally.'; return; }
+    if (!f.name.value.trim()) { sm.textContent = 'Add your first name.'; return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { sm.textContent = 'That email looks off. Check it?'; return; }
+    var lead = { form: 'launch-partner', name: f.name.value.trim(), business: f.business.value.trim(), kind: 'audit', email: email, phone: f.phone.value.trim(),
+      drain: 'Launch Audit ' + last.pct + '/100. Fix first: ' + last.worst + '. ' + last.areas + '. Answers ' + last.answers,
+      sent: new Date().toISOString(), source: 'audit', page: location.pathname };
+    var b = sf.querySelector('button'); b.disabled = true; sm.textContent = 'Sending...';
+    fetch(WEBHOOK, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(lead) })
+      .then(function (r) { return r.json(); }).then(function (j) { if (!j.ok) throw 0; sf.reset(); sm.textContent = 'Sent. I\'ll reply personally with the first three things I\'d fix.'; })
+      .catch(function () { sm.textContent = 'That didn\'t go through. DM me @nicksdadhax and I\'ll take a look.'; })
+      .finally(function () { b.disabled = false; });
+  });
+})();
+</script>
+</body>
+</html>
