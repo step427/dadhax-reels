@@ -5,17 +5,20 @@
  "fail": [],
  "warn": [
   "LONG: 6.6 phone screens of scroll.",
-  "DENSE: 976 words. A free sheet nobody finishes is the same as no sheet."
+  "DENSE: 973 words. A free sheet nobody finishes is the same as no sheet."
  ],
  "stats": {
   "viewport": "375x812",
   "charsPerLine": 35,
-  "words": 976,
+  "words": 973,
   "pageHeightPx": 5362,
   "screens": 6.6,
   "longestBlockWords": 0,
   "links": 13
  },
- "fills": {},
- "audited": "2026-11-22T13:46:38+00:00"
+ "fills": {
+  "callName": "Sam",
+  "callName2": "Pat"
+ },
+ "audited": "2026-11-24T13:41:28+00:00"
 }

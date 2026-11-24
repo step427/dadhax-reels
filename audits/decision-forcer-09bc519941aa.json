@@ -5,18 +5,24 @@
  "fail": [],
  "warn": [
   "LONG: 6.8 phone screens of scroll.",
-  "DENSE: 1042 words. A free sheet nobody finishes is the same as no sheet.",
+  "DENSE: 1039 words. A free sheet nobody finishes is the same as no sheet.",
   "CONTRAST: rgb(232, 80, 44) on rgba(232, 80, 44, 0.08) = 1.00:1 (want 4.5:1)."
  ],
  "stats": {
   "viewport": "375x812",
   "charsPerLine": 35,
-  "words": 1042,
+  "words": 1039,
   "pageHeightPx": 5539,
   "screens": 6.8,
   "longestBlockWords": 0,
   "links": 9
  },
- "fills": {},
- "audited": "2026-11-22T13:46:31+00:00"
+ "fills": {
+  "decision": "Take the side job",
+  "rev-yes": "yes",
+  "info-yes": "yes",
+  "days": "3",
+  "times": "2"
+ },
+ "audited": "2026-11-24T13:41:32+00:00"
 }
