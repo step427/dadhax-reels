@@ -1,0 +1,22 @@
+{
+ "page": "five-to-one.html",
+ "sha": "692e53db3b2e",
+ "verdict": "PASS WITH WARNINGS",
+ "fail": [],
+ "warn": [
+  "LONG: 7.2 phone screens of scroll."
+ ],
+ "stats": {
+  "viewport": "375x812",
+  "charsPerLine": 35,
+  "words": 899,
+  "pageHeightPx": 5882,
+  "screens": 7.2,
+  "longestBlockWords": 18,
+  "links": 11
+ },
+ "fills": {
+  "personName": "Sam"
+ },
+ "audited": "2026-11-24T13:40:17+00:00"
+}

@@ -1,0 +1,20 @@
+{
+ "page": "index.html",
+ "sha": "a1d4ef4297f5",
+ "verdict": "PASS WITH WARNINGS",
+ "fail": [],
+ "warn": [
+  "LINE LENGTH: 33 chars/line on mobile (aim 35-45)."
+ ],
+ "stats": {
+  "viewport": "375x812",
+  "charsPerLine": 33,
+  "words": 336,
+  "pageHeightPx": 2290,
+  "screens": 2.8,
+  "longestBlockWords": 0,
+  "links": 13
+ },
+ "fills": {},
+ "audited": "2026-11-24T13:40:34+00:00"
+}

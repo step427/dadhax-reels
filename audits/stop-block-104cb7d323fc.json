@@ -1,0 +1,37 @@
+{
+ "page": "stop-block.html",
+ "sha": "104cb7d323fc",
+ "verdict": "PASS WITH WARNINGS",
+ "fail": [],
+ "warn": [
+  "LONG: 8 phone screens of scroll.",
+  "DENSE: 1126 words. A free sheet nobody finishes is the same as no sheet."
+ ],
+ "stats": {
+  "viewport": "375x812",
+  "charsPerLine": 35,
+  "words": 1126,
+  "pageHeightPx": 6467,
+  "screens": 8,
+  "longestBlockWords": 0,
+  "links": 9
+ },
+ "fills": {
+  "cut": "24",
+  "cost": "2",
+  "when": "2026-11-27",
+  "t1": "Measure",
+  "t2": "Mark",
+  "t3": "Clamp",
+  "t4": "Cut",
+  "t5": "Check",
+  "blockdesc": "Scrap 2x4",
+  "installday": "2026-11-26",
+  "s1": "Saw",
+  "s2": "Clamp",
+  "s3": "Tape",
+  "s4": "Pencil",
+  "callName": "Sam"
+ },
+ "audited": "2026-11-24T13:41:34+00:00"
+}
